@@ -2,6 +2,7 @@ import argparse
 from pathlib import Path
 
 from engine.book_factory import create_book
+from engine.context_builder import write_context
 from engine.validators import validate_book
 
 
@@ -18,6 +19,13 @@ def build_parser() -> argparse.ArgumentParser:
         "validate-book", help="Validate a book project structure."
     )
     validate_book_cmd.add_argument("book_id")
+
+    build_context = subparsers.add_parser(
+        "build-context", help="Build a Markdown context pack for a chapter."
+    )
+    build_context.add_argument("book_id")
+    build_context.add_argument("chapter_number", type=int)
+    build_context.add_argument("--output", required=True)
 
     return parser
 
@@ -38,6 +46,15 @@ def main(argv: list[str] | None = None) -> int:
                 print(error)
             return 1
         print(f"Book project is valid: {args.book_id}")
+        return 0
+
+    if args.command == "build-context":
+        output_path = write_context(
+            args.book_id,
+            args.chapter_number,
+            Path(args.output),
+        )
+        print(f"Wrote chapter context: {output_path.as_posix()}")
         return 0
 
     parser.error(f"Unknown command: {args.command}")
