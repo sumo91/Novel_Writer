@@ -32,6 +32,19 @@ Build a chapter context pack:
 python -m engine.cli build-context demo 1 --output books/demo/state/ch_0001_context.md
 ```
 
+## V1 Manual Workflow
+
+The first writing loop is manual and human-approved:
+
+1. Build a chapter context pack.
+2. Use `engine/prompts/agents/plot_planner.md` to create a chapter brief.
+3. Use `engine/prompts/agents/chapter_writer.md` to draft the chapter.
+4. Use `engine/prompts/agents/continuity_editor.md` and `engine/prompts/agents/tomato_pacing_editor.md` to review it.
+5. Use `engine/prompts/agents/reviser.md` to revise from approved notes.
+6. Save the accepted chapter and update canon/state only after human approval.
+
+See [Manual Single-Chapter Pipeline](docs/workflows/manual-single-chapter-pipeline.md) and [Human Approval Checkpoints](docs/workflows/human-approval-checkpoints.md).
+
 ## Philosophy
 
 Novel Writer is not a one-prompt novel generator. It is a structured workflow for a human-led digital writers' room:
