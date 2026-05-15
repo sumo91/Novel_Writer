@@ -1,0 +1,20 @@
+[project]
+name = "novel-writer"
+version = "0.1.0"
+description = "A CLI writers' room for long-form AI-assisted web fiction."
+requires-python = ">=3.12"
+dependencies = [
+  "PyYAML>=6.0.2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0.0",
+]
+
+[project.scripts]
+novel-writer = "engine.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

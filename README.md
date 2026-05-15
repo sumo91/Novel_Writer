@@ -1,0 +1,45 @@
+# Novel Writer
+
+Novel Writer is a file-based CLI writers' room for long-form AI-assisted web fiction. The first target is Tomato-style Chinese web fiction: strong hooks, clear emotional payoff, stable canon, and chapter-by-chapter continuity.
+
+The system keeps reusable engine files separate from book projects. Shared prompts, templates, validators, and craft knowledge live in the engine and knowledge folders. Each novel lives under `books/<book_id>/` with its own canon, outlines, chapters, reviews, state, and exports.
+
+The long-term direction is described in [AI Novel Writer Ultimate Roadmap](docs/vision/ultimate-novel-writer-roadmap.md).
+
+## Quickstart
+
+Install the package in editable mode:
+
+```powershell
+python -m pip install -e ".[dev]"
+```
+
+Create a book project:
+
+```powershell
+python -m engine.cli init-book demo --title "Demo Book"
+```
+
+Validate the book structure:
+
+```powershell
+python -m engine.cli validate-book demo
+```
+
+Build a chapter context pack:
+
+```powershell
+python -m engine.cli build-context demo 1 --output books/demo/state/ch_0001_context.md
+```
+
+## Philosophy
+
+Novel Writer is not a one-prompt novel generator. It is a structured workflow for a human-led digital writers' room:
+
+- Humans approve story direction, major canon changes, and final chapters.
+- Agents draft, review, revise, and maintain memory through explicit files.
+- YAML stores durable canon and project state.
+- Markdown stores prompts, theory, workflows, and readable context packs.
+- JSON stores structured reviews and machine-facing state.
+
+The first useful milestone is simple: write 10 chapters without losing the story.
