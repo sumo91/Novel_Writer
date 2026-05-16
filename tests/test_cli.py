@@ -1,4 +1,4 @@
-from engine import book_factory, cli, pipeline
+from engine import book_factory, cli, pipeline, v3_migration
 from engine.io_utils import read_yaml, write_json
 
 
@@ -288,3 +288,19 @@ def test_pending_approval_batch_update_cli_updates_registry_from_file(
     assert "Batch updated pending approvals: 2" in captured.out
     assert by_id[approvals[0]["id"]]["status"] == "approved"
     assert by_id[approvals[1]["id"]]["status"] == "deferred"
+
+
+def test_migrate_v3_cli_creates_missing_files(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(v3_migration, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    missing_path = book / "state" / "hook_index.json"
+    missing_path.unlink()
+
+    result = cli.main(["migrate-v3", "demo"])
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert missing_path.exists()
+    assert "Migrated book to V3: demo" in captured.out
+    assert "- created: state/hook_index.json" in captured.out
