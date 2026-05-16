@@ -3,10 +3,13 @@ from engine.io_utils import read_json, read_yaml
 from engine.v3_state import apply_v3_state_updates
 
 
-def test_apply_v3_state_updates_writes_ledgers_and_indexes(tmp_path, monkeypatch):
+def _create_book(tmp_path, monkeypatch):
     monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
-    book = book_factory.create_book("demo", title="Demo Book")
-    packet = {
+    return book_factory.create_book("demo", title="Demo Book")
+
+
+def _v3_packet(chapter=3, payoff_chapter=3):
+    return {
         "chapter": 3,
         "v3_state_updates": {
             "timeline": {
@@ -59,7 +62,7 @@ def test_apply_v3_state_updates_writes_ledgers_and_indexes(tmp_path, monkeypatch
             ],
             "payoff_updates": [
                 {
-                    "chapter": 3,
+                    "chapter": payoff_chapter,
                     "promises_made": ["The pill shop will come calling."],
                     "payoffs_delivered": ["Yellow sprout grass becomes cash."],
                     "frustration_level": "controlled",
@@ -87,6 +90,11 @@ def test_apply_v3_state_updates_writes_ledgers_and_indexes(tmp_path, monkeypatch
         },
     }
 
+
+def test_apply_v3_state_updates_writes_ledgers_and_indexes(tmp_path, monkeypatch):
+    book = _create_book(tmp_path, monkeypatch)
+    packet = _v3_packet()
+
     apply_v3_state_updates(book, packet)
 
     threads = read_yaml(book / "canon" / "open_threads.yaml")
@@ -112,3 +120,62 @@ def test_apply_v3_state_updates_writes_ledgers_and_indexes(tmp_path, monkeypatch
     assert memory["by_thread"]["thread_0003_01"] == [3]
     assert memory["by_location"]["Shop"] == [3]
     assert memory["by_resource"]["cash"] == [3]
+
+
+def test_apply_v3_state_updates_is_idempotent_for_resources_and_hooks(tmp_path, monkeypatch):
+    book = _create_book(tmp_path, monkeypatch)
+    packet = _v3_packet()
+
+    apply_v3_state_updates(book, packet)
+    apply_v3_state_updates(book, packet)
+
+    resources = read_yaml(book / "canon" / "resource_ledger.yaml")
+    assert resources["resources"][0]["current_amount"] == 3000
+    assert resources["resources"][0]["history"] == [
+        {
+            "chapter": 3,
+            "delta": 3000,
+            "reason": "sold yellow sprout grass",
+        }
+    ]
+    hooks = read_json(book / "state" / "hook_index.json")
+    assert [
+        hook
+        for hook in hooks["hooks"]
+        if hook["chapter"] == 3
+        and hook["hook"] == "The pill shop brings a price tomorrow night."
+    ] == [
+        {
+            "chapter": 3,
+            "hook": "The pill shop brings a price tomorrow night.",
+            "obligation": "Answer the quote in chapter 4.",
+            "target_chapter": 4,
+            "status": "open",
+        }
+    ]
+
+
+def test_apply_v3_state_updates_normalizes_payoff_chapter_to_packet_chapter(tmp_path, monkeypatch):
+    book = _create_book(tmp_path, monkeypatch)
+    packet = _v3_packet(payoff_chapter=99)
+
+    apply_v3_state_updates(book, packet)
+
+    payoffs = read_yaml(book / "canon" / "payoff_ledger.yaml")
+    assert payoffs["entries"][0]["chapter"] == 3
+
+
+def test_apply_v3_state_updates_ignores_missing_or_non_mapping_updates(tmp_path, monkeypatch):
+    book = _create_book(tmp_path, monkeypatch)
+    expected_resources = read_yaml(book / "canon" / "resource_ledger.yaml")
+    expected_payoffs = read_yaml(book / "canon" / "payoff_ledger.yaml")
+    expected_hooks = read_json(book / "state" / "hook_index.json")
+    expected_memory = read_json(book / "state" / "memory_index.json")
+
+    apply_v3_state_updates(book, {"chapter": 3})
+    apply_v3_state_updates(book, {"chapter": 3, "v3_state_updates": []})
+
+    assert read_yaml(book / "canon" / "resource_ledger.yaml") == expected_resources
+    assert read_yaml(book / "canon" / "payoff_ledger.yaml") == expected_payoffs
+    assert read_json(book / "state" / "hook_index.json") == expected_hooks
+    assert read_json(book / "state" / "memory_index.json") == expected_memory

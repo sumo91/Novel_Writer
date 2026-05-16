@@ -71,13 +71,24 @@ def _update_resource_ledger(
             by_id[resource_id] = resource
 
         delta = update.get("delta", 0)
+        history = resource.setdefault("history", [])
+        prior_deltas = [
+            entry.get("delta", 0)
+            for entry in history
+            if entry.get("chapter") == chapter_number
+        ]
         resource["owner"] = update.get("owner", resource.get("owner"))
         resource["name"] = update.get("item", resource.get("name"))
         resource["category"] = update.get("category", resource.get("category"))
         resource["unit"] = update.get("unit", resource.get("unit"))
-        resource["current_amount"] = resource.get("current_amount", 0) + delta
+        resource["current_amount"] = resource.get("current_amount", 0) - sum(prior_deltas) + delta
         resource["last_updated_chapter"] = chapter_number
-        resource.setdefault("history", []).append(
+        resource["history"] = [
+            entry
+            for entry in history
+            if entry.get("chapter") != chapter_number
+        ]
+        resource["history"].append(
             {
                 "chapter": chapter_number,
                 "delta": delta,
@@ -124,7 +135,7 @@ def _update_payoff_ledger(
         for entry in data.get("entries", [])
         if entry.get("chapter") != chapter_number
     ]
-    entries.extend(dict(update, chapter=update.get("chapter", chapter_number)) for update in updates)
+    entries.extend(dict(update, chapter=chapter_number) for update in updates)
     data["entries"] = entries
     write_yaml(path, data)
 
@@ -137,6 +148,8 @@ def _update_hook_index(root: Path, chapter_number: int, next_hook: dict[str, Any
     path = root / "state" / "hook_index.json"
     data = read_json(path)
     hooks = data.setdefault("hooks", [])
+    data["hooks"] = [existing for existing in hooks if existing.get("chapter") != chapter_number]
+    hooks = data["hooks"]
     hooks.append(
         {
             "chapter": chapter_number,
