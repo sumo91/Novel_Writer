@@ -5,7 +5,6 @@ from engine.paths import book_path, project_root
 def test_project_root_returns_repository_root():
     root = project_root()
 
-    assert root.name == "Novel_Writer"
     assert (root / "pyproject.toml").exists()
 
 

@@ -1,5 +1,10 @@
 from pathlib import Path
 
+from engine.hardening import (
+    validate_pending_approvals_registry,
+    validate_acceptance_packet_file,
+    validate_review_files,
+)
 from engine.paths import book_path, books_dir
 
 BOOKS_DIR = books_dir()
@@ -36,4 +41,36 @@ def validate_book(book_id: str) -> list[str]:
         if not (root / relative_path).exists():
             errors.append(f"Missing required file: {relative_path}")
 
+    errors.extend(_validate_existing_pipeline_artifacts(root))
+    errors.extend(validate_pending_approvals_registry(root))
+
     return errors
+
+
+def _validate_existing_pipeline_artifacts(root: Path) -> list[str]:
+    errors: list[str] = []
+    chapter_numbers = set()
+    for parent in (root / "reviews", root / "state_updates"):
+        if not parent.exists():
+            continue
+        for path in parent.iterdir():
+            number = _chapter_number_from_name(path.name)
+            if number is not None:
+                chapter_numbers.add(number)
+
+    for chapter_number in sorted(chapter_numbers):
+        errors.extend(validate_review_files(root, chapter_number))
+        errors.extend(validate_acceptance_packet_file(root, chapter_number))
+
+    return errors
+
+
+def _chapter_number_from_name(name: str) -> int | None:
+    marker = "ch_"
+    if marker not in name:
+        return None
+    start = name.find(marker) + len(marker)
+    digits = name[start : start + 4]
+    if digits.isdigit():
+        return int(digits)
+    return None

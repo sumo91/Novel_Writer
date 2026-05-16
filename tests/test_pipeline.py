@@ -206,3 +206,324 @@ def test_pipeline_accept_applies_packet(tmp_path, monkeypatch):
 
     assert result == book / "chapters" / "ch_0001.md"
     assert result.read_text(encoding="utf-8") == "accepted"
+
+
+def test_pipeline_accept_rejects_stale_acceptance_packet_text(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    (book / "drafts").mkdir()
+    (book / "drafts" / "ch_0001_revised.md").write_text("accepted", encoding="utf-8")
+    packet_path = book / "state_updates" / "ch_0001_acceptance.yaml"
+    packet_path.parent.mkdir(exist_ok=True)
+    packet_path.write_text(
+        "\n".join(
+            [
+                "chapter: 1",
+                "title: First Signal",
+                "source_draft: drafts/ch_0001_revised.md",
+                "accepted_chapter_path: chapters/ch_0001.md",
+                "summary: Summary.",
+                "current_state:",
+                "  current_chapter: 1",
+                "  current_arc: arc_001",
+                "  latest_location: Backstage",
+                "  active_characters: []",
+                "  active_conflicts: []",
+                "  pending_approvals: []",
+                "state_changes: []",
+                "open_threads_touched: []",
+                "timeline_event:",
+                "  id: t001",
+                "  when: Chapter 1",
+                "  summary: Summary.",
+                "open_thread_updates: []",
+                "change_log:",
+                "  summary: pending human acceptance",
+                "  canon_updates: []",
+                "  pending_approvals: []",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValueError, match="stale text"):
+        pipeline.pipeline_accept("demo", 1, approved=True)
+
+
+def test_pipeline_quality_gate_passes_clean_reviews(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    write_json(
+        book / "reviews" / "ch_0001" / "continuity_review.json",
+        {"passed": True, "issues": [], "required_fixes": []},
+    )
+    write_json(
+        book / "reviews" / "ch_0001" / "pacing_review.json",
+        {
+            "score": 86,
+            "dimension_scores": {
+                "hook_strength": 9,
+                "conflict_clarity": 8,
+                "protagonist_agency": 9,
+                "emotional_payoff": 8,
+                "pacing": 8,
+                "character_consistency": 9,
+                "continuity_safety": 9,
+                "chapter_end_pull": 8,
+                "mainline_relevance": 9,
+                "fresh_information_or_expectation": 8,
+            },
+        },
+    )
+
+    result = pipeline.pipeline_quality_gate("demo", 1)
+
+    assert result["passed"] is True
+    assert result["status"] == "passed"
+    assert result["revision_required"] is False
+    assert result["waiver_required"] is False
+    assert result["initial_pacing_score"] == 86
+
+
+def test_pipeline_quality_gate_rejects_invalid_total_score(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    write_json(
+        book / "reviews" / "ch_0001" / "continuity_review.json",
+        {"passed": True, "issues": [], "required_fixes": []},
+    )
+    write_json(
+        book / "reviews" / "ch_0001" / "pacing_review.json",
+        {
+            "score": 101,
+            "dimension_scores": {
+                "hook_strength": 9,
+                "conflict_clarity": 8,
+                "protagonist_agency": 9,
+                "emotional_payoff": 8,
+                "pacing": 8,
+                "character_consistency": 9,
+                "continuity_safety": 9,
+                "chapter_end_pull": 8,
+                "mainline_relevance": 9,
+                "fresh_information_or_expectation": 8,
+            },
+        },
+    )
+
+    result = pipeline.pipeline_quality_gate("demo", 1)
+
+    assert result["passed"] is False
+    assert result["status"] == "invalid_review"
+    assert "Pacing score must be an integer from 0 to 100." in result["reasons"]
+
+
+def test_pipeline_quality_gate_rejects_invalid_dimension_score(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    write_json(
+        book / "reviews" / "ch_0001" / "continuity_review.json",
+        {"passed": True, "issues": [], "required_fixes": []},
+    )
+    write_json(
+        book / "reviews" / "ch_0001" / "pacing_review.json",
+        {
+            "score": 88,
+            "dimension_scores": {
+                "hook_strength": 9,
+                "conflict_clarity": 8,
+                "protagonist_agency": 9,
+                "emotional_payoff": 12,
+                "pacing": 8,
+                "character_consistency": 9,
+                "continuity_safety": 9,
+                "chapter_end_pull": 8,
+                "mainline_relevance": 9,
+                "fresh_information_or_expectation": 8,
+            },
+        },
+    )
+
+    result = pipeline.pipeline_quality_gate("demo", 1)
+
+    assert result["passed"] is False
+    assert result["status"] == "invalid_review"
+    assert "Pacing review has invalid dimension scores: emotional_payoff." in result[
+        "reasons"
+    ]
+
+
+def test_pipeline_quality_gate_requires_revision_for_low_pacing_score(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    write_json(
+        book / "reviews" / "ch_0001" / "continuity_review.json",
+        {"passed": True, "issues": [], "required_fixes": []},
+    )
+    write_json(
+        book / "reviews" / "ch_0001" / "pacing_review.json",
+        {
+            "score": 72,
+            "dimension_scores": {
+                "hook_strength": 7,
+                "conflict_clarity": 7,
+                "protagonist_agency": 7,
+                "emotional_payoff": 7,
+                "pacing": 7,
+                "character_consistency": 8,
+                "continuity_safety": 8,
+                "chapter_end_pull": 7,
+                "mainline_relevance": 7,
+                "fresh_information_or_expectation": 7,
+            },
+        },
+    )
+
+    result = pipeline.pipeline_quality_gate("demo", 1)
+
+    assert result["passed"] is False
+    assert result["status"] == "needs_revision"
+    assert result["revision_required"] is True
+    assert "Pacing score 72 is below 80." in result["reasons"]
+
+
+def test_pipeline_quality_gate_requires_waiver_after_low_revised_score(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    (book / "drafts").mkdir()
+    (book / "drafts" / "ch_0001_revised.md").write_text("revised", encoding="utf-8")
+    write_json(
+        book / "reviews" / "ch_0001" / "continuity_review.json",
+        {"passed": True, "issues": [], "required_fixes": []},
+    )
+    write_json(
+        book / "reviews" / "ch_0001" / "pacing_review.json",
+        {
+            "score": 72,
+            "revised_score": 78,
+            "dimension_scores": {
+                "hook_strength": 7,
+                "conflict_clarity": 8,
+                "protagonist_agency": 8,
+                "emotional_payoff": 7,
+                "pacing": 8,
+                "character_consistency": 8,
+                "continuity_safety": 8,
+                "chapter_end_pull": 8,
+                "mainline_relevance": 8,
+                "fresh_information_or_expectation": 8,
+            },
+        },
+    )
+
+    result = pipeline.pipeline_quality_gate("demo", 1)
+
+    assert result["passed"] is False
+    assert result["status"] == "needs_waiver"
+    assert result["revision_required"] is True
+    assert result["waiver_required"] is True
+    assert "Revised pacing score 78 is still below 80." in result["reasons"]
+
+
+def test_pipeline_quality_gate_fails_continuity_blockers(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    write_json(
+        book / "reviews" / "ch_0001" / "continuity_review.json",
+        {
+            "passed": False,
+            "issues": [{"severity": "high", "evidence": "Wrong location."}],
+            "required_fixes": ["Move scene back to the archive."],
+        },
+    )
+    write_json(
+        book / "reviews" / "ch_0001" / "pacing_review.json",
+        {
+            "score": 88,
+            "dimension_scores": {
+                "hook_strength": 9,
+                "conflict_clarity": 9,
+                "protagonist_agency": 9,
+                "emotional_payoff": 8,
+                "pacing": 9,
+                "character_consistency": 8,
+                "continuity_safety": 8,
+                "chapter_end_pull": 9,
+                "mainline_relevance": 9,
+                "fresh_information_or_expectation": 9,
+            },
+        },
+    )
+
+    result = pipeline.pipeline_quality_gate("demo", 1)
+
+    assert result["passed"] is False
+    assert result["status"] == "blocked"
+    assert result["continuity_blockers"] == [
+        "Move scene back to the archive.",
+        "Wrong location.",
+    ]
+
+
+def test_pipeline_quality_gate_accepts_quality_gate_waiver(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    (book / "drafts").mkdir()
+    (book / "drafts" / "ch_0001_revised.md").write_text("revised", encoding="utf-8")
+    write_json(
+        book / "reviews" / "ch_0001" / "continuity_review.json",
+        {"passed": True, "issues": [], "required_fixes": []},
+    )
+    write_json(
+        book / "reviews" / "ch_0001" / "pacing_review.json",
+        {
+            "score": 72,
+            "revised_score": 78,
+            "dimension_scores": {
+                "hook_strength": 7,
+                "conflict_clarity": 8,
+                "protagonist_agency": 8,
+                "emotional_payoff": 7,
+                "pacing": 8,
+                "character_consistency": 8,
+                "continuity_safety": 8,
+                "chapter_end_pull": 8,
+                "mainline_relevance": 8,
+                "fresh_information_or_expectation": 8,
+            },
+        },
+    )
+    packet_path = book / "state_updates" / "ch_0001_acceptance.yaml"
+    packet_path.write_text(
+        "\n".join(
+            [
+                "quality_gate:",
+                "  waiver:",
+                "    required: true",
+                "    type: pacing",
+                "    reason: Strategic slow-burn setup.",
+                "    approved_by: human",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    result = pipeline.pipeline_quality_gate("demo", 1)
+
+    assert result["passed"] is True
+    assert result["status"] == "passed_with_waiver"
+    assert result["waiver_required"] is True

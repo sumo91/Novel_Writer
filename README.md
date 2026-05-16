@@ -49,6 +49,7 @@ Prepare and inspect a V2 chapter pipeline workspace:
 ```powershell
 python -m engine.cli prepare-chapter demo 1
 python -m engine.cli pipeline-status demo 1
+python -m engine.cli pipeline-quality-gate demo 1
 ```
 
 Use the V2 wrappers after the human-approved artifacts exist:

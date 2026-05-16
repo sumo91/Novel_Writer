@@ -69,14 +69,12 @@ def draft_acceptance_packet(
 def _draft_current_state(root: Path, chapter_number: int) -> dict[str, Any]:
     state = read_json(root / "state" / "current_state.json")
     return {
+        "current_chapter": chapter_number,
         "current_arc": state.get("current_arc", ""),
         "latest_location": state.get("latest_location", ""),
         "active_characters": state.get("active_characters", []),
         "active_conflicts": state.get("active_conflicts", []),
         "pending_approvals": state.get("pending_approvals", []),
-        "draft_note": (
-            f"TODO: review and edit current_state before accepting chapter {chapter_number}."
-        ),
     }
 
 

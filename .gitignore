@@ -11,3 +11,4 @@ build/
 *.egg-info/
 books/*/exports/
 books/*/tmp/
+.obsidian/

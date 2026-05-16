@@ -6,6 +6,8 @@ V2.5 proves that Novel Writer can carry one sample novel from chapter 3 through 
 
 This is a production-line pressure test, not a platform expansion. The test uses `books/sample_tomato_project` because the project already has accepted chapters 1 and 2, a prepared chapter 3 pipeline workspace, structured canon, review examples, and passing tests.
 
+Execution details live in [V2.5 Ten-Chapter Drift Test Runbook](../../workflows/v2-5-ten-chapter-drift-test-runbook.md). The design explains what V2.5 proves; the runbook defines the per-chapter checklist, review-file requirements, quality gate, waiver format, and chapter-10 drift report template.
+
 ## Success Criteria
 
 The drift test is successful when chapters 3 through 10 are accepted into the sample project and each accepted chapter has:
