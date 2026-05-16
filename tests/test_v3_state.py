@@ -10,7 +10,7 @@ def _create_book(tmp_path, monkeypatch):
 
 def _v3_packet(chapter=3, payoff_chapter=3):
     return {
-        "chapter": 3,
+        "chapter": chapter,
         "v3_state_updates": {
             "timeline": {
                 "occurred_events": [
@@ -179,6 +179,89 @@ def test_apply_v3_state_updates_clears_chapter_payoffs_when_reaccepted_empty(
 
     payoffs = read_yaml(book / "canon" / "payoff_ledger.yaml")
     assert payoffs["entries"] == []
+
+
+def test_apply_v3_state_updates_preserves_multiple_same_resource_deltas(
+    tmp_path,
+    monkeypatch,
+):
+    book = _create_book(tmp_path, monkeypatch)
+    packet = _v3_packet()
+    packet["v3_state_updates"]["resource_changes"] = [
+        {
+            "owner": "chen_an",
+            "item": "cash",
+            "delta": 3000,
+            "unit": "yuan",
+            "category": "money",
+            "reason": "sold yellow sprout grass",
+        },
+        {
+            "owner": "chen_an",
+            "item": "cash",
+            "delta": -2500,
+            "unit": "yuan",
+            "category": "money",
+            "reason": "paid stall debt",
+        },
+    ]
+
+    apply_v3_state_updates(book, packet)
+
+    resources = read_yaml(book / "canon" / "resource_ledger.yaml")
+    assert resources["resources"][0]["current_amount"] == 500
+    assert resources["resources"][0]["history"] == [
+        {
+            "chapter": 3,
+            "delta": 3000,
+            "reason": "sold yellow sprout grass",
+        },
+        {
+            "chapter": 3,
+            "delta": -2500,
+            "reason": "paid stall debt",
+        },
+    ]
+
+
+def test_apply_v3_state_updates_clears_hook_when_reaccepted_without_hook(
+    tmp_path,
+    monkeypatch,
+):
+    book = _create_book(tmp_path, monkeypatch)
+    packet = _v3_packet()
+    no_hook_packet = _v3_packet()
+    no_hook_packet["v3_state_updates"]["next_hook"] = {}
+
+    apply_v3_state_updates(book, packet)
+    apply_v3_state_updates(book, no_hook_packet)
+
+    hooks = read_json(book / "state" / "hook_index.json")
+    assert hooks["hooks"] == []
+
+
+def test_apply_v3_state_updates_clears_stale_memory_refs_on_reaccept(
+    tmp_path,
+    monkeypatch,
+):
+    book = _create_book(tmp_path, monkeypatch)
+    packet = _v3_packet()
+    no_refs_packet = _v3_packet()
+    no_refs_packet["v3_state_updates"]["timeline"] = {"occurred_events": []}
+    no_refs_packet["v3_state_updates"]["character_states"] = []
+    no_refs_packet["v3_state_updates"]["resource_changes"] = []
+    no_refs_packet["v3_state_updates"]["open_thread_updates"] = []
+
+    apply_v3_state_updates(book, packet)
+    apply_v3_state_updates(book, no_refs_packet)
+
+    memory = read_json(book / "state" / "memory_index.json")
+    assert memory == {
+        "by_character": {},
+        "by_thread": {},
+        "by_location": {},
+        "by_resource": {},
+    }
 
 
 def test_apply_v3_state_updates_ignores_missing_or_non_mapping_updates(tmp_path, monkeypatch):

@@ -53,48 +53,56 @@ def _update_resource_ledger(
     data = read_yaml(path)
     resources = data.setdefault("resources", [])
     by_id = {resource.get("id"): resource for resource in resources}
+    grouped_updates: dict[str, list[dict[str, Any]]] = {}
 
     for update in updates:
         resource_id = update.get("id") or _resource_id(update.get("owner"), update.get("item"))
+        grouped_updates.setdefault(resource_id, []).append(update)
+
+    for resource_id, resource_updates in grouped_updates.items():
+        first_update = resource_updates[0]
         resource = by_id.get(resource_id)
         if resource is None:
             resource = {
                 "id": resource_id,
-                "owner": update.get("owner"),
-                "name": update.get("item"),
-                "category": update.get("category"),
-                "unit": update.get("unit"),
+                "owner": first_update.get("owner"),
+                "name": first_update.get("item"),
+                "category": first_update.get("category"),
+                "unit": first_update.get("unit"),
                 "current_amount": 0,
                 "history": [],
             }
             resources.append(resource)
             by_id[resource_id] = resource
 
-        delta = update.get("delta", 0)
         history = resource.setdefault("history", [])
         prior_deltas = [
             entry.get("delta", 0)
             for entry in history
-            if entry.get("chapter") == chapter_number
+            if entry.get("chapter") == chapter_number and _is_number(entry.get("delta"))
         ]
-        resource["owner"] = update.get("owner", resource.get("owner"))
-        resource["name"] = update.get("item", resource.get("name"))
-        resource["category"] = update.get("category", resource.get("category"))
-        resource["unit"] = update.get("unit", resource.get("unit"))
-        resource["current_amount"] = resource.get("current_amount", 0) - sum(prior_deltas) + delta
+        resource["current_amount"] = resource.get("current_amount", 0) - sum(prior_deltas)
         resource["last_updated_chapter"] = chapter_number
         resource["history"] = [
             entry
             for entry in history
             if entry.get("chapter") != chapter_number
         ]
-        resource["history"].append(
-            {
-                "chapter": chapter_number,
-                "delta": delta,
-                "reason": update.get("reason", ""),
-            }
-        )
+        for update in resource_updates:
+            delta = update.get("delta", 0)
+            resource["owner"] = update.get("owner", resource.get("owner"))
+            resource["name"] = update.get("item", resource.get("name"))
+            resource["category"] = update.get("category", resource.get("category"))
+            resource["unit"] = update.get("unit", resource.get("unit"))
+            if _is_number(delta):
+                resource["current_amount"] = resource.get("current_amount", 0) + delta
+            resource["history"].append(
+                {
+                    "chapter": chapter_number,
+                    "delta": delta,
+                    "reason": update.get("reason", ""),
+                }
+            )
 
     write_yaml(path, data)
 
@@ -138,15 +146,16 @@ def _update_payoff_ledger(
 
 
 def _update_hook_index(root: Path, chapter_number: int, next_hook: dict[str, Any]) -> None:
-    hook = next_hook.get("hook") if isinstance(next_hook, dict) else None
-    if not hook:
-        return
-
     path = root / "state" / "hook_index.json"
     data = read_json(path)
     hooks = data.setdefault("hooks", [])
     data["hooks"] = [existing for existing in hooks if existing.get("chapter") != chapter_number]
     hooks = data["hooks"]
+    hook = next_hook.get("hook") if isinstance(next_hook, dict) else None
+    if not hook:
+        write_json(path, data)
+        return
+
     hooks.append(
         {
             "chapter": chapter_number,
@@ -164,6 +173,7 @@ def _update_memory_index(root: Path, chapter_number: int, updates: dict[str, Any
     data = read_json(path)
     for field in ("by_character", "by_thread", "by_location", "by_resource"):
         data.setdefault(field, {})
+        _remove_chapter(data[field], chapter_number)
 
     for event in updates.get("timeline", {}).get("occurred_events", []):
         for character_id in event.get("involved_characters", []):
@@ -192,8 +202,21 @@ def _add_chapter(index: dict[str, list[int]], key: str, chapter_number: int) -> 
     index[key] = sorted(set(chapters))
 
 
+def _remove_chapter(index: dict[str, list[int]], chapter_number: int) -> None:
+    for key in list(index):
+        chapters = [chapter for chapter in index[key] if chapter != chapter_number]
+        if chapters:
+            index[key] = chapters
+        else:
+            del index[key]
+
+
 def _resource_id(owner: Any, item: Any) -> str:
     return f"res_{_slug(owner)}_{_slug(item)}"
+
+
+def _is_number(value: Any) -> bool:
+    return isinstance(value, int | float) and not isinstance(value, bool)
 
 
 def _slug(value: Any) -> str:
