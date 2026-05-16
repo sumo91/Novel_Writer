@@ -405,6 +405,7 @@ def _write_handoffs(paths: PipelinePaths, manifest: dict) -> None:
                 "## Human Approval",
                 "",
                 "Do not treat generated canon or state changes as approved until the human accepts them.",
+                "V3 state updates remain proposed until the acceptance packet is approved.",
                 "",
                 "## Agent Prompt",
                 "",

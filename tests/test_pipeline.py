@@ -43,6 +43,25 @@ def test_prepare_chapter_creates_workspace(tmp_path, monkeypatch):
     assert manifest["artifacts"]["brief"] == "outlines/chapter_briefs/ch_0001_brief.md"
 
 
+def test_prepare_chapter_handoffs_include_v3_expectations(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    book_factory.create_book("demo", title="Demo Book")
+
+    result = pipeline.prepare_chapter("demo", 1)
+
+    continuity = (result.handoff_dir / "03_continuity_editor.md").read_text(
+        encoding="utf-8"
+    )
+    pacing = (result.handoff_dir / "04_tomato_pacing_editor.md").read_text(
+        encoding="utf-8"
+    )
+    assert "V3 state updates" in continuity
+    assert "payoff ledger" in pacing
+
+
 def test_prepare_chapter_refuses_existing_workspace_without_force(tmp_path, monkeypatch):
     monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
     monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
