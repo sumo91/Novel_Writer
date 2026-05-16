@@ -51,6 +51,11 @@ def draft_acceptance_packet(
             "when": f"第 {chapter_number} 章",
             "summary": summary,
         },
+        "v3_state_updates": _draft_v3_state_updates(
+            chapter_number,
+            summary,
+            pending_approvals,
+        ),
         "open_thread_updates": [],
         "change_log": {
             "summary": (
@@ -94,6 +99,43 @@ def _load_review_data(root: Path, chapter_number: int) -> dict[str, list[str]]:
     return {
         "proposed_state_updates": _dedupe(proposed_state_updates),
         "human_approval_needed": _dedupe(human_approval_needed),
+    }
+
+
+def _draft_v3_state_updates(
+    chapter_number: int,
+    summary: str,
+    pending_approvals: list[str],
+) -> dict[str, Any]:
+    return {
+        "timeline": {
+            "occurred_events": [
+                {
+                    "id": f"ev_{chapter_number:04d}_01",
+                    "summary": summary,
+                    "location": "",
+                    "involved_characters": [],
+                    "source_chapter": chapter_number,
+                },
+            ],
+        },
+        "character_states": [],
+        "resource_changes": [],
+        "open_thread_updates": [],
+        "payoff_updates": [
+            {
+                "chapter": chapter_number,
+                "promises_made": [],
+                "payoffs_delivered": [summary],
+                "frustration_level": "controlled",
+                "payoff_types": [],
+                "delayed_payoffs": [],
+                "risks": [],
+            },
+        ],
+        "conflict_updates": {"active": []},
+        "next_hook": {},
+        "pending_approvals": list(pending_approvals),
     }
 
 
