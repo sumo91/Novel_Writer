@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "score": 88,
+  "issues": [
+    {
+      "type": "system_rule_clarity",
+      "severity": "medium",
+      "evidence": "逆光系统连续标记责任说明、附件和周衍话术，整体符合商业谎言限制，但触发机制与代价仍不明确。",
+      "suggested_fix": "在修订稿中补一处林照意识到系统不是读心，而是围绕可验证商业材料触发。代价可暂时留作开放伏笔。"
+    },
+    {
+      "type": "authority_boundary",
+      "severity": "low",
+      "evidence": "秦暮雨作为曜石资本临时风控律师，能否直接给后台权限卡略快。",
+      "suggested_fix": "说明权限卡是会展风控临时账号，只能查看日志摘要，不能修改后台。"
+    }
+  ],
+  "required_fixes": [
+    "Clarify that the temporary access card is read-only or limited."
+  ],
+  "proposed_state_updates": [
+    "林照首次触发逆光系统。",
+    "秦暮雨向林照提供十分钟只读后台权限。",
+    "周衍已经在发布会公开说出高风险谎言。"
+  ],
+  "human_approval_needed": [
+    "是否接受逆光系统无明确代价先出场，代价后续揭示。"
+  ]
+}

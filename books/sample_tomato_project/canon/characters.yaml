@@ -1,0 +1,37 @@
+characters:
+- id: lin_zhao
+  name: "林照"
+  role: "protagonist"
+  age: 27
+  public_identity: "星阈科技前产品负责人"
+  current_state: "被合伙人架空，背负发布会失败责任，即将被迫签离职协议"
+  desire: "夺回产品署名权，证明项目数据被篡改"
+  pressure_point: "父亲当年因商业欺诈背债，林照极度厌恶虚假数据"
+  voice: "冷静、短句、先观察再出手，情绪爆发时更克制"
+- id: qin_muyu
+  name: "秦暮雨"
+  role: "ally"
+  age: 29
+  public_identity: "风控律师"
+  current_state: "受林照父亲旧案牵连，暗中调查星阈科技投资方"
+  desire: "找到资本造假链条的证据"
+  pressure_point: "不轻易信任创业者"
+  voice: "锋利、专业、会直接指出风险"
+- id: zhou_yan
+  name: "周衍"
+  role: "rival"
+  age: 31
+  public_identity: "星阈科技联合创始人兼临时 CEO"
+  current_state: "准备在发布会上夺走林照的产品成果"
+  desire: "拿到下一轮融资，彻底清理林照"
+  pressure_point: "害怕真实演示暴露数据造假"
+  voice: "体面、傲慢、喜欢用规则压人"
+- id: he_sheng
+  name: "何盛"
+  role: "hidden_antagonist"
+  age: 45
+  public_identity: "曜石资本合伙人"
+  current_state: "幕后操盘星阈科技融资"
+  desire: "把虚假增长包装成高估值退出"
+  pressure_point: "与林照父亲旧案存在未公开关联"
+  voice: "温和、缓慢、从不亲自威胁"

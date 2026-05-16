@@ -1,0 +1,13 @@
+relationships:
+- source: "林照"
+  target: "周衍"
+  type: "betrayed_partner"
+  current_status: "公开合作关系尚未破裂，私下已经决裂"
+- source: "林照"
+  target: "秦暮雨"
+  type: "cautious_alliance"
+  current_status: "秦暮雨愿意给林照十分钟证明自己"
+- source: "周衍"
+  target: "何盛"
+  type: "capital_dependency"
+  current_status: "周衍依赖何盛完成 B 轮融资"

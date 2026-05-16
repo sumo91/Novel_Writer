@@ -1,0 +1,17 @@
+arc_id: "arc_001"
+title: "发布会前夜"
+chapters:
+- chapter: 1
+  goal: "林照被逼签离职协议，逆光系统首次触发，发现发布会话术中隐藏的致命谎言。"
+- chapter: 2
+  goal: "林照借秦暮雨的律师身份拿到后台数据权限，准备公开验证。"
+- chapter: 3
+  goal: "林照在发布会上用真实客户日志反杀周衍。"
+arc_goal: "让主角从背锅者变成掌握关键证据的人。"
+main_conflict: "周衍和曜石资本要把数据造假的锅扣给林照，林照必须在发布会开始前找到反击证据。"
+required_payoffs:
+- "第一章末让主角看见反杀路径。"
+- "前三章完成一次公开打脸。"
+required_threads:
+- "thread_001"
+- "thread_002"
