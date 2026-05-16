@@ -5,7 +5,12 @@ from engine.acceptance_packet import draft_acceptance_packet
 from engine.book_factory import create_book
 from engine.chapter_acceptance import accept_chapter
 from engine.context_builder import write_context
-from engine.pipeline import pipeline_draft_acceptance, pipeline_status, prepare_chapter
+from engine.pipeline import (
+    pipeline_accept,
+    pipeline_draft_acceptance,
+    pipeline_status,
+    prepare_chapter,
+)
 from engine.validators import validate_book
 
 
@@ -75,6 +80,15 @@ def build_parser() -> argparse.ArgumentParser:
     pipeline_draft_cmd.add_argument("--summary", required=True)
     pipeline_draft_cmd.add_argument("--force", action="store_true")
     pipeline_draft_cmd.add_argument("--allow-missing-reviews", action="store_true")
+
+    pipeline_accept_cmd = subparsers.add_parser(
+        "pipeline-accept",
+        help="Apply a pipeline acceptance packet after explicit human approval.",
+    )
+    pipeline_accept_cmd.add_argument("book_id")
+    pipeline_accept_cmd.add_argument("chapter_number", type=int)
+    pipeline_accept_cmd.add_argument("--approved", action="store_true")
+    pipeline_accept_cmd.add_argument("--force", action="store_true")
 
     return parser
 
@@ -148,6 +162,16 @@ def main(argv: list[str] | None = None) -> int:
             allow_missing_reviews=args.allow_missing_reviews,
         )
         print(f"Drafted pipeline acceptance packet: {output_path.as_posix()}")
+        return 0
+
+    if args.command == "pipeline-accept":
+        chapter_path = pipeline_accept(
+            args.book_id,
+            args.chapter_number,
+            approved=args.approved,
+            force=args.force,
+        )
+        print(f"Pipeline accepted chapter: {chapter_path.as_posix()}")
         return 0
 
     parser.error(f"Unknown command: {args.command}")

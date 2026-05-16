@@ -164,3 +164,45 @@ def test_pipeline_draft_acceptance_creates_packet(tmp_path, monkeypatch):
 
     assert output == book / "state_updates" / "ch_0001_acceptance.yaml"
     assert output.exists()
+
+
+def test_pipeline_accept_requires_approval(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book_factory.create_book("demo", title="Demo Book")
+
+    with pytest.raises(PermissionError, match="approval"):
+        pipeline.pipeline_accept("demo", 1, approved=False)
+
+
+def test_pipeline_accept_requires_acceptance_packet(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book_factory.create_book("demo", title="Demo Book")
+
+    with pytest.raises(FileNotFoundError, match="acceptance packet"):
+        pipeline.pipeline_accept("demo", 1, approved=True)
+
+
+def test_pipeline_accept_applies_packet(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(acceptance_packet, "BOOKS_DIR", tmp_path / "books")
+    import engine.chapter_acceptance as chapter_acceptance
+
+    monkeypatch.setattr(chapter_acceptance, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    (book / "drafts").mkdir()
+    (book / "drafts" / "ch_0001_revised.md").write_text("accepted", encoding="utf-8")
+    output = acceptance_packet.draft_acceptance_packet(
+        "demo",
+        1,
+        title="First Signal",
+        source_draft="drafts/ch_0001_revised.md",
+        summary="Summary.",
+    )
+
+    result = pipeline.pipeline_accept("demo", 1, approved=True)
+
+    assert result == book / "chapters" / "ch_0001.md"
+    assert result.read_text(encoding="utf-8") == "accepted"

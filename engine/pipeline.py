@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from engine.acceptance_packet import draft_acceptance_packet
+from engine.chapter_acceptance import accept_chapter
 from engine.context_builder import build_context
 from engine.io_utils import read_text, write_json, write_text
 from engine.paths import books_dir
@@ -110,6 +111,24 @@ def pipeline_draft_acceptance(
         summary=summary,
         force=force,
     )
+
+
+def pipeline_accept(
+    book_id: str,
+    chapter_number: int,
+    approved: bool,
+    force: bool = False,
+) -> Path:
+    if not approved:
+        raise PermissionError("Human approval is required before pipeline acceptance.")
+
+    paths = pipeline_paths(book_id, chapter_number)
+    packet_path = paths.root / "state_updates" / f"ch_{chapter_number:04d}_acceptance.yaml"
+    if not packet_path.exists():
+        raise FileNotFoundError(f"Missing acceptance packet: {packet_path}")
+
+    result = accept_chapter(book_id, packet_path, force=force)
+    return result.chapter_path
 
 
 def _manifest(book_id: str, chapter_number: int) -> dict:
