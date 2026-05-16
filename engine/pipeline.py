@@ -47,6 +47,32 @@ def prepare_chapter(book_id: str, chapter_number: int, force: bool = False) -> P
     return paths
 
 
+def pipeline_status(book_id: str, chapter_number: int) -> dict:
+    paths = pipeline_paths(book_id, chapter_number)
+    if not paths.manifest_path.exists():
+        raise FileNotFoundError(f"Missing pipeline manifest: {paths.manifest_path}")
+
+    import json
+
+    manifest = json.loads(read_text(paths.manifest_path))
+    artifacts = {}
+    for name, relative_path in manifest["artifacts"].items():
+        path = paths.root / relative_path
+        artifacts[name] = {
+            "path": relative_path,
+            "present": path.exists(),
+        }
+
+    status, next_action = _derive_status(artifacts)
+    return {
+        "book_id": book_id,
+        "chapter": chapter_number,
+        "status": status,
+        "artifacts": artifacts,
+        "next_action": next_action,
+    }
+
+
 def _manifest(book_id: str, chapter_number: int) -> dict:
     chapter_slug = f"ch_{chapter_number:04d}"
     return {
@@ -64,6 +90,25 @@ def _manifest(book_id: str, chapter_number: int) -> dict:
             "accepted_chapter": f"chapters/{chapter_slug}.md",
         },
     }
+
+
+def _derive_status(artifacts: dict) -> tuple[str, str]:
+    if not artifacts["brief"]["present"]:
+        return "needs_brief", "Create chapter brief."
+    if not artifacts["draft"]["present"]:
+        return "needs_draft", "Create chapter draft."
+    if not (
+        artifacts["continuity_review"]["present"]
+        and artifacts["pacing_review"]["present"]
+    ):
+        return "needs_reviews", "Create continuity and pacing reviews."
+    if not artifacts["revised"]["present"]:
+        return "needs_revised_draft", "Create revised chapter draft."
+    if not artifacts["acceptance_packet"]["present"]:
+        return "needs_acceptance_packet", "Draft and review acceptance packet."
+    if not artifacts["accepted_chapter"]["present"]:
+        return "ready_for_acceptance", "Run pipeline-accept after human approval."
+    return "accepted", "Chapter has been accepted."
 
 
 HANDOFFS = [

@@ -67,3 +67,43 @@ def test_prepare_chapter_force_replaces_existing_workspace(tmp_path, monkeypatch
     pipeline.prepare_chapter("demo", 1, force=True)
 
     assert not stale_file.exists()
+
+
+def test_pipeline_status_reports_missing_artifacts(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    book_factory.create_book("demo", title="Demo Book")
+    pipeline.prepare_chapter("demo", 1)
+
+    status = pipeline.pipeline_status("demo", 1)
+
+    assert status["book_id"] == "demo"
+    assert status["chapter"] == 1
+    assert status["status"] == "needs_brief"
+    assert status["artifacts"]["context"]["present"] is True
+    assert status["artifacts"]["brief"]["present"] is False
+    assert status["next_action"] == "Create chapter brief."
+
+
+def test_pipeline_status_advances_when_files_exist(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    book = book_factory.create_book("demo", title="Demo Book")
+    pipeline.prepare_chapter("demo", 1)
+    (book / "outlines" / "chapter_briefs").mkdir()
+    (book / "outlines" / "chapter_briefs" / "ch_0001_brief.md").write_text(
+        "brief", encoding="utf-8"
+    )
+    (book / "drafts").mkdir()
+    (book / "drafts" / "ch_0001_draft.md").write_text("draft", encoding="utf-8")
+
+    status = pipeline.pipeline_status("demo", 1)
+
+    assert status["status"] == "needs_reviews"
+    assert status["artifacts"]["brief"]["present"] is True
+    assert status["artifacts"]["draft"]["present"] is True
+    assert status["artifacts"]["continuity_review"]["present"] is False
