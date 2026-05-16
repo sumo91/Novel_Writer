@@ -13,7 +13,7 @@ def apply_v3_state_updates(root: Path, packet: dict[str, Any]) -> None:
     chapter_number = int(packet["chapter"])
     _update_character_states(root, chapter_number, updates.get("character_states", []))
     _update_resource_ledger(root, chapter_number, updates.get("resource_changes", []))
-    _update_open_threads(root, updates.get("open_thread_updates", []))
+    _update_open_threads(root, chapter_number, updates.get("open_thread_updates", []))
     _update_payoff_ledger(root, chapter_number, updates.get("payoff_updates", []))
     _update_hook_index(root, chapter_number, updates.get("next_hook", {}))
     _update_memory_index(root, chapter_number, updates)
@@ -24,12 +24,21 @@ def _update_character_states(
     chapter_number: int,
     updates: list[dict[str, Any]],
 ) -> None:
-    if not updates:
-        return
-
     path = root / "canon" / "character_states.yaml"
     data = read_yaml(path)
     characters = data.setdefault("characters", {})
+    update_ids = {
+        update["character_id"]
+        for update in updates
+        if "character_id" in update
+    }
+
+    for character_id in list(characters):
+        if (
+            characters[character_id].get("last_updated_chapter") == chapter_number
+            and character_id not in update_ids
+        ):
+            del characters[character_id]
 
     for update in updates:
         character_id = update["character_id"]
@@ -46,14 +55,38 @@ def _update_resource_ledger(
     chapter_number: int,
     updates: list[dict[str, Any]],
 ) -> None:
-    if not updates:
-        return
-
     path = root / "canon" / "resource_ledger.yaml"
     data = read_yaml(path)
     resources = data.setdefault("resources", [])
     by_id = {resource.get("id"): resource for resource in resources}
     grouped_updates: dict[str, list[dict[str, Any]]] = {}
+
+    for resource in resources:
+        history = resource.setdefault("history", [])
+        prior_deltas = [
+            entry.get("delta", 0)
+            for entry in history
+            if entry.get("chapter") == chapter_number and _is_number(entry.get("delta"))
+        ]
+        if prior_deltas:
+            resource["current_amount"] = resource.get("current_amount", 0) - sum(prior_deltas)
+        resource["history"] = [
+            entry
+            for entry in history
+            if entry.get("chapter") != chapter_number
+        ]
+
+    data["resources"] = [
+        resource
+        for resource in resources
+        if resource.get("history")
+        or (
+            resource.get("last_updated_chapter") != chapter_number
+            and resource.get("current_amount") not in (None, 0)
+        )
+    ]
+    resources = data["resources"]
+    by_id = {resource.get("id"): resource for resource in resources}
 
     for update in updates:
         resource_id = update.get("id") or _resource_id(update.get("owner"), update.get("item"))
@@ -75,19 +108,8 @@ def _update_resource_ledger(
             resources.append(resource)
             by_id[resource_id] = resource
 
-        history = resource.setdefault("history", [])
-        prior_deltas = [
-            entry.get("delta", 0)
-            for entry in history
-            if entry.get("chapter") == chapter_number and _is_number(entry.get("delta"))
-        ]
-        resource["current_amount"] = resource.get("current_amount", 0) - sum(prior_deltas)
         resource["last_updated_chapter"] = chapter_number
-        resource["history"] = [
-            entry
-            for entry in history
-            if entry.get("chapter") != chapter_number
-        ]
+        resource.setdefault("history", [])
         for update in resource_updates:
             delta = update.get("delta", 0)
             resource["owner"] = update.get("owner", resource.get("owner"))
@@ -107,13 +129,24 @@ def _update_resource_ledger(
     write_yaml(path, data)
 
 
-def _update_open_threads(root: Path, updates: list[dict[str, Any]]) -> None:
-    if not updates:
-        return
-
+def _update_open_threads(
+    root: Path,
+    chapter_number: int,
+    updates: list[dict[str, Any]],
+) -> None:
     path = root / "canon" / "open_threads.yaml"
     data = read_yaml(path)
     threads = data.setdefault("threads", [])
+    update_ids = {update["id"] for update in updates if "id" in update}
+    threads = [
+        thread
+        for thread in threads
+        if not (
+            thread.get("source_chapter") == chapter_number
+            and thread.get("id") not in update_ids
+        )
+    ]
+    data["threads"] = threads
     by_id = {thread.get("id"): thread for thread in threads}
 
     for update in updates:

@@ -264,6 +264,54 @@ def test_apply_v3_state_updates_clears_stale_memory_refs_on_reaccept(
     }
 
 
+def test_apply_v3_state_updates_clears_resource_changes_when_reaccepted_empty(
+    tmp_path,
+    monkeypatch,
+):
+    book = _create_book(tmp_path, monkeypatch)
+    packet = _v3_packet()
+    no_resources_packet = _v3_packet()
+    no_resources_packet["v3_state_updates"]["resource_changes"] = []
+
+    apply_v3_state_updates(book, packet)
+    apply_v3_state_updates(book, no_resources_packet)
+
+    resources = read_yaml(book / "canon" / "resource_ledger.yaml")
+    assert resources["resources"] == []
+
+
+def test_apply_v3_state_updates_clears_thread_introduced_by_reaccepted_chapter(
+    tmp_path,
+    monkeypatch,
+):
+    book = _create_book(tmp_path, monkeypatch)
+    packet = _v3_packet()
+    no_threads_packet = _v3_packet()
+    no_threads_packet["v3_state_updates"]["open_thread_updates"] = []
+
+    apply_v3_state_updates(book, packet)
+    apply_v3_state_updates(book, no_threads_packet)
+
+    threads = read_yaml(book / "canon" / "open_threads.yaml")
+    assert threads["threads"] == []
+
+
+def test_apply_v3_state_updates_clears_chapter_local_character_state_on_reaccept(
+    tmp_path,
+    monkeypatch,
+):
+    book = _create_book(tmp_path, monkeypatch)
+    packet = _v3_packet()
+    no_characters_packet = _v3_packet()
+    no_characters_packet["v3_state_updates"]["character_states"] = []
+
+    apply_v3_state_updates(book, packet)
+    apply_v3_state_updates(book, no_characters_packet)
+
+    character_states = read_yaml(book / "canon" / "character_states.yaml")
+    assert character_states["characters"] == {}
+
+
 def test_apply_v3_state_updates_ignores_missing_or_non_mapping_updates(tmp_path, monkeypatch):
     book = _create_book(tmp_path, monkeypatch)
     expected_resources = read_yaml(book / "canon" / "resource_ledger.yaml")
