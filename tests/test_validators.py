@@ -61,6 +61,84 @@ def test_validate_acceptance_packet_requires_v3_state_updates():
     assert "Acceptance packet is missing fields: v3_state_updates." in errors
 
 
+def test_validate_acceptance_packet_rejects_falsey_non_mapping_v3_timeline():
+    errors = validate_acceptance_packet(
+        _valid_acceptance_packet(
+            {
+                "timeline": [],
+                "character_states": [],
+                "resource_changes": [],
+                "open_thread_updates": [],
+                "payoff_updates": [
+                    {
+                        "frustration_level": "controlled",
+                        "promises_made": ["Promise."],
+                        "payoffs_delivered": [],
+                    }
+                ],
+                "conflict_updates": {"active": []},
+                "next_hook": {},
+                "pending_approvals": [],
+            }
+        ),
+        chapter_number=1,
+    )
+
+    assert "v3_state_updates.timeline must be a mapping." in errors
+
+
+def test_validate_acceptance_packet_rejects_non_mapping_conflict_updates():
+    errors = validate_acceptance_packet(
+        _valid_acceptance_packet(
+            {
+                "timeline": {},
+                "character_states": [],
+                "resource_changes": [],
+                "open_thread_updates": [],
+                "payoff_updates": [
+                    {
+                        "frustration_level": "controlled",
+                        "promises_made": ["Promise."],
+                        "payoffs_delivered": [],
+                    }
+                ],
+                "conflict_updates": [],
+                "next_hook": {},
+                "pending_approvals": [],
+            }
+        ),
+        chapter_number=1,
+    )
+
+    assert "v3_state_updates.conflict_updates must be a mapping." in errors
+
+
+def test_validate_acceptance_packet_rejects_non_list_active_conflict_updates():
+    errors = validate_acceptance_packet(
+        _valid_acceptance_packet(
+            {
+                "timeline": {},
+                "character_states": [],
+                "resource_changes": [],
+                "open_thread_updates": [],
+                "payoff_updates": [
+                    {
+                        "frustration_level": "controlled",
+                        "promises_made": ["Promise."],
+                        "payoffs_delivered": [],
+                    }
+                ],
+                "conflict_updates": {"active": "bad"},
+                "next_hook": {},
+                "pending_approvals": [],
+            }
+        ),
+        chapter_number=1,
+    )
+
+    assert "v3_state_updates.conflict_updates.active must be a list." in errors
+
+
 def test_validate_book_rejects_invalid_open_thread_status(tmp_path, monkeypatch):
     monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
     monkeypatch.setattr(validators, "BOOKS_DIR", tmp_path / "books")
@@ -135,3 +213,27 @@ def test_validate_score_accepts_only_zero_to_one_hundred():
     assert validators.validate_score(100)
     assert not validators.validate_score(-1)
     assert not validators.validate_score(101)
+
+
+def _valid_acceptance_packet(v3_state_updates):
+    return {
+        "chapter": 1,
+        "title": "First",
+        "source_draft": "drafts/ch_0001_revised.md",
+        "accepted_chapter_path": "chapters/ch_0001.md",
+        "summary": "Summary.",
+        "current_state": {
+            "current_chapter": 1,
+            "current_arc": "arc_001",
+            "latest_location": "",
+            "active_characters": [],
+            "active_conflicts": [],
+            "pending_approvals": [],
+        },
+        "state_changes": [],
+        "open_threads_touched": [],
+        "timeline_event": {"id": "t001", "when": "Chapter 1", "summary": "Summary."},
+        "open_thread_updates": [],
+        "change_log": {"summary": "Accepted.", "canon_updates": [], "pending_approvals": []},
+        "v3_state_updates": v3_state_updates,
+    }

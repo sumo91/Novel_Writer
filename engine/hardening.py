@@ -270,10 +270,17 @@ def validate_v3_state_updates(updates: dict[str, Any]) -> list[str]:
             errors.append(f"v3_state_updates.{list_field} must be a list.")
 
     timeline = updates.get("timeline", {})
-    if timeline and not isinstance(timeline, dict):
+    if "timeline" in updates and not isinstance(timeline, dict):
         errors.append("v3_state_updates.timeline must be a mapping.")
     elif isinstance(timeline, dict) and not isinstance(timeline.get("occurred_events", []), list):
         errors.append("v3_state_updates.timeline.occurred_events must be a list.")
+
+    conflict_updates = updates.get("conflict_updates", {})
+    if "conflict_updates" in updates and not isinstance(conflict_updates, dict):
+        errors.append("v3_state_updates.conflict_updates must be a mapping.")
+    elif isinstance(conflict_updates, dict) and "active" in conflict_updates:
+        if not isinstance(conflict_updates["active"], list):
+            errors.append("v3_state_updates.conflict_updates.active must be a list.")
 
     open_thread_updates = updates.get("open_thread_updates", [])
     if isinstance(open_thread_updates, list):
