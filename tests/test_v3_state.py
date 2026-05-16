@@ -1,5 +1,5 @@
 from engine import book_factory
-from engine.io_utils import read_json, read_yaml
+from engine.io_utils import read_json, read_yaml, write_yaml
 from engine.v3_state import apply_v3_state_updates
 
 
@@ -310,6 +310,128 @@ def test_apply_v3_state_updates_clears_chapter_local_character_state_on_reaccept
 
     character_states = read_yaml(book / "canon" / "character_states.yaml")
     assert character_states["characters"] == {}
+
+
+def test_apply_v3_state_updates_restores_prior_character_state_on_reaccept(
+    tmp_path,
+    monkeypatch,
+):
+    book = _create_book(tmp_path, monkeypatch)
+    write_yaml(
+        book / "canon" / "character_states.yaml",
+        {
+            "characters": {
+                "chen_an": {
+                    "display_name": "Chen An",
+                    "emotional_state": "cautious",
+                    "current_goal": "test the back door",
+                    "last_updated_chapter": 2,
+                }
+            }
+        },
+    )
+    packet = _v3_packet()
+    no_characters_packet = _v3_packet()
+    no_characters_packet["v3_state_updates"]["character_states"] = []
+
+    apply_v3_state_updates(book, packet)
+    apply_v3_state_updates(book, no_characters_packet)
+
+    character = read_yaml(book / "canon" / "character_states.yaml")["characters"]["chen_an"]
+    assert character["last_updated_chapter"] == 2
+    assert character["emotional_state"] == "cautious"
+    assert character["current_goal"] == "test the back door"
+    assert "social_state" not in character
+
+
+def test_apply_v3_state_updates_restores_prior_thread_on_reaccept(
+    tmp_path,
+    monkeypatch,
+):
+    book = _create_book(tmp_path, monkeypatch)
+    write_yaml(
+        book / "canon" / "open_threads.yaml",
+        {
+            "threads": [
+                {
+                    "id": "thread_001",
+                    "promise": "The first buyer may return.",
+                    "status": "open",
+                    "source_chapter": 1,
+                    "last_touched": 2,
+                    "next_obligation": "Keep the shop stocked.",
+                }
+            ]
+        },
+    )
+    packet = _v3_packet()
+    packet["v3_state_updates"]["open_thread_updates"] = [
+        {
+            "id": "thread_001",
+            "promise": "The first buyer may return.",
+            "status": "advanced",
+            "source_chapter": 1,
+            "last_touched": 3,
+            "next_obligation": "Negotiate with the pill shop.",
+        }
+    ]
+    no_threads_packet = _v3_packet()
+    no_threads_packet["v3_state_updates"]["open_thread_updates"] = []
+
+    apply_v3_state_updates(book, packet)
+    apply_v3_state_updates(book, no_threads_packet)
+
+    thread = read_yaml(book / "canon" / "open_threads.yaml")["threads"][0]
+    assert thread["id"] == "thread_001"
+    assert thread["status"] == "open"
+    assert thread["last_touched"] == 2
+    assert thread["next_obligation"] == "Keep the shop stocked."
+
+
+def test_apply_v3_state_updates_restores_prior_resource_amount_on_reaccept(
+    tmp_path,
+    monkeypatch,
+):
+    book = _create_book(tmp_path, monkeypatch)
+    write_yaml(
+        book / "canon" / "resource_ledger.yaml",
+        {
+            "resources": [
+                {
+                    "id": "res_chen_an_cash",
+                    "owner": "chen_an",
+                    "name": "cash",
+                    "category": "money",
+                    "unit": "yuan",
+                    "current_amount": 100,
+                    "last_updated_chapter": 2,
+                    "history": [],
+                }
+            ]
+        },
+    )
+    packet = _v3_packet()
+    packet["v3_state_updates"]["resource_changes"] = [
+        {
+            "owner": "chen_an",
+            "item": "cash",
+            "delta": 50,
+            "unit": "yuan",
+            "category": "money",
+            "reason": "small sale",
+        }
+    ]
+    no_resources_packet = _v3_packet()
+    no_resources_packet["v3_state_updates"]["resource_changes"] = []
+
+    apply_v3_state_updates(book, packet)
+    apply_v3_state_updates(book, no_resources_packet)
+
+    resource = read_yaml(book / "canon" / "resource_ledger.yaml")["resources"][0]
+    assert resource["id"] == "res_chen_an_cash"
+    assert resource["current_amount"] == 100
+    assert resource["last_updated_chapter"] == 2
+    assert resource["history"] == []
 
 
 def test_apply_v3_state_updates_ignores_missing_or_non_mapping_updates(tmp_path, monkeypatch):

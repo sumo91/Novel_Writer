@@ -34,17 +34,27 @@ def _update_character_states(
     }
 
     for character_id in list(characters):
-        if (
-            characters[character_id].get("last_updated_chapter") == chapter_number
-            and character_id not in update_ids
-        ):
+        character = characters[character_id]
+        _seed_snapshot_history(character, "last_updated_chapter")
+        _remove_history_chapter(character, chapter_number)
+        if character_id not in update_ids:
+            _restore_from_snapshot_history(character)
+        if not character.get("history"):
             del characters[character_id]
 
     for update in updates:
         character_id = update["character_id"]
+        character = characters.get(character_id, {})
+        _seed_snapshot_history(character, "last_updated_chapter")
+        _remove_history_chapter(character, chapter_number)
         state = dict(update)
         state.pop("character_id", None)
         state["last_updated_chapter"] = chapter_number
+        state["chapter"] = chapter_number
+        character.setdefault("history", []).append(state)
+        _restore_from_snapshot_history(character)
+        state = character
+        state.pop("chapter", None)
         characters[character_id] = state
 
     write_yaml(path, data)
@@ -62,6 +72,9 @@ def _update_resource_ledger(
     grouped_updates: dict[str, list[dict[str, Any]]] = {}
 
     for resource in resources:
+        if "base_amount" not in resource and not resource.get("history"):
+            resource["base_amount"] = resource.get("current_amount", 0)
+            resource["base_chapter"] = resource.get("last_updated_chapter")
         history = resource.setdefault("history", [])
         prior_deltas = [
             entry.get("delta", 0)
@@ -75,11 +88,13 @@ def _update_resource_ledger(
             for entry in history
             if entry.get("chapter") != chapter_number
         ]
+        _recompute_resource(resource)
 
     data["resources"] = [
         resource
         for resource in resources
         if resource.get("history")
+        or "base_amount" in resource
         or (
             resource.get("last_updated_chapter") != chapter_number
             and resource.get("current_amount") not in (None, 0)
@@ -125,6 +140,7 @@ def _update_resource_ledger(
                     "reason": update.get("reason", ""),
                 }
             )
+        _recompute_resource(resource)
 
     write_yaml(path, data)
 
@@ -138,14 +154,20 @@ def _update_open_threads(
     data = read_yaml(path)
     threads = data.setdefault("threads", [])
     update_ids = {update["id"] for update in updates if "id" in update}
-    threads = [
-        thread
-        for thread in threads
-        if not (
-            thread.get("source_chapter") == chapter_number
-            and thread.get("id") not in update_ids
-        )
-    ]
+    kept_threads = []
+    for thread in threads:
+        had_history = bool(thread.get("history"))
+        had_chapter_marker = thread.get("last_touched") is not None or thread.get("source_chapter") is not None
+        if not had_history and not had_chapter_marker and thread.get("id") not in update_ids:
+            kept_threads.append(thread)
+            continue
+        _seed_snapshot_history(thread, "last_touched", fallback_field="source_chapter")
+        _remove_history_chapter(thread, chapter_number)
+        if thread.get("id") not in update_ids:
+            _restore_from_snapshot_history(thread)
+        if thread.get("history") or (not had_history and not had_chapter_marker):
+            kept_threads.append(thread)
+    threads = kept_threads
     data["threads"] = threads
     by_id = {thread.get("id"): thread for thread in threads}
 
@@ -156,7 +178,12 @@ def _update_open_threads(
             thread = {"id": thread_id}
             threads.append(thread)
             by_id[thread_id] = thread
-        thread.update(update)
+        _seed_snapshot_history(thread, "last_touched", fallback_field="source_chapter")
+        _remove_history_chapter(thread, chapter_number)
+        snapshot = dict(update)
+        snapshot["chapter"] = chapter_number
+        thread.setdefault("history", []).append(snapshot)
+        _restore_from_snapshot_history(thread)
 
     write_yaml(path, data)
 
@@ -242,6 +269,64 @@ def _remove_chapter(index: dict[str, list[int]], chapter_number: int) -> None:
             index[key] = chapters
         else:
             del index[key]
+
+
+def _seed_snapshot_history(
+    item: dict[str, Any],
+    chapter_field: str,
+    fallback_field: str | None = None,
+) -> None:
+    if item.get("history"):
+        return
+
+    chapter = item.get(chapter_field)
+    if chapter is None and fallback_field:
+        chapter = item.get(fallback_field)
+    if chapter is None:
+        return
+
+    snapshot = {
+        key: value
+        for key, value in item.items()
+        if key not in {"history", "base_amount", "base_chapter"}
+    }
+    snapshot["chapter"] = chapter
+    item["history"] = [snapshot]
+
+
+def _remove_history_chapter(item: dict[str, Any], chapter_number: int) -> None:
+    item["history"] = [
+        entry
+        for entry in item.get("history", [])
+        if entry.get("chapter") != chapter_number
+    ]
+
+
+def _restore_from_snapshot_history(item: dict[str, Any]) -> None:
+    history = item.get("history", [])
+    preserved = {"history": history}
+    latest = max(history, key=lambda entry: entry.get("chapter", 0), default=None)
+    item.clear()
+    if latest:
+        item.update({key: value for key, value in latest.items() if key != "chapter"})
+    item.update(preserved)
+
+
+def _recompute_resource(resource: dict[str, Any]) -> None:
+    amount = resource.get("base_amount", 0)
+    last_chapter = resource.get("base_chapter")
+    for entry in resource.get("history", []):
+        if _is_number(entry.get("delta")):
+            amount += entry["delta"]
+        if entry.get("chapter") is not None:
+            if last_chapter is None or entry["chapter"] > last_chapter:
+                last_chapter = entry["chapter"]
+
+    resource["current_amount"] = amount
+    if last_chapter is not None:
+        resource["last_updated_chapter"] = last_chapter
+    elif "last_updated_chapter" in resource:
+        del resource["last_updated_chapter"]
 
 
 def _resource_id(owner: Any, item: Any) -> str:
