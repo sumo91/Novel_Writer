@@ -49,6 +49,27 @@ def test_accept_chapter_applies_update_packet(tmp_path, monkeypatch):
                     "canon_updates": ["timeline:t001"],
                     "pending_approvals": ["Define system cost"],
                 },
+                "v3_state_updates": {
+                    "timeline": {"occurred_events": []},
+                    "character_states": [],
+                    "resource_changes": [],
+                    "open_thread_updates": [],
+                    "payoff_updates": [
+                        {
+                            "chapter": 1,
+                            "promises_made": ["The contradiction has a cost."],
+                            "payoffs_delivered": ["The system triggered."],
+                            "frustration_level": "controlled",
+                        }
+                    ],
+                    "conflict_updates": {"active": []},
+                    "next_hook": {
+                        "hook": "A stranger recognizes the system trace.",
+                        "obligation": "Reveal the stranger's motive.",
+                        "target_chapter": 2,
+                    },
+                    "pending_approvals": [],
+                },
             },
             sort_keys=False,
             allow_unicode=True,
@@ -69,6 +90,10 @@ def test_accept_chapter_applies_update_packet(tmp_path, monkeypatch):
     assert timeline["events"][0]["id"] == "t001"
     open_threads = read_yaml(book / "canon" / "open_threads.yaml")
     assert open_threads["threads"][0]["status"] == "advanced"
+    payoff_ledger = read_yaml(book / "canon" / "payoff_ledger.yaml")
+    assert payoff_ledger["entries"][0]["chapter"] == 1
+    hook_index = json.loads((book / "state" / "hook_index.json").read_text(encoding="utf-8"))
+    assert hook_index["hooks"][0]["chapter"] == 1
     assert "Accepted chapter 1." in (book / "state" / "change_log.jsonl").read_text(encoding="utf-8")
 
 

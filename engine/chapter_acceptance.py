@@ -6,6 +6,7 @@ from typing import Any
 
 from engine.io_utils import read_json, read_yaml, write_json, write_text, write_yaml
 from engine.paths import books_dir
+from engine.v3_state import apply_v3_state_updates
 
 BOOKS_DIR = books_dir()
 
@@ -50,6 +51,7 @@ def accept_chapter(
     _update_current_state(root, packet, chapter_number)
     _append_timeline_event(root, packet.get("timeline_event"))
     _update_open_threads(root, packet.get("open_thread_updates", []))
+    apply_v3_state_updates(root, packet)
     _append_change_log(root, packet, chapter_number)
 
     return AcceptanceResult(chapter_path=chapter_path, update_file=update_file)
