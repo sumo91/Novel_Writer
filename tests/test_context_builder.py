@@ -54,6 +54,11 @@ def test_build_context_includes_v3_memory_ledgers(tmp_path, monkeypatch):
         "promises:\n  - promise: The midnight bell must be answered.\n",
         encoding="utf-8",
     )
+    (created / "outlines" / "units").mkdir(parents=True, exist_ok=True)
+    (created / "outlines" / "units" / "unit_0001.yaml").write_text(
+        "unit_goal: Keep the shop alive through the first ten chapters.\n",
+        encoding="utf-8",
+    )
     (created / "state" / "hook_index.json").write_text(
         '{\n  "hooks": ["The back door glows before midnight."]\n}\n',
         encoding="utf-8",
@@ -66,6 +71,7 @@ def test_build_context_includes_v3_memory_ledgers(tmp_path, monkeypatch):
     assert "## Hook Index" in context
     assert "The back door glows before midnight." in context
     assert "## Unit Plan" in context
+    assert "Keep the shop alive through the first ten chapters." in context
 
 
 def test_build_context_surfaces_missing_book_errors(tmp_path, monkeypatch):
