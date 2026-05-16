@@ -51,7 +51,7 @@ def accept_chapter(
     _update_current_state(root, packet, chapter_number)
     _append_timeline_event(root, packet.get("timeline_event"))
     apply_v3_state_updates(root, packet)
-    _update_open_threads(root, packet.get("open_thread_updates", []))
+    _update_open_threads(root, _legacy_open_thread_updates_without_v3_collisions(packet))
     _append_change_log(root, packet, chapter_number)
 
     return AcceptanceResult(chapter_path=chapter_path, update_file=update_file)
@@ -135,6 +135,36 @@ def _update_open_threads(root: Path, updates: list[dict[str, Any]]) -> None:
         thread.update(update)
 
     write_yaml(threads_path, data)
+
+
+def _legacy_open_thread_updates_without_v3_collisions(
+    packet: dict[str, Any],
+) -> list[dict[str, Any]]:
+    updates = packet.get("open_thread_updates", [])
+    if not isinstance(updates, list):
+        return []
+
+    v3_updates = packet.get("v3_state_updates")
+    if not isinstance(v3_updates, dict):
+        return updates
+
+    v3_thread_updates = v3_updates.get("open_thread_updates", [])
+    if not isinstance(v3_thread_updates, list):
+        return updates
+
+    v3_ids = {
+        update.get("id")
+        for update in v3_thread_updates
+        if isinstance(update, dict) and update.get("id") is not None
+    }
+    if not v3_ids:
+        return updates
+
+    return [
+        update
+        for update in updates
+        if not isinstance(update, dict) or update.get("id") not in v3_ids
+    ]
 
 
 def _append_change_log(
