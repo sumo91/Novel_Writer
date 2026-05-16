@@ -5,6 +5,7 @@ from engine.acceptance_packet import draft_acceptance_packet
 from engine.book_factory import create_book
 from engine.chapter_acceptance import accept_chapter
 from engine.context_builder import write_context
+from engine.pipeline import prepare_chapter
 from engine.validators import validate_book
 
 
@@ -48,6 +49,14 @@ def build_parser() -> argparse.ArgumentParser:
     draft_packet_cmd.add_argument("--summary", required=True)
     draft_packet_cmd.add_argument("--output")
     draft_packet_cmd.add_argument("--force", action="store_true")
+
+    prepare_chapter_cmd = subparsers.add_parser(
+        "prepare-chapter",
+        help="Prepare a V2 chapter pipeline workspace.",
+    )
+    prepare_chapter_cmd.add_argument("book_id")
+    prepare_chapter_cmd.add_argument("chapter_number", type=int)
+    prepare_chapter_cmd.add_argument("--force", action="store_true")
 
     return parser
 
@@ -95,6 +104,11 @@ def main(argv: list[str] | None = None) -> int:
             force=args.force,
         )
         print(f"Drafted acceptance packet: {output_path.as_posix()}")
+        return 0
+
+    if args.command == "prepare-chapter":
+        paths = prepare_chapter(args.book_id, args.chapter_number, force=args.force)
+        print(f"Prepared chapter pipeline: {paths.pipeline_dir.as_posix()}")
         return 0
 
     parser.error(f"Unknown command: {args.command}")
