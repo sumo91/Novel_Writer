@@ -208,6 +208,19 @@ def test_validate_book_rejects_invalid_hook_and_memory_indexes(tmp_path, monkeyp
     assert any("memory_index.json" in error and "by_thread" in error for error in errors)
 
 
+def test_validate_book_reports_malformed_v3_ledger_and_index_roots(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(validators, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    write_yaml(book / "canon" / "payoff_ledger.yaml", [])
+    write_json(book / "state" / "hook_index.json", [])
+
+    errors = validators.validate_book("demo")
+
+    assert "canon/payoff_ledger.yaml: root must be a mapping." in errors
+    assert "state/hook_index.json: root must be a mapping." in errors
+
+
 def test_validate_score_accepts_only_zero_to_one_hundred():
     assert validators.validate_score(0)
     assert validators.validate_score(100)

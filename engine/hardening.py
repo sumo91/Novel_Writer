@@ -1,6 +1,8 @@
 from pathlib import Path
 from typing import Any
 
+import yaml
+
 from engine.io_utils import read_json, read_text, read_yaml
 
 OPEN_THREAD_STATUSES = {"open", "advanced", "paid_off", "deferred", "dropped"}
@@ -327,7 +329,9 @@ def validate_open_threads_ledger(root: Path) -> list[str]:
     path = root / "canon" / "open_threads.yaml"
     if not path.exists():
         return []
-    data = read_yaml(path)
+    data = _read_yaml_root(path)
+    if not isinstance(data, dict):
+        return ["canon/open_threads.yaml: root must be a mapping."]
     threads = data.get("threads")
     if not isinstance(threads, list):
         return ["canon/open_threads.yaml: threads must be a list."]
@@ -350,7 +354,9 @@ def validate_payoff_ledger(root: Path) -> list[str]:
     path = root / "canon" / "payoff_ledger.yaml"
     if not path.exists():
         return []
-    data = read_yaml(path)
+    data = _read_yaml_root(path)
+    if not isinstance(data, dict):
+        return ["canon/payoff_ledger.yaml: root must be a mapping."]
     entries = data.get("entries")
     if not isinstance(entries, list):
         return ["canon/payoff_ledger.yaml: entries must be a list."]
@@ -373,7 +379,9 @@ def validate_character_states_ledger(root: Path) -> list[str]:
     path = root / "canon" / "character_states.yaml"
     if not path.exists():
         return []
-    data = read_yaml(path)
+    data = _read_yaml_root(path)
+    if not isinstance(data, dict):
+        return ["canon/character_states.yaml: root must be a mapping."]
     characters = data.get("characters")
     if not isinstance(characters, dict):
         return ["canon/character_states.yaml: characters must be a mapping."]
@@ -393,7 +401,9 @@ def validate_resource_ledger(root: Path) -> list[str]:
     path = root / "canon" / "resource_ledger.yaml"
     if not path.exists():
         return []
-    data = read_yaml(path)
+    data = _read_yaml_root(path)
+    if not isinstance(data, dict):
+        return ["canon/resource_ledger.yaml: root must be a mapping."]
     resources = data.get("resources")
     if not isinstance(resources, list):
         return ["canon/resource_ledger.yaml: resources must be a list."]
@@ -417,6 +427,8 @@ def validate_hook_index(root: Path) -> list[str]:
     if not path.exists():
         return []
     data = read_json(path)
+    if not isinstance(data, dict):
+        return ["state/hook_index.json: root must be a mapping."]
     hooks = data.get("hooks")
     if not isinstance(hooks, list):
         return ["state/hook_index.json: hooks must be a list."]
@@ -438,12 +450,18 @@ def validate_memory_index(root: Path) -> list[str]:
     if not path.exists():
         return []
     data = read_json(path)
+    if not isinstance(data, dict):
+        return ["state/memory_index.json: root must be a mapping."]
 
     errors: list[str] = []
     for field in ("by_character", "by_thread", "by_location", "by_resource"):
         if not isinstance(data.get(field), dict):
             errors.append(f"state/memory_index.json: {field} must be a mapping.")
     return errors
+
+
+def _read_yaml_root(path: Path) -> Any:
+    return yaml.safe_load(read_text(path))
 
 
 def stale_acceptance_text_errors(path: Path) -> list[str]:
