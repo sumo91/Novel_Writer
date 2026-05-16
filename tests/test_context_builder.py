@@ -44,6 +44,30 @@ def test_build_context_returns_markdown(tmp_path, monkeypatch):
     assert "```json" in context
 
 
+def test_build_context_includes_v3_memory_ledgers(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+
+    created = book_factory.create_book("demo", title="Demo Book")
+    (created / "canon" / "payoff_ledger.yaml").write_text(
+        "promises:\n  - promise: The midnight bell must be answered.\n",
+        encoding="utf-8",
+    )
+    (created / "state" / "hook_index.json").write_text(
+        '{\n  "hooks": ["The back door glows before midnight."]\n}\n',
+        encoding="utf-8",
+    )
+
+    context = context_builder.build_context("demo", 2)
+
+    assert "## Payoff Ledger" in context
+    assert "The midnight bell must be answered." in context
+    assert "## Hook Index" in context
+    assert "The back door glows before midnight." in context
+    assert "## Unit Plan" in context
+
+
 def test_build_context_surfaces_missing_book_errors(tmp_path, monkeypatch):
     monkeypatch.setattr(context_builder, "BOOKS_DIR", tmp_path / "books")
 
