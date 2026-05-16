@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "score": 90,
+  "issues": [
+    {
+      "type": "thread_scope",
+      "severity": "low",
+      "evidence": "第 2 章结尾暴露曜石资本复核账号，推进了 thread_003，但该线程原计划第 8-15 章首次 payoff。",
+      "suggested_fix": "把这次暴露写成轻微线索，而不是明确证明曜石资本主谋。"
+    }
+  ],
+  "required_fixes": [],
+  "proposed_state_updates": [
+    "林照发现演示账号最后登录设备是 Zhou-Yan-MacBook。",
+    "林照发现缓存清理请求正在发生。",
+    "林照将证据提交到提问审核通道。",
+    "曜石资本复核账号 obsidian_capital_he01 首次露出。"
+  ],
+  "human_approval_needed": [
+    "是否允许 thread_003 在第 2 章提前露出轻微线索。"
+  ]
+}
