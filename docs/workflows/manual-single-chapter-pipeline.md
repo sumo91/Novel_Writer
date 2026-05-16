@@ -2,6 +2,8 @@
 
 This workflow is the V1 writers' room loop. It keeps humans in charge while giving agents clear handoff material.
 
+For the command-assisted V2 version, use `docs/workflows/v2-single-chapter-pipeline.md`.
+
 ## Steps
 
 1. Initialize or validate the book.

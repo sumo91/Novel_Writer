@@ -44,6 +44,20 @@ Draft an acceptance packet from a final draft and review files:
 python -m engine.cli draft-acceptance-packet demo 1 --title "Chapter Title" --source-draft drafts/ch_0001_revised.md --summary "What changed in this chapter."
 ```
 
+Prepare and inspect a V2 chapter pipeline workspace:
+
+```powershell
+python -m engine.cli prepare-chapter demo 1
+python -m engine.cli pipeline-status demo 1
+```
+
+Use the V2 wrappers after the human-approved artifacts exist:
+
+```powershell
+python -m engine.cli pipeline-draft-acceptance demo 1 --title "Chapter Title" --summary "What changed in this chapter."
+python -m engine.cli pipeline-accept demo 1 --approved
+```
+
 ## V1 Manual Workflow
 
 The first writing loop is manual and human-approved:
@@ -58,6 +72,8 @@ The first writing loop is manual and human-approved:
 8. Run `accept-chapter` to copy the accepted chapter and update state/canon files.
 
 See [Manual Single-Chapter Pipeline](docs/workflows/manual-single-chapter-pipeline.md) and [Human Approval Checkpoints](docs/workflows/human-approval-checkpoints.md).
+
+For the command-assisted V2 loop, see [V2 Single-Chapter Pipeline](docs/workflows/v2-single-chapter-pipeline.md).
 
 ## Philosophy
 
