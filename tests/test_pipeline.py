@@ -2,7 +2,8 @@ import json
 
 import pytest
 
-from engine import book_factory, context_builder, pipeline
+from engine import acceptance_packet, book_factory, context_builder, pipeline
+from engine.io_utils import write_json
 
 
 def test_pipeline_paths_for_chapter(tmp_path, monkeypatch):
@@ -107,3 +108,59 @@ def test_pipeline_status_advances_when_files_exist(tmp_path, monkeypatch):
     assert status["artifacts"]["brief"]["present"] is True
     assert status["artifacts"]["draft"]["present"] is True
     assert status["artifacts"]["continuity_review"]["present"] is False
+
+
+def test_pipeline_draft_acceptance_requires_revised_draft(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(acceptance_packet, "BOOKS_DIR", tmp_path / "books")
+    book_factory.create_book("demo", title="Demo Book")
+
+    with pytest.raises(FileNotFoundError, match="revised draft"):
+        pipeline.pipeline_draft_acceptance(
+            "demo",
+            1,
+            title="First Signal",
+            summary="Summary.",
+        )
+
+
+def test_pipeline_draft_acceptance_requires_reviews_by_default(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(acceptance_packet, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    (book / "drafts").mkdir()
+    (book / "drafts" / "ch_0001_revised.md").write_text("revised", encoding="utf-8")
+
+    with pytest.raises(FileNotFoundError, match="review"):
+        pipeline.pipeline_draft_acceptance(
+            "demo",
+            1,
+            title="First Signal",
+            summary="Summary.",
+        )
+
+
+def test_pipeline_draft_acceptance_creates_packet(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(acceptance_packet, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    (book / "drafts").mkdir()
+    (book / "drafts" / "ch_0001_revised.md").write_text("revised", encoding="utf-8")
+    write_json(
+        book / "reviews" / "ch_0001" / "continuity_review.json",
+        {"proposed_state_updates": ["State changed."]},
+    )
+    write_json(book / "reviews" / "ch_0001" / "pacing_review.json", {})
+
+    output = pipeline.pipeline_draft_acceptance(
+        "demo",
+        1,
+        title="First Signal",
+        summary="Summary.",
+    )
+
+    assert output == book / "state_updates" / "ch_0001_acceptance.yaml"
+    assert output.exists()

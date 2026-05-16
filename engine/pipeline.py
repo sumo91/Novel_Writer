@@ -2,6 +2,7 @@ import shutil
 from dataclasses import dataclass
 from pathlib import Path
 
+from engine.acceptance_packet import draft_acceptance_packet
 from engine.context_builder import build_context
 from engine.io_utils import read_text, write_json, write_text
 from engine.paths import books_dir
@@ -71,6 +72,44 @@ def pipeline_status(book_id: str, chapter_number: int) -> dict:
         "artifacts": artifacts,
         "next_action": next_action,
     }
+
+
+def pipeline_draft_acceptance(
+    book_id: str,
+    chapter_number: int,
+    title: str,
+    summary: str,
+    force: bool = False,
+    allow_missing_reviews: bool = False,
+) -> Path:
+    paths = pipeline_paths(book_id, chapter_number)
+    source_draft = f"drafts/ch_{chapter_number:04d}_revised.md"
+    revised_path = paths.root / source_draft
+    if not revised_path.exists():
+        raise FileNotFoundError(f"Missing revised draft: {source_draft}")
+
+    if not allow_missing_reviews:
+        review_dir = paths.root / "reviews" / f"ch_{chapter_number:04d}"
+        required_reviews = [
+            review_dir / "continuity_review.json",
+            review_dir / "pacing_review.json",
+        ]
+        missing_reviews = [
+            path.relative_to(paths.root).as_posix()
+            for path in required_reviews
+            if not path.exists()
+        ]
+        if missing_reviews:
+            raise FileNotFoundError(f"Missing review files: {', '.join(missing_reviews)}")
+
+    return draft_acceptance_packet(
+        book_id,
+        chapter_number,
+        title=title,
+        source_draft=source_draft,
+        summary=summary,
+        force=force,
+    )
 
 
 def _manifest(book_id: str, chapter_number: int) -> dict:
