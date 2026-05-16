@@ -101,6 +101,18 @@ Current files involved:
 - `canon/characters.yaml`
 - `canon/world_rules.yaml`
 
+V3 adds explicit long-form memory ledgers and indexes:
+
+- `canon/character_states.yaml`
+- `canon/resource_ledger.yaml`
+- `canon/payoff_ledger.yaml`
+- upgraded `canon/open_threads.yaml`
+- `outlines/units/unit_0001.yaml`
+- `state/hook_index.json`
+- `state/memory_index.json`
+
+For V3 chapters, fill `v3_state_updates` in the acceptance packet before human review. These updates remain proposed until the packet is accepted. Use `python -m engine.cli migrate-v3 <book_id>` before applying V3 checks to an older book. Migration creates missing V3 files and upgrades empty schemas, but it must not parse old prose, convert free-text notes, or infer canon.
+
 ## Pending Approvals
 
 Use pending approvals to track human decisions that should not silently become canon.
