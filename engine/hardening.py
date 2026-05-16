@@ -3,6 +3,19 @@ from typing import Any
 
 from engine.io_utils import read_json, read_text, read_yaml
 
+OPEN_THREAD_STATUSES = {"open", "advanced", "paid_off", "deferred", "dropped"}
+HOOK_STATUSES = {"open", "answered", "deferred", "dropped"}
+FRUSTRATION_LEVELS = {"low", "controlled", "high", "overdue"}
+RESOURCE_CATEGORIES = {
+    "money",
+    "item",
+    "trade_good",
+    "power",
+    "debt",
+    "relationship_asset",
+    "knowledge",
+}
+
 DIMENSION_SCORE_KEYS = {
     "hook_strength",
     "conflict_clarity",
@@ -28,6 +41,7 @@ REQUIRED_ACCEPTANCE_FIELDS = {
     "timeline_event",
     "open_thread_updates",
     "change_log",
+    "v3_state_updates",
 }
 
 REQUIRED_CURRENT_STATE_FIELDS = {
@@ -36,6 +50,17 @@ REQUIRED_CURRENT_STATE_FIELDS = {
     "latest_location",
     "active_characters",
     "active_conflicts",
+    "pending_approvals",
+}
+
+REQUIRED_V3_STATE_UPDATE_FIELDS = {
+    "timeline",
+    "character_states",
+    "resource_changes",
+    "open_thread_updates",
+    "payoff_updates",
+    "conflict_updates",
+    "next_hook",
     "pending_approvals",
 }
 
@@ -214,6 +239,203 @@ def validate_acceptance_packet(
         if list_field in packet and not isinstance(packet[list_field], list):
             errors.append(f"Acceptance packet {list_field} must be a list.")
 
+    v3_updates = packet.get("v3_state_updates")
+    if isinstance(v3_updates, dict):
+        missing_v3 = sorted(
+            field for field in REQUIRED_V3_STATE_UPDATE_FIELDS if field not in v3_updates
+        )
+        if missing_v3:
+            errors.append(
+                "Acceptance packet v3_state_updates is missing fields: "
+                + ", ".join(missing_v3)
+                + "."
+            )
+        errors.extend(validate_v3_state_updates(v3_updates))
+    elif "v3_state_updates" in packet:
+        errors.append("Acceptance packet v3_state_updates must be a mapping.")
+
+    return errors
+
+
+def validate_v3_state_updates(updates: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    for list_field in (
+        "character_states",
+        "resource_changes",
+        "open_thread_updates",
+        "payoff_updates",
+        "pending_approvals",
+    ):
+        if list_field in updates and not isinstance(updates[list_field], list):
+            errors.append(f"v3_state_updates.{list_field} must be a list.")
+
+    timeline = updates.get("timeline", {})
+    if timeline and not isinstance(timeline, dict):
+        errors.append("v3_state_updates.timeline must be a mapping.")
+    elif isinstance(timeline, dict) and not isinstance(timeline.get("occurred_events", []), list):
+        errors.append("v3_state_updates.timeline.occurred_events must be a list.")
+
+    open_thread_updates = updates.get("open_thread_updates", [])
+    if isinstance(open_thread_updates, list):
+        for thread in open_thread_updates:
+            if not isinstance(thread, dict):
+                errors.append("v3_state_updates.open_thread_updates items must be mappings.")
+                continue
+            if thread.get("status") not in OPEN_THREAD_STATUSES:
+                errors.append("v3_state_updates.open_thread_updates.status is invalid.")
+            for field in ("id", "promise", "source_chapter", "last_touched"):
+                if field not in thread or thread[field] in (None, ""):
+                    errors.append(f"v3_state_updates.open_thread_updates.{field} is required.")
+
+    payoff_updates = updates.get("payoff_updates", [])
+    if isinstance(payoff_updates, list):
+        for payoff in payoff_updates:
+            if not isinstance(payoff, dict):
+                errors.append("v3_state_updates.payoff_updates items must be mappings.")
+                continue
+            if payoff.get("frustration_level") not in FRUSTRATION_LEVELS:
+                errors.append("v3_state_updates.payoff_updates.frustration_level is invalid.")
+            if not payoff.get("promises_made") and not payoff.get("payoffs_delivered"):
+                errors.append("v3_state_updates.payoff_updates needs a promise or payoff.")
+
+    next_hook = updates.get("next_hook")
+    if next_hook not in ({}, None) and not isinstance(next_hook, dict):
+        errors.append("v3_state_updates.next_hook must be a mapping.")
+
+    return errors
+
+
+def validate_v3_ledgers(root: Path) -> list[str]:
+    errors: list[str] = []
+    errors.extend(validate_open_threads_ledger(root))
+    errors.extend(validate_payoff_ledger(root))
+    errors.extend(validate_character_states_ledger(root))
+    errors.extend(validate_resource_ledger(root))
+    errors.extend(validate_hook_index(root))
+    errors.extend(validate_memory_index(root))
+    return errors
+
+
+def validate_open_threads_ledger(root: Path) -> list[str]:
+    path = root / "canon" / "open_threads.yaml"
+    if not path.exists():
+        return []
+    data = read_yaml(path)
+    threads = data.get("threads")
+    if not isinstance(threads, list):
+        return ["canon/open_threads.yaml: threads must be a list."]
+
+    errors: list[str] = []
+    for index, thread in enumerate(threads, start=1):
+        prefix = f"canon/open_threads.yaml: threads[{index}]"
+        if not isinstance(thread, dict):
+            errors.append(f"{prefix} must be a mapping.")
+            continue
+        for field in ("id", "promise", "source_chapter", "status", "last_touched"):
+            if field not in thread or thread[field] in (None, ""):
+                errors.append(f"{prefix}.{field} is required.")
+        if thread.get("status") not in OPEN_THREAD_STATUSES:
+            errors.append(f"{prefix}.status must be one of {sorted(OPEN_THREAD_STATUSES)}.")
+    return errors
+
+
+def validate_payoff_ledger(root: Path) -> list[str]:
+    path = root / "canon" / "payoff_ledger.yaml"
+    if not path.exists():
+        return []
+    data = read_yaml(path)
+    entries = data.get("entries")
+    if not isinstance(entries, list):
+        return ["canon/payoff_ledger.yaml: entries must be a list."]
+
+    errors: list[str] = []
+    for index, entry in enumerate(entries, start=1):
+        prefix = f"canon/payoff_ledger.yaml: entries[{index}]"
+        if not isinstance(entry, dict):
+            errors.append(f"{prefix} must be a mapping.")
+            continue
+        frustration_level = entry.get("frustration_level")
+        if frustration_level is not None and frustration_level not in FRUSTRATION_LEVELS:
+            errors.append(f"{prefix}.frustration_level must be one of {sorted(FRUSTRATION_LEVELS)}.")
+        if not entry.get("promises_made") and not entry.get("payoffs_delivered"):
+            errors.append(f"{prefix} needs at least one promise or payoff.")
+    return errors
+
+
+def validate_character_states_ledger(root: Path) -> list[str]:
+    path = root / "canon" / "character_states.yaml"
+    if not path.exists():
+        return []
+    data = read_yaml(path)
+    characters = data.get("characters")
+    if not isinstance(characters, dict):
+        return ["canon/character_states.yaml: characters must be a mapping."]
+
+    errors: list[str] = []
+    for character_id, state in characters.items():
+        prefix = f"canon/character_states.yaml: characters.{character_id}"
+        if not isinstance(state, dict):
+            errors.append(f"{prefix} must be a mapping.")
+            continue
+        if state and state.get("last_updated_chapter") in (None, ""):
+            errors.append(f"{prefix}.last_updated_chapter is required.")
+    return errors
+
+
+def validate_resource_ledger(root: Path) -> list[str]:
+    path = root / "canon" / "resource_ledger.yaml"
+    if not path.exists():
+        return []
+    data = read_yaml(path)
+    resources = data.get("resources")
+    if not isinstance(resources, list):
+        return ["canon/resource_ledger.yaml: resources must be a list."]
+
+    errors: list[str] = []
+    for index, resource in enumerate(resources, start=1):
+        prefix = f"canon/resource_ledger.yaml: resources[{index}]"
+        if not isinstance(resource, dict):
+            errors.append(f"{prefix} must be a mapping.")
+            continue
+        for field in ("id", "owner", "name", "category", "last_updated_chapter"):
+            if field not in resource or resource[field] in (None, ""):
+                errors.append(f"{prefix}.{field} is required.")
+        if resource.get("category") not in RESOURCE_CATEGORIES:
+            errors.append(f"{prefix}.category must be one of {sorted(RESOURCE_CATEGORIES)}.")
+    return errors
+
+
+def validate_hook_index(root: Path) -> list[str]:
+    path = root / "state" / "hook_index.json"
+    if not path.exists():
+        return []
+    data = read_json(path)
+    hooks = data.get("hooks")
+    if not isinstance(hooks, list):
+        return ["state/hook_index.json: hooks must be a list."]
+
+    errors: list[str] = []
+    for index, hook in enumerate(hooks, start=1):
+        prefix = f"state/hook_index.json: hooks[{index}]"
+        if not isinstance(hook, dict):
+            errors.append(f"{prefix} must be a mapping.")
+            continue
+        status = hook.get("status")
+        if status is not None and status not in HOOK_STATUSES:
+            errors.append(f"{prefix}.status must be one of {sorted(HOOK_STATUSES)}.")
+    return errors
+
+
+def validate_memory_index(root: Path) -> list[str]:
+    path = root / "state" / "memory_index.json"
+    if not path.exists():
+        return []
+    data = read_json(path)
+
+    errors: list[str] = []
+    for field in ("by_character", "by_thread", "by_location", "by_resource"):
+        if not isinstance(data.get(field), dict):
+            errors.append(f"state/memory_index.json: {field} must be a mapping.")
     return errors
 
 

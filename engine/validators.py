@@ -4,6 +4,7 @@ from engine.hardening import (
     validate_pending_approvals_registry,
     validate_acceptance_packet_file,
     validate_review_files,
+    validate_v3_ledgers,
 )
 from engine.paths import book_path, books_dir
 
@@ -17,12 +18,18 @@ REQUIRED_BOOK_FILES = [
     "canon/world_rules.yaml",
     "canon/timeline.yaml",
     "canon/open_threads.yaml",
+    "canon/character_states.yaml",
+    "canon/resource_ledger.yaml",
+    "canon/payoff_ledger.yaml",
     "canon/forbidden_rules.yaml",
     "outlines/master_outline.yaml",
     "outlines/arc_001.yaml",
+    "outlines/units/unit_0001.yaml",
     "state/current_state.json",
     "state/chapter_index.json",
     "state/change_log.jsonl",
+    "state/hook_index.json",
+    "state/memory_index.json",
 ]
 
 
@@ -43,6 +50,7 @@ def validate_book(book_id: str) -> list[str]:
 
     errors.extend(_validate_existing_pipeline_artifacts(root))
     errors.extend(validate_pending_approvals_registry(root))
+    errors.extend(validate_v3_ledgers(root))
 
     return errors
 
