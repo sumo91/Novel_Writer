@@ -20,6 +20,23 @@ def test_create_book_copies_templates_and_sets_metadata(tmp_path, monkeypatch):
     assert metadata["created_at"]
 
 
+def test_create_book_includes_v3_state_machine_files(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+
+    book = book_factory.create_book("demo", title="Demo Book")
+
+    expected = [
+        "canon/character_states.yaml",
+        "canon/resource_ledger.yaml",
+        "canon/payoff_ledger.yaml",
+        "outlines/units/unit_0001.yaml",
+        "state/hook_index.json",
+        "state/memory_index.json",
+    ]
+    for relative_path in expected:
+        assert (book / relative_path).exists()
+
+
 def test_create_book_refuses_existing_project(tmp_path, monkeypatch):
     monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
     book_factory.create_book("demo", title="Demo Book")
