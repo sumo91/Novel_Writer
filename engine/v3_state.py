@@ -75,14 +75,11 @@ def _update_resource_ledger(
         if "base_amount" not in resource and not resource.get("history"):
             resource["base_amount"] = resource.get("current_amount", 0)
             resource["base_chapter"] = resource.get("last_updated_chapter")
+            resource["base_owner"] = resource.get("owner")
+            resource["base_name"] = resource.get("name")
+            resource["base_category"] = resource.get("category")
+            resource["base_unit"] = resource.get("unit")
         history = resource.setdefault("history", [])
-        prior_deltas = [
-            entry.get("delta", 0)
-            for entry in history
-            if entry.get("chapter") == chapter_number and _is_number(entry.get("delta"))
-        ]
-        if prior_deltas:
-            resource["current_amount"] = resource.get("current_amount", 0) - sum(prior_deltas)
         resource["history"] = [
             entry
             for entry in history
@@ -138,6 +135,10 @@ def _update_resource_ledger(
                     "chapter": chapter_number,
                     "delta": delta,
                     "reason": update.get("reason", ""),
+                    "owner": update.get("owner", resource.get("owner")),
+                    "name": update.get("item", resource.get("name")),
+                    "category": update.get("category", resource.get("category")),
+                    "unit": update.get("unit", resource.get("unit")),
                 }
             )
         _recompute_resource(resource)
@@ -288,7 +289,7 @@ def _seed_snapshot_history(
     snapshot = {
         key: value
         for key, value in item.items()
-        if key not in {"history", "base_amount", "base_chapter"}
+        if not key.startswith("base_") and key != "history"
     }
     snapshot["chapter"] = chapter
     item["history"] = [snapshot]
@@ -315,14 +316,29 @@ def _restore_from_snapshot_history(item: dict[str, Any]) -> None:
 def _recompute_resource(resource: dict[str, Any]) -> None:
     amount = resource.get("base_amount", 0)
     last_chapter = resource.get("base_chapter")
+    latest_metadata = {
+        "owner": resource.get("base_owner", resource.get("owner")),
+        "name": resource.get("base_name", resource.get("name")),
+        "category": resource.get("base_category", resource.get("category")),
+        "unit": resource.get("base_unit", resource.get("unit")),
+    }
     for entry in resource.get("history", []):
         if _is_number(entry.get("delta")):
             amount += entry["delta"]
         if entry.get("chapter") is not None:
             if last_chapter is None or entry["chapter"] > last_chapter:
                 last_chapter = entry["chapter"]
+                latest_metadata = {
+                    "owner": entry.get("owner", latest_metadata.get("owner")),
+                    "name": entry.get("name", latest_metadata.get("name")),
+                    "category": entry.get("category", latest_metadata.get("category")),
+                    "unit": entry.get("unit", latest_metadata.get("unit")),
+                }
 
     resource["current_amount"] = amount
+    for key, value in latest_metadata.items():
+        if value is not None:
+            resource[key] = value
     if last_chapter is not None:
         resource["last_updated_chapter"] = last_chapter
     elif "last_updated_chapter" in resource:

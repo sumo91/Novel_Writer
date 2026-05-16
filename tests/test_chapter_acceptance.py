@@ -4,7 +4,7 @@ import pytest
 import yaml
 
 from engine import book_factory, chapter_acceptance
-from engine.io_utils import read_yaml
+from engine.io_utils import read_yaml, write_yaml
 
 
 def test_accept_chapter_applies_update_packet(tmp_path, monkeypatch):
@@ -161,6 +161,86 @@ def test_accept_chapter_force_replaces_existing_change_log_entry(tmp_path, monke
             "pending_approvals": [],
         }
     ]
+
+
+def test_accept_chapter_v3_thread_history_seeds_before_legacy_thread_update(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(chapter_acceptance, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    write_yaml(
+        book / "canon" / "open_threads.yaml",
+        {
+            "threads": [
+                {
+                    "id": "thread_001",
+                    "promise": "The first buyer may return.",
+                    "status": "open",
+                    "source_chapter": 1,
+                    "last_touched": 2,
+                    "next_obligation": "Keep the shop stocked.",
+                }
+            ]
+        },
+    )
+    draft = book / "drafts" / "ch_0003_revised.md"
+    draft.parent.mkdir()
+    draft.write_text("accepted", encoding="utf-8")
+    update_file = book / "state_updates" / "ch_0003_acceptance.yaml"
+    update_file.parent.mkdir(exist_ok=True)
+    update_file.write_text(
+        yaml.safe_dump(
+            {
+                "chapter": 3,
+                "title": "Third Signal",
+                "source_draft": "drafts/ch_0003_revised.md",
+                "summary": "Summary.",
+                "open_thread_updates": [
+                    {
+                        "id": "thread_001",
+                        "status": "legacy-mutated",
+                        "next_obligation": "Legacy mutation.",
+                    }
+                ],
+                "v3_state_updates": {
+                    "timeline": {"occurred_events": []},
+                    "character_states": [],
+                    "resource_changes": [],
+                    "open_thread_updates": [
+                        {
+                            "id": "thread_001",
+                            "promise": "The first buyer may return.",
+                            "status": "advanced",
+                            "source_chapter": 1,
+                            "last_touched": 3,
+                            "next_obligation": "Negotiate with the pill shop.",
+                        }
+                    ],
+                    "payoff_updates": [],
+                    "conflict_updates": {"active": []},
+                    "next_hook": {},
+                    "pending_approvals": [],
+                },
+            },
+            sort_keys=False,
+            allow_unicode=True,
+        ),
+        encoding="utf-8",
+    )
+    corrected_file = book / "state_updates" / "ch_0003_acceptance_corrected.yaml"
+    corrected_packet = yaml.safe_load(update_file.read_text(encoding="utf-8"))
+    corrected_packet["v3_state_updates"]["open_thread_updates"] = []
+    corrected_file.write_text(
+        yaml.safe_dump(corrected_packet, sort_keys=False, allow_unicode=True),
+        encoding="utf-8",
+    )
+
+    chapter_acceptance.accept_chapter("demo", update_file)
+    chapter_acceptance.accept_chapter("demo", corrected_file, force=True)
+
+    thread = read_yaml(book / "canon" / "open_threads.yaml")["threads"][0]
+    assert thread["status"] == "legacy-mutated"
+    assert thread["next_obligation"] == "Legacy mutation."
+    assert thread["history"][0]["status"] == "open"
 
 
 def test_accept_chapter_requires_summary(tmp_path, monkeypatch):

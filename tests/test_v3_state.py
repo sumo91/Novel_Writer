@@ -104,13 +104,10 @@ def test_apply_v3_state_updates_writes_ledgers_and_indexes(tmp_path, monkeypatch
     resources = read_yaml(book / "canon" / "resource_ledger.yaml")
     assert resources["resources"][0]["id"] == "res_chen_an_cash"
     assert resources["resources"][0]["current_amount"] == 3000
-    assert resources["resources"][0]["history"] == [
-        {
-            "chapter": 3,
-            "delta": 3000,
-            "reason": "sold yellow sprout grass",
-        }
-    ]
+    assert resources["resources"][0]["history"][0]["chapter"] == 3
+    assert resources["resources"][0]["history"][0]["delta"] == 3000
+    assert resources["resources"][0]["history"][0]["reason"] == "sold yellow sprout grass"
+    assert resources["resources"][0]["history"][0]["category"] == "money"
     payoffs = read_yaml(book / "canon" / "payoff_ledger.yaml")
     assert payoffs["entries"][0]["payoff_types"] == ["money", "trade"]
     hooks = read_json(book / "state" / "hook_index.json")
@@ -131,13 +128,10 @@ def test_apply_v3_state_updates_is_idempotent_for_resources_and_hooks(tmp_path, 
 
     resources = read_yaml(book / "canon" / "resource_ledger.yaml")
     assert resources["resources"][0]["current_amount"] == 3000
-    assert resources["resources"][0]["history"] == [
-        {
-            "chapter": 3,
-            "delta": 3000,
-            "reason": "sold yellow sprout grass",
-        }
-    ]
+    assert len(resources["resources"][0]["history"]) == 1
+    assert resources["resources"][0]["history"][0]["chapter"] == 3
+    assert resources["resources"][0]["history"][0]["delta"] == 3000
+    assert resources["resources"][0]["history"][0]["reason"] == "sold yellow sprout grass"
     hooks = read_json(book / "state" / "hook_index.json")
     assert [
         hook
@@ -210,7 +204,14 @@ def test_apply_v3_state_updates_preserves_multiple_same_resource_deltas(
 
     resources = read_yaml(book / "canon" / "resource_ledger.yaml")
     assert resources["resources"][0]["current_amount"] == 500
-    assert resources["resources"][0]["history"] == [
+    assert [
+        {
+            "chapter": entry["chapter"],
+            "delta": entry["delta"],
+            "reason": entry["reason"],
+        }
+        for entry in resources["resources"][0]["history"]
+    ] == [
         {
             "chapter": 3,
             "delta": 3000,
@@ -432,6 +433,54 @@ def test_apply_v3_state_updates_restores_prior_resource_amount_on_reaccept(
     assert resource["current_amount"] == 100
     assert resource["last_updated_chapter"] == 2
     assert resource["history"] == []
+
+
+def test_apply_v3_state_updates_restores_prior_resource_metadata_on_reaccept(
+    tmp_path,
+    monkeypatch,
+):
+    book = _create_book(tmp_path, monkeypatch)
+    write_yaml(
+        book / "canon" / "resource_ledger.yaml",
+        {
+            "resources": [
+                {
+                    "id": "res_chen_an_cash",
+                    "owner": "chen_an",
+                    "name": "cash",
+                    "category": "money",
+                    "unit": "yuan",
+                    "current_amount": 100,
+                    "last_updated_chapter": 2,
+                    "history": [],
+                }
+            ]
+        },
+    )
+    packet = _v3_packet()
+    packet["v3_state_updates"]["resource_changes"] = [
+        {
+            "id": "res_chen_an_cash",
+            "owner": "丹铺",
+            "item": "spirit stones",
+            "delta": 50,
+            "unit": "stones",
+            "category": "cultivation",
+            "reason": "mistaken correction",
+        }
+    ]
+    no_resources_packet = _v3_packet()
+    no_resources_packet["v3_state_updates"]["resource_changes"] = []
+
+    apply_v3_state_updates(book, packet)
+    apply_v3_state_updates(book, no_resources_packet)
+
+    resource = read_yaml(book / "canon" / "resource_ledger.yaml")["resources"][0]
+    assert resource["owner"] == "chen_an"
+    assert resource["name"] == "cash"
+    assert resource["category"] == "money"
+    assert resource["unit"] == "yuan"
+    assert resource["current_amount"] == 100
 
 
 def test_apply_v3_state_updates_ignores_missing_or_non_mapping_updates(tmp_path, monkeypatch):

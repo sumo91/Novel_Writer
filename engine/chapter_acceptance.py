@@ -50,8 +50,8 @@ def accept_chapter(
     _update_chapter_index(root, packet, chapter_number, chapter_path)
     _update_current_state(root, packet, chapter_number)
     _append_timeline_event(root, packet.get("timeline_event"))
-    _update_open_threads(root, packet.get("open_thread_updates", []))
     apply_v3_state_updates(root, packet)
+    _update_open_threads(root, packet.get("open_thread_updates", []))
     _append_change_log(root, packet, chapter_number)
 
     return AcceptanceResult(chapter_path=chapter_path, update_file=update_file)
