@@ -165,6 +165,22 @@ def test_apply_v3_state_updates_normalizes_payoff_chapter_to_packet_chapter(tmp_
     assert payoffs["entries"][0]["chapter"] == 3
 
 
+def test_apply_v3_state_updates_clears_chapter_payoffs_when_reaccepted_empty(
+    tmp_path,
+    monkeypatch,
+):
+    book = _create_book(tmp_path, monkeypatch)
+    packet = _v3_packet()
+    empty_payoff_packet = _v3_packet()
+    empty_payoff_packet["v3_state_updates"]["payoff_updates"] = []
+
+    apply_v3_state_updates(book, packet)
+    apply_v3_state_updates(book, empty_payoff_packet)
+
+    payoffs = read_yaml(book / "canon" / "payoff_ledger.yaml")
+    assert payoffs["entries"] == []
+
+
 def test_apply_v3_state_updates_ignores_missing_or_non_mapping_updates(tmp_path, monkeypatch):
     book = _create_book(tmp_path, monkeypatch)
     expected_resources = read_yaml(book / "canon" / "resource_ledger.yaml")

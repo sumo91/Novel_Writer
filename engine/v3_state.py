@@ -125,9 +125,6 @@ def _update_payoff_ledger(
     chapter_number: int,
     updates: list[dict[str, Any]],
 ) -> None:
-    if not updates:
-        return
-
     path = root / "canon" / "payoff_ledger.yaml"
     data = read_yaml(path)
     entries = [
