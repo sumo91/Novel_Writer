@@ -30,6 +30,7 @@ Human approval is required before these decisions become project truth.
 - Open thread changes.
 - Chapter summary.
 - Any contradiction waiver.
+- The full `state_updates/ch_XXXX_acceptance.yaml` packet before running `accept-chapter`.
 
 ## Review Approval
 

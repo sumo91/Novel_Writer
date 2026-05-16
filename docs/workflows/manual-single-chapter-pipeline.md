@@ -45,18 +45,54 @@ books/demo/reviews/ch_0001/pacing_review.json
 
 Give the draft and approved review notes to `engine/prompts/agents/reviser.md`.
 
-8. Human approves the final draft.
+8. Human approves the final draft and state changes.
 
-Save the accepted chapter as:
+Create an acceptance packet:
 
 ```text
-books/demo/chapters/ch_0001.md
+books/demo/state_updates/ch_0001_acceptance.yaml
 ```
 
-9. Update canon and state.
+Minimal packet shape:
 
-Only accepted facts should enter canon, timeline, open threads, chapter index, and current state.
+```yaml
+chapter: 1
+title: "Chapter Title"
+source_draft: "drafts/ch_0001_revised.md"
+accepted_chapter_path: "chapters/ch_0001.md"
+summary: "What happened and what changed."
+current_state:
+  current_arc: "arc_001"
+  latest_location: ""
+  active_characters: []
+  active_conflicts: []
+  pending_approvals: []
+state_changes: []
+open_threads_touched: []
+timeline_event:
+  id: "t001"
+  when: "Chapter 1"
+  summary: ""
+open_thread_updates:
+- id: "thread_001"
+  status: "advanced"
+  latest_note: ""
+change_log:
+  summary: "Accepted chapter 1."
+  canon_updates: []
+  pending_approvals: []
+```
+
+9. Apply the approved acceptance packet.
+
+```powershell
+python -m engine.cli accept-chapter demo --update-file books/demo/state_updates/ch_0001_acceptance.yaml
+```
+
+This copies the accepted draft into `chapters/`, updates `chapter_index.json`, updates `current_state.json`, appends or replaces the timeline event, updates open threads, and writes `change_log.jsonl`.
+
+Use `--force` only when intentionally re-applying an already accepted chapter.
 
 ## Rule
 
-No generated chapter becomes authoritative until the human approves both the chapter text and the resulting state updates.
+No generated chapter becomes authoritative until the human approves both the chapter text and the acceptance packet.

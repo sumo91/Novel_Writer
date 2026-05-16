@@ -1,0 +1,46 @@
+chapter: 1
+title: "逆光"
+source_draft: "drafts/ch_0001_revised.md"
+accepted_chapter_path: "chapters/ch_0001.md"
+summary: "发布会前二十分钟，林照被周衍逼签离职和责任文件。逆光系统首次触发，提示责任转移话术、伪造确认链和发布会话术存在可验证谎言。秦暮雨给林照十分钟只读后台权限，林照看到东澜医药验收未完成，与周衍公开话术冲突。"
+current_state:
+  current_arc: "arc_001"
+  latest_location: "云栖会展中心后台"
+  active_characters:
+  - "林照"
+  - "秦暮雨"
+  - "周衍"
+  active_conflicts:
+  - "周衍试图让林照签署责任说明并背下数据造假的锅"
+  - "林照需要在发布会进行中验证客户日志、演示账号和审计缓存的矛盾"
+  pending_approvals:
+  - "逆光系统代价尚未定义，后续章节需要补充"
+  - "秦暮雨提供只读后台权限的权限来源后续可进一步解释"
+state_changes:
+- "林照首次触发逆光系统。"
+- "秦暮雨与林照形成临时证据交易。"
+- "周衍公开说出高风险谎言。"
+- "东澜医药验收未完成成为下一章验证入口。"
+open_threads_touched:
+- "thread_001"
+- "thread_002"
+timeline_event:
+  id: "t005"
+  when: "第 1 章"
+  summary: "林照被逼签署责任说明时首次触发逆光系统，随后取得秦暮雨提供的十分钟只读后台权限，并发现东澜医药验收未完成。"
+open_thread_updates:
+- id: "thread_001"
+  status: "advanced"
+  latest_note: "第 1 章确认周衍试图让林照签责任说明，并公开宣称全部客户完成验收。"
+- id: "thread_002"
+  status: "advanced"
+  latest_note: "第 1 章展示系统能标记商业材料和发布话术中的可验证谎言，但系统代价仍未揭示。"
+change_log:
+  summary: "Accepted revised chapter 1 as chapters/ch_0001.md after continuity and pacing review."
+  canon_updates:
+  - "timeline:t005"
+  - "open_threads:thread_001 advanced"
+  - "open_threads:thread_002 advanced"
+  pending_approvals:
+  - "Define the cost or limitation of the 逆光 system in later chapters."
+  - "Clarify秦暮雨的只读权限来源 if the story relies on it again."
