@@ -38,6 +38,12 @@ Apply an approved chapter acceptance packet:
 python -m engine.cli accept-chapter demo --update-file books/demo/state_updates/ch_0001_acceptance.yaml
 ```
 
+Draft an acceptance packet from a final draft and review files:
+
+```powershell
+python -m engine.cli draft-acceptance-packet demo 1 --title "Chapter Title" --source-draft drafts/ch_0001_revised.md --summary "What changed in this chapter."
+```
+
 ## V1 Manual Workflow
 
 The first writing loop is manual and human-approved:
@@ -47,8 +53,9 @@ The first writing loop is manual and human-approved:
 3. Use `engine/prompts/agents/chapter_writer.md` to draft the chapter.
 4. Use `engine/prompts/agents/continuity_editor.md` and `engine/prompts/agents/tomato_pacing_editor.md` to review it.
 5. Use `engine/prompts/agents/reviser.md` to revise from approved notes.
-6. Write an acceptance packet under `books/<book_id>/state_updates/`.
-7. Run `accept-chapter` to copy the accepted chapter and update state/canon files.
+6. Draft an acceptance packet with `draft-acceptance-packet`.
+7. Human reviews and edits the YAML packet.
+8. Run `accept-chapter` to copy the accepted chapter and update state/canon files.
 
 See [Manual Single-Chapter Pipeline](docs/workflows/manual-single-chapter-pipeline.md) and [Human Approval Checkpoints](docs/workflows/human-approval-checkpoints.md).
 

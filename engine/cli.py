@@ -1,6 +1,7 @@
 import argparse
 from pathlib import Path
 
+from engine.acceptance_packet import draft_acceptance_packet
 from engine.book_factory import create_book
 from engine.chapter_acceptance import accept_chapter
 from engine.context_builder import write_context
@@ -36,6 +37,18 @@ def build_parser() -> argparse.ArgumentParser:
     accept_chapter_cmd.add_argument("--update-file", required=True)
     accept_chapter_cmd.add_argument("--force", action="store_true")
 
+    draft_packet_cmd = subparsers.add_parser(
+        "draft-acceptance-packet",
+        help="Draft a chapter acceptance packet for human review.",
+    )
+    draft_packet_cmd.add_argument("book_id")
+    draft_packet_cmd.add_argument("chapter_number", type=int)
+    draft_packet_cmd.add_argument("--title", required=True)
+    draft_packet_cmd.add_argument("--source-draft", required=True)
+    draft_packet_cmd.add_argument("--summary", required=True)
+    draft_packet_cmd.add_argument("--output")
+    draft_packet_cmd.add_argument("--force", action="store_true")
+
     return parser
 
 
@@ -69,6 +82,19 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "accept-chapter":
         result = accept_chapter(args.book_id, Path(args.update_file), force=args.force)
         print(f"Accepted chapter: {result.chapter_path.as_posix()}")
+        return 0
+
+    if args.command == "draft-acceptance-packet":
+        output_path = draft_acceptance_packet(
+            args.book_id,
+            args.chapter_number,
+            title=args.title,
+            source_draft=args.source_draft,
+            summary=args.summary,
+            output_path=Path(args.output) if args.output else None,
+            force=args.force,
+        )
+        print(f"Drafted acceptance packet: {output_path.as_posix()}")
         return 0
 
     parser.error(f"Unknown command: {args.command}")

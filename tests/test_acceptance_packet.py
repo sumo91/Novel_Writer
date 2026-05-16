@@ -1,0 +1,120 @@
+import yaml
+
+from engine import acceptance_packet, book_factory
+from engine.io_utils import read_yaml, write_json
+
+
+def test_draft_acceptance_packet_uses_reviews_and_current_state(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(acceptance_packet, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    draft = book / "drafts" / "ch_0001_revised.md"
+    draft.parent.mkdir()
+    draft.write_text("accepted draft", encoding="utf-8")
+    write_json(
+        book / "reviews" / "ch_0001" / "continuity_review.json",
+        {
+            "proposed_state_updates": ["System triggered."],
+            "human_approval_needed": ["Define system cost."],
+        },
+    )
+    write_json(
+        book / "reviews" / "ch_0001" / "pacing_review.json",
+        {
+            "human_approval_needed": ["Keep payoff delayed."],
+        },
+    )
+
+    output = acceptance_packet.draft_acceptance_packet(
+        "demo",
+        1,
+        title="First Signal",
+        source_draft="drafts/ch_0001_revised.md",
+        summary="The first contradiction appears.",
+    )
+
+    packet = read_yaml(output)
+    assert output == book / "state_updates" / "ch_0001_acceptance.yaml"
+    assert packet["chapter"] == 1
+    assert packet["title"] == "First Signal"
+    assert packet["source_draft"] == "drafts/ch_0001_revised.md"
+    assert packet["accepted_chapter_path"] == "chapters/ch_0001.md"
+    assert packet["summary"] == "The first contradiction appears."
+    assert packet["state_changes"] == ["System triggered."]
+    assert packet["timeline_event"]["id"] == "t001"
+    assert packet["timeline_event"]["when"] == "第 1 章"
+    assert packet["change_log"]["canon_updates"] == ["timeline:t001"]
+    assert "Define system cost." in packet["current_state"]["pending_approvals"]
+    assert "Keep payoff delayed." in packet["current_state"]["pending_approvals"]
+
+
+def test_draft_acceptance_packet_refuses_existing_file_without_force(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(acceptance_packet, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    draft = book / "drafts" / "ch_0001_revised.md"
+    draft.parent.mkdir()
+    draft.write_text("accepted draft", encoding="utf-8")
+    output = book / "state_updates" / "ch_0001_acceptance.yaml"
+    output.write_text("existing: true\n", encoding="utf-8")
+
+    try:
+        acceptance_packet.draft_acceptance_packet(
+            "demo",
+            1,
+            title="First Signal",
+            source_draft="drafts/ch_0001_revised.md",
+            summary="The first contradiction appears.",
+        )
+    except FileExistsError as exc:
+        assert "ch_0001_acceptance.yaml" in str(exc)
+    else:
+        raise AssertionError("Expected FileExistsError")
+
+
+def test_draft_acceptance_packet_can_force_overwrite(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(acceptance_packet, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    draft = book / "drafts" / "ch_0001_revised.md"
+    draft.parent.mkdir()
+    draft.write_text("accepted draft", encoding="utf-8")
+    output = book / "state_updates" / "ch_0001_acceptance.yaml"
+    output.write_text("existing: true\n", encoding="utf-8")
+
+    acceptance_packet.draft_acceptance_packet(
+        "demo",
+        1,
+        title="First Signal",
+        source_draft="drafts/ch_0001_revised.md",
+        summary="The first contradiction appears.",
+        force=True,
+    )
+
+    packet = yaml.safe_load(output.read_text(encoding="utf-8"))
+    assert packet["title"] == "First Signal"
+
+
+def test_draft_acceptance_packet_does_not_emit_yaml_aliases(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(acceptance_packet, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    draft = book / "drafts" / "ch_0001_revised.md"
+    draft.parent.mkdir()
+    draft.write_text("accepted draft", encoding="utf-8")
+    write_json(
+        book / "reviews" / "ch_0001" / "continuity_review.json",
+        {"human_approval_needed": ["Define system cost."]},
+    )
+
+    output = acceptance_packet.draft_acceptance_packet(
+        "demo",
+        1,
+        title="First Signal",
+        source_draft="drafts/ch_0001_revised.md",
+        summary="The first contradiction appears.",
+    )
+
+    content = output.read_text(encoding="utf-8")
+    assert "&id" not in content
+    assert "*id" not in content

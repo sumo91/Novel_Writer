@@ -45,15 +45,28 @@ books/demo/reviews/ch_0001/pacing_review.json
 
 Give the draft and approved review notes to `engine/prompts/agents/reviser.md`.
 
-8. Human approves the final draft and state changes.
+8. Human approves the final draft and asks the CLI to draft a state update packet.
 
-Create an acceptance packet:
+```powershell
+python -m engine.cli draft-acceptance-packet demo 1 --title "Chapter Title" --source-draft drafts/ch_0001_revised.md --summary "What happened and what changed."
+```
+
+This creates:
 
 ```text
 books/demo/state_updates/ch_0001_acceptance.yaml
 ```
 
-Minimal packet shape:
+The generated packet is a draft. Review and edit it before acceptance, especially:
+
+- `current_state`
+- `state_changes`
+- `open_threads_touched`
+- `timeline_event`
+- `open_thread_updates`
+- `change_log.pending_approvals`
+
+Packet shape:
 
 ```yaml
 chapter: 1
