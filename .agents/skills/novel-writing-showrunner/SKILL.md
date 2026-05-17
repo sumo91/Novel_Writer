@@ -39,6 +39,8 @@ Use the first matching state:
 
 3. **Book exists, next chapter not prepared**
    - Check whether the book has V3/V3.1 files. If missing, use `migrate-v3` or `migrate-v3-1` before relying on state or outline checks.
+   - Run `python -m engine.cli outline-status <book_id>` and decide whether draft outline layers are acceptable assumptions.
+   - Run `python -m engine.cli chapter-brief-gate <book_id> <chapter>` before writing the chapter brief; use `--strict` when the user wants only approved outlines to drive planning.
    - Identify the active `master -> volume -> arc -> unit` reference chain and whether each layer is draft or approved.
    - Run `python -m engine.cli prepare-chapter <book_id> <chapter>`.
    - Write `outlines/chapter_briefs/ch_XXXX_brief.md`.
@@ -117,6 +119,9 @@ When the user provides theory material:
 python -m engine.cli init-book <book_id> --title "<title>"
 python -m engine.cli migrate-v3 <book_id>
 python -m engine.cli migrate-v3-1 <book_id>
+python -m engine.cli outline-status <book_id>
+python -m engine.cli outline-approval-update <book_id> <layer> --status approved --note "<note>"
+python -m engine.cli chapter-brief-gate <book_id> <chapter>
 python -m engine.cli prepare-chapter <book_id> <chapter>
 python -m engine.cli pipeline-status <book_id> <chapter>
 python -m engine.cli pipeline-quality-gate <book_id> <chapter>

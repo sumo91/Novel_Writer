@@ -14,6 +14,13 @@ from engine.pending_approvals import (
     update_pending_approval,
 )
 from engine.io_utils import read_yaml
+from engine.outline_gate import (
+    APPROVAL_STATUSES,
+    OUTLINE_LAYERS,
+    chapter_brief_gate,
+    get_outline_status,
+    update_outline_approval,
+)
 from engine.pipeline import (
     pipeline_accept,
     pipeline_draft_acceptance,
@@ -160,6 +167,33 @@ def build_parser() -> argparse.ArgumentParser:
         help="Add missing V3.1 long-form outline architecture files to a book project.",
     )
     migrate_v3_1_cmd.add_argument("book_id")
+
+    outline_status_cmd = subparsers.add_parser(
+        "outline-status",
+        help="Report V3.1 outline approval status.",
+    )
+    outline_status_cmd.add_argument("book_id")
+
+    outline_approval_cmd = subparsers.add_parser(
+        "outline-approval-update",
+        help="Update one V3.1 outline layer approval status.",
+    )
+    outline_approval_cmd.add_argument("book_id")
+    outline_approval_cmd.add_argument("layer", choices=sorted(OUTLINE_LAYERS))
+    outline_approval_cmd.add_argument(
+        "--status",
+        required=True,
+        choices=sorted(APPROVAL_STATUSES),
+    )
+    outline_approval_cmd.add_argument("--note")
+
+    chapter_brief_gate_cmd = subparsers.add_parser(
+        "chapter-brief-gate",
+        help="Check whether a chapter brief can proceed under V3.1 outline gates.",
+    )
+    chapter_brief_gate_cmd.add_argument("book_id")
+    chapter_brief_gate_cmd.add_argument("chapter_number", type=int)
+    chapter_brief_gate_cmd.add_argument("--strict", action="store_true")
 
     return parser
 
@@ -332,6 +366,53 @@ def main(argv: list[str] | None = None) -> int:
         for path in result.updated:
             print(f"- updated: {path}")
         return 0
+
+    if args.command == "outline-status":
+        try:
+            status = get_outline_status(args.book_id)
+        except FileNotFoundError as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Outline status: {args.book_id}")
+        for layer in status["layers"]:
+            marker = layer["approval_status"]
+            if not layer["exists"]:
+                marker = "missing"
+            print(f"- {layer['layer']}: {marker} ({layer['path']})")
+        return 0
+
+    if args.command == "outline-approval-update":
+        try:
+            update_outline_approval(
+                args.book_id,
+                args.layer,
+                status=args.status,
+                note=args.note,
+            )
+        except (FileNotFoundError, ValueError) as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Updated outline approval: {args.layer} -> {args.status}")
+        return 0
+
+    if args.command == "chapter-brief-gate":
+        try:
+            result = chapter_brief_gate(
+                args.book_id,
+                args.chapter_number,
+                strict=args.strict,
+            )
+        except FileNotFoundError as exc:
+            print(f"Error: {exc}")
+            return 1
+        status = "allowed" if result["allowed"] else "blocked"
+        print(f"Chapter brief gate: {status}")
+        print(f"- brief: {result['brief_path']}")
+        for warning in result["warnings"]:
+            print(f"- warning: {warning}")
+        for error in result["blocking_errors"]:
+            print(f"- error: {error}")
+        return 0 if result["allowed"] else 1
 
     parser.error(f"Unknown command: {args.command}")
     return 2

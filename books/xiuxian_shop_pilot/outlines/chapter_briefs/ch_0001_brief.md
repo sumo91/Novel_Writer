@@ -4,6 +4,12 @@
 
 让读者在第一章内明确三件事：陈安现实里快守不住小卖部，爷爷留下的店有异常，午夜仓库后门通向修仙界坊市。
 
+## V3.2 Outline Reference
+
+- Reference chain: master -> volume -> arc -> unit -> chapter brief.
+- Outline obligations: serve volume_001 / arc_001 / unit_0001 by establishing the opening state, the shop pressure, and the midnight-door premise.
+- Retrospective note: this brief was written before V3.2 and is annotated here without changing accepted chapter content.
+
 ## Opening Hook
 
 陈安在爷爷头七后第一次独自开店，大姑刘素芬带着转让协议上门，逼他把小卖部低价卖掉还债。

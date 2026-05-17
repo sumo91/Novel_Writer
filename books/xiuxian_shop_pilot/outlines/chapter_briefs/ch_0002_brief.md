@@ -4,6 +4,12 @@
 
 兑现第 1 章章末钩子：陈安完成第一笔两界交易，确认现代细盐和打火机在青石坊有价值；同时引出青石坊巡卫对“无灵力法器”的怀疑。
 
+## V3.2 Outline Reference
+
+- Reference chain: master -> volume -> arc -> unit -> chapter brief.
+- Outline obligations: serve volume_001 / arc_001 / unit_0001 by proving the first trade, setting the first goods-price anchor, and introducing market-rule pressure.
+- Retrospective note: this brief was written before V3.2 and is annotated here without changing accepted chapter content.
+
 ## Opening Hook
 
 灰袍散修许青拿着一枚碎灵，急着要买细盐和火折。陈安不知道碎灵价值，只能靠爷爷旧账本和现实采购常识临场定价。

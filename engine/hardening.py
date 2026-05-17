@@ -4,6 +4,7 @@ from typing import Any
 import yaml
 
 from engine.io_utils import read_json, read_text, read_yaml
+from engine.outline_gate import validate_chapter_brief_text
 
 OPEN_THREAD_STATUSES = {"open", "advanced", "paid_off", "deferred", "dropped"}
 HOOK_STATUSES = {"open", "answered", "deferred", "dropped"}
@@ -530,6 +531,22 @@ def validate_v3_1_outline_architecture(root: Path) -> list[str]:
     errors.extend(validate_unit_outline(root))
     errors.extend(validate_economy(root))
     errors.extend(validate_factions(root))
+    errors.extend(validate_chapter_briefs(root))
+    return errors
+
+
+def validate_chapter_briefs(root: Path) -> list[str]:
+    brief_dir = root / "outlines" / "chapter_briefs"
+    if not brief_dir.exists():
+        return []
+
+    errors: list[str] = []
+    for path in sorted(brief_dir.glob("ch_*_brief.md")):
+        relative_path = path.relative_to(root).as_posix()
+        errors.extend(
+            f"{relative_path}: {error}"
+            for error in validate_chapter_brief_text(read_text(path))
+        )
     return errors
 
 

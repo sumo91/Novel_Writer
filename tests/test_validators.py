@@ -100,6 +100,31 @@ def test_validate_book_rejects_invalid_v3_1_outline_shape(tmp_path, monkeypatch)
     assert "canon/factions.yaml: factions must be a list." in errors
 
 
+def test_validate_book_rejects_chapter_brief_missing_v3_1_reference_chain(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(validators, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    brief = book / "outlines" / "chapter_briefs" / "ch_0005_brief.md"
+    brief.parent.mkdir(parents=True, exist_ok=True)
+    brief.write_text(
+        "# Chapter 5 Brief\n\nThis chapter has a hook but no long-form reference chain.\n",
+        encoding="utf-8",
+    )
+
+    errors = validators.validate_book("demo")
+
+    assert (
+        "outlines/chapter_briefs/ch_0005_brief.md: Chapter brief must cite "
+        "`master -> volume -> arc -> unit`."
+    ) in errors
+    assert (
+        "outlines/chapter_briefs/ch_0005_brief.md: Chapter brief must describe "
+        "outline obligations."
+    ) in errors
+
+
 def test_validate_acceptance_packet_requires_v3_state_updates():
     errors = validate_acceptance_packet(
         {

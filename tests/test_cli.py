@@ -1,4 +1,4 @@
-from engine import book_factory, cli, pipeline, v3_migration
+from engine import book_factory, cli, outline_gate, pipeline, v3_migration
 from engine.io_utils import read_yaml, write_json
 
 
@@ -320,3 +320,52 @@ def test_migrate_v3_1_cli_creates_missing_outline_files(tmp_path, monkeypatch, c
     assert missing_path.exists()
     assert "Migrated book to V3.1: demo" in captured.out
     assert "- created: outlines/volumes/volume_001.yaml" in captured.out
+
+
+def test_outline_status_cli_lists_approval_layers(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")
+    book_factory.create_book("demo", title="Demo Book")
+
+    result = cli.main(["outline-status", "demo"])
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "Outline status: demo" in captured.out
+    assert "- master: draft (outlines/master_outline.yaml)" in captured.out
+    assert "- factions: draft (canon/factions.yaml)" in captured.out
+
+
+def test_outline_approval_update_cli_updates_layer(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")
+    book_factory.create_book("demo", title="Demo Book")
+
+    result = cli.main(
+        [
+            "outline-approval-update",
+            "demo",
+            "unit",
+            "--status",
+            "approved",
+            "--note",
+            "Ready for next brief.",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "Updated outline approval: unit -> approved" in captured.out
+
+
+def test_chapter_brief_gate_cli_blocks_strict_draft_layers(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")
+    book_factory.create_book("demo", title="Demo Book")
+
+    result = cli.main(["chapter-brief-gate", "demo", "5", "--strict"])
+
+    captured = capsys.readouterr()
+    assert result == 1
+    assert "Chapter brief gate: blocked" in captured.out
+    assert "master (outlines/master_outline.yaml) is draft, not approved." in captured.out

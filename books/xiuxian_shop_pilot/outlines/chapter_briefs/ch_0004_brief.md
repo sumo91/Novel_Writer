@@ -4,6 +4,12 @@
 
 让陈安第一次正面接触回春丹铺，完成一场“弱势店主对本地势力”的谈价试探：他不能暴露后门秘密，也不能被丹铺一句保护费买断货源，但要拿到足够信息和第一笔更稳的异界订单。
 
+## V3.2 Outline Reference
+
+- Reference chain: master -> volume -> arc -> unit -> chapter brief.
+- Outline obligations: serve volume_001 / arc_001 / unit_0001 by formalizing the first trading rules, advancing the pill-shop pressure, and opening the grandpa ledger mystery through 青灯草.
+- Retrospective note: this brief was written before V3.2 and is annotated here without changing accepted chapter content.
+
 ## Opening Hook
 
 午夜前，陈安先按现实采购思路重新整理货物，把盐、打火机、创可贴、纱布、碘伏棉签和压缩饼干分成“可卖”“试探”“绝不一次性拿出”的三类；后门一开，许青带来的不是掌柜，而是一名回春丹铺账房。

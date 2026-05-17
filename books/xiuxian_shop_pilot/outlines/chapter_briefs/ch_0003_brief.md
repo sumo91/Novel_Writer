@@ -4,6 +4,12 @@
 
 把第 2 章交易结果转化为现实第一波缓解：陈安确认碎灵和黄芽草并非普通物件，先解决部分房租压力；同时让许青被巡卫盘问的风险回到小卖部门口。
 
+## V3.2 Outline Reference
+
+- Reference chain: master -> volume -> arc -> unit -> chapter brief.
+- Outline obligations: serve volume_001 / arc_001 / unit_0001 by closing the first reality payoff, preserving the money-pressure line, and escalating the pill-shop conflict.
+- Retrospective note: this brief was written before V3.2 and is annotated here without changing accepted chapter content.
+
 ## Opening Hook
 
 陈安天亮后拿着碎灵和黄芽草去找现实里的检测/药材渠道，发现这两样东西都不能按常规解释。
