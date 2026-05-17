@@ -1,8 +1,9 @@
 import copy
+import html
 from pathlib import Path
 from typing import Any
 
-from engine.io_utils import read_json, read_yaml, write_yaml
+from engine.io_utils import read_json, read_yaml, write_text, write_yaml
 from engine.paths import books_dir
 
 BOOKS_DIR = books_dir()
@@ -77,6 +78,7 @@ def draft_acceptance_packet(
     }
 
     write_yaml(output, packet)
+    write_text(output.with_suffix(".html"), render_acceptance_packet_html(packet))
     return output
 
 
@@ -255,3 +257,78 @@ def _dedupe(items: list[str]) -> list[str]:
             seen.add(item)
             result.append(item)
     return result
+
+
+def render_acceptance_packet_html(packet: dict[str, Any]) -> str:
+    contract = packet.get("acceptance_contract", {})
+    quality = contract.get("quality_gate_summary", {}) if isinstance(contract, dict) else {}
+    outline = contract.get("outline_alignment", {}) if isinstance(contract, dict) else {}
+    state_updates = contract.get("state_updates", {}) if isinstance(contract, dict) else {}
+
+    lines = [
+        "<!doctype html>",
+        "<html lang=\"zh-CN\">",
+        "<head>",
+        "<meta charset=\"utf-8\">",
+        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
+        "<title>Acceptance Packet</title>",
+        "<style>",
+        "body{font-family:Arial,sans-serif;line-height:1.6;max-width:960px;margin:32px auto;padding:0 20px;color:#1f2937;}",
+        "h1,h2{line-height:1.2;}",
+        "section{margin:24px 0;padding:16px;border:1px solid #e5e7eb;border-radius:8px;}",
+        "table{width:100%;border-collapse:collapse;}",
+        "th,td{border:1px solid #e5e7eb;padding:8px;vertical-align:top;text-align:left;}",
+        "code{background:#f3f4f6;padding:2px 4px;border-radius:4px;}",
+        "</style>",
+        "</head>",
+        "<body>",
+        "<h1>Acceptance Packet</h1>",
+        f"<p><strong>Chapter:</strong> {html.escape(str(packet.get('chapter', '')))}</p>",
+        f"<p><strong>Title:</strong> {html.escape(str(packet.get('title', '')))}</p>",
+        f"<p><strong>Summary:</strong> {html.escape(str(packet.get('summary', '')))}</p>",
+        _section_html("Quality Gate Summary", _mapping_table(quality)),
+        _section_html("Outline Alignment", _mapping_table(outline)),
+        _section_html("State Updates", _mapping_table(state_updates)),
+        _section_html("Timeline Event", _list_html(packet.get("timeline_event"))),
+        _section_html("V3 State Updates", _list_html(packet.get("v3_state_updates"))),
+        _section_html("Change Log", _list_html(packet.get("change_log"))),
+        "</body>",
+        "</html>",
+        "",
+    ]
+    return "\n".join(lines)
+
+
+def _section_html(title: str, body: str) -> str:
+    return f"<section><h2>{html.escape(title)}</h2>{body}</section>"
+
+
+def _mapping_table(data: Any) -> str:
+    if not isinstance(data, dict):
+        return "<p>None</p>"
+    rows = [
+        "<table><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody>"
+    ]
+    for key, value in data.items():
+        rows.append(
+            f"<tr><td>{html.escape(str(key))}</td><td>{html.escape(_stringify(value))}</td></tr>"
+        )
+    rows.append("</tbody></table>")
+    return "".join(rows)
+
+
+def _list_html(data: Any) -> str:
+    if isinstance(data, list):
+        if not data:
+            return "<p>None</p>"
+        items = "".join(f"<li>{html.escape(_stringify(item))}</li>" for item in data)
+        return f"<ul>{items}</ul>"
+    if isinstance(data, dict):
+        return _mapping_table(data)
+    return f"<p>{html.escape(_stringify(data))}</p>"
+
+
+def _stringify(value: Any) -> str:
+    if isinstance(value, (dict, list)):
+        return repr(value)
+    return str(value)

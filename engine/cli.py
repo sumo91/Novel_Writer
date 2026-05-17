@@ -11,6 +11,7 @@ from engine.book_factory import create_book
 from engine.chapter_acceptance import accept_chapter
 from engine.context_builder import write_context
 from engine.drift_report import generate_drift_report
+from engine.html_utils import write_markdown_html_sidecar
 from engine.pending_approvals import (
     PendingApprovalNotFoundError,
     batch_update_pending_approvals,
@@ -32,6 +33,7 @@ from engine.pipeline import (
     pipeline_quality_gate,
     pipeline_status,
     prepare_chapter,
+    write_quality_gate_html,
 )
 from engine.v3_migration import migrate_book_to_v3, migrate_book_to_v3_1
 from engine.validators import validate_book
@@ -262,6 +264,7 @@ def main(argv: list[str] | None = None) -> int:
             force=args.force,
         )
         print(f"Drafted acceptance packet: {output_path.as_posix()}")
+        print(f"HTML review copy: {output_path.with_suffix('.html').as_posix()}")
         return 0
 
     if args.command == "prepare-chapter":
@@ -297,6 +300,8 @@ def main(argv: list[str] | None = None) -> int:
         print(f"- waiver_required: {result['waiver_required']}")
         for reason in result["reasons"]:
             print(f"- reason: {reason}")
+        html_path = write_quality_gate_html(args.book_id, args.chapter_number, result)
+        print(f"HTML review copy: {html_path.as_posix()}")
         return 0 if result["passed"] else 1
 
     if args.command == "pipeline-draft-acceptance":
@@ -309,6 +314,7 @@ def main(argv: list[str] | None = None) -> int:
             allow_missing_reviews=args.allow_missing_reviews,
         )
         print(f"Drafted pipeline acceptance packet: {output_path.as_posix()}")
+        print(f"HTML review copy: {output_path.with_suffix('.html').as_posix()}")
         return 0
 
     if args.command == "pipeline-accept":
@@ -329,6 +335,7 @@ def main(argv: list[str] | None = None) -> int:
             Path(args.output) if args.output else None,
         )
         print(f"Generated drift report: {output_path.as_posix()}")
+        print(f"HTML review copy: {output_path.with_suffix('.html').as_posix()}")
         return 0
 
     if args.command == "pending-approvals":
@@ -452,10 +459,16 @@ def main(argv: list[str] | None = None) -> int:
             scaffold = build_chapter_brief_scaffold(args.book_id, args.chapter_number)
             output_path.parent.mkdir(parents=True, exist_ok=True)
             output_path.write_text(scaffold, encoding="utf-8")
+            write_markdown_html_sidecar(
+                output_path,
+                f"Chapter {args.chapter_number} Brief",
+                scaffold,
+            )
         except (FileNotFoundError, FileExistsError, ValueError) as exc:
             print(f"Error: {exc}")
             return 1
         print(f"Wrote chapter brief scaffold: {output_path.as_posix()}")
+        print(f"HTML review copy: {output_path.with_suffix('.html').as_posix()}")
         return 0
 
     if args.command == "chapter-brief-check":

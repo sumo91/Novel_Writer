@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import Any
 
 from engine.craft_knowledge import load_craft_cards
+from engine.html_utils import write_markdown_html_sidecar
 from engine.io_utils import read_json, read_yaml, write_text
 from engine.pending_approvals import collect_pending_approvals_from_root
 from engine.paths import books_dir
@@ -25,6 +26,7 @@ def generate_drift_report(
     )
     content = _render_report(root, start_chapter, end_chapter)
     write_text(output, content)
+    write_markdown_html_sidecar(output, f"Chapter {start_chapter}-{end_chapter} Drift Review", content)
     return output
 
 

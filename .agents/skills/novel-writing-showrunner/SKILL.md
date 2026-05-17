@@ -21,6 +21,8 @@ Do not jump straight to prose unless the user has already approved the premise, 
 - Treat V3.1 outline layers as upstream control: draft outlines are labeled assumptions, approved outlines are hard constraints.
 - Prefer small validation samples before long runs: 3 chapters for first test, 5 chapters for stronger proof, 10 chapters for drift testing.
 - When unsure whether to continue writing or harden tooling, choose the option that reduces future drift.
+- For artifacts that need human review, prefer a readable review copy over raw YAML/JSON in conversation. When an HTML sidecar exists, point the human to the `.html` file first and keep the YAML/JSON as the machine contract.
+- Do not ask for approval with vague language. State exactly what would become canon, which files would be accepted, and which pending approvals remain unresolved.
 
 ## Workflow Decision Tree
 
@@ -65,15 +67,19 @@ Use the first matching state:
 
 7. **Revised draft exists, no acceptance packet**
    - Run `python -m engine.cli pipeline-draft-acceptance <book_id> <chapter> --title "<title>" --summary "<summary>"`.
+   - Point the human to both the YAML contract and the generated HTML review copy.
+   - Summarize the acceptance decision in plain language: timeline event, state changes, open thread updates, payoff updates, next hook, and pending approvals.
    - Stop for human confirmation.
 
 8. **Acceptance packet exists, not accepted**
    - Do not run `pipeline-accept` unless the user explicitly confirms.
+   - If the human asks what they are approving, restate the acceptance packet in plain language and link the HTML review copy when present.
    - After confirmation, run `python -m engine.cli pipeline-accept <book_id> <chapter> --approved`.
 
 9. **Sample target completed**
    - Run `python -m engine.cli drift-report <book_id> --start <n> --end <m>`.
    - Run `python -m engine.cli sync-pending-approvals <book_id>`.
+   - Point the human to the generated drift report HTML copy when present.
    - Write a short target-genre, drift, and outline-alignment review report.
    - Triage pending approvals with `pending-approval-batch-update` when multiple items are decided.
 
@@ -145,3 +151,5 @@ python -m pytest -q
 - Prefer concrete options over abstract theory.
 - When writing fiction, keep notes about what changed and what needs approval.
 - When reviewing architecture, distinguish implemented, partial, and not-yet-started capabilities.
+- When handing off a review artifact, give the human a short reading order: what to skim first, what needs a decision, and what can be ignored unless they want machine-level detail.
+- When presenting options, label the recommended path and its tradeoff. Avoid pretending every option is equal.

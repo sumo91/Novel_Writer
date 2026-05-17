@@ -159,3 +159,26 @@ def test_draft_acceptance_packet_does_not_emit_yaml_aliases(tmp_path, monkeypatc
     content = output.read_text(encoding="utf-8")
     assert "&id" not in content
     assert "*id" not in content
+
+
+def test_draft_acceptance_packet_writes_html_sidecar(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(acceptance_packet, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    draft = book / "drafts" / "ch_0001_revised.md"
+    draft.parent.mkdir()
+    draft.write_text("accepted draft", encoding="utf-8")
+
+    output = acceptance_packet.draft_acceptance_packet(
+        "demo",
+        1,
+        title="First Signal",
+        source_draft="drafts/ch_0001_revised.md",
+        summary="The first contradiction appears.",
+    )
+
+    html_output = output.with_suffix(".html")
+    content = html_output.read_text(encoding="utf-8")
+    assert html_output.exists()
+    assert "<h1>Acceptance Packet</h1>" in content
+    assert "The first contradiction appears." in content

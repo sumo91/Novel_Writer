@@ -1,4 +1,12 @@
-from engine import book_factory, brief_contract, cli, outline_gate, pipeline, v3_migration
+from engine import (
+    acceptance_packet,
+    book_factory,
+    brief_contract,
+    cli,
+    outline_gate,
+    pipeline,
+    v3_migration,
+)
 from engine.io_utils import read_yaml, write_json
 
 
@@ -14,6 +22,45 @@ def test_pipeline_quality_gate_cli_reports_missing_reviews_without_traceback(
     captured = capsys.readouterr()
     assert result == 1
     assert "Error: Missing continuity review:" in captured.out
+
+
+def test_pipeline_quality_gate_cli_writes_html_review_summary(
+    tmp_path, monkeypatch, capsys
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    write_json(
+        book / "reviews" / "ch_0001" / "continuity_review.json",
+        {"passed": True, "issues": [], "required_fixes": []},
+    )
+    write_json(
+        book / "reviews" / "ch_0001" / "pacing_review.json",
+        {
+            "score": 86,
+            "dimension_scores": {
+                "hook_strength": 9,
+                "conflict_clarity": 8,
+                "protagonist_agency": 9,
+                "emotional_payoff": 8,
+                "pacing": 8,
+                "character_consistency": 9,
+                "continuity_safety": 9,
+                "chapter_end_pull": 8,
+                "mainline_relevance": 9,
+                "fresh_information_or_expectation": 8,
+            },
+        },
+    )
+
+    result = cli.main(["pipeline-quality-gate", "demo", "1"])
+
+    captured = capsys.readouterr()
+    output = book / "reviews" / "ch_0001" / "quality_gate.html"
+    assert result == 0
+    assert f"HTML review copy: {output.as_posix()}" in captured.out
+    assert output.exists()
+    assert "Quality Gate" in output.read_text(encoding="utf-8")
 
 
 def test_prepare_chapter_cli_reports_brief_gate_and_check_status(
@@ -160,9 +207,46 @@ def test_drift_report_cli_generates_report(tmp_path, monkeypatch, capsys):
     output = book / "reports" / "ch_0001_0001_drift_review.md"
     assert result == 0
     assert f"Generated drift report: {output.as_posix()}" in captured.out
+    assert f"HTML review copy: {output.with_suffix('.html').as_posix()}" in captured.out
+    assert output.with_suffix(".html").exists()
     content = output.read_text(encoding="utf-8")
     assert "# Chapter 1-1 Drift Review" in content
     assert "| 1 | 88 |  | False |" in content
+
+
+def test_pipeline_draft_acceptance_cli_writes_html_sidecar(
+    tmp_path, monkeypatch, capsys
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(acceptance_packet, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    (book / "drafts").mkdir()
+    (book / "drafts" / "ch_0001_revised.md").write_text("revised", encoding="utf-8")
+    write_json(
+        book / "reviews" / "ch_0001" / "continuity_review.json",
+        {"proposed_state_updates": ["State changed."]},
+    )
+    write_json(book / "reviews" / "ch_0001" / "pacing_review.json", {})
+
+    result = cli.main(
+        [
+            "pipeline-draft-acceptance",
+            "demo",
+            "1",
+            "--title",
+            "First Signal",
+            "--summary",
+            "Summary.",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    output = book / "state_updates" / "ch_0001_acceptance.yaml"
+    assert result == 0
+    assert f"Drafted pipeline acceptance packet: {output.as_posix()}" in captured.out
+    assert f"HTML review copy: {output.with_suffix('.html').as_posix()}" in captured.out
+    assert output.with_suffix(".html").exists()
 
 
 def test_pending_approvals_cli_lists_deduped_sources(tmp_path, monkeypatch, capsys):
@@ -406,6 +490,8 @@ def test_chapter_brief_scaffold_cli_writes_brief(tmp_path, monkeypatch, capsys):
     assert result == 0
     assert output.exists()
     assert f"Wrote chapter brief scaffold: {output.as_posix()}" in captured.out
+    assert f"HTML review copy: {output.with_suffix('.html').as_posix()}" in captured.out
+    assert output.with_suffix(".html").exists()
     assert "## V3.3 Outline Contract" in output.read_text(encoding="utf-8")
 
 

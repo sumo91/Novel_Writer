@@ -6,6 +6,7 @@ from engine.acceptance_packet import draft_acceptance_packet
 from engine.chapter_acceptance import accept_chapter
 from engine.context_builder import build_context
 from engine.craft_knowledge import load_craft_cards, render_craft_cards
+from engine.html_utils import markdown_to_html_page
 from engine.hardening import (
     validate_acceptance_packet_file,
     validate_acceptance_contract_snapshot,
@@ -439,3 +440,36 @@ def _write_handoffs(paths: PipelinePaths, manifest: dict) -> None:
 
 def _craft_target(output_key: str) -> str:
     return "brief" if output_key == "brief" else "review"
+
+
+def write_quality_gate_html(book_id: str, chapter_number: int, result: dict) -> Path:
+    paths = pipeline_paths(book_id, chapter_number)
+    output = paths.root / "reviews" / f"ch_{chapter_number:04d}" / "quality_gate.html"
+    lines = [
+        f"# Chapter {chapter_number} Quality Gate",
+        "",
+        f"- Status: {result.get('status')}",
+        f"- Passed: {result.get('passed')}",
+        f"- Continuity blockers: {len(result.get('continuity_blockers', []))}",
+        f"- Initial pacing score: {result.get('initial_pacing_score')}",
+        f"- Revised pacing score: {result.get('revised_pacing_score')}",
+        f"- Revision required: {result.get('revision_required')}",
+        f"- Waiver required: {result.get('waiver_required')}",
+        "",
+        "## Reasons",
+        "",
+    ]
+    reasons = result.get("reasons", [])
+    if reasons:
+        lines.extend(f"- {reason}" for reason in reasons)
+    else:
+        lines.append("- None")
+    lines.extend(["", "## Continuity Blockers", ""])
+    blockers = result.get("continuity_blockers", [])
+    if blockers:
+        lines.extend(f"- {blocker}" for blocker in blockers)
+    else:
+        lines.append("- None")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    write_text(output, markdown_to_html_page(f"Chapter {chapter_number} Quality Gate", "\n".join(lines)))
+    return output
