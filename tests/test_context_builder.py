@@ -74,6 +74,69 @@ def test_build_context_includes_v3_memory_ledgers(tmp_path, monkeypatch):
     assert "Keep the shop alive through the first ten chapters." in context
 
 
+def test_build_context_includes_v3_1_outline_layers_and_reference_chain(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+
+    created = book_factory.create_book("demo", title="Demo Book")
+    (created / "outlines" / "master_outline.yaml").write_text(
+        "logline: Master promise.\napproval:\n  status: approved\n",
+        encoding="utf-8",
+    )
+    (created / "outlines" / "volumes" / "volume_001.yaml").write_text(
+        "\n".join(
+            [
+                "volume_id: volume_001",
+                "chapter_range:",
+                "  start: 1",
+                "  end: 50",
+                "volume_goal: First volume goal.",
+                "approval:",
+                "  status: draft",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    (created / "outlines" / "arc_001.yaml").write_text(
+        "arc_id: arc_001\nchapter_range:\n  start: 1\n  end: 20\narc_goal: First arc goal.\n",
+        encoding="utf-8",
+    )
+    (created / "outlines" / "units" / "unit_0001.yaml").write_text(
+        "unit: 1\nchapter_range:\n  start: 1\n  end: 10\nunit_goal: First unit goal.\n",
+        encoding="utf-8",
+    )
+    (created / "canon" / "economy.yaml").write_text(
+        "currencies:\n  - id: spirit_fragment\n    name: 碎灵\n",
+        encoding="utf-8",
+    )
+    (created / "canon" / "factions.yaml").write_text(
+        "factions:\n  - id: pill_shop\n    name: 回春丹铺\n",
+        encoding="utf-8",
+    )
+
+    context = context_builder.build_context("demo", 5)
+
+    assert "## Outline Reference Chain" in context
+    assert "master -> volume_001 -> arc_001 -> unit_0001 -> chapter_0005" in context
+    assert "## Master Outline" in context
+    assert "Master promise." in context
+    assert "## Current Volume" in context
+    assert "First volume goal." in context
+    assert "draft assumption" in context
+    assert "## Current Arc" in context
+    assert "First arc goal." in context
+    assert "## Current Unit" in context
+    assert "First unit goal." in context
+    assert "## Economy" in context
+    assert "spirit_fragment" in context
+    assert "## Factions" in context
+    assert "回春丹铺" in context
+
+
 def test_build_context_surfaces_missing_book_errors(tmp_path, monkeypatch):
     monkeypatch.setattr(context_builder, "BOOKS_DIR", tmp_path / "books")
 
