@@ -43,6 +43,28 @@ def test_update_outline_approval_updates_only_target_layer(tmp_path, monkeypatch
     assert master["approval"]["status"] == "draft"
 
 
+def test_update_outline_approval_preserves_non_approval_text_format(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    path = book / "outlines" / "master_outline.yaml"
+    before = path.read_text(encoding="utf-8")
+    before_prefix = before.split("approval:", maxsplit=1)[0]
+
+    outline_gate.update_outline_approval(
+        "demo",
+        "master",
+        status="approved",
+        note="Format should stay quiet.",
+    )
+
+    after = path.read_text(encoding="utf-8")
+    after_prefix = after.split("approval:", maxsplit=1)[0]
+    assert after_prefix == before_prefix
+    assert "  status: approved" in after
+    assert "  note: Format should stay quiet." in after
+
+
 def test_update_outline_approval_rejects_invalid_layer_and_status(tmp_path, monkeypatch):
     monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
     monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")

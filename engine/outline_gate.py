@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import Any
 
-from engine.io_utils import read_text, read_yaml, write_yaml
+from engine.io_utils import read_text, read_yaml, write_text
 from engine.paths import books_dir
 
 BOOKS_DIR = books_dir()
@@ -65,13 +65,9 @@ def update_outline_approval(
 
     data = read_yaml(path)
     approval = data.get("approval")
-    if not isinstance(approval, dict):
-        approval = {}
-        data["approval"] = approval
-    approval["status"] = status
-    if note is not None:
-        approval["note"] = note
-    write_yaml(path, data)
+    if "approval" in data and not isinstance(approval, dict):
+        raise ValueError(f"Outline layer approval must be a mapping: {relative_path}")
+    write_text(path, _update_approval_block(read_text(path), status=status, note=note))
     return {"layer": layer, "path": relative_path, "approval_status": status}
 
 
@@ -130,6 +126,95 @@ def validate_chapter_brief_text(content: str) -> list[str]:
         if term not in lowered:
             errors.append(f"Chapter brief must mention {term}.")
     return errors
+
+
+def _update_approval_block(content: str, *, status: str, note: str | None) -> str:
+    lines = content.splitlines(keepends=True)
+    approval_index = _find_top_level_key(lines, "approval")
+    if approval_index is None:
+        if lines and not lines[-1].endswith(("\n", "\r")):
+            lines[-1] = lines[-1] + "\n"
+        lines.append("approval:\n")
+        lines.append(f"  status: {status}\n")
+        if note is not None:
+            lines.append(f"  note: {note}\n")
+        return "".join(lines)
+
+    block_end = _find_next_top_level_key(lines, approval_index + 1)
+    if block_end is None:
+        block_end = len(lines)
+
+    block = lines[approval_index:block_end]
+    updated_block, status_written, note_written = _rewrite_approval_lines(
+        block,
+        status=status,
+        note=note,
+    )
+    insert_at = _approval_insert_index(updated_block)
+    if not status_written:
+        updated_block.insert(insert_at, f"  status: {status}\n")
+        insert_at += 1
+    if note is not None and not note_written:
+        updated_block.insert(insert_at, f"  note: {note}\n")
+
+    return "".join(lines[:approval_index] + updated_block + lines[block_end:])
+
+
+def _rewrite_approval_lines(
+    block: list[str],
+    *,
+    status: str,
+    note: str | None,
+) -> tuple[list[str], bool, bool]:
+    updated = []
+    status_written = False
+    note_written = False
+    for line in block:
+        stripped = line.lstrip(" ")
+        indent = len(line) - len(stripped)
+        newline = _line_ending(line)
+        if indent == 2 and stripped.startswith("status:"):
+            updated.append(f"  status: {status}{newline}")
+            status_written = True
+        elif indent == 2 and stripped.startswith("note:") and note is not None:
+            updated.append(f"  note: {note}{newline}")
+            note_written = True
+        else:
+            updated.append(line)
+    return updated, status_written, note_written
+
+
+def _approval_insert_index(block: list[str]) -> int:
+    for index, line in enumerate(block[1:], start=1):
+        stripped = line.lstrip(" ")
+        indent = len(line) - len(stripped)
+        if indent == 2 and stripped.startswith("notes:"):
+            return index
+    return len(block)
+
+
+def _find_top_level_key(lines: list[str], key: str) -> int | None:
+    marker = f"{key}:"
+    for index, line in enumerate(lines):
+        if line.startswith(marker):
+            return index
+    return None
+
+
+def _find_next_top_level_key(lines: list[str], start: int) -> int | None:
+    for index in range(start, len(lines)):
+        line = lines[index]
+        if line and not line.startswith((" ", "-", "\t", "\r", "\n")):
+            return index
+    return None
+
+
+def _line_ending(line: str) -> str:
+    if line.endswith("\r\n"):
+        return "\r\n"
+    if line.endswith("\n"):
+        return "\n"
+    return ""
 
 
 def _book_root(book_id: str) -> Path:
