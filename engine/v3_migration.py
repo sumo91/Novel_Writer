@@ -19,6 +19,12 @@ V3_TEMPLATE_PATHS = [
     "state/memory_index.json",
 ]
 
+V3_1_TEMPLATE_PATHS = [
+    "outlines/volumes/volume_001.yaml",
+    "canon/economy.yaml",
+    "canon/factions.yaml",
+]
+
 OPEN_THREAD_DEFAULTS = {
     "source_chapter": 0,
     "status": "open",
@@ -51,9 +57,26 @@ def migrate_book_to_v3(book_id: str) -> V3MigrationResult:
     return V3MigrationResult(book_id=book_id, created=created, updated=updated)
 
 
+def migrate_book_to_v3_1(book_id: str) -> V3MigrationResult:
+    root = BOOKS_DIR / book_id
+    if not root.exists():
+        raise FileNotFoundError(f"Missing book project: {book_id}")
+
+    created = _copy_missing_templates(root, V3_1_TEMPLATE_PATHS)
+    updated = []
+    updated.extend(_upgrade_mapping_from_template(root, "outlines/master_outline.yaml"))
+    updated.extend(_upgrade_mapping_from_template(root, "outlines/arc_001.yaml"))
+    updated.extend(_upgrade_mapping_from_template(root, "outlines/units/unit_0001.yaml"))
+    return V3MigrationResult(book_id=book_id, created=created, updated=updated)
+
+
 def _copy_missing_v3_templates(root):
+    return _copy_missing_templates(root, V3_TEMPLATE_PATHS)
+
+
+def _copy_missing_templates(root: Path, relative_paths: list[str]) -> list[str]:
     created = []
-    for relative_path in V3_TEMPLATE_PATHS:
+    for relative_path in relative_paths:
         target = root / relative_path
         if target.exists():
             continue
@@ -61,6 +84,39 @@ def _copy_missing_v3_templates(root):
         shutil.copy2(TEMPLATE_DIR / relative_path, target)
         created.append(relative_path)
     return created
+
+
+def _upgrade_mapping_from_template(root: Path, relative_path: str) -> list[str]:
+    path = root / relative_path
+    template_path = TEMPLATE_DIR / relative_path
+    if not path.exists() or not template_path.exists():
+        return []
+
+    data = read_yaml(path)
+    template = read_yaml(template_path)
+    if not isinstance(data, dict) or not isinstance(template, dict):
+        return []
+
+    merged = _merge_missing_mapping_keys(data, template)
+    if merged == data:
+        return []
+
+    write_yaml(path, merged)
+    return [relative_path]
+
+
+def _merge_missing_mapping_keys(
+    data: dict[str, Any],
+    template: dict[str, Any],
+) -> dict[str, Any]:
+    merged = dict(data)
+    for key, value in template.items():
+        if key not in merged:
+            merged[key] = value
+            continue
+        if isinstance(merged[key], dict) and isinstance(value, dict):
+            merged[key] = _merge_missing_mapping_keys(merged[key], value)
+    return merged
 
 
 def _upgrade_open_threads(root):

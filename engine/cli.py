@@ -21,7 +21,7 @@ from engine.pipeline import (
     pipeline_status,
     prepare_chapter,
 )
-from engine.v3_migration import migrate_book_to_v3
+from engine.v3_migration import migrate_book_to_v3, migrate_book_to_v3_1
 from engine.validators import validate_book
 
 
@@ -154,6 +154,12 @@ def build_parser() -> argparse.ArgumentParser:
         help="Add missing lightweight V3 state files to an existing book project.",
     )
     migrate_v3_cmd.add_argument("book_id")
+
+    migrate_v3_1_cmd = subparsers.add_parser(
+        "migrate-v3-1",
+        help="Add missing V3.1 long-form outline architecture files to a book project.",
+    )
+    migrate_v3_1_cmd.add_argument("book_id")
 
     return parser
 
@@ -308,6 +314,19 @@ def main(argv: list[str] | None = None) -> int:
             print(f"Error: {exc}")
             return 1
         print(f"Migrated book to V3: {result.book_id}")
+        for path in result.created:
+            print(f"- created: {path}")
+        for path in result.updated:
+            print(f"- updated: {path}")
+        return 0
+
+    if args.command == "migrate-v3-1":
+        try:
+            result = migrate_book_to_v3_1(args.book_id)
+        except FileNotFoundError as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Migrated book to V3.1: {result.book_id}")
         for path in result.created:
             print(f"- created: {path}")
         for path in result.updated:

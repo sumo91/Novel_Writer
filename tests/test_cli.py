@@ -304,3 +304,19 @@ def test_migrate_v3_cli_creates_missing_files(tmp_path, monkeypatch, capsys):
     assert missing_path.exists()
     assert "Migrated book to V3: demo" in captured.out
     assert "- created: state/hook_index.json" in captured.out
+
+
+def test_migrate_v3_1_cli_creates_missing_outline_files(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(v3_migration, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    missing_path = book / "outlines" / "volumes" / "volume_001.yaml"
+    missing_path.unlink()
+
+    result = cli.main(["migrate-v3-1", "demo"])
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert missing_path.exists()
+    assert "Migrated book to V3.1: demo" in captured.out
+    assert "- created: outlines/volumes/volume_001.yaml" in captured.out

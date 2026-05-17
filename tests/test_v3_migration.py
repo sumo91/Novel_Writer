@@ -11,6 +11,12 @@ V3_PATHS = [
     "state/memory_index.json",
 ]
 
+V3_1_PATHS = [
+    "outlines/volumes/volume_001.yaml",
+    "canon/economy.yaml",
+    "canon/factions.yaml",
+]
+
 
 def test_migrate_book_to_v3_creates_missing_files_without_inference(
     tmp_path, monkeypatch
@@ -230,3 +236,72 @@ def test_migrate_book_to_v3_makes_old_structural_book_validate(
     v3_migration.migrate_book_to_v3("demo")
 
     assert validators.validate_book("demo") == []
+
+
+def test_migrate_book_to_v3_1_creates_outline_files_without_inference(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(v3_migration, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    for relative_path in V3_1_PATHS:
+        (book / relative_path).unlink()
+    write_yaml(
+        book / "outlines" / "master_outline.yaml",
+        {
+            "logline": "Keep this premise.",
+            "volume_plan": [{"volume": 1, "goal": "Keep this plan."}],
+            "major_turning_points": ["Keep this turn."],
+            "ending_direction": "Keep this ending.",
+        },
+    )
+    write_yaml(
+        book / "outlines" / "arc_001.yaml",
+        {
+            "arc_id": "arc_001",
+            "title": "Keep this arc title.",
+            "arc_goal": "Keep this arc goal.",
+            "main_conflict": "Keep this conflict.",
+            "required_payoffs": [],
+            "required_threads": [],
+        },
+    )
+    write_yaml(
+        book / "outlines" / "units" / "unit_0001.yaml",
+        {
+            "unit": 1,
+            "chapter_range": {"start": 1, "end": 10},
+            "unit_goal": "Keep this unit goal.",
+            "chapters": [],
+        },
+    )
+    write_json(
+        book / "state" / "chapter_index.json",
+        {
+            "chapters": [
+                {
+                    "chapter": 1,
+                    "summary": "Do not infer this into V3.1 outlines.",
+                }
+            ]
+        },
+    )
+
+    result = v3_migration.migrate_book_to_v3_1("demo")
+
+    assert result.book_id == "demo"
+    assert result.created == V3_1_PATHS
+    assert "outlines/master_outline.yaml" in result.updated
+    assert "outlines/arc_001.yaml" in result.updated
+    assert "outlines/units/unit_0001.yaml" in result.updated
+    master_outline = read_yaml(book / "outlines" / "master_outline.yaml")
+    assert master_outline["logline"] == "Keep this premise."
+    assert master_outline["volume_plan"] == [{"volume": 1, "goal": "Keep this plan."}]
+    assert master_outline["major_turning_points"] == ["Keep this turn."]
+    assert master_outline["ending_direction"] == "Keep this ending."
+    assert master_outline["approval"]["status"] == "draft"
+    created_text = "\n".join(
+        (book / relative_path).read_text(encoding="utf-8")
+        for relative_path in result.created
+    )
+    assert "Do not infer this into V3.1 outlines." not in created_text
