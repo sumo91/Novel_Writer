@@ -1,1 +1,46 @@
-resources: []
+resources:
+- id: res_chen_an_spirit_fragments
+  owner: chen_an
+  name: 碎灵
+  category: money
+  unit: 枚
+  current_amount: 13
+  history:
+  - chapter: 4
+    delta: 13
+    reason: 第4章卖出细盐、纱布、创可贴和碘伏棉签所得
+    owner: chen_an
+    name: 碎灵
+    category: money
+    unit: 枚
+  last_updated_chapter: 4
+- id: res_chen_an_trade_goods_basic_medical
+  owner: chen_an
+  name: 基础医疗小商品库存
+  category: trade_good
+  unit: 批
+  current_amount: -1
+  history:
+  - chapter: 4
+    delta: -1
+    reason: 卖出两卷纱布、十片创可贴、六支碘伏棉签，并赠许青一支碘伏棉签和一片创可贴
+    owner: chen_an
+    name: 基础医疗小商品库存
+    category: trade_good
+    unit: 批
+  last_updated_chapter: 4
+- id: res_chen_an_qingshifang_price_half_booklet
+  owner: chen_an
+  name: 青石坊废弃价目半册
+  category: knowledge
+  unit: 册
+  current_amount: 1
+  history:
+  - chapter: 4
+    delta: 1
+    reason: 与莫账房交易时作为添头获得，可用于标尺化碎灵购买力
+    owner: chen_an
+    name: 青石坊废弃价目半册
+    category: knowledge
+    unit: 册
+  last_updated_chapter: 4

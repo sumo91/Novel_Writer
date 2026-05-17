@@ -1,0 +1,208 @@
+chapter: 4
+title: 丹铺开价
+source_draft: drafts/ch_0004_revised.md
+accepted_chapter_path: chapters/ch_0004.md
+summary: 回春丹铺莫账房带价来谈，试图用巡卫保护和独家供货压住陈安；陈安坚持按次交易、不出门、不签独家，用细盐、纱布、创可贴和碘伏棉签换到十三枚碎灵与青石坊价目半册，并发现价目半册里的青灯草与爷爷旧账本十年前记录重合。
+current_state:
+  current_chapter: 4
+  current_arc: arc_001
+  latest_location: 小卖部仓库后门 / 青石坊巷口
+  active_characters:
+  - chen_an
+  - xu_qing
+  - mo_zhangfang
+  active_conflicts:
+  - 回春丹铺试图用巡卫保护和独家供货压住陈安货源
+  - 陈安必须在不暴露后门和仓库的前提下建立交易规则
+  - 爷爷旧账本与青石坊价目半册出现青灯草重合线索
+  pending_approvals: &id001
+  - 是否沿用书名《我家小卖部通修仙界》。
+  - 是否确认后门规则为每天午夜开启一个时辰。
+  - 是否确认第一交易锚点为细盐和打火机。
+  - 是否确认碎灵作为低阶交易货币单位。
+  - 是否确认手电筒暂命名为夜明筒。
+  - 是否确认许青被巡卫盘问作为第3章入口。
+  - 是否确认黄芽草可在现实小额变现，但不能公开大规模出售。
+  - 是否确认回春丹铺作为第一阶段异界商业压力。
+  - 是否确认第4章进入回春丹铺谈价/试探。
+  - 是否确认回春丹铺莫账房作为第4章谈判代表。
+  - 是否确认回春丹铺赵掌柜作为第5章主要谈判压力。
+  - 是否确认青灯草为爷爷旧账本与青石坊价目半册之间的第一条长线谜团线索。
+  - 是否确认第4章交易结果：一包细盐、两卷纱布、十片创可贴、六支碘伏棉签换十三枚碎灵和价目半册。
+  - 是否确认第5章由赵掌柜亲自来谈作为下一章主钩子。
+  - 是否确认青灯草作为爷爷旧账本长线谜团的第一枚明确线索。
+state_changes:
+- 陈安按现实采购思路将货物分为可卖、试探和暂不外露三类，明确今晚谈判目标是不卖断货源、不签独家、先拿价格表、不出门。
+- 回春丹铺莫账房带价来谈，提出细盐三枚碎灵、火折一枚碎灵、夜明筒十枚碎灵，并试图用每月二十枚碎灵和巡卫保护换取独家供货。
+- 陈安拒绝独家供货和巡卫保护价码，坚持货少、按次交易、不签独家，并守住不出后门、不暴露仓库的边界。
+- 陈安用纱布、创可贴和碘伏棉签证明现代小商品可降低低阶散修小伤恶化风险，回春丹铺承认其交易价值。
+- 陈安以一包细盐、两卷纱布、十片创可贴、六支碘伏棉签换到十三枚碎灵和青石坊废弃价目半册。
+- 陈安赠予许青一支碘伏棉签和一片创可贴，换取赵掌柜更难缠、明晚可能亲自来谈的信息。
+- 价目半册中出现青灯草，陈安发现爷爷旧账本十年前也记有青灯草交易，确认爷爷曾长期熟悉青石坊价格与交易规则。
+open_threads_touched:
+- thread_0004_pill_shop_exclusive_pressure
+- thread_0004_grandpa_qingdengcao_record
+timeline_event:
+  id: t004
+  when: 第 4 章
+  summary: 回春丹铺莫账房带价来谈，试图用巡卫保护和独家供货压住陈安；陈安坚持按次交易、不出门、不签独家，用细盐、纱布、创可贴和碘伏棉签换到十三枚碎灵与青石坊价目半册，并发现价目半册里的青灯草与爷爷旧账本十年前记录重合。
+v3_state_updates:
+  timeline:
+    occurred_events:
+    - id: ev_0004_01
+      summary: 回春丹铺莫账房带价来谈，试图用巡卫保护和独家供货压住陈安；陈安坚持按次交易、不出门、不签独家，用细盐、纱布、创可贴和碘伏棉签换到十三枚碎灵与青石坊价目半册，并发现价目半册里的青灯草与爷爷旧账本十年前记录重合。
+      location: 小卖部仓库后门 / 青石坊巷口
+      involved_characters:
+      - chen_an
+      - xu_qing
+      - mo_zhangfang
+      source_chapter: 4
+  character_states:
+  - character_id: chen_an
+    display_name: 陈安
+    physical_state: 无伤，但谈判结束后手心出汗，压力明显
+    social_state: 在回春丹铺面前初步建立按次交易、不签独家、不出门的陈掌柜形象
+    emotional_state: 紧张但稳住底线，开始主动用规则反压对方
+    current_goal: 守住后门秘密，拿到青石坊价格体系，准备应对赵掌柜亲自谈判
+    known_secrets:
+    - 小卖部后门每天午夜开启一个时辰
+    - 爷爷旧账本十年前记录过青灯草交易
+    public_knowledge:
+    - 陈掌柜手里有细盐、纱布、创可贴、碘伏棉签等无灵力货物
+    relationship_changes:
+    - 与许青从单纯交易推进到信息交换
+    - 与回春丹铺进入按次交易但互相试探的关系
+    voice_notes:
+    - 谈判时短句、算账、守边界，不解释现代知识原理过深
+  - character_id: xu_qing
+    display_name: 许青
+    physical_state: 左手仍有巡卫勒伤痕迹
+    social_state: 夹在回春丹铺与陈掌柜之间的底层散修/传话人
+    emotional_state: 畏惧丹铺但对陈安守价和赠药棉产生佩服与感激
+    current_goal: 避免得罪丹铺，同时继续保留从陈安处获取实用货物的机会
+    known_secrets:
+    - 陈安不愿签独家，也不愿暴露货源
+    public_knowledge: []
+    relationship_changes:
+    - 接受陈安赠送的碘伏棉签和创可贴，并提供赵掌柜情报
+    voice_notes:
+    - 说话谨慎，常压低声音提醒风险
+  - character_id: mo_zhangfang
+    display_name: 莫账房
+    physical_state: 无伤，携带算盘与回春丹铺账房身份登场
+    social_state: 回春丹铺派出的谈判代表
+    emotional_state: 表面客气，实际持续试探门、仓库、货源和陈安靠山
+    current_goal: 为回春丹铺探明陈安货源价值，并尝试用独家供货锁定渠道
+    known_secrets:
+    - 陈安不肯出门，也不肯让人看清仓库
+    public_knowledge:
+    - 回春丹铺承认纱布、创可贴、碘伏棉签具备交易价值
+    relationship_changes:
+    - 与陈安完成第一笔丹铺层面的按次交易
+    voice_notes:
+    - 客气、慢压、用算盘和规矩施压
+  resource_changes:
+  - id: res_chen_an_spirit_fragments
+    owner: chen_an
+    item: 碎灵
+    delta: 13
+    unit: 枚
+    category: money
+    reason: 第4章卖出细盐、纱布、创可贴和碘伏棉签所得
+    source_chapter: 4
+  - id: res_chen_an_trade_goods_basic_medical
+    owner: chen_an
+    item: 基础医疗小商品库存
+    delta: -1
+    unit: 批
+    category: trade_good
+    reason: 卖出两卷纱布、十片创可贴、六支碘伏棉签，并赠许青一支碘伏棉签和一片创可贴
+    source_chapter: 4
+  - id: res_chen_an_qingshifang_price_half_booklet
+    owner: chen_an
+    item: 青石坊废弃价目半册
+    delta: 1
+    unit: 册
+    category: knowledge
+    reason: 与莫账房交易时作为添头获得，可用于标尺化碎灵购买力
+    source_chapter: 4
+  open_thread_updates: &id002
+  - id: thread_0004_pill_shop_exclusive_pressure
+    promise: 回春丹铺试图用巡卫保护和独家供货锁定陈安的异界货源。
+    source_chapter: 4
+    status: open
+    last_touched: 4
+    next_obligation: 第5章让赵掌柜亲自来谈，升级独家供货与长期供货压力。
+    payoff_deadline: 6
+    risk_if_ignored: 回春丹铺压力会显得虚弱，陈安立规矩的爽点无法继续兑现。
+  - id: thread_0004_grandpa_qingdengcao_record
+    promise: 青灯草同时出现在青石坊价目半册和爷爷十年前旧账本中，暗示爷爷长期熟悉两界交易。
+    source_chapter: 4
+    status: open
+    last_touched: 4
+    next_obligation: 第5-6章继续通过旧账本或价目半册揭示爷爷当年交易规则。
+    payoff_deadline: 8
+    risk_if_ignored: 爷爷长线谜团会变成孤立彩蛋，削弱追读。
+  payoff_updates:
+  - chapter: 4
+    promises_made:
+    - 赵掌柜明晚亲自来谈，回春丹铺会继续试探陈安长期供货能力。
+    - 青灯草将连接爷爷旧账本和青石坊旧交易记录。
+    payoffs_delivered:
+    - 兑现第3章明晚带价来谈的钩子。
+    - 陈安拒绝独家供货，建立按次交易、不出门、不卖门的初始规矩。
+    - 陈安把纱布、创可贴和碘伏棉签卖出价值，获得十三枚碎灵和青石坊价目半册。
+    - 许青提供赵掌柜信息，关系从单纯买货推进到信息中间人。
+    frustration_level: controlled
+    payoff_types:
+    - 交易
+    - 压价
+    - 立规矩
+    - 揭谜
+    delayed_payoffs:
+    - 赵掌柜亲自谈判
+    - 爷爷旧账本与青石坊旧交易真相
+    risks:
+    - 第5章需要更强外部压力和主动进货兑现，避免连续谈判导致动作感不足
+  conflict_updates:
+    active:
+    - id: conflict_0004_pill_shop_terms
+      summary: 回春丹铺想锁定独家货源，陈安坚持按次交易和不暴露门。
+      pressure_type: commercial
+      source_chapter: 4
+    - id: conflict_0004_grandpa_trade_secret
+      summary: 价目半册与爷爷旧账本出现青灯草重合，陈安开始意识到爷爷长期参与青石坊交易。
+      pressure_type: mystery
+      source_chapter: 4
+  next_hook:
+    hook: 回春丹铺赵掌柜明晚亲自来谈，价目半册里的青灯草也与爷爷旧账本记录重合。
+    obligation: 第5章展示赵掌柜亲自压价/试探，并让陈安用价目半册主动备货。
+    target_chapter: 5
+    status: open
+  pending_approvals: *id001
+open_thread_updates: *id002
+change_log:
+  summary: Accepted revised chapter 4 as chapters/ch_0004.md.
+  canon_updates:
+  - timeline:t004
+  - v3:character_states:chen_an,xu_qing,mo_zhangfang
+  - v3:resource_ledger:碎灵,基础医疗小商品库存,青石坊废弃价目半册
+  - v3:open_threads:thread_0004_pill_shop_exclusive_pressure,thread_0004_grandpa_qingdengcao_record
+  - v3:payoff_ledger:chapter_4
+  - v3:next_hook:chapter_5
+  pending_approvals:
+  - 是否沿用书名《我家小卖部通修仙界》。
+  - 是否确认后门规则为每天午夜开启一个时辰。
+  - 是否确认第一交易锚点为细盐和打火机。
+  - 是否确认碎灵作为低阶交易货币单位。
+  - 是否确认手电筒暂命名为夜明筒。
+  - 是否确认许青被巡卫盘问作为第3章入口。
+  - 是否确认黄芽草可在现实小额变现，但不能公开大规模出售。
+  - 是否确认回春丹铺作为第一阶段异界商业压力。
+  - 是否确认第4章进入回春丹铺谈价/试探。
+  - 是否确认回春丹铺莫账房作为第4章谈判代表。
+  - 是否确认回春丹铺赵掌柜作为第5章主要谈判压力。
+  - 是否确认青灯草为爷爷旧账本与青石坊价目半册之间的第一条长线谜团线索。
+  - 是否确认第4章交易结果：一包细盐、两卷纱布、十片创可贴、六支碘伏棉签换十三枚碎灵和价目半册。
+  - 是否确认第5章由赵掌柜亲自来谈作为下一章主钩子。
+  - 是否确认青灯草作为爷爷旧账本长线谜团的第一枚明确线索。

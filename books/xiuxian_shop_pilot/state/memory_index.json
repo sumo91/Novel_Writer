@@ -1,6 +1,37 @@
 {
-  "by_character": {},
-  "by_thread": {},
-  "by_location": {},
-  "by_resource": {}
+  "by_character": {
+    "chen_an": [
+      4
+    ],
+    "xu_qing": [
+      4
+    ],
+    "mo_zhangfang": [
+      4
+    ]
+  },
+  "by_thread": {
+    "thread_0004_pill_shop_exclusive_pressure": [
+      4
+    ],
+    "thread_0004_grandpa_qingdengcao_record": [
+      4
+    ]
+  },
+  "by_location": {
+    "小卖部仓库后门 / 青石坊巷口": [
+      4
+    ]
+  },
+  "by_resource": {
+    "碎灵": [
+      4
+    ],
+    "基础医疗小商品库存": [
+      4
+    ],
+    "青石坊废弃价目半册": [
+      4
+    ]
+  }
 }

@@ -23,3 +23,23 @@ entries:
   payoff_types: []
   delayed_payoffs: []
   risks: []
+- chapter: 4
+  promises_made:
+  - 赵掌柜明晚亲自来谈，回春丹铺会继续试探陈安长期供货能力。
+  - 青灯草将连接爷爷旧账本和青石坊旧交易记录。
+  payoffs_delivered:
+  - 兑现第3章明晚带价来谈的钩子。
+  - 陈安拒绝独家供货，建立按次交易、不出门、不卖门的初始规矩。
+  - 陈安把纱布、创可贴和碘伏棉签卖出价值，获得十三枚碎灵和青石坊价目半册。
+  - 许青提供赵掌柜信息，关系从单纯买货推进到信息中间人。
+  frustration_level: controlled
+  payoff_types:
+  - 交易
+  - 压价
+  - 立规矩
+  - 揭谜
+  delayed_payoffs:
+  - 赵掌柜亲自谈判
+  - 爷爷旧账本与青石坊旧交易真相
+  risks:
+  - 第5章需要更强外部压力和主动进货兑现，避免连续谈判导致动作感不足

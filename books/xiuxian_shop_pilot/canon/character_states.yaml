@@ -1,1 +1,83 @@
-characters: {}
+characters:
+  chen_an:
+    display_name: 陈安
+    physical_state: 无伤，但谈判结束后手心出汗，压力明显
+    social_state: 在回春丹铺面前初步建立按次交易、不签独家、不出门的陈掌柜形象
+    emotional_state: 紧张但稳住底线，开始主动用规则反压对方
+    current_goal: 守住后门秘密，拿到青石坊价格体系，准备应对赵掌柜亲自谈判
+    known_secrets: &id001
+    - 小卖部后门每天午夜开启一个时辰
+    - 爷爷旧账本十年前记录过青灯草交易
+    public_knowledge: &id002
+    - 陈掌柜手里有细盐、纱布、创可贴、碘伏棉签等无灵力货物
+    relationship_changes: &id003
+    - 与许青从单纯交易推进到信息交换
+    - 与回春丹铺进入按次交易但互相试探的关系
+    voice_notes: &id004
+    - 谈判时短句、算账、守边界，不解释现代知识原理过深
+    last_updated_chapter: 4
+    history:
+    - display_name: 陈安
+      physical_state: 无伤，但谈判结束后手心出汗，压力明显
+      social_state: 在回春丹铺面前初步建立按次交易、不签独家、不出门的陈掌柜形象
+      emotional_state: 紧张但稳住底线，开始主动用规则反压对方
+      current_goal: 守住后门秘密，拿到青石坊价格体系，准备应对赵掌柜亲自谈判
+      known_secrets: *id001
+      public_knowledge: *id002
+      relationship_changes: *id003
+      voice_notes: *id004
+      last_updated_chapter: 4
+      chapter: 4
+  xu_qing:
+    display_name: 许青
+    physical_state: 左手仍有巡卫勒伤痕迹
+    social_state: 夹在回春丹铺与陈掌柜之间的底层散修/传话人
+    emotional_state: 畏惧丹铺但对陈安守价和赠药棉产生佩服与感激
+    current_goal: 避免得罪丹铺，同时继续保留从陈安处获取实用货物的机会
+    known_secrets: &id005
+    - 陈安不愿签独家，也不愿暴露货源
+    public_knowledge: &id006 []
+    relationship_changes: &id007
+    - 接受陈安赠送的碘伏棉签和创可贴，并提供赵掌柜情报
+    voice_notes: &id008
+    - 说话谨慎，常压低声音提醒风险
+    last_updated_chapter: 4
+    history:
+    - display_name: 许青
+      physical_state: 左手仍有巡卫勒伤痕迹
+      social_state: 夹在回春丹铺与陈掌柜之间的底层散修/传话人
+      emotional_state: 畏惧丹铺但对陈安守价和赠药棉产生佩服与感激
+      current_goal: 避免得罪丹铺，同时继续保留从陈安处获取实用货物的机会
+      known_secrets: *id005
+      public_knowledge: *id006
+      relationship_changes: *id007
+      voice_notes: *id008
+      last_updated_chapter: 4
+      chapter: 4
+  mo_zhangfang:
+    display_name: 莫账房
+    physical_state: 无伤，携带算盘与回春丹铺账房身份登场
+    social_state: 回春丹铺派出的谈判代表
+    emotional_state: 表面客气，实际持续试探门、仓库、货源和陈安靠山
+    current_goal: 为回春丹铺探明陈安货源价值，并尝试用独家供货锁定渠道
+    known_secrets: &id009
+    - 陈安不肯出门，也不肯让人看清仓库
+    public_knowledge: &id010
+    - 回春丹铺承认纱布、创可贴、碘伏棉签具备交易价值
+    relationship_changes: &id011
+    - 与陈安完成第一笔丹铺层面的按次交易
+    voice_notes: &id012
+    - 客气、慢压、用算盘和规矩施压
+    last_updated_chapter: 4
+    history:
+    - display_name: 莫账房
+      physical_state: 无伤，携带算盘与回春丹铺账房身份登场
+      social_state: 回春丹铺派出的谈判代表
+      emotional_state: 表面客气，实际持续试探门、仓库、货源和陈安靠山
+      current_goal: 为回春丹铺探明陈安货源价值，并尝试用独家供货锁定渠道
+      known_secrets: *id009
+      public_knowledge: *id010
+      relationship_changes: *id011
+      voice_notes: *id012
+      last_updated_chapter: 4
+      chapter: 4

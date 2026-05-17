@@ -1,1 +1,37 @@
-threads: []
+threads:
+- id: thread_0004_pill_shop_exclusive_pressure
+  promise: 回春丹铺试图用巡卫保护和独家供货锁定陈安的异界货源。
+  source_chapter: 4
+  status: open
+  last_touched: 4
+  next_obligation: 第5章让赵掌柜亲自来谈，升级独家供货与长期供货压力。
+  payoff_deadline: 6
+  risk_if_ignored: 回春丹铺压力会显得虚弱，陈安立规矩的爽点无法继续兑现。
+  history:
+  - id: thread_0004_pill_shop_exclusive_pressure
+    promise: 回春丹铺试图用巡卫保护和独家供货锁定陈安的异界货源。
+    source_chapter: 4
+    status: open
+    last_touched: 4
+    next_obligation: 第5章让赵掌柜亲自来谈，升级独家供货与长期供货压力。
+    payoff_deadline: 6
+    risk_if_ignored: 回春丹铺压力会显得虚弱，陈安立规矩的爽点无法继续兑现。
+    chapter: 4
+- id: thread_0004_grandpa_qingdengcao_record
+  promise: 青灯草同时出现在青石坊价目半册和爷爷十年前旧账本中，暗示爷爷长期熟悉两界交易。
+  source_chapter: 4
+  status: open
+  last_touched: 4
+  next_obligation: 第5-6章继续通过旧账本或价目半册揭示爷爷当年交易规则。
+  payoff_deadline: 8
+  risk_if_ignored: 爷爷长线谜团会变成孤立彩蛋，削弱追读。
+  history:
+  - id: thread_0004_grandpa_qingdengcao_record
+    promise: 青灯草同时出现在青石坊价目半册和爷爷十年前旧账本中，暗示爷爷长期熟悉两界交易。
+    source_chapter: 4
+    status: open
+    last_touched: 4
+    next_obligation: 第5-6章继续通过旧账本或价目半册揭示爷爷当年交易规则。
+    payoff_deadline: 8
+    risk_if_ignored: 爷爷长线谜团会变成孤立彩蛋，削弱追读。
+    chapter: 4
