@@ -18,6 +18,8 @@ Use `$novel-writing-showrunner` whenever the user asks to:
 
 The skill is the workflow driver. This file is the repository rulebook.
 
+Prefer the repository-local skill at `.agents/skills/novel-writing-showrunner/SKILL.md`. Use the user-level Codex skill only as a fallback when the repository-local file is missing or unreadable.
+
 ## Project Goal
 
 Novel_Writer aims to support million-word commercial web fiction with explicit memory, controlled drift, reusable craft knowledge, and human editorial authority.
