@@ -96,6 +96,7 @@ def test_build_chapter_brief_scaffold_shows_craft_card_metadata(
 
     scaffold = brief_contract.build_chapter_brief_scaffold("demo", 5)
 
+    assert "### Hard Rules" in scaffold
     assert "  - Scope: craft" in scaffold
     assert "  - Severity: hard" in scaffold
 

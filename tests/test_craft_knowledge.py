@@ -104,3 +104,41 @@ def test_render_craft_cards_includes_scope_and_severity():
     assert "- craft_agency_001: Force a visible protagonist choice." in lines
     assert "  - Scope: craft" in lines
     assert "  - Severity: hard" in lines
+
+
+def test_render_craft_cards_groups_by_severity():
+    lines = craft_knowledge.render_craft_cards(
+        [
+            {
+                "id": "soft_card",
+                "scope": "craft",
+                "severity": "soft",
+                "principle": "Soft idea.",
+                "checks": [],
+                "failure_modes": [],
+            },
+            {
+                "id": "hard_card",
+                "scope": "craft",
+                "severity": "hard",
+                "principle": "Hard idea.",
+                "checks": [],
+                "failure_modes": [],
+            },
+            {
+                "id": "genre_card",
+                "scope": "craft",
+                "severity": "genre-specific",
+                "principle": "Genre idea.",
+                "checks": [],
+                "failure_modes": [],
+            },
+        ]
+    )
+
+    assert lines.index("### Hard Rules") < lines.index("- hard_card: Hard idea.")
+    assert lines.index("### Soft Heuristics") < lines.index("- soft_card: Soft idea.")
+    assert (
+        lines.index("### Genre-Specific Patterns")
+        < lines.index("- genre_card: Genre idea.")
+    )

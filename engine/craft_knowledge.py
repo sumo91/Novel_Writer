@@ -40,18 +40,25 @@ def render_craft_cards(cards: list[dict[str, Any]]) -> list[str]:
         return []
 
     lines = ["## Craft Knowledge Cards", ""]
-    for card in cards:
-        lines.append(f"- {card.get('id')}: {card.get('principle', '')}")
-        if card.get("scope"):
-            lines.append(f"  - Scope: {card['scope']}")
-        if card.get("severity"):
-            lines.append(f"  - Severity: {card['severity']}")
-        if card.get("use_when"):
-            lines.append(f"  - Use when: {card['use_when']}")
-        for check in _as_list(card.get("checks")):
-            lines.append(f"  - Check: {check}")
-        for failure in _as_list(card.get("failure_modes")):
-            lines.append(f"  - Failure mode: {failure}")
+    grouped = _group_cards_by_severity(cards)
+    for heading in ("hard", "soft", "genre-specific"):
+        section_cards = grouped.get(heading, [])
+        if not section_cards:
+            continue
+        lines.append(_severity_heading(heading))
+        lines.append("")
+        for card in section_cards:
+            lines.append(f"- {card.get('id')}: {card.get('principle', '')}")
+            if card.get("scope"):
+                lines.append(f"  - Scope: {card['scope']}")
+            if card.get("severity"):
+                lines.append(f"  - Severity: {card['severity']}")
+            if card.get("use_when"):
+                lines.append(f"  - Use when: {card['use_when']}")
+            for check in _as_list(card.get("checks")):
+                lines.append(f"  - Check: {check}")
+            for failure in _as_list(card.get("failure_modes")):
+                lines.append(f"  - Failure mode: {failure}")
     lines.append("")
     return lines
 
@@ -106,3 +113,22 @@ def _as_list(value: Any) -> list[Any]:
 
 def _non_empty_string(value: Any) -> bool:
     return isinstance(value, str) and bool(value.strip())
+
+
+def _group_cards_by_severity(cards: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
+    grouped = {severity: [] for severity in ("hard", "soft", "genre-specific")}
+    for card in cards:
+        severity = card.get("severity")
+        if severity in grouped:
+            grouped[severity].append(card)
+        else:
+            grouped["soft"].append(card)
+    return grouped
+
+
+def _severity_heading(severity: str) -> str:
+    return {
+        "hard": "### Hard Rules",
+        "soft": "### Soft Heuristics",
+        "genre-specific": "### Genre-Specific Patterns",
+    }.get(severity, "### Soft Heuristics")

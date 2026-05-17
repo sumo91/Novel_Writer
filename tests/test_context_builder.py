@@ -103,6 +103,7 @@ def test_build_context_includes_existing_workflow_craft_cards(tmp_path, monkeypa
 
     context = context_builder.build_context("demo", 1)
 
+    assert "### Hard Rules" in context
     assert "craft_brief_agency: Force a visible protagonist choice." in context
 
 
