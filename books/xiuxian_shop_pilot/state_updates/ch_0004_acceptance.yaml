@@ -206,3 +206,39 @@ change_log:
   - 是否确认第4章交易结果：一包细盐、两卷纱布、十片创可贴、六支碘伏棉签换十三枚碎灵和价目半册。
   - 是否确认第5章由赵掌柜亲自来谈作为下一章主钩子。
   - 是否确认青灯草作为爷爷旧账本长线谜团的第一枚明确线索。
+acceptance_contract:
+  quality_gate_summary:
+    continuity_review_present: true
+    continuity_blockers: []
+    pacing_review_present: true
+    pacing_score: 86
+    revised_pacing_score: 86
+    revision_required: false
+    waiver_required: false
+  outline_alignment:
+    reference_chain: master -> volume -> arc -> unit -> chapter brief
+    volume_id: volume_001
+    arc_id: arc_001
+    unit_id: unit_0001
+    required_unit_obligations:
+    - 记录丹铺独家压力。
+    - 记录青灯草旧线索。
+    - 记录十三枚碎灵和价目半册。
+    claimed_fulfilled_unit_obligations:
+    - 记录丹铺独家压力。
+    - 记录青灯草旧线索。
+    - 记录十三枚碎灵和价目半册。
+    pending_unit_obligations: []
+  state_updates:
+    timeline_event:
+      id: t004
+      when: 第 4 章
+      summary: 回春丹铺莫账房带价来谈，试图用巡卫保护和独家供货压住陈安；陈安坚持按次交易、不出门、不签独家，用细盐、纱布、创可贴和碘伏棉签换到十三枚碎灵与青石坊价目半册，并发现价目半册里的青灯草与爷爷旧账本十年前记录重合。
+    character_state_changes: []
+    resource_changes: []
+    open_thread_updates: []
+    payoff_updates: []
+    next_hook: {}
+    pending_approvals: []
+    economy_changes: []
+    faction_changes: []

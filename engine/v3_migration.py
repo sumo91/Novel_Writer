@@ -175,6 +175,14 @@ def _upgrade_acceptance_packets(root: Path) -> list[str]:
                 _pending_approvals_from_packet(packet),
             )
             changed = True
+        if "acceptance_contract" not in packet:
+            packet["acceptance_contract"] = _minimal_acceptance_contract(
+                root,
+                chapter,
+                packet.get("summary", ""),
+                _pending_approvals_from_packet(packet),
+            )
+            changed = True
         if changed:
             write_yaml(path, packet)
             updated.append(path.relative_to(root).as_posix())
@@ -215,6 +223,49 @@ def _minimal_v3_state_updates(
         "conflict_updates": {"active": []},
         "next_hook": {},
         "pending_approvals": list(pending_approvals),
+    }
+
+
+def _minimal_acceptance_contract(
+    root: Path,
+    chapter: Any,
+    summary: Any,
+    pending_approvals: list[str],
+) -> dict[str, Any]:
+    return {
+        "quality_gate_summary": {
+            "continuity_review_present": False,
+            "continuity_blockers": [],
+            "pacing_review_present": False,
+            "pacing_score": 0,
+            "revised_pacing_score": 0,
+            "revision_required": False,
+            "waiver_required": False,
+        },
+        "outline_alignment": {
+            "reference_chain": "master -> volume -> arc -> unit -> chapter brief",
+            "volume_id": "volume_001",
+            "arc_id": "arc_001",
+            "unit_id": "unit_0001",
+            "required_unit_obligations": [],
+            "claimed_fulfilled_unit_obligations": [],
+            "pending_unit_obligations": [],
+        },
+        "state_updates": {
+            "timeline_event": {
+                "id": f"t{int(chapter):03d}" if isinstance(chapter, int) else "t000",
+                "when": f"第 {chapter} 章",
+                "summary": str(summary),
+            },
+            "character_state_changes": [],
+            "resource_changes": [],
+            "open_thread_updates": [],
+            "payoff_updates": [],
+            "next_hook": {},
+            "pending_approvals": list(pending_approvals),
+            "economy_changes": [],
+            "faction_changes": [],
+        },
     }
 
 

@@ -46,6 +46,40 @@ change_log:
   - 是否确认黄芽草可在现实小额变现，但不能公开大规模出售。
   - 是否确认回春丹铺作为第一阶段异界商业压力。
   - 是否确认第4章进入回春丹铺谈价/试探。
+acceptance_contract:
+  quality_gate_summary:
+    continuity_review_present: true
+    continuity_blockers: []
+    pacing_review_present: true
+    pacing_score: 86
+    revised_pacing_score: 86
+    revision_required: false
+    waiver_required: false
+  outline_alignment:
+    reference_chain: master -> volume -> arc -> unit -> chapter brief
+    volume_id: volume_001
+    arc_id: arc_001
+    unit_id: unit_0001
+    required_unit_obligations:
+    - 记录黄芽草现实变现。
+    - 记录回春丹铺注意货源。
+    claimed_fulfilled_unit_obligations:
+    - 记录黄芽草现实变现。
+    - 记录回春丹铺注意货源。
+    pending_unit_obligations: []
+  state_updates:
+    timeline_event:
+      id: t003
+      when: 第 3 章
+      summary: 陈安谨慎验证碎灵和黄芽草，将黄芽草叶尖小额变现并补交部分房租；许青午夜回来说夜明筒被巡卫扣下，回春丹铺盯上细盐和夜明筒，要求见夜里开门的陈掌柜。
+    character_state_changes: []
+    resource_changes: []
+    open_thread_updates: []
+    payoff_updates: []
+    next_hook: {}
+    pending_approvals: []
+    economy_changes: []
+    faction_changes: []
 v3_state_updates:
   timeline:
     occurred_events:

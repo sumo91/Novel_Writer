@@ -46,6 +46,10 @@ def test_draft_acceptance_packet_uses_reviews_and_current_state(tmp_path, monkey
     assert packet["change_log"]["canon_updates"] == ["timeline:t001"]
     assert "Define system cost." in packet["current_state"]["pending_approvals"]
     assert "Keep payoff delayed." in packet["current_state"]["pending_approvals"]
+    contract = packet["acceptance_contract"]
+    assert contract["quality_gate_summary"]["continuity_review_present"] is True
+    assert contract["outline_alignment"]["reference_chain"] == "master -> volume -> arc -> unit -> chapter brief"
+    assert contract["state_updates"]["timeline_event"]["id"] == "t001"
 
 
 def test_draft_acceptance_packet_includes_v3_state_updates(tmp_path, monkeypatch):
@@ -78,6 +82,11 @@ def test_draft_acceptance_packet_includes_v3_state_updates(tmp_path, monkeypatch
     assert updates["conflict_updates"]["active"] == []
     assert updates["next_hook"] == {}
     assert updates["pending_approvals"] == []
+
+    contract = packet["acceptance_contract"]
+    assert contract["quality_gate_summary"]["pacing_review_present"] is False
+    assert contract["outline_alignment"]["reference_chain"] == "master -> volume -> arc -> unit -> chapter brief"
+    assert contract["state_updates"]["economy_changes"] == []
 
 
 def test_draft_acceptance_packet_refuses_existing_file_without_force(tmp_path, monkeypatch):

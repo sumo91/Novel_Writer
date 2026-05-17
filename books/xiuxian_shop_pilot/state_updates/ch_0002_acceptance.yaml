@@ -39,6 +39,40 @@ change_log:
   - 是否确认碎灵作为低阶交易货币单位。
   - 是否确认手电筒暂命名为夜明筒。
   - 是否确认许青被巡卫盘问作为第3章入口。
+acceptance_contract:
+  quality_gate_summary:
+    continuity_review_present: true
+    continuity_blockers: []
+    pacing_review_present: true
+    pacing_score: 86
+    revised_pacing_score: 86
+    revision_required: false
+    waiver_required: false
+  outline_alignment:
+    reference_chain: master -> volume -> arc -> unit -> chapter brief
+    volume_id: volume_001
+    arc_id: arc_001
+    unit_id: unit_0001
+    required_unit_obligations:
+    - 记录后门每天午夜一个时辰。
+    - 记录碎灵和黄芽草。
+    claimed_fulfilled_unit_obligations:
+    - 记录后门每天午夜一个时辰。
+    - 记录碎灵和黄芽草。
+    pending_unit_obligations: []
+  state_updates:
+    timeline_event:
+      id: t002
+      when: 第 2 章
+      summary: 陈安站在后门内完成第一笔两界交易，用细盐、打火机和手电筒换到两枚碎灵与黄芽草；许青带走夜明筒后被青石坊巡卫盘问，陈安意识到现代货物既能救命也会惹祸。
+    character_state_changes: []
+    resource_changes: []
+    open_thread_updates: []
+    payoff_updates: []
+    next_hook: {}
+    pending_approvals: []
+    economy_changes: []
+    faction_changes: []
 v3_state_updates:
   timeline:
     occurred_events:

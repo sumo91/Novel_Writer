@@ -146,11 +146,121 @@ def test_validate_acceptance_packet_requires_v3_state_updates():
             "timeline_event": {"id": "t001", "when": "Chapter 1", "summary": "Summary."},
             "open_thread_updates": [],
             "change_log": {"summary": "Accepted.", "canon_updates": [], "pending_approvals": []},
+            "acceptance_contract": {
+                "quality_gate_summary": {
+                    "continuity_review_present": True,
+                    "continuity_blockers": [],
+                    "pacing_review_present": True,
+                    "pacing_score": 86,
+                    "revised_pacing_score": 86,
+                    "revision_required": False,
+                    "waiver_required": False,
+                },
+                "outline_alignment": {
+                    "reference_chain": "master -> volume -> arc -> unit -> chapter brief",
+                    "volume_id": "volume_001",
+                    "arc_id": "arc_001",
+                    "unit_id": "unit_0001",
+                    "required_unit_obligations": [],
+                    "claimed_fulfilled_unit_obligations": [],
+                    "pending_unit_obligations": [],
+                },
+                "state_updates": {
+                    "timeline_event": {
+                        "id": "t001",
+                        "when": "Chapter 1",
+                        "summary": "Summary.",
+                    },
+                    "character_state_changes": [],
+                    "resource_changes": [],
+                    "open_thread_updates": [],
+                    "payoff_updates": [],
+                    "next_hook": {},
+                    "pending_approvals": [],
+                    "economy_changes": [],
+                    "faction_changes": [],
+                },
+            },
         },
         chapter_number=1,
     )
 
     assert "Acceptance packet is missing fields: v3_state_updates." in errors
+
+
+def test_validate_acceptance_packet_requires_acceptance_contract():
+    errors = validate_acceptance_packet(
+        _valid_acceptance_packet(
+            {
+                "timeline": {},
+                "character_states": [],
+                "resource_changes": [],
+                "open_thread_updates": [],
+                "payoff_updates": [
+                    {
+                        "frustration_level": "controlled",
+                        "promises_made": ["Promise."],
+                        "payoffs_delivered": [],
+                    }
+                ],
+                "conflict_updates": {"active": []},
+                "next_hook": {},
+                "pending_approvals": [],
+            },
+            include_acceptance_contract=False,
+        ),
+        chapter_number=1,
+    )
+
+    assert "Acceptance packet is missing fields: acceptance_contract." in errors
+
+
+def test_validate_acceptance_packet_requires_acceptance_contract_sections():
+    errors = validate_acceptance_packet(
+        {
+            "chapter": 1,
+            "title": "First",
+            "source_draft": "drafts/ch_0001_revised.md",
+            "accepted_chapter_path": "chapters/ch_0001.md",
+            "summary": "Summary.",
+            "current_state": {
+                "current_chapter": 1,
+                "current_arc": "arc_001",
+                "latest_location": "",
+                "active_characters": [],
+                "active_conflicts": [],
+                "pending_approvals": [],
+            },
+            "state_changes": [],
+            "open_threads_touched": [],
+            "timeline_event": {"id": "t001", "when": "Chapter 1", "summary": "Summary."},
+            "open_thread_updates": [],
+            "change_log": {"summary": "Accepted.", "canon_updates": [], "pending_approvals": []},
+            "v3_state_updates": {
+                "timeline": {},
+                "character_states": [],
+                "resource_changes": [],
+                "open_thread_updates": [],
+                "payoff_updates": [
+                    {
+                        "frustration_level": "controlled",
+                        "promises_made": ["Promise."],
+                        "payoffs_delivered": [],
+                    }
+                ],
+                "conflict_updates": {"active": []},
+                "next_hook": {},
+                "pending_approvals": [],
+            },
+            "acceptance_contract": {},
+        },
+        chapter_number=1,
+    )
+
+    assert (
+        "Acceptance packet acceptance_contract is missing fields: "
+        "outline_alignment, quality_gate_summary, state_updates."
+    ) in errors
 
 
 def test_validate_acceptance_packet_rejects_falsey_non_mapping_v3_timeline():
@@ -320,8 +430,8 @@ def test_validate_score_accepts_only_zero_to_one_hundred():
     assert not validators.validate_score(101)
 
 
-def _valid_acceptance_packet(v3_state_updates):
-    return {
+def _valid_acceptance_packet(v3_state_updates, *, include_acceptance_contract=True):
+    packet = {
         "chapter": 1,
         "title": "First",
         "source_draft": "drafts/ch_0001_revised.md",
@@ -342,3 +452,36 @@ def _valid_acceptance_packet(v3_state_updates):
         "change_log": {"summary": "Accepted.", "canon_updates": [], "pending_approvals": []},
         "v3_state_updates": v3_state_updates,
     }
+    if include_acceptance_contract:
+        packet["acceptance_contract"] = {
+            "quality_gate_summary": {
+                "continuity_review_present": True,
+                "continuity_blockers": [],
+                "pacing_review_present": True,
+                "pacing_score": 86,
+                "revised_pacing_score": None,
+                "revision_required": False,
+                "waiver_required": False,
+            },
+            "outline_alignment": {
+                "reference_chain": "master -> volume -> arc -> unit -> chapter brief",
+                "volume_id": "volume_001",
+                "arc_id": "arc_001",
+                "unit_id": "unit_0001",
+                "required_unit_obligations": [],
+                "claimed_fulfilled_unit_obligations": [],
+                "pending_unit_obligations": [],
+            },
+            "state_updates": {
+                "timeline_event": {"id": "t001", "when": "Chapter 1", "summary": "Summary."},
+                "character_state_changes": [],
+                "resource_changes": [],
+                "open_thread_updates": [],
+                "payoff_updates": [],
+                "next_hook": {},
+                "pending_approvals": [],
+                "economy_changes": [],
+                "faction_changes": [],
+            },
+        },
+    return packet

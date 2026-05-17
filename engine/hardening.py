@@ -107,6 +107,7 @@ REQUIRED_ACCEPTANCE_FIELDS = {
     "open_thread_updates",
     "change_log",
     "v3_state_updates",
+    "acceptance_contract",
 }
 
 REQUIRED_CURRENT_STATE_FIELDS = {
@@ -127,6 +128,44 @@ REQUIRED_V3_STATE_UPDATE_FIELDS = {
     "conflict_updates",
     "next_hook",
     "pending_approvals",
+}
+
+REQUIRED_ACCEPTANCE_CONTRACT_FIELDS = {
+    "quality_gate_summary",
+    "outline_alignment",
+    "state_updates",
+}
+
+REQUIRED_QUALITY_GATE_SUMMARY_FIELDS = {
+    "continuity_review_present",
+    "continuity_blockers",
+    "pacing_review_present",
+    "pacing_score",
+    "revised_pacing_score",
+    "revision_required",
+    "waiver_required",
+}
+
+REQUIRED_OUTLINE_ALIGNMENT_FIELDS = {
+    "reference_chain",
+    "volume_id",
+    "arc_id",
+    "unit_id",
+    "required_unit_obligations",
+    "claimed_fulfilled_unit_obligations",
+    "pending_unit_obligations",
+}
+
+REQUIRED_ACCEPTANCE_STATE_FIELDS = {
+    "timeline_event",
+    "character_state_changes",
+    "resource_changes",
+    "open_thread_updates",
+    "payoff_updates",
+    "next_hook",
+    "pending_approvals",
+    "economy_changes",
+    "faction_changes",
 }
 
 STALE_ACCEPTANCE_PHRASES = {
@@ -319,6 +358,23 @@ def validate_acceptance_packet(
     elif "v3_state_updates" in packet:
         errors.append("Acceptance packet v3_state_updates must be a mapping.")
 
+    acceptance_contract = packet.get("acceptance_contract")
+    if isinstance(acceptance_contract, dict):
+        missing_contract = sorted(
+            field
+            for field in REQUIRED_ACCEPTANCE_CONTRACT_FIELDS
+            if field not in acceptance_contract
+        )
+        if missing_contract:
+            errors.append(
+                "Acceptance packet acceptance_contract is missing fields: "
+                + ", ".join(missing_contract)
+                + "."
+            )
+        errors.extend(validate_acceptance_contract(acceptance_contract))
+    elif "acceptance_contract" in packet:
+        errors.append("Acceptance packet acceptance_contract must be a mapping.")
+
     return errors
 
 
@@ -373,6 +429,103 @@ def validate_v3_state_updates(updates: dict[str, Any]) -> list[str]:
     next_hook = updates.get("next_hook")
     if next_hook not in ({}, None) and not isinstance(next_hook, dict):
         errors.append("v3_state_updates.next_hook must be a mapping.")
+
+    return errors
+
+
+def validate_acceptance_contract(contract: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    if not contract:
+        errors.append(
+            "Acceptance packet acceptance_contract is missing fields: "
+            + ", ".join(sorted(REQUIRED_ACCEPTANCE_CONTRACT_FIELDS))
+            + "."
+        )
+        return errors
+
+    quality_gate_summary = contract.get("quality_gate_summary", {})
+    if "quality_gate_summary" in contract and not isinstance(quality_gate_summary, dict):
+        errors.append("acceptance_contract.quality_gate_summary must be a mapping.")
+    elif isinstance(quality_gate_summary, dict):
+        missing_quality = sorted(
+            field
+            for field in REQUIRED_QUALITY_GATE_SUMMARY_FIELDS
+            if field not in quality_gate_summary
+        )
+        if missing_quality:
+            errors.append(
+                "acceptance_contract.quality_gate_summary is missing fields: "
+                + ", ".join(missing_quality)
+                + "."
+            )
+        for field in ("continuity_review_present", "pacing_review_present", "revision_required", "waiver_required"):
+            if field in quality_gate_summary and not isinstance(quality_gate_summary[field], bool):
+                errors.append(f"acceptance_contract.quality_gate_summary.{field} must be a bool.")
+        for field in ("continuity_blockers",):
+            if field in quality_gate_summary and not isinstance(quality_gate_summary[field], list):
+                errors.append(f"acceptance_contract.quality_gate_summary.{field} must be a list.")
+        for field in ("pacing_score", "revised_pacing_score"):
+            value = quality_gate_summary.get(field)
+            if value is not None and not _score_in_range(value, 0, 100):
+                errors.append(
+                    f"acceptance_contract.quality_gate_summary.{field} must be an integer from 0 to 100."
+                )
+
+    outline_alignment = contract.get("outline_alignment", {})
+    if "outline_alignment" in contract and not isinstance(outline_alignment, dict):
+        errors.append("acceptance_contract.outline_alignment must be a mapping.")
+    elif isinstance(outline_alignment, dict):
+        missing_outline = sorted(
+            field
+            for field in REQUIRED_OUTLINE_ALIGNMENT_FIELDS
+            if field not in outline_alignment
+        )
+        if missing_outline:
+            errors.append(
+                "acceptance_contract.outline_alignment is missing fields: "
+                + ", ".join(missing_outline)
+                + "."
+            )
+        for field in (
+            "required_unit_obligations",
+            "claimed_fulfilled_unit_obligations",
+            "pending_unit_obligations",
+        ):
+            if field in outline_alignment and not isinstance(outline_alignment[field], list):
+                errors.append(f"acceptance_contract.outline_alignment.{field} must be a list.")
+
+    state_updates = contract.get("state_updates", {})
+    if "state_updates" in contract and not isinstance(state_updates, dict):
+        errors.append("acceptance_contract.state_updates must be a mapping.")
+    elif isinstance(state_updates, dict):
+        missing_state = sorted(
+            field
+            for field in REQUIRED_ACCEPTANCE_STATE_FIELDS
+            if field not in state_updates
+        )
+        if missing_state:
+            errors.append(
+                "acceptance_contract.state_updates is missing fields: "
+                + ", ".join(missing_state)
+                + "."
+            )
+        for field in (
+            "character_state_changes",
+            "resource_changes",
+            "open_thread_updates",
+            "payoff_updates",
+            "pending_approvals",
+            "economy_changes",
+            "faction_changes",
+        ):
+            if field in state_updates and not isinstance(state_updates[field], list):
+                errors.append(f"acceptance_contract.state_updates.{field} must be a list.")
+        timeline_event = state_updates.get("timeline_event")
+        if "timeline_event" in state_updates and not isinstance(timeline_event, dict):
+            errors.append("acceptance_contract.state_updates.timeline_event must be a mapping.")
+        next_hook = state_updates.get("next_hook")
+        if next_hook not in ({}, None) and not isinstance(next_hook, dict):
+            errors.append("acceptance_contract.state_updates.next_hook must be a mapping.")
 
     return errors
 

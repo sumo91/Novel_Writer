@@ -139,6 +139,41 @@ def test_migrate_book_to_v3_upgrades_old_acceptance_packet_scaffold(
                 "canon_updates": [],
                 "pending_approvals": [],
             },
+            "acceptance_contract": {
+                "quality_gate_summary": {
+                    "continuity_review_present": False,
+                    "continuity_blockers": [],
+                    "pacing_review_present": False,
+                    "pacing_score": None,
+                    "revised_pacing_score": None,
+                    "revision_required": False,
+                    "waiver_required": False,
+                },
+                "outline_alignment": {
+                    "reference_chain": "master -> volume -> arc -> unit -> chapter brief",
+                    "volume_id": "volume_001",
+                    "arc_id": "arc_001",
+                    "unit_id": "unit_0001",
+                    "required_unit_obligations": [],
+                    "claimed_fulfilled_unit_obligations": [],
+                    "pending_unit_obligations": [],
+                },
+                "state_updates": {
+                    "timeline_event": {
+                        "id": "t001",
+                        "when": "第 1 章",
+                        "summary": "The old packet summary stays intact.",
+                    },
+                    "character_state_changes": [],
+                    "resource_changes": [],
+                    "open_thread_updates": [],
+                    "payoff_updates": [],
+                    "next_hook": {},
+                    "pending_approvals": [],
+                    "economy_changes": [],
+                    "faction_changes": [],
+                },
+            },
         },
     )
 
@@ -150,6 +185,7 @@ def test_migrate_book_to_v3_upgrades_old_acceptance_packet_scaffold(
     assert packet["summary"] == "The old packet summary stays intact."
     assert packet["source_draft"] == "drafts/ch_0001_revised.md"
     assert packet["current_state"]["current_chapter"] == 1
+    assert packet["acceptance_contract"]["outline_alignment"]["reference_chain"] == "master -> volume -> arc -> unit -> chapter brief"
     assert packet["v3_state_updates"] == {
         "timeline": {
             "occurred_events": [
@@ -229,6 +265,41 @@ def test_migrate_book_to_v3_makes_old_structural_book_validate(
                 "summary": "Accepted old chapter.",
                 "canon_updates": [],
                 "pending_approvals": [],
+            },
+            "acceptance_contract": {
+                "quality_gate_summary": {
+                    "continuity_review_present": False,
+                    "continuity_blockers": [],
+                    "pacing_review_present": False,
+                    "pacing_score": None,
+                    "revised_pacing_score": None,
+                    "revision_required": False,
+                    "waiver_required": False,
+                },
+                "outline_alignment": {
+                    "reference_chain": "master -> volume -> arc -> unit -> chapter brief",
+                    "volume_id": "volume_001",
+                    "arc_id": "arc_001",
+                    "unit_id": "unit_0001",
+                    "required_unit_obligations": [],
+                    "claimed_fulfilled_unit_obligations": [],
+                    "pending_unit_obligations": [],
+                },
+                "state_updates": {
+                    "timeline_event": {
+                        "id": "t001",
+                        "when": "第 1 章",
+                        "summary": "The old packet summary stays intact.",
+                    },
+                    "character_state_changes": [],
+                    "resource_changes": [],
+                    "open_thread_updates": [],
+                    "payoff_updates": [],
+                    "next_hook": {},
+                    "pending_approvals": [],
+                    "economy_changes": [],
+                    "faction_changes": [],
+                },
             },
         },
     )
