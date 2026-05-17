@@ -1,5 +1,62 @@
 logline: ""
+story_promise: ""
 full_book_arc: ""
+opening_state:
+  protagonist: ""
+  world: ""
+  first_pressure: ""
+  first_hook: ""
+ending_state:
+  protagonist: ""
+  shop: ""
+  two_world_order: ""
+  final_emotional_image: ""
+three_act_structure:
+  act_1:
+    chapter_range: ""
+    function: ""
+    major_turning_points: []
+    act_climax: ""
+  act_2:
+    chapter_range: ""
+    function: ""
+    major_turning_points: []
+    midpoint: ""
+    act_climax: ""
+  act_3:
+    chapter_range: ""
+    function: ""
+    major_turning_points: []
+    final_climax: ""
+    ending: ""
+protagonist_growth_curve:
+  start: ""
+  act_1_end: ""
+  midpoint: ""
+  act_2_end: ""
+  end: ""
+core_mystery:
+  question: ""
+  answer_direction: ""
+  reveal_stages: []
+core_rules_locked: []
+locked_story_promises:
+  - opening_state
+  - ending_direction
+  - three_act_structure
+  - core_rules_locked
+  - protagonist_growth_curve.end
+  - core_mystery.answer_direction
+open_story_spaces:
+  - chapter-level scene execution
+  - minor characters
+  - local reversals
+  - exact goods and trades
 volume_plan: []
 major_turning_points: []
 ending_direction: ""
+approval:
+  status: draft
+  approved_by: ""
+  approved_at: ""
+  notes: []

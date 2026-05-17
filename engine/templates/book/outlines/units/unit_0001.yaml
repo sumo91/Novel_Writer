@@ -2,8 +2,15 @@ unit: 1
 chapter_range:
   start: 1
   end: 10
+parent_arc: arc_001
 unit_goal: ""
 stage_enemy: ""
 stage_payoffs: []
 stage_end_hook: ""
+required_threads: []
 chapters: []
+approval:
+  status: draft
+  approved_by: ""
+  approved_at: ""
+  notes: []

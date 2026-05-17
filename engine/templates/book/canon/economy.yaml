@@ -1,0 +1,17 @@
+currencies:
+  - id: spirit_fragment
+    name: 碎灵
+    world: qingshifang
+    tier: low
+    purchasing_power_notes: []
+real_world_money:
+  currency: CNY
+  pressure_points: []
+price_index: []
+trade_rules: []
+locked_constraints: []
+approval:
+  status: draft
+  approved_by: ""
+  approved_at: ""
+  notes: []

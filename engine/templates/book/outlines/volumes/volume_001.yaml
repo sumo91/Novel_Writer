@@ -1,0 +1,24 @@
+volume_id: volume_001
+title: ""
+chapter_range:
+  start: 1
+  end: 50
+volume_goal: ""
+reader_promise: ""
+main_pressure:
+  antagonist_or_force: ""
+  pressure_type: ""
+  escalation_path: []
+protagonist_progress:
+  start_state: ""
+  end_state: ""
+core_payoffs: []
+major_reveal: ""
+volume_climax: ""
+ending_hook: ""
+required_threads: []
+approval:
+  status: draft
+  approved_by: ""
+  approved_at: ""
+  notes: []

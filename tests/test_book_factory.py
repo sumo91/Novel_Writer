@@ -37,6 +37,42 @@ def test_create_book_includes_v3_state_machine_files(tmp_path, monkeypatch):
         assert (book / relative_path).exists()
 
 
+def test_create_book_includes_v3_1_outline_architecture_files(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+
+    book = book_factory.create_book("demo", title="Demo Book")
+
+    expected = [
+        "outlines/volumes/volume_001.yaml",
+        "canon/economy.yaml",
+        "canon/factions.yaml",
+    ]
+    for relative_path in expected:
+        assert (book / relative_path).exists()
+
+    master_outline = read_yaml(book / "outlines" / "master_outline.yaml")
+    assert "opening_state" in master_outline
+    assert "ending_state" in master_outline
+    assert "three_act_structure" in master_outline
+    assert "protagonist_growth_curve" in master_outline
+    assert "core_mystery" in master_outline
+    assert master_outline["approval"]["status"] == "draft"
+    assert "locked_story_promises" in master_outline
+    assert "open_story_spaces" in master_outline
+
+    volume = read_yaml(book / "outlines" / "volumes" / "volume_001.yaml")
+    assert volume["volume_id"] == "volume_001"
+    assert volume["approval"]["status"] == "draft"
+
+    economy = read_yaml(book / "canon" / "economy.yaml")
+    assert "currencies" in economy
+    assert economy["approval"]["status"] == "draft"
+
+    factions = read_yaml(book / "canon" / "factions.yaml")
+    assert "factions" in factions
+    assert factions["approval"]["status"] == "draft"
+
+
 def test_create_book_refuses_existing_project(tmp_path, monkeypatch):
     monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
     book_factory.create_book("demo", title="Demo Book")

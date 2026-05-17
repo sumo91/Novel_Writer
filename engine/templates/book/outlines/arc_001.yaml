@@ -1,7 +1,20 @@
 arc_id: "arc_001"
 title: ""
-chapters: []
+chapter_range:
+  start: 1
+  end: 20
+parent_volume: volume_001
 arc_goal: ""
 main_conflict: ""
+stage_enemy_or_pressure: ""
+protagonist_move: ""
 required_payoffs: []
 required_threads: []
+major_reveal_or_reversal: ""
+exit_state: ""
+chapters: []
+approval:
+  status: draft
+  approved_by: ""
+  approved_at: ""
+  notes: []
