@@ -7,6 +7,7 @@ from engine.chapter_acceptance import accept_chapter
 from engine.context_builder import build_context
 from engine.hardening import (
     validate_acceptance_packet_file,
+    validate_acceptance_contract_snapshot,
     validate_pacing_review,
 )
 from engine.io_utils import read_json, read_text, read_yaml, write_json, write_text
@@ -133,6 +134,13 @@ def pipeline_accept(
     packet_errors = validate_acceptance_packet_file(paths.root, chapter_number)
     if packet_errors:
         raise ValueError("Invalid acceptance packet: " + "; ".join(packet_errors))
+    contract_errors = validate_acceptance_contract_snapshot(
+        paths.root,
+        read_yaml(packet_path),
+        chapter_number,
+    )
+    if contract_errors:
+        raise ValueError("Invalid acceptance packet: " + "; ".join(contract_errors))
 
     result = accept_chapter(book_id, packet_path, force=force)
     return result.chapter_path

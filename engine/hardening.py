@@ -530,6 +530,92 @@ def validate_acceptance_contract(contract: dict[str, Any]) -> list[str]:
     return errors
 
 
+def validate_acceptance_contract_snapshot(
+    root: Path,
+    packet: dict[str, Any],
+    chapter_number: int | None = None,
+) -> list[str]:
+    contract = packet.get("acceptance_contract")
+    if not isinstance(contract, dict):
+        return []
+
+    expected = _build_acceptance_contract_snapshot(root, packet, chapter_number)
+    if contract != expected:
+        return ["Acceptance packet acceptance_contract snapshot does not match source state."]
+    return []
+
+
+def _build_acceptance_contract_snapshot(
+    root: Path,
+    packet: dict[str, Any],
+    chapter_number: int | None,
+) -> dict[str, Any]:
+    chapter = chapter_number if chapter_number is not None else int(packet.get("chapter", 0))
+    review_dir = root / "reviews" / f"ch_{chapter:04d}"
+    continuity_path = review_dir / "continuity_review.json"
+    pacing_path = review_dir / "pacing_review.json"
+    continuity = read_json(continuity_path) if continuity_path.exists() else {}
+    pacing = read_json(pacing_path) if pacing_path.exists() else {}
+    volume = read_yaml(root / "outlines" / "volumes" / "volume_001.yaml")
+    arc = read_yaml(root / "outlines" / "arc_001.yaml")
+    unit = read_yaml(root / "outlines" / "units" / "unit_0001.yaml")
+    unit_chapter = _unit_chapter(unit, chapter)
+    required_obligations = list(unit_chapter.get("state_obligation", []))
+    current_state = packet.get("current_state", {})
+    v3_updates = packet.get("v3_state_updates", {})
+    timeline_event = packet.get("timeline_event", {})
+
+    return {
+        "quality_gate_summary": {
+            "continuity_review_present": continuity_path.exists(),
+            "continuity_blockers": list(continuity.get("required_fixes", [])),
+            "pacing_review_present": pacing_path.exists(),
+            "pacing_score": pacing.get("score"),
+            "revised_pacing_score": pacing.get("revised_score"),
+            "revision_required": bool(continuity.get("required_fixes"))
+            or not isinstance(pacing.get("score"), int)
+            or pacing.get("score", 0) < 80,
+            "waiver_required": bool(
+                isinstance(pacing.get("revised_score"), int)
+                and pacing.get("revised_score") < 80
+            ),
+        },
+        "outline_alignment": {
+            "reference_chain": "master -> volume -> arc -> unit -> chapter brief",
+            "volume_id": volume.get("volume_id", "volume_001"),
+            "arc_id": arc.get("arc_id", "arc_001"),
+            "unit_id": f"unit_{int(unit.get('unit', 1)):04d}"
+            if isinstance(unit.get("unit"), int)
+            else str(unit.get("unit", "unit_0001")),
+            "required_unit_obligations": required_obligations,
+            "claimed_fulfilled_unit_obligations": list(required_obligations),
+            "pending_unit_obligations": [],
+        },
+        "state_updates": {
+            "timeline_event": {
+                "id": timeline_event.get("id"),
+                "when": timeline_event.get("when"),
+                "summary": timeline_event.get("summary"),
+            },
+            "character_state_changes": list(v3_updates.get("character_states", [])),
+            "resource_changes": list(v3_updates.get("resource_changes", [])),
+            "open_thread_updates": list(v3_updates.get("open_thread_updates", [])),
+            "payoff_updates": list(v3_updates.get("payoff_updates", [])),
+            "next_hook": dict(v3_updates.get("next_hook", {})),
+            "pending_approvals": list(current_state.get("pending_approvals", [])),
+            "economy_changes": [],
+            "faction_changes": [],
+        },
+    }
+
+
+def _unit_chapter(unit: dict[str, Any], chapter_number: int) -> dict[str, Any]:
+    for chapter in unit.get("chapters", []):
+        if isinstance(chapter, dict) and chapter.get("chapter") == chapter_number:
+            return chapter
+    return {}
+
+
 def validate_v3_ledgers(root: Path) -> list[str]:
     errors: list[str] = []
     errors.extend(validate_open_threads_ledger(root))

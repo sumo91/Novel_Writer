@@ -3,7 +3,7 @@ import json
 import pytest
 
 from engine import acceptance_packet, book_factory, context_builder, pipeline
-from engine.io_utils import write_json
+from engine.io_utils import read_yaml, write_json
 
 
 def test_pipeline_paths_for_chapter(tmp_path, monkeypatch):
@@ -247,6 +247,65 @@ def test_pipeline_accept_applies_packet(tmp_path, monkeypatch):
 
     assert result == book / "chapters" / "ch_0001.md"
     assert result.read_text(encoding="utf-8") == "accepted"
+
+
+def test_pipeline_accept_rejects_stale_acceptance_contract_snapshot(tmp_path, monkeypatch):
+    books_root = tmp_path / "books"
+    books_root.mkdir(parents=True, exist_ok=True)
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", books_root)
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", books_root)
+    monkeypatch.setattr(acceptance_packet, "BOOKS_DIR", books_root)
+    import engine.chapter_acceptance as chapter_acceptance
+
+    monkeypatch.setattr(chapter_acceptance, "BOOKS_DIR", books_root)
+    book = book_factory.create_book("demo", title="Demo Book")
+    (book / "drafts").mkdir()
+    (book / "drafts" / "ch_0001_revised.md").write_text("accepted", encoding="utf-8")
+    output = acceptance_packet.draft_acceptance_packet(
+        "demo",
+        1,
+        title="First Signal",
+        source_draft="drafts/ch_0001_revised.md",
+        summary="Summary.",
+    )
+    packet = read_yaml(output)
+    packet["acceptance_contract"]["quality_gate_summary"]["pacing_score"] = 42
+    output.write_text(
+        __import__("yaml").safe_dump(packet, sort_keys=False, allow_unicode=True),
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValueError, match="acceptance_contract"):
+        pipeline.pipeline_accept("demo", 1, approved=True)
+
+
+def test_validate_book_ignores_acceptance_contract_snapshot_freshness(tmp_path, monkeypatch):
+    books_root = tmp_path / "books"
+    books_root.mkdir(parents=True, exist_ok=True)
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", books_root)
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", books_root)
+    monkeypatch.setattr(acceptance_packet, "BOOKS_DIR", books_root)
+    import engine.validators as validators
+
+    monkeypatch.setattr(validators, "BOOKS_DIR", books_root)
+    book = book_factory.create_book("demo", title="Demo Book")
+    (book / "drafts").mkdir()
+    (book / "drafts" / "ch_0001_revised.md").write_text("accepted", encoding="utf-8")
+    output = acceptance_packet.draft_acceptance_packet(
+        "demo",
+        1,
+        title="First Signal",
+        source_draft="drafts/ch_0001_revised.md",
+        summary="Summary.",
+    )
+    packet = read_yaml(output)
+    packet["acceptance_contract"]["quality_gate_summary"]["pacing_score"] = 42
+    output.write_text(
+        __import__("yaml").safe_dump(packet, sort_keys=False, allow_unicode=True),
+        encoding="utf-8",
+    )
+
+    assert validators.validate_book("demo") == []
 
 
 def test_pipeline_accept_rejects_stale_acceptance_packet_text(tmp_path, monkeypatch):
