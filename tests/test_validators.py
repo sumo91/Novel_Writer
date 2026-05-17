@@ -33,6 +33,73 @@ def test_validate_book_requires_v3_files(tmp_path, monkeypatch):
     assert "Missing required file: canon/payoff_ledger.yaml" in errors
 
 
+def test_validate_book_requires_v3_1_outline_files(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(validators, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    (book / "outlines" / "volumes" / "volume_001.yaml").unlink()
+    (book / "canon" / "economy.yaml").unlink()
+    (book / "canon" / "factions.yaml").unlink()
+
+    errors = validators.validate_book("demo")
+
+    assert "Missing required file: outlines/volumes/volume_001.yaml" in errors
+    assert "Missing required file: canon/economy.yaml" in errors
+    assert "Missing required file: canon/factions.yaml" in errors
+
+
+def test_validate_book_rejects_invalid_v3_1_outline_shape(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(validators, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    write_yaml(
+        book / "outlines" / "master_outline.yaml",
+        {
+            "logline": "Missing most V3.1 fields.",
+            "approval": {"status": "maybe"},
+        },
+    )
+    write_yaml(
+        book / "outlines" / "volumes" / "volume_001.yaml",
+        {
+            "volume_id": "volume_001",
+            "chapter_range": {"start": "one", "end": 50},
+            "approval": {"status": "draft"},
+        },
+    )
+    write_yaml(
+        book / "outlines" / "arc_001.yaml",
+        {
+            "arc_id": "arc_001",
+            "chapter_range": {"start": 1, "end": 20},
+            "parent_volume": "volume_missing",
+            "approval": {"status": "draft"},
+        },
+    )
+    write_yaml(
+        book / "outlines" / "units" / "unit_0001.yaml",
+        {
+            "unit": 1,
+            "chapter_range": {"start": 1, "end": 10},
+            "parent_arc": "arc_001",
+            "chapters": [{"chapter": 11}],
+            "approval": {"status": "draft"},
+        },
+    )
+    write_yaml(book / "canon" / "economy.yaml", [])
+    write_yaml(book / "canon" / "factions.yaml", {"factions": {}, "approval": {"status": "draft"}})
+
+    errors = validators.validate_book("demo")
+
+    assert "outlines/master_outline.yaml: missing required field opening_state." in errors
+    assert "outlines/master_outline.yaml: approval.status must be draft, approved, rejected, or superseded." in errors
+    assert "outlines/volumes/volume_001.yaml: chapter_range.start must be an integer." in errors
+    assert "outlines/arc_001.yaml: parent_volume volume_missing does not exist." in errors
+    assert "outlines/units/unit_0001.yaml: chapters[1].chapter must fit inside chapter_range." in errors
+    assert "canon/economy.yaml: root must be a mapping." in errors
+    assert "canon/factions.yaml: factions must be a list." in errors
+
+
 def test_validate_acceptance_packet_requires_v3_state_updates():
     errors = validate_acceptance_packet(
         {

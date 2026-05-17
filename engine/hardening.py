@@ -17,6 +17,68 @@ RESOURCE_CATEGORIES = {
     "relationship_asset",
     "knowledge",
 }
+APPROVAL_STATUSES = {"draft", "approved", "rejected", "superseded"}
+
+MASTER_OUTLINE_REQUIRED_FIELDS = {
+    "logline",
+    "story_promise",
+    "opening_state",
+    "ending_state",
+    "three_act_structure",
+    "protagonist_growth_curve",
+    "core_mystery",
+    "core_rules_locked",
+    "volume_plan",
+    "major_turning_points",
+    "ending_direction",
+    "approval",
+}
+
+VOLUME_REQUIRED_FIELDS = {
+    "volume_id",
+    "title",
+    "chapter_range",
+    "volume_goal",
+    "reader_promise",
+    "main_pressure",
+    "protagonist_progress",
+    "core_payoffs",
+    "major_reveal",
+    "volume_climax",
+    "ending_hook",
+    "required_threads",
+    "approval",
+}
+
+ARC_REQUIRED_FIELDS = {
+    "arc_id",
+    "title",
+    "chapter_range",
+    "parent_volume",
+    "arc_goal",
+    "main_conflict",
+    "stage_enemy_or_pressure",
+    "protagonist_move",
+    "required_payoffs",
+    "required_threads",
+    "major_reveal_or_reversal",
+    "exit_state",
+    "chapters",
+    "approval",
+}
+
+UNIT_REQUIRED_FIELDS = {
+    "unit",
+    "chapter_range",
+    "parent_arc",
+    "unit_goal",
+    "stage_enemy",
+    "stage_payoffs",
+    "stage_end_hook",
+    "required_threads",
+    "chapters",
+    "approval",
+}
 
 DIMENSION_SCORE_KEYS = {
     "hook_strength",
@@ -457,6 +519,163 @@ def validate_memory_index(root: Path) -> list[str]:
     for field in ("by_character", "by_thread", "by_location", "by_resource"):
         if not isinstance(data.get(field), dict):
             errors.append(f"state/memory_index.json: {field} must be a mapping.")
+    return errors
+
+
+def validate_v3_1_outline_architecture(root: Path) -> list[str]:
+    errors: list[str] = []
+    errors.extend(validate_master_outline(root))
+    errors.extend(validate_volume_outline(root / "outlines" / "volumes" / "volume_001.yaml"))
+    errors.extend(validate_arc_outline(root))
+    errors.extend(validate_unit_outline(root))
+    errors.extend(validate_economy(root))
+    errors.extend(validate_factions(root))
+    return errors
+
+
+def validate_master_outline(root: Path) -> list[str]:
+    relative_path = "outlines/master_outline.yaml"
+    data = _read_mapping_file(root / relative_path, relative_path)
+    if not isinstance(data, dict):
+        return data
+
+    errors = _missing_required_field_errors(relative_path, data, MASTER_OUTLINE_REQUIRED_FIELDS)
+    errors.extend(_validate_approval_block(relative_path, data))
+    return errors
+
+
+def validate_volume_outline(path: Path) -> list[str]:
+    relative_path = "outlines/volumes/volume_001.yaml"
+    data = _read_mapping_file(path, relative_path)
+    if not isinstance(data, dict):
+        return data
+
+    errors = _missing_required_field_errors(relative_path, data, VOLUME_REQUIRED_FIELDS)
+    errors.extend(_validate_approval_block(relative_path, data))
+    errors.extend(_validate_chapter_range(relative_path, data.get("chapter_range")))
+    return errors
+
+
+def validate_arc_outline(root: Path) -> list[str]:
+    relative_path = "outlines/arc_001.yaml"
+    data = _read_mapping_file(root / relative_path, relative_path)
+    if not isinstance(data, dict):
+        return data
+
+    errors = _missing_required_field_errors(relative_path, data, ARC_REQUIRED_FIELDS)
+    errors.extend(_validate_approval_block(relative_path, data))
+    errors.extend(_validate_chapter_range(relative_path, data.get("chapter_range")))
+    parent_volume = data.get("parent_volume")
+    if parent_volume and not (root / "outlines" / "volumes" / f"{parent_volume}.yaml").exists():
+        errors.append(f"{relative_path}: parent_volume {parent_volume} does not exist.")
+    return errors
+
+
+def validate_unit_outline(root: Path) -> list[str]:
+    relative_path = "outlines/units/unit_0001.yaml"
+    data = _read_mapping_file(root / relative_path, relative_path)
+    if not isinstance(data, dict):
+        return data
+
+    errors = _missing_required_field_errors(relative_path, data, UNIT_REQUIRED_FIELDS)
+    errors.extend(_validate_approval_block(relative_path, data))
+    errors.extend(_validate_chapter_range(relative_path, data.get("chapter_range")))
+    parent_arc = data.get("parent_arc")
+    if parent_arc and not (root / "outlines" / f"{parent_arc}.yaml").exists():
+        errors.append(f"{relative_path}: parent_arc {parent_arc} does not exist.")
+
+    chapter_range = data.get("chapter_range")
+    start = chapter_range.get("start") if isinstance(chapter_range, dict) else None
+    end = chapter_range.get("end") if isinstance(chapter_range, dict) else None
+    chapters = data.get("chapters")
+    if isinstance(chapters, list):
+        for index, chapter in enumerate(chapters, start=1):
+            if not isinstance(chapter, dict):
+                errors.append(f"{relative_path}: chapters[{index}] must be a mapping.")
+                continue
+            chapter_number = chapter.get("chapter")
+            if isinstance(start, int) and isinstance(end, int):
+                if not isinstance(chapter_number, int) or not start <= chapter_number <= end:
+                    errors.append(
+                        f"{relative_path}: chapters[{index}].chapter must fit inside chapter_range."
+                    )
+    elif "chapters" in data:
+        errors.append(f"{relative_path}: chapters must be a list.")
+    return errors
+
+
+def validate_economy(root: Path) -> list[str]:
+    relative_path = "canon/economy.yaml"
+    data = _read_mapping_file(root / relative_path, relative_path)
+    if not isinstance(data, dict):
+        return data
+
+    errors: list[str] = []
+    for field in ("currencies", "price_index", "trade_rules", "locked_constraints"):
+        if not isinstance(data.get(field), list):
+            errors.append(f"{relative_path}: {field} must be a list.")
+    if not isinstance(data.get("real_world_money"), dict):
+        errors.append(f"{relative_path}: real_world_money must be a mapping.")
+    errors.extend(_validate_approval_block(relative_path, data))
+    return errors
+
+
+def validate_factions(root: Path) -> list[str]:
+    relative_path = "canon/factions.yaml"
+    data = _read_mapping_file(root / relative_path, relative_path)
+    if not isinstance(data, dict):
+        return data
+
+    errors: list[str] = []
+    if not isinstance(data.get("factions"), list):
+        errors.append(f"{relative_path}: factions must be a list.")
+    errors.extend(_validate_approval_block(relative_path, data))
+    return errors
+
+
+def _read_mapping_file(path: Path, relative_path: str) -> dict[str, Any] | list[str]:
+    if not path.exists():
+        return []
+    data = _read_yaml_root(path)
+    if not isinstance(data, dict):
+        return [f"{relative_path}: root must be a mapping."]
+    return data
+
+
+def _missing_required_field_errors(
+    relative_path: str,
+    data: dict[str, Any],
+    required_fields: set[str],
+) -> list[str]:
+    return [
+        f"{relative_path}: missing required field {field}."
+        for field in sorted(required_fields)
+        if field not in data
+    ]
+
+
+def _validate_approval_block(relative_path: str, data: dict[str, Any]) -> list[str]:
+    approval = data.get("approval")
+    if not isinstance(approval, dict):
+        return [f"{relative_path}: approval must be a mapping."]
+    if approval.get("status") not in APPROVAL_STATUSES:
+        return [
+            f"{relative_path}: approval.status must be draft, approved, rejected, or superseded."
+        ]
+    return []
+
+
+def _validate_chapter_range(relative_path: str, chapter_range: Any) -> list[str]:
+    if not isinstance(chapter_range, dict):
+        return [f"{relative_path}: chapter_range must be a mapping."]
+    errors: list[str] = []
+    for field in ("start", "end"):
+        if not isinstance(chapter_range.get(field), int):
+            errors.append(f"{relative_path}: chapter_range.{field} must be an integer.")
+    start = chapter_range.get("start")
+    end = chapter_range.get("end")
+    if isinstance(start, int) and isinstance(end, int) and start > end:
+        errors.append(f"{relative_path}: chapter_range.start must be <= end.")
     return errors
 
 
