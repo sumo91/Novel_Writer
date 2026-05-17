@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "score": 87,
+  "issues": [
+    {
+      "type": "outline_gap",
+      "severity": "medium",
+      "evidence": "arc_001 only explicitly plans chapters 1-3, while chapter 4 extends the story into He Sheng's closed-door negotiation.",
+      "suggested_fix": "Record the need for a chapter 4-10 mini-outline or arc_002 planning before producing many more chapters."
+    },
+    {
+      "type": "old_case_material_source",
+      "severity": "medium",
+      "evidence": "Qin Muyu produces a three-year-old contract summary from Lin Zhao's father's case.",
+      "suggested_fix": "Carry this as a pending approval and later explain Qin Muyu's access path through her risk-control investigation."
+    }
+  ],
+  "required_fixes": [],
+  "proposed_state_updates": [
+    "Set current_chapter to 4.",
+    "Set latest_location to 云栖会展中心贵宾室外走廊.",
+    "Record that Lin Zhao refused He Sheng's口径误会 deal and required log preservation.",
+    "Record the追溯确认 clause as a structural similarity between current financing pressure and the old case.",
+    "Carry forward that He Sheng is suspicious but not proven as mastermind."
+  ],
+  "human_approval_needed": [
+    "Confirm whether Qin Muyu can show Lin Zhao a contract summary from his father's old case in chapter 4.",
+    "Confirm whether the追溯确认 clause is approved as the first structural similarity between the current trap and the old case.",
+    "Create or approve a chapter 4-10 mini-outline before continuing too far beyond arc_001."
+  ]
+}

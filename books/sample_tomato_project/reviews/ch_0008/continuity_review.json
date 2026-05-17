@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "score": 91,
+  "issues": [
+    {
+      "type": "old_case_scope",
+      "severity": "medium",
+      "evidence": "The chapter connects Song Qiming to an early Obsidian risk-control list but does not identify him, He Sheng, or Obsidian as the final old-case mastermind.",
+      "suggested_fix": "Keep this as a risk-intersection lead for chapter 9, not as proof of culpability."
+    },
+    {
+      "type": "system_boundary",
+      "severity": "low",
+      "evidence": "Niguang limits itself to verifiable materials: contract summary, permission signoff, retrospective confirmation, and responsibility wording.",
+      "suggested_fix": "Preserve the system limitation in future chapters; it should not generate evidence or predict outcomes."
+    },
+    {
+      "type": "ally_boundary",
+      "severity": "low",
+      "evidence": "Qin Muyu provides source-chain guidance and compliance warnings, but does not become an unconditional personal ally.",
+      "suggested_fix": "Continue framing her support as record-based and risk-based."
+    }
+  ],
+  "required_fixes": [],
+  "proposed_state_updates": [
+    "Set current_chapter to 8.",
+    "Set latest_location to 云栖会展中心发布会法务席.",
+    "Record that Qin Muyu explains the old-case summary source chain through public litigation attachment indexes, creditor meeting summaries, and contract excerpts.",
+    "Record that Lin Zhao verifies the old-case permission signoff came before the retrospective confirmation letter.",
+    "Record that Lin Chengyuan's read-only reconciliation access was later described as operation-confirmation responsibility.",
+    "Record Song Qiming as an old-case handler whose name overlaps with an early Obsidian risk-control list, as a lead only.",
+    "Carry chapter 9 forward toward verifying the authenticity of a risk-control memo tied to project library QY-17."
+  ],
+  "human_approval_needed": [
+    "Confirm Qin Muyu's source path for the old-case summary.",
+    "Confirm Song Qiming as the chapter 9 memo lead.",
+    "Confirm the old case remains a structural risk lead, not a solved mastermind reveal."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "book_id": "sample_tomato_project",
+  "chapter": 8,
+  "status": "prepared",
+  "artifacts": {
+    "context": "pipeline/ch_0008/context.md",
+    "brief": "outlines/chapter_briefs/ch_0008_brief.md",
+    "draft": "drafts/ch_0008_draft.md",
+    "revised": "drafts/ch_0008_revised.md",
+    "continuity_review": "reviews/ch_0008/continuity_review.json",
+    "pacing_review": "reviews/ch_0008/pacing_review.json",
+    "acceptance_packet": "state_updates/ch_0008_acceptance.yaml",
+    "accepted_chapter": "chapters/ch_0008.md"
+  }
+}

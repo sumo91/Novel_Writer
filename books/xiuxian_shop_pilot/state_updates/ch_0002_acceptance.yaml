@@ -1,0 +1,71 @@
+chapter: 2
+title: 一包盐换一块灵石
+source_draft: drafts/ch_0002_revised.md
+accepted_chapter_path: chapters/ch_0002.md
+summary: 陈安站在后门内完成第一笔两界交易，用细盐、打火机和手电筒换到两枚碎灵与黄芽草；许青带走夜明筒后被青石坊巡卫盘问，陈安意识到现代货物既能救命也会惹祸。
+current_state:
+  current_chapter: 2
+  current_arc: arc_001
+  latest_location: ''
+  active_characters: []
+  active_conflicts: []
+  pending_approvals:
+  - 是否沿用书名《我家小卖部通修仙界》。
+  - 是否确认后门规则为每天午夜开启一个时辰。
+  - 是否确认第一交易锚点为细盐和打火机。
+  - 是否确认碎灵作为低阶交易货币单位。
+  - 是否确认手电筒暂命名为夜明筒。
+  - 是否确认许青被巡卫盘问作为第3章入口。
+state_changes:
+- 陈安完成第一笔两界交易：一包细盐、两支打火机、一支手电筒换到两枚碎灵和一束黄芽草。
+- 后门规则进一步明确：午夜开启一个时辰，约两个小时，到时会强制闭合。
+- 许青确认青石坊巡卫会盘查来历不明且没有灵力波动的发光物。
+- 现代货物在修仙界具备交易价值，但手电筒等显眼货物会带来巡卫风险。
+- 陈安开始主动思考批发进货，现实危机与异界交易形成经营闭环。
+open_threads_touched: []
+timeline_event:
+  id: t002
+  when: 第 2 章
+  summary: 陈安站在后门内完成第一笔两界交易，用细盐、打火机和手电筒换到两枚碎灵与黄芽草；许青带走夜明筒后被青石坊巡卫盘问，陈安意识到现代货物既能救命也会惹祸。
+open_thread_updates: []
+change_log:
+  summary: Accepted revised chapter 2 as chapters/ch_0002.md.
+  canon_updates:
+  - timeline:t002
+  pending_approvals:
+  - 是否沿用书名《我家小卖部通修仙界》。
+  - 是否确认后门规则为每天午夜开启一个时辰。
+  - 是否确认第一交易锚点为细盐和打火机。
+  - 是否确认碎灵作为低阶交易货币单位。
+  - 是否确认手电筒暂命名为夜明筒。
+  - 是否确认许青被巡卫盘问作为第3章入口。
+v3_state_updates:
+  timeline:
+    occurred_events:
+    - id: ev_0002_01
+      summary: 陈安站在后门内完成第一笔两界交易，用细盐、打火机和手电筒换到两枚碎灵与黄芽草；许青带走夜明筒后被青石坊巡卫盘问，陈安意识到现代货物既能救命也会惹祸。
+      location: ''
+      involved_characters: []
+      source_chapter: 2
+  character_states: []
+  resource_changes: []
+  open_thread_updates: []
+  payoff_updates:
+  - chapter: 2
+    promises_made: []
+    payoffs_delivered:
+    - 陈安站在后门内完成第一笔两界交易，用细盐、打火机和手电筒换到两枚碎灵与黄芽草；许青带走夜明筒后被青石坊巡卫盘问，陈安意识到现代货物既能救命也会惹祸。
+    frustration_level: controlled
+    payoff_types: []
+    delayed_payoffs: []
+    risks: []
+  conflict_updates:
+    active: []
+  next_hook: {}
+  pending_approvals:
+  - 是否沿用书名《我家小卖部通修仙界》。
+  - 是否确认后门规则为每天午夜开启一个时辰。
+  - 是否确认第一交易锚点为细盐和打火机。
+  - 是否确认碎灵作为低阶交易货币单位。
+  - 是否确认手电筒暂命名为夜明筒。
+  - 是否确认许青被巡卫盘问作为第3章入口。

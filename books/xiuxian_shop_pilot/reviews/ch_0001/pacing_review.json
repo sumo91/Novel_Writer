@@ -1,0 +1,27 @@
+{
+  "score": 90,
+  "dimension_scores": {
+    "hook_strength": 9,
+    "conflict_clarity": 9,
+    "protagonist_agency": 8,
+    "emotional_payoff": 8,
+    "pacing": 9,
+    "character_consistency": 9,
+    "continuity_safety": 9,
+    "chapter_end_pull": 10,
+    "mainline_relevance": 10,
+    "fresh_information_or_expectation": 9
+  },
+  "strengths": [
+    "开局压力清楚：催租、逼卖、低价转让。",
+    "小卖部质感具体，现代货品与修仙交易形成直观爽点。",
+    "章末问题明确：一包盐和打火机能换碎灵。"
+  ],
+  "risks": [
+    "第一章偏铺垫，真正交易爽点留到第二章。",
+    "刘素芬逼卖线需要后续避免脸谱化。",
+    "爷爷旧账本秘密不能过早解释完。"
+  ],
+  "revision_required": false,
+  "waiver_required": false
+}

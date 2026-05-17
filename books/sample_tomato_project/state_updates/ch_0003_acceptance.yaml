@@ -1,0 +1,107 @@
+chapter: 3
+title: 提问上墙
+source_draft: drafts/ch_0003_revised.md
+accepted_chapter_path: chapters/ch_0003.md
+summary: 林照将东澜医药未验收、demo_admin 登录设备和缓存清理请求包装成风控问题投上发布会大屏，迫使周衍暂停发布会；秦暮雨公开要求保全日志，何盛随后要求会后见林照。
+current_state:
+  current_chapter: 3
+  current_arc: arc_001
+  latest_location: 云栖会展中心发布会后台侧门
+  active_characters:
+  - 林照
+  - 秦暮雨
+  - 周衍
+  - 何盛
+  active_conflicts:
+  - 周衍的全部客户真实验收话术已被公开质疑，发布会被迫暂停五分钟
+  - 秦暮雨已公开要求保全后台日志、素材缓存和问题审核链路，林照需要解释自己为何总能找到验证路径
+  - obsidian_capital_he01 将问题标记为资本方风险并转给何盛，但该账号仍只能作为曜石资本相关线索
+  - 何盛要求会后十分钟内见林照
+  pending_approvals:
+  - 逆光系统代价尚未定义；第 3 章出现“信任资源消耗”提示，需人类确认是否作为早期代价方向
+  - 曜石资本复核账号 obsidian_capital_he01 目前只能作为轻微线索，不能直接证明何盛或曜石资本为主谋
+  - 何盛会后约见林照已作为第 4 章入口钩子，需人类确认是否沿用
+state_changes:
+- 林照将证据从后台提交推进到发布会公开场域
+- 周衍无法继续用“系统状态更新延迟”完全压过东澜医药未验收问题
+- 秦暮雨以风控律师身份要求保全问题审核链路、素材缓存链路和演示账号日志
+- 发布会暂停五分钟，周衍第一次在公开场合失去节奏
+- 何盛要求会后十分钟内见林照
+open_threads_touched:
+- thread_001
+- thread_002
+- thread_003
+timeline_event:
+  id: t007
+  when: 第 3 章
+  summary: 林照将三项后台矛盾包装成风控问题投上发布会大屏，迫使周衍暂停发布会；秦暮雨公开要求保全日志，何盛随后要求会后见林照。
+open_thread_updates:
+- id: thread_001
+  type: betrayal
+  status: advanced
+  promise: 周衍如何篡改数据、为何急着赶走林照
+  first_expected_payoff: 第 1-3 章
+  latest_note: 第 3 章完成前三章公开打脸：东澜医药未验收、demo_admin 登录设备和缓存清理请求进入发布会大屏，周衍被迫暂停发布会。
+- id: thread_002
+  type: system
+  status: advanced
+  promise: 逆光系统的触发条件和代价
+  first_expected_payoff: 第 1 章
+  latest_note: 第 3 章继续限制为提示可验证矛盾；首次出现“信任资源消耗”代价提示，但仍需人类确认。
+- id: thread_003
+  type: long_arc
+  status: advanced
+  promise: 曜石资本与林照父亲旧案的关系
+  first_expected_payoff: 第 8-15 章
+  latest_note: 第 3 章 obsidian_capital_he01 将问题标记为资本方风险并转何盛，何盛要求会后见林照；该线索仍不能证明主谋身份。
+quality_gate:
+  continuity_passed: true
+  continuity_blockers: []
+  initial_pacing_score: 90
+  revised_pacing_score: null
+  revision_required: false
+  waiver:
+    required: false
+    type: null
+    reason: null
+    approved_by: human
+change_log:
+  summary: Accepted revised chapter 3 as chapters/ch_0003.md after V2.5 quality gate
+    review.
+  canon_updates:
+  - timeline:t007
+  - open_threads:thread_001 advanced
+  - open_threads:thread_002 advanced
+  - open_threads:thread_003 advanced
+  - quality_gate:chapter_0003 passed with pacing score 90 and no continuity blockers
+  pending_approvals:
+  - 逆光系统代价尚未定义；第 3 章出现“信任资源消耗”提示，需人类确认是否作为早期代价方向
+  - 曜石资本复核账号 obsidian_capital_he01 目前只能作为轻微线索，不能直接证明何盛或曜石资本为主谋
+  - 何盛会后约见林照已作为第 4 章入口钩子，需人类确认是否沿用
+v3_state_updates:
+  timeline:
+    occurred_events:
+    - id: ev_0003_01
+      summary: 林照将东澜医药未验收、demo_admin 登录设备和缓存清理请求包装成风控问题投上发布会大屏，迫使周衍暂停发布会；秦暮雨公开要求保全日志，何盛随后要求会后见林照。
+      location: ''
+      involved_characters: []
+      source_chapter: 3
+  character_states: []
+  resource_changes: []
+  open_thread_updates: []
+  payoff_updates:
+  - chapter: 3
+    promises_made: []
+    payoffs_delivered:
+    - 林照将东澜医药未验收、demo_admin 登录设备和缓存清理请求包装成风控问题投上发布会大屏，迫使周衍暂停发布会；秦暮雨公开要求保全日志，何盛随后要求会后见林照。
+    frustration_level: controlled
+    payoff_types: []
+    delayed_payoffs: []
+    risks: []
+  conflict_updates:
+    active: []
+  next_hook: {}
+  pending_approvals:
+  - 逆光系统代价尚未定义；第 3 章出现“信任资源消耗”提示，需人类确认是否作为早期代价方向
+  - 曜石资本复核账号 obsidian_capital_he01 目前只能作为轻微线索，不能直接证明何盛或曜石资本为主谋
+  - 何盛会后约见林照已作为第 4 章入口钩子，需人类确认是否沿用

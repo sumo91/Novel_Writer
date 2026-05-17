@@ -1,0 +1,116 @@
+chapter: 5
+title: 验收改口
+source_draft: drafts/ch_0005_revised.md
+accepted_chapter_path: chapters/ch_0005.md
+summary: 发布会恢复后，星阈试图用东澜医药补充说明将未验收问题改口为业务侧基本完成；林照通过版本记录和签署时间证明补充说明创建于发布会暂停后，并让东澜代表承认发布会前未签正式验收。
+current_state:
+  current_chapter: 5
+  current_arc: arc_001
+  latest_location: 云栖会展中心发布会侧门与法务席
+  active_characters:
+  - 林照
+  - 秦暮雨
+  - 周衍
+  - 何盛
+  active_conflicts:
+  - 东澜医药补充说明被证明创建于发布会暂停后，不能证明发布会前已完成验收
+  - 东澜代表公开承认发布会开始前尚未签署正式验收确认
+  - legal_temp_02 上传了东澜补充说明文件，需要与 ops_temp_07 缓存清理账号区分追踪
+  - 秦暮雨收到疑似东澜真实项目负责人的私信，称“不是我们想改”，但发送者身份尚未验证
+  pending_approvals:
+  - 逆光系统代价尚未定义；第 3 章出现“信任资源消耗”提示，需人类确认是否作为早期代价方向
+  - 曜石资本复核账号 obsidian_capital_he01 目前只能作为轻微线索，不能直接证明何盛或曜石资本为主谋
+  - 秦暮雨能够展示林照父亲旧案合同摘要的来源路径，需要后续解释
+  - “追溯确认”已作为当前融资局与三年前旧案的第一条结构性相似线索，需人类确认
+  - legal_temp_02 是否作为客户说明上传账号线索继续追踪，需人类确认
+  - 东澜真实项目负责人私信可作为第 6 章入口，但需先验证身份，不能直接当作证据
+state_changes:
+- 发布会恢复后，星阈以东澜医药补充说明试图将未验收问题改口为业务侧基本完成
+- 林照通过版本记录、创建时间和签署时间栏证明补充说明创建于发布会暂停后
+- 东澜代表公开承认发布会开始前未签署正式验收确认
+- 秦暮雨要求保全补充说明的版本记录、上传路径和沟通记录
+- 秦暮雨收到疑似东澜真实项目负责人的私信，提示改口存在外部压力
+open_threads_touched:
+- thread_001
+- thread_002
+- thread_003
+timeline_event:
+  id: t009
+  when: 第 5 章
+  summary: 发布会恢复后，林照拆穿东澜补充说明的时间矛盾，让东澜代表承认发布会前未签正式验收；秦暮雨随后收到疑似东澜真实项目负责人关于被迫改口的私信。
+open_thread_updates:
+- id: thread_001
+  type: betrayal
+  status: advanced
+  promise: 周衍如何篡改数据、为何急着赶走林照
+  first_expected_payoff: 第 1-3 章
+  latest_note: 第 5 章周衍试图用东澜补充说明覆盖未验收事实，但林照用版本时间和正式验收问题拆穿改口。
+- id: thread_002
+  type: system
+  status: advanced
+  promise: 逆光系统的触发条件和代价
+  first_expected_payoff: 第 1 章
+  latest_note: 第 5 章逆光提示状态说明话术偏移、签署时间和版本记录矛盾；仍不生成证据。
+- id: thread_003
+  type: long_arc
+  status: advanced
+  promise: 曜石资本与林照父亲旧案的关系
+  first_expected_payoff: 第 8-15 章
+  latest_note: 第 5 章客户改口压力链露出，但东澜私信和 legal_temp_02 仍需后续验证，不能直接证明何盛或曜石资本主谋身份。
+quality_gate:
+  continuity_passed: true
+  continuity_blockers: []
+  initial_pacing_score: 91
+  revised_pacing_score: null
+  revision_required: false
+  waiver:
+    required: false
+    type: null
+    reason: null
+    approved_by: human
+change_log:
+  summary: Accepted revised chapter 5 as chapters/ch_0005.md after V2.5 quality gate
+    review.
+  canon_updates:
+  - timeline:t009
+  - open_threads:thread_001 advanced
+  - open_threads:thread_002 advanced
+  - open_threads:thread_003 advanced
+  - quality_gate:chapter_0005 passed with pacing score 91 and no continuity blockers
+  pending_approvals:
+  - 逆光系统代价尚未定义；第 3 章出现“信任资源消耗”提示，需人类确认是否作为早期代价方向
+  - 曜石资本复核账号 obsidian_capital_he01 目前只能作为轻微线索，不能直接证明何盛或曜石资本为主谋
+  - 秦暮雨能够展示林照父亲旧案合同摘要的来源路径，需要后续解释
+  - “追溯确认”已作为当前融资局与三年前旧案的第一条结构性相似线索，需人类确认
+  - legal_temp_02 是否作为客户说明上传账号线索继续追踪，需人类确认
+  - 东澜真实项目负责人私信可作为第 6 章入口，但需先验证身份，不能直接当作证据
+v3_state_updates:
+  timeline:
+    occurred_events:
+    - id: ev_0005_01
+      summary: 发布会恢复后，星阈试图用东澜医药补充说明将未验收问题改口为业务侧基本完成；林照通过版本记录和签署时间证明补充说明创建于发布会暂停后，并让东澜代表承认发布会前未签正式验收。
+      location: ''
+      involved_characters: []
+      source_chapter: 5
+  character_states: []
+  resource_changes: []
+  open_thread_updates: []
+  payoff_updates:
+  - chapter: 5
+    promises_made: []
+    payoffs_delivered:
+    - 发布会恢复后，星阈试图用东澜医药补充说明将未验收问题改口为业务侧基本完成；林照通过版本记录和签署时间证明补充说明创建于发布会暂停后，并让东澜代表承认发布会前未签正式验收。
+    frustration_level: controlled
+    payoff_types: []
+    delayed_payoffs: []
+    risks: []
+  conflict_updates:
+    active: []
+  next_hook: {}
+  pending_approvals:
+  - 逆光系统代价尚未定义；第 3 章出现“信任资源消耗”提示，需人类确认是否作为早期代价方向
+  - 曜石资本复核账号 obsidian_capital_he01 目前只能作为轻微线索，不能直接证明何盛或曜石资本为主谋
+  - 秦暮雨能够展示林照父亲旧案合同摘要的来源路径，需要后续解释
+  - “追溯确认”已作为当前融资局与三年前旧案的第一条结构性相似线索，需人类确认
+  - legal_temp_02 是否作为客户说明上传账号线索继续追踪，需人类确认
+  - 东澜真实项目负责人私信可作为第 6 章入口，但需先验证身份，不能直接当作证据

@@ -1,0 +1,120 @@
+chapter: 6
+title: 临时账号
+source_draft: drafts/ch_0006_revised.md
+accepted_chapter_path: chapters/ch_0006.md
+summary: 星阈试图把缓存清理和东澜补充说明归责给临时账号；林照和秦暮雨核验权限申请链，发现 ops_temp_07 与 legal_temp_02 都经过
+  event_control_review 二次审批，周衍随即转向指控林照违规接触后台。
+current_state:
+  current_chapter: 6
+  current_arc: arc_001
+  latest_location: 云栖会展中心发布会法务席
+  active_characters:
+  - 林照
+  - 秦暮雨
+  - 周衍
+  - 何盛
+  active_conflicts:
+  - ops_temp_07 的缓存清理权限和 legal_temp_02 的客户说明上传权限都经过 event_control_review 二次审批
+  - event_control_review 目前只是中间审批节点，不能直接等同于曜石资本或何盛
+  - 周衍正在准备“林照违规接触发布会后台”的情况说明，试图攻击证据合法性
+  - 第 7 章需要围绕只读权限记录、秦暮雨录音授权和操作日志差异应对反咬
+  pending_approvals:
+  - 逆光系统代价尚未定义；第 3 章出现“信任资源消耗”提示，需人类确认是否作为早期代价方向
+  - 曜石资本复核账号 obsidian_capital_he01 目前只能作为轻微线索，不能直接证明何盛或曜石资本为主谋
+  - 秦暮雨能够展示林照父亲旧案合同摘要的来源路径，需要后续解释
+  - “追溯确认”已作为当前融资局与三年前旧案的第一条结构性相似线索，需人类确认
+  - event_control_review 是否作为发布会控制中间审批节点继续追踪，需人类确认
+  - 第 7 章是否聚焦“权限违规反咬”，需人类确认
+state_changes:
+- 星阈试图把缓存清理归责给 ops_temp_07 临时运维账号
+- 星阈试图把东澜补充说明上传归责给 legal_temp_02 临时法务账号
+- 林照和秦暮雨发现两个临时账号都经过 event_control_review 二次审批
+- ops_temp_07 的二次审批时间早于周衍公开“全部客户真实验收”话术
+- legal_temp_02 的二审备注为“与披露口径保持一致”
+- 周衍开始准备关于林照违规接触发布会后台的情况说明
+open_threads_touched:
+- thread_001
+- thread_002
+- thread_003
+timeline_event:
+  id: t010
+  when: 第 6 章
+  summary: 林照拆穿临时账号背锅逻辑，发现 ops_temp_07 与 legal_temp_02 都经过 event_control_review 二次审批；周衍转向指控林照违规接触后台。
+open_thread_updates:
+- id: thread_001
+  type: betrayal
+  status: advanced
+  promise: 周衍如何篡改数据、为何急着赶走林照
+  first_expected_payoff: 第 1-3 章
+  latest_note: 第 6 章临时账号背锅被拆穿，缓存清理和客户说明上传都被推进到 event_control_review 二次审批节点。
+- id: thread_002
+  type: system
+  status: advanced
+  promise: 逆光系统的触发条件和代价
+  first_expected_payoff: 第 1 章
+  latest_note: 第 6 章逆光提示临时账号归责话术和证据合法性攻击路径，仍只提供可验证方向。
+- id: thread_003
+  type: long_arc
+  status: advanced
+  promise: 曜石资本与林照父亲旧案的关系
+  first_expected_payoff: 第 8-15 章
+  latest_note: 第 6 章出现 event_control_review 中间审批节点，但它仍不能直接证明何盛或曜石资本为最终操盘者。
+quality_gate:
+  continuity_passed: true
+  continuity_blockers: []
+  initial_pacing_score: 89
+  revised_pacing_score: null
+  revision_required: false
+  waiver:
+    required: false
+    type: null
+    reason: null
+    approved_by: human
+change_log:
+  summary: Accepted revised chapter 6 as chapters/ch_0006.md after V2.5 quality gate
+    review.
+  canon_updates:
+  - timeline:t010
+  - open_threads:thread_001 advanced
+  - open_threads:thread_002 advanced
+  - open_threads:thread_003 advanced
+  - quality_gate:chapter_0006 passed with pacing score 89 and no continuity blockers
+  pending_approvals:
+  - 逆光系统代价尚未定义；第 3 章出现“信任资源消耗”提示，需人类确认是否作为早期代价方向
+  - 曜石资本复核账号 obsidian_capital_he01 目前只能作为轻微线索，不能直接证明何盛或曜石资本为主谋
+  - 秦暮雨能够展示林照父亲旧案合同摘要的来源路径，需要后续解释
+  - “追溯确认”已作为当前融资局与三年前旧案的第一条结构性相似线索，需人类确认
+  - event_control_review 是否作为发布会控制中间审批节点继续追踪，需人类确认
+  - 第 7 章是否聚焦“权限违规反咬”，需人类确认
+v3_state_updates:
+  timeline:
+    occurred_events:
+    - id: ev_0006_01
+      summary: 星阈试图把缓存清理和东澜补充说明归责给临时账号；林照和秦暮雨核验权限申请链，发现 ops_temp_07 与 legal_temp_02
+        都经过 event_control_review 二次审批，周衍随即转向指控林照违规接触后台。
+      location: ''
+      involved_characters: []
+      source_chapter: 6
+  character_states: []
+  resource_changes: []
+  open_thread_updates: []
+  payoff_updates:
+  - chapter: 6
+    promises_made: []
+    payoffs_delivered:
+    - 星阈试图把缓存清理和东澜补充说明归责给临时账号；林照和秦暮雨核验权限申请链，发现 ops_temp_07 与 legal_temp_02 都经过 event_control_review
+      二次审批，周衍随即转向指控林照违规接触后台。
+    frustration_level: controlled
+    payoff_types: []
+    delayed_payoffs: []
+    risks: []
+  conflict_updates:
+    active: []
+  next_hook: {}
+  pending_approvals:
+  - 逆光系统代价尚未定义；第 3 章出现“信任资源消耗”提示，需人类确认是否作为早期代价方向
+  - 曜石资本复核账号 obsidian_capital_he01 目前只能作为轻微线索，不能直接证明何盛或曜石资本为主谋
+  - 秦暮雨能够展示林照父亲旧案合同摘要的来源路径，需要后续解释
+  - “追溯确认”已作为当前融资局与三年前旧案的第一条结构性相似线索，需人类确认
+  - event_control_review 是否作为发布会控制中间审批节点继续追踪，需人类确认
+  - 第 7 章是否聚焦“权限违规反咬”，需人类确认

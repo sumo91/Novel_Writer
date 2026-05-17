@@ -1,0 +1,128 @@
+chapter: 10
+title: 临时听证
+source_draft: drafts/ch_0010_revised.md
+accepted_chapter_path: chapters/ch_0010.md
+summary: 林照在董事会临时听证中按证据链提交发布会事故、权限合法性和责任模板风险三组材料，保住证据链、核心产品署名权和独立审计入口；何盛承认 R-03 早于自己进入曜石，模板源头指向
+  CP-L-02，听证后林照收到宋启明与 CP-L-02 archive gate 的匿名消息。
+current_state:
+  current_chapter: 10
+  current_arc: arc_001
+  latest_location: 云栖会展中心董事会临时听证室
+  active_characters:
+  - 林照
+  - 秦暮雨
+  - 周衍
+  - 何盛
+  active_conflicts:
+  - 林照通过董事会临时听证保住证据链、核心产品署名权和独立审计入口，暂时摆脱被周衍单方处理的局面
+  - 周衍失去对发布会事故日志、权限申请链和审计入口的完全控场权，但尚未彻底倒台
+  - 何盛承认 R-03 模板早于自己进入曜石，证明他不是唯一源头，但仍是知情且可疑的较晚复核人
+  - R-03、QY-17 与 CP-L-02 进入独立审计范围，CP-L-02 成为下一阶段资本项目库长线入口
+  - 林照收到匿名消息：宋启明还活着，且 CP-L-02 archive gate 可查
+  pending_approvals:
+  - 逆光系统代价尚未定义；第 3 章出现“信任资源消耗”提示，需人类确认是否作为早期代价方向
+  - 曜石资本复核账号 obsidian_capital_he01 目前只能作为轻微线索，不能直接证明何盛或曜石资本为主谋
+  - event_control_review 是否作为发布会控制中间审批节点继续追踪，需人类确认
+  - 秦暮雨仍是风险共同体盟友，不是无条件私人盟友，需持续确认边界
+  - CP-L-02 作为早于何盛的长期资本项目库钩子，需人类确认
+  - 宋启明仍然存活且不在现有名单里的匿名消息，需人类确认是否作为下一阶段主线入口
+  - 第 10 章阶段性结论为保住证据链、署名权和独立审计入口，不彻底扳倒周衍，需人类确认
+state_changes:
+- 林照在董事会临时听证中按证据链提交发布会事故、权限合法性和责任模板风险三组材料
+- 林照用东澜未验收、demo_admin 设备、缓存清理、东澜补充说明时间和临时账号权限链证明发布会事故不能简单归为流程误差
+- 林照与秦暮雨用只读权限、录音授权和操作日志证明证据链暂不可排除
+- 林照要求保留核心产品署名权，并要求 R-03、QY-17、CP-L-02 进入独立审计范围
+- 董事会暂停执行针对林照的离职责任文件，保留其核心产品署名权，并设立独立审计入口
+- 周衍失去对日志和审计入口的单方控制权，但仍保留后续反扑空间
+- 何盛承认 R-03 模板早于自己进入曜石，证明他不是模板唯一源头，但仍与归档复核相关
+- 林照收到匿名消息，提示宋启明还活着，并附上 CP-L-02 archive gate
+open_threads_touched:
+- thread_001
+- thread_002
+- thread_003
+timeline_event:
+  id: t014
+  when: 第 10 章
+  summary: 林照在董事会临时听证中提交发布会事故、权限合法性和责任模板风险三组证据，保住证据链、核心产品署名权和独立审计入口；何盛承认 R-03 早于自己进入曜石，模板源头指向
+    CP-L-02，听证后林照收到宋启明与 CP-L-02 archive gate 的匿名消息。
+open_thread_updates:
+- id: thread_001
+  type: betrayal
+  status: advanced
+  promise: 周衍如何篡改数据、为何急着赶走林照
+  first_expected_payoff: 第 1-3 章
+  latest_note: 第 10 章周衍在董事会临时听证中失去对日志、审计入口和林照责任处理的完全控场权，但仍未彻底倒台，后续可继续反扑。
+- id: thread_002
+  type: system
+  status: advanced
+  promise: 逆光系统的触发条件和代价
+  first_expected_payoff: 第 1 章
+  latest_note: 第 10 章逆光继续只提示听证可验证路径，并将代价推进为授权人风险持续上升、证据链公开后反制窗口缩短和信任资源消耗。
+- id: thread_003
+  type: long_arc
+  status: advanced
+  promise: 曜石资本与林照父亲旧案的关系
+  first_expected_payoff: 第 8-15 章
+  latest_note: 第 10 章确认何盛不是 R-03 模板唯一源头，CP-L-02 成为更早资本项目库入口；宋启明仍然存活的匿名消息将旧案线推入下一阶段。
+quality_gate:
+  continuity_passed: true
+  continuity_blockers: []
+  initial_pacing_score: 93
+  revised_pacing_score: null
+  revision_required: false
+  waiver:
+    required: false
+    type: null
+    reason: null
+    approved_by: human
+change_log:
+  summary: Accepted revised chapter 10 as chapters/ch_0010.md after V2.5 quality gate
+    review; this completes the chapter 1-10 drift-test acceptance target.
+  canon_updates:
+  - timeline:t014
+  - open_threads:thread_001 advanced
+  - open_threads:thread_002 advanced
+  - open_threads:thread_003 advanced
+  - quality_gate:chapter_0010 passed with pacing score 93 and no continuity blockers
+  - v2_5_drift_test:chapter_0010 accepted
+  pending_approvals:
+  - 逆光系统代价尚未定义；第 3 章出现“信任资源消耗”提示，需人类确认是否作为早期代价方向
+  - 曜石资本复核账号 obsidian_capital_he01 目前只能作为轻微线索，不能直接证明何盛或曜石资本为主谋
+  - event_control_review 是否作为发布会控制中间审批节点继续追踪，需人类确认
+  - 秦暮雨仍是风险共同体盟友，不是无条件私人盟友，需持续确认边界
+  - CP-L-02 作为早于何盛的长期资本项目库钩子，需人类确认
+  - 宋启明仍然存活且不在现有名单里的匿名消息，需人类确认是否作为下一阶段主线入口
+  - 第 10 章阶段性结论为保住证据链、署名权和独立审计入口，不彻底扳倒周衍，需人类确认
+v3_state_updates:
+  timeline:
+    occurred_events:
+    - id: ev_0010_01
+      summary: 林照在董事会临时听证中按证据链提交发布会事故、权限合法性和责任模板风险三组材料，保住证据链、核心产品署名权和独立审计入口；何盛承认 R-03
+        早于自己进入曜石，模板源头指向 CP-L-02，听证后林照收到宋启明与 CP-L-02 archive gate 的匿名消息。
+      location: ''
+      involved_characters: []
+      source_chapter: 10
+  character_states: []
+  resource_changes: []
+  open_thread_updates: []
+  payoff_updates:
+  - chapter: 10
+    promises_made: []
+    payoffs_delivered:
+    - 林照在董事会临时听证中按证据链提交发布会事故、权限合法性和责任模板风险三组材料，保住证据链、核心产品署名权和独立审计入口；何盛承认 R-03 早于自己进入曜石，模板源头指向
+      CP-L-02，听证后林照收到宋启明与 CP-L-02 archive gate 的匿名消息。
+    frustration_level: controlled
+    payoff_types: []
+    delayed_payoffs: []
+    risks: []
+  conflict_updates:
+    active: []
+  next_hook: {}
+  pending_approvals:
+  - 逆光系统代价尚未定义；第 3 章出现“信任资源消耗”提示，需人类确认是否作为早期代价方向
+  - 曜石资本复核账号 obsidian_capital_he01 目前只能作为轻微线索，不能直接证明何盛或曜石资本为主谋
+  - event_control_review 是否作为发布会控制中间审批节点继续追踪，需人类确认
+  - 秦暮雨仍是风险共同体盟友，不是无条件私人盟友，需持续确认边界
+  - CP-L-02 作为早于何盛的长期资本项目库钩子，需人类确认
+  - 宋启明仍然存活且不在现有名单里的匿名消息，需人类确认是否作为下一阶段主线入口
+  - 第 10 章阶段性结论为保住证据链、署名权和独立审计入口，不彻底扳倒周衍，需人类确认

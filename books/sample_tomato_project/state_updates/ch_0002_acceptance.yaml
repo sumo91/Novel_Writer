@@ -1,53 +1,81 @@
 chapter: 2
-title: "十分钟"
-source_draft: "drafts/ch_0002_revised.md"
-accepted_chapter_path: "chapters/ch_0002.md"
-summary: "林照用秦暮雨给的十分钟只读权限继续验证数据。东澜医药未完成验收，演示账号最后登录设备显示为 Zhou-Yan-MacBook，后台正在排队清理缓存。林照没有冲上台，而是把证据投进发布会提问审核通道，并发现复核账号疑似关联曜石资本。"
+title: 十分钟
+source_draft: drafts/ch_0002_revised.md
+accepted_chapter_path: chapters/ch_0002.md
+summary: 林照用秦暮雨给的十分钟只读权限继续验证数据。东澜医药未完成验收，演示账号最后登录设备显示为 Zhou-Yan-MacBook，后台正在排队清理缓存。林照没有冲上台，而是把证据投进发布会提问审核通道，并发现复核账号疑似关联曜石资本。
 current_state:
-  current_arc: "arc_001"
-  latest_location: "云栖会展中心后台提问审核通道"
+  current_chapter: 2
+  current_arc: arc_001
+  latest_location: 云栖会展中心后台提问审核通道
   active_characters:
-  - "林照"
-  - "秦暮雨"
-  - "周衍"
+  - 林照
+  - 秦暮雨
+  - 周衍
   active_conflicts:
-  - "林照已掌握客户未验收、演示账号登录设备、缓存清理请求三项矛盾，需要让证据进入发布会公开场域"
-  - "周衍正在台上继续扩大真实验收承诺"
-  - "提问审核通道疑似受到曜石资本相关账号控制"
+  - 林照已掌握客户未验收、演示账号登录设备、缓存清理请求三项矛盾，需要让证据进入发布会公开场域
+  - 周衍正在台上继续扩大真实验收承诺
+  - 提问审核通道疑似受到曜石资本相关账号控制
   pending_approvals:
-  - "逆光系统代价尚未定义，后续章节需要补充"
-  - "曜石资本复核账号 obsidian_capital_he01 目前只能作为轻微线索，不能直接证明主谋"
+  - 逆光系统代价尚未定义，后续章节需要补充
+  - 曜石资本复核账号 obsidian_capital_he01 目前只能作为轻微线索，不能直接证明主谋
 state_changes:
-- "林照确认东澜医药验收状态为未完成。"
-- "林照发现 demo_admin 最后登录设备为 Zhou-Yan-MacBook。"
-- "林照发现发布会控制台正在排队清理演示缓存。"
-- "林照将第一组证据提交进提问审核通道。"
-- "曜石资本相关复核账号 obsidian_capital_he01 首次露出。"
+- 林照确认东澜医药验收状态为未完成。
+- 林照发现 demo_admin 最后登录设备为 Zhou-Yan-MacBook。
+- 林照发现发布会控制台正在排队清理演示缓存。
+- 林照将第一组证据提交进提问审核通道。
+- 曜石资本相关复核账号 obsidian_capital_he01 首次露出。
 open_threads_touched:
-- "thread_001"
-- "thread_002"
-- "thread_003"
+- thread_001
+- thread_002
+- thread_003
 timeline_event:
-  id: "t006"
-  when: "第 2 章"
-  summary: "林照在十分钟只读权限内确认客户未验收、演示账号登录设备异常和缓存清理请求，并将证据提交到发布会提问审核通道。"
+  id: t006
+  when: 第 2 章
+  summary: 林照在十分钟只读权限内确认客户未验收、演示账号登录设备异常和缓存清理请求，并将证据提交到发布会提问审核通道。
 open_thread_updates:
-- id: "thread_001"
-  status: "advanced"
-  latest_note: "第 2 章推进证据链：东澜医药未验收，demo_admin 最后登录设备为 Zhou-Yan-MacBook，缓存清理请求正在发生。"
-- id: "thread_002"
-  status: "advanced"
-  latest_note: "第 2 章继续展示逆光只能提示验证路径和风险，证据仍需林照在后台系统中查找。"
-- id: "thread_003"
-  status: "teased"
-  latest_note: "第 2 章出现疑似曜石资本关联的复核账号 obsidian_capital_he01，但尚不能证明其为幕后主谋。"
+- id: thread_001
+  status: advanced
+  latest_note: 第 2 章推进证据链：东澜医药未验收，demo_admin 最后登录设备为 Zhou-Yan-MacBook，缓存清理请求正在发生。
+- id: thread_002
+  status: advanced
+  latest_note: 第 2 章继续展示逆光只能提示验证路径和风险，证据仍需林照在后台系统中查找。
+- id: thread_003
+  status: teased
+  latest_note: 第 2 章出现疑似曜石资本关联的复核账号 obsidian_capital_he01，但尚不能证明其为幕后主谋。
 change_log:
-  summary: "Accepted revised chapter 2 as chapters/ch_0002.md through acceptance packet workflow."
+  summary: Accepted revised chapter 2 as chapters/ch_0002.md through acceptance packet
+    workflow.
   canon_updates:
-  - "timeline:t006"
-  - "open_threads:thread_001 advanced"
-  - "open_threads:thread_002 advanced"
-  - "open_threads:thread_003 teased"
+  - timeline:t006
+  - open_threads:thread_001 advanced
+  - open_threads:thread_002 advanced
+  - open_threads:thread_003 teased
   pending_approvals:
-  - "Define the cost or limitation of the 逆光 system in later chapters."
-  - "Keep曜石资本账号 as a clue until a later evidence payoff."
+  - Define the cost or limitation of the 逆光 system in later chapters.
+  - Keep曜石资本账号 as a clue until a later evidence payoff.
+v3_state_updates:
+  timeline:
+    occurred_events:
+    - id: ev_0002_01
+      summary: 林照用秦暮雨给的十分钟只读权限继续验证数据。东澜医药未完成验收，演示账号最后登录设备显示为 Zhou-Yan-MacBook，后台正在排队清理缓存。林照没有冲上台，而是把证据投进发布会提问审核通道，并发现复核账号疑似关联曜石资本。
+      location: ''
+      involved_characters: []
+      source_chapter: 2
+  character_states: []
+  resource_changes: []
+  open_thread_updates: []
+  payoff_updates:
+  - chapter: 2
+    promises_made: []
+    payoffs_delivered:
+    - 林照用秦暮雨给的十分钟只读权限继续验证数据。东澜医药未完成验收，演示账号最后登录设备显示为 Zhou-Yan-MacBook，后台正在排队清理缓存。林照没有冲上台，而是把证据投进发布会提问审核通道，并发现复核账号疑似关联曜石资本。
+    frustration_level: controlled
+    payoff_types: []
+    delayed_payoffs: []
+    risks: []
+  conflict_updates:
+    active: []
+  next_hook: {}
+  pending_approvals:
+  - 逆光系统代价尚未定义，后续章节需要补充
+  - 曜石资本复核账号 obsidian_capital_he01 目前只能作为轻微线索，不能直接证明主谋

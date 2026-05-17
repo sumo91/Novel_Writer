@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "score": 88,
+  "issues": [
+    {
+      "type": "system_cost_hint",
+      "severity": "medium",
+      "evidence": "Draft introduces '代价提示：信任资源消耗' as an early system cost direction.",
+      "suggested_fix": "Keep it as a pending approval rather than durable canon until the human confirms the system cost."
+    },
+    {
+      "type": "capital_thread_escalation",
+      "severity": "low",
+      "evidence": "obsidian_capital_he01 forwards the issue to He Sheng, and He Sheng asks to meet Lin Zhao.",
+      "suggested_fix": "Record this as a suspicious capital-side escalation, not proof that He Sheng is the mastermind."
+    }
+  ],
+  "required_fixes": [],
+  "proposed_state_updates": [
+    "Set current_chapter to 3.",
+    "Set latest_location to 云栖会展中心发布会后台侧门.",
+    "Record that the product launch was paused after public questions surfaced.",
+    "Carry forward pending approval for the system cost direction.",
+    "Carry forward that obsidian_capital_he01 remains suspicious but not conclusive."
+  ],
+  "human_approval_needed": [
+    "Confirm whether '信任资源消耗' can become the early direction for the 逆光 system cost.",
+    "Confirm whether He Sheng's meeting request should become the chapter 4 entry hook."
+  ]
+}

@@ -4,16 +4,43 @@ threads:
   status: advanced
   promise: 周衍如何篡改数据、为何急着赶走林照
   first_expected_payoff: 第 1-3 章
-  latest_note: 第 2 章推进证据链：东澜医药未验收，demo_admin 最后登录设备为 Zhou-Yan-MacBook，缓存清理请求正在发生。
+  latest_note: 第 10 章周衍在董事会临时听证中失去对日志、审计入口和林照责任处理的完全控场权，但仍未彻底倒台，后续可继续反扑。
+  source_chapter: 0
+  last_touched: 0
+  next_obligation: Legacy migration needs human review.
+  payoff_deadline: ''
+  risk_if_ignored: Legacy migration needs human review.
+  related_characters: []
+  related_locations: []
+  payoff_chapter: ''
+  notes: []
 - id: thread_002
   type: system
   status: advanced
   promise: 逆光系统的触发条件和代价
   first_expected_payoff: 第 1 章
-  latest_note: 第 2 章继续展示逆光只能提示验证路径和风险，证据仍需林照在后台系统中查找。
+  latest_note: 第 10 章逆光继续只提示听证可验证路径，并将代价推进为授权人风险持续上升、证据链公开后反制窗口缩短和信任资源消耗。
+  source_chapter: 0
+  last_touched: 0
+  next_obligation: Legacy migration needs human review.
+  payoff_deadline: ''
+  risk_if_ignored: Legacy migration needs human review.
+  related_characters: []
+  related_locations: []
+  payoff_chapter: ''
+  notes: []
 - id: thread_003
   type: long_arc
-  status: teased
+  status: advanced
   promise: 曜石资本与林照父亲旧案的关系
   first_expected_payoff: 第 8-15 章
-  latest_note: 第 2 章出现疑似曜石资本关联的复核账号 obsidian_capital_he01，但尚不能证明其为幕后主谋。
+  latest_note: 第 10 章确认何盛不是 R-03 模板唯一源头，CP-L-02 成为更早资本项目库入口；宋启明仍然存活的匿名消息将旧案线推入下一阶段。
+  source_chapter: 0
+  last_touched: 0
+  next_obligation: Legacy migration needs human review.
+  payoff_deadline: ''
+  risk_if_ignored: Legacy migration needs human review.
+  related_characters: []
+  related_locations: []
+  payoff_chapter: ''
+  notes: []

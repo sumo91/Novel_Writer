@@ -1,0 +1,15 @@
+{
+  "book_id": "xiuxian_shop_pilot",
+  "chapter": 1,
+  "status": "prepared",
+  "artifacts": {
+    "context": "pipeline/ch_0001/context.md",
+    "brief": "outlines/chapter_briefs/ch_0001_brief.md",
+    "draft": "drafts/ch_0001_draft.md",
+    "revised": "drafts/ch_0001_revised.md",
+    "continuity_review": "reviews/ch_0001/continuity_review.json",
+    "pacing_review": "reviews/ch_0001/pacing_review.json",
+    "acceptance_packet": "state_updates/ch_0001_acceptance.yaml",
+    "accepted_chapter": "chapters/ch_0001.md"
+  }
+}

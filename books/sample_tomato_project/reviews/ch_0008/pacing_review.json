@@ -1,0 +1,35 @@
+{
+  "score": 91,
+  "dimension_scores": {
+    "hook_strength": 9,
+    "conflict_clarity": 9,
+    "protagonist_agency": 9,
+    "emotional_payoff": 9,
+    "pacing": 9,
+    "character_consistency": 9,
+    "continuity_safety": 10,
+    "chapter_end_pull": 9,
+    "mainline_relevance": 9,
+    "fresh_information_or_expectation": 9
+  },
+  "strengths": [
+    "The chapter opens with public pressure still active, preventing the old-case investigation from feeling detached from the release-event mainline.",
+    "Lin Zhao's choice to verify the source chain before believing the material gives him strong agency and emotional restraint.",
+    "The old case becomes a concrete commercial structure: read-only access, retrospective confirmation, responsibility wording, and handler overlap.",
+    "The ending points cleanly to chapter 9's risk-control memo without over-solving the long arc."
+  ],
+  "issues": [
+    "The chapter is document-heavy, so future revisions should keep dialogue pressure sharp.",
+    "Song Qiming's reveal must remain a lead; overstating it would collapse the long arc too early."
+  ],
+  "revision_priorities": [
+    "Keep the source-chain verification in the final accepted draft.",
+    "Keep the system boundary explicit: Niguang can identify verifiable contradictions but cannot name the mastermind.",
+    "Use the QY-17 memo as chapter 9's next verification object."
+  ],
+  "human_approval_needed": [
+    "Approve Qin Muyu's old-case material source path.",
+    "Approve Song Qiming and project library QY-17 as chapter 9 hooks.",
+    "Approve keeping He Sheng and Obsidian as suspicious risk leads only."
+  ]
+}

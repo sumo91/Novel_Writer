@@ -1,0 +1,122 @@
+chapter: 8
+title: 旧案摘要
+source_draft: drafts/ch_0008_revised.md
+accepted_chapter_path: chapters/ch_0008.md
+summary: 秦暮雨解释旧案合同摘要的来源路径，林照核验父亲旧案中的权限签收、追溯确认函和责任说明，确认只读接触被改写成操作责任；旧案经办人宋启明与曜石早期风控名单出现交集，指向项目库
+  QY-17 的风控备忘录。
+current_state:
+  current_chapter: 8
+  current_arc: arc_001
+  latest_location: 云栖会展中心发布会法务席
+  active_characters:
+  - 林照
+  - 秦暮雨
+  - 周衍
+  - 何盛
+  active_conflicts:
+  - 秦暮雨解释旧案摘要来源路径：公开诉讼附件编号、债权人会议摘要和合同摘录
+  - 林照核验父亲旧案中权限签收早于追溯确认函，且只读对账入口被责任说明改写为操作确认责任
+  - 宋启明作为旧案经办人与曜石早期风控名单出现交集，但目前只能作为风险线索
+  - 第 9 章将验证项目库 QY-17 对应风控备忘录的真伪、生成时间、引用条款和流转人
+  pending_approvals:
+  - 逆光系统代价尚未定义；第 3 章出现“信任资源消耗”提示，需人类确认是否作为早期代价方向
+  - 曜石资本复核账号 obsidian_capital_he01 目前只能作为轻微线索，不能直接证明何盛或曜石资本为主谋
+  - event_control_review 是否作为发布会控制中间审批节点继续追踪，需人类确认
+  - 秦暮雨仍是风险共同体盟友，不是无条件私人盟友，需持续确认边界
+  - 旧案经办人宋启明与曜石早期风控名单交集目前只能作为风险关联线索，不能直接坐实旧案主谋
+  - 第 9 章是否进入项目库 QY-17 风控备忘录真伪验证，需人类确认
+state_changes:
+- 秦暮雨解释旧案合同摘要的来源路径，不再让旧案材料停留在“她知道但来源未明”的状态
+- 林照先核验公开诉讼附件编号、债权人会议摘要和合同摘录来源，避免被假旧案材料带偏
+- 林照确认林成远三年前签收的是应收账款池只读对账入口
+- 林照确认追溯确认函晚于权限签收，且责任说明把只读接触写成“确认并操作应收账款池”
+- 逆光系统明确旧案可验证范围：合同摘要、权限签收、追溯确认、责任归属，不能直接验证幕后主谋
+- 旧案经办人宋启明与曜石早期风控名单出现交集，但仅作为风险线索
+- 第 9 章调查方向转向项目库 QY-17 对应风控备忘录的真伪验证
+open_threads_touched:
+- thread_001
+- thread_002
+- thread_003
+timeline_event:
+  id: t012
+  when: 第 8 章
+  summary: 秦暮雨解释旧案摘要来源，林照核验父亲旧案权限签收、追溯确认函和责任说明，发现只读接触被改写成操作责任；旧案经办人宋启明与曜石早期风控名单出现交集，指向项目库
+    QY-17 风控备忘录。
+open_thread_updates:
+- id: thread_001
+  type: betrayal
+  status: advanced
+  promise: 周衍如何篡改数据、为何急着赶走林照
+  first_expected_payoff: 第 1-3 章
+  latest_note: 第 8 章把周衍当前“权限责任”话术与旧案责任口径形成结构对照，但本章不新增周衍直接旧案证据。
+- id: thread_002
+  type: system
+  status: advanced
+  promise: 逆光系统的触发条件和代价
+  first_expected_payoff: 第 1 章
+  latest_note: 第 8 章逆光明确旧案只能验证合同摘要、权限签收、追溯确认和责任归属等商业矛盾，不能预测主谋或生成证据。
+- id: thread_003
+  type: long_arc
+  status: advanced
+  promise: 曜石资本与林照父亲旧案的关系
+  first_expected_payoff: 第 8-15 章
+  latest_note: 第 8 章旧案从追溯确认推进到权限签收和经办人宋启明线索；宋启明与曜石早期风控名单出现交集，但仍不揭示最终操盘者。
+quality_gate:
+  continuity_passed: true
+  continuity_blockers: []
+  initial_pacing_score: 91
+  revised_pacing_score: null
+  revision_required: false
+  waiver:
+    required: false
+    type: null
+    reason: null
+    approved_by: human
+change_log:
+  summary: Accepted revised chapter 8 as chapters/ch_0008.md after V2.5 quality gate
+    review.
+  canon_updates:
+  - timeline:t012
+  - open_threads:thread_001 advanced
+  - open_threads:thread_002 advanced
+  - open_threads:thread_003 advanced
+  - quality_gate:chapter_0008 passed with pacing score 91 and no continuity blockers
+  pending_approvals:
+  - 逆光系统代价尚未定义；第 3 章出现“信任资源消耗”提示，需人类确认是否作为早期代价方向
+  - 曜石资本复核账号 obsidian_capital_he01 目前只能作为轻微线索，不能直接证明何盛或曜石资本为主谋
+  - event_control_review 是否作为发布会控制中间审批节点继续追踪，需人类确认
+  - 秦暮雨仍是风险共同体盟友，不是无条件私人盟友，需持续确认边界
+  - 旧案经办人宋启明与曜石早期风控名单交集目前只能作为风险关联线索，不能直接坐实旧案主谋
+  - 第 9 章是否进入项目库 QY-17 风控备忘录真伪验证，需人类确认
+v3_state_updates:
+  timeline:
+    occurred_events:
+    - id: ev_0008_01
+      summary: 秦暮雨解释旧案合同摘要的来源路径，林照核验父亲旧案中的权限签收、追溯确认函和责任说明，确认只读接触被改写成操作责任；旧案经办人宋启明与曜石早期风控名单出现交集，指向项目库
+        QY-17 的风控备忘录。
+      location: ''
+      involved_characters: []
+      source_chapter: 8
+  character_states: []
+  resource_changes: []
+  open_thread_updates: []
+  payoff_updates:
+  - chapter: 8
+    promises_made: []
+    payoffs_delivered:
+    - 秦暮雨解释旧案合同摘要的来源路径，林照核验父亲旧案中的权限签收、追溯确认函和责任说明，确认只读接触被改写成操作责任；旧案经办人宋启明与曜石早期风控名单出现交集，指向项目库
+      QY-17 的风控备忘录。
+    frustration_level: controlled
+    payoff_types: []
+    delayed_payoffs: []
+    risks: []
+  conflict_updates:
+    active: []
+  next_hook: {}
+  pending_approvals:
+  - 逆光系统代价尚未定义；第 3 章出现“信任资源消耗”提示，需人类确认是否作为早期代价方向
+  - 曜石资本复核账号 obsidian_capital_he01 目前只能作为轻微线索，不能直接证明何盛或曜石资本为主谋
+  - event_control_review 是否作为发布会控制中间审批节点继续追踪，需人类确认
+  - 秦暮雨仍是风险共同体盟友，不是无条件私人盟友，需持续确认边界
+  - 旧案经办人宋启明与曜石早期风控名单交集目前只能作为风险关联线索，不能直接坐实旧案主谋
+  - 第 9 章是否进入项目库 QY-17 风控备忘录真伪验证，需人类确认

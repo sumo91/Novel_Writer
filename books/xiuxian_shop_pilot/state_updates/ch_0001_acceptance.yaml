@@ -1,0 +1,61 @@
+chapter: 1
+title: 午夜后门
+source_draft: drafts/ch_0001_revised.md
+accepted_chapter_path: chapters/ch_0001.md
+summary: 陈安继承爷爷留下的小卖部，现实中被亲戚逼卖和催租压迫；午夜仓库后门开启，门外通向青石坊，第一位灰袍散修用碎灵询问细盐和火折。
+current_state:
+  current_chapter: 1
+  current_arc: arc_001
+  latest_location: ''
+  active_characters: []
+  active_conflicts: []
+  pending_approvals:
+  - 是否沿用书名《我家小卖部通修仙界》。
+  - 是否确认后门规则为每天午夜开启一个时辰。
+  - 是否确认第一交易锚点为细盐和打火机。
+state_changes:
+- 陈安继承陈守业留下的小卖部，现实债务和亲戚逼卖成为开局压力。
+- 小卖部仓库后门在午夜开启，门外通向青石坊边缘巷口。
+- 旧账本出现两界交易记录：细盐、碎灵、黄芽草、火折。
+- 许青作为第一位修仙界交易对象在章末登场。
+open_threads_touched: []
+timeline_event:
+  id: t001
+  when: 第 1 章
+  summary: 陈安继承爷爷留下的小卖部，现实中被亲戚逼卖和催租压迫；午夜仓库后门开启，门外通向青石坊，第一位灰袍散修用碎灵询问细盐和火折。
+open_thread_updates: []
+change_log:
+  summary: Accepted revised chapter 1 as chapters/ch_0001.md.
+  canon_updates:
+  - timeline:t001
+  pending_approvals:
+  - 是否沿用书名《我家小卖部通修仙界》。
+  - 是否确认后门规则为每天午夜开启一个时辰。
+  - 是否确认第一交易锚点为细盐和打火机。
+v3_state_updates:
+  timeline:
+    occurred_events:
+    - id: ev_0001_01
+      summary: 陈安继承爷爷留下的小卖部，现实中被亲戚逼卖和催租压迫；午夜仓库后门开启，门外通向青石坊，第一位灰袍散修用碎灵询问细盐和火折。
+      location: ''
+      involved_characters: []
+      source_chapter: 1
+  character_states: []
+  resource_changes: []
+  open_thread_updates: []
+  payoff_updates:
+  - chapter: 1
+    promises_made: []
+    payoffs_delivered:
+    - 陈安继承爷爷留下的小卖部，现实中被亲戚逼卖和催租压迫；午夜仓库后门开启，门外通向青石坊，第一位灰袍散修用碎灵询问细盐和火折。
+    frustration_level: controlled
+    payoff_types: []
+    delayed_payoffs: []
+    risks: []
+  conflict_updates:
+    active: []
+  next_hook: {}
+  pending_approvals:
+  - 是否沿用书名《我家小卖部通修仙界》。
+  - 是否确认后门规则为每天午夜开启一个时辰。
+  - 是否确认第一交易锚点为细盐和打火机。

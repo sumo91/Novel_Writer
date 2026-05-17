@@ -1,0 +1,118 @@
+approvals:
+- id: pa_14eaf83c
+  status: approved
+  text: 是否沿用书名《我家小卖部通修仙界》。
+  source_chapters:
+  - 1
+  - 2
+  - 3
+  variants:
+  - 是否沿用书名《我家小卖部通修仙界》。
+  sources:
+  - state/change_log.jsonl:chapter_1
+  - state/change_log.jsonl:chapter_2
+  - state/change_log.jsonl:chapter_3
+  - state/current_state.json
+  note: 沿用书名《我家小卖部通修仙界》作为小样本标题。
+- id: pa_03321fa6
+  status: approved
+  text: 是否确认后门规则为每天午夜开启一个时辰。
+  source_chapters:
+  - 1
+  - 2
+  - 3
+  variants:
+  - 是否确认后门规则为每天午夜开启一个时辰。
+  sources:
+  - state/change_log.jsonl:chapter_1
+  - state/change_log.jsonl:chapter_2
+  - state/change_log.jsonl:chapter_3
+  - state/current_state.json
+  note: 确认后门规则为每天午夜开启一个时辰，约两个小时，符合中文读者习惯。
+- id: pa_e1d9530d
+  status: approved
+  text: 是否确认回春丹铺作为第一阶段异界商业压力。
+  source_chapters:
+  - 3
+  variants:
+  - 是否确认回春丹铺作为第一阶段异界商业压力。
+  sources:
+  - state/change_log.jsonl:chapter_3
+  - state/current_state.json
+  note: 确认回春丹铺作为第一阶段异界商业压力。
+- id: pa_d8d82762
+  status: approved
+  text: 是否确认手电筒暂命名为夜明筒。
+  source_chapters:
+  - 2
+  - 3
+  variants:
+  - 是否确认手电筒暂命名为夜明筒。
+  sources:
+  - state/change_log.jsonl:chapter_2
+  - state/change_log.jsonl:chapter_3
+  - state/current_state.json
+  note: 确认手电筒在青石坊暂称夜明筒。
+- id: pa_74e8415e
+  status: approved
+  text: 是否确认碎灵作为低阶交易货币单位。
+  source_chapters:
+  - 2
+  - 3
+  variants:
+  - 是否确认碎灵作为低阶交易货币单位。
+  sources:
+  - state/change_log.jsonl:chapter_2
+  - state/change_log.jsonl:chapter_3
+  - state/current_state.json
+  note: 确认碎灵作为低阶交易货币单位，但第4-5章仍需标尺化购买力。
+- id: pa_9e8f4744
+  status: approved
+  text: 是否确认第4章进入回春丹铺谈价/试探。
+  source_chapters:
+  - 3
+  variants:
+  - 是否确认第4章进入回春丹铺谈价/试探。
+  sources:
+  - state/change_log.jsonl:chapter_3
+  - state/current_state.json
+  note: 确认第4章进入回春丹铺谈价/试探。
+- id: pa_ec329d2c
+  status: approved
+  text: 是否确认第一交易锚点为细盐和打火机。
+  source_chapters:
+  - 1
+  - 2
+  - 3
+  variants:
+  - 是否确认第一交易锚点为细盐和打火机。
+  sources:
+  - state/change_log.jsonl:chapter_1
+  - state/change_log.jsonl:chapter_2
+  - state/change_log.jsonl:chapter_3
+  - state/current_state.json
+  note: 确认第一交易锚点为细盐和打火机。
+- id: pa_9ef04f54
+  status: approved
+  text: 是否确认许青被巡卫盘问作为第3章入口。
+  source_chapters:
+  - 2
+  - 3
+  variants:
+  - 是否确认许青被巡卫盘问作为第3章入口。
+  sources:
+  - state/change_log.jsonl:chapter_2
+  - state/change_log.jsonl:chapter_3
+  - state/current_state.json
+  note: 已在第3章兑现为许青回报巡卫盘问和回春丹铺介入。
+- id: pa_249b3fbd
+  status: approved
+  text: 是否确认黄芽草可在现实小额变现，但不能公开大规模出售。
+  source_chapters:
+  - 3
+  variants:
+  - 是否确认黄芽草可在现实小额变现，但不能公开大规模出售。
+  sources:
+  - state/change_log.jsonl:chapter_3
+  - state/current_state.json
+  note: 确认黄芽草可在现实小额变现，但不能公开大规模出售。
