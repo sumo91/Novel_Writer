@@ -1,0 +1,55 @@
+currencies:
+  - id: spirit_fragment
+    name: 碎灵
+    world: qingshifang
+    tier: low
+    purchasing_power_notes:
+      - "第4章：细盐、纱布、创可贴、碘伏棉签合计换得十三枚碎灵。"
+      - "第4章：回春丹铺莫账房开价细盐三枚碎灵、火折一枚碎灵、夜明筒十枚碎灵。"
+real_world_money:
+  currency: CNY
+  pressure_points:
+    - "第3章：黄芽草叶尖小额变现三千元。"
+    - "第3章：陈安补交一个月部分房租二千五。"
+price_index:
+  - item: "黄芽草叶尖"
+    world: "现实"
+    price: "CNY 3000 sample sale"
+    source_chapter: 3
+    confidence: approved_fact
+  - item: "细盐"
+    world: "青石坊"
+    price: "3 spirit_fragment quoted by 回春丹铺莫账房"
+    source_chapter: 4
+    confidence: approved_fact
+  - item: "火折/打火机"
+    world: "青石坊"
+    price: "1 spirit_fragment quoted by 回春丹铺莫账房"
+    source_chapter: 4
+    confidence: approved_fact
+  - item: "夜明筒/手电筒"
+    world: "青石坊"
+    price: "10 spirit_fragment quoted by 回春丹铺莫账房"
+    source_chapter: 4
+    confidence: approved_fact
+  - item: "基础医疗小商品组合"
+    world: "青石坊"
+    price: "part of chapter 4 bundle worth 13 spirit_fragment total with salt and price booklet"
+    source_chapter: 4
+    confidence: approved_fact
+trade_rules:
+  - rule: "后门每天午夜开启一个时辰，约两个小时。"
+    source: "approved project fact / chapters 1-2"
+  - rule: "陈安当前底线：不出后门、不暴露仓库、不签独家、按次交易。"
+    source: "chapter 4"
+  - rule: "现实变现必须小额谨慎，不能公开大规模出售修仙界材料。"
+    source: "chapter 3 pending-approved direction"
+locked_constraints:
+  - "现代显眼货物会触发青石坊巡卫风险。"
+  - "大规模现实变现会触发现实侧怀疑。"
+approval:
+  status: draft
+  approved_by: ""
+  approved_at: ""
+  notes:
+    - "Economy facts are drawn from accepted chapters 1-4; future purchasing power remains draft."

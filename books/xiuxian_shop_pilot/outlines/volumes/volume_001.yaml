@@ -1,0 +1,35 @@
+volume_id: volume_001
+title: "午夜后门"
+chapter_range:
+  start: 1
+  end: 50
+volume_goal: "守住小卖部，建立可重复、可定价、可隔离风险的两界交易模式，并在第一阶段不被回春丹铺、巡卫或现实亲戚夺走主动权。"
+reader_promise: "每几章都要有具体交易、现实收益、异界压力升级、陈安立规矩或爷爷旧线索。"
+main_pressure:
+  antagonist_or_force: "回春丹铺、青石坊巡卫、现实亲戚与房租压力"
+  pressure_type: "商业压价 / 规则试探 / 入口保密 / 现实债务"
+  escalation_path:
+    - "回春丹铺从许青传话到莫账房试探。"
+    - "赵掌柜亲自谈，试图锁定长期供货。"
+    - "巡卫和坊市规矩关注无灵力现代货物。"
+    - "现实亲戚继续怀疑陈安藏有爷爷遗产。"
+protagonist_progress:
+  start_state: "被动继承小卖部，只想解决债务和保店。"
+  end_state: "建立第一套两界交易规矩，能主动选货、定价、拒绝独家和隔离风险。"
+core_payoffs:
+  - "第一笔交易闭环。"
+  - "现实小额变现缓解房租。"
+  - "拒绝丹铺独家，立下按次交易规矩。"
+  - "通过价目半册初步建立青石坊价格标尺。"
+major_reveal: "爷爷旧账本与青石坊价目半册都出现青灯草，说明爷爷长期熟悉青石坊交易。"
+volume_climax: "陈安中和或击退回春丹铺第一轮锁货压力，在不暴露后门的前提下确立陈掌柜规矩。"
+ending_hook: "爷爷旧约和后门来源进入更高层势力视野。"
+required_threads:
+  - thread_0004_pill_shop_exclusive_pressure
+  - thread_0004_grandpa_qingdengcao_record
+approval:
+  status: draft
+  approved_by: ""
+  approved_at: ""
+  notes:
+    - "V3.1 volume draft for chapters 1-50."

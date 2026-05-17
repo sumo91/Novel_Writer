@@ -1,7 +1,27 @@
-arc_id: "arc_001"
-title: ""
+arc_id: arc_001
+title: "第一套交易规矩"
+chapter_range:
+  start: 1
+  end: 20
+parent_volume: volume_001
+arc_goal: "从发现后门到建立第一套稳定交易边界：陈安要证明小卖部能赚钱，但不能被丹铺、巡卫或现实亲戚夺走主动权。"
+main_conflict: "两界货物有价值，但价值越明确，越会引来丹铺压价、巡卫盘查和现实怀疑。"
+stage_enemy_or_pressure: "回春丹铺赵掌柜线、青石坊巡卫规则、现实刘素芬/房租压力。"
+protagonist_move: "陈安从被动接客转为主动备货、分级售卖、按次交易、索要价格表并拒绝独家。"
+required_payoffs:
+  - "稳定价格标尺。"
+  - "第一批复购或口碑客户。"
+  - "小卖部现实经营改善。"
+  - "爷爷旧账本线索推进。"
+required_threads:
+  - thread_0004_pill_shop_exclusive_pressure
+  - thread_0004_grandpa_qingdengcao_record
+major_reveal_or_reversal: "青灯草和价目半册证明爷爷旧账本不是普通账本。"
+exit_state: "陈安拥有初步客户、价格表、备货策略和不签独家的店主规矩。"
 chapters: []
-arc_goal: ""
-main_conflict: ""
-required_payoffs: []
-required_threads: []
+approval:
+  status: draft
+  approved_by: ""
+  approved_at: ""
+  notes:
+    - "V3.1 arc draft; chapter functions live in unit_0001 first."

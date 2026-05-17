@@ -2,8 +2,100 @@ unit: 1
 chapter_range:
   start: 1
   end: 10
-unit_goal: ""
-stage_enemy: ""
-stage_payoffs: []
-stage_end_hook: ""
-chapters: []
+parent_arc: arc_001
+unit_goal: "完成后门发现、第一笔交易、现实收益、丹铺压力和陈安第一套交易规矩的建立。"
+stage_enemy: "回春丹铺与青石坊低阶规矩压力。"
+stage_payoffs:
+  - "后门钩子。"
+  - "第一笔交易。"
+  - "现实变现。"
+  - "拒绝独家。"
+  - "价格标尺。"
+  - "爷爷旧线索。"
+stage_end_hook: "陈安从被动守门变成主动备货，准备面对更明确的坊市规则和爷爷旧约线索。"
+required_threads:
+  - thread_0004_pill_shop_exclusive_pressure
+  - thread_0004_grandpa_qingdengcao_record
+chapters:
+  - chapter: 1
+    function: "开局处境钩子；确立现实压力和午夜后门。"
+    opening_hook: "陈安继承破店，被亲戚逼卖和催租压住。"
+    main_payoff: "后门开启，青石坊散修许青登场询问细盐和火折。"
+    next_hook: "门外修仙界客户愿意用碎灵交易。"
+    state_obligation:
+      - "记录后门开启。"
+      - "记录许青。"
+  - chapter: 2
+    function: "完成第一笔两界交易，明确后门时间规则和现代货物风险。"
+    opening_hook: "陈安试探细盐、打火机和夜明筒价值。"
+    main_payoff: "换到碎灵和黄芽草。"
+    next_hook: "夜明筒被巡卫注意。"
+    state_obligation:
+      - "记录后门每天午夜一个时辰。"
+      - "记录碎灵和黄芽草。"
+  - chapter: 3
+    function: "现实收益兑现，并引出丹铺压力。"
+    opening_hook: "陈安验证黄芽草和碎灵价值。"
+    main_payoff: "黄芽草小额变现并补交房租。"
+    next_hook: "回春丹铺要求陈掌柜明晚带价来谈。"
+    state_obligation:
+      - "记录黄芽草现实变现。"
+      - "记录回春丹铺注意货源。"
+  - chapter: 4
+    function: "丹铺第一次正式压价；陈安立按次交易规矩。"
+    opening_hook: "莫账房带价来谈，试图锁独家。"
+    main_payoff: "陈安拒绝独家，用基础医疗小商品换十三枚碎灵和价目半册。"
+    next_hook: "赵掌柜亲自来谈，青灯草连接爷爷旧账本。"
+    state_obligation:
+      - "记录丹铺独家压力。"
+      - "记录青灯草旧线索。"
+      - "记录十三枚碎灵和价目半册。"
+  - chapter: 5
+    function: "draft：赵掌柜亲自压价，陈安用价目半册和备货策略反守为攻。"
+    opening_hook: "赵掌柜亲自来谈。"
+    main_payoff: "陈安进一步确立不签独家、不出门、按次交易的店主规矩。"
+    next_hook: "价目半册或旧账本给出下一种关键货物线索。"
+    state_obligation:
+      - "推进 thread_0004_pill_shop_exclusive_pressure。"
+      - "推进 thread_0004_grandpa_qingdengcao_record。"
+  - chapter: 6
+    function: "draft：把谈判压力转成主动采购和第二轮交易。"
+    opening_hook: "陈安按价目半册筛选现实可替代货。"
+    main_payoff: "出现第一批明确复购或新客户。"
+    next_hook: "巡卫或坊市规则压力靠近。"
+    state_obligation:
+      - "建立更清晰价格标尺。"
+  - chapter: 7
+    function: "draft：现实亲戚/房租压力回压，让异界收益必须落到现实经营。"
+    opening_hook: "刘素芬或房租压力再度出现。"
+    main_payoff: "陈安用合规小额收益改善小店。"
+    next_hook: "现实侧有人怀疑爷爷遗产来源。"
+    state_obligation:
+      - "记录现实压力变化。"
+  - chapter: 8
+    function: "draft：爷爷旧账本线推进，青灯草不再只是彩蛋。"
+    opening_hook: "旧账本和价目半册出现第二处重合。"
+    main_payoff: "陈安确认爷爷曾长期按某套规矩交易。"
+    next_hook: "某个旧名号或旧价码浮出。"
+    state_obligation:
+      - "推进爷爷旧账本长线。"
+  - chapter: 9
+    function: "draft：丹铺或巡卫施加更直接风险，测试陈安规矩。"
+    opening_hook: "有人试图绕过许青或直接找门。"
+    main_payoff: "陈安守住不暴露仓库边界。"
+    next_hook: "第一阶段更大冲突逼近。"
+    state_obligation:
+      - "更新入口保密风险。"
+  - chapter: 10
+    function: "draft：10章小单元收束，形成第一套可持续交易流程。"
+    opening_hook: "多方压力同时指向陈安货源。"
+    main_payoff: "陈安完成第一套小店交易规矩和备货闭环。"
+    next_hook: "进入更大范围客户/势力压力。"
+    state_obligation:
+      - "总结第一单元资源、客户、规则和未回收伏笔。"
+approval:
+  status: draft
+  approved_by: ""
+  approved_at: ""
+  notes:
+    - "Chapters 1-4 are anchored to accepted facts; chapters 5-10 are draft planning assumptions."
