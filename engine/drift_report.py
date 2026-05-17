@@ -46,6 +46,7 @@ def _render_report(root: Path, start_chapter: int, end_chapter: int) -> str:
     lines.extend(_payoff_hook_ledger(chapters))
     lines.extend(_pending_approvals(root))
     lines.extend(_v3_state_machine_warnings(root, current_state, open_threads, end_chapter))
+    lines.extend(_outline_alignment(root, chapters, start_chapter, end_chapter))
     lines.extend(_continuity_risks(root, start_chapter, end_chapter))
     lines.extend(_pacing_scores(root, start_chapter, end_chapter))
     lines.extend(_chapter_recommendation(current_state, timeline))
@@ -305,6 +306,104 @@ def _resource_missing_history_warnings(
                 )
             )
     return warnings
+
+
+def _outline_alignment(
+    root: Path,
+    chapters: list[dict[str, Any]],
+    start_chapter: int,
+    end_chapter: int,
+) -> list[str]:
+    units = _approved_units(root)
+    warnings: list[tuple[str, str, str, str]] = []
+    warnings.extend(_chapter_outside_approved_unit_warnings(units, start_chapter, end_chapter))
+    for unit_path, unit in units:
+        if not _as_list(unit.get("chapters")):
+            warnings.append(
+                (
+                    "empty_unit_chapters",
+                    unit_path,
+                    "approved unit has no chapter function map.",
+                    "Fill chapter obligations before drafting more chapters.",
+                )
+            )
+        required_threads = [str(thread) for thread in _as_list(unit.get("required_threads"))]
+        if required_threads:
+            touched = {
+                str(thread)
+                for chapter in chapters
+                for thread in _as_list(chapter.get("open_threads_touched"))
+            }
+            for thread in required_threads:
+                if thread not in touched:
+                    warnings.append(
+                        (
+                            "missing_required_thread",
+                            thread,
+                            f"{unit_path} requires this thread, but chapters {start_chapter}-{end_chapter} did not touch it.",
+                            "Advance, pay off, or explicitly defer the thread.",
+                        )
+                    )
+
+    lines = [
+        "## Outline Alignment",
+        "",
+        "| Type | Item | Evidence | Recommended Action |",
+        "| --- | --- | --- | --- |",
+    ]
+    if warnings:
+        for warning_type, item, evidence, action in warnings:
+            lines.append(
+                f"| {_cell(warning_type)} | {_cell(item)} | {_cell(evidence)} | {_cell(action)} |"
+            )
+    else:
+        lines.append("| None | - | No mechanical outline alignment warning found. | Continue. |")
+    lines.append("")
+    return lines
+
+
+def _approved_units(root: Path) -> list[tuple[str, dict[str, Any]]]:
+    units_dir = root / "outlines" / "units"
+    if not units_dir.exists():
+        return []
+    units: list[tuple[str, dict[str, Any]]] = []
+    for path in sorted(units_dir.glob("unit_*.yaml")):
+        unit = _read_yaml_if_present(path)
+        approval = unit.get("approval")
+        status = approval.get("status") if isinstance(approval, dict) else None
+        if status == "approved":
+            units.append((path.relative_to(root).as_posix(), unit))
+    return units
+
+
+def _chapter_outside_approved_unit_warnings(
+    units: list[tuple[str, dict[str, Any]]],
+    start_chapter: int,
+    end_chapter: int,
+) -> list[tuple[str, str, str, str]]:
+    if not units:
+        return []
+    warnings = []
+    for chapter_number in range(start_chapter, end_chapter + 1):
+        if not any(_unit_contains_chapter(unit, chapter_number) for _, unit in units):
+            warnings.append(
+                (
+                    "chapter_outside_approved_unit",
+                    f"chapter {chapter_number}",
+                    "chapter is outside all approved unit chapter ranges.",
+                    "Approve or create the active unit plan before continuing.",
+                )
+            )
+    return warnings
+
+
+def _unit_contains_chapter(unit: dict[str, Any], chapter_number: int) -> bool:
+    chapter_range = unit.get("chapter_range")
+    if not isinstance(chapter_range, dict):
+        return False
+    start = chapter_range.get("start")
+    end = chapter_range.get("end")
+    return isinstance(start, int) and isinstance(end, int) and start <= chapter_number <= end
 
 
 def _read_json_if_present(path: Path) -> dict[str, Any]:

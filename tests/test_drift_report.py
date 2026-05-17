@@ -60,3 +60,40 @@ def test_drift_report_includes_no_v3_warning_row_for_empty_template_ledgers(
     content = output.read_text(encoding="utf-8")
     assert "## V3 State Machine Warnings" in content
     assert "| None | - | No mechanical V3 warning found. | Continue. |" in content
+
+
+def test_drift_report_includes_v3_1_outline_alignment_warnings(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(drift_report, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    write_json(book / "state" / "current_state.json", {"current_chapter": 6})
+    write_json(
+        book / "state" / "chapter_index.json",
+        {
+            "chapters": [
+                {
+                    "chapter": 6,
+                    "summary": "A chapter beyond the approved unit.",
+                    "open_threads_touched": [],
+                }
+            ]
+        },
+    )
+    write_yaml(
+        book / "outlines" / "units" / "unit_0001.yaml",
+        {
+            "unit": 1,
+            "chapter_range": {"start": 1, "end": 4},
+            "required_threads": ["thread_required"],
+            "chapters": [],
+            "approval": {"status": "approved"},
+        },
+    )
+
+    output = drift_report.generate_drift_report("demo", 1, 6)
+
+    content = output.read_text(encoding="utf-8")
+    assert "## Outline Alignment" in content
+    assert "chapter_outside_approved_unit" in content
+    assert "empty_unit_chapters" in content
+    assert "missing_required_thread" in content
