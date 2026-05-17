@@ -608,14 +608,15 @@ def _craft_knowledge_checks() -> list[str]:
     lines = [
         "## Craft Knowledge Checks",
         "",
-        "| Card | Principle | Checks | Failure Modes |",
-        "| --- | --- | --- | --- |",
+        "| Card | Scope | Severity | Principle | Checks | Failure Modes |",
+        "| --- | --- | --- | --- | --- | --- |",
     ]
     for card in cards:
         checks = "; ".join(str(check) for check in _as_list(card.get("checks")))
         failures = "; ".join(str(mode) for mode in _as_list(card.get("failure_modes")))
         lines.append(
-            f"| {_cell(card.get('id', ''))} | {_cell(card.get('principle', ''))} | "
+            f"| {_cell(card.get('id', ''))} | {_cell(card.get('scope', ''))} | "
+            f"{_cell(card.get('severity', ''))} | {_cell(card.get('principle', ''))} | "
             f"{_cell(checks)} | {_cell(failures)} |"
         )
     lines.append("")

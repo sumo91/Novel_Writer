@@ -84,3 +84,23 @@ def test_validate_craft_cards_reports_schema_errors(tmp_path, monkeypatch):
         "craft_cards/broken.yaml: severity must be hard, soft, or genre-specific."
         in errors
     )
+
+
+def test_render_craft_cards_includes_scope_and_severity():
+    lines = craft_knowledge.render_craft_cards(
+        [
+            {
+                "id": "craft_agency_001",
+                "scope": "craft",
+                "severity": "hard",
+                "use_when": "A chapter could go passive.",
+                "principle": "Force a visible protagonist choice.",
+                "checks": ["Name the choice."],
+                "failure_modes": ["Passive protagonist"],
+            }
+        ]
+    )
+
+    assert "- craft_agency_001: Force a visible protagonist choice." in lines
+    assert "  - Scope: craft" in lines
+    assert "  - Severity: hard" in lines

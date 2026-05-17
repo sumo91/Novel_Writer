@@ -64,6 +64,42 @@ def test_build_chapter_brief_scaffold_includes_applicable_craft_cards(
     assert "Name the choice and pressure." in scaffold
 
 
+def test_build_chapter_brief_scaffold_shows_craft_card_metadata(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(brief_contract, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    _write_contract_fixture(book)
+    card_dir = tmp_path / "knowledge" / "craft_cards"
+    card_dir.mkdir(parents=True)
+    (card_dir / "brief.yaml").write_text(
+        "\n".join(
+            [
+                "id: craft_brief_passive",
+                "scope: craft",
+                "applies_to: [brief]",
+                "use_when: A chapter risks becoming reactive.",
+                "principle: Force a visible protagonist choice.",
+                "checks:",
+                "  - Name the choice.",
+                "failure_modes:",
+                "  - Passive protagonist",
+                "severity: hard",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    scaffold = brief_contract.build_chapter_brief_scaffold("demo", 5)
+
+    assert "  - Scope: craft" in scaffold
+    assert "  - Severity: hard" in scaffold
+
+
 def test_check_chapter_brief_reports_missing_file(tmp_path, monkeypatch):
     monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
     monkeypatch.setattr(brief_contract, "BOOKS_DIR", tmp_path / "books")

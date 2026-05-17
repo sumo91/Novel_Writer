@@ -42,6 +42,10 @@ def render_craft_cards(cards: list[dict[str, Any]]) -> list[str]:
     lines = ["## Craft Knowledge Cards", ""]
     for card in cards:
         lines.append(f"- {card.get('id')}: {card.get('principle', '')}")
+        if card.get("scope"):
+            lines.append(f"  - Scope: {card['scope']}")
+        if card.get("severity"):
+            lines.append(f"  - Severity: {card['severity']}")
         if card.get("use_when"):
             lines.append(f"  - Use when: {card['use_when']}")
         for check in _as_list(card.get("checks")):

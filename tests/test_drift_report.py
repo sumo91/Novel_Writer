@@ -246,6 +246,38 @@ def test_drift_report_includes_drift_craft_cards(tmp_path, monkeypatch):
     assert "Thread sprawl" in content
 
 
+def test_drift_report_shows_craft_card_metadata(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(drift_report, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    card_dir = tmp_path / "knowledge" / "craft_cards"
+    card_dir.mkdir(parents=True)
+    (card_dir / "thread-sprawl.yaml").write_text(
+        "\n".join(
+            [
+                "id: craft_thread_sprawl",
+                "scope: craft",
+                "applies_to: [drift]",
+                "principle: Do not open promises faster than the unit advances old ones.",
+                "checks:",
+                "  - Count open promises added versus advanced.",
+                "failure_modes:",
+                "  - Thread sprawl",
+                "severity: soft",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    book_factory.create_book("demo", title="Demo Book")
+
+    output = drift_report.generate_drift_report("demo", 1, 5)
+
+    content = output.read_text(encoding="utf-8")
+    assert "| Card | Scope | Severity | Principle | Checks | Failure Modes |" in content
+    assert "| craft_thread_sprawl | craft | soft | Do not open promises faster than the unit advances old ones." in content
+
+
 def test_unit_review_does_not_error_when_protagonist_has_growth_history(
     tmp_path, monkeypatch
 ):
