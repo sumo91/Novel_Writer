@@ -17,7 +17,7 @@ REQUIRED_CRAFT_CARD_FIELDS = {
 }
 
 
-def load_craft_cards(applies_to: str | None = None) -> list[dict[str, Any]]:
+def load_craft_cards(applies_to: str | list[str] | None = None) -> list[dict[str, Any]]:
     card_dir = KNOWLEDGE_DIR / "craft_cards"
     if not card_dir.exists():
         return []
@@ -86,13 +86,14 @@ def validate_craft_cards() -> list[str]:
     return errors
 
 
-def _applies_to(card: dict[str, Any], target: str) -> bool:
+def _applies_to(card: dict[str, Any], target: str | list[str]) -> bool:
+    targets = {target} if isinstance(target, str) else set(target)
     applications = card.get("applies_to", [])
     if isinstance(applications, str):
         applications = [applications]
     if not isinstance(applications, list):
         return False
-    return target in applications or "all" in applications
+    return bool(targets.intersection(applications)) or "all" in applications
 
 
 def _as_list(value: Any) -> list[Any]:

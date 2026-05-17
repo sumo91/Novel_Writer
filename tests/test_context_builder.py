@@ -31,6 +31,81 @@ def test_build_context_includes_core_book_material(tmp_path, monkeypatch):
     assert "## Agent Handoff Instructions" in context
 
 
+def test_build_context_includes_structured_craft_cards(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "BOOKS_DIR", tmp_path / "books")
+    knowledge_dir = tmp_path / "knowledge"
+    monkeypatch.setattr(context_builder, "KNOWLEDGE_DIR", knowledge_dir)
+    import engine.craft_knowledge as craft_knowledge
+
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", knowledge_dir)
+    card_dir = knowledge_dir / "craft_cards"
+    card_dir.mkdir(parents=True)
+    (card_dir / "agency.yaml").write_text(
+        "\n".join(
+            [
+                "id: craft_agency",
+                "scope: craft",
+                "applies_to:",
+                "  - context",
+                "  - brief",
+                "use_when: A chapter could become reactive.",
+                "principle: Force a visible protagonist choice.",
+                "checks:",
+                "  - Name the choice.",
+                "failure_modes:",
+                "  - Passive protagonist",
+                "severity: hard",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    book_factory.create_book("demo", title="Demo Book")
+
+    context = context_builder.build_context("demo", 1)
+
+    assert "## Craft Knowledge Cards" in context
+    assert "craft_agency: Force a visible protagonist choice." in context
+    assert "Check: Name the choice." in context
+
+
+def test_build_context_includes_existing_workflow_craft_cards(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "BOOKS_DIR", tmp_path / "books")
+    knowledge_dir = tmp_path / "knowledge"
+    monkeypatch.setattr(context_builder, "KNOWLEDGE_DIR", knowledge_dir)
+    import engine.craft_knowledge as craft_knowledge
+
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", knowledge_dir)
+    card_dir = knowledge_dir / "craft_cards"
+    card_dir.mkdir(parents=True)
+    (card_dir / "brief.yaml").write_text(
+        "\n".join(
+            [
+                "id: craft_brief_agency",
+                "scope: craft",
+                "applies_to:",
+                "  - brief",
+                "use_when: A chapter could become reactive.",
+                "principle: Force a visible protagonist choice.",
+                "checks:",
+                "  - Name the choice.",
+                "failure_modes:",
+                "  - Passive protagonist",
+                "severity: hard",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    book_factory.create_book("demo", title="Demo Book")
+
+    context = context_builder.build_context("demo", 1)
+
+    assert "craft_brief_agency: Force a visible protagonist choice." in context
+
+
 def test_build_context_returns_markdown(tmp_path, monkeypatch):
     monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
     monkeypatch.setattr(context_builder, "BOOKS_DIR", tmp_path / "books")

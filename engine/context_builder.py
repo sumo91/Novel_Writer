@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from engine.craft_knowledge import load_craft_cards, render_craft_cards
 from engine.io_utils import read_text, read_yaml, write_text
 from engine.paths import books_dir, knowledge_dir
 
@@ -82,6 +83,7 @@ def build_context(book_id: str, chapter_number: int) -> str:
     for heading, relative_path in JSON_FILES:
         sections.extend(_fenced_section(root, heading, relative_path, "json"))
 
+    sections.extend(render_craft_cards(load_craft_cards(["context", "brief", "review", "drift"])))
     sections.extend(_knowledge_references())
     sections.extend(
         [
