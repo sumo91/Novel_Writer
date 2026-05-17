@@ -5,7 +5,11 @@ from pathlib import Path
 from engine.acceptance_packet import draft_acceptance_packet
 from engine.chapter_acceptance import accept_chapter
 from engine.context_builder import build_context
-from engine.io_utils import read_text, write_json, write_text
+from engine.hardening import (
+    validate_acceptance_packet_file,
+    validate_pacing_review,
+)
+from engine.io_utils import read_json, read_text, read_yaml, write_json, write_text
 from engine.paths import books_dir
 
 BOOKS_DIR = books_dir()
@@ -126,9 +130,143 @@ def pipeline_accept(
     packet_path = paths.root / "state_updates" / f"ch_{chapter_number:04d}_acceptance.yaml"
     if not packet_path.exists():
         raise FileNotFoundError(f"Missing acceptance packet: {packet_path}")
+    packet_errors = validate_acceptance_packet_file(paths.root, chapter_number)
+    if packet_errors:
+        raise ValueError("Invalid acceptance packet: " + "; ".join(packet_errors))
 
     result = accept_chapter(book_id, packet_path, force=force)
     return result.chapter_path
+
+
+def pipeline_quality_gate(book_id: str, chapter_number: int) -> dict:
+    paths = pipeline_paths(book_id, chapter_number)
+    review_dir = paths.root / "reviews" / f"ch_{chapter_number:04d}"
+    continuity_path = review_dir / "continuity_review.json"
+    pacing_path = review_dir / "pacing_review.json"
+    if not continuity_path.exists():
+        raise FileNotFoundError(f"Missing continuity review: {continuity_path}")
+    if not pacing_path.exists():
+        raise FileNotFoundError(f"Missing pacing review: {pacing_path}")
+
+    continuity = read_json(continuity_path)
+    pacing = read_json(pacing_path)
+    acceptance_packet = paths.root / "state_updates" / f"ch_{chapter_number:04d}_acceptance.yaml"
+    waiver = _quality_gate_waiver(acceptance_packet)
+
+    continuity_blockers = _continuity_blockers(continuity)
+    initial_score = pacing.get("score")
+    revised_score = pacing.get("revised_score")
+    revised_path = paths.root / "drafts" / f"ch_{chapter_number:04d}_revised.md"
+    revision_required = bool(continuity_blockers) or _score_below_gate(initial_score)
+    waiver_required = False
+    reasons: list[str] = []
+
+    score_errors = _total_score_errors(initial_score, revised_score)
+    if score_errors:
+        reasons.extend(score_errors)
+        return {
+            "book_id": book_id,
+            "chapter": chapter_number,
+            "passed": False,
+            "status": "invalid_review",
+            "revision_required": revision_required,
+            "waiver_required": waiver_required,
+            "initial_pacing_score": initial_score,
+            "revised_pacing_score": revised_score,
+            "continuity_blockers": continuity_blockers,
+            "reasons": reasons,
+        }
+
+    if continuity_blockers and not waiver:
+        reasons.append("Continuity review has unresolved blockers.")
+        return {
+            "book_id": book_id,
+            "chapter": chapter_number,
+            "passed": False,
+            "status": "blocked",
+            "revision_required": True,
+            "waiver_required": False,
+            "initial_pacing_score": initial_score,
+            "revised_pacing_score": revised_score,
+            "continuity_blockers": continuity_blockers,
+            "reasons": reasons,
+        }
+
+    if _score_below_gate(initial_score):
+        reasons.append(f"Pacing score {initial_score} is below 80.")
+        if not revised_path.exists():
+            return {
+                "book_id": book_id,
+                "chapter": chapter_number,
+                "passed": False,
+                "status": "needs_revision",
+                "revision_required": True,
+                "waiver_required": False,
+                "initial_pacing_score": initial_score,
+                "revised_pacing_score": revised_score,
+                "continuity_blockers": continuity_blockers,
+                "reasons": reasons,
+            }
+        if revised_score is None:
+            reasons.append("Missing revised pacing score after revision.")
+            return {
+                "book_id": book_id,
+                "chapter": chapter_number,
+                "passed": False,
+                "status": "needs_revision",
+                "revision_required": True,
+                "waiver_required": False,
+                "initial_pacing_score": initial_score,
+                "revised_pacing_score": revised_score,
+                "continuity_blockers": continuity_blockers,
+                "reasons": reasons,
+            }
+        if _score_below_gate(revised_score):
+            waiver_required = True
+            reasons.append(f"Revised pacing score {revised_score} is still below 80.")
+            if not waiver:
+                return {
+                    "book_id": book_id,
+                    "chapter": chapter_number,
+                    "passed": False,
+                    "status": "needs_waiver",
+                    "revision_required": True,
+                    "waiver_required": True,
+                    "initial_pacing_score": initial_score,
+                    "revised_pacing_score": revised_score,
+                    "continuity_blockers": continuity_blockers,
+                    "reasons": reasons,
+                }
+
+    dimension_errors = _dimension_score_errors(pacing)
+    if dimension_errors:
+        reasons.extend(dimension_errors)
+        return {
+            "book_id": book_id,
+            "chapter": chapter_number,
+            "passed": False,
+            "status": "invalid_review",
+            "revision_required": revision_required,
+            "waiver_required": waiver_required,
+            "initial_pacing_score": initial_score,
+            "revised_pacing_score": revised_score,
+            "continuity_blockers": continuity_blockers,
+            "reasons": reasons,
+        }
+
+    status = "passed_with_waiver" if waiver else "passed"
+    return {
+        "book_id": book_id,
+        "chapter": chapter_number,
+        "passed": True,
+        "status": status,
+        "revision_required": revision_required,
+        "waiver_required": waiver_required,
+        "initial_pacing_score": initial_score,
+        "revised_pacing_score": revised_score,
+        "continuity_blockers": continuity_blockers,
+        "reasons": reasons,
+    }
 
 
 def _manifest(book_id: str, chapter_number: int) -> dict:
@@ -167,6 +305,52 @@ def _derive_status(artifacts: dict) -> tuple[str, str]:
     if not artifacts["accepted_chapter"]["present"]:
         return "ready_for_acceptance", "Run pipeline-accept after human approval."
     return "accepted", "Chapter has been accepted."
+
+
+def _continuity_blockers(continuity: dict) -> list[str]:
+    blockers: list[str] = []
+    blockers.extend(str(item) for item in continuity.get("required_fixes", []))
+    for issue in continuity.get("issues", []):
+        if issue.get("severity") == "high":
+            evidence = issue.get("evidence") or issue.get("suggested_fix") or issue.get("type")
+            if evidence:
+                blockers.append(str(evidence))
+    return list(dict.fromkeys(blockers))
+
+
+def _score_below_gate(score: object) -> bool:
+    return not isinstance(score, int) or score < 80
+
+
+def _total_score_errors(initial_score: object, revised_score: object) -> list[str]:
+    scores = [initial_score]
+    if revised_score is not None:
+        scores.append(revised_score)
+    if any(not isinstance(score, int) or not 0 <= score <= 100 for score in scores):
+        return ["Pacing score must be an integer from 0 to 100."]
+    return []
+
+
+def _dimension_score_errors(pacing: dict) -> list[str]:
+    return [
+        error
+        for error in validate_pacing_review(pacing)
+        if "score must be an integer from 0 to 100" not in error
+        and "revised_score must be an integer from 0 to 100" not in error
+    ]
+
+
+def _quality_gate_waiver(packet_path: Path) -> bool:
+    if not packet_path.exists():
+        return False
+    packet = read_yaml(packet_path)
+    waiver = packet.get("quality_gate", {}).get("waiver", {})
+    return bool(
+        waiver.get("required")
+        and waiver.get("type")
+        and waiver.get("reason")
+        and waiver.get("approved_by")
+    )
 
 
 HANDOFFS = [
@@ -221,6 +405,7 @@ def _write_handoffs(paths: PipelinePaths, manifest: dict) -> None:
                 "## Human Approval",
                 "",
                 "Do not treat generated canon or state changes as approved until the human accepts them.",
+                "V3 state updates remain proposed until the acceptance packet is approved.",
                 "",
                 "## Agent Prompt",
                 "",

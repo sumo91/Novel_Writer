@@ -9,14 +9,21 @@ KNOWLEDGE_DIR = knowledge_dir()
 YAML_FILES = [
     ("Story Bible", "canon/novel_bible.yaml"),
     ("Characters", "canon/characters.yaml"),
+    ("Character States", "canon/character_states.yaml"),
     ("Timeline", "canon/timeline.yaml"),
     ("Open Threads", "canon/open_threads.yaml"),
+    ("Resource Ledger", "canon/resource_ledger.yaml"),
+    ("Payoff Ledger", "canon/payoff_ledger.yaml"),
     ("Relevant Outline", "outlines/arc_001.yaml"),
+    # V3 ledgers are still small; later versions can slice by relevance.
+    ("Unit Plan", "outlines/units/unit_0001.yaml"),
 ]
 
 JSON_FILES = [
     ("Current State", "state/current_state.json"),
     ("Chapter Index", "state/chapter_index.json"),
+    ("Hook Index", "state/hook_index.json"),
+    ("Memory Index", "state/memory_index.json"),
 ]
 
 

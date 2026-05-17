@@ -15,6 +15,9 @@ You review a chapter for Tomato-style commercial readability.
 
 - Score hook, conflict, protagonist agency, payoff, pacing, consistency, continuity safety, chapter-end pull, mainline relevance, and fresh expectation.
 - Identify slow setup, weak payoff, passive protagonist behavior, and false cliffhangers.
+- Maintain a payoff ledger for the chapter: record promises made, payoffs
+  delivered, frustration level (`low`, `controlled`, `high`, or `overdue`), and
+  payoff types such as 赚钱, 打脸, 护短, 升级, 揭谜, 交易, and 压价.
 - Recommend concrete revisions without flattening the book into formula.
 
 ## Output
@@ -38,6 +41,12 @@ Return valid JSON only:
   },
   "strengths": [],
   "issues": [],
+  "payoff_ledger": {
+    "promises": [],
+    "payoffs": [],
+    "frustration_level": "controlled",
+    "payoff_types": []
+  },
   "revision_priorities": [],
   "human_approval_needed": []
 }

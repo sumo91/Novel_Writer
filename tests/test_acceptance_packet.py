@@ -48,6 +48,38 @@ def test_draft_acceptance_packet_uses_reviews_and_current_state(tmp_path, monkey
     assert "Keep payoff delayed." in packet["current_state"]["pending_approvals"]
 
 
+def test_draft_acceptance_packet_includes_v3_state_updates(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(acceptance_packet, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    draft = book / "drafts" / "ch_0001_revised.md"
+    draft.parent.mkdir()
+    draft.write_text("accepted draft", encoding="utf-8")
+
+    output = acceptance_packet.draft_acceptance_packet(
+        "demo",
+        1,
+        title="First Signal",
+        source_draft="drafts/ch_0001_revised.md",
+        summary="The first contradiction appears.",
+    )
+
+    packet = read_yaml(output)
+    updates = packet["v3_state_updates"]
+    assert updates["timeline"]["occurred_events"][0]["source_chapter"] == 1
+    assert (
+        updates["timeline"]["occurred_events"][0]["summary"]
+        == "The first contradiction appears."
+    )
+    assert updates["character_states"] == []
+    assert updates["resource_changes"] == []
+    assert updates["open_thread_updates"] == []
+    assert updates["payoff_updates"][0]["chapter"] == 1
+    assert updates["conflict_updates"]["active"] == []
+    assert updates["next_hook"] == {}
+    assert updates["pending_approvals"] == []
+
+
 def test_draft_acceptance_packet_refuses_existing_file_without_force(tmp_path, monkeypatch):
     monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
     monkeypatch.setattr(acceptance_packet, "BOOKS_DIR", tmp_path / "books")

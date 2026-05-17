@@ -5,12 +5,23 @@ from engine.acceptance_packet import draft_acceptance_packet
 from engine.book_factory import create_book
 from engine.chapter_acceptance import accept_chapter
 from engine.context_builder import write_context
+from engine.drift_report import generate_drift_report
+from engine.pending_approvals import (
+    PendingApprovalNotFoundError,
+    batch_update_pending_approvals,
+    render_pending_approvals,
+    sync_pending_approvals,
+    update_pending_approval,
+)
+from engine.io_utils import read_yaml
 from engine.pipeline import (
     pipeline_accept,
     pipeline_draft_acceptance,
+    pipeline_quality_gate,
     pipeline_status,
     prepare_chapter,
 )
+from engine.v3_migration import migrate_book_to_v3
 from engine.validators import validate_book
 
 
@@ -70,6 +81,13 @@ def build_parser() -> argparse.ArgumentParser:
     pipeline_status_cmd.add_argument("book_id")
     pipeline_status_cmd.add_argument("chapter_number", type=int)
 
+    pipeline_quality_cmd = subparsers.add_parser(
+        "pipeline-quality-gate",
+        help="Evaluate the V2.5 chapter quality gate.",
+    )
+    pipeline_quality_cmd.add_argument("book_id")
+    pipeline_quality_cmd.add_argument("chapter_number", type=int)
+
     pipeline_draft_cmd = subparsers.add_parser(
         "pipeline-draft-acceptance",
         help="Draft an acceptance packet from the V2 pipeline defaults.",
@@ -89,6 +107,53 @@ def build_parser() -> argparse.ArgumentParser:
     pipeline_accept_cmd.add_argument("chapter_number", type=int)
     pipeline_accept_cmd.add_argument("--approved", action="store_true")
     pipeline_accept_cmd.add_argument("--force", action="store_true")
+
+    drift_report_cmd = subparsers.add_parser(
+        "drift-report",
+        help="Generate a chapter-range drift review report.",
+    )
+    drift_report_cmd.add_argument("book_id")
+    drift_report_cmd.add_argument("--start", type=int, required=True)
+    drift_report_cmd.add_argument("--end", type=int, required=True)
+    drift_report_cmd.add_argument("--output")
+
+    pending_cmd = subparsers.add_parser(
+        "pending-approvals",
+        help="List deduped pending approvals with source chapters.",
+    )
+    pending_cmd.add_argument("book_id")
+
+    sync_pending_cmd = subparsers.add_parser(
+        "sync-pending-approvals",
+        help="Write deduped pending approvals to state/pending_approvals.yaml.",
+    )
+    sync_pending_cmd.add_argument("book_id")
+
+    update_pending_cmd = subparsers.add_parser(
+        "pending-approval-update",
+        help="Update one pending approval status in state/pending_approvals.yaml.",
+    )
+    update_pending_cmd.add_argument("book_id")
+    update_pending_cmd.add_argument("approval_id")
+    update_pending_cmd.add_argument(
+        "--status",
+        required=True,
+        choices=["open", "approved", "rejected", "deferred"],
+    )
+    update_pending_cmd.add_argument("--note")
+
+    batch_update_pending_cmd = subparsers.add_parser(
+        "pending-approval-batch-update",
+        help="Update multiple pending approval statuses in one registry write.",
+    )
+    batch_update_pending_cmd.add_argument("book_id")
+    batch_update_pending_cmd.add_argument("--updates-file", required=True)
+
+    migrate_v3_cmd = subparsers.add_parser(
+        "migrate-v3",
+        help="Add missing lightweight V3 state files to an existing book project.",
+    )
+    migrate_v3_cmd.add_argument("book_id")
 
     return parser
 
@@ -152,6 +217,22 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Next action: {status['next_action']}")
         return 0
 
+    if args.command == "pipeline-quality-gate":
+        try:
+            result = pipeline_quality_gate(args.book_id, args.chapter_number)
+        except (FileNotFoundError, ValueError) as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Quality gate: {result['status']}")
+        print(f"- continuity_blockers: {len(result['continuity_blockers'])}")
+        print(f"- initial_pacing_score: {result['initial_pacing_score']}")
+        print(f"- revised_pacing_score: {result['revised_pacing_score']}")
+        print(f"- revision_required: {result['revision_required']}")
+        print(f"- waiver_required: {result['waiver_required']}")
+        for reason in result["reasons"]:
+            print(f"- reason: {reason}")
+        return 0 if result["passed"] else 1
+
     if args.command == "pipeline-draft-acceptance":
         output_path = pipeline_draft_acceptance(
             args.book_id,
@@ -172,6 +253,65 @@ def main(argv: list[str] | None = None) -> int:
             force=args.force,
         )
         print(f"Pipeline accepted chapter: {chapter_path.as_posix()}")
+        return 0
+
+    if args.command == "drift-report":
+        output_path = generate_drift_report(
+            args.book_id,
+            args.start,
+            args.end,
+            Path(args.output) if args.output else None,
+        )
+        print(f"Generated drift report: {output_path.as_posix()}")
+        return 0
+
+    if args.command == "pending-approvals":
+        print(render_pending_approvals(args.book_id), end="")
+        return 0
+
+    if args.command == "sync-pending-approvals":
+        output_path = sync_pending_approvals(args.book_id)
+        print(f"Synced pending approvals: {output_path.as_posix()}")
+        return 0
+
+    if args.command == "pending-approval-update":
+        try:
+            update_pending_approval(
+                args.book_id,
+                args.approval_id,
+                status=args.status,
+                note=args.note,
+            )
+        except (FileNotFoundError, ValueError, PendingApprovalNotFoundError) as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Updated pending approval: {args.approval_id} -> {args.status}")
+        return 0
+
+    if args.command == "pending-approval-batch-update":
+        try:
+            updates_doc = read_yaml(Path(args.updates_file))
+            updates = updates_doc.get("updates")
+            if not isinstance(updates, list):
+                raise ValueError("Updates file must contain an updates list.")
+            batch_update_pending_approvals(args.book_id, updates)
+        except (FileNotFoundError, ValueError, PendingApprovalNotFoundError) as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Batch updated pending approvals: {len(updates)}")
+        return 0
+
+    if args.command == "migrate-v3":
+        try:
+            result = migrate_book_to_v3(args.book_id)
+        except FileNotFoundError as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Migrated book to V3: {result.book_id}")
+        for path in result.created:
+            print(f"- created: {path}")
+        for path in result.updated:
+            print(f"- updated: {path}")
         return 0
 
     parser.error(f"Unknown command: {args.command}")

@@ -16,7 +16,9 @@ You revise a chapter based on approved review notes.
 
 - Fix approved issues while preserving working parts.
 - Do not introduce unapproved major canon changes.
+- Preserve approved V3 state facts.
 - Keep the chapter's core conflict and payoff clear.
+- Call out if the revision changes any payoff, hook, resource, or character state.
 - Report what changed.
 
 ## Output

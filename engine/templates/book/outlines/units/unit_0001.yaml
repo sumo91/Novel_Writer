@@ -1,0 +1,9 @@
+unit: 1
+chapter_range:
+  start: 1
+  end: 10
+unit_goal: ""
+stage_enemy: ""
+stage_payoffs: []
+stage_end_hook: ""
+chapters: []

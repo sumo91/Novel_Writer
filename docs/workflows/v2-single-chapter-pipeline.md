@@ -37,6 +37,12 @@ python -m engine.cli pipeline-status sample_tomato_project 3
 After the revised draft and reviews exist, draft the acceptance packet:
 
 ```powershell
+python -m engine.cli pipeline-quality-gate sample_tomato_project 3
+```
+
+Only proceed when the quality gate passes or the human has recorded an explicit waiver in the acceptance packet.
+
+```powershell
 python -m engine.cli pipeline-draft-acceptance sample_tomato_project 3 --title "Chapter Title" --summary "What changed in this chapter."
 ```
 
