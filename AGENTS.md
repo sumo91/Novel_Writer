@@ -26,7 +26,8 @@ Current strategic priority:
 
 1. Keep the V2.6 chapter pipeline stable.
 2. Build V3 long-form state machine and memory.
-3. Only then expand into market intelligence, reader simulators, dashboards, or data feedback.
+3. Build V3.1 long-form outline architecture.
+4. Only then expand into market intelligence, reader simulators, dashboards, or data feedback.
 
 ## Human Editorial Control
 
@@ -113,6 +114,32 @@ V3 adds explicit long-form memory ledgers and indexes:
 
 For V3 chapters, fill `v3_state_updates` in the acceptance packet before human review. These updates remain proposed until the packet is accepted. Use `python -m engine.cli migrate-v3 <book_id>` before applying V3 checks to an older book. Migration creates missing V3 files and upgrades empty schemas, but it must not parse old prose, convert free-text notes, or infer canon.
 
+V3.1 adds the long-form outline control layer:
+
+- `outlines/master_outline.yaml`
+- `outlines/volumes/volume_001.yaml`
+- upgraded `outlines/arc_001.yaml`
+- upgraded `outlines/units/unit_0001.yaml`
+- `canon/economy.yaml`
+- `canon/factions.yaml`
+
+Use `python -m engine.cli migrate-v3-1 <book_id>` before applying V3.1 checks to an older book. Migration creates missing V3.1 files and upgrades empty schema keys while preserving existing values, but it must not parse old prose, convert free-text notes, or infer canon.
+
+Master, volume, arc, unit, economy, and faction files use file-level `approval` blocks. Draft outline layers may be used only as labeled assumptions. Approved outline layers may be treated as hard writing constraints.
+
+V3.1 uses `canon/open_threads.yaml` as the active mystery and foreshadowing ledger. Do not add a separate `canon/mystery_ledger.yaml` unless a later architecture review decides `open_threads.yaml` is insufficient.
+
+Chapter briefs after V3.1 should cite the active reference chain:
+
+```text
+master -> volume -> arc -> unit -> chapter brief
+```
+
+Keep the locked/open distinction clear:
+
+- Locked: opening state, ending direction, three-act spine, core rules, protagonist end-state, major mystery answer direction.
+- Open: local chapter details, minor characters, exact goods, local reversals, tactical execution.
+
 ## Pending Approvals
 
 Use pending approvals to track human decisions that should not silently become canon.
@@ -145,12 +172,12 @@ Theory guides judgment. Book-local canon remains the source of story truth.
 
 - `sample_tomato_project` is an urban/business V2.5-V2.6 tool-validation sample. It is not the user's preferred genre.
 - `xiuxian_shop_pilot` is the target-genre pilot sample.
-- `xiuxian_shop_pilot` has accepted chapters 1-3.
+- `xiuxian_shop_pilot` has accepted chapters 1-4.
 - Its current premise is: a failing small shop inherited from the protagonist's grandfather opens to a cultivation-world market at midnight.
 - The back door rule is approved: it opens every midnight for one Chinese `时辰`, about two hours.
-- The 1-3 sample validated: opening hook, first trade, reality payoff, and cultivation-world commercial pressure.
-- The recommended story next step, if continuing fiction, is chapter 4: 回春丹铺带价来谈.
-- The recommended system next step is V3 long-form state machine and memory.
+- The 1-4 sample validated: opening hook, first trade, reality payoff, cultivation-world commercial pressure, and the first pill-shop negotiation pressure.
+- The recommended story next step, if continuing fiction, is chapter 5: 赵掌柜亲自来谈.
+- The recommended system next step is V3.1 long-form outline architecture.
 
 ## Repository Practices
 
