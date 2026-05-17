@@ -62,6 +62,28 @@ def test_prepare_chapter_handoffs_include_v3_expectations(tmp_path, monkeypatch)
     assert "payoff ledger" in pacing
 
 
+def test_prepare_chapter_handoffs_include_v3_1_outline_obligations(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    book_factory.create_book("demo", title="Demo Book")
+
+    result = pipeline.prepare_chapter("demo", 1)
+
+    plot_planner = (result.handoff_dir / "01_plot_planner.md").read_text(
+        encoding="utf-8"
+    )
+    continuity = (result.handoff_dir / "03_continuity_editor.md").read_text(
+        encoding="utf-8"
+    )
+    assert "V3.1 outline obligations" in plot_planner
+    assert "master -> volume -> arc -> unit -> chapter brief" in plot_planner
+    assert "served the active unit and arc function" in continuity
+
+
 def test_prepare_chapter_refuses_existing_workspace_without_force(tmp_path, monkeypatch):
     monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
     monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
