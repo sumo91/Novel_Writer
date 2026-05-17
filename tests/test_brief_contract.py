@@ -1,4 +1,4 @@
-from engine import book_factory, brief_contract, outline_gate
+from engine import book_factory, brief_contract, craft_knowledge, outline_gate
 from engine.io_utils import write_json, write_yaml
 
 
@@ -7,6 +7,7 @@ def test_build_chapter_brief_scaffold_includes_outline_and_state_contract(
 ):
     monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
     monkeypatch.setattr(brief_contract, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", tmp_path / "knowledge")
     monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")
     book = book_factory.create_book("demo", title="Demo Book")
     _write_contract_fixture(book)
@@ -26,6 +27,41 @@ def test_build_chapter_brief_scaffold_includes_outline_and_state_contract(
     assert "spirit_fragment" in scaffold
     assert "huichun_pill_shop" in scaffold
     assert "## State Update Expectations" in scaffold
+
+
+def test_build_chapter_brief_scaffold_includes_applicable_craft_cards(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(brief_contract, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    _write_contract_fixture(book)
+    card_dir = tmp_path / "knowledge" / "craft_cards"
+    card_dir.mkdir(parents=True)
+    (card_dir / "agency.yaml").write_text(
+        "\n".join(
+            [
+                "id: craft_agency_001",
+                "applies_to: [brief]",
+                "principle: Force a visible protagonist choice.",
+                "checks:",
+                "  - Name the choice and pressure.",
+                "failure_modes:",
+                "  - Passive protagonist",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    scaffold = brief_contract.build_chapter_brief_scaffold("demo", 5)
+
+    assert "## Craft Knowledge Cards" in scaffold
+    assert "craft_agency_001" in scaffold
+    assert "Force a visible protagonist choice." in scaffold
+    assert "Name the choice and pressure." in scaffold
 
 
 def test_check_chapter_brief_reports_missing_file(tmp_path, monkeypatch):

@@ -5,6 +5,7 @@ from pathlib import Path
 from engine.acceptance_packet import draft_acceptance_packet
 from engine.chapter_acceptance import accept_chapter
 from engine.context_builder import build_context
+from engine.craft_knowledge import load_craft_cards, render_craft_cards
 from engine.hardening import (
     validate_acceptance_packet_file,
     validate_acceptance_contract_snapshot,
@@ -398,34 +399,43 @@ HANDOFFS = [
 def _write_handoffs(paths: PipelinePaths, manifest: dict) -> None:
     for file_name, prompt_path, task, output_key in HANDOFFS:
         prompt_text = read_text(Path(prompt_path))
-        content = "\n".join(
+        lines = [
+            f"# {file_name.removesuffix('.md').replace('_', ' ').title()}",
+            "",
+            f"Prompt source: `{prompt_path}`",
+            f"Context: `{manifest['artifacts']['context']}`",
+            f"Expected output: `{manifest['artifacts'][output_key]}`",
+            "",
+            "## Task",
+            "",
+            task,
+            "",
+            "## Human Approval",
+            "",
+            "Do not treat generated canon or state changes as approved until the human accepts them.",
+            "V3 state updates remain proposed until the acceptance packet is approved.",
+            "",
+            "## V3.1 outline obligations",
+            "",
+            "Use the active outline reference chain: master -> volume -> arc -> unit -> chapter brief.",
+            "The chapter brief must state which master, volume, arc, and unit obligations it serves.",
+            "Reviews must check whether the chapter served the active unit and arc function.",
+            "Draft outline layers are assumptions; approved outline layers are hard constraints.",
+            "",
+        ]
+        if output_key in {"brief", "continuity_review", "pacing_review"}:
+            lines.extend(render_craft_cards(load_craft_cards(_craft_target(output_key))))
+        lines.extend(
             [
-                f"# {file_name.removesuffix('.md').replace('_', ' ').title()}",
-                "",
-                f"Prompt source: `{prompt_path}`",
-                f"Context: `{manifest['artifacts']['context']}`",
-                f"Expected output: `{manifest['artifacts'][output_key]}`",
-                "",
-                "## Task",
-                "",
-                task,
-                "",
-                "## Human Approval",
-                "",
-                "Do not treat generated canon or state changes as approved until the human accepts them.",
-                "V3 state updates remain proposed until the acceptance packet is approved.",
-                "",
-                "## V3.1 outline obligations",
-                "",
-                "Use the active outline reference chain: master -> volume -> arc -> unit -> chapter brief.",
-                "The chapter brief must state which master, volume, arc, and unit obligations it serves.",
-                "Reviews must check whether the chapter served the active unit and arc function.",
-                "Draft outline layers are assumptions; approved outline layers are hard constraints.",
-                "",
                 "## Agent Prompt",
                 "",
                 prompt_text.rstrip(),
                 "",
             ]
         )
+        content = "\n".join(lines)
         write_text(paths.handoff_dir / file_name, content)
+
+
+def _craft_target(output_key: str) -> str:
+    return "brief" if output_key == "brief" else "review"

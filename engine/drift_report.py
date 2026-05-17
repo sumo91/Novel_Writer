@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+from engine.craft_knowledge import load_craft_cards
 from engine.io_utils import read_json, read_yaml, write_text
 from engine.pending_approvals import collect_pending_approvals_from_root
 from engine.paths import books_dir
@@ -48,6 +49,7 @@ def _render_report(root: Path, start_chapter: int, end_chapter: int) -> str:
     lines.extend(_v3_state_machine_warnings(root, current_state, open_threads, end_chapter))
     lines.extend(_outline_alignment(root, chapters, start_chapter, end_chapter))
     lines.extend(_unit_review(root, chapters, current_state, open_threads, start_chapter, end_chapter))
+    lines.extend(_craft_knowledge_checks())
     lines.extend(_continuity_risks(root, start_chapter, end_chapter))
     lines.extend(_pacing_scores(root, start_chapter, end_chapter))
     lines.extend(_chapter_recommendation(current_state, timeline))
@@ -597,6 +599,27 @@ def _protagonist_growth_gap_warnings(
             "Record a concrete agency, relationship, goal, or worldview shift for the protagonist.",
         )
     ]
+
+
+def _craft_knowledge_checks() -> list[str]:
+    cards = load_craft_cards("drift")
+    if not cards:
+        return []
+    lines = [
+        "## Craft Knowledge Checks",
+        "",
+        "| Card | Principle | Checks | Failure Modes |",
+        "| --- | --- | --- | --- |",
+    ]
+    for card in cards:
+        checks = "; ".join(str(check) for check in _as_list(card.get("checks")))
+        failures = "; ".join(str(mode) for mode in _as_list(card.get("failure_modes")))
+        lines.append(
+            f"| {_cell(card.get('id', ''))} | {_cell(card.get('principle', ''))} | "
+            f"{_cell(checks)} | {_cell(failures)} |"
+        )
+    lines.append("")
+    return lines
 
 
 def _read_json_if_present(path: Path) -> dict[str, Any]:

@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from engine import acceptance_packet, book_factory, context_builder, pipeline
+from engine import acceptance_packet, book_factory, context_builder, craft_knowledge, pipeline
 from engine.io_utils import read_yaml, write_json
 
 
@@ -82,6 +82,44 @@ def test_prepare_chapter_handoffs_include_v3_1_outline_obligations(
     assert "V3.1 outline obligations" in plot_planner
     assert "master -> volume -> arc -> unit -> chapter brief" in plot_planner
     assert "served the active unit and arc function" in continuity
+
+
+def test_prepare_chapter_review_handoffs_include_craft_cards(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    card_dir = tmp_path / "knowledge" / "craft_cards"
+    card_dir.mkdir(parents=True)
+    (card_dir / "review.yaml").write_text(
+        "\n".join(
+            [
+                "id: craft_review_passive_protagonist",
+                "applies_to: [review]",
+                "principle: Flag chapters where the protagonist does not drive the scene.",
+                "checks:",
+                "  - Identify the protagonist's decisive action.",
+                "failure_modes:",
+                "  - Passive protagonist",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    book_factory.create_book("demo", title="Demo Book")
+
+    result = pipeline.prepare_chapter("demo", 1)
+
+    continuity = (result.handoff_dir / "03_continuity_editor.md").read_text(
+        encoding="utf-8"
+    )
+    pacing = (result.handoff_dir / "04_tomato_pacing_editor.md").read_text(
+        encoding="utf-8"
+    )
+    assert "## Craft Knowledge Cards" in continuity
+    assert "craft_review_passive_protagonist" in continuity
+    assert "Identify the protagonist's decisive action." in pacing
 
 
 def test_prepare_chapter_refuses_existing_workspace_without_force(tmp_path, monkeypatch):

@@ -1,0 +1,14 @@
+id: craft_resource_pressure
+scope: craft
+applies_to:
+  - review
+  - drift
+use_when: The protagonist gains money, goods, power, allies, or information across a unit.
+principle: Resource growth should create new costs, scarcity, exposure, or obligation.
+checks:
+  - Identify the cost or risk attached to each major gain.
+  - Check whether gains are balanced by spend, debt, danger, or harder opposition.
+failure_modes:
+  - Resource inflation
+  - Formulaic payoff
+severity: soft

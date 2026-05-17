@@ -1,6 +1,7 @@
 from pathlib import Path
 from typing import Any
 
+from engine.craft_knowledge import load_craft_cards, render_craft_cards
 from engine.io_utils import read_json, read_text, read_yaml
 from engine.outline_gate import BRIEF_REFERENCE_CHAIN, chapter_brief_gate
 from engine.paths import books_dir
@@ -94,9 +95,10 @@ def build_chapter_brief_scaffold(book_id: str, chapter_number: int) -> str:
     )
     lines.extend(f"- Economy: {item}" for item in _ids_from_list(economy, "currencies"))
     lines.extend(f"- Faction: {item}" for item in _ids_from_list(factions, "factions"))
+    lines.extend([""])
+    lines.extend(render_craft_cards(load_craft_cards("brief")))
     lines.extend(
         [
-            "",
             "## Ending Pull",
             "",
             f"- {unit_chapter.get('next_hook', '')}",

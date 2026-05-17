@@ -1,0 +1,15 @@
+id: craft_thread_economy
+scope: craft
+applies_to:
+  - brief
+  - drift
+use_when: A unit opens new promises, mysteries, goods, factions, or negotiations.
+principle: A unit should advance or pay off existing promises before opening too many new ones.
+checks:
+  - List which open threads this chapter advances.
+  - List which promises are newly opened.
+  - Confirm at least one prior thread is advanced, paid off, or explicitly deferred.
+failure_modes:
+  - Thread sprawl
+  - False cliffhanger
+severity: soft

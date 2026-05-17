@@ -1,4 +1,4 @@
-from engine import book_factory, drift_report
+from engine import book_factory, craft_knowledge, drift_report
 from engine.io_utils import write_json, write_yaml
 
 
@@ -211,4 +211,93 @@ def test_drift_report_includes_unit_review_warnings(tmp_path, monkeypatch):
     assert "repeated_payoff_type" in content
     assert "stalled_foreshadowing" in content
     assert "resource_inflation" in content
+    assert "protagonist_growth_gap" in content
+
+
+def test_drift_report_includes_drift_craft_cards(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(drift_report, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    card_dir = tmp_path / "knowledge" / "craft_cards"
+    card_dir.mkdir(parents=True)
+    (card_dir / "thread-sprawl.yaml").write_text(
+        "\n".join(
+            [
+                "id: craft_thread_sprawl",
+                "applies_to: [drift]",
+                "principle: Do not open promises faster than the unit advances old ones.",
+                "checks:",
+                "  - Count open promises added versus advanced.",
+                "failure_modes:",
+                "  - Thread sprawl",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    book_factory.create_book("demo", title="Demo Book")
+
+    output = drift_report.generate_drift_report("demo", 1, 5)
+
+    content = output.read_text(encoding="utf-8")
+    assert "## Craft Knowledge Checks" in content
+    assert "craft_thread_sprawl" in content
+    assert "Do not open promises faster" in content
+    assert "Thread sprawl" in content
+
+
+def test_unit_review_does_not_error_when_protagonist_has_growth_history(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(drift_report, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    book = book_factory.create_book("demo", title="Demo Book")
+    write_json(
+        book / "state" / "current_state.json",
+        {"current_chapter": 4, "active_characters": ["chen_an"]},
+    )
+    write_yaml(
+        book / "canon" / "character_states.yaml",
+        {
+            "characters": {
+                "chen_an": {
+                    "history": [
+                        {
+                            "chapter": 4,
+                            "emotional_state": "more decisive",
+                            "current_goal": "set trade rules",
+                        }
+                    ]
+                }
+            }
+        },
+    )
+
+    output = drift_report.generate_drift_report("demo", 1, 4)
+
+    content = output.read_text(encoding="utf-8")
+    assert "## Unit Review" in content
+    assert "protagonist_growth_gap" not in content
+
+
+def test_unit_review_reports_protagonist_growth_gap_without_unit_history(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(drift_report, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    book = book_factory.create_book("demo", title="Demo Book")
+    write_json(
+        book / "state" / "current_state.json",
+        {"current_chapter": 4, "active_characters": ["chen_an"]},
+    )
+    write_yaml(
+        book / "canon" / "character_states.yaml",
+        {"characters": {"chen_an": {"history": [{"chapter": 0, "emotional_state": "wary"}]}}},
+    )
+
+    output = drift_report.generate_drift_report("demo", 1, 4)
+
+    content = output.read_text(encoding="utf-8")
     assert "protagonist_growth_gap" in content

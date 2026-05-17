@@ -1,0 +1,15 @@
+id: craft_protagonist_agency
+scope: craft
+applies_to:
+  - brief
+  - review
+use_when: A chapter could become negotiation, exposition, or reaction without a decisive protagonist move.
+principle: Each chapter should force the protagonist to make a visible choice under pressure.
+checks:
+  - Name the protagonist's concrete choice.
+  - Name the pressure that makes the choice costly.
+  - Confirm the choice changes information, leverage, resources, or relationships.
+failure_modes:
+  - Passive protagonist
+  - Generic opposition
+severity: hard
