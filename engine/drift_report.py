@@ -47,6 +47,7 @@ def _render_report(root: Path, start_chapter: int, end_chapter: int) -> str:
     lines.extend(_pending_approvals(root))
     lines.extend(_v3_state_machine_warnings(root, current_state, open_threads, end_chapter))
     lines.extend(_outline_alignment(root, chapters, start_chapter, end_chapter))
+    lines.extend(_unit_review(root, chapters, current_state, open_threads, start_chapter, end_chapter))
     lines.extend(_continuity_risks(root, start_chapter, end_chapter))
     lines.extend(_pacing_scores(root, start_chapter, end_chapter))
     lines.extend(_chapter_recommendation(current_state, timeline))
@@ -404,6 +405,198 @@ def _unit_contains_chapter(unit: dict[str, Any], chapter_number: int) -> bool:
     start = chapter_range.get("start")
     end = chapter_range.get("end")
     return isinstance(start, int) and isinstance(end, int) and start <= chapter_number <= end
+
+
+def _unit_review(
+    root: Path,
+    chapters: list[dict[str, Any]],
+    current_state: dict[str, Any],
+    open_threads: dict[str, Any],
+    start_chapter: int,
+    end_chapter: int,
+) -> list[str]:
+    payoff_ledger = _read_yaml_if_present(root / "canon" / "payoff_ledger.yaml")
+    resource_ledger = _read_yaml_if_present(root / "canon" / "resource_ledger.yaml")
+    character_states = _read_yaml_if_present(root / "canon" / "character_states.yaml")
+
+    warnings: list[tuple[str, str, str, str]] = []
+    warnings.extend(_unit_pacing_warnings(root, start_chapter, end_chapter))
+    warnings.extend(_repeated_payoff_warnings(payoff_ledger, start_chapter, end_chapter))
+    warnings.extend(_stalled_foreshadowing_warnings(open_threads, start_chapter, end_chapter))
+    warnings.extend(_resource_inflation_warnings(resource_ledger, start_chapter, end_chapter))
+    warnings.extend(
+        _protagonist_growth_gap_warnings(
+            current_state,
+            character_states,
+            start_chapter,
+            end_chapter,
+        )
+    )
+
+    lines = [
+        "## Unit Review",
+        "",
+        f"Scope: chapters {start_chapter}-{end_chapter} ({len(chapters)} accepted/indexed chapters).",
+        "",
+        "| Type | Item | Evidence | Recommended Action |",
+        "| --- | --- | --- | --- |",
+    ]
+    if warnings:
+        for warning_type, item, evidence, action in warnings:
+            lines.append(
+                f"| {_cell(warning_type)} | {_cell(item)} | {_cell(evidence)} | {_cell(action)} |"
+            )
+    else:
+        lines.append("| None | - | No mechanical unit-level warning found. | Continue. |")
+    lines.append("")
+    return lines
+
+
+def _unit_pacing_warnings(
+    root: Path,
+    start_chapter: int,
+    end_chapter: int,
+) -> list[tuple[str, str, str, str]]:
+    low_scores = []
+    for chapter_number in range(start_chapter, end_chapter + 1):
+        path = root / "reviews" / f"ch_{chapter_number:04d}" / "pacing_review.json"
+        if not path.exists():
+            continue
+        pacing = read_json(path)
+        score = pacing.get("revised_score")
+        if score is None:
+            score = pacing.get("score")
+        if _numeric(score) is not None and score < 80:
+            low_scores.append(f"ch{chapter_number}: {score}")
+    if not low_scores:
+        return []
+    return [
+        (
+            "pacing_risk",
+            f"chapters {start_chapter}-{end_chapter}",
+            "low pacing scores: " + ", ".join(low_scores),
+            "Revise the weak chapter or make the waiver explicit before extending the unit.",
+        )
+    ]
+
+
+def _repeated_payoff_warnings(
+    payoff_ledger: dict[str, Any],
+    start_chapter: int,
+    end_chapter: int,
+) -> list[tuple[str, str, str, str]]:
+    counts: dict[str, int] = {}
+    for entry in _as_list(payoff_ledger.get("entries")):
+        if not isinstance(entry, dict):
+            continue
+        chapter = _numeric(entry.get("chapter"))
+        if chapter is None or not (start_chapter <= chapter <= end_chapter):
+            continue
+        for payoff_type in _as_list(entry.get("payoff_types")):
+            key = str(payoff_type)
+            counts[key] = counts.get(key, 0) + 1
+    warnings = []
+    for payoff_type, count in sorted(counts.items()):
+        if count >= 3:
+            warnings.append(
+                (
+                    "repeated_payoff_type",
+                    payoff_type,
+                    f"{count} payoff entries in chapters {start_chapter}-{end_chapter}.",
+                    "Vary the payoff shape or escalate the repeated pleasure point.",
+                )
+            )
+    return warnings
+
+
+def _stalled_foreshadowing_warnings(
+    open_threads: dict[str, Any],
+    start_chapter: int,
+    end_chapter: int,
+) -> list[tuple[str, str, str, str]]:
+    warnings = []
+    for thread in _as_list(open_threads.get("threads")):
+        if not isinstance(thread, dict):
+            continue
+        if thread.get("status") not in {"open", "advanced"}:
+            continue
+        last_touched = _numeric(thread.get("last_touched"))
+        deadline = _numeric(thread.get("payoff_deadline"))
+        if last_touched is None:
+            continue
+        if last_touched <= start_chapter and (deadline is None or deadline <= end_chapter):
+            item = str(thread.get("id") or thread.get("promise") or "thread")
+            warnings.append(
+                (
+                    "stalled_foreshadowing",
+                    item,
+                    f"last_touched {last_touched:g}; unit ends at chapter {end_chapter}.",
+                    "Advance, pay off, or explicitly defer this thread in the next brief.",
+                )
+            )
+    return warnings
+
+
+def _resource_inflation_warnings(
+    resource_ledger: dict[str, Any],
+    start_chapter: int,
+    end_chapter: int,
+) -> list[tuple[str, str, str, str]]:
+    warnings = []
+    for resource in _as_list(resource_ledger.get("resources")):
+        if not isinstance(resource, dict):
+            continue
+        deltas = [
+            entry.get("delta")
+            for entry in _as_list(resource.get("history"))
+            if isinstance(entry, dict)
+            and _numeric(entry.get("chapter")) is not None
+            and start_chapter <= _numeric(entry.get("chapter")) <= end_chapter
+            and _numeric(entry.get("delta")) is not None
+        ]
+        positive = [delta for delta in deltas if delta > 0]
+        negative = [delta for delta in deltas if delta < 0]
+        if len(positive) >= 3 and sum(deltas) > 0 and not negative:
+            item = str(resource.get("id") or resource.get("name") or "resource")
+            warnings.append(
+                (
+                    "resource_inflation",
+                    item,
+                    f"net change +{sum(deltas):g} across {len(positive)} positive entries.",
+                    "Add cost, scarcity, tradeoff, or a ledger note explaining why growth is controlled.",
+                )
+            )
+    return warnings
+
+
+def _protagonist_growth_gap_warnings(
+    current_state: dict[str, Any],
+    character_states: dict[str, Any],
+    start_chapter: int,
+    end_chapter: int,
+) -> list[tuple[str, str, str, str]]:
+    active = [str(character) for character in _as_list(current_state.get("active_characters"))]
+    protagonist_id = "chen_an" if "chen_an" in active else active[0] if active else ""
+    if not protagonist_id:
+        return []
+    character = _as_dict(_as_dict(character_states.get("characters")).get(protagonist_id))
+    history = [
+        entry
+        for entry in _as_list(character.get("history"))
+        if isinstance(entry, dict)
+        and _numeric(entry.get("chapter")) is not None
+        and start_chapter <= _numeric(entry.get("chapter")) <= end_chapter
+    ]
+    if history:
+        return []
+    return [
+        (
+            "protagonist_growth_gap",
+            protagonist_id,
+            f"no character state history entry inside chapters {start_chapter}-{end_chapter}.",
+            "Record a concrete agency, relationship, goal, or worldview shift for the protagonist.",
+        )
+    ]
 
 
 def _read_json_if_present(path: Path) -> dict[str, Any]:
