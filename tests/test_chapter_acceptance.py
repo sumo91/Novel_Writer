@@ -77,8 +77,19 @@ def test_accept_chapter_applies_update_packet(tmp_path, monkeypatch):
                         "character_state_changes": [],
                         "resource_changes": [],
                         "open_thread_updates": [],
-                        "payoff_updates": [],
-                        "next_hook": {},
+                        "payoff_updates": [
+                            {
+                                "chapter": 1,
+                                "promises_made": ["The contradiction has a cost."],
+                                "payoffs_delivered": ["The system triggered."],
+                                "frustration_level": "controlled",
+                            }
+                        ],
+                        "next_hook": {
+                            "hook": "A stranger recognizes the system trace.",
+                            "obligation": "Reveal the stranger's motive.",
+                            "target_chapter": 2,
+                        },
                         "pending_approvals": [],
                         "economy_changes": [],
                         "faction_changes": [],
@@ -368,8 +379,25 @@ def test_accept_chapter_v3_thread_update_blocks_same_id_legacy_overwrite(
                         },
                         "character_state_changes": [],
                         "resource_changes": [],
-                        "open_thread_updates": [],
-                        "payoff_updates": [],
+                        "open_thread_updates": [
+                            {
+                                "id": "thread_001",
+                                "promise": "The first buyer may return.",
+                                "status": "advanced",
+                                "source_chapter": 1,
+                                "last_touched": 2,
+                                "next_obligation": "Negotiate the second visit.",
+                                "risk_if_ignored": "Reader loses track of the buyer.",
+                            }
+                        ],
+                        "payoff_updates": [
+                            {
+                                "chapter": 2,
+                                "promises_made": [],
+                                "payoffs_delivered": ["Summary."],
+                                "frustration_level": "controlled",
+                            }
+                        ],
                         "next_hook": {},
                         "pending_approvals": [],
                         "economy_changes": [],

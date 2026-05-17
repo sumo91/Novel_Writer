@@ -263,6 +263,88 @@ def test_validate_acceptance_packet_requires_acceptance_contract_sections():
     ) in errors
 
 
+def test_validate_acceptance_packet_requires_contract_state_updates_to_mirror_v3_updates():
+    packet = _valid_acceptance_packet(
+        {
+            "timeline": {},
+            "character_states": [
+                {
+                    "character_id": "chen_an",
+                    "display_name": "Chen An",
+                    "physical_state": "steady",
+                    "social_state": "watched",
+                    "emotional_state": "wary",
+                    "current_goal": "keep trading",
+                    "known_secrets": [],
+                    "public_knowledge": [],
+                    "relationship_changes": [],
+                    "voice_notes": [],
+                }
+            ],
+            "resource_changes": [
+                {
+                    "owner": "chen_an",
+                    "item": "cash",
+                    "delta": 5,
+                    "unit": "yuan",
+                    "category": "money",
+                    "reason": "small sale",
+                }
+            ],
+            "open_thread_updates": [
+                {
+                    "id": "thread_0001_01",
+                    "promise": "A buyer will return.",
+                    "source_chapter": 1,
+                    "status": "open",
+                    "last_touched": 1,
+                }
+            ],
+            "payoff_updates": [
+                {
+                    "frustration_level": "controlled",
+                    "promises_made": ["Promise."],
+                    "payoffs_delivered": [],
+                }
+            ],
+            "conflict_updates": {"active": []},
+            "next_hook": {
+                "hook": "The buyer returns.",
+                "obligation": "Answer the trade pressure.",
+                "target_chapter": 2,
+            },
+            "pending_approvals": ["Confirm buyer rule."],
+        }
+    )
+
+    errors = validate_acceptance_packet(packet, chapter_number=1)
+
+    assert (
+        "acceptance_contract.state_updates.character_state_changes must mirror "
+        "v3_state_updates.character_states."
+    ) in errors
+    assert (
+        "acceptance_contract.state_updates.resource_changes must mirror "
+        "v3_state_updates.resource_changes."
+    ) in errors
+    assert (
+        "acceptance_contract.state_updates.open_thread_updates must mirror "
+        "v3_state_updates.open_thread_updates."
+    ) in errors
+    assert (
+        "acceptance_contract.state_updates.payoff_updates must mirror "
+        "v3_state_updates.payoff_updates."
+    ) in errors
+    assert (
+        "acceptance_contract.state_updates.next_hook must mirror "
+        "v3_state_updates.next_hook."
+    ) in errors
+    assert (
+        "acceptance_contract.state_updates.pending_approvals must mirror "
+        "v3_state_updates.pending_approvals."
+    ) in errors
+
+
 def test_validate_acceptance_packet_rejects_falsey_non_mapping_v3_timeline():
     errors = validate_acceptance_packet(
         _valid_acceptance_packet(
@@ -483,5 +565,5 @@ def _valid_acceptance_packet(v3_state_updates, *, include_acceptance_contract=Tr
                 "economy_changes": [],
                 "faction_changes": [],
             },
-        },
+        }
     return packet

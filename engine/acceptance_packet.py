@@ -1,3 +1,4 @@
+import copy
 from pathlib import Path
 from typing import Any
 
@@ -37,6 +38,11 @@ def draft_acceptance_packet(
     current_state["pending_approvals"] = pending_approvals
 
     timeline_id = _next_timeline_id(root)
+    v3_state_updates = _draft_v3_state_updates(
+        chapter_number,
+        summary,
+        pending_approvals,
+    )
     packet = {
         "chapter": chapter_number,
         "title": title,
@@ -51,11 +57,7 @@ def draft_acceptance_packet(
             "when": f"第 {chapter_number} 章",
             "summary": summary,
         },
-        "v3_state_updates": _draft_v3_state_updates(
-            chapter_number,
-            summary,
-            pending_approvals,
-        ),
+        "v3_state_updates": v3_state_updates,
         "open_thread_updates": [],
         "change_log": {
             "summary": (
@@ -70,8 +72,7 @@ def draft_acceptance_packet(
             chapter_number,
             timeline_id,
             summary,
-            current_state,
-            pending_approvals,
+            v3_state_updates,
         ),
     }
 
@@ -152,8 +153,7 @@ def _draft_acceptance_contract(
     chapter_number: int,
     timeline_id: str,
     summary: str,
-    current_state: dict[str, Any],
-    pending_approvals: list[str],
+    v3_state_updates: dict[str, Any],
 ) -> dict[str, Any]:
     return {
         "quality_gate_summary": _quality_gate_summary(root, chapter_number),
@@ -162,8 +162,7 @@ def _draft_acceptance_contract(
             chapter_number,
             timeline_id,
             summary,
-            current_state,
-            pending_approvals,
+            v3_state_updates,
         ),
     }
 
@@ -219,8 +218,7 @@ def _acceptance_state_updates(
     chapter_number: int,
     timeline_id: str,
     summary: str,
-    current_state: dict[str, Any],
-    pending_approvals: list[str],
+    v3_state_updates: dict[str, Any],
 ) -> dict[str, Any]:
     return {
         "timeline_event": {
@@ -228,22 +226,12 @@ def _acceptance_state_updates(
             "when": f"第 {chapter_number} 章",
             "summary": summary,
         },
-        "character_state_changes": [],
-        "resource_changes": [],
-        "open_thread_updates": [],
-        "payoff_updates": [
-            {
-                "chapter": chapter_number,
-                "promises_made": [],
-                "payoffs_delivered": [summary],
-                "frustration_level": "controlled",
-                "payoff_types": [],
-                "delayed_payoffs": [],
-                "risks": [],
-            },
-        ],
-        "next_hook": {},
-        "pending_approvals": list(pending_approvals),
+        "character_state_changes": copy.deepcopy(v3_state_updates.get("character_states", [])),
+        "resource_changes": copy.deepcopy(v3_state_updates.get("resource_changes", [])),
+        "open_thread_updates": copy.deepcopy(v3_state_updates.get("open_thread_updates", [])),
+        "payoff_updates": copy.deepcopy(v3_state_updates.get("payoff_updates", [])),
+        "next_hook": copy.deepcopy(v3_state_updates.get("next_hook", {})),
+        "pending_approvals": copy.deepcopy(v3_state_updates.get("pending_approvals", [])),
         "economy_changes": [],
         "faction_changes": [],
     }

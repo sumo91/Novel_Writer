@@ -61,9 +61,20 @@ acceptance_contract:
     character_state_changes: []
     resource_changes: []
     open_thread_updates: []
-    payoff_updates: []
+    payoff_updates:
+    - chapter: 1
+      promises_made: []
+      payoffs_delivered:
+      - 陈安继承爷爷留下的小卖部，现实中被亲戚逼卖和催租压迫；午夜仓库后门开启，门外通向青石坊，第一位灰袍散修用碎灵询问细盐和火折。
+      frustration_level: controlled
+      payoff_types: []
+      delayed_payoffs: []
+      risks: []
     next_hook: {}
-    pending_approvals: []
+    pending_approvals:
+    - 是否沿用书名《我家小卖部通修仙界》。
+    - 是否确认后门规则为每天午夜开启一个时辰。
+    - 是否确认第一交易锚点为细盐和打火机。
     economy_changes: []
     faction_changes: []
 v3_state_updates:

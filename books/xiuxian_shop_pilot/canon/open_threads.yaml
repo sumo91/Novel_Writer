@@ -17,6 +17,10 @@ threads:
     payoff_deadline: 6
     risk_if_ignored: 回春丹铺压力会显得虚弱，陈安立规矩的爽点无法继续兑现。
     chapter: 4
+  related_characters: []
+  related_locations: []
+  payoff_chapter: ''
+  notes: []
 - id: thread_0004_grandpa_qingdengcao_record
   promise: 青灯草同时出现在青石坊价目半册和爷爷十年前旧账本中，暗示爷爷长期熟悉两界交易。
   source_chapter: 4
@@ -35,3 +39,7 @@ threads:
     payoff_deadline: 8
     risk_if_ignored: 爷爷长线谜团会变成孤立彩蛋，削弱追读。
     chapter: 4
+  related_characters: []
+  related_locations: []
+  payoff_chapter: ''
+  notes: []

@@ -371,7 +371,7 @@ def validate_acceptance_packet(
                 + ", ".join(missing_contract)
                 + "."
             )
-        errors.extend(validate_acceptance_contract(acceptance_contract))
+        errors.extend(validate_acceptance_contract(acceptance_contract, packet))
     elif "acceptance_contract" in packet:
         errors.append("Acceptance packet acceptance_contract must be a mapping.")
 
@@ -433,7 +433,10 @@ def validate_v3_state_updates(updates: dict[str, Any]) -> list[str]:
     return errors
 
 
-def validate_acceptance_contract(contract: dict[str, Any]) -> list[str]:
+def validate_acceptance_contract(
+    contract: dict[str, Any],
+    packet: dict[str, Any] | None = None,
+) -> list[str]:
     errors: list[str] = []
     if not contract:
         errors.append(
@@ -527,6 +530,36 @@ def validate_acceptance_contract(contract: dict[str, Any]) -> list[str]:
         if next_hook not in ({}, None) and not isinstance(next_hook, dict):
             errors.append("acceptance_contract.state_updates.next_hook must be a mapping.")
 
+        if packet is not None and isinstance(packet.get("v3_state_updates"), dict):
+            errors.extend(
+                _validate_acceptance_contract_state_update_mirror(
+                    state_updates,
+                    packet["v3_state_updates"],
+                )
+            )
+
+    return errors
+
+
+def _validate_acceptance_contract_state_update_mirror(
+    state_updates: dict[str, Any],
+    v3_updates: dict[str, Any],
+) -> list[str]:
+    errors: list[str] = []
+    mirrors = {
+        "character_state_changes": "character_states",
+        "resource_changes": "resource_changes",
+        "open_thread_updates": "open_thread_updates",
+        "payoff_updates": "payoff_updates",
+        "next_hook": "next_hook",
+        "pending_approvals": "pending_approvals",
+    }
+    for contract_field, v3_field in mirrors.items():
+        if state_updates.get(contract_field) != v3_updates.get(v3_field):
+            errors.append(
+                f"acceptance_contract.state_updates.{contract_field} must mirror "
+                f"v3_state_updates.{v3_field}."
+            )
     return errors
 
 

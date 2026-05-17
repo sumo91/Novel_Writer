@@ -1,3 +1,4 @@
+import copy
 import shutil
 from dataclasses import dataclass
 from pathlib import Path
@@ -183,6 +184,8 @@ def _upgrade_acceptance_packets(root: Path) -> list[str]:
                 _pending_approvals_from_packet(packet),
             )
             changed = True
+        if _sync_acceptance_contract_state_updates(packet):
+            changed = True
         if changed:
             write_yaml(path, packet)
             updated.append(path.relative_to(root).as_posix())
@@ -277,6 +280,34 @@ def _pending_approvals_from_packet(packet: dict[str, Any]) -> list[str]:
     if not isinstance(pending_approvals, list):
         return []
     return pending_approvals
+
+
+def _sync_acceptance_contract_state_updates(packet: dict[str, Any]) -> bool:
+    contract = packet.get("acceptance_contract")
+    v3_updates = packet.get("v3_state_updates")
+    if not isinstance(contract, dict) or not isinstance(v3_updates, dict):
+        return False
+
+    state_updates = contract.setdefault("state_updates", {})
+    if not isinstance(state_updates, dict):
+        contract["state_updates"] = {}
+        state_updates = contract["state_updates"]
+
+    mirrors = {
+        "character_state_changes": "character_states",
+        "resource_changes": "resource_changes",
+        "open_thread_updates": "open_thread_updates",
+        "payoff_updates": "payoff_updates",
+        "next_hook": "next_hook",
+        "pending_approvals": "pending_approvals",
+    }
+    changed = False
+    for contract_field, v3_field in mirrors.items():
+        expected = copy.deepcopy(v3_updates.get(v3_field, {} if contract_field == "next_hook" else []))
+        if state_updates.get(contract_field) != expected:
+            state_updates[contract_field] = expected
+            changed = True
+    return changed
 
 
 def _legacy_thread_promise(thread: dict[str, Any]) -> str:

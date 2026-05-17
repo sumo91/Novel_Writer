@@ -68,9 +68,23 @@ acceptance_contract:
     character_state_changes: []
     resource_changes: []
     open_thread_updates: []
-    payoff_updates: []
+    payoff_updates:
+    - chapter: 2
+      promises_made: []
+      payoffs_delivered:
+      - 陈安站在后门内完成第一笔两界交易，用细盐、打火机和手电筒换到两枚碎灵与黄芽草；许青带走夜明筒后被青石坊巡卫盘问，陈安意识到现代货物既能救命也会惹祸。
+      frustration_level: controlled
+      payoff_types: []
+      delayed_payoffs: []
+      risks: []
     next_hook: {}
-    pending_approvals: []
+    pending_approvals:
+    - 是否沿用书名《我家小卖部通修仙界》。
+    - 是否确认后门规则为每天午夜开启一个时辰。
+    - 是否确认第一交易锚点为细盐和打火机。
+    - 是否确认碎灵作为低阶交易货币单位。
+    - 是否确认手电筒暂命名为夜明筒。
+    - 是否确认许青被巡卫盘问作为第3章入口。
     economy_changes: []
     faction_changes: []
 v3_state_updates:
