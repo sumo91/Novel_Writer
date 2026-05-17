@@ -1,4 +1,4 @@
-from engine import book_factory, validators
+from engine import book_factory, craft_knowledge, validators
 from engine.hardening import validate_acceptance_packet
 from engine.io_utils import write_json, write_yaml
 
@@ -98,6 +98,38 @@ def test_validate_book_rejects_invalid_v3_1_outline_shape(tmp_path, monkeypatch)
     assert "outlines/units/unit_0001.yaml: chapters[1].chapter must fit inside chapter_range." in errors
     assert "canon/economy.yaml: root must be a mapping." in errors
     assert "canon/factions.yaml: factions must be a list." in errors
+
+
+def test_validate_book_reports_invalid_craft_cards(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(validators, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    book_factory.create_book("demo", title="Demo Book")
+    card_dir = tmp_path / "knowledge" / "craft_cards"
+    card_dir.mkdir(parents=True)
+    (card_dir / "broken.yaml").write_text(
+        "\n".join(
+            [
+                "id: craft_broken",
+                "scope: craft",
+                "applies_to: []",
+                "use_when: Test.",
+                "principle: Test.",
+                "checks: []",
+                "failure_modes: []",
+                "severity: extreme",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    errors = validators.validate_book("demo")
+
+    assert (
+        "knowledge/craft_cards/broken.yaml: severity must be hard, soft, or genre-specific."
+        in errors
+    )
 
 
 def test_validate_book_rejects_chapter_brief_missing_v3_1_reference_chain(

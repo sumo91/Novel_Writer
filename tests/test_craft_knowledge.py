@@ -52,3 +52,35 @@ def test_load_craft_cards_filters_by_application(tmp_path, monkeypatch):
     cards = craft_knowledge.load_craft_cards("drift")
 
     assert [card["id"] for card in cards] == ["craft_drift"]
+
+
+def test_validate_craft_cards_reports_schema_errors(tmp_path, monkeypatch):
+    knowledge_dir = tmp_path / "knowledge"
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", knowledge_dir)
+    card_dir = knowledge_dir / "craft_cards"
+    card_dir.mkdir(parents=True)
+    (card_dir / "broken.yaml").write_text(
+        "\n".join(
+            [
+                "id: craft_broken",
+                "scope: craft",
+                "applies_to: brief",
+                "principle: ''",
+                "checks: none",
+                "failure_modes: []",
+                "severity: extreme",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    errors = craft_knowledge.validate_craft_cards()
+
+    assert "craft_cards/broken.yaml: applies_to must be a list." in errors
+    assert "craft_cards/broken.yaml: principle is required." in errors
+    assert "craft_cards/broken.yaml: checks must be a list." in errors
+    assert (
+        "craft_cards/broken.yaml: severity must be hard, soft, or genre-specific."
+        in errors
+    )

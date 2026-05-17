@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from engine.craft_knowledge import validate_craft_cards
 from engine.hardening import (
     validate_pending_approvals_registry,
     validate_acceptance_packet_file,
@@ -56,6 +57,7 @@ def validate_book(book_id: str) -> list[str]:
     errors.extend(validate_pending_approvals_registry(root))
     errors.extend(validate_v3_ledgers(root))
     errors.extend(validate_v3_1_outline_architecture(root))
+    errors.extend(f"knowledge/{error}" for error in validate_craft_cards())
 
     return errors
 
