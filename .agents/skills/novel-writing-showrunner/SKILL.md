@@ -43,7 +43,9 @@ Use the first matching state:
    - Run `python -m engine.cli chapter-brief-gate <book_id> <chapter>` before writing the chapter brief; use `--strict` when the user wants only approved outlines to drive planning.
    - Identify the active `master -> volume -> arc -> unit` reference chain and whether each layer is draft or approved.
    - Run `python -m engine.cli prepare-chapter <book_id> <chapter>`.
-   - Write `outlines/chapter_briefs/ch_XXXX_brief.md`.
+   - Run `python -m engine.cli chapter-brief-scaffold <book_id> <chapter>` if the brief does not exist.
+   - Edit `outlines/chapter_briefs/ch_XXXX_brief.md` into a human-reviewable brief.
+   - Run `python -m engine.cli chapter-brief-check <book_id> <chapter>`.
    - The brief must state: chapter goal, opening hook, required beats, character movement, ending pull, continuity notes, outline obligations, required threads/payoffs, and relevant economy/faction constraints.
 
 4. **Brief exists, no draft**
@@ -122,6 +124,8 @@ python -m engine.cli migrate-v3-1 <book_id>
 python -m engine.cli outline-status <book_id>
 python -m engine.cli outline-approval-update <book_id> <layer> --status approved --note "<note>"
 python -m engine.cli chapter-brief-gate <book_id> <chapter>
+python -m engine.cli chapter-brief-scaffold <book_id> <chapter>
+python -m engine.cli chapter-brief-check <book_id> <chapter>
 python -m engine.cli prepare-chapter <book_id> <chapter>
 python -m engine.cli pipeline-status <book_id> <chapter>
 python -m engine.cli pipeline-quality-gate <book_id> <chapter>

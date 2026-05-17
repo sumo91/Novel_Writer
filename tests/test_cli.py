@@ -1,4 +1,4 @@
-from engine import book_factory, cli, outline_gate, pipeline, v3_migration
+from engine import book_factory, brief_contract, cli, outline_gate, pipeline, v3_migration
 from engine.io_utils import read_yaml, write_json
 
 
@@ -14,6 +14,28 @@ def test_pipeline_quality_gate_cli_reports_missing_reviews_without_traceback(
     captured = capsys.readouterr()
     assert result == 1
     assert "Error: Missing continuity review:" in captured.out
+
+
+def test_prepare_chapter_cli_reports_brief_gate_and_check_status(
+    tmp_path, monkeypatch, capsys
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(brief_contract, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")
+    import engine.context_builder as context_builder
+
+    monkeypatch.setattr(context_builder, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    book_factory.create_book("demo", title="Demo Book")
+
+    result = cli.main(["prepare-chapter", "demo", "5"])
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "Prepared chapter pipeline:" in captured.out
+    assert "Chapter brief gate:" in captured.out
+    assert "Chapter brief check:" in captured.out
 
 
 def test_validate_book_reports_existing_review_errors(tmp_path, monkeypatch, capsys):
@@ -369,3 +391,57 @@ def test_chapter_brief_gate_cli_blocks_strict_draft_layers(tmp_path, monkeypatch
     assert result == 1
     assert "Chapter brief gate: blocked" in captured.out
     assert "master (outlines/master_outline.yaml) is draft, not approved." in captured.out
+
+
+def test_chapter_brief_scaffold_cli_writes_brief(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(brief_contract, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+
+    result = cli.main(["chapter-brief-scaffold", "demo", "5"])
+
+    captured = capsys.readouterr()
+    output = book / "outlines" / "chapter_briefs" / "ch_0005_brief.md"
+    assert result == 0
+    assert output.exists()
+    assert f"Wrote chapter brief scaffold: {output.as_posix()}" in captured.out
+    assert "## V3.3 Outline Contract" in output.read_text(encoding="utf-8")
+
+
+def test_chapter_brief_scaffold_cli_refuses_overwrite_without_force(
+    tmp_path, monkeypatch, capsys
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(brief_contract, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    output = book / "outlines" / "chapter_briefs" / "ch_0005_brief.md"
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text("Existing brief.", encoding="utf-8")
+
+    result = cli.main(["chapter-brief-scaffold", "demo", "5"])
+
+    captured = capsys.readouterr()
+    assert result == 1
+    assert "Error: Chapter brief already exists" in captured.out
+    assert output.read_text(encoding="utf-8") == "Existing brief."
+
+
+def test_chapter_brief_check_cli_reports_passed_scaffold(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(brief_contract, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    output = book / "outlines" / "chapter_briefs" / "ch_0005_brief.md"
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(
+        brief_contract.build_chapter_brief_scaffold("demo", 5),
+        encoding="utf-8",
+    )
+
+    result = cli.main(["chapter-brief-check", "demo", "5"])
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "Chapter brief check: passed" in captured.out

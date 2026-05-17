@@ -2,6 +2,11 @@ import argparse
 from pathlib import Path
 
 from engine.acceptance_packet import draft_acceptance_packet
+from engine.brief_contract import (
+    build_chapter_brief_scaffold,
+    check_chapter_brief,
+    default_brief_path,
+)
 from engine.book_factory import create_book
 from engine.chapter_acceptance import accept_chapter
 from engine.context_builder import write_context
@@ -195,6 +200,22 @@ def build_parser() -> argparse.ArgumentParser:
     chapter_brief_gate_cmd.add_argument("chapter_number", type=int)
     chapter_brief_gate_cmd.add_argument("--strict", action="store_true")
 
+    chapter_brief_scaffold_cmd = subparsers.add_parser(
+        "chapter-brief-scaffold",
+        help="Write a V3.3 chapter brief scaffold.",
+    )
+    chapter_brief_scaffold_cmd.add_argument("book_id")
+    chapter_brief_scaffold_cmd.add_argument("chapter_number", type=int)
+    chapter_brief_scaffold_cmd.add_argument("--output")
+    chapter_brief_scaffold_cmd.add_argument("--force", action="store_true")
+
+    chapter_brief_check_cmd = subparsers.add_parser(
+        "chapter-brief-check",
+        help="Check an existing chapter brief against the V3.3 contract.",
+    )
+    chapter_brief_check_cmd.add_argument("book_id")
+    chapter_brief_check_cmd.add_argument("chapter_number", type=int)
+
     return parser
 
 
@@ -246,6 +267,11 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "prepare-chapter":
         paths = prepare_chapter(args.book_id, args.chapter_number, force=args.force)
         print(f"Prepared chapter pipeline: {paths.pipeline_dir.as_posix()}")
+        gate = chapter_brief_gate(args.book_id, args.chapter_number)
+        gate_status = "allowed" if gate["allowed"] else "blocked"
+        print(f"Chapter brief gate: {gate_status}")
+        check = check_chapter_brief(args.book_id, args.chapter_number)
+        print(f"Chapter brief check: {check['status']}")
         return 0
 
     if args.command == "pipeline-status":
@@ -413,6 +439,37 @@ def main(argv: list[str] | None = None) -> int:
         for error in result["blocking_errors"]:
             print(f"- error: {error}")
         return 0 if result["allowed"] else 1
+
+    if args.command == "chapter-brief-scaffold":
+        try:
+            output_path = (
+                Path(args.output)
+                if args.output
+                else default_brief_path(args.book_id, args.chapter_number)
+            )
+            if output_path.exists() and not args.force:
+                raise FileExistsError(f"Chapter brief already exists: {output_path}")
+            scaffold = build_chapter_brief_scaffold(args.book_id, args.chapter_number)
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+            output_path.write_text(scaffold, encoding="utf-8")
+        except (FileNotFoundError, FileExistsError, ValueError) as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Wrote chapter brief scaffold: {output_path.as_posix()}")
+        return 0
+
+    if args.command == "chapter-brief-check":
+        try:
+            result = check_chapter_brief(args.book_id, args.chapter_number)
+        except FileNotFoundError as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Chapter brief check: {result['status']}")
+        for warning in result["warnings"]:
+            print(f"- warning: {warning}")
+        for error in result["errors"]:
+            print(f"- error: {error}")
+        return 0 if result["passed"] else 1
 
     parser.error(f"Unknown command: {args.command}")
     return 2
