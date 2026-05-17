@@ -1,65 +1,67 @@
 factions:
-  - id: huichun_pill_shop
-    name: 回春丹铺
-    world: qingshifang
-    public_role: "青石坊丹药与伤药相关商铺。"
-    private_interest: "锁定陈安的无灵力实用货源，尤其细盐、夜明筒和基础医疗小商品。"
-    current_pressure: "莫账房已试探独家供货；赵掌柜将亲自谈判。"
-    escalation_path:
-      - "莫账房带价试探。"
-      - "赵掌柜亲自压价或谈长期供货。"
-      - "可能借巡卫保护、坊市规矩或客户入口继续施压。"
-    relationship_to_protagonist: "第一阶段主要商业压力，不是盟友。"
-    source_chapter: 4
-  - id: qingshifang_patrol
-    name: 青石坊巡卫
-    world: qingshifang
-    public_role: "盘查坊市异常物品和来路的规矩执行者。"
-    private_interest: "未知；当前至少会扣押无灵力发光物并追问来历。"
-    current_pressure: "夜明筒曾被巡卫扣下，现代货物风险已暴露。"
-    escalation_path:
-      - "盘问许青。"
-      - "通过丹铺或市场传闻注意陈掌柜。"
-      - "未来可能试图追查货源入口。"
-    relationship_to_protagonist: "外部规则压力。"
-    source_chapter: 2
-  - id: low_level_loose_cultivators
-    name: 底层散修
-    world: qingshifang
-    public_role: "青石坊低阶消费者，缺便宜实用物资。"
-    private_interest: "用较低成本解决盐、光源、小伤处理等实际问题。"
-    current_pressure: "许青已证明这类客户能带来交易和信息。"
-    escalation_path:
-      - "从许青单点交易扩展到口碑客户。"
-      - "需求变多后会引来丹铺和巡卫关注。"
-    relationship_to_protagonist: "潜在客户与信息来源。"
-    source_chapter: 1
-  - id: real_world_relatives
-    name: 刘素芬等现实亲戚
-    world: real_world
-    public_role: "陈安现实亲戚与逼卖压力来源。"
-    private_interest: "怀疑爷爷留下隐藏财产，想逼陈安卖掉或交出小店利益。"
-    current_pressure: "第3章继续怀疑陈安藏有爷爷遗产。"
-    escalation_path:
-      - "逼卖小店。"
-      - "追问资金来源。"
-      - "未来可能引发现实侧保密风险。"
-    relationship_to_protagonist: "现实侧压力。"
-    source_chapter: 1
-  - id: old_street_landlord_neighbors
-    name: 现实老街房东与街坊
-    world: real_world
-    public_role: "小卖部现实经营环境。"
-    private_interest: "关注租金、店铺是否继续经营和陈安资金来源。"
-    current_pressure: "房租催缴已迫使陈安进行黄芽草小额变现。"
-    escalation_path:
-      - "租金压力。"
-      - "经营改善后引来询问。"
-    relationship_to_protagonist: "现实经营约束。"
-    source_chapter: 3
+- id: huichun_pill_shop
+  name: 回春丹铺
+  world: qingshifang
+  public_role: 青石坊丹药与伤药相关商铺。
+  private_interest: 锁定陈安的无灵力实用货源，尤其细盐、夜明筒和基础医疗小商品。
+  current_pressure: 莫账房已试探独家供货；赵掌柜将亲自谈判。
+  escalation_path:
+  - 莫账房带价试探。
+  - 赵掌柜亲自压价或谈长期供货。
+  - 可能借巡卫保护、坊市规矩或客户入口继续施压。
+  relationship_to_protagonist: 第一阶段主要商业压力，不是盟友。
+  source_chapter: 4
+- id: qingshifang_patrol
+  name: 青石坊巡卫
+  world: qingshifang
+  public_role: 盘查坊市异常物品和来路的规矩执行者。
+  private_interest: 未知；当前至少会扣押无灵力发光物并追问来历。
+  current_pressure: 夜明筒曾被巡卫扣下，现代货物风险已暴露。
+  escalation_path:
+  - 盘问许青。
+  - 通过丹铺或市场传闻注意陈掌柜。
+  - 未来可能试图追查货源入口。
+  relationship_to_protagonist: 外部规则压力。
+  source_chapter: 2
+- id: low_level_loose_cultivators
+  name: 底层散修
+  world: qingshifang
+  public_role: 青石坊低阶消费者，缺便宜实用物资。
+  private_interest: 用较低成本解决盐、光源、小伤处理等实际问题。
+  current_pressure: 许青已证明这类客户能带来交易和信息。
+  escalation_path:
+  - 从许青单点交易扩展到口碑客户。
+  - 需求变多后会引来丹铺和巡卫关注。
+  relationship_to_protagonist: 潜在客户与信息来源。
+  source_chapter: 1
+- id: real_world_relatives
+  name: 刘素芬等现实亲戚
+  world: real_world
+  public_role: 陈安现实亲戚与逼卖压力来源。
+  private_interest: 怀疑爷爷留下隐藏财产，想逼陈安卖掉或交出小店利益。
+  current_pressure: 第3章继续怀疑陈安藏有爷爷遗产。
+  escalation_path:
+  - 逼卖小店。
+  - 追问资金来源。
+  - 未来可能引发现实侧保密风险。
+  relationship_to_protagonist: 现实侧压力。
+  source_chapter: 1
+- id: old_street_landlord_neighbors
+  name: 现实老街房东与街坊
+  world: real_world
+  public_role: 小卖部现实经营环境。
+  private_interest: 关注租金、店铺是否继续经营和陈安资金来源。
+  current_pressure: 房租催缴已迫使陈安进行黄芽草小额变现。
+  escalation_path:
+  - 租金压力。
+  - 经营改善后引来询问。
+  relationship_to_protagonist: 现实经营约束。
+  source_chapter: 3
 approval:
-  status: draft
-  approved_by: ""
-  approved_at: ""
+  status: approved
+  approved_by: ''
+  approved_at: ''
   notes:
-    - "Faction map is V3.1 draft based on accepted chapters 1-4."
+  - Faction map is V3.1 draft based on accepted chapters 1-4.
+  note: Approved as V3.2 prewriting constraint for chapter 5; future draft beats remain
+    adjustable through later outline approval.

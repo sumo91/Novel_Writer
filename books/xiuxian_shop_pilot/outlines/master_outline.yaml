@@ -1,84 +1,86 @@
-logline: "继承破旧小卖部的陈安，发现仓库后门每天午夜通往修仙界坊市，他从细盐、打火机和基础小商品开始做两界生意，在现实债务、亲戚逼卖、丹铺压价和坊市规矩夹缝中，把爷爷留下的小店盘成自己的立身之本。"
-story_promise: "小人物靠经营、定价、守边界和信息差，在两界商业压力中一点点把破店变成安全入口；每个阶段都要有交易兑现、规则升级、现实收益和爷爷旧线索。"
-full_book_arc: "第一阶段盘活小店并确认两界通道；第二阶段建立稳定货源和修仙界客户；第三阶段发现爷爷当年并非偶然守店，而是在替两界某个旧约收尾；终局陈安以店主身份制定自己的交易规矩。"
+logline: 继承破旧小卖部的陈安，发现仓库后门每天午夜通往修仙界坊市，他从细盐、打火机和基础小商品开始做两界生意，在现实债务、亲戚逼卖、丹铺压价和坊市规矩夹缝中，把爷爷留下的小店盘成自己的立身之本。
+story_promise: 小人物靠经营、定价、守边界和信息差，在两界商业压力中一点点把破店变成安全入口；每个阶段都要有交易兑现、规则升级、现实收益和爷爷旧线索。
+full_book_arc: 第一阶段盘活小店并确认两界通道；第二阶段建立稳定货源和修仙界客户；第三阶段发现爷爷当年并非偶然守店，而是在替两界某个旧约收尾；终局陈安以店主身份制定自己的交易规矩。
 opening_state:
-  protagonist: "陈安继承爷爷陈守业留下的破旧小卖部，现实中被亲戚逼卖和房租债务压住。"
-  world: "现实老街小卖部与午夜后门外的青石坊同时存在；青石坊底层散修需要便宜实用货物，丹铺和巡卫掌握规则压力。"
-  first_pressure: "刘素芬等现实亲戚逼卖小店，房东催租；午夜后门开启后，许青用碎灵询问细盐和火折。"
-  first_hook: "仓库后门在午夜开启，门外不是后巷，而是青石坊。"
+  protagonist: 陈安继承爷爷陈守业留下的破旧小卖部，现实中被亲戚逼卖和房租债务压住。
+  world: 现实老街小卖部与午夜后门外的青石坊同时存在；青石坊底层散修需要便宜实用货物，丹铺和巡卫掌握规则压力。
+  first_pressure: 刘素芬等现实亲戚逼卖小店，房东催租；午夜后门开启后，许青用碎灵询问细盐和火折。
+  first_hook: 仓库后门在午夜开启，门外不是后巷，而是青石坊。
 ending_state:
-  protagonist: "陈安从被动守店的负债继承人，成长为能制定两界交易规矩的店主。"
-  shop: "小卖部从破旧负资产变成稳定、安全、可控的两界交易入口。"
-  two_world_order: "陈安不依附单一丹铺或势力，而是建立按规矩交易、分层供货、风险隔离的两界小商业秩序。"
-  final_emotional_image: "陈安在午夜关门前合上爷爷旧账本，门外有人按新规矩排队，门内小店灯还亮着。"
+  protagonist: 陈安从被动守店的负债继承人，成长为能制定两界交易规矩的店主。
+  shop: 小卖部从破旧负资产变成稳定、安全、可控的两界交易入口。
+  two_world_order: 陈安不依附单一丹铺或势力，而是建立按规矩交易、分层供货、风险隔离的两界小商业秩序。
+  final_emotional_image: 陈安在午夜关门前合上爷爷旧账本，门外有人按新规矩排队，门内小店灯还亮着。
 three_act_structure:
   act_1:
-    chapter_range: "1-80"
-    function: "确认后门、完成基础交易闭环、守住小店，建立不出门、不签独家、不暴露仓库的第一套规矩。"
+    chapter_range: 1-80
+    function: 确认后门、完成基础交易闭环、守住小店，建立不出门、不签独家、不暴露仓库的第一套规矩。
     major_turning_points:
-      - "第1章：后门通向青石坊。"
-      - "第2章：细盐、打火机、夜明筒换到碎灵和黄芽草。"
-      - "第3章：黄芽草现实小额变现，回春丹铺注意到货源。"
-      - "第4章：陈安拒绝丹铺独家，获得十三枚碎灵和青石坊价目半册。"
-    act_climax: "陈安中和或击退第一轮丹铺锁货压力，确认自己可以按店主规矩做两界生意。"
+    - 第1章：后门通向青石坊。
+    - 第2章：细盐、打火机、夜明筒换到碎灵和黄芽草。
+    - 第3章：黄芽草现实小额变现，回春丹铺注意到货源。
+    - 第4章：陈安拒绝丹铺独家，获得十三枚碎灵和青石坊价目半册。
+    act_climax: 陈安中和或击退第一轮丹铺锁货压力，确认自己可以按店主规矩做两界生意。
   act_2:
-    chapter_range: "81-260"
-    function: "扩大货品、客户和风险，揭开爷爷旧账本与青石坊旧交易规则，面对更高层势力的价格、保护和通道争夺。"
+    chapter_range: 81-260
+    function: 扩大货品、客户和风险，揭开爷爷旧账本与青石坊旧交易规则，面对更高层势力的价格、保护和通道争夺。
     major_turning_points: []
-    midpoint: "陈安发现爷爷当年不是偶然经营小卖部，而是长期处理两界交易旧约。"
-    act_climax: "两界入口暴露风险升级，陈安必须在现实与青石坊同时保店。"
+    midpoint: 陈安发现爷爷当年不是偶然经营小卖部，而是长期处理两界交易旧约。
+    act_climax: 两界入口暴露风险升级，陈安必须在现实与青石坊同时保店。
   act_3:
-    chapter_range: "261+"
-    function: "回收爷爷旧约、通道来源和两界交易秩序，完成陈安从经营者到规则制定者的成长。"
+    chapter_range: 261+
+    function: 回收爷爷旧约、通道来源和两界交易秩序，完成陈安从经营者到规则制定者的成长。
     major_turning_points: []
-    final_climax: "陈安在两界多方压力下守住入口，拒绝成为任何势力后仓。"
-    ending: "小卖部成为陈安掌控下的安全交易点。"
+    final_climax: 陈安在两界多方压力下守住入口，拒绝成为任何势力后仓。
+    ending: 小卖部成为陈安掌控下的安全交易点。
 protagonist_growth_curve:
-  start: "被债务和亲戚压迫，只想保住爷爷留下的小店。"
-  act_1_end: "学会用现代商品、价格表和交易边界建立第一套生意规则。"
-  midpoint: "能主动设计货品、客户和信息差，不再只等午夜门开。"
-  act_2_end: "能同时处理现实和修仙界势力压力，开始理解爷爷旧约。"
-  end: "成为能保护入口、客户和自己规矩的两界店主。"
+  start: 被债务和亲戚压迫，只想保住爷爷留下的小店。
+  act_1_end: 学会用现代商品、价格表和交易边界建立第一套生意规则。
+  midpoint: 能主动设计货品、客户和信息差，不再只等午夜门开。
+  act_2_end: 能同时处理现实和修仙界势力压力，开始理解爷爷旧约。
+  end: 成为能保护入口、客户和自己规矩的两界店主。
 core_mystery:
-  question: "爷爷陈守业为什么熟悉青石坊价格与青灯草交易，后门又为何只在小卖部午夜开启？"
-  answer_direction: "爷爷长期参与或守护两界交易旧约，小卖部不是偶然通门，而是旧规则的一处安全入口。"
+  question: 爷爷陈守业为什么熟悉青石坊价格与青灯草交易，后门又为何只在小卖部午夜开启？
+  answer_direction: 爷爷长期参与或守护两界交易旧约，小卖部不是偶然通门，而是旧规则的一处安全入口。
   reveal_stages:
-    - "第1-4章：旧账本、价目半册和青灯草重合，证明爷爷熟悉青石坊。"
-    - "第5-20章：通过价目半册、赵掌柜和散修口碑确认爷爷当年留下的交易痕迹。"
-    - "后续：揭示后门来源、旧约代价和爷爷为何离开。"
+  - 第1-4章：旧账本、价目半册和青灯草重合，证明爷爷熟悉青石坊。
+  - 第5-20章：通过价目半册、赵掌柜和散修口碑确认爷爷当年留下的交易痕迹。
+  - 后续：揭示后门来源、旧约代价和爷爷为何离开。
 core_rules_locked:
-  - "后门每天午夜开启一个中国时辰，约两个小时。"
-  - "陈安不出后门、不暴露仓库、不把小卖部变成任何势力后仓。"
-  - "现代货物有价值，但显眼货物会带来巡卫、丹铺或更高势力风险。"
-  - "碎灵是青石坊低阶交易货币单位。"
+- 后门每天午夜开启一个中国时辰，约两个小时。
+- 陈安不出后门、不暴露仓库、不把小卖部变成任何势力后仓。
+- 现代货物有价值，但显眼货物会带来巡卫、丹铺或更高势力风险。
+- 碎灵是青石坊低阶交易货币单位。
 locked_story_promises:
-  - opening_state
-  - ending_direction
-  - three_act_structure
-  - core_rules_locked
-  - protagonist_growth_curve.end
-  - core_mystery.answer_direction
+- opening_state
+- ending_direction
+- three_act_structure
+- core_rules_locked
+- protagonist_growth_curve.end
+- core_mystery.answer_direction
 open_story_spaces:
-  - chapter-level scene execution
-  - minor characters
-  - local reversals
-  - exact goods and trades
+- chapter-level scene execution
+- minor characters
+- local reversals
+- exact goods and trades
 volume_plan:
-  - id: volume_001
-    title: "午夜后门"
-    chapters: "1-50"
-    goal: "守住小卖部，建立稳定两界交易入口，熬过回春丹铺和巡卫带来的第一阶段商业压力。"
-    payoff: "陈安确认小卖部不是负资产，而是两界通道；他用价格、货品和规矩反制第一批压价者。"
+- id: volume_001
+  title: 午夜后门
+  chapters: 1-50
+  goal: 守住小卖部，建立稳定两界交易入口，熬过回春丹铺和巡卫带来的第一阶段商业压力。
+  payoff: 陈安确认小卖部不是负资产，而是两界通道；他用价格、货品和规矩反制第一批压价者。
 major_turning_points:
-  - "第1章：仓库后门通向修仙界坊市。"
-  - "第2章：陈安完成第一笔两界交易。"
-  - "第3章：现实变现和丹铺注意力同时出现。"
-  - "第4章：陈安拒绝独家，获得价目半册和青灯草线索。"
-  - "draft 第5章：赵掌柜亲自来谈，陈安必须用价目半册和备货思路主动应对。"
-ending_direction: "陈安守住小卖部，并把它从爷爷留下的旧铺子变成两界交易的安全入口。"
+- 第1章：仓库后门通向修仙界坊市。
+- 第2章：陈安完成第一笔两界交易。
+- 第3章：现实变现和丹铺注意力同时出现。
+- 第4章：陈安拒绝独家，获得价目半册和青灯草线索。
+- draft 第5章：赵掌柜亲自来谈，陈安必须用价目半册和备货思路主动应对。
+ending_direction: 陈安守住小卖部，并把它从爷爷留下的旧铺子变成两界交易的安全入口。
 approval:
-  status: draft
-  approved_by: ""
-  approved_at: ""
+  status: approved
+  approved_by: ''
+  approved_at: ''
   notes:
-    - "V3.1 long-form outline draft. Confirm before treating as hard canon."
+  - V3.1 long-form outline draft. Confirm before treating as hard canon.
+  note: Approved as V3.2 prewriting constraint for chapter 5; future draft beats remain
+    adjustable through later outline approval.
