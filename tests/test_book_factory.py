@@ -73,6 +73,18 @@ def test_create_book_includes_v3_1_outline_architecture_files(tmp_path, monkeypa
     assert factions["approval"]["status"] == "draft"
 
 
+def test_create_book_includes_style_bible_template(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+
+    book = book_factory.create_book("demo", title="Demo Book")
+
+    style_bible = read_yaml(book / "style" / "style_bible.yaml")
+    assert style_bible["book_id"] == "demo"
+    assert style_bible["approval"]["status"] == "draft"
+    assert "narration" in style_bible
+    assert "banned_patterns" in style_bible
+
+
 def test_create_book_refuses_existing_project(tmp_path, monkeypatch):
     monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
     book_factory.create_book("demo", title="Demo Book")

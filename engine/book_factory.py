@@ -30,4 +30,10 @@ def create_book(book_id: str, title: str, force: bool = False) -> Path:
         }
     )
     write_yaml(metadata_path, metadata)
+    style_bible_path = target / "style" / "style_bible.yaml"
+    if style_bible_path.exists():
+        style_bible = read_yaml(style_bible_path)
+        style_bible["book_id"] = book_id
+        style_bible.setdefault("style_id", f"{book_id}_style")
+        write_yaml(style_bible_path, style_bible)
     return target

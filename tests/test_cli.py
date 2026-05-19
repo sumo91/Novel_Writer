@@ -5,6 +5,7 @@ from engine import (
     cli,
     outline_gate,
     pipeline,
+    style_knowledge,
     v3_migration,
 )
 from engine.io_utils import read_yaml, write_json
@@ -115,6 +116,36 @@ def test_pipeline_prose_quality_gate_cli_reports_review_result(
     assert "Prose quality gate: needs_rewrite" in captured.out
     assert "- score: 82" in captured.out
     assert "- reason: Prose quality score 82 is below 85." in captured.out
+
+
+def test_style_bible_scaffold_cli_writes_yaml_and_html(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(style_knowledge, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+
+    result = cli.main(["style-bible-scaffold", "demo", "--force"])
+
+    captured = capsys.readouterr()
+    output = book / "style" / "style_bible.yaml"
+    assert result == 0
+    assert output.exists()
+    assert output.with_suffix(".html").exists()
+    assert f"Wrote style bible scaffold: {output.as_posix()}" in captured.out
+    assert f"HTML review copy: {output.with_suffix('.html').as_posix()}" in captured.out
+
+
+def test_style_bible_check_cli_reports_errors(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(style_knowledge, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    (book / "style" / "style_bible.yaml").write_text("book_id: demo\n", encoding="utf-8")
+
+    result = cli.main(["style-bible-check", "demo"])
+
+    captured = capsys.readouterr()
+    assert result == 1
+    assert "Style bible check: failed" in captured.out
+    assert "missing required field narration" in captured.out
 
 
 def test_prepare_chapter_cli_reports_brief_gate_and_check_status(

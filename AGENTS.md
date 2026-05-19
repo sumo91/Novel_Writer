@@ -37,6 +37,8 @@ Current strategic priority:
 - Do not accept a chapter into `chapters/` without explicit human confirmation.
 - Do not treat generated drafts, reviews, state updates, or pending approvals as canon until accepted.
 - Major premise, canon, power-system, relationship, and long-arc changes require human approval.
+- Book-level style rules live in `style/style_bible.yaml`; they guide prose but do not replace human author direction.
+- Do not imitate a living author's distinctive style. Translate references into abstract, book-specific rules.
 
 ## Standard Chapter Workflow
 
@@ -74,6 +76,7 @@ For a normal chapter, follow this lifecycle:
 - Pacing review dimension scores must be valid 0-10 integers.
 - Prose quality score below 85 requires AI rewrite before final candidate.
 - V4.1 publication-facing chapters should pass author direction, prose quality review, and final candidate gates.
+- V4.2 books may define a Style Bible; when present, context, drafting, and prose review should check style alignment.
 - Acceptance packets must not contain stale text such as `TODO`, `draft_note`, `ready_for_acceptance`, or `pending human acceptance`.
 - Chapter acceptance should update durable state through the acceptance packet, not ad hoc memory.
 
@@ -121,6 +124,20 @@ V3 adds explicit long-form memory ledgers and indexes:
 - `outlines/units/unit_0001.yaml`
 - `state/hook_index.json`
 - `state/memory_index.json`
+
+V4.2 adds the book-local style control layer:
+
+- `style/style_bible.yaml`
+- reusable style cards in `knowledge/style_cards/`
+
+Use:
+
+```powershell
+python -m engine.cli style-bible-check <book_id>
+python -m engine.cli style-bible-scaffold <book_id> --force
+```
+
+The Style Bible can define narration texture, dialogue pressure, protagonist voice, payoff style, banned patterns, and selected style cards. Keep it book-specific and human-reviewable; use the generated HTML sidecar for review and the YAML as the machine contract.
 
 For V3 chapters, fill `v3_state_updates` in the acceptance packet before human review. These updates remain proposed until the packet is accepted. Use `python -m engine.cli migrate-v3 <book_id>` before applying V3 checks to an older book. Migration creates missing V3 files and upgrades empty schemas, but it must not parse old prose, convert free-text notes, or infer canon.
 
@@ -174,7 +191,7 @@ When the user provides theory material:
 2. Convert them into concise knowledge cards.
 3. Include fields such as `id`, `scope`, `applies_to`, `use_when`, `principle`, `checks`, and `failure_modes`.
 4. Mark whether each item is a hard rule, soft heuristic, or genre-specific pattern.
-5. Use these cards during concept design, chapter briefs, reviews, and drift reports.
+5. Use these cards during concept design, chapter briefs, drafts, reviews, and drift reports.
 
 Theory guides judgment. Book-local canon remains the source of story truth.
 

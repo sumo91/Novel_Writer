@@ -1,0 +1,17 @@
+id: style_scene_specificity
+scope: style
+applies_to:
+  - context
+  - draft
+  - review
+use_when: A chapter risks sounding abstract, summary-like, or over-explained.
+principle: Anchor emotion and pressure in visible objects, gestures, spatial constraints, and immediate choices.
+checks:
+  - Replace generic mood labels with one concrete sensory or action detail.
+  - Make the current physical constraint visible.
+  - Show emotion through what a character notices, avoids, touches, buys, hides, or risks.
+failure_modes:
+  - Empty atmosphere
+  - Generic inner monologue
+  - Summary instead of scene
+severity: soft

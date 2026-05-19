@@ -393,8 +393,22 @@ def pipeline_prose_quality_gate(book_id: str, chapter_number: int) -> dict:
             reasons.append(f"{dimension} is below {_prose_dimension_floor(max_score)}.")
     for issue in review.get("blocking_issues", []):
         reasons.append(str(issue))
-
     rewrite_required = bool(review.get("rewrite_required"))
+    style_alignment = review.get("style_alignment")
+    if isinstance(style_alignment, dict):
+        style_score = style_alignment.get("score")
+        if style_score is not None and not isinstance(style_score, int):
+            reasons.append("Style alignment score must be an integer from 0 to 100.")
+        elif isinstance(style_score, int) and style_score < 85:
+            reasons.append(f"Style alignment score {style_score} is below 85.")
+        if style_alignment.get("passed") is False:
+            rewrite_required = True
+        violations = style_alignment.get("violations", [])
+        if isinstance(violations, list):
+            reasons.extend(str(violation) for violation in violations)
+        elif "violations" in style_alignment:
+            reasons.append("Style alignment violations must be a list.")
+
     if isinstance(score, int) and score < 85:
         rewrite_required = True
         reasons.append(f"Prose quality score {score} is below 85.")
@@ -428,6 +442,7 @@ def _manifest(book_id: str, chapter_number: int) -> dict:
         "status": "prepared",
         "artifacts": {
             "context": f"pipeline/{chapter_slug}/context.md",
+            "style_bible": "style/style_bible.yaml",
             "brief": f"outlines/chapter_briefs/{chapter_slug}_brief.md",
             "draft": f"drafts/{chapter_slug}_draft.md",
             "revised": f"drafts/{chapter_slug}_revised.md",

@@ -1,0 +1,17 @@
+id: style_voice_distinction
+scope: style
+applies_to:
+  - context
+  - draft
+  - review
+use_when: A scene has two or more recurring characters in dialogue.
+principle: Each recurring character should sound like their role, pressure, knowledge, and temperament.
+checks:
+  - Remove speaker names and see whether the line still suggests who spoke.
+  - Give each major character a default pressure tactic.
+  - Avoid giving the protagonist generic dominance language unless the style bible permits it.
+failure_modes:
+  - Interchangeable dialogue
+  - Generic霸总 voice
+  - Exposition disguised as dialogue
+severity: hard

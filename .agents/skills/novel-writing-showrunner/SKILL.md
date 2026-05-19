@@ -15,6 +15,9 @@ Do not jump straight to prose unless the user has already approved the premise, 
 
 - Treat the human as final showrunner and canon owner.
 - AI may draft most prose, but publication-facing chapter text should pass through lightweight human direction, prose quality review, and a final candidate gate.
+- Each book may carry a `style/style_bible.yaml` that defines its own voice, texture, dialogue pressure, payoff style, and banned patterns.
+- Reusable style cards belong in `knowledge/style_cards/`; apply them as checks during context building, drafting, and review.
+- Do not imitate a living author's distinctive style. Convert taste references into abstract, book-local rules such as pacing, concreteness, sentence pressure, and failure modes.
 - Keep story-specific truth inside `books/<book_id>/`.
 - Keep reusable theory inside `knowledge/`, preferably as structured knowledge cards.
 - Keep repository-wide collaboration rules in `AGENTS.md`.
@@ -38,6 +41,7 @@ Use the first matching state:
 2. **Premise approved, no book project**
    - Create a new book with `python -m engine.cli init-book <book_id> --title "<title>"`.
    - Fill only minimum viable canon and V3.1 planning: `novel_bible.yaml`, `world_rules.yaml`, `characters.yaml`, `master_outline.yaml`, active volume/arc/unit, and any essential economy/faction rules.
+   - Draft or review `style/style_bible.yaml`; keep it `draft` until the human approves it as a hard style constraint.
    - Keep early economy, factions, power systems, and lore lean until the first sample proves the premise.
 
 3. **Book exists, next chapter not prepared**
@@ -53,6 +57,7 @@ Use the first matching state:
 
 4. **Brief exists, no draft**
    - Write `drafts/ch_XXXX_draft.md` from the brief and context.
+   - Use the book Style Bible and relevant style cards as prose constraints.
    - Keep protagonist agency visible.
    - Make the chapter payoff concrete.
    - End with a next-chapter pull.
@@ -74,6 +79,7 @@ Use the first matching state:
 8. **Author direction exists, no prose quality review**
    - Write `reviews/ch_XXXX/prose_quality_review.json`.
    - Use the 100-point readable web-novel quality gate: opening hook, conflict pressure, protagonist agency, payoff execution, dialogue tension, scene specificity, voice distinction, rhythm variation, ending pull, and style slop control.
+   - Include `style_alignment` when the Style Bible creates chapter-specific constraints; below 85 or explicit style violations require rewrite.
    - Run `python -m engine.cli pipeline-prose-quality-gate <book_id> <chapter>`.
    - If below 85 or blockers remain, revise by AI before creating the final candidate.
 
@@ -119,6 +125,7 @@ Before recommending acceptance, check:
 - No continuity blockers remain.
 - Pacing score is at least 80, or an explicit waiver exists.
 - Prose quality score is at least 85 before creating the final candidate, with no unresolved blocking issues.
+- Style alignment score is at least 85 when a Style Bible constraint is evaluated.
 - Final candidate should reflect the human author direction; the human can steer with a short note rather than rewriting the whole chapter.
 
 ## Knowledge Use
@@ -155,6 +162,8 @@ python -m engine.cli pipeline-status <book_id> <chapter>
 python -m engine.cli pipeline-quality-gate <book_id> <chapter>
 python -m engine.cli author-direction-scaffold <book_id> <chapter>
 python -m engine.cli pipeline-prose-quality-gate <book_id> <chapter>
+python -m engine.cli style-bible-check <book_id>
+python -m engine.cli style-bible-scaffold <book_id> --force
 python -m engine.cli pipeline-draft-acceptance <book_id> <chapter> --title "<title>" --summary "<summary>"
 python -m engine.cli pipeline-accept <book_id> <chapter> --approved
 python -m engine.cli drift-report <book_id> --start <n> --end <m>

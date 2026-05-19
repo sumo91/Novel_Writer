@@ -15,6 +15,7 @@ V2 organizes the V1 manual workflow into a repeatable local pipeline. It still d
 ## What Humans Still Approve
 
 - Chapter brief.
+- Book-local Style Bible when it is meant to become a hard style constraint.
 - Lightweight author direction notes.
 - Final candidate chapter text.
 - Review notes to act on.
@@ -52,6 +53,15 @@ python -m engine.cli pipeline-prose-quality-gate sample_tomato_project 3
 
 Create `drafts/ch_0003_final_candidate.md` from the revised draft, prose quality review, and human direction. The human does not need to rewrite the whole chapter, but must approve the direction that the AI integrates.
 
+Use the V4.2 book style layer before serious drafting:
+
+```powershell
+python -m engine.cli style-bible-check sample_tomato_project
+python -m engine.cli style-bible-scaffold sample_tomato_project --force
+```
+
+Each book has `style/style_bible.yaml`. It defines narration texture, dialogue pressure, protagonist voice, payoff style, banned patterns, and selected reusable style cards. The generated HTML sidecar is for human review; the YAML remains the machine contract. Keep style instructions abstract and book-specific, and avoid copying a living author's distinctive style.
+
 ```powershell
 python -m engine.cli pipeline-draft-acceptance sample_tomato_project 3 --title "Chapter Title" --summary "What changed in this chapter."
 ```
@@ -70,6 +80,7 @@ Expected files:
 pipeline/ch_XXXX/context.md
 pipeline/ch_XXXX/manifest.json
 pipeline/ch_XXXX/handoffs/*.md
+style/style_bible.yaml
 outlines/chapter_briefs/ch_XXXX_brief.md
 drafts/ch_XXXX_draft.md
 reviews/ch_XXXX/continuity_review.json

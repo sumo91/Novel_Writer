@@ -1,4 +1,4 @@
-from engine import book_factory, craft_knowledge, validators
+from engine import book_factory, craft_knowledge, style_knowledge, validators
 from engine.hardening import validate_acceptance_packet
 from engine.io_utils import write_json, write_yaml
 
@@ -130,6 +130,22 @@ def test_validate_book_reports_invalid_craft_cards(tmp_path, monkeypatch):
         "knowledge/craft_cards/broken.yaml: severity must be hard, soft, or genre-specific."
         in errors
     )
+
+
+def test_validate_book_reports_invalid_style_bible_and_cards(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(validators, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(style_knowledge, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    book = book_factory.create_book("demo", title="Demo Book")
+    write_yaml(book / "style" / "style_bible.yaml", {"book_id": "demo"})
+    card_dir = tmp_path / "knowledge" / "style_cards"
+    card_dir.mkdir(parents=True)
+    write_yaml(card_dir / "broken.yaml", {"id": "", "applies_to": "context"})
+
+    errors = validators.validate_book("demo")
+
+    assert "style/style_bible.yaml: missing required field narration." in errors
+    assert "knowledge/style_cards/broken.yaml: applies_to must be a list." in errors
 
 
 def test_validate_book_rejects_chapter_brief_missing_v3_1_reference_chain(

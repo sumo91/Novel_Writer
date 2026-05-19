@@ -26,6 +26,13 @@ Validate the book structure:
 python -m engine.cli validate-book demo
 ```
 
+Review or regenerate the book-local Style Bible:
+
+```powershell
+python -m engine.cli style-bible-check demo
+python -m engine.cli style-bible-scaffold demo --force
+```
+
 Build a chapter context pack:
 
 ```powershell
@@ -85,6 +92,8 @@ Novel Writer is not a one-prompt novel generator. It is a structured workflow fo
 
 - Humans approve story direction, author direction notes, major canon changes, and final chapters.
 - Agents can draft most prose, review, revise, and maintain memory through explicit files.
+- Each book can define its own `style/style_bible.yaml`; reusable style cards live under `knowledge/style_cards/`.
+- Style rules should describe texture, rhythm, voice, and failure modes, not copy a living author's prose.
 - YAML stores durable canon and project state.
 - Markdown stores prompts, theory, workflows, and readable context packs.
 - JSON stores structured reviews and machine-facing state.

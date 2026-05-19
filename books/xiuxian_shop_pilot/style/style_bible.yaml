@@ -1,0 +1,33 @@
+book_id: xiuxian_shop_pilot
+style_id: xiuxian_shop_grounded_trade
+approval:
+  status: draft
+  approved_by: ""
+  note: Draft style bible for the pilot; human may tune before formal long-run writing.
+narration:
+  pace: 快，但不浮；每一段都服务交易压力、现实压力或异界风险。
+  texture: 现实小卖部的货架、账本、库存、现金流细节，与青石坊的陌生修仙市场并置。
+  exposition: 少解释规则，多用价格、货物、限制、动作和谈判后果体现规则。
+  emotion_delivery: 情绪靠选择和细节呈现，不靠大段心理总结。
+dialogue:
+  density: 中高；谈判章可提高对白密度。
+  tension_source: 每段对话都应带价码、试探、威胁、让步、误判或隐藏底线。
+  subtext: 陈安说话留余地，异界商人说话带规矩和压价习惯。
+protagonist_voice:
+  chen_an:
+    speech: 像年轻小店老板，会算账，会装糊涂，会留后手，不像霸总。
+    default_move: 先稳住门和库存，再谈价，再把风险拆小。
+    banned: 不突然装腔作势，不用空泛狠话压人。
+payoff_style:
+  pattern: 小收益立刻落袋，但收益会带来更大的交易压力、暴露风险或资源约束。
+  cost_or_risk: 任何新货、碎灵、草药、价目线索都要附带成本、疑问或后续压力。
+banned_patterns:
+  - 空泛地写“他知道”
+  - 主角突然霸气外露
+  - 反派降智压价
+  - 用旁白解释爽点
+  - 对话像现代职场汇报而不是交易试探
+style_cards:
+  - style_grounded_trade
+  - style_voice_distinction
+  - style_scene_specificity

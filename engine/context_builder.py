@@ -4,6 +4,7 @@ from engine.craft_knowledge import load_craft_cards, render_craft_cards
 from engine.io_utils import read_text, read_yaml, write_text
 from engine.outline_resolver import active_outline_paths
 from engine.paths import books_dir, knowledge_dir
+from engine.style_knowledge import load_style_cards, render_style_cards
 
 BOOKS_DIR = books_dir()
 KNOWLEDGE_DIR = knowledge_dir()
@@ -51,6 +52,7 @@ def build_context(book_id: str, chapter_number: int) -> str:
     sections.extend(_outline_reference_chain(chapter_number, active))
     for heading, relative_path in YAML_FILES:
         sections.extend(_fenced_section(root, heading, relative_path, "yaml"))
+    sections.extend(_fenced_section(root, "Style Bible", "style/style_bible.yaml", "yaml"))
     sections.extend(
         _fenced_section(
             root,
@@ -85,6 +87,7 @@ def build_context(book_id: str, chapter_number: int) -> str:
         sections.extend(_fenced_section(root, heading, relative_path, "json"))
 
     sections.extend(render_craft_cards(load_craft_cards(["context", "brief", "review", "drift"])))
+    sections.extend(render_style_cards(load_style_cards(["context", "draft", "review"])))
     sections.extend(_knowledge_references())
     sections.extend(
         [

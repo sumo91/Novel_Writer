@@ -18,6 +18,7 @@ from engine.pending_approvals import (
     sync_pending_approvals,
     update_pending_approval,
 )
+from engine.style_knowledge import check_style_bible, write_style_bible_scaffold
 from engine.io_utils import read_yaml
 from engine.outline_gate import (
     APPROVAL_STATUSES,
@@ -119,6 +120,19 @@ def build_parser() -> argparse.ArgumentParser:
     author_direction_cmd.add_argument("book_id")
     author_direction_cmd.add_argument("chapter_number", type=int)
     author_direction_cmd.add_argument("--force", action="store_true")
+
+    style_bible_scaffold_cmd = subparsers.add_parser(
+        "style-bible-scaffold",
+        help="Write a book-local Style Bible scaffold.",
+    )
+    style_bible_scaffold_cmd.add_argument("book_id")
+    style_bible_scaffold_cmd.add_argument("--force", action="store_true")
+
+    style_bible_check_cmd = subparsers.add_parser(
+        "style-bible-check",
+        help="Check a book-local Style Bible contract.",
+    )
+    style_bible_check_cmd.add_argument("book_id")
 
     pipeline_draft_cmd = subparsers.add_parser(
         "pipeline-draft-acceptance",
@@ -357,6 +371,29 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Wrote author direction scaffold: {output_path.as_posix()}")
         print(f"HTML review copy: {output_path.with_suffix('.html').as_posix()}")
         return 0
+
+    if args.command == "style-bible-scaffold":
+        try:
+            output_path = write_style_bible_scaffold(args.book_id, force=args.force)
+        except (FileNotFoundError, FileExistsError, ValueError) as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Wrote style bible scaffold: {output_path.as_posix()}")
+        print(f"HTML review copy: {output_path.with_suffix('.html').as_posix()}")
+        return 0
+
+    if args.command == "style-bible-check":
+        try:
+            result = check_style_bible(args.book_id)
+        except FileNotFoundError as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Style bible check: {result['status']}")
+        for warning in result["warnings"]:
+            print(f"- warning: {warning}")
+        for error in result["errors"]:
+            print(f"- error: {error}")
+        return 0 if result["passed"] else 1
 
     if args.command == "pipeline-draft-acceptance":
         output_path = pipeline_draft_acceptance(

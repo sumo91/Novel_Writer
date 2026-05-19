@@ -1,6 +1,7 @@
 import pytest
 
 from engine import book_factory, context_builder
+from engine.io_utils import write_yaml
 
 
 def test_build_context_includes_core_book_material(tmp_path, monkeypatch):
@@ -105,6 +106,54 @@ def test_build_context_includes_existing_workflow_craft_cards(tmp_path, monkeypa
 
     assert "### Hard Rules" in context
     assert "craft_brief_agency: Force a visible protagonist choice." in context
+
+
+def test_build_context_includes_book_style_bible_and_style_cards(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "BOOKS_DIR", tmp_path / "books")
+    knowledge_dir = tmp_path / "knowledge"
+    monkeypatch.setattr(context_builder, "KNOWLEDGE_DIR", knowledge_dir)
+    import engine.style_knowledge as style_knowledge
+
+    monkeypatch.setattr(style_knowledge, "KNOWLEDGE_DIR", knowledge_dir)
+    book = book_factory.create_book("demo", title="Demo Book")
+    write_yaml(
+        book / "style" / "style_bible.yaml",
+        {
+            "book_id": "demo",
+            "style_id": "grounded_trade",
+            "approval": {"status": "approved"},
+            "narration": {"pace": "fast but grounded"},
+            "dialogue": {"density": "medium-high"},
+            "protagonist_voice": {"chen_an": "shopkeeper, not overlord"},
+            "payoff_style": {"pattern": "small gain creates larger risk"},
+            "banned_patterns": ["generic inner monologue"],
+            "style_cards": ["style_grounded_trade"],
+        },
+    )
+    card_dir = knowledge_dir / "style_cards"
+    card_dir.mkdir(parents=True)
+    write_yaml(
+        card_dir / "grounded_trade.yaml",
+        {
+            "id": "style_grounded_trade",
+            "scope": "style",
+            "applies_to": ["context", "draft"],
+            "use_when": "Trading scenes carry pressure.",
+            "principle": "Use concrete goods and prices to carry tension.",
+            "checks": ["Name the trade pressure."],
+            "failure_modes": ["Abstract negotiation"],
+            "severity": "soft",
+        },
+    )
+
+    context = context_builder.build_context("demo", 1)
+
+    assert "## Style Bible" in context
+    assert "fast but grounded" in context
+    assert "generic inner monologue" in context
+    assert "## Style Cards" in context
+    assert "style_grounded_trade: Use concrete goods and prices to carry tension." in context
 
 
 def test_build_context_returns_markdown(tmp_path, monkeypatch):

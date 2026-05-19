@@ -1,0 +1,21 @@
+book_id: ""
+style_id: default_book_style
+approval:
+  status: draft
+  approved_by: ""
+  note: Draft style bible; edit for each book before treating as hard style.
+narration:
+  pace: ""
+  texture: ""
+  exposition: ""
+  emotion_delivery: ""
+dialogue:
+  density: ""
+  tension_source: ""
+  subtext: ""
+protagonist_voice: {}
+payoff_style:
+  pattern: ""
+  cost_or_risk: ""
+banned_patterns: []
+style_cards: []

@@ -1,0 +1,17 @@
+id: style_grounded_trade
+scope: style
+applies_to:
+  - context
+  - draft
+  - review
+use_when: Trading, negotiation, shopkeeping, resource exchange, or price pressure carries the scene.
+principle: Use concrete goods, prices, stock limits, risk, and bargaining moves to carry tension.
+checks:
+  - Name what is being traded or withheld.
+  - Show the cost, scarcity, exposure, or obligation attached to the gain.
+  - Let dialogue reveal leverage rather than explaining the leverage in narration.
+failure_modes:
+  - Abstract negotiation
+  - Empty business talk
+  - Payoff without cost
+severity: soft

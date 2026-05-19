@@ -163,6 +163,7 @@ def test_pipeline_status_reports_missing_artifacts(tmp_path, monkeypatch):
     assert status["chapter"] == 1
     assert status["status"] == "needs_brief"
     assert status["artifacts"]["context"]["present"] is True
+    assert status["artifacts"]["style_bible"]["present"] is True
     assert status["artifacts"]["brief"]["present"] is False
     assert status["next_action"] == "Create chapter brief."
 
@@ -378,6 +379,26 @@ def test_pipeline_prose_quality_gate_blocks_low_dimension_score(tmp_path, monkey
     assert result["passed"] is False
     assert result["status"] == "needs_rewrite"
     assert "dialogue_tension is below 7." in result["reasons"]
+
+
+def test_pipeline_prose_quality_gate_requires_style_alignment(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    review = _passing_prose_quality_review()
+    review["style_alignment"] = {
+        "passed": False,
+        "score": 76,
+        "violations": ["Dialogue sounds like generic霸总 voice."],
+    }
+    write_json(book / "reviews" / "ch_0001" / "prose_quality_review.json", review)
+
+    result = pipeline.pipeline_prose_quality_gate("demo", 1)
+
+    assert result["passed"] is False
+    assert result["status"] == "needs_rewrite"
+    assert "Style alignment score 76 is below 85." in result["reasons"]
+    assert "Dialogue sounds like generic霸总 voice." in result["reasons"]
 
 
 def test_author_direction_scaffold_writes_human_lightweight_controls(
