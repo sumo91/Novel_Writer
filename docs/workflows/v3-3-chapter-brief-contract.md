@@ -38,6 +38,7 @@ V3.3 expects:
 - `## Required Beats`
 - `## Character Movement`
 - `## Payoff Design`
+- `## Anti-Infodump Opening`
 - `## State Update Expectations`
 - `## Economy And Faction Constraints`
 - `## Ending Pull`
@@ -48,6 +49,10 @@ The brief must include:
 ```text
 master -> volume -> arc -> unit -> chapter brief
 ```
+
+The anti-infodump opening section should name the first concrete scene pressure,
+which explanations should be delayed, and what event triggers any necessary
+setting, system, economy, faction, or backstory explanation.
 
 ## Recommended Flow
 

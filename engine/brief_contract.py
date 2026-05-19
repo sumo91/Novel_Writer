@@ -21,6 +21,7 @@ REQUIRED_BRIEF_SECTIONS = [
     "## Required Beats",
     "## Character Movement",
     "## Payoff Design",
+    "## Anti-Infodump Opening",
     "## State Update Expectations",
     "## Economy And Faction Constraints",
     "## Ending Pull",
@@ -76,6 +77,16 @@ def build_chapter_brief_scaffold(book_id: str, chapter_number: int) -> str:
     lines.extend(f"- {line}" for line in payoff_lines)
     lines.extend(
         [
+            "",
+            "## Anti-Infodump Opening",
+            "",
+            "- Open with a concrete scene action or pressure before explaining rules.",
+            "- Set-up to delay:",
+            "  - World rules not needed for the first decision.",
+            "  - Backstory not needed for the first conflict.",
+            "  - System, power, economy, or faction details not triggered by the scene.",
+            "- First explanation trigger: name the event, object, dialogue move, or consequence that makes the explanation necessary.",
+            "",
             "",
             "## State Update Expectations",
             "",

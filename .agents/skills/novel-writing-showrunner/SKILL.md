@@ -53,11 +53,12 @@ Use the first matching state:
    - Run `python -m engine.cli chapter-brief-scaffold <book_id> <chapter>` if the brief does not exist.
    - Edit `outlines/chapter_briefs/ch_XXXX_brief.md` into a human-reviewable brief.
    - Run `python -m engine.cli chapter-brief-check <book_id> <chapter>`.
-   - The brief must state: chapter goal, opening hook, required beats, character movement, ending pull, continuity notes, outline obligations, required threads/payoffs, and relevant economy/faction constraints.
+   - The brief must state: chapter goal, opening hook, anti-infodump opening plan, required beats, character movement, ending pull, continuity notes, outline obligations, required threads/payoffs, and relevant economy/faction constraints.
 
 4. **Brief exists, no draft**
    - Write `drafts/ch_XXXX_draft.md` from the brief and context.
    - Use the book Style Bible and relevant style cards as prose constraints.
+   - Open with scene pressure before explanations; reveal setting, backstory, system, economy, or faction rules only after the scene creates reader need.
    - Keep protagonist agency visible.
    - Make the chapter payoff concrete.
    - End with a next-chapter pull.
@@ -80,6 +81,7 @@ Use the first matching state:
    - Write `reviews/ch_XXXX/prose_quality_review.json`.
    - Use the 100-point readable web-novel quality gate: opening hook, conflict pressure, protagonist agency, payoff execution, dialogue tension, scene specificity, voice distinction, rhythm variation, ending pull, and style slop control.
    - Include `style_alignment` when the Style Bible creates chapter-specific constraints; below 85 or explicit style violations require rewrite.
+   - Include `exposition_density` for openings, new units, or chapters with heavy world/system/economy explanation; below 85 or frontloaded explanations require rewrite.
    - Run `python -m engine.cli pipeline-prose-quality-gate <book_id> <chapter>`.
    - If below 85 or blockers remain, revise by AI before creating the final candidate.
 
@@ -115,6 +117,7 @@ Use the first matching state:
 Before recommending acceptance, check:
 
 - Opening hook is immediate.
+- Opening gives a concrete scene pressure before worldbuilding, backstory, system, economy, or faction explanation.
 - Conflict is concrete and close.
 - Protagonist makes meaningful choices.
 - Payoff is visible, not merely promised.
@@ -126,6 +129,7 @@ Before recommending acceptance, check:
 - Pacing score is at least 80, or an explicit waiver exists.
 - Prose quality score is at least 85 before creating the final candidate, with no unresolved blocking issues.
 - Style alignment score is at least 85 when a Style Bible constraint is evaluated.
+- Exposition density score is at least 85 when a chapter opening or new unit risks becoming a setting manual.
 - Final candidate should reflect the human author direction; the human can steer with a short note rather than rewriting the whole chapter.
 
 ## Knowledge Use

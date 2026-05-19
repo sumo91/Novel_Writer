@@ -77,6 +77,8 @@ For a normal chapter, follow this lifecycle:
 - Prose quality score below 85 requires AI rewrite before final candidate.
 - V4.1 publication-facing chapters should pass author direction, prose quality review, and final candidate gates.
 - V4.2 books may define a Style Bible; when present, context, drafting, and prose review should check style alignment.
+- Chapter briefs should include an anti-infodump opening plan: start with scene pressure, then reveal only explanations triggered by the scene.
+- For openings and new units, prose quality review may include `exposition_density`; below 85 or frontloaded explanations require AI rewrite.
 - Acceptance packets must not contain stale text such as `TODO`, `draft_note`, `ready_for_acceptance`, or `pending human acceptance`.
 - Chapter acceptance should update durable state through the acceptance packet, not ad hoc memory.
 

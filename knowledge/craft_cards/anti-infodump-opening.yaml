@@ -1,0 +1,18 @@
+id: craft_anti_infodump_opening
+scope: craft
+applies_to:
+  - brief
+  - draft
+  - review
+use_when: A chapter opening, book opening, unit opening, or synopsis risks explaining setting before creating desire.
+principle: Open with a concrete scene pressure, then reveal only the rules the scene has made necessary.
+checks:
+  - Name the first visible action, conflict, or pressure before any world-rule explanation.
+  - List which setting, backstory, power-system, economy, or faction explanations can be delayed.
+  - Confirm each explanation is triggered by a scene event, object, consequence, or dialogue move.
+failure_modes:
+  - Frontloaded worldbuilding
+  - System manual before scene pressure
+  - Backstory before reader curiosity
+  - Clear but not desirable synopsis
+severity: hard

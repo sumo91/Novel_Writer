@@ -409,6 +409,21 @@ def pipeline_prose_quality_gate(book_id: str, chapter_number: int) -> dict:
         elif "violations" in style_alignment:
             reasons.append("Style alignment violations must be a list.")
 
+    exposition_density = review.get("exposition_density")
+    if isinstance(exposition_density, dict):
+        exposition_score = exposition_density.get("score")
+        if exposition_score is not None and not isinstance(exposition_score, int):
+            reasons.append("Exposition density score must be an integer from 0 to 100.")
+        elif isinstance(exposition_score, int) and exposition_score < 85:
+            reasons.append(f"Exposition density score {exposition_score} is below 85.")
+        if exposition_density.get("passed") is False:
+            rewrite_required = True
+        frontloaded = exposition_density.get("frontloaded_explanations", [])
+        if isinstance(frontloaded, list):
+            reasons.extend(str(item) for item in frontloaded)
+        elif "frontloaded_explanations" in exposition_density:
+            reasons.append("Exposition density frontloaded_explanations must be a list.")
+
     if isinstance(score, int) and score < 85:
         rewrite_required = True
         reasons.append(f"Prose quality score {score} is below 85.")

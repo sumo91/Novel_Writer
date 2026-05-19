@@ -53,6 +53,8 @@ python -m engine.cli pipeline-prose-quality-gate sample_tomato_project 3
 
 Create `drafts/ch_0003_final_candidate.md` from the revised draft, prose quality review, and human direction. The human does not need to rewrite the whole chapter, but must approve the direction that the AI integrates.
 
+For openings, new units, and explanation-heavy chapters, the prose quality review may include an `exposition_density` block. Scores below 85 or listed frontloaded explanations require AI rewrite before final candidate. The goal is not to ban explanation; it is to make sure explanations are triggered by scene pressure instead of arriving as a manual before the reader cares.
+
 Use the V4.2 book style layer before serious drafting:
 
 ```powershell

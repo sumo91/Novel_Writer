@@ -27,6 +27,9 @@ def test_build_chapter_brief_scaffold_includes_outline_and_state_contract(
     assert "spirit_fragment" in scaffold
     assert "huichun_pill_shop" in scaffold
     assert "## State Update Expectations" in scaffold
+    assert "## Anti-Infodump Opening" in scaffold
+    assert "Open with a concrete scene action or pressure before explaining rules." in scaffold
+    assert "Set-up to delay:" in scaffold
 
 
 def test_build_chapter_brief_scaffold_includes_applicable_craft_cards(
@@ -185,6 +188,7 @@ def test_check_chapter_brief_rejects_missing_contract_sections(tmp_path, monkeyp
     assert result["passed"] is False
     assert "Missing required section: ## V3.3 Outline Contract" in result["errors"]
     assert "Missing required section: ## State Update Expectations" in result["errors"]
+    assert "Missing required section: ## Anti-Infodump Opening" in result["errors"]
 
 
 def test_check_chapter_brief_accepts_generated_scaffold(tmp_path, monkeypatch):

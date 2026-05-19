@@ -401,6 +401,33 @@ def test_pipeline_prose_quality_gate_requires_style_alignment(tmp_path, monkeypa
     assert "Dialogue sounds like generic霸总 voice." in result["reasons"]
 
 
+def test_pipeline_prose_quality_gate_requires_exposition_density_alignment(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    review = _passing_prose_quality_review()
+    review["exposition_density"] = {
+        "passed": False,
+        "score": 70,
+        "frontloaded_explanations": [
+            "Opening explains sect rules before the protagonist faces a scene problem."
+        ],
+    }
+    write_json(book / "reviews" / "ch_0001" / "prose_quality_review.json", review)
+
+    result = pipeline.pipeline_prose_quality_gate("demo", 1)
+
+    assert result["passed"] is False
+    assert result["status"] == "needs_rewrite"
+    assert "Exposition density score 70 is below 85." in result["reasons"]
+    assert (
+        "Opening explains sect rules before the protagonist faces a scene problem."
+        in result["reasons"]
+    )
+
+
 def test_author_direction_scaffold_writes_human_lightweight_controls(
     tmp_path, monkeypatch
 ):
