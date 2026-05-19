@@ -4,6 +4,12 @@ from typing import Any
 import yaml
 
 from engine.io_utils import read_json, read_text, read_yaml
+from engine.outline_resolver import (
+    BRIEF_REFERENCE_CHAIN,
+    active_outline_data,
+    unit_chapter,
+    unit_id,
+)
 from engine.outline_gate import validate_chapter_brief_text
 
 OPEN_THREAD_STATUSES = {"open", "advanced", "paid_off", "deferred", "dropped"}
@@ -589,11 +595,12 @@ def _build_acceptance_contract_snapshot(
     pacing_path = review_dir / "pacing_review.json"
     continuity = read_json(continuity_path) if continuity_path.exists() else {}
     pacing = read_json(pacing_path) if pacing_path.exists() else {}
-    volume = read_yaml(root / "outlines" / "volumes" / "volume_001.yaml")
-    arc = read_yaml(root / "outlines" / "arc_001.yaml")
-    unit = read_yaml(root / "outlines" / "units" / "unit_0001.yaml")
-    unit_chapter = _unit_chapter(unit, chapter)
-    required_obligations = list(unit_chapter.get("state_obligation", []))
+    active = active_outline_data(root, chapter)
+    volume = active["volume"]
+    arc = active["arc"]
+    unit = active["unit"]
+    active_unit_chapter = unit_chapter(unit, chapter)
+    required_obligations = list(active_unit_chapter.get("state_obligation", []))
     current_state = packet.get("current_state", {})
     v3_updates = packet.get("v3_state_updates", {})
     timeline_event = packet.get("timeline_event", {})
@@ -614,12 +621,10 @@ def _build_acceptance_contract_snapshot(
             ),
         },
         "outline_alignment": {
-            "reference_chain": "master -> volume -> arc -> unit -> chapter brief",
+            "reference_chain": f"{BRIEF_REFERENCE_CHAIN} -> chapter brief",
             "volume_id": volume.get("volume_id", "volume_001"),
             "arc_id": arc.get("arc_id", "arc_001"),
-            "unit_id": f"unit_{int(unit.get('unit', 1)):04d}"
-            if isinstance(unit.get("unit"), int)
-            else str(unit.get("unit", "unit_0001")),
+            "unit_id": unit_id(unit),
             "required_unit_obligations": required_obligations,
             "claimed_fulfilled_unit_obligations": list(required_obligations),
             "pending_unit_obligations": [],
@@ -640,13 +645,6 @@ def _build_acceptance_contract_snapshot(
             "faction_changes": [],
         },
     }
-
-
-def _unit_chapter(unit: dict[str, Any], chapter_number: int) -> dict[str, Any]:
-    for chapter in unit.get("chapters", []):
-        if isinstance(chapter, dict) and chapter.get("chapter") == chapter_number:
-            return chapter
-    return {}
 
 
 def validate_v3_ledgers(root: Path) -> list[str]:

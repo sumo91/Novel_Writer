@@ -64,6 +64,63 @@ def test_build_chapter_brief_scaffold_includes_applicable_craft_cards(
     assert "Name the choice and pressure." in scaffold
 
 
+def test_build_chapter_brief_scaffold_uses_active_ranged_outline_layers(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(brief_contract, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    _write_contract_fixture(book)
+    write_yaml(
+        book / "outlines" / "volumes" / "volume_002.yaml",
+        {
+            "volume_id": "volume_002",
+            "chapter_range": {"start": 11, "end": 60},
+            "volume_goal": "Scale the shop.",
+            "approval": {"status": "approved"},
+        },
+    )
+    write_yaml(
+        book / "outlines" / "arc_002.yaml",
+        {
+            "arc_id": "arc_002",
+            "chapter_range": {"start": 11, "end": 30},
+            "arc_goal": "Pressure becomes supply chain.",
+            "required_threads": [],
+            "approval": {"status": "approved"},
+        },
+    )
+    write_yaml(
+        book / "outlines" / "units" / "unit_0002.yaml",
+        {
+            "unit": 2,
+            "chapter_range": {"start": 11, "end": 20},
+            "unit_goal": "Open the second trading pattern.",
+            "chapters": [
+                {
+                    "chapter": 11,
+                    "function": "New buyers test supply limits.",
+                    "opening_hook": "A second buyer arrives.",
+                    "main_payoff": "Chen names a quota.",
+                    "next_hook": "Supply pressure compounds.",
+                    "state_obligation": ["Track supply limits."],
+                }
+            ],
+            "approval": {"status": "approved"},
+        },
+    )
+
+    scaffold = brief_contract.build_chapter_brief_scaffold("demo", 11)
+
+    assert "volume_002: Scale the shop." in scaffold
+    assert "arc_002: Pressure becomes supply chain." in scaffold
+    assert "unit_0002: Open the second trading pattern." in scaffold
+    assert "Chapter 11 function:New buyers test supply limits." in scaffold
+    assert "volume_001: Keep the shop alive." not in scaffold
+
+
 def test_build_chapter_brief_scaffold_shows_craft_card_metadata(
     tmp_path, monkeypatch
 ):

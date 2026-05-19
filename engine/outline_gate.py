@@ -2,6 +2,7 @@ from pathlib import Path
 from typing import Any
 
 from engine.io_utils import read_text, read_yaml, write_text
+from engine.outline_resolver import BRIEF_REFERENCE_CHAIN, active_outline_layers
 from engine.paths import books_dir
 
 BOOKS_DIR = books_dir()
@@ -17,32 +18,10 @@ OUTLINE_LAYERS = {
     "factions": "canon/factions.yaml",
 }
 
-BRIEF_REFERENCE_CHAIN = "master -> volume -> arc -> unit"
-
 
 def get_outline_status(book_id: str) -> dict[str, Any]:
     root = _book_root(book_id)
-    layers = []
-    for layer, relative_path in OUTLINE_LAYERS.items():
-        path = root / relative_path
-        exists = path.exists()
-        approval_status = "missing"
-        if exists:
-            data = read_yaml(path)
-            approval = data.get("approval")
-            if isinstance(approval, dict):
-                approval_status = approval.get("status") or "missing"
-            else:
-                approval_status = "missing"
-        layers.append(
-            {
-                "layer": layer,
-                "path": relative_path,
-                "exists": exists,
-                "approval_status": approval_status,
-            }
-        )
-    return {"book_id": book_id, "layers": layers}
+    return {"book_id": book_id, "layers": active_outline_layers(root, chapter_number=1)}
 
 
 def update_outline_approval(
@@ -77,7 +56,8 @@ def chapter_brief_gate(
     *,
     strict: bool = False,
 ) -> dict[str, Any]:
-    status = get_outline_status(book_id)
+    root = _book_root(book_id)
+    status = {"book_id": book_id, "layers": active_outline_layers(root, chapter_number)}
     blocking_errors: list[str] = []
     warnings: list[str] = []
 
@@ -95,7 +75,6 @@ def chapter_brief_gate(
             else:
                 warnings.append(f"{message} Treat as draft assumption.")
 
-    root = _book_root(book_id)
     brief_path = root / "outlines" / "chapter_briefs" / f"ch_{chapter_number:04d}_brief.md"
     brief_errors: list[str] = []
     if brief_path.exists():

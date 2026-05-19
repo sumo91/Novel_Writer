@@ -4,6 +4,12 @@ from pathlib import Path
 from typing import Any
 
 from engine.io_utils import read_json, read_yaml, write_text, write_yaml
+from engine.outline_resolver import (
+    BRIEF_REFERENCE_CHAIN,
+    active_outline_data,
+    unit_chapter,
+    unit_id,
+)
 from engine.paths import books_dir
 
 BOOKS_DIR = books_dir()
@@ -191,29 +197,21 @@ def _quality_gate_summary(root: Path, chapter_number: int) -> dict[str, Any]:
 
 
 def _outline_alignment(root: Path, chapter_number: int) -> dict[str, Any]:
-    volume = read_yaml(root / "outlines" / "volumes" / "volume_001.yaml")
-    arc = read_yaml(root / "outlines" / "arc_001.yaml")
-    unit = read_yaml(root / "outlines" / "units" / "unit_0001.yaml")
-    unit_chapter = _unit_chapter(unit, chapter_number)
-    required = list(unit_chapter.get("state_obligation", []))
+    active = active_outline_data(root, chapter_number)
+    volume = active["volume"]
+    arc = active["arc"]
+    unit = active["unit"]
+    active_unit_chapter = unit_chapter(unit, chapter_number)
+    required = list(active_unit_chapter.get("state_obligation", []))
     return {
-        "reference_chain": "master -> volume -> arc -> unit -> chapter brief",
+        "reference_chain": f"{BRIEF_REFERENCE_CHAIN} -> chapter brief",
         "volume_id": volume.get("volume_id", "volume_001"),
         "arc_id": arc.get("arc_id", "arc_001"),
-        "unit_id": f"unit_{int(unit.get('unit', 1)):04d}"
-        if isinstance(unit.get("unit"), int)
-        else str(unit.get("unit", "unit_0001")),
+        "unit_id": unit_id(unit),
         "required_unit_obligations": required,
         "claimed_fulfilled_unit_obligations": list(required),
         "pending_unit_obligations": [],
     }
-
-
-def _unit_chapter(unit: dict[str, Any], chapter_number: int) -> dict[str, Any]:
-    for chapter in unit.get("chapters", []):
-        if isinstance(chapter, dict) and chapter.get("chapter") == chapter_number:
-            return chapter
-    return {}
 
 
 def _acceptance_state_updates(

@@ -101,7 +101,7 @@ change_log:
 9. Apply the approved acceptance packet.
 
 ```powershell
-python -m engine.cli accept-chapter demo --update-file books/demo/state_updates/ch_0001_acceptance.yaml
+python -m engine.cli accept-chapter demo --update-file books/demo/state_updates/ch_0001_acceptance.yaml --approved
 ```
 
 This copies the accepted draft into `chapters/`, updates `chapter_index.json`, updates `current_state.json`, appends or replaces the timeline event, updates open threads, and writes `change_log.jsonl`.

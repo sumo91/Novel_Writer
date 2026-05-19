@@ -89,6 +89,33 @@ def test_draft_acceptance_packet_includes_v3_state_updates(tmp_path, monkeypatch
     assert contract["state_updates"]["economy_changes"] == []
 
 
+def test_draft_acceptance_packet_uses_active_ranged_outline_alignment(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(acceptance_packet, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    draft = book / "drafts" / "ch_0011_revised.md"
+    draft.parent.mkdir()
+    draft.write_text("accepted draft", encoding="utf-8")
+    _write_second_outline_layer_fixture(book)
+
+    output = acceptance_packet.draft_acceptance_packet(
+        "demo",
+        11,
+        title="New Buyer",
+        source_draft="drafts/ch_0011_revised.md",
+        summary="A new buyer tests supply.",
+    )
+
+    packet = read_yaml(output)
+    alignment = packet["acceptance_contract"]["outline_alignment"]
+    assert alignment["volume_id"] == "volume_002"
+    assert alignment["arc_id"] == "arc_002"
+    assert alignment["unit_id"] == "unit_0002"
+    assert alignment["required_unit_obligations"] == ["Track supply limits."]
+
+
 def test_draft_acceptance_packet_refuses_existing_file_without_force(tmp_path, monkeypatch):
     monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
     monkeypatch.setattr(acceptance_packet, "BOOKS_DIR", tmp_path / "books")
@@ -182,3 +209,40 @@ def test_draft_acceptance_packet_writes_html_sidecar(tmp_path, monkeypatch):
     assert html_output.exists()
     assert "<h1>Acceptance Packet</h1>" in content
     assert "The first contradiction appears." in content
+
+
+def _write_second_outline_layer_fixture(book):
+    write_yaml = __import__("engine.io_utils", fromlist=["write_yaml"]).write_yaml
+    write_yaml(
+        book / "outlines" / "volumes" / "volume_002.yaml",
+        {
+            "volume_id": "volume_002",
+            "chapter_range": {"start": 11, "end": 60},
+            "volume_goal": "Scale the shop.",
+            "approval": {"status": "approved"},
+        },
+    )
+    write_yaml(
+        book / "outlines" / "arc_002.yaml",
+        {
+            "arc_id": "arc_002",
+            "chapter_range": {"start": 11, "end": 30},
+            "arc_goal": "Pressure becomes supply chain.",
+            "approval": {"status": "approved"},
+        },
+    )
+    write_yaml(
+        book / "outlines" / "units" / "unit_0002.yaml",
+        {
+            "unit": 2,
+            "chapter_range": {"start": 11, "end": 20},
+            "unit_goal": "Open the second trading pattern.",
+            "chapters": [
+                {
+                    "chapter": 11,
+                    "state_obligation": ["Track supply limits."],
+                }
+            ],
+            "approval": {"status": "approved"},
+        },
+    )

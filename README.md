@@ -35,7 +35,7 @@ python -m engine.cli build-context demo 1 --output books/demo/state/ch_0001_cont
 Apply an approved chapter acceptance packet:
 
 ```powershell
-python -m engine.cli accept-chapter demo --update-file books/demo/state_updates/ch_0001_acceptance.yaml
+python -m engine.cli accept-chapter demo --update-file books/demo/state_updates/ch_0001_acceptance.yaml --approved
 ```
 
 Draft an acceptance packet from a final draft and review files:
@@ -70,7 +70,7 @@ The first writing loop is manual and human-approved:
 5. Use `engine/prompts/agents/reviser.md` to revise from approved notes.
 6. Draft an acceptance packet with `draft-acceptance-packet`.
 7. Human reviews and edits the YAML packet.
-8. Run `accept-chapter` to copy the accepted chapter and update state/canon files.
+8. Run `accept-chapter --approved` to copy the accepted chapter and update state/canon files.
 
 See [Manual Single-Chapter Pipeline](docs/workflows/manual-single-chapter-pipeline.md) and [Human Approval Checkpoints](docs/workflows/human-approval-checkpoints.md).
 

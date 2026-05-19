@@ -73,6 +73,13 @@ Scope: chapters 1-4 (4 accepted/indexed chapters).
 | --- | --- | --- | --- |
 | None | - | No mechanical unit-level warning found. | Continue. |
 
+## Craft Knowledge Checks
+
+| Card | Scope | Severity | Principle | Checks | Failure Modes |
+| --- | --- | --- | --- | --- | --- |
+| craft_resource_pressure | craft | soft | Resource growth should create new costs, scarcity, exposure, or obligation. | Identify the cost or risk attached to each major gain.; Check whether gains are balanced by spend, debt, danger, or harder opposition. | Resource inflation; Formulaic payoff |
+| craft_thread_economy | craft | soft | A unit should advance or pay off existing promises before opening too many new ones. | List which open threads this chapter advances.; List which promises are newly opened.; Confirm at least one prior thread is advanced, paid off, or explicitly deferred. | Thread sprawl; False cliffhanger |
+
 ## Continuity Risks
 
 | Risk | Evidence | Recommended Fix |

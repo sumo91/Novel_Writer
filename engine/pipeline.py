@@ -8,7 +8,8 @@ from engine.context_builder import build_context
 from engine.craft_knowledge import load_craft_cards, render_craft_cards
 from engine.html_utils import markdown_to_html_page
 from engine.hardening import (
-    validate_acceptance_packet_file,
+    stale_acceptance_text_errors,
+    validate_acceptance_packet,
     validate_acceptance_contract_snapshot,
     validate_pacing_review,
 )
@@ -126,20 +127,43 @@ def pipeline_accept(
     approved: bool,
     force: bool = False,
 ) -> Path:
+    paths = pipeline_paths(book_id, chapter_number)
+    packet_path = paths.root / "state_updates" / f"ch_{chapter_number:04d}_acceptance.yaml"
+    return pipeline_accept_update_file(
+        book_id,
+        packet_path,
+        approved=approved,
+        force=force,
+        chapter_number=chapter_number,
+    )
+
+
+def pipeline_accept_update_file(
+    book_id: str,
+    packet_path: Path,
+    approved: bool,
+    force: bool = False,
+    chapter_number: int | None = None,
+) -> Path:
     if not approved:
         raise PermissionError("Human approval is required before pipeline acceptance.")
 
-    paths = pipeline_paths(book_id, chapter_number)
-    packet_path = paths.root / "state_updates" / f"ch_{chapter_number:04d}_acceptance.yaml"
+    paths = pipeline_paths(book_id, chapter_number or 0)
     if not packet_path.exists():
         raise FileNotFoundError(f"Missing acceptance packet: {packet_path}")
-    packet_errors = validate_acceptance_packet_file(paths.root, chapter_number)
+    packet = read_yaml(packet_path)
+    resolved_chapter = chapter_number if chapter_number is not None else int(packet.get("chapter", 0))
+    packet_errors = [
+        f"{packet_path.relative_to(paths.root).as_posix()}: {error}"
+        for error in validate_acceptance_packet(packet, resolved_chapter)
+        + stale_acceptance_text_errors(packet_path)
+    ]
     if packet_errors:
         raise ValueError("Invalid acceptance packet: " + "; ".join(packet_errors))
     contract_errors = validate_acceptance_contract_snapshot(
         paths.root,
-        read_yaml(packet_path),
-        chapter_number,
+        packet,
+        resolved_chapter,
     )
     if contract_errors:
         raise ValueError("Invalid acceptance packet: " + "; ".join(contract_errors))

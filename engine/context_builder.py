@@ -2,6 +2,7 @@ from pathlib import Path
 
 from engine.craft_knowledge import load_craft_cards, render_craft_cards
 from engine.io_utils import read_text, read_yaml, write_text
+from engine.outline_resolver import active_outline_paths
 from engine.paths import books_dir, knowledge_dir
 
 BOOKS_DIR = books_dir()
@@ -46,7 +47,7 @@ def build_context(book_id: str, chapter_number: int) -> str:
         "",
     ]
 
-    active = _active_outline_paths(root, chapter_number)
+    active = active_outline_paths(root, chapter_number)
     sections.extend(_outline_reference_chain(chapter_number, active))
     for heading, relative_path in YAML_FILES:
         sections.extend(_fenced_section(root, heading, relative_path, "yaml"))
@@ -115,52 +116,6 @@ def _read_title(root: Path) -> str:
         if line.startswith("title:"):
             return line.split(":", 1)[1].strip().strip('"') or root.name
     return root.name
-
-
-def _active_outline_paths(root: Path, chapter_number: int) -> dict[str, str]:
-    return {
-        "volume": _first_ranged_yaml(
-            root,
-            "outlines/volumes",
-            chapter_number,
-            fallback="outlines/volumes/volume_001.yaml",
-        ),
-        "arc": _first_ranged_yaml(
-            root,
-            "outlines",
-            chapter_number,
-            fallback="outlines/arc_001.yaml",
-            glob_pattern="arc_*.yaml",
-        ),
-        "unit": _first_ranged_yaml(
-            root,
-            "outlines/units",
-            chapter_number,
-            fallback="outlines/units/unit_0001.yaml",
-        ),
-    }
-
-
-def _first_ranged_yaml(
-    root: Path,
-    relative_dir: str,
-    chapter_number: int,
-    fallback: str,
-    glob_pattern: str = "*.yaml",
-) -> str:
-    directory = root / relative_dir
-    if not directory.exists():
-        return fallback
-    for path in sorted(directory.glob(glob_pattern)):
-        data = read_yaml(path)
-        chapter_range = data.get("chapter_range")
-        if not isinstance(chapter_range, dict):
-            continue
-        start = chapter_range.get("start")
-        end = chapter_range.get("end")
-        if isinstance(start, int) and isinstance(end, int) and start <= chapter_number <= end:
-            return path.relative_to(root).as_posix()
-    return fallback
 
 
 def _outline_reference_chain(chapter_number: int, active: dict[str, str]) -> list[str]:

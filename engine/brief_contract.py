@@ -3,7 +3,13 @@ from typing import Any
 
 from engine.craft_knowledge import load_craft_cards, render_craft_cards
 from engine.io_utils import read_json, read_text, read_yaml
-from engine.outline_gate import BRIEF_REFERENCE_CHAIN, chapter_brief_gate
+from engine.outline_gate import chapter_brief_gate
+from engine.outline_resolver import (
+    BRIEF_REFERENCE_CHAIN,
+    active_outline_data,
+    unit_chapter,
+    unit_id,
+)
 from engine.paths import books_dir
 
 BOOKS_DIR = books_dir()
@@ -24,8 +30,8 @@ REQUIRED_BRIEF_SECTIONS = [
 
 def build_chapter_brief_scaffold(book_id: str, chapter_number: int) -> str:
     root = _book_root(book_id)
-    active = _active_outline_data(root, chapter_number)
-    unit_chapter = _unit_chapter(active["unit"], chapter_number)
+    active = active_outline_data(root, chapter_number)
+    active_unit_chapter = unit_chapter(active["unit"], chapter_number)
     open_threads = _open_threads(root, active["arc"].get("required_threads", []))
     payoff_lines = _payoff_lines(root, chapter_number)
     hook_lines = _hook_lines(root)
@@ -41,16 +47,16 @@ def build_chapter_brief_scaffold(book_id: str, chapter_number: int) -> str:
         f"- Required literal chain: {BRIEF_REFERENCE_CHAIN} -> chapter brief.",
         f"- Volume obligation: {_id(active['volume'], 'volume_id', 'volume_001')}: {_field(active['volume'], 'volume_goal')}",
         f"- Arc obligation: {_id(active['arc'], 'arc_id', 'arc_001')}: {_field(active['arc'], 'arc_goal')}",
-        f"- Unit obligation: {_unit_id(active['unit'])}: {_field(active['unit'], 'unit_goal')}",
-        f"- Chapter {chapter_number} function:{unit_chapter.get('function', '')}",
+        f"- Unit obligation: {unit_id(active['unit'])}: {_field(active['unit'], 'unit_goal')}",
+        f"- Chapter {chapter_number} function:{active_unit_chapter.get('function', '')}",
         "",
         "## Chapter Goal",
         "",
-        f"- Serve the unit function: {unit_chapter.get('function', '')}",
+        f"- Serve the unit function: {active_unit_chapter.get('function', '')}",
         "",
         "## Opening Hook",
         "",
-        f"- {unit_chapter.get('opening_hook', '')}",
+        f"- {active_unit_chapter.get('opening_hook', '')}",
         "",
         "## Required Beats",
         "",
@@ -65,7 +71,7 @@ def build_chapter_brief_scaffold(book_id: str, chapter_number: int) -> str:
         "",
         "## Payoff Design",
         "",
-        f"- Unit payoff target: {unit_chapter.get('main_payoff', '')}",
+        f"- Unit payoff target: {active_unit_chapter.get('main_payoff', '')}",
     ]
     lines.extend(f"- {line}" for line in payoff_lines)
     lines.extend(
@@ -101,7 +107,7 @@ def build_chapter_brief_scaffold(book_id: str, chapter_number: int) -> str:
         [
             "## Ending Pull",
             "",
-            f"- {unit_chapter.get('next_hook', '')}",
+            f"- {active_unit_chapter.get('next_hook', '')}",
             "",
             "## Continuity Notes",
             "",
@@ -164,21 +170,6 @@ def _book_root(book_id: str) -> Path:
     return root
 
 
-def _active_outline_data(root: Path, chapter_number: int) -> dict[str, dict[str, Any]]:
-    return {
-        "volume": read_yaml(root / "outlines" / "volumes" / "volume_001.yaml"),
-        "arc": read_yaml(root / "outlines" / "arc_001.yaml"),
-        "unit": read_yaml(root / "outlines" / "units" / "unit_0001.yaml"),
-    }
-
-
-def _unit_chapter(unit: dict[str, Any], chapter_number: int) -> dict[str, Any]:
-    for chapter in unit.get("chapters", []):
-        if isinstance(chapter, dict) and chapter.get("chapter") == chapter_number:
-            return chapter
-    return {}
-
-
 def _open_threads(root: Path, required_thread_ids: list[str]) -> list[str]:
     ledger = read_yaml(root / "canon" / "open_threads.yaml")
     threads = ledger.get("threads", [])
@@ -231,15 +222,6 @@ def _field(data: dict[str, Any], key: str) -> str:
 
 def _id(data: dict[str, Any], key: str, fallback: str) -> str:
     value = data.get(key) or fallback
-    return str(value)
-
-
-def _unit_id(unit: dict[str, Any]) -> str:
-    value = unit.get("unit")
-    if value in (None, ""):
-        return "unit_0001"
-    if isinstance(value, int):
-        return f"unit_{value:04d}"
     return str(value)
 
 

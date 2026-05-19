@@ -8,7 +8,6 @@ from engine.brief_contract import (
     default_brief_path,
 )
 from engine.book_factory import create_book
-from engine.chapter_acceptance import accept_chapter
 from engine.context_builder import write_context
 from engine.drift_report import generate_drift_report
 from engine.html_utils import write_markdown_html_sidecar
@@ -28,6 +27,7 @@ from engine.outline_gate import (
     update_outline_approval,
 )
 from engine.pipeline import (
+    pipeline_accept_update_file,
     pipeline_accept,
     pipeline_draft_acceptance,
     pipeline_quality_gate,
@@ -66,6 +66,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     accept_chapter_cmd.add_argument("book_id")
     accept_chapter_cmd.add_argument("--update-file", required=True)
+    accept_chapter_cmd.add_argument("--approved", action="store_true")
     accept_chapter_cmd.add_argument("--force", action="store_true")
 
     draft_packet_cmd = subparsers.add_parser(
@@ -249,8 +250,17 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.command == "accept-chapter":
-        result = accept_chapter(args.book_id, Path(args.update_file), force=args.force)
-        print(f"Accepted chapter: {result.chapter_path.as_posix()}")
+        try:
+            chapter_path = pipeline_accept_update_file(
+                args.book_id,
+                Path(args.update_file),
+                approved=args.approved,
+                force=args.force,
+            )
+        except (PermissionError, FileNotFoundError, ValueError) as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Accepted chapter: {chapter_path.as_posix()}")
         return 0
 
     if args.command == "draft-acceptance-packet":

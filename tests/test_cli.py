@@ -249,6 +249,72 @@ def test_pipeline_draft_acceptance_cli_writes_html_sidecar(
     assert output.with_suffix(".html").exists()
 
 
+def test_accept_chapter_cli_requires_explicit_approval(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    import engine.chapter_acceptance as chapter_acceptance
+    import engine.pipeline as pipeline
+
+    monkeypatch.setattr(chapter_acceptance, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    (book / "drafts").mkdir()
+    (book / "drafts" / "ch_0001_revised.md").write_text("accepted", encoding="utf-8")
+    packet = book / "state_updates" / "ch_0001_acceptance.yaml"
+    packet.write_text(
+        "\n".join(
+            [
+                "chapter: 1",
+                "title: First Signal",
+                "source_draft: drafts/ch_0001_revised.md",
+                "summary: Summary.",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    result = cli.main(["accept-chapter", "demo", "--update-file", packet.as_posix()])
+
+    captured = capsys.readouterr()
+    assert result == 1
+    assert "Human approval is required" in captured.out
+    assert not (book / "chapters" / "ch_0001.md").exists()
+
+
+def test_accept_chapter_cli_validates_supplied_update_file(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    import engine.chapter_acceptance as chapter_acceptance
+    import engine.pipeline as pipeline
+
+    monkeypatch.setattr(chapter_acceptance, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    (book / "drafts").mkdir()
+    (book / "drafts" / "ch_0001_revised.md").write_text("accepted", encoding="utf-8")
+    packet = book / "state_updates" / "manual_packet.yaml"
+    packet.write_text(
+        "\n".join(
+            [
+                "chapter: 1",
+                "title: First Signal",
+                "source_draft: drafts/ch_0001_revised.md",
+                "summary: Summary.",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    result = cli.main(
+        ["accept-chapter", "demo", "--update-file", packet.as_posix(), "--approved"]
+    )
+
+    captured = capsys.readouterr()
+    assert result == 1
+    assert "Acceptance packet is missing fields" in captured.out
+    assert not (book / "chapters" / "ch_0001.md").exists()
+
+
 def test_pending_approvals_cli_lists_deduped_sources(tmp_path, monkeypatch, capsys):
     monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
     import engine.pending_approvals as pending_approvals
