@@ -13,7 +13,7 @@ from engine.hardening import (
     validate_acceptance_contract_snapshot,
     validate_pacing_review,
 )
-from engine.io_utils import read_json, read_text, read_yaml, write_json, write_text
+from engine.io_utils import read_json, read_text, read_yaml, write_json, write_text, write_yaml
 from engine.paths import books_dir
 
 BOOKS_DIR = books_dir()
@@ -65,8 +65,12 @@ def pipeline_status(book_id: str, chapter_number: int) -> dict:
     import json
 
     manifest = json.loads(read_text(paths.manifest_path))
+    manifest_artifacts = {
+        **_manifest(book_id, chapter_number)["artifacts"],
+        **manifest["artifacts"],
+    }
     artifacts = {}
-    for name, relative_path in manifest["artifacts"].items():
+    for name, relative_path in manifest_artifacts.items():
         path = paths.root / relative_path
         artifacts[name] = {
             "path": relative_path,
@@ -92,16 +96,17 @@ def pipeline_draft_acceptance(
     allow_missing_reviews: bool = False,
 ) -> Path:
     paths = pipeline_paths(book_id, chapter_number)
-    source_draft = f"drafts/ch_{chapter_number:04d}_revised.md"
-    revised_path = paths.root / source_draft
+    revised_source = f"drafts/ch_{chapter_number:04d}_revised.md"
+    revised_path = paths.root / revised_source
     if not revised_path.exists():
-        raise FileNotFoundError(f"Missing revised draft: {source_draft}")
+        raise FileNotFoundError(f"Missing revised draft: {revised_source}")
 
     if not allow_missing_reviews:
         review_dir = paths.root / "reviews" / f"ch_{chapter_number:04d}"
         required_reviews = [
             review_dir / "continuity_review.json",
             review_dir / "pacing_review.json",
+            review_dir / "prose_quality_review.json",
         ]
         missing_reviews = [
             path.relative_to(paths.root).as_posix()
@@ -110,6 +115,11 @@ def pipeline_draft_acceptance(
         ]
         if missing_reviews:
             raise FileNotFoundError(f"Missing review files: {', '.join(missing_reviews)}")
+
+    source_draft = f"drafts/ch_{chapter_number:04d}_final_candidate.md"
+    final_candidate_path = paths.root / source_draft
+    if not final_candidate_path.exists():
+        raise FileNotFoundError(f"Missing final candidate draft: {source_draft}")
 
     return draft_acceptance_packet(
         book_id,
@@ -303,6 +313,113 @@ def pipeline_quality_gate(book_id: str, chapter_number: int) -> dict:
     }
 
 
+PROSE_QUALITY_DIMENSIONS = {
+    "opening_hook": 10,
+    "conflict_pressure": 10,
+    "protagonist_agency": 10,
+    "payoff_execution": 15,
+    "dialogue_tension": 10,
+    "scene_specificity": 10,
+    "voice_distinction": 10,
+    "rhythm_variation": 10,
+    "ending_pull": 10,
+    "style_slop_control": 5,
+}
+
+
+def write_author_direction_scaffold(
+    book_id: str,
+    chapter_number: int,
+    force: bool = False,
+) -> Path:
+    paths = pipeline_paths(book_id, chapter_number)
+    output = paths.root / "authoring" / f"ch_{chapter_number:04d}_author_direction.yaml"
+    if output.exists() and not force:
+        raise FileExistsError(f"Author direction already exists: {output}")
+    data = {
+        "chapter": chapter_number,
+        "author_intent": [],
+        "must_change": [],
+        "approved_lines": [],
+        "rejected_patterns": [
+            "Avoid generic inner monologue explanations.",
+            "Avoid interchangeable dialogue.",
+            "Avoid vague cliffhangers without a concrete next pressure.",
+        ],
+        "ai_assistance": {
+            "expected": True,
+            "human_role": "direction, taste, key edits, final approval",
+        },
+        "approved_for_final_candidate": False,
+    }
+    write_yaml(output, data)
+    html_lines = [
+        f"# Chapter {chapter_number} Author Direction",
+        "",
+        "- AI may draft most prose.",
+        "- Human direction should state taste, intent, must-change points, and rejected patterns.",
+        "- Set approved_for_final_candidate only after the human direction is ready.",
+    ]
+    write_text(
+        output.with_suffix(".html"),
+        markdown_to_html_page(
+            f"Chapter {chapter_number} Author Direction",
+            "\n".join(html_lines),
+        ),
+    )
+    return output
+
+
+def pipeline_prose_quality_gate(book_id: str, chapter_number: int) -> dict:
+    paths = pipeline_paths(book_id, chapter_number)
+    review_path = paths.root / "reviews" / f"ch_{chapter_number:04d}" / "prose_quality_review.json"
+    if not review_path.exists():
+        raise FileNotFoundError(f"Missing prose quality review: {review_path}")
+
+    review = read_json(review_path)
+    score = review.get("score")
+    dimension_scores = review.get("dimension_scores", {})
+    reasons: list[str] = []
+    if not isinstance(score, int) or not 0 <= score <= 100:
+        reasons.append("Prose quality score must be an integer from 0 to 100.")
+    if not isinstance(dimension_scores, dict):
+        reasons.append("Prose quality dimension_scores must be a mapping.")
+        dimension_scores = {}
+    for dimension, max_score in PROSE_QUALITY_DIMENSIONS.items():
+        value = dimension_scores.get(dimension)
+        if not isinstance(value, int) or not 0 <= value <= max_score:
+            reasons.append(f"{dimension} must be an integer from 0 to {max_score}.")
+        elif value < _prose_dimension_floor(max_score):
+            reasons.append(f"{dimension} is below {_prose_dimension_floor(max_score)}.")
+    for issue in review.get("blocking_issues", []):
+        reasons.append(str(issue))
+
+    rewrite_required = bool(review.get("rewrite_required"))
+    if isinstance(score, int) and score < 85:
+        rewrite_required = True
+        reasons.append(f"Prose quality score {score} is below 85.")
+    if reasons:
+        rewrite_required = True
+
+    return {
+        "book_id": book_id,
+        "chapter": chapter_number,
+        "passed": not rewrite_required,
+        "status": "passed" if not rewrite_required else "needs_rewrite",
+        "score": score,
+        "rewrite_required": rewrite_required,
+        "reasons": list(dict.fromkeys(reasons)),
+    }
+
+
+def _prose_dimension_floor(max_score: int) -> int:
+    if max_score == 15:
+        return 10
+    if max_score == 5:
+        return 3
+    return 7
+
+
 def _manifest(book_id: str, chapter_number: int) -> dict:
     chapter_slug = f"ch_{chapter_number:04d}"
     return {
@@ -314,8 +431,11 @@ def _manifest(book_id: str, chapter_number: int) -> dict:
             "brief": f"outlines/chapter_briefs/{chapter_slug}_brief.md",
             "draft": f"drafts/{chapter_slug}_draft.md",
             "revised": f"drafts/{chapter_slug}_revised.md",
+            "author_direction": f"authoring/{chapter_slug}_author_direction.yaml",
             "continuity_review": f"reviews/{chapter_slug}/continuity_review.json",
             "pacing_review": f"reviews/{chapter_slug}/pacing_review.json",
+            "prose_quality_review": f"reviews/{chapter_slug}/prose_quality_review.json",
+            "final_candidate": f"drafts/{chapter_slug}_final_candidate.md",
             "acceptance_packet": f"state_updates/{chapter_slug}_acceptance.yaml",
             "accepted_chapter": f"chapters/{chapter_slug}.md",
         },
@@ -334,6 +454,12 @@ def _derive_status(artifacts: dict) -> tuple[str, str]:
         return "needs_reviews", "Create continuity and pacing reviews."
     if not artifacts["revised"]["present"]:
         return "needs_revised_draft", "Create revised chapter draft."
+    if not artifacts["author_direction"]["present"]:
+        return "needs_author_direction", "Create or approve author direction notes."
+    if not artifacts["prose_quality_review"]["present"]:
+        return "needs_prose_quality_review", "Create prose quality review."
+    if not artifacts["final_candidate"]["present"]:
+        return "needs_final_candidate", "Create AI-assisted final candidate draft."
     if not artifacts["acceptance_packet"]["present"]:
         return "needs_acceptance_packet", "Draft and review acceptance packet."
     if not artifacts["accepted_chapter"]["present"]:

@@ -348,6 +348,12 @@ def test_validate_acceptance_packet_requires_contract_state_updates_to_mirror_v3
             "pending_approvals": ["Confirm buyer rule."],
         }
     )
+    packet["acceptance_contract"]["state_updates"]["character_state_changes"] = []
+    packet["acceptance_contract"]["state_updates"]["resource_changes"] = []
+    packet["acceptance_contract"]["state_updates"]["open_thread_updates"] = []
+    packet["acceptance_contract"]["state_updates"]["payoff_updates"] = []
+    packet["acceptance_contract"]["state_updates"]["next_hook"] = {}
+    packet["acceptance_contract"]["state_updates"]["pending_approvals"] = []
 
     errors = validate_acceptance_packet(packet, chapter_number=1)
 
@@ -375,6 +381,55 @@ def test_validate_acceptance_packet_requires_contract_state_updates_to_mirror_v3
         "acceptance_contract.state_updates.pending_approvals must mirror "
         "v3_state_updates.pending_approvals."
     ) in errors
+
+
+def test_validate_acceptance_packet_requires_publication_readiness_gate():
+    packet = _valid_acceptance_packet(
+        {
+            "timeline": {},
+            "character_states": [],
+            "resource_changes": [],
+            "open_thread_updates": [],
+            "payoff_updates": [
+                {
+                    "frustration_level": "controlled",
+                    "promises_made": ["Promise."],
+                    "payoffs_delivered": [],
+                }
+            ],
+            "conflict_updates": {"active": []},
+            "next_hook": {},
+            "pending_approvals": [],
+        }
+    )
+    packet["acceptance_contract"]["publication_readiness"] = {
+        "final_candidate_path": "drafts/ch_0001_final_candidate.md",
+        "author_direction_present": True,
+        "author_direction_approved": False,
+        "prose_quality_review_present": True,
+        "prose_quality_score": 82,
+        "prose_rewrite_required": True,
+        "blocking_issues": ["Dialogue is interchangeable."],
+    }
+
+    errors = validate_acceptance_packet(packet, chapter_number=1)
+
+    assert (
+        "acceptance_contract.publication_readiness.author_direction_approved "
+        "must be true."
+    ) in errors
+    assert (
+        "acceptance_contract.publication_readiness.prose_quality_score must be at least 85."
+        in errors
+    )
+    assert (
+        "acceptance_contract.publication_readiness.prose_rewrite_required must be false."
+        in errors
+    )
+    assert (
+        "acceptance_contract.publication_readiness.blocking_issues must be empty."
+        in errors
+    )
 
 
 def test_validate_acceptance_packet_rejects_falsey_non_mapping_v3_timeline():
@@ -577,6 +632,15 @@ def _valid_acceptance_packet(v3_state_updates, *, include_acceptance_contract=Tr
                 "revision_required": False,
                 "waiver_required": False,
             },
+            "publication_readiness": {
+                "final_candidate_path": "drafts/ch_0001_final_candidate.md",
+                "author_direction_present": True,
+                "author_direction_approved": True,
+                "prose_quality_review_present": True,
+                "prose_quality_score": 88,
+                "prose_rewrite_required": False,
+                "blocking_issues": [],
+            },
             "outline_alignment": {
                 "reference_chain": "master -> volume -> arc -> unit -> chapter brief",
                 "volume_id": "volume_001",
@@ -588,12 +652,12 @@ def _valid_acceptance_packet(v3_state_updates, *, include_acceptance_contract=Tr
             },
             "state_updates": {
                 "timeline_event": {"id": "t001", "when": "Chapter 1", "summary": "Summary."},
-                "character_state_changes": [],
-                "resource_changes": [],
-                "open_thread_updates": [],
-                "payoff_updates": [],
-                "next_hook": {},
-                "pending_approvals": [],
+                "character_state_changes": v3_state_updates.get("character_states", []),
+                "resource_changes": v3_state_updates.get("resource_changes", []),
+                "open_thread_updates": v3_state_updates.get("open_thread_updates", []),
+                "payoff_updates": v3_state_updates.get("payoff_updates", []),
+                "next_hook": v3_state_updates.get("next_hook", {}),
+                "pending_approvals": v3_state_updates.get("pending_approvals", []),
                 "economy_changes": [],
                 "faction_changes": [],
             },

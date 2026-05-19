@@ -77,6 +77,7 @@ def draft_acceptance_packet(
         "acceptance_contract": _draft_acceptance_contract(
             root,
             chapter_number,
+            source_draft,
             timeline_id,
             summary,
             v3_state_updates,
@@ -159,11 +160,12 @@ def _draft_v3_state_updates(
 def _draft_acceptance_contract(
     root: Path,
     chapter_number: int,
+    source_draft: str,
     timeline_id: str,
     summary: str,
     v3_state_updates: dict[str, Any],
 ) -> dict[str, Any]:
-    return {
+    contract = {
         "quality_gate_summary": _quality_gate_summary(root, chapter_number),
         "outline_alignment": _outline_alignment(root, chapter_number),
         "state_updates": _acceptance_state_updates(
@@ -172,6 +174,37 @@ def _draft_acceptance_contract(
             summary,
             v3_state_updates,
         ),
+    }
+    if _uses_v4_1_publication_gate(root, chapter_number, source_draft):
+        contract["publication_readiness"] = _publication_readiness(
+            root,
+            chapter_number,
+            source_draft=source_draft,
+        )
+    return contract
+
+
+def _uses_v4_1_publication_gate(root: Path, chapter_number: int, source_draft: str) -> bool:
+    return (
+        source_draft.endswith("_final_candidate.md")
+        or (root / "authoring" / f"ch_{chapter_number:04d}_author_direction.yaml").exists()
+        or (root / "reviews" / f"ch_{chapter_number:04d}" / "prose_quality_review.json").exists()
+    )
+
+
+def _publication_readiness(root: Path, chapter_number: int, source_draft: str) -> dict[str, Any]:
+    author_direction_path = root / "authoring" / f"ch_{chapter_number:04d}_author_direction.yaml"
+    prose_review_path = root / "reviews" / f"ch_{chapter_number:04d}" / "prose_quality_review.json"
+    author_direction = read_yaml(author_direction_path) if author_direction_path.exists() else {}
+    prose_review = read_json(prose_review_path) if prose_review_path.exists() else {}
+    return {
+        "final_candidate_path": source_draft,
+        "author_direction_present": author_direction_path.exists(),
+        "author_direction_approved": bool(author_direction.get("approved_for_final_candidate")),
+        "prose_quality_review_present": prose_review_path.exists(),
+        "prose_quality_score": prose_review.get("score"),
+        "prose_rewrite_required": bool(prose_review.get("rewrite_required")),
+        "blocking_issues": list(prose_review.get("blocking_issues", [])),
     }
 
 
@@ -260,6 +293,7 @@ def _dedupe(items: list[str]) -> list[str]:
 def render_acceptance_packet_html(packet: dict[str, Any]) -> str:
     contract = packet.get("acceptance_contract", {})
     quality = contract.get("quality_gate_summary", {}) if isinstance(contract, dict) else {}
+    publication = contract.get("publication_readiness", {}) if isinstance(contract, dict) else {}
     outline = contract.get("outline_alignment", {}) if isinstance(contract, dict) else {}
     state_updates = contract.get("state_updates", {}) if isinstance(contract, dict) else {}
 
@@ -285,6 +319,7 @@ def render_acceptance_packet_html(packet: dict[str, Any]) -> str:
         f"<p><strong>Title:</strong> {html.escape(str(packet.get('title', '')))}</p>",
         f"<p><strong>Summary:</strong> {html.escape(str(packet.get('summary', '')))}</p>",
         _section_html("Quality Gate Summary", _mapping_table(quality)),
+        _section_html("Publication Readiness", _mapping_table(publication)),
         _section_html("Outline Alignment", _mapping_table(outline)),
         _section_html("State Updates", _mapping_table(state_updates)),
         _section_html("Timeline Event", _list_html(packet.get("timeline_event"))),

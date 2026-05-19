@@ -14,6 +14,7 @@ Do not jump straight to prose unless the user has already approved the premise, 
 ## Operating Principles
 
 - Treat the human as final showrunner and canon owner.
+- AI may draft most prose, but publication-facing chapter text should pass through lightweight human direction, prose quality review, and a final candidate gate.
 - Keep story-specific truth inside `books/<book_id>/`.
 - Keep reusable theory inside `knowledge/`, preferably as structured knowledge cards.
 - Keep repository-wide collaboration rules in `AGENTS.md`.
@@ -65,25 +66,40 @@ Use the first matching state:
    - Create `drafts/ch_XXXX_revised.md`.
    - If no revision is needed, copy the draft intentionally and note that in the final response.
 
-7. **Revised draft exists, no acceptance packet**
+7. **Revised draft exists, no author direction**
+   - Run `python -m engine.cli author-direction-scaffold <book_id> <chapter>` if missing.
+   - Ask the human for a small direction note, not a full manual rewrite: intent, must-change points, approved lines, and rejected patterns.
+   - Keep this as taste/control input that AI must integrate before final candidate.
+
+8. **Author direction exists, no prose quality review**
+   - Write `reviews/ch_XXXX/prose_quality_review.json`.
+   - Use the 100-point readable web-novel quality gate: opening hook, conflict pressure, protagonist agency, payoff execution, dialogue tension, scene specificity, voice distinction, rhythm variation, ending pull, and style slop control.
+   - Run `python -m engine.cli pipeline-prose-quality-gate <book_id> <chapter>`.
+   - If below 85 or blockers remain, revise by AI before creating the final candidate.
+
+9. **Prose quality review exists, no final candidate**
+   - Create `drafts/ch_XXXX_final_candidate.md` by integrating revised draft, prose quality review, and human direction.
+   - The human may edit only small high-leverage pieces; do not require full manual rewriting.
+
+10. **Final candidate exists, no acceptance packet**
    - Run `python -m engine.cli pipeline-draft-acceptance <book_id> <chapter> --title "<title>" --summary "<summary>"`.
    - Point the human to both the YAML contract and the generated HTML review copy.
-   - Summarize the acceptance decision in plain language: timeline event, state changes, open thread updates, payoff updates, next hook, and pending approvals.
+   - Summarize the acceptance decision in plain language: publication readiness, timeline event, state changes, open thread updates, payoff updates, next hook, and pending approvals.
    - Stop for human confirmation.
 
-8. **Acceptance packet exists, not accepted**
+11. **Acceptance packet exists, not accepted**
    - Do not run `pipeline-accept` unless the user explicitly confirms.
    - If the human asks what they are approving, restate the acceptance packet in plain language and link the HTML review copy when present.
    - After confirmation, run `python -m engine.cli pipeline-accept <book_id> <chapter> --approved`.
 
-9. **Sample target completed**
+12. **Sample target completed**
    - Run `python -m engine.cli drift-report <book_id> --start <n> --end <m>`.
    - Run `python -m engine.cli sync-pending-approvals <book_id>`.
    - Point the human to the generated drift report HTML copy when present.
    - Write a short target-genre, drift, and outline-alignment review report.
    - Triage pending approvals with `pending-approval-batch-update` when multiple items are decided.
 
-10. **Architecture discussion**
+13. **Architecture discussion**
    - Compare the user's vision against implemented files and commands.
    - Recommend the next system layer before writing new fiction.
    - For current Novel_Writer, keep V2.6 chapter pipeline, V3 state machine, and V3.1 long-form outline architecture stable before market/reader-simulator layers.
@@ -102,6 +118,8 @@ Before recommending acceptance, check:
 - New facts are recorded as state changes or pending approvals.
 - No continuity blockers remain.
 - Pacing score is at least 80, or an explicit waiver exists.
+- Prose quality score is at least 85 before creating the final candidate, with no unresolved blocking issues.
+- Final candidate should reflect the human author direction; the human can steer with a short note rather than rewriting the whole chapter.
 
 ## Knowledge Use
 
@@ -135,6 +153,8 @@ python -m engine.cli chapter-brief-check <book_id> <chapter>
 python -m engine.cli prepare-chapter <book_id> <chapter>
 python -m engine.cli pipeline-status <book_id> <chapter>
 python -m engine.cli pipeline-quality-gate <book_id> <chapter>
+python -m engine.cli author-direction-scaffold <book_id> <chapter>
+python -m engine.cli pipeline-prose-quality-gate <book_id> <chapter>
 python -m engine.cli pipeline-draft-acceptance <book_id> <chapter> --title "<title>" --summary "<summary>"
 python -m engine.cli pipeline-accept <book_id> <chapter> --approved
 python -m engine.cli drift-report <book_id> --start <n> --end <m>

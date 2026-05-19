@@ -31,8 +31,10 @@ from engine.pipeline import (
     pipeline_accept,
     pipeline_draft_acceptance,
     pipeline_quality_gate,
+    pipeline_prose_quality_gate,
     pipeline_status,
     prepare_chapter,
+    write_author_direction_scaffold,
     write_quality_gate_html,
 )
 from engine.v3_migration import migrate_book_to_v3, migrate_book_to_v3_1
@@ -102,6 +104,21 @@ def build_parser() -> argparse.ArgumentParser:
     )
     pipeline_quality_cmd.add_argument("book_id")
     pipeline_quality_cmd.add_argument("chapter_number", type=int)
+
+    prose_quality_cmd = subparsers.add_parser(
+        "pipeline-prose-quality-gate",
+        help="Evaluate the V4.1 prose quality gate.",
+    )
+    prose_quality_cmd.add_argument("book_id")
+    prose_quality_cmd.add_argument("chapter_number", type=int)
+
+    author_direction_cmd = subparsers.add_parser(
+        "author-direction-scaffold",
+        help="Write a lightweight human author direction scaffold.",
+    )
+    author_direction_cmd.add_argument("book_id")
+    author_direction_cmd.add_argument("chapter_number", type=int)
+    author_direction_cmd.add_argument("--force", action="store_true")
 
     pipeline_draft_cmd = subparsers.add_parser(
         "pipeline-draft-acceptance",
@@ -313,6 +330,33 @@ def main(argv: list[str] | None = None) -> int:
         html_path = write_quality_gate_html(args.book_id, args.chapter_number, result)
         print(f"HTML review copy: {html_path.as_posix()}")
         return 0 if result["passed"] else 1
+
+    if args.command == "pipeline-prose-quality-gate":
+        try:
+            result = pipeline_prose_quality_gate(args.book_id, args.chapter_number)
+        except (FileNotFoundError, ValueError) as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Prose quality gate: {result['status']}")
+        print(f"- score: {result['score']}")
+        print(f"- rewrite_required: {result['rewrite_required']}")
+        for reason in result["reasons"]:
+            print(f"- reason: {reason}")
+        return 0 if result["passed"] else 1
+
+    if args.command == "author-direction-scaffold":
+        try:
+            output_path = write_author_direction_scaffold(
+                args.book_id,
+                args.chapter_number,
+                force=args.force,
+            )
+        except (FileNotFoundError, FileExistsError, ValueError) as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Wrote author direction scaffold: {output_path.as_posix()}")
+        print(f"HTML review copy: {output_path.with_suffix('.html').as_posix()}")
+        return 0
 
     if args.command == "pipeline-draft-acceptance":
         output_path = pipeline_draft_acceptance(

@@ -174,6 +174,16 @@ REQUIRED_ACCEPTANCE_STATE_FIELDS = {
     "faction_changes",
 }
 
+REQUIRED_PUBLICATION_READINESS_FIELDS = {
+    "final_candidate_path",
+    "author_direction_present",
+    "author_direction_approved",
+    "prose_quality_review_present",
+    "prose_quality_score",
+    "prose_rewrite_required",
+    "blocking_issues",
+}
+
 STALE_ACCEPTANCE_PHRASES = {
     "ready_for_acceptance",
     "pending human acceptance",
@@ -503,6 +513,53 @@ def validate_acceptance_contract(
             if field in outline_alignment and not isinstance(outline_alignment[field], list):
                 errors.append(f"acceptance_contract.outline_alignment.{field} must be a list.")
 
+    publication_readiness = contract.get("publication_readiness", {})
+    if "publication_readiness" in contract and not isinstance(publication_readiness, dict):
+        errors.append("acceptance_contract.publication_readiness must be a mapping.")
+    elif "publication_readiness" in contract and isinstance(publication_readiness, dict):
+        missing_publication = sorted(
+            field
+            for field in REQUIRED_PUBLICATION_READINESS_FIELDS
+            if field not in publication_readiness
+        )
+        if missing_publication:
+            errors.append(
+                "acceptance_contract.publication_readiness is missing fields: "
+                + ", ".join(missing_publication)
+                + "."
+            )
+        for field in (
+            "author_direction_present",
+            "author_direction_approved",
+            "prose_quality_review_present",
+            "prose_rewrite_required",
+        ):
+            if field in publication_readiness and not isinstance(publication_readiness[field], bool):
+                errors.append(f"acceptance_contract.publication_readiness.{field} must be a bool.")
+        if publication_readiness.get("author_direction_present") is False:
+            errors.append("acceptance_contract.publication_readiness.author_direction_present must be true.")
+        if publication_readiness.get("author_direction_approved") is False:
+            errors.append("acceptance_contract.publication_readiness.author_direction_approved must be true.")
+        if publication_readiness.get("prose_quality_review_present") is False:
+            errors.append("acceptance_contract.publication_readiness.prose_quality_review_present must be true.")
+        score = publication_readiness.get("prose_quality_score")
+        if score is not None and not _score_in_range(score, 0, 100):
+            errors.append(
+                "acceptance_contract.publication_readiness.prose_quality_score "
+                "must be an integer from 0 to 100."
+            )
+        elif isinstance(score, int) and score < 85:
+            errors.append(
+                "acceptance_contract.publication_readiness.prose_quality_score must be at least 85."
+            )
+        if publication_readiness.get("prose_rewrite_required") is True:
+            errors.append("acceptance_contract.publication_readiness.prose_rewrite_required must be false.")
+        blocking_issues = publication_readiness.get("blocking_issues")
+        if "blocking_issues" in publication_readiness and not isinstance(blocking_issues, list):
+            errors.append("acceptance_contract.publication_readiness.blocking_issues must be a list.")
+        elif blocking_issues:
+            errors.append("acceptance_contract.publication_readiness.blocking_issues must be empty.")
+
     state_updates = contract.get("state_updates", {})
     if "state_updates" in contract and not isinstance(state_updates, dict):
         errors.append("acceptance_contract.state_updates must be a mapping.")
@@ -579,6 +636,8 @@ def validate_acceptance_contract_snapshot(
         return []
 
     expected = _build_acceptance_contract_snapshot(root, packet, chapter_number)
+    if "publication_readiness" not in contract:
+        expected.pop("publication_readiness", None)
     if contract != expected:
         return ["Acceptance packet acceptance_contract snapshot does not match source state."]
     return []
@@ -593,8 +652,12 @@ def _build_acceptance_contract_snapshot(
     review_dir = root / "reviews" / f"ch_{chapter:04d}"
     continuity_path = review_dir / "continuity_review.json"
     pacing_path = review_dir / "pacing_review.json"
+    prose_path = review_dir / "prose_quality_review.json"
     continuity = read_json(continuity_path) if continuity_path.exists() else {}
     pacing = read_json(pacing_path) if pacing_path.exists() else {}
+    prose = read_json(prose_path) if prose_path.exists() else {}
+    author_direction_path = root / "authoring" / f"ch_{chapter:04d}_author_direction.yaml"
+    author_direction = read_yaml(author_direction_path) if author_direction_path.exists() else {}
     active = active_outline_data(root, chapter)
     volume = active["volume"]
     arc = active["arc"]
@@ -619,6 +682,15 @@ def _build_acceptance_contract_snapshot(
                 isinstance(pacing.get("revised_score"), int)
                 and pacing.get("revised_score") < 80
             ),
+        },
+        "publication_readiness": {
+            "final_candidate_path": packet.get("source_draft"),
+            "author_direction_present": author_direction_path.exists(),
+            "author_direction_approved": bool(author_direction.get("approved_for_final_candidate")),
+            "prose_quality_review_present": prose_path.exists(),
+            "prose_quality_score": prose.get("score"),
+            "prose_rewrite_required": bool(prose.get("rewrite_required")),
+            "blocking_issues": list(prose.get("blocking_issues", [])),
         },
         "outline_alignment": {
             "reference_chain": f"{BRIEF_REFERENCE_CHAIN} -> chapter brief",

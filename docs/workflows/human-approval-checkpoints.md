@@ -15,7 +15,8 @@ Human approval is required before these decisions become project truth.
 ## Chapter-Level Approval
 
 - Chapter brief.
-- Final chapter draft.
+- Lightweight author direction notes.
+- Final candidate chapter draft.
 - Major protagonist decisions.
 - Major relationship changes.
 - Major new abilities, resources, injuries, secrets, or public knowledge.
@@ -31,12 +32,14 @@ Human approval is required before these decisions become project truth.
 - Chapter summary.
 - Any contradiction waiver.
 - The full `state_updates/ch_XXXX_acceptance.yaml` packet before running `accept-chapter --approved`.
+- `publication_readiness` in the acceptance packet when the V4.1 final-candidate gate is used.
 
 ## Review Approval
 
 Agents can recommend changes, but humans decide:
 
 - Which review notes are accepted.
+- Which prose quality issues require AI rewrite.
 - Which risks are waived.
 - Which canon changes are rejected.
 - Whether a low-scoring chapter should be rewritten or accepted for strategic reasons.

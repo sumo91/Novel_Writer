@@ -54,18 +54,26 @@ For a normal chapter, follow this lifecycle:
    `books/<book_id>/reviews/ch_XXXX/pacing_review.json`
 6. Write revised draft:
    `books/<book_id>/drafts/ch_XXXX_revised.md`
-7. Draft acceptance packet:
+7. Write lightweight author direction:
+   `books/<book_id>/authoring/ch_XXXX_author_direction.yaml`
+8. Write prose quality review:
+   `books/<book_id>/reviews/ch_XXXX/prose_quality_review.json`
+9. Write final candidate:
+   `books/<book_id>/drafts/ch_XXXX_final_candidate.md`
+10. Draft acceptance packet:
    `python -m engine.cli pipeline-draft-acceptance <book_id> <chapter> --title "<title>" --summary "<summary>"`
-8. Stop for human confirmation.
-9. After explicit confirmation:
+11. Stop for human confirmation.
+12. After explicit confirmation:
    `python -m engine.cli pipeline-accept <book_id> <chapter> --approved`
-10. Verify status and project validity.
+13. Verify status and project validity.
 
 ## Quality Gates
 
 - Continuity blockers must be fixed or explicitly waived before acceptance.
 - Pacing score below 80 requires revision or explicit waiver.
 - Pacing review dimension scores must be valid 0-10 integers.
+- Prose quality score below 85 requires AI rewrite before final candidate.
+- V4.1 publication-facing chapters should pass author direction, prose quality review, and final candidate gates.
 - Acceptance packets must not contain stale text such as `TODO`, `draft_note`, `ready_for_acceptance`, or `pending human acceptance`.
 - Chapter acceptance should update durable state through the acceptance packet, not ad hoc memory.
 

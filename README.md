@@ -50,6 +50,8 @@ Prepare and inspect a V2 chapter pipeline workspace:
 python -m engine.cli prepare-chapter demo 1
 python -m engine.cli pipeline-status demo 1
 python -m engine.cli pipeline-quality-gate demo 1
+python -m engine.cli author-direction-scaffold demo 1
+python -m engine.cli pipeline-prose-quality-gate demo 1
 ```
 
 Use the V2 wrappers after the human-approved artifacts exist:
@@ -68,9 +70,10 @@ The first writing loop is manual and human-approved:
 3. Use `engine/prompts/agents/chapter_writer.md` to draft the chapter.
 4. Use `engine/prompts/agents/continuity_editor.md` and `engine/prompts/agents/tomato_pacing_editor.md` to review it.
 5. Use `engine/prompts/agents/reviser.md` to revise from approved notes.
-6. Draft an acceptance packet with `draft-acceptance-packet`.
-7. Human reviews and edits the YAML packet.
-8. Run `accept-chapter --approved` to copy the accepted chapter and update state/canon files.
+6. Add lightweight author direction, run prose quality review, and create `drafts/ch_XXXX_final_candidate.md`.
+7. Draft an acceptance packet with `draft-acceptance-packet` or `pipeline-draft-acceptance`.
+8. Human reviews the HTML/YAML packet.
+9. Run `accept-chapter --approved` or `pipeline-accept --approved` to copy the accepted chapter and update state/canon files.
 
 See [Manual Single-Chapter Pipeline](docs/workflows/manual-single-chapter-pipeline.md) and [Human Approval Checkpoints](docs/workflows/human-approval-checkpoints.md).
 
@@ -80,8 +83,8 @@ For the command-assisted V2 loop, see [V2 Single-Chapter Pipeline](docs/workflow
 
 Novel Writer is not a one-prompt novel generator. It is a structured workflow for a human-led digital writers' room:
 
-- Humans approve story direction, major canon changes, and final chapters.
-- Agents draft, review, revise, and maintain memory through explicit files.
+- Humans approve story direction, author direction notes, major canon changes, and final chapters.
+- Agents can draft most prose, review, revise, and maintain memory through explicit files.
 - YAML stores durable canon and project state.
 - Markdown stores prompts, theory, workflows, and readable context packs.
 - JSON stores structured reviews and machine-facing state.

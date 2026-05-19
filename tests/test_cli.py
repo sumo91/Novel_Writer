@@ -63,6 +63,60 @@ def test_pipeline_quality_gate_cli_writes_html_review_summary(
     assert "Quality Gate" in output.read_text(encoding="utf-8")
 
 
+def test_author_direction_scaffold_cli_writes_yaml_and_html(
+    tmp_path, monkeypatch, capsys
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+
+    result = cli.main(["author-direction-scaffold", "demo", "1"])
+
+    captured = capsys.readouterr()
+    output = book / "authoring" / "ch_0001_author_direction.yaml"
+    assert result == 0
+    assert output.exists()
+    assert output.with_suffix(".html").exists()
+    assert f"Wrote author direction scaffold: {output.as_posix()}" in captured.out
+    assert f"HTML review copy: {output.with_suffix('.html').as_posix()}" in captured.out
+
+
+def test_pipeline_prose_quality_gate_cli_reports_review_result(
+    tmp_path, monkeypatch, capsys
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    write_json(
+        book / "reviews" / "ch_0001" / "prose_quality_review.json",
+        {
+            "score": 82,
+            "dimension_scores": {
+                "opening_hook": 8,
+                "conflict_pressure": 8,
+                "protagonist_agency": 8,
+                "payoff_execution": 11,
+                "dialogue_tension": 8,
+                "scene_specificity": 8,
+                "voice_distinction": 8,
+                "rhythm_variation": 8,
+                "ending_pull": 8,
+                "style_slop_control": 4,
+            },
+            "blocking_issues": [],
+            "rewrite_required": False,
+        },
+    )
+
+    result = cli.main(["pipeline-prose-quality-gate", "demo", "1"])
+
+    captured = capsys.readouterr()
+    assert result == 1
+    assert "Prose quality gate: needs_rewrite" in captured.out
+    assert "- score: 82" in captured.out
+    assert "- reason: Prose quality score 82 is below 85." in captured.out
+
+
 def test_prepare_chapter_cli_reports_brief_gate_and_check_status(
     tmp_path, monkeypatch, capsys
 ):
@@ -228,6 +282,29 @@ def test_pipeline_draft_acceptance_cli_writes_html_sidecar(
         {"proposed_state_updates": ["State changed."]},
     )
     write_json(book / "reviews" / "ch_0001" / "pacing_review.json", {})
+    write_json(
+        book / "reviews" / "ch_0001" / "prose_quality_review.json",
+        {
+            "score": 88,
+            "dimension_scores": {
+                "opening_hook": 9,
+                "conflict_pressure": 9,
+                "protagonist_agency": 9,
+                "payoff_execution": 13,
+                "dialogue_tension": 9,
+                "scene_specificity": 9,
+                "voice_distinction": 8,
+                "rhythm_variation": 8,
+                "ending_pull": 9,
+                "style_slop_control": 5,
+            },
+            "blocking_issues": [],
+            "rewrite_required": False,
+        },
+    )
+    (book / "drafts" / "ch_0001_final_candidate.md").write_text(
+        "final candidate", encoding="utf-8"
+    )
 
     result = cli.main(
         [

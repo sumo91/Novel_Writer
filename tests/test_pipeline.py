@@ -3,7 +3,7 @@ import json
 import pytest
 
 from engine import acceptance_packet, book_factory, context_builder, craft_knowledge, pipeline
-from engine.io_utils import read_yaml, write_json
+from engine.io_utils import read_yaml, write_json, write_yaml
 
 
 def test_pipeline_paths_for_chapter(tmp_path, monkeypatch):
@@ -189,6 +189,214 @@ def test_pipeline_status_advances_when_files_exist(tmp_path, monkeypatch):
     assert status["artifacts"]["continuity_review"]["present"] is False
 
 
+def test_pipeline_status_requires_author_direction_after_revised_draft(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    book = book_factory.create_book("demo", title="Demo Book")
+    pipeline.prepare_chapter("demo", 1)
+    (book / "outlines" / "chapter_briefs").mkdir()
+    (book / "outlines" / "chapter_briefs" / "ch_0001_brief.md").write_text(
+        "brief", encoding="utf-8"
+    )
+    (book / "drafts").mkdir()
+    (book / "drafts" / "ch_0001_draft.md").write_text("draft", encoding="utf-8")
+    (book / "drafts" / "ch_0001_revised.md").write_text("revised", encoding="utf-8")
+    write_json(book / "reviews" / "ch_0001" / "continuity_review.json", {})
+    write_json(book / "reviews" / "ch_0001" / "pacing_review.json", {"score": 90})
+
+    status = pipeline.pipeline_status("demo", 1)
+
+    assert status["status"] == "needs_author_direction"
+    assert status["artifacts"]["author_direction"]["present"] is False
+    assert status["next_action"] == "Create or approve author direction notes."
+
+
+def test_pipeline_status_merges_v4_1_artifacts_into_old_manifest(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    book = book_factory.create_book("demo", title="Demo Book")
+    paths = pipeline.prepare_chapter("demo", 1)
+    manifest = json.loads(paths.manifest_path.read_text(encoding="utf-8"))
+    manifest["artifacts"].pop("author_direction")
+    manifest["artifacts"].pop("prose_quality_review")
+    manifest["artifacts"].pop("final_candidate")
+    paths.manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    _write_complete_revised_inputs(book)
+
+    status = pipeline.pipeline_status("demo", 1)
+
+    assert status["status"] == "needs_author_direction"
+    assert status["artifacts"]["author_direction"]["path"] == (
+        "authoring/ch_0001_author_direction.yaml"
+    )
+
+
+def test_pipeline_status_requires_prose_quality_review_after_author_direction(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    book = book_factory.create_book("demo", title="Demo Book")
+    pipeline.prepare_chapter("demo", 1)
+    _write_complete_revised_inputs(book)
+    write_yaml(
+        book / "authoring" / "ch_0001_author_direction.yaml",
+        {
+            "chapter": 1,
+            "author_intent": ["Keep the protagonist in control."],
+            "approved_for_final_candidate": True,
+        },
+    )
+
+    status = pipeline.pipeline_status("demo", 1)
+
+    assert status["status"] == "needs_prose_quality_review"
+    assert status["artifacts"]["prose_quality_review"]["present"] is False
+    assert status["next_action"] == "Create prose quality review."
+
+
+def test_pipeline_status_requires_final_candidate_after_quality_review(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    book = book_factory.create_book("demo", title="Demo Book")
+    pipeline.prepare_chapter("demo", 1)
+    _write_complete_revised_inputs(book)
+    write_yaml(
+        book / "authoring" / "ch_0001_author_direction.yaml",
+        {
+            "chapter": 1,
+            "author_intent": ["Keep the protagonist in control."],
+            "approved_for_final_candidate": True,
+        },
+    )
+    write_json(
+        book / "reviews" / "ch_0001" / "prose_quality_review.json",
+        _passing_prose_quality_review(),
+    )
+
+    status = pipeline.pipeline_status("demo", 1)
+
+    assert status["status"] == "needs_final_candidate"
+    assert status["artifacts"]["final_candidate"]["present"] is False
+    assert status["next_action"] == "Create AI-assisted final candidate draft."
+
+
+def test_pipeline_draft_acceptance_uses_final_candidate_by_default(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(acceptance_packet, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    _write_complete_revised_inputs(book)
+    (book / "drafts" / "ch_0001_final_candidate.md").write_text(
+        "final candidate", encoding="utf-8"
+    )
+    write_yaml(
+        book / "authoring" / "ch_0001_author_direction.yaml",
+        {
+            "chapter": 1,
+            "author_intent": ["Keep the protagonist in control."],
+            "approved_for_final_candidate": True,
+        },
+    )
+    write_json(
+        book / "reviews" / "ch_0001" / "prose_quality_review.json",
+        _passing_prose_quality_review(),
+    )
+
+    output = pipeline.pipeline_draft_acceptance(
+        "demo",
+        1,
+        title="First Signal",
+        summary="Summary.",
+    )
+
+    packet = read_yaml(output)
+    assert packet["source_draft"] == "drafts/ch_0001_final_candidate.md"
+
+
+def test_pipeline_prose_quality_gate_passes_high_quality_review(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    write_json(
+        book / "reviews" / "ch_0001" / "prose_quality_review.json",
+        _passing_prose_quality_review(),
+    )
+
+    result = pipeline.pipeline_prose_quality_gate("demo", 1)
+
+    assert result["passed"] is True
+    assert result["status"] == "passed"
+    assert result["score"] == 88
+    assert result["rewrite_required"] is False
+
+
+def test_pipeline_prose_quality_gate_requires_rewrite_below_threshold(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    review = _passing_prose_quality_review()
+    review["score"] = 82
+    write_json(book / "reviews" / "ch_0001" / "prose_quality_review.json", review)
+
+    result = pipeline.pipeline_prose_quality_gate("demo", 1)
+
+    assert result["passed"] is False
+    assert result["status"] == "needs_rewrite"
+    assert result["rewrite_required"] is True
+    assert "Prose quality score 82 is below 85." in result["reasons"]
+
+
+def test_pipeline_prose_quality_gate_blocks_low_dimension_score(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    review = _passing_prose_quality_review()
+    review["dimension_scores"]["dialogue_tension"] = 5
+    write_json(book / "reviews" / "ch_0001" / "prose_quality_review.json", review)
+
+    result = pipeline.pipeline_prose_quality_gate("demo", 1)
+
+    assert result["passed"] is False
+    assert result["status"] == "needs_rewrite"
+    assert "dialogue_tension is below 7." in result["reasons"]
+
+
+def test_author_direction_scaffold_writes_human_lightweight_controls(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+
+    output = pipeline.write_author_direction_scaffold("demo", 1)
+
+    data = read_yaml(output)
+    assert output == book / "authoring" / "ch_0001_author_direction.yaml"
+    assert data["chapter"] == 1
+    assert data["approved_for_final_candidate"] is False
+    assert "author_intent" in data
+    assert output.with_suffix(".html").exists()
+
+
 def test_pipeline_draft_acceptance_requires_revised_draft(tmp_path, monkeypatch):
     monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
     monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
@@ -233,6 +441,13 @@ def test_pipeline_draft_acceptance_creates_packet(tmp_path, monkeypatch):
         {"proposed_state_updates": ["State changed."]},
     )
     write_json(book / "reviews" / "ch_0001" / "pacing_review.json", {})
+    write_json(
+        book / "reviews" / "ch_0001" / "prose_quality_review.json",
+        _passing_prose_quality_review(),
+    )
+    (book / "drafts" / "ch_0001_final_candidate.md").write_text(
+        "final candidate", encoding="utf-8"
+    )
 
     output = pipeline.pipeline_draft_acceptance(
         "demo",
@@ -695,3 +910,35 @@ def test_pipeline_quality_gate_accepts_quality_gate_waiver(tmp_path, monkeypatch
     assert result["passed"] is True
     assert result["status"] == "passed_with_waiver"
     assert result["waiver_required"] is True
+
+
+def _write_complete_revised_inputs(book):
+    (book / "outlines" / "chapter_briefs").mkdir()
+    (book / "outlines" / "chapter_briefs" / "ch_0001_brief.md").write_text(
+        "brief", encoding="utf-8"
+    )
+    (book / "drafts").mkdir()
+    (book / "drafts" / "ch_0001_draft.md").write_text("draft", encoding="utf-8")
+    (book / "drafts" / "ch_0001_revised.md").write_text("revised", encoding="utf-8")
+    write_json(book / "reviews" / "ch_0001" / "continuity_review.json", {})
+    write_json(book / "reviews" / "ch_0001" / "pacing_review.json", {"score": 90})
+
+
+def _passing_prose_quality_review():
+    return {
+        "score": 88,
+        "dimension_scores": {
+            "opening_hook": 9,
+            "conflict_pressure": 9,
+            "protagonist_agency": 9,
+            "payoff_execution": 13,
+            "dialogue_tension": 9,
+            "scene_specificity": 9,
+            "voice_distinction": 8,
+            "rhythm_variation": 8,
+            "ending_pull": 9,
+            "style_slop_control": 5,
+        },
+        "blocking_issues": [],
+        "rewrite_required": False,
+    }
