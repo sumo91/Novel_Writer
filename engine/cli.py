@@ -11,6 +11,7 @@ from engine.book_factory import create_book
 from engine.context_builder import write_context
 from engine.drift_report import generate_drift_report
 from engine.html_utils import write_markdown_html_sidecar
+from engine.outline_map_review import generate_outline_map_review
 from engine.pending_approvals import (
     PendingApprovalNotFoundError,
     batch_update_pending_approvals,
@@ -212,6 +213,12 @@ def build_parser() -> argparse.ArgumentParser:
         help="Report V3.1 outline approval status.",
     )
     outline_status_cmd.add_argument("book_id")
+
+    outline_map_review_cmd = subparsers.add_parser(
+        "outline-map-review",
+        help="Generate a readable minimum-map review for V3.1 outlines.",
+    )
+    outline_map_review_cmd.add_argument("book_id")
 
     outline_approval_cmd = subparsers.add_parser(
         "outline-approval-update",
@@ -503,6 +510,16 @@ def main(argv: list[str] | None = None) -> int:
             if not layer["exists"]:
                 marker = "missing"
             print(f"- {layer['layer']}: {marker} ({layer['path']})")
+        return 0
+
+    if args.command == "outline-map-review":
+        try:
+            output_path = generate_outline_map_review(args.book_id)
+        except FileNotFoundError as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Generated outline map review: {output_path.as_posix()}")
+        print(f"HTML review copy: {output_path.with_suffix('.html').as_posix()}")
         return 0
 
     if args.command == "outline-approval-update":

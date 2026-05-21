@@ -1,0 +1,20 @@
+id: craft_outline_minimum_map
+scope: outline
+applies_to:
+  - outline
+  - brief
+  - review
+  - drift
+use_when: A book, volume, arc, or unit outline risks becoming a list of facts instead of a map for writing.
+principle: Every outline layer should state its conflict, turning point, payoff, ending pull, and protagonist change in language the writer can follow.
+checks:
+  - Name the layer's central conflict.
+  - Name the turning point or reversal.
+  - Name the payoff, climax, or stage end.
+  - Name the protagonist growth or pressure shift.
+  - Name how the next lower layer inherits the map.
+failure_modes:
+  - Map without motion
+  - Facts without arc
+  - Character list instead of stage plan
+severity: hard

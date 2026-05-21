@@ -77,6 +77,16 @@ master -> volume -> arc -> unit -> chapter brief
 
 Chapter briefs after V3.1 should state which master, volume, arc, and unit obligations they serve.
 
+## Outline Map Review
+
+Use:
+
+```powershell
+python -m engine.cli outline-map-review <book_id>
+```
+
+The command writes `reports/outline_map_review.md` plus an HTML sidecar. It summarizes the book, volume, arc, and unit as a minimum writing map: core conflict, turning point, payoff or climax, stage ending, and protagonist change. This is a human-readable review artifact, not canon.
+
 ## Migration
 
 Use:

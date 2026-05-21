@@ -604,7 +604,7 @@ def _protagonist_growth_gap_warnings(
 
 
 def _craft_knowledge_checks() -> list[str]:
-    cards = load_craft_cards("drift")
+    cards = load_craft_cards(["drift", "outline"])
     if not cards:
         return []
     lines = [

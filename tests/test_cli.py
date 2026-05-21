@@ -3,6 +3,7 @@ from engine import (
     book_factory,
     brief_contract,
     cli,
+    outline_map_review,
     outline_gate,
     pipeline,
     style_knowledge,
@@ -297,6 +298,23 @@ def test_drift_report_cli_generates_report(tmp_path, monkeypatch, capsys):
     content = output.read_text(encoding="utf-8")
     assert "# Chapter 1-1 Drift Review" in content
     assert "| 1 | 88 |  | False |" in content
+
+
+def test_outline_map_review_cli_generates_report(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(outline_map_review, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+
+    result = cli.main(["outline-map-review", "demo"])
+
+    captured = capsys.readouterr()
+    output = book / "reports" / "outline_map_review.md"
+    assert result == 0
+    assert f"Generated outline map review: {output.as_posix()}" in captured.out
+    assert f"HTML review copy: {output.with_suffix('.html').as_posix()}" in captured.out
+    assert output.exists()
+    assert output.with_suffix(".html").exists()
+    assert "## Outline Minimum Map" in output.read_text(encoding="utf-8")
 
 
 def test_pipeline_draft_acceptance_cli_writes_html_sidecar(

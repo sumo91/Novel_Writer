@@ -30,6 +30,9 @@ def test_build_chapter_brief_scaffold_includes_outline_and_state_contract(
     assert "## Anti-Infodump Opening" in scaffold
     assert "Open with a concrete scene action or pressure before explaining rules." in scaffold
     assert "Set-up to delay:" in scaffold
+    assert "## Outline Minimum Map" in scaffold
+    assert "One-sentence chapter function:" in scaffold
+    assert "Stage conflict served:" in scaffold
 
 
 def test_build_chapter_brief_scaffold_includes_applicable_craft_cards(
