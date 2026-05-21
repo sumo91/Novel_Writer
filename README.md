@@ -33,6 +33,12 @@ python -m engine.cli style-bible-check demo
 python -m engine.cli style-bible-scaffold demo --force
 ```
 
+Review the minimum outline map in readable form:
+
+```powershell
+python -m engine.cli outline-map-review demo
+```
+
 Build a chapter context pack:
 
 ```powershell
@@ -55,17 +61,14 @@ Prepare and inspect a V2 chapter pipeline workspace:
 
 ```powershell
 python -m engine.cli prepare-chapter demo 1
+python -m engine.cli chapter-brief-scaffold demo 1
+python -m engine.cli chapter-brief-check demo 1
 python -m engine.cli pipeline-status demo 1
-python -m engine.cli pipeline-quality-gate demo 1
 python -m engine.cli author-direction-scaffold demo 1
 python -m engine.cli pipeline-prose-quality-gate demo 1
-```
-
-Use the V2 wrappers after the human-approved artifacts exist:
-
-```powershell
 python -m engine.cli pipeline-draft-acceptance demo 1 --title "Chapter Title" --summary "What changed in this chapter."
 python -m engine.cli pipeline-accept demo 1 --approved
+python -m engine.cli pipeline-quality-gate demo 1
 ```
 
 ## V1 Manual Workflow
@@ -94,6 +97,7 @@ Novel Writer is not a one-prompt novel generator. It is a structured workflow fo
 - Agents can draft most prose, review, revise, and maintain memory through explicit files.
 - Each book can define its own `style/style_bible.yaml`; reusable style cards live under `knowledge/style_cards/`.
 - Style rules should describe texture, rhythm, voice, and failure modes, not copy a living author's prose.
+- Outline maps can be reviewed with `outline-map-review` as a readable bridge between book-level plans and chapter briefs.
 - YAML stores durable canon and project state.
 - Markdown stores prompts, theory, workflows, and readable context packs.
 - JSON stores structured reviews and machine-facing state.
