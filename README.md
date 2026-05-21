@@ -31,6 +31,10 @@ Review or regenerate the book-local Style Bible:
 ```powershell
 python -m engine.cli style-bible-check demo
 python -m engine.cli style-bible-scaffold demo --force
+python -m engine.cli style-profile-list
+python -m engine.cli style-bible-from-profile demo grounded_trade --force
+python -m engine.cli style-calibration-scaffold demo --force
+python -m engine.cli style-calibration-check demo
 ```
 
 Review the minimum outline map in readable form:
@@ -96,6 +100,9 @@ Novel Writer is not a one-prompt novel generator. It is a structured workflow fo
 - Humans approve story direction, author direction notes, major canon changes, and final chapters.
 - Agents can draft most prose, review, revise, and maintain memory through explicit files.
 - Each book can define its own `style/style_bible.yaml`; reusable style cards live under `knowledge/style_cards/`.
+- Abstract reusable style profiles live under `knowledge/style_profiles/` and can seed a book-local Style Bible.
+- Book-local style calibration lives under `style/calibration/style_calibration.yaml`; use it to record approved patterns, rejected patterns, and human taste notes.
+- When a Style Bible or style calibration exists, `prose_quality_review.json` must include `style_alignment` with usage flags, matched patterns, rejected pattern hits, and violations.
 - Style rules should describe texture, rhythm, voice, and failure modes, not copy a living author's prose.
 - Outline maps can be reviewed with `outline-map-review` as a readable bridge between book-level plans and chapter briefs.
 - YAML stores durable canon and project state.

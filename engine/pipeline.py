@@ -394,13 +394,41 @@ def pipeline_prose_quality_gate(book_id: str, chapter_number: int) -> dict:
     for issue in review.get("blocking_issues", []):
         reasons.append(str(issue))
     rewrite_required = bool(review.get("rewrite_required"))
+    style_contract = _style_contract_status(paths.root)
     style_alignment = review.get("style_alignment")
-    if isinstance(style_alignment, dict):
+    if style_contract["requires_alignment"] and not isinstance(style_alignment, dict):
+        reasons.append(
+            "Style alignment is required when a Style Bible or style calibration exists."
+        )
+    elif isinstance(style_alignment, dict):
         style_score = style_alignment.get("score")
         if style_score is not None and not isinstance(style_score, int):
             reasons.append("Style alignment score must be an integer from 0 to 100.")
         elif isinstance(style_score, int) and style_score < 85:
             reasons.append(f"Style alignment score {style_score} is below 85.")
+        if style_contract["style_bible_exists"] and not isinstance(
+            style_alignment.get("style_bible_used"), bool
+        ):
+            reasons.append(
+                "Style alignment must declare style_bible_used when a Style Bible exists."
+            )
+        if style_contract["style_calibration_exists"] and not isinstance(
+            style_alignment.get("calibration_used"), bool
+        ):
+            reasons.append(
+                "Style alignment must declare calibration_used when style calibration exists."
+            )
+        matched_patterns = style_alignment.get("matched_patterns")
+        if not isinstance(matched_patterns, list):
+            reasons.append("Style alignment matched_patterns must be a list.")
+        rejected_patterns_hit = style_alignment.get("rejected_patterns_hit")
+        if not isinstance(rejected_patterns_hit, list):
+            reasons.append("Style alignment rejected_patterns_hit must be a list.")
+        else:
+            reasons.extend(
+                f"Rejected style pattern hit: {pattern}."
+                for pattern in rejected_patterns_hit
+            )
         if style_alignment.get("passed") is False:
             rewrite_required = True
         violations = style_alignment.get("violations", [])
@@ -447,6 +475,18 @@ def _prose_dimension_floor(max_score: int) -> int:
     if max_score == 5:
         return 3
     return 7
+
+
+def _style_contract_status(root: Path) -> dict[str, bool]:
+    style_bible_exists = (root / "style" / "style_bible.yaml").exists()
+    style_calibration_exists = (
+        root / "style" / "calibration" / "style_calibration.yaml"
+    ).exists()
+    return {
+        "style_bible_exists": style_bible_exists,
+        "style_calibration_exists": style_calibration_exists,
+        "requires_alignment": style_bible_exists or style_calibration_exists,
+    }
 
 
 def _manifest(book_id: str, chapter_number: int) -> dict:

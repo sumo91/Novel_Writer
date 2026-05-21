@@ -1,0 +1,17 @@
+id: style_dialogue_as_probe
+scope: style
+applies_to:
+  - context
+  - draft
+  - review
+use_when: Characters speak under suspicion, negotiation, threat, interrogation, or group pressure.
+principle: Important dialogue should test information, shift leverage, expose a contradiction, or force the next choice.
+checks:
+  - Could this line be removed without changing information, leverage, or pressure?
+  - Does at least one speaker hide, test, reframe, or corner someone?
+  - Does the exchange reveal temperament through tactics instead of explanation?
+failure_modes:
+  - Dialogue used only to explain setting
+  - Characters politely taking turns stating facts
+  - Suspicion scene with no tactical pressure
+severity: hard

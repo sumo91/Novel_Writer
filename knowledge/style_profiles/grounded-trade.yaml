@@ -1,0 +1,31 @@
+id: grounded_trade
+label: Grounded Trade
+use_when: A story uses shopkeeping, negotiation, resource exchange, scarcity, or price pressure as the main scene engine.
+narration:
+  pace: Fast but grounded; move through visible trade decisions instead of abstract business explanation.
+  texture: Concrete goods, prices, stock limits, ledgers, packaging, shop layout, waiting customers, and small physical tells.
+  exposition: Explain rules only after a scene creates buyer pressure, risk, or practical need.
+  emotion_delivery: Let anxiety, confidence, and relief appear through bargaining choices and what the protagonist protects.
+dialogue:
+  density: Medium-high.
+  tension_source: Price, scarcity, credibility, delivery risk, hidden costs, and who controls timing.
+  subtext: Characters test leverage through polite wording, counteroffers, silence, and exact quantities.
+protagonist_voice:
+  default: Practical, observant, and mildly wary.
+  strength_signal: Solves pressure by finding trade structure, not by generic dominance language.
+  vulnerability_signal: Notices cost, inventory, family obligation, and future risk before celebrating a gain.
+payoff_style:
+  pattern: A small concrete gain should open a larger obligation, customer expectation, or market pressure.
+  cost_or_risk: Every profit should imply exposure, inventory strain, moral pressure, or a new promise.
+banned_patterns:
+  - Generic dominance voice
+  - Abstract negotiation without goods, prices, or risk
+  - Payoff without cost
+  - Inventory or resource gains that do not affect later pressure
+style_cards:
+  - style_grounded_trade
+  - style_scene_specificity
+  - style_voice_distinction
+calibration_prompts:
+  - Write a 500-word negotiation sample where the tension comes from quantity, timing, and hidden risk.
+  - Rewrite a generic trade scene so every paragraph includes either a concrete object, price, constraint, or tactical choice.

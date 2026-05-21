@@ -148,6 +148,44 @@ def test_validate_book_reports_invalid_style_bible_and_cards(tmp_path, monkeypat
     assert "knowledge/style_cards/broken.yaml: applies_to must be a list." in errors
 
 
+def test_validate_book_reports_invalid_style_calibration(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(validators, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(style_knowledge, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    write_yaml(book / "style" / "calibration" / "style_calibration.yaml", {"book_id": "demo"})
+
+    errors = validators.validate_book("demo")
+
+    assert (
+        "style/calibration/style_calibration.yaml: missing required field base_profiles."
+        in errors
+    )
+
+
+def test_validate_book_reports_invalid_style_profiles(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(validators, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(style_knowledge, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    book_factory.create_book("demo", title="Demo Book")
+    profile_dir = tmp_path / "knowledge" / "style_profiles"
+    profile_dir.mkdir(parents=True)
+    write_yaml(
+        profile_dir / "broken.yaml",
+        {
+            "id": "",
+            "narration": "fast",
+            "style_cards": "style_grounded_trade",
+        },
+    )
+
+    errors = validators.validate_book("demo")
+
+    assert "knowledge/style_profiles/broken.yaml: id is required." in errors
+    assert "knowledge/style_profiles/broken.yaml: narration must be a mapping." in errors
+    assert "knowledge/style_profiles/broken.yaml: style_cards must be a list." in errors
+
+
 def test_validate_book_rejects_chapter_brief_missing_v3_1_reference_chain(
     tmp_path, monkeypatch
 ):

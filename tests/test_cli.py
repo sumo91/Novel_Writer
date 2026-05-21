@@ -9,7 +9,7 @@ from engine import (
     style_knowledge,
     v3_migration,
 )
-from engine.io_utils import read_yaml, write_json
+from engine.io_utils import read_yaml, write_json, write_yaml
 
 
 def test_pipeline_quality_gate_cli_reports_missing_reviews_without_traceback(
@@ -147,6 +147,112 @@ def test_style_bible_check_cli_reports_errors(tmp_path, monkeypatch, capsys):
     assert result == 1
     assert "Style bible check: failed" in captured.out
     assert "missing required field narration" in captured.out
+
+
+def test_style_calibration_scaffold_cli_writes_yaml_and_html(
+    tmp_path, monkeypatch, capsys
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(style_knowledge, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+
+    result = cli.main(["style-calibration-scaffold", "demo", "--force"])
+
+    captured = capsys.readouterr()
+    output = book / "style" / "calibration" / "style_calibration.yaml"
+    assert result == 0
+    assert output.exists()
+    assert output.with_suffix(".html").exists()
+    assert f"Wrote style calibration scaffold: {output.as_posix()}" in captured.out
+    assert f"HTML review copy: {output.with_suffix('.html').as_posix()}" in captured.out
+
+
+def test_style_calibration_check_cli_reports_errors(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(style_knowledge, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    output = book / "style" / "calibration" / "style_calibration.yaml"
+    write_yaml(output, {"book_id": "demo"})
+
+    result = cli.main(["style-calibration-check", "demo"])
+
+    captured = capsys.readouterr()
+    assert result == 1
+    assert "Style calibration check: failed" in captured.out
+    assert "missing required field base_profiles" in captured.out
+
+
+def test_style_profile_list_cli_reports_available_profiles(
+    tmp_path, monkeypatch, capsys
+):
+    monkeypatch.setattr(style_knowledge, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    profile_dir = tmp_path / "knowledge" / "style_profiles"
+    profile_dir.mkdir(parents=True)
+    from engine.io_utils import write_yaml
+
+    write_yaml(
+        profile_dir / "grounded_trade.yaml",
+        {
+            "id": "grounded_trade",
+            "label": "Grounded Trade",
+            "use_when": "Use for concrete trade pressure.",
+            "narration": {"pace": "fast but grounded"},
+            "dialogue": {"density": "medium-high"},
+            "protagonist_voice": {"default": "practical"},
+            "payoff_style": {"pattern": "small gain creates larger pressure"},
+            "banned_patterns": ["generic dominance voice"],
+            "style_cards": ["style_grounded_trade"],
+            "calibration_prompts": ["Write a negotiation sample."],
+        },
+    )
+
+    result = cli.main(["style-profile-list"])
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "Style profiles:" in captured.out
+    assert "- grounded_trade: Grounded Trade" in captured.out
+    assert "Use for concrete trade pressure." in captured.out
+
+
+def test_style_bible_from_profile_cli_writes_yaml_and_html(
+    tmp_path, monkeypatch, capsys
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(style_knowledge, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(style_knowledge, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    book = book_factory.create_book("demo", title="Demo Book")
+    profile_dir = tmp_path / "knowledge" / "style_profiles"
+    profile_dir.mkdir(parents=True)
+    from engine.io_utils import write_yaml
+
+    write_yaml(
+        profile_dir / "grounded_trade.yaml",
+        {
+            "id": "grounded_trade",
+            "label": "Grounded Trade",
+            "use_when": "Use for concrete trade pressure.",
+            "narration": {"pace": "fast but grounded"},
+            "dialogue": {"density": "medium-high"},
+            "protagonist_voice": {"default": "practical"},
+            "payoff_style": {"pattern": "small gain creates larger pressure"},
+            "banned_patterns": ["generic dominance voice"],
+            "style_cards": ["style_grounded_trade"],
+            "calibration_prompts": ["Write a negotiation sample."],
+        },
+    )
+
+    result = cli.main(
+        ["style-bible-from-profile", "demo", "grounded_trade", "--force"]
+    )
+
+    captured = capsys.readouterr()
+    output = book / "style" / "style_bible.yaml"
+    assert result == 0
+    assert output.exists()
+    assert output.with_suffix(".html").exists()
+    assert f"Wrote style bible from profile: {output.as_posix()}" in captured.out
+    assert f"HTML review copy: {output.with_suffix('.html').as_posix()}" in captured.out
 
 
 def test_prepare_chapter_cli_reports_brief_gate_and_check_status(

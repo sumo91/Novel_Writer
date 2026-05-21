@@ -1,0 +1,30 @@
+id: quiet_suspense
+label: Quiet Suspense
+use_when: A chapter relies on unease, incomplete information, hidden rules, investigation, or restrained dread.
+narration:
+  pace: Controlled and taut; linger only on details that change suspicion or risk.
+  texture: Specific sensory irregularities, spatial constraints, repeated objects, missing evidence, and unnatural timing.
+  exposition: Let the unknown stay active; answer one question by opening a sharper one.
+  emotion_delivery: Use restraint, misdirection, and bodily caution rather than overt explanation of fear.
+dialogue:
+  density: Low-medium.
+  tension_source: What characters refuse to say, notice too late, or phrase too carefully.
+  subtext: Gaps, evasions, and mismatched certainty should carry suspicion.
+protagonist_voice:
+  default: Alert, analytical, and self-controlled.
+  strength_signal: Notices pattern breaks and acts before proof is complete.
+  vulnerability_signal: Doubts interpretation without losing agency.
+payoff_style:
+  pattern: Pay off a clue with a concrete discovery, then reveal that the discovery changes the rules or target.
+  cost_or_risk: Each answer should narrow the protagonist's safe options.
+banned_patterns:
+  - Explaining the entire mystery too early
+  - Random ominous atmosphere without actionable detail
+  - Characters hiding information only because the plot requires it
+  - Suspense that pauses protagonist agency
+style_cards:
+  - style_scene_specificity
+  - style_voice_distinction
+calibration_prompts:
+  - Write a 400-word scene where a familiar room becomes suspicious through three concrete irregularities.
+  - Rewrite a lore explanation as a discovery sequence where each fact creates a new risk.

@@ -1,0 +1,30 @@
+id: crisp_commercial
+label: Crisp Commercial
+use_when: A fast web-novel chapter needs clean scene pressure, quick reader orientation, and visible emotional payoff.
+narration:
+  pace: Brisk, direct, and scene-first.
+  texture: Use concrete but economical details; avoid long scenic description unless it increases pressure.
+  exposition: Deliver only the next useful fact; postpone background until the reader wants the answer.
+  emotion_delivery: Keep emotional beats legible and close to action, choice, humiliation, reveal, or payoff.
+dialogue:
+  density: Medium.
+  tension_source: Goal conflict, status challenge, threat, bargaining position, or withheld information.
+  subtext: Light but functional; readers should understand the pressure without needing reread.
+protagonist_voice:
+  default: Clear, active, and goal-aware.
+  strength_signal: Acts decisively under pressure and creates a visible reversal.
+  vulnerability_signal: Brief flashes of cost or doubt, followed by choice.
+payoff_style:
+  pattern: Set expectation early, escalate pressure, then deliver one clear reversal or gain before the ending pull.
+  cost_or_risk: The payoff should create a next problem, not close the chapter into comfort.
+banned_patterns:
+  - Frontloaded lore before scene pressure
+  - Vague emotional labels without action
+  - Long explanation after the reader already understands
+  - Ending without a concrete next pull
+style_cards:
+  - style_scene_specificity
+  - style_voice_distinction
+calibration_prompts:
+  - Write a 300-word opening that starts with immediate pressure and delays all background until after the first choice.
+  - Compress a slow scene into three beats: hook, pressure choice, payoff or reversal.

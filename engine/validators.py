@@ -9,7 +9,12 @@ from engine.hardening import (
     validate_v3_1_outline_architecture,
 )
 from engine.paths import books_dir
-from engine.style_knowledge import validate_style_bible_file, validate_style_cards
+from engine.style_knowledge import (
+    validate_style_bible_file,
+    validate_style_calibration_file,
+    validate_style_cards,
+    validate_style_profiles,
+)
 
 BOOKS_DIR = books_dir()
 
@@ -62,7 +67,11 @@ def validate_book(book_id: str) -> list[str]:
     style_bible_path = root / "style" / "style_bible.yaml"
     if style_bible_path.exists():
         errors.extend(validate_style_bible_file(style_bible_path, root))
+    style_calibration_path = root / "style" / "calibration" / "style_calibration.yaml"
+    if style_calibration_path.exists():
+        errors.extend(validate_style_calibration_file(style_calibration_path, root))
     errors.extend(f"knowledge/{error}" for error in validate_style_cards())
+    errors.extend(f"knowledge/{error}" for error in validate_style_profiles())
 
     return errors
 

@@ -401,6 +401,119 @@ def test_pipeline_prose_quality_gate_requires_style_alignment(tmp_path, monkeypa
     assert "Dialogue sounds like generic霸总 voice." in result["reasons"]
 
 
+def test_pipeline_prose_quality_gate_requires_style_alignment_when_style_contract_exists(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    write_yaml(
+        book / "style" / "calibration" / "style_calibration.yaml",
+        {
+            "book_id": "demo",
+            "approval": {"status": "draft"},
+            "base_profiles": ["grounded_trade"],
+            "voice_targets": ["Practical shopkeeper voice."],
+            "approved_patterns": ["scene_pressure_before_exposition"],
+            "rejected_patterns": ["generic_domineering_protagonist"],
+            "sample_notes": [],
+        },
+    )
+    review = _passing_prose_quality_review()
+    review.pop("style_alignment", None)
+    write_json(book / "reviews" / "ch_0001" / "prose_quality_review.json", review)
+
+    result = pipeline.pipeline_prose_quality_gate("demo", 1)
+
+    assert result["passed"] is False
+    assert result["status"] == "needs_rewrite"
+    assert (
+        "Style alignment is required when a Style Bible or style calibration exists."
+        in result["reasons"]
+    )
+
+
+def test_pipeline_prose_quality_gate_requires_style_alignment_contract_fields(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    write_yaml(
+        book / "style" / "calibration" / "style_calibration.yaml",
+        {
+            "book_id": "demo",
+            "approval": {"status": "draft"},
+            "base_profiles": ["grounded_trade"],
+            "voice_targets": ["Practical shopkeeper voice."],
+            "approved_patterns": ["scene_pressure_before_exposition"],
+            "rejected_patterns": ["generic_domineering_protagonist"],
+            "sample_notes": [],
+        },
+    )
+    review = _passing_prose_quality_review()
+    review["style_alignment"] = {
+        "passed": True,
+        "score": 88,
+        "violations": [],
+    }
+    write_json(book / "reviews" / "ch_0001" / "prose_quality_review.json", review)
+
+    result = pipeline.pipeline_prose_quality_gate("demo", 1)
+
+    assert result["passed"] is False
+    assert (
+        "Style alignment must declare style_bible_used when a Style Bible exists."
+        in result["reasons"]
+    )
+    assert (
+        "Style alignment must declare calibration_used when style calibration exists."
+        in result["reasons"]
+    )
+    assert "Style alignment matched_patterns must be a list." in result["reasons"]
+    assert "Style alignment rejected_patterns_hit must be a list." in result["reasons"]
+
+
+def test_pipeline_prose_quality_gate_blocks_rejected_style_patterns(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    write_yaml(
+        book / "style" / "calibration" / "style_calibration.yaml",
+        {
+            "book_id": "demo",
+            "approval": {"status": "draft"},
+            "base_profiles": ["grounded_trade"],
+            "voice_targets": ["Practical shopkeeper voice."],
+            "approved_patterns": ["scene_pressure_before_exposition"],
+            "rejected_patterns": ["generic_domineering_protagonist"],
+            "sample_notes": [],
+        },
+    )
+    review = _passing_prose_quality_review()
+    review["style_alignment"] = {
+        "passed": True,
+        "score": 88,
+        "style_bible_used": True,
+        "calibration_used": True,
+        "matched_patterns": ["scene_pressure_before_exposition"],
+        "rejected_patterns_hit": ["generic_domineering_protagonist"],
+        "violations": [],
+    }
+    write_json(book / "reviews" / "ch_0001" / "prose_quality_review.json", review)
+
+    result = pipeline.pipeline_prose_quality_gate("demo", 1)
+
+    assert result["passed"] is False
+    assert result["status"] == "needs_rewrite"
+    assert (
+        "Rejected style pattern hit: generic_domineering_protagonist."
+        in result["reasons"]
+    )
+
+
 def test_pipeline_prose_quality_gate_requires_exposition_density_alignment(
     tmp_path, monkeypatch
 ):
@@ -986,6 +1099,15 @@ def _passing_prose_quality_review():
             "rhythm_variation": 8,
             "ending_pull": 9,
             "style_slop_control": 5,
+        },
+        "style_alignment": {
+            "passed": True,
+            "score": 88,
+            "style_bible_used": True,
+            "calibration_used": False,
+            "matched_patterns": [],
+            "rejected_patterns_hit": [],
+            "violations": [],
         },
         "blocking_issues": [],
         "rewrite_required": False,

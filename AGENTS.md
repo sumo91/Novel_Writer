@@ -38,6 +38,8 @@ Current strategic priority:
 - Do not treat generated drafts, reviews, state updates, or pending approvals as canon until accepted.
 - Major premise, canon, power-system, relationship, and long-arc changes require human approval.
 - Book-level style rules live in `style/style_bible.yaml`; they guide prose but do not replace human author direction.
+- Reusable abstract style profiles live in `knowledge/style_profiles/`; use them to seed a book's Style Bible, then tune the book-local file.
+- Book-local style calibration lives in `style/calibration/style_calibration.yaml`; use it to record approved patterns, rejected patterns, and concise human taste notes.
 - Do not imitate a living author's distinctive style. Translate references into abstract, book-specific rules.
 
 ## Standard Chapter Workflow
@@ -77,6 +79,7 @@ For a normal chapter, follow this lifecycle:
 - Prose quality score below 85 requires AI rewrite before final candidate.
 - V4.1 publication-facing chapters should pass author direction, prose quality review, and final candidate gates.
 - V4.2 books may define a Style Bible; when present, context, drafting, and prose review should check style alignment.
+- V4.7 style alignment is required in prose quality review whenever `style/style_bible.yaml` or `style/calibration/style_calibration.yaml` exists. The review must include `style_bible_used`, `calibration_used`, `matched_patterns`, `rejected_patterns_hit`, and `violations`; any rejected pattern hit requires rewrite or explicit human waiver in a later acceptance decision.
 - Chapter briefs should include an anti-infodump opening plan: start with scene pressure, then reveal only explanations triggered by the scene.
 - For openings and new units, prose quality review may include `exposition_density`; below 85 or frontloaded explanations require AI rewrite.
 - Acceptance packets must not contain stale text such as `TODO`, `draft_note`, `ready_for_acceptance`, or `pending human acceptance`.
@@ -130,16 +133,24 @@ V3 adds explicit long-form memory ledgers and indexes:
 V4.2 adds the book-local style control layer:
 
 - `style/style_bible.yaml`
+- `style/calibration/style_calibration.yaml`
 - reusable style cards in `knowledge/style_cards/`
+- reusable abstract style profiles in `knowledge/style_profiles/`
 
 Use:
 
 ```powershell
 python -m engine.cli style-bible-check <book_id>
 python -m engine.cli style-bible-scaffold <book_id> --force
+python -m engine.cli style-profile-list
+python -m engine.cli style-bible-from-profile <book_id> <profile_id> --force
+python -m engine.cli style-calibration-scaffold <book_id> --force
+python -m engine.cli style-calibration-check <book_id>
 ```
 
-The Style Bible can define narration texture, dialogue pressure, protagonist voice, payoff style, banned patterns, and selected style cards. Keep it book-specific and human-reviewable; use the generated HTML sidecar for review and the YAML as the machine contract.
+The Style Bible can define narration texture, dialogue pressure, protagonist voice, payoff style, banned patterns, and selected style cards. Style profiles are starting points, not canon and not author imitation. Keep the final Style Bible book-specific and human-reviewable; use the generated HTML sidecar for review and the YAML as the machine contract.
+
+The style calibration file captures this book's own taste evidence: base profiles, voice targets, approved patterns, rejected patterns, and short sample notes. It is a draft contract until the human approves it; do not paste long external source text into it.
 
 For V3 chapters, fill `v3_state_updates` in the acceptance packet before human review. These updates remain proposed until the packet is accepted. Use `python -m engine.cli migrate-v3 <book_id>` before applying V3 checks to an older book. Migration creates missing V3 files and upgrades empty schemas, but it must not parse old prose, convert free-text notes, or infer canon.
 

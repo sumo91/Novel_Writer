@@ -1,0 +1,18 @@
+id: style_rule_pressure
+scope: style
+applies_to:
+  - context
+  - draft
+  - review
+  - drift
+use_when: A chapter uses explicit rules, contracts, game constraints, taboos, or supernatural operating limits.
+principle: A rule should change what characters can safely do and should have a visible cost when misunderstood or broken.
+checks:
+  - State the rule through pressure, demonstration, or consequence rather than detached explanation.
+  - Show who benefits from the rule and who is trapped by it.
+  - Make the rule create a decision, loophole, sacrifice, or countdown.
+failure_modes:
+  - Rule as decorative lore
+  - Rule explained before the scene creates need
+  - No visible consequence for breaking or misunderstanding the rule
+severity: hard

@@ -1,0 +1,41 @@
+book_id: xiuxian_shop_pilot
+approval:
+  status: draft
+  approved_by: ''
+  note: Draft calibration for chapter 5 and the next sample run; human should tune before treating as a hard style gate.
+base_profiles:
+- grounded_trade
+- crisp_commercial
+voice_targets:
+- 陈安像年轻小店老板：会算账、会留余地、会装糊涂，但不装腔、不突然霸气外露。
+- 叙述优先呈现现实小卖部的货架、库存、账本、门、时间限制，再让异界交易压力压上来。
+- 修仙市场的陌生感要通过货物、价码、规矩、称呼和风险体现，不靠大段设定说明。
+- 谈判章对白可以密，但每轮对白都应改变筹码、底线、风险或下一步选择。
+- 爽点要落在陈安用小店主逻辑稳住边界，而不是用空泛狠话压倒对方。
+approved_patterns:
+- scene_pressure_before_exposition
+- trade_gain_creates_next_obligation
+- concrete_goods_prices_stock_limits
+- protagonist_plays_practical_not_dominant
+- dialogue_changes_leverage_each_turn
+- payoff_with_cost_or_next_risk
+rejected_patterns:
+- lore_before_buyer_pressure
+- generic_domineering_protagonist
+- abstract_business_talk
+- villain_gets_stupid_for_payoff
+- narrator_explains_why_it_is_satisfying
+- modern_office_report_dialogue
+- profit_without_inventory_or_exposure_pressure
+sample_notes:
+- chapter: 5
+  status: planned
+  keep:
+  - 赵掌柜亲自压价时，先给条件和压力，再补回春丹铺规矩。
+  - 陈安的反守为攻应来自价目半册、备货策略、不签独家、不出门、按次交易。
+  - 章末线索应是下一种关键货物、旧账本重合或更高层级交易压力。
+  reject:
+  - 开场先解释青石坊完整经济系统。
+  - 陈安突然用霸气宣言震住赵掌柜。
+  - 赵掌柜为了让主角爽而明显降智。
+  - 对话像汇报商业方案，缺少试探和压价。

@@ -1,0 +1,34 @@
+id: rule_survival_suspense
+label: Rule Survival Suspense
+use_when: A story uses enclosed danger, explicit rules, group pressure, hidden identity, logic-game survival, or consequence-heavy mystery as the main scene engine.
+narration:
+  pace: Short, controlled, and pressure-led; maintain rapid paragraph turns while keeping cause and effect clear.
+  texture: Enclosed spaces, visible objects, countdowns, rule artifacts, bodily reactions, and small contradictions.
+  exposition: Introduce rules only when characters must decide, test, exploit, or suffer under them.
+  emotion_delivery: Let fear and tension appear through silence, tactical questions, delayed reactions, and physical consequence.
+dialogue:
+  density: Medium-high during group pressure and tactical discovery.
+  tension_source: Suspicion, rule loopholes, hidden identity, coercive demonstrations, and who understands the constraint first.
+  subtext: Characters speak to test others, hide information, redirect blame, or expose a contradiction.
+protagonist_voice:
+  default: Observant, controlled, skeptical, and logic-driven under pressure.
+  strength_signal: Finds contradictions, tracks wording, notices abnormal details, and converts uncertainty into a plan.
+  vulnerability_signal: Physical fear or shock appears, but it does not stop analysis or agency.
+payoff_style:
+  pattern: A discovered rule, contradiction, or identity clue should create a tactical reversal and a sharper next danger.
+  cost_or_risk: Every answer should narrow safe options, expose someone, or raise the price of the next move.
+banned_patterns:
+  - Atmosphere without actionable mystery
+  - Rule explained before pressure requires it
+  - Dialogue that only recites facts
+  - Protagonist being calm without observable reasoning
+  - Chapter ending with vague unease instead of concrete consequence
+style_cards:
+  - style_question_chain
+  - style_rule_pressure
+  - style_dialogue_as_probe
+  - style_hook_with_consequence
+  - style_scene_specificity
+calibration_prompts:
+  - Write a 500-word enclosed-room opening where the first five paragraphs raise three concrete questions without explaining the full world.
+  - Rewrite a rule explanation as a scene where one character tests the rule, another notices a contradiction, and the ending creates a specific consequence.

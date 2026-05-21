@@ -19,7 +19,14 @@ from engine.pending_approvals import (
     sync_pending_approvals,
     update_pending_approval,
 )
-from engine.style_knowledge import check_style_bible, write_style_bible_scaffold
+from engine.style_knowledge import (
+    check_style_calibration,
+    check_style_bible,
+    load_style_profiles,
+    write_style_calibration_scaffold,
+    write_style_bible_from_profile,
+    write_style_bible_scaffold,
+)
 from engine.io_utils import read_yaml
 from engine.outline_gate import (
     APPROVAL_STATUSES,
@@ -134,6 +141,32 @@ def build_parser() -> argparse.ArgumentParser:
         help="Check a book-local Style Bible contract.",
     )
     style_bible_check_cmd.add_argument("book_id")
+
+    style_calibration_scaffold_cmd = subparsers.add_parser(
+        "style-calibration-scaffold",
+        help="Write a book-local style calibration scaffold.",
+    )
+    style_calibration_scaffold_cmd.add_argument("book_id")
+    style_calibration_scaffold_cmd.add_argument("--force", action="store_true")
+
+    style_calibration_check_cmd = subparsers.add_parser(
+        "style-calibration-check",
+        help="Check a book-local style calibration contract.",
+    )
+    style_calibration_check_cmd.add_argument("book_id")
+
+    subparsers.add_parser(
+        "style-profile-list",
+        help="List reusable abstract style profiles.",
+    )
+
+    style_bible_from_profile_cmd = subparsers.add_parser(
+        "style-bible-from-profile",
+        help="Write a book-local Style Bible from an abstract style profile.",
+    )
+    style_bible_from_profile_cmd.add_argument("book_id")
+    style_bible_from_profile_cmd.add_argument("profile_id")
+    style_bible_from_profile_cmd.add_argument("--force", action="store_true")
 
     pipeline_draft_cmd = subparsers.add_parser(
         "pipeline-draft-acceptance",
@@ -401,6 +434,58 @@ def main(argv: list[str] | None = None) -> int:
         for error in result["errors"]:
             print(f"- error: {error}")
         return 0 if result["passed"] else 1
+
+    if args.command == "style-calibration-scaffold":
+        try:
+            output_path = write_style_calibration_scaffold(
+                args.book_id,
+                force=args.force,
+            )
+        except (FileNotFoundError, FileExistsError, ValueError) as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Wrote style calibration scaffold: {output_path.as_posix()}")
+        print(f"HTML review copy: {output_path.with_suffix('.html').as_posix()}")
+        return 0
+
+    if args.command == "style-calibration-check":
+        try:
+            result = check_style_calibration(args.book_id)
+        except FileNotFoundError as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Style calibration check: {result['status']}")
+        for warning in result["warnings"]:
+            print(f"- warning: {warning}")
+        for error in result["errors"]:
+            print(f"- error: {error}")
+        return 0 if result["passed"] else 1
+
+    if args.command == "style-profile-list":
+        profiles = load_style_profiles()
+        print("Style profiles:")
+        for profile in profiles:
+            print(
+                f"- {profile['id']}: {profile.get('label', '')} "
+                f"({profile.get('source', '')})"
+            )
+            if profile.get("use_when"):
+                print(f"  Use when: {profile['use_when']}")
+        return 0
+
+    if args.command == "style-bible-from-profile":
+        try:
+            output_path = write_style_bible_from_profile(
+                args.book_id,
+                args.profile_id,
+                force=args.force,
+            )
+        except (FileNotFoundError, FileExistsError, ValueError) as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Wrote style bible from profile: {output_path.as_posix()}")
+        print(f"HTML review copy: {output_path.with_suffix('.html').as_posix()}")
+        return 0
 
     if args.command == "pipeline-draft-acceptance":
         output_path = pipeline_draft_acceptance(

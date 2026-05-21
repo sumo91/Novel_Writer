@@ -1,0 +1,17 @@
+id: style_hook_with_consequence
+scope: style
+applies_to:
+  - draft
+  - review
+  - drift
+use_when: Checking chapter endings, unit endings, or scene breaks.
+principle: A hook should point to a specific consequence, decision, reveal, danger, or obligation that the next scene must handle.
+checks:
+  - Identify the concrete unresolved consequence at the end.
+  - Prefer action, rule loophole, identity shift, threat, or costly choice over vague foreboding.
+  - Ensure the hook connects to a next obligation rather than a decorative question.
+failure_modes:
+  - Generic sense that things are not simple
+  - Ending after payoff with no new pressure
+  - Cliffhanger that does not change the next action
+severity: hard
