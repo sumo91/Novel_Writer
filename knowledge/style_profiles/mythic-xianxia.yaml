@@ -1,0 +1,32 @@
+id: mythic_xianxia
+label: 仙侠气象风
+english_label: Mythic Xianxia
+use_when: A story needs cultivation-world grandeur, ancient pressure, sect rules, artifacts, vows, fate, wilderness danger, or mythic consequence without losing clarity.
+narration:
+  pace: Measured during awe, fast during danger; keep sentence rhythm varied.
+  texture: Terrain, weather, ritual objects, ranks, scars, talismans, old names, forbidden places, and irreversible marks.
+  exposition: Attach world rules to action, cost, taboo, oath, wound, or resource limit.
+  emotion_delivery: Use restraint, awe, dread, obligation, and the weight of irreversible choices.
+dialogue:
+  density: Low-medium.
+  tension_source: Rank, oath, hidden lineage, taboo, debt, sect rule, cultivation cost, or impossible bargain.
+  subtext: Characters speak around hierarchy and consequence; what is omitted can signal danger.
+protagonist_voice:
+  default: Clear, inwardly steady, aware of scale but anchored in immediate survival and choice.
+  strength_signal: Makes a concrete choice under ancient pressure.
+  vulnerability_signal: Feels small before the world but refuses passivity.
+payoff_style:
+  pattern: A choice touches a larger rule and changes rank, debt, omen, resource, wound, or enemy attention.
+  cost_or_risk: Grandeur should bring obligation, backlash, exposure, or irreversible mark.
+banned_patterns:
+  - Grand nouns without action
+  - Decorative cosmic imagery
+  - Fate pressure that removes agency
+  - Lore dump before consequence
+style_cards:
+  - style_mythic_consequence
+  - style_rule_pressure
+  - style_scene_specificity
+calibration_prompts:
+  - Write a 500-word cultivation scene where one ancient rule is revealed only through cost and consequence.
+  - Rewrite a purple-prose artifact reveal so every elevated image changes what the protagonist can do next.

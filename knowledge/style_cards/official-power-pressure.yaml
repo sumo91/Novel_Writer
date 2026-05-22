@@ -1,0 +1,18 @@
+id: style_official_power_pressure
+scope: style
+applies_to:
+  - context
+  - draft
+  - review
+  - drift
+use_when: A scene involves a job title, badge, checkpoint, inspection, permit, office hierarchy, regulation, gray fee, public duty, or institutional loophole.
+principle: Official power should create pressure through procedure, jurisdiction, paperwork, rank, discretion, and the gap between written rules and lived reality.
+checks:
+  - Make the character's authority or limitation concrete.
+  - Show who benefits from the rule and who pays the hidden cost.
+  - Let the protagonist use, bend, expose, or reform a procedure with consequences.
+failure_modes:
+  - Authority used as generic dominance
+  - Rules named but not operationalized
+  - Corruption exists only as mood, not mechanism
+severity: hard

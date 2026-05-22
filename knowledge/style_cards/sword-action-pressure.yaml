@@ -1,0 +1,17 @@
+id: style_sword_action_pressure
+scope: style
+applies_to:
+  - context
+  - draft
+  - review
+use_when: A scene needs sword action, duel pressure, martial posture, sharp banter, body cost, technique reveal, or a compact combat reversal.
+principle: Sword action should combine posture, distance, timing, body cost, and character attitude; the sharp line matters because the blade situation makes it dangerous.
+checks:
+  - Track distance, stance, weapon hand, wound, breath, or timing.
+  - Let technique reveal change the opponent's expectations.
+  - Keep banter tied to leverage, fear, contempt, or resolve.
+failure_modes:
+  - Cool technique names without spatial consequence
+  - Banter that pauses danger instead of sharpening it
+  - Victory without bodily cost or tactical turn
+severity: soft

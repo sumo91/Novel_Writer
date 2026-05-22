@@ -1,0 +1,32 @@
+id: warm_daily_life
+label: 温暖日常风
+english_label: Warm Daily Life
+use_when: A story or unit wants lived-in warmth, restorative daily texture, found-family comfort, shop life, food, repair, neighborhood ties, or quiet emotional healing.
+narration:
+  pace: Moderate and breathable; let small actions land, but keep a visible scene pressure.
+  texture: Food, light, weather, shelves, worn tools, repeated routes, household objects, small repairs, and familiar gestures.
+  exposition: Reveal relationships and setting through routine interruptions rather than background summary.
+  emotion_delivery: Use care, noticing, restraint, and remembered details instead of direct sentimental explanation.
+dialogue:
+  density: Medium.
+  tension_source: Concern, teasing, practical disagreement, unspoken gratitude, small debt, or fear of burdening others.
+  subtext: Characters often say practical things while communicating care, apology, or worry.
+protagonist_voice:
+  default: Observant, grounded, gently humorous when safe, and attentive to small costs.
+  strength_signal: Protects dignity through practical help rather than speeches.
+  vulnerability_signal: Hesitates over accepting care or naming need.
+payoff_style:
+  pattern: A small act of care changes trust, belonging, or the ability to face the next pressure.
+  cost_or_risk: Warmth should cost time, money, exposure, pride, or future obligation.
+banned_patterns:
+  - Empty cozy atmosphere
+  - Sentimental summary
+  - Kindness without choice or cost
+  - Conflict disappearing because the scene is warm
+style_cards:
+  - style_warm_specificity
+  - style_scene_specificity
+  - style_voice_distinction
+calibration_prompts:
+  - Write a 500-word scene where a practical act of care changes a relationship without anyone naming the emotion directly.
+  - Rewrite a generic cozy scene so every warm beat has an object, action, cost, or future obligation.

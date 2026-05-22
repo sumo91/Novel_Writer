@@ -1,0 +1,33 @@
+id: sharp_sword_action
+label: 锋利剑修动作风
+english_label: Sharp Sword Action
+use_when: A chapter needs sword pressure, duel rhythm, fast posture shifts, compact banter, technique cost, martial confidence, and decisive action payoff.
+narration:
+  pace: Fast and cut-clean; short paragraphs should track threat, motion, reaction, and tactical turn.
+  texture: Grip, blade line, footwork, breath, wound, sleeve, rain, stone, distance, shockwave, and the silence before a strike.
+  exposition: Explain technique only through what it lets the character do, what it costs, and how the opponent misreads it.
+  emotion_delivery: Use restraint, sharp spoken turns, bodily strain, and the opponent's changing fear.
+dialogue:
+  density: Medium-high in short bursts.
+  tension_source: Challenge, contempt, revealed technique, body cost, oath, provocation, or the opponent realizing the first read was wrong.
+  subtext: Banter should test courage, hide pain, bait overcommitment, or claim timing.
+protagonist_voice:
+  default: Direct, sharp, controlled under pain, and unwilling to explain more than the moment requires.
+  strength_signal: Converts injury, timing, or underestimated technique into a decisive turn.
+  vulnerability_signal: Body cost, limited uses, and emotional trigger stay visible.
+payoff_style:
+  pattern: The opponent locks onto a wrong read, the protagonist changes timing or posture, and the reversal lands through a specific blade action.
+  cost_or_risk: Victory should leave wound, exhaustion, revealed trump card, enemy escalation, or moral complication.
+banned_patterns:
+  - Technique names replacing choreography
+  - Quips that deflate danger
+  - Omnipotent sword solution with no cost
+  - Combat paragraphs with no distance, body, or timing
+style_cards:
+  - style_sword_action_pressure
+  - style_power_with_cost
+  - style_face_slap_escalation
+  - style_voice_distinction
+calibration_prompts:
+  - Write a 700-word duel where one change of grip changes the opponent's fear and creates a bodily cost.
+  - Rewrite a generic sword victory so the reversal depends on distance, timing, injury, and a limited technique.

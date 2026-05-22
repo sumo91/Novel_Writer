@@ -1,0 +1,18 @@
+id: style_warm_specificity
+scope: style
+applies_to:
+  - context
+  - draft
+  - review
+  - drift
+use_when: A scene should feel warm, lived-in, domestic, companionable, or emotionally restorative.
+principle: Warmth should come from specific care, small useful actions, shared routines, and remembered details rather than generic softness.
+checks:
+  - Show one concrete act of care, repair, feeding, waiting, noticing, or making space.
+  - Anchor comfort in objects, habits, places, or repeated gestures.
+  - Let warmth coexist with a small pressure or cost so the scene still moves.
+failure_modes:
+  - Empty cozy atmosphere
+  - Characters being nice without choice or cost
+  - Sentimental summary instead of lived detail
+severity: soft

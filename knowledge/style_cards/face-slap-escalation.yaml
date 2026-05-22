@@ -1,0 +1,18 @@
+id: style_face_slap_escalation
+scope: style
+applies_to:
+  - context
+  - draft
+  - review
+  - drift
+use_when: A chapter uses humiliation, public challenge, underestimation, status reversal, or visible justice as the payoff engine.
+principle: Face-slap payoff works best when pressure escalates in public, the opponent commits to a wrong judgment, and the protagonist's reversal is specific and earned.
+checks:
+  - Establish who misjudges the protagonist and what they stake on that judgment.
+  - Escalate pressure before the reversal instead of resolving too early.
+  - Make the reversal concrete: proof, result, resource, witness, authority, or consequence.
+failure_modes:
+  - Opponent is stupid before the protagonist acts
+  - Payoff is only verbal dominance
+  - Public pressure without visible consequence
+severity: hard

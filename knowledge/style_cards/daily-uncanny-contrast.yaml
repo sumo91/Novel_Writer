@@ -1,0 +1,18 @@
+id: style_daily_uncanny_contrast
+scope: style
+applies_to:
+  - context
+  - draft
+  - review
+  - drift
+use_when: A scene should make ordinary life feel slightly unsafe, strange, haunted, secretive, or connected to hidden rules.
+principle: Make the uncanny stronger by placing it beside practical routine, money, food, family, work, paperwork, errands, or familiar rooms.
+checks:
+  - Anchor the scene in one ordinary task or object before the abnormal pressure appears.
+  - Let the abnormal detail disturb a routine rather than floating as pure atmosphere.
+  - "Preserve practical consequences: time, money, reputation, safety, family, or work."
+failure_modes:
+  - Spooky atmosphere detached from daily life
+  - Ordinary detail that never affects tension
+  - Horror that erases practical character concerns
+severity: soft

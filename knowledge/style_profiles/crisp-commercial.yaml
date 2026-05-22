@@ -1,5 +1,6 @@
 id: crisp_commercial
-label: Crisp Commercial
+label: 爽文快节奏风
+english_label: Crisp Commercial
 use_when: A fast web-novel chapter needs clean scene pressure, quick reader orientation, and visible emotional payoff.
 narration:
   pace: Brisk, direct, and scene-first.

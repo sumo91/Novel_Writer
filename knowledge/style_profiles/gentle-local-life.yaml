@@ -1,0 +1,34 @@
+id: gentle_local_life
+label: 清淡市井风
+english_label: Gentle Local Life
+use_when: A story needs plain literary life texture, old-street atmosphere, food and craft detail, local custom, quiet humor, restrained warmth, or character revealed through daily habit.
+narration:
+  pace: Loose but not slack; move by observation, encounter, object, habit, and small change rather than heavy plot machinery.
+  texture: Food, shop counters, bowls, tools, weather, street corners, dialect flavor, old furniture, handmade objects, and local routines.
+  exposition: Fold background into anecdote, custom, craft, or a small remembered object; avoid explanatory essays.
+  emotion_delivery: Keep feeling under-said; let exact detail, mild humor, and the gap after a sentence do the work.
+dialogue:
+  density: Low-medium.
+  tension_source: Courtesy, habit, local face, old debt, generational difference, small embarrassment, or a thing everyone knows but does not state.
+  subtext: People often speak around emotion through food, errands, jokes, craft, or practical remarks.
+protagonist_voice:
+  default: Plain, observant, patient, lightly amused, and attentive to ordinary people's dignity.
+  strength_signal: Notices the life inside small details and treats ordinary people as specific, not decorative.
+  vulnerability_signal: Feels time, loss, affection, or shame without turning it into a speech.
+payoff_style:
+  pattern: A small observation, object, meal, habit, or old story reveals character and leaves a quiet aftertaste.
+  cost_or_risk: The scene should preserve a trace of time, regret, tenderness, irony, or local human complexity.
+banned_patterns:
+  - Direct imitation of a named author's prose
+  - Fake literary haze
+  - Empty nostalgia
+  - Ornate description without observation
+  - Moral or emotion explained too loudly
+style_cards:
+  - style_plain_life_observation
+  - style_warm_specificity
+  - style_scene_specificity
+  - style_voice_distinction
+calibration_prompts:
+  - Write a 1000-word old-street shop scene where one ordinary object reveals a character's history without direct explanation.
+  - Rewrite a sentimental memory scene so food, craft, weather, and small speech carry the feeling instead of the narrator explaining it.

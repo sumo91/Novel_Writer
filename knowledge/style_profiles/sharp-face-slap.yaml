@@ -1,0 +1,32 @@
+id: sharp_face_slap
+label: 锋利打脸风
+english_label: Sharp Face Slap
+use_when: A chapter uses underestimation, humiliation, public pressure, status reversal, justice payoff, or visible proof as the primary reader reward.
+narration:
+  pace: Fast, clean, and pressure-stacked; avoid lingering after the payoff lands.
+  texture: Public setting, witnesses, status markers, receipts, results, authority, rankings, and visible reactions.
+  exposition: Explain only what the reader needs to understand the stakes of the challenge and reversal.
+  emotion_delivery: Let anger and satisfaction appear through pressure, restraint, proof, and consequence.
+dialogue:
+  density: Medium-high.
+  tension_source: Insult, challenge, wrong assumption, public commitment, threat, or wager.
+  subtext: Opponents reveal what they value by how they underestimate the protagonist.
+protagonist_voice:
+  default: Controlled, sharp when necessary, and more focused on proof than bragging.
+  strength_signal: Allows the opponent to overcommit, then answers with specific evidence or result.
+  vulnerability_signal: Feels the pressure but refuses to give the opponent the expected reaction.
+payoff_style:
+  pattern: Misjudgment escalates, public stakes lock in, reversal lands with concrete proof, then a new pressure appears.
+  cost_or_risk: The reversal should create exposure, a stronger enemy, debt, or next-stage obligation.
+banned_patterns:
+  - Opponent becomes stupid for convenience
+  - Protagonist wins only by insulting harder
+  - Payoff without proof
+  - Crowd reaction replacing consequence
+style_cards:
+  - style_face_slap_escalation
+  - style_hook_with_consequence
+  - style_voice_distinction
+calibration_prompts:
+  - Write a 400-word public challenge where the opponent's wrong assumption becomes the trap they step into.
+  - Rewrite a verbal dominance scene so the payoff comes from proof, witness, resource, or consequence.

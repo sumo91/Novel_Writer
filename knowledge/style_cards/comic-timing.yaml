@@ -1,0 +1,18 @@
+id: style_comic_timing
+scope: style
+applies_to:
+  - context
+  - draft
+  - review
+  - drift
+use_when: A scene uses humor, banter, absurd contrast, embarrassment, or light comedic relief.
+principle: Comedy should land through timing, contrast, character logic, and consequence; it should not erase stakes or turn everyone into the same joke voice.
+checks:
+  - Put the joke after a clear setup, pressure, or expectation.
+  - Let the humor reveal character, status, or coping strategy.
+  - Return to the scene consequence after the laugh.
+failure_modes:
+  - Random quips that pause the plot
+  - Everyone speaking with the same joke rhythm
+  - Humor undercutting an important emotional beat
+severity: soft

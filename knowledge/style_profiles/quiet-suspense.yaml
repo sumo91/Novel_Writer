@@ -1,5 +1,6 @@
 id: quiet_suspense
-label: Quiet Suspense
+label: 克制悬疑风
+english_label: Quiet Suspense
 use_when: A chapter relies on unease, incomplete information, hidden rules, investigation, or restrained dread.
 narration:
   pace: Controlled and taut; linger only on details that change suspicion or risk.

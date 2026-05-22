@@ -1,0 +1,33 @@
+id: frontier_office_wasteland
+label: 职能权力废土风
+english_label: Frontier Office Wasteland
+use_when: A story uses official roles, checkpoints, inspection, permits, contamination, scarcity, border zones, gray taxes, institutional power, and survival under rules.
+narration:
+  pace: Brisk and procedural; move from case, rule, inspection, loophole, conflict, and consequence.
+  texture: Badges, forms, checkpoints, quarantine belts, ration counters, contaminated goods, office titles, patrol routes, equipment, and public-facing slogans.
+  exposition: Reveal the world through how a rule is applied, abused, avoided, or made necessary by danger.
+  emotion_delivery: Use dry irony, procedural pressure, moral discomfort, and satisfaction from making a broken system move.
+dialogue:
+  density: Medium-high.
+  tension_source: Jurisdiction, rank, permit wording, hidden contamination, gray income, institutional fear, or who has the right to interpret a rule.
+  subtext: Polite official speech often hides coercion, bargaining, threat, or reform intent.
+protagonist_voice:
+  default: Observant, procedural, skeptical, and aware that authority is both tool and liability.
+  strength_signal: Finds the pressure point inside a rule or office hierarchy.
+  vulnerability_signal: Must protect people while operating inside a compromised institution.
+payoff_style:
+  pattern: A rule or office mechanism is understood, bent, exposed, or upgraded, producing both practical benefit and institutional backlash.
+  cost_or_risk: Every official action should create paperwork, resentment, precedent, corruption pressure, or public consequence.
+banned_patterns:
+  - Badge authority as simple intimidation
+  - Wasteland danger detached from supply and rules
+  - Corruption without a working mechanism
+  - Reform with no institutional backlash
+style_cards:
+  - style_official_power_pressure
+  - style_rule_pressure
+  - style_systemic_payoff
+  - style_scene_specificity
+calibration_prompts:
+  - Write a 900-word checkpoint scene where one regulation protects people, enriches someone, and traps the protagonist.
+  - Rewrite a generic power scene so the leverage comes from jurisdiction, procedure, and hidden cost.

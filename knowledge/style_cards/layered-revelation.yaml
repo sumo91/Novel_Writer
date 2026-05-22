@@ -1,0 +1,18 @@
+id: style_layered_revelation
+scope: style
+applies_to:
+  - context
+  - draft
+  - review
+  - drift
+use_when: A chapter introduces mystery knowledge, hidden history, power rules, old documents, organizations, prophecy, or a clue that should matter again later.
+principle: "Reveal knowledge in layers: first name the anomaly, then give a usable partial explanation, then let later information change the meaning of what the reader already knows."
+checks:
+  - Does this chapter reveal only the layer needed for the current decision?
+  - Does the new answer create a sharper question or future obligation?
+  - Can an old clue, document, title, object, or phrase gain new meaning later?
+failure_modes:
+  - Full encyclopedia explanation at first contact
+  - Mystery name without later usable meaning
+  - Reveal that closes curiosity without opening consequence
+severity: hard

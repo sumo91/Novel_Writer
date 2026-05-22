@@ -1,0 +1,32 @@
+id: comic_lightweight
+label: 轻喜剧风
+english_label: Comic Lightweight
+use_when: A story wants light comedy, banter, absurd contrast, relaxed readability, embarrassment, misunderstandings, or pressure relief without losing plot momentum.
+narration:
+  pace: Brisk and elastic; compress setup, land the contrast, then return to consequence.
+  texture: Awkward objects, mismatched expectations, social timing, practical inconveniences, and small visible reactions.
+  exposition: Deliver explanations through misunderstanding, contrast, or a practical problem.
+  emotion_delivery: Use embarrassment, deflection, over-serious logic, and character-specific coping rather than narrator jokes.
+dialogue:
+  density: Medium-high.
+  tension_source: Misread intentions, social awkwardness, status mismatch, practical inconvenience, or someone taking the wrong thing too seriously.
+  subtext: Banter should reveal pressure, affection, avoidance, or tactical deflection.
+protagonist_voice:
+  default: Quick, observant, lightly self-protective, and able to undercut tension without dismissing stakes.
+  strength_signal: Uses humor to buy time, reframe danger, or expose absurdity.
+  vulnerability_signal: Joke rhythm slips when pressure becomes personal.
+payoff_style:
+  pattern: Setup expectation, twist through character logic, land the laugh, then attach a new problem or choice.
+  cost_or_risk: Humor should leave social debt, embarrassment, tactical exposure, or a practical mess.
+banned_patterns:
+  - Random quips
+  - Everyone having the same joke voice
+  - Humor erasing danger
+  - Meme-like narration that dates quickly
+style_cards:
+  - style_comic_timing
+  - style_dialogue_as_probe
+  - style_voice_distinction
+calibration_prompts:
+  - Write a 400-word comedic negotiation where the joke comes from mismatched assumptions but the stakes keep moving.
+  - Rewrite a random quip scene so each joke changes status, pressure, or the next action.

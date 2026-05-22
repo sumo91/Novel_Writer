@@ -1,0 +1,33 @@
+id: cautious_two_world_resource
+label: 苟道资源经营风
+english_label: Cautious Two-World Resource
+use_when: A story needs cautious cultivation growth, hidden assets, two-world price gaps, resource conversion, low-profile survival, and staged advancement.
+narration:
+  pace: Steady and accounting-aware; move through observation, test, trade, storage, preparation, and carefully chosen exposure.
+  texture: Markets, low-level stalls, resource grades, hidden inventories, travel routes, risk thresholds, cultivation bottlenecks, and small practical tests.
+  exposition: Explain setting and power through price differences, failed assumptions, caution, and the protagonist's decision not to overreach.
+  emotion_delivery: Use relief, wariness, greed checked by fear, and satisfaction from controlled progress rather than loud triumph.
+dialogue:
+  density: Medium.
+  tension_source: Price gap, hidden identity, uncertain rank, supply scarcity, oath, rumor, or whether the other side knows the true value.
+  subtext: Characters probe value and danger while pretending the exchange is ordinary.
+protagonist_voice:
+  default: Patient, wary, resource-literate, and quick to count future risk before current profit.
+  strength_signal: Turns small advantages into compounding safety without announcing strength.
+  vulnerability_signal: Knows that one wrong exposure can erase years of progress.
+payoff_style:
+  pattern: A cautious test reveals a resource gap, creates a measured gain, then opens a larger bottleneck or attention risk.
+  cost_or_risk: Every breakthrough, profit, or secret route should add exposure, shortage, dependency, enemy interest, or future accounting pressure.
+banned_patterns:
+  - Caution that prevents the protagonist from choosing
+  - Free resource accumulation without tracking cost
+  - Breakthrough as isolated spectacle
+  - Two-world advantage with no logistics or secrecy problem
+style_cards:
+  - style_risk_ledger_growth
+  - style_grounded_trade
+  - style_power_with_cost
+  - style_scene_specificity
+calibration_prompts:
+  - Write a 900-word scene where the protagonist tests a small two-world price gap and leaves with both profit and a new exposure risk.
+  - Rewrite an overpowered breakthrough into preparation, resource accounting, failed assumptions, and one controlled reveal.

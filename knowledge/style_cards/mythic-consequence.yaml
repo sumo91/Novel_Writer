@@ -1,0 +1,18 @@
+id: style_mythic_consequence
+scope: style
+applies_to:
+  - context
+  - draft
+  - review
+  - drift
+use_when: A scene needs xianxia scale, fate pressure, ancient rules, cultivation danger, oath, sect, artifact, or cosmic consequence.
+principle: Mythic texture should make choices feel larger than the moment, but every grand image must attach to a concrete rule, cost, wound, debt, or irreversible change.
+checks:
+  - Tie elevated imagery to a practical consequence.
+  - Use ritual, oath, rank, terrain, artifact, or taboo to carry scale.
+  - Keep protagonist agency visible inside the larger force.
+failure_modes:
+  - Purple prose without consequence
+  - Grand nouns replacing clear action
+  - Fate pressure that makes characters passive
+severity: soft

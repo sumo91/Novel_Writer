@@ -218,7 +218,8 @@ def test_builtin_rule_survival_suspense_assets_are_available():
     profile_by_id = {profile["id"]: profile for profile in profiles}
 
     profile = profile_by_id["rule_survival_suspense"]
-    assert profile["label"] == "Rule Survival Suspense"
+    assert profile["label"] == "规则生存悬疑风"
+    assert profile["english_label"] == "Rule Survival Suspense"
     assert profile["style_cards"] == [
         "style_question_chain",
         "style_rule_pressure",
@@ -233,4 +234,82 @@ def test_builtin_rule_survival_suspense_assets_are_available():
         "style_rule_pressure",
         "style_dialogue_as_probe",
         "style_hook_with_consequence",
+    }.issubset(card_ids)
+
+
+def test_builtin_expanded_style_profiles_are_available():
+    profiles = style_knowledge.load_style_profiles()
+    profile_by_id = {profile["id"]: profile for profile in profiles}
+
+    expected_profiles = {
+        "warm_daily_life": ("温暖日常风", "Warm Daily Life"),
+        "sharp_face_slap": ("锋利打脸风", "Sharp Face Slap"),
+        "mythic_xianxia": ("仙侠气象风", "Mythic Xianxia"),
+        "comic_lightweight": ("轻喜剧风", "Comic Lightweight"),
+        "folk_story_digest": ("故事会式民间短篇风", "Folk Story Digest"),
+        "gentle_local_life": ("清淡市井风", "Gentle Local Life"),
+        "slow_burn_occult_investigation": (
+            "慢热诡秘调查风",
+            "Slow-Burn Occult Investigation",
+        ),
+        "ritual_power_system": ("仪式化力量体系风", "Ritual Power System"),
+    }
+
+    for profile_id, (label, english_label) in expected_profiles.items():
+        assert profile_by_id[profile_id]["label"] == label
+        assert profile_by_id[profile_id]["english_label"] == english_label
+        assert profile_by_id[profile_id]["style_cards"]
+        assert profile_by_id[profile_id]["calibration_prompts"]
+
+    card_ids = {card["id"] for card in style_knowledge.load_style_cards("review")}
+    assert {
+        "style_warm_specificity",
+        "style_face_slap_escalation",
+        "style_mythic_consequence",
+        "style_comic_timing",
+        "style_folk_reversal",
+        "style_plain_life_observation",
+        "style_layered_revelation",
+        "style_daily_uncanny_contrast",
+        "style_power_with_cost",
+    }.issubset(card_ids)
+
+
+def test_builtin_popular_reference_style_profiles_are_available():
+    profiles = style_knowledge.load_style_profiles()
+    profile_by_id = {profile["id"]: profile for profile in profiles}
+
+    expected_profiles = {
+        "cautious_two_world_resource": (
+            "苟道资源经营风",
+            "Cautious Two-World Resource",
+        ),
+        "civilization_building_ensemble": (
+            "文明建设群像风",
+            "Civilization Building Ensemble",
+        ),
+        "frontier_office_wasteland": (
+            "职能权力废土风",
+            "Frontier Office Wasteland",
+        ),
+        "lineage_clan_cultivation": (
+            "家族谱系修仙风",
+            "Lineage Clan Cultivation",
+        ),
+        "sharp_sword_action": ("锋利剑修动作风", "Sharp Sword Action"),
+    }
+
+    for profile_id, (label, english_label) in expected_profiles.items():
+        assert profile_by_id[profile_id]["label"] == label
+        assert profile_by_id[profile_id]["english_label"] == english_label
+        assert profile_by_id[profile_id]["style_cards"]
+        assert profile_by_id[profile_id]["calibration_prompts"]
+
+    card_ids = {card["id"] for card in style_knowledge.load_style_cards("review")}
+    assert {
+        "style_risk_ledger_growth",
+        "style_systemic_payoff",
+        "style_official_power_pressure",
+        "style_lineage_memory",
+        "style_sword_action_pressure",
     }.issubset(card_ids)

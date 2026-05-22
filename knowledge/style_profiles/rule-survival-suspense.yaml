@@ -1,5 +1,6 @@
 id: rule_survival_suspense
-label: Rule Survival Suspense
+label: 规则生存悬疑风
+english_label: Rule Survival Suspense
 use_when: A story uses enclosed danger, explicit rules, group pressure, hidden identity, logic-game survival, or consequence-heavy mystery as the main scene engine.
 narration:
   pace: Short, controlled, and pressure-led; maintain rapid paragraph turns while keeping cause and effect clear.

@@ -1,0 +1,18 @@
+id: style_risk_ledger_growth
+scope: style
+applies_to:
+  - context
+  - draft
+  - review
+  - drift
+use_when: A story uses cautious growth, hidden assets, two-world arbitrage, cultivation resources, low-profile advancement, or staged breakthroughs.
+principle: Growth should read like a risk ledger; every gain needs a source, conversion path, exposure risk, and next-stage pressure.
+checks:
+  - Name the resource gained, spent, hidden, traded, or protected.
+  - Show why the protagonist avoids unnecessary exposure.
+  - Attach each advancement to a new risk, obligation, shortage, enemy attention, or logistics problem.
+failure_modes:
+  - Caution becomes passive waiting
+  - Resource gain has no later accounting
+  - Breakthrough arrives without preparation, cost, or exposure risk
+severity: hard

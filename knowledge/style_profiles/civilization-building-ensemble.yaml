@@ -1,0 +1,33 @@
+id: civilization_building_ensemble
+label: 文明建设群像风
+english_label: Civilization Building Ensemble
+use_when: A story wants construction, governance, industry, logistics, education, institutions, territory, team roles, and civilization-level payoff.
+narration:
+  pace: Measured and strategic; alternate concrete work scenes with decisions that change the larger system.
+  texture: Workshops, roads, schools, barracks, ledgers, meetings, prototypes, maps, supply chains, labor, policy, and old customs under pressure.
+  exposition: Turn worldbuilding into a problem that a group must understand, debate, build, test, and maintain.
+  emotion_delivery: Let hope come from competence, coordination, public trust, and visible improvement in ordinary life.
+dialogue:
+  density: Medium-high.
+  tension_source: Technical bottleneck, talent shortage, old power structure, public order, military pressure, or competing institutional priorities.
+  subtext: People argue about practical plans while exposing class, fear, loyalty, and imagination limits.
+protagonist_voice:
+  default: Strategic, patient, systems-minded, and willing to delegate.
+  strength_signal: Converts personal insight into repeatable method, institution, or team capability.
+  vulnerability_signal: Cannot personally solve every bottleneck and must trust imperfect people.
+payoff_style:
+  pattern: A bottleneck becomes an organized solution, proving that the group can do something previously impossible.
+  cost_or_risk: Each upgrade should create scaling, governance, maintenance, enemy attention, or social disruption.
+banned_patterns:
+  - Invention as a lecture with no workshop pressure
+  - Nameless crowd solving named problems
+  - Leader personally doing every important task
+  - System upgrade with no maintenance burden
+style_cards:
+  - style_systemic_payoff
+  - style_lineage_memory
+  - style_scene_specificity
+  - style_voice_distinction
+calibration_prompts:
+  - Write a 1200-word meeting-to-workshop sequence where a technical bottleneck becomes a team solution with a new political cost.
+  - Rewrite a generic territory upgrade so at least three named roles contribute different constraints.

@@ -1,0 +1,33 @@
+id: slow_burn_occult_investigation
+label: 慢热诡秘调查风
+english_label: Slow-Burn Occult Investigation
+use_when: A long-form story needs slow-burn mystery, occult investigation, institutions, archives, hidden rules, mundane pressure, and escalating dread rather than immediate explosive payoff.
+narration:
+  pace: Patient but loaded; every slow scene must add anomaly, institution, daily pressure, clue, rule, or character obligation.
+  texture: Documents, offices, churches, clubs, rent, food, transport, family routine, local law, archives, rituals, old names, and strange objects.
+  exposition: Introduce systems through investigation, procedure, work, cost, or official constraint; avoid explaining the entire mystery at first contact.
+  emotion_delivery: Use practical worry, cautious curiosity, and small unease before open terror.
+dialogue:
+  density: Medium.
+  tension_source: Interview, report, coded warning, professional caution, institutional secrecy, contradictory witness, or partial confession.
+  subtext: People hide what they know because of duty, fear, class, faith, or incomplete understanding.
+protagonist_voice:
+  default: Curious, practical, cautious, self-aware, and willing to look foolish while gathering facts.
+  strength_signal: Connects mundane evidence to abnormal rules without losing practical judgment.
+  vulnerability_signal: Knows too little and must survive partial knowledge.
+payoff_style:
+  pattern: A small clue becomes usable knowledge, but the explanation exposes a wider institution, hidden history, or more dangerous rule.
+  cost_or_risk: Each discovery should add surveillance, contamination, debt, fear, official pressure, or moral complication.
+banned_patterns:
+  - Slow scene with no clue, pressure, or obligation
+  - Full lore dump before investigation creates need
+  - Mystery solved without a larger consequence
+  - Ordinary life used only as filler
+style_cards:
+  - style_layered_revelation
+  - style_daily_uncanny_contrast
+  - style_rule_pressure
+  - style_scene_specificity
+calibration_prompts:
+  - Write a 1200-word investigation scene where rent, work, family routine, and one abnormal clue all matter.
+  - Rewrite a lore explanation as an interview, document search, or official procedure that reveals only one useful layer.

@@ -1,0 +1,33 @@
+id: ritual_power_system
+label: 仪式化力量体系风
+english_label: Ritual Power System
+use_when: A story's power system should feel dangerous, procedural, symbolic, costly, and rule-bound through rituals, materials, titles, ranks, artifacts, taboos, and misuse consequences.
+narration:
+  pace: Clear and procedural during setup; sharp and tense when the ritual, ability, or artifact can fail.
+  texture: Materials, gestures, names, ranks, symbols, containers, chants, diagrams, contracts, wounds, pollution, and practical preparation.
+  exposition: Explain power by showing requirement, experiment, risk, failed use, trade, or consequence.
+  emotion_delivery: Let awe and fear come from the sense that power has rules and the rules can punish carelessness.
+dialogue:
+  density: Low-medium.
+  tension_source: Warning, instruction, taboo, price, authority, hidden side effect, or disagreement over risk.
+  subtext: Experienced characters speak cautiously because naming or using power may create consequence.
+protagonist_voice:
+  default: Careful, note-taking, risk-aware, and alert to loopholes.
+  strength_signal: Treats power as procedure plus danger, not a toy.
+  vulnerability_signal: Needs power but cannot afford its full cost or unknown side effect.
+payoff_style:
+  pattern: Correct preparation enables a limited effect; the result solves one pressure while revealing cost, contamination, identity change, or stronger attention.
+  cost_or_risk: Power must leave debt, material loss, exposure, cooldown, corruption, taboo pressure, or changed behavior.
+banned_patterns:
+  - Free power without cost
+  - Ability names replacing rules
+  - Ritual as decorative wording only
+  - Upgrade that does not change risk or identity
+style_cards:
+  - style_power_with_cost
+  - style_layered_revelation
+  - style_rule_pressure
+  - style_mythic_consequence
+calibration_prompts:
+  - Write a 900-word power-use scene where the material requirement, failure condition, and aftermath all affect the next choice.
+  - Rewrite a simple upgrade scene so it changes identity pressure, risk management, and future obligations.

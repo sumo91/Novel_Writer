@@ -1,0 +1,20 @@
+id: style_folk_reversal
+scope: style
+applies_to:
+  - context
+  - draft
+  - review
+  - drift
+use_when: A scene or short arc uses a plainspoken anecdote, folk-ethics twist, coincidence, small secret, human-nature reveal, or compact reversal.
+principle: "The story should read like a clear, memorable incident: simple setup, concrete trouble, a small planted detail, and a final turn that reveals human nature or causal justice."
+checks:
+  - State the central incident early and plainly.
+  - Plant one ordinary detail that later changes meaning.
+  - Make the ending turn reveal cause, character, debt, kindness, greed, irony, or consequence.
+  - Keep the lesson implicit; let the event carry the aftertaste.
+failure_modes:
+  - Moral stated before the story earns it
+  - Coincidence without planted detail
+  - Too many named characters for a compact anecdote
+  - Literary flourish that slows the incident
+severity: soft

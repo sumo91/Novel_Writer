@@ -1,0 +1,20 @@
+id: style_plain_life_observation
+scope: style
+applies_to:
+  - context
+  - draft
+  - review
+  - drift
+use_when: A scene needs plain literary life texture, local color, food, craft, old street memory, quiet character sketch, or restrained human warmth.
+principle: Let ordinary life carry meaning through exact observation, useful detail, habit, craft, food, weather, and small human behavior; do not explain the feeling too loudly.
+checks:
+  - Use one concrete local or sensory detail that changes how the person or place is understood.
+  - Show character through habit, trade, speech rhythm, or small repeated action.
+  - Let emotion remain slightly under-said; trust the detail to carry the aftertaste.
+  - Keep the sentence plain unless a richer phrase earns its place through precision.
+failure_modes:
+  - Fake literary haze
+  - Empty nostalgia
+  - Local nouns piled up without observation
+  - Directly explaining the feeling the detail should carry
+severity: soft

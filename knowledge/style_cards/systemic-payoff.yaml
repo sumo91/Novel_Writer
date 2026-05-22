@@ -1,0 +1,18 @@
+id: style_systemic_payoff
+scope: style
+applies_to:
+  - context
+  - draft
+  - review
+  - drift
+use_when: A chapter payoff comes from institution building, technology, logistics, governance, training, infrastructure, or group coordination.
+principle: Systemic payoff works when a visible procedure, tool, team, rule, or institution improves and then changes what the story can do next.
+checks:
+  - Identify the system being improved, not just the hero's personal gain.
+  - Show the practical bottleneck before the upgrade lands.
+  - Let the upgrade create maintenance, governance, talent, enemy, or scaling pressure.
+failure_modes:
+  - Technology or policy appears as exposition only
+  - Group effort has no named roles or visible work
+  - Upgrade solves everything without a new organizational cost
+severity: soft

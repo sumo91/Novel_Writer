@@ -1,0 +1,33 @@
+id: folk_story_digest
+label: 故事会式民间短篇风
+english_label: Folk Story Digest
+use_when: A story needs plainspoken short-form readability, street-level anecdote energy, human-nature twist, folk ethics, coincidence with setup, or a compact reversal with aftertaste.
+narration:
+  pace: Quick and linear; enter the incident early, keep background short, and move by cause and effect.
+  texture: Ordinary places, jobs, relatives, neighbors, small objects, debts, favors, rumors, and practical details.
+  exposition: Give only the facts needed to follow the incident; avoid lore, theory, and ornate description.
+  emotion_delivery: Let emotion arrive through what happened and what the ending reveals, not through long inner monologue.
+dialogue:
+  density: Medium.
+  tension_source: Promise, suspicion, bargain, favor, lie, family pressure, local rumor, or a small secret.
+  subtext: Speech should sound plain, but often hides shame, calculation, kindness, or fear of losing face.
+protagonist_voice:
+  default: Plainspoken, observant, close to everyday life, and more interested in what happened than in sounding clever.
+  strength_signal: Notices the small detail others dismiss and understands the human motive behind it.
+  vulnerability_signal: Can be fooled by appearances until the planted detail turns.
+payoff_style:
+  pattern: A simple incident gains new meaning through a late reveal, ironic consequence, hidden kindness, exposed greed, or causal justice.
+  cost_or_risk: "The ending should leave a human aftertaste: pity, irony, warmth, unease, or a quiet moral pressure."
+banned_patterns:
+  - Overly literary description
+  - Moralizing before the event lands
+  - Twist that was not planted
+  - Too many abstract reflections
+  - Long worldbuilding or system explanation
+style_cards:
+  - style_folk_reversal
+  - style_scene_specificity
+  - style_voice_distinction
+calibration_prompts:
+  - Write a 1200-word plainspoken incident where an ordinary object planted early changes the meaning of the ending.
+  - Rewrite a moralizing anecdote so the lesson is carried by action, consequence, and one final reveal.

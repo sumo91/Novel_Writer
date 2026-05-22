@@ -1,0 +1,18 @@
+id: style_power_with_cost
+scope: style
+applies_to:
+  - context
+  - draft
+  - review
+  - drift
+use_when: A character gains, uses, studies, trades, or explains special power, cultivation method, ritual, artifact, system reward, or supernatural rule.
+principle: Power should carry source, condition, limitation, cost, misuse risk, identity pressure, or long-term consequence; otherwise it becomes decoration or free convenience.
+checks:
+  - Name what enables the power and what limits it.
+  - Show one cost, danger, cooldown, material, taboo, debt, exposure, or corruption risk.
+  - Let power use change the next decision rather than ending pressure completely.
+failure_modes:
+  - Free power without cost
+  - Ability used as arbitrary solution
+  - Risk mentioned once and forgotten
+severity: hard

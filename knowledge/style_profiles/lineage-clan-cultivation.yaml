@@ -1,0 +1,33 @@
+id: lineage_clan_cultivation
+label: 家族谱系修仙风
+english_label: Lineage Clan Cultivation
+use_when: A cultivation story needs family rise and fall, clan resources, genealogy, elders and juniors, land, marriage ties, sect pressure, inheritance, and multi-generation memory.
+narration:
+  pace: Generational and ledger-like; local scenes should point toward durable clan position, reputation, or inheritance.
+  texture: Ancestral halls, registers, land, ponds, mountains, seals, village names, ritual objects, dowries, clan schools, elders, juniors, and branch interests.
+  exposition: Introduce world structure through who owes whom, who inherits what, and what a decision costs the family line.
+  emotion_delivery: Use duty, restraint, pride, shame, quiet fear for descendants, and the weight of remembering names.
+dialogue:
+  density: Medium.
+  tension_source: Seniority, branch interest, marriage, sect recognition, resource allocation, hidden talent, family shame, or territorial claim.
+  subtext: Respectful speech often carries bargaining, resentment, obligation, or threat to future standing.
+protagonist_voice:
+  default: Duty-aware, historically minded, and attentive to how private action becomes family consequence.
+  strength_signal: Sees beyond individual victory to durable clan survival.
+  vulnerability_signal: Carries obligations to weaker relatives, dead ancestors, and unborn descendants.
+payoff_style:
+  pattern: A local choice changes clan rank, resource flow, alliance, inheritance, reputation, or future options.
+  cost_or_risk: Every family gain should create jealousy, duty, succession pressure, outside attention, or internal disagreement.
+banned_patterns:
+  - Family used as background decoration
+  - Clan politics with no resource or inheritance stakes
+  - Elders, peers, and juniors speaking with the same pressure
+  - Consequences forgotten after the scene
+style_cards:
+  - style_lineage_memory
+  - style_power_with_cost
+  - style_mythic_consequence
+  - style_scene_specificity
+calibration_prompts:
+  - Write a 1000-word clan council scene where a small resource allocation changes one junior's future and one elder's risk.
+  - Rewrite a solo cultivation gain so it alters family duty, reputation, and future conflict.

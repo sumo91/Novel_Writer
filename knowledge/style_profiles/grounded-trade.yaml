@@ -1,5 +1,6 @@
 id: grounded_trade
-label: Grounded Trade
+label: 落地交易风
+english_label: Grounded Trade
 use_when: A story uses shopkeeping, negotiation, resource exchange, scarcity, or price pressure as the main scene engine.
 narration:
   pace: Fast but grounded; move through visible trade decisions instead of abstract business explanation.

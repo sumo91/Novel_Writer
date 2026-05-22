@@ -1,0 +1,18 @@
+id: style_lineage_memory
+scope: style
+applies_to:
+  - context
+  - draft
+  - review
+  - drift
+use_when: A story tracks family, clan, sect branches, inheritance, land, bloodline, genealogy, marriage ties, duty, rank, or multi-generation consequences.
+principle: Lineage stories need memory with weight; today's choice should alter inheritance, reputation, debt, territory, marriage, teaching, or a future generation's options.
+checks:
+  - Name which family, branch, elder, junior, ally, or dependent is affected.
+  - Tie resources and status to durable obligations.
+  - Record consequences that should matter beyond the current chapter.
+failure_modes:
+  - Clan names with no operational difference
+  - Elders and juniors treated as interchangeable extras
+  - Family benefit or harm forgotten after one scene
+severity: hard

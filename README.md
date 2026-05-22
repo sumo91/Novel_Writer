@@ -103,6 +103,7 @@ Novel Writer is not a one-prompt novel generator. It is a structured workflow fo
 - Abstract reusable style profiles live under `knowledge/style_profiles/` and can seed a book-local Style Bible.
 - Book-local style calibration lives under `style/calibration/style_calibration.yaml`; use it to record approved patterns, rejected patterns, and human taste notes.
 - When a Style Bible or style calibration exists, `prose_quality_review.json` must include `style_alignment` with usage flags, matched patterns, rejected pattern hits, and violations.
+- Current built-in style profiles cover grounded trade, crisp commercial pacing, quiet suspense, rule survival suspense, warm daily life, sharp face-slap payoff, mythic xianxia scale, comic lightweight banter, folk-story digest reversals, gentle local-life observation, slow-burn occult investigation, ritual power systems, cautious resource growth, civilization building, official-power wasteland pressure, lineage clan cultivation, and sharp sword action.
 - Style rules should describe texture, rhythm, voice, and failure modes, not copy a living author's prose.
 - Outline maps can be reviewed with `outline-map-review` as a readable bridge between book-level plans and chapter briefs.
 - YAML stores durable canon and project state.
