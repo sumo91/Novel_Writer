@@ -1,0 +1,45 @@
+{
+  "score": 88,
+  "dimension_scores": {
+    "hook_strength": 9,
+    "conflict_clarity": 9,
+    "protagonist_agency": 9,
+    "emotional_payoff": 8,
+    "pacing": 8,
+    "character_consistency": 9,
+    "continuity_safety": 9,
+    "chapter_end_pull": 9,
+    "mainline_relevance": 10,
+    "fresh_information_or_expectation": 8
+  },
+  "strengths": [
+    "The chapter opens directly with iron-sheet noise, crowd pressure, a countdown, and moving fog bodies.",
+    "Lu Chenzhou's agency remains visible: he separates rescue, boarding, triage, repair, and escape instead of reacting to the crowd.",
+    "Lin Zhixia's value is action-forward through triage, pollution judgment, and guarding the door during repair.",
+    "The filter payoff is concrete and costly: temporary pressure fixing, hand injury, efficiency loss, and vehicle damage.",
+    "The ending pull is specific: Qinghe Service Area, 17 km, simple medical berth, and dog-like audio threat."
+  ],
+  "issues": [
+    {
+      "type": "crowd_pressure_density",
+      "severity": "low",
+      "evidence": "The draft contains multiple crowd accusation beats around child rescue, elder rescue, Lin Zhixia boarding, and door pounding.",
+      "suggested_fix": "In revision, compress one or two crowd reaction lines if the chapter feels too noisy, keeping the strongest public pressure and the black-jacket sabotage beats."
+    },
+    {
+      "type": "team_status_payoff",
+      "severity": "low",
+      "evidence": "Lin Zhixia boards for functional reasons, but the emotional satisfaction of 'first strong teammate secured' is restrained.",
+      "suggested_fix": "Add one concise beat after the filter starts where Lu Chenzhou and Lin Zhixia recognize the division of roles, without softening the immediate danger."
+    }
+  ],
+  "revision_priorities": [
+    "Keep the opening pressure intact and avoid adding exposition.",
+    "Consider tightening repeated crowd accusation lines.",
+    "Strengthen the Lin Zhixia functional-teammate payoff by one small action or exchange.",
+    "Preserve the temporary nature of the filter sealing and the Qinghe medical berth hook."
+  ],
+  "human_approval_needed": [
+    "Whether the current functional-entry beat is enough to count as Lin Zhixia's first real onboard role, or whether revision should make it more explicit."
+  ]
+}

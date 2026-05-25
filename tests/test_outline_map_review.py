@@ -12,6 +12,8 @@ def test_outline_map_review_generates_html_report(tmp_path, monkeypatch, capsys)
 
     content = output.read_text(encoding="utf-8")
     assert output.with_suffix(".html").exists()
+    assert "# Outline Minimum Map Review" in content
+    assert "This is a mechanical minimum-map report, not a full human approval packet." in content
     assert "## Outline Minimum Map" in content
     assert "## Book Overview" in content
     assert "## Volume Map" in content
@@ -63,6 +65,21 @@ def test_outline_map_review_reports_missing_map_fields(tmp_path, monkeypatch):
     assert "missing_stage_map" in content
     assert "missing_unit_flow" in content
     assert "missing_story_promise" in content
+
+
+def test_outline_map_review_reports_incomplete_active_unit_chapter_map(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(outline_map_review, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    _write_outline_fixture(book)
+
+    output = outline_map_review.generate_outline_map_review("demo")
+
+    content = output.read_text(encoding="utf-8")
+    assert "incomplete_active_unit_chapter_map" in content
+    assert "missing chapters: 1, 2, 3, 4, 6, 7, 8, 9, 10" in content
 
 
 def test_outline_map_review_reports_unmapped_threads_and_payoffs(tmp_path, monkeypatch):

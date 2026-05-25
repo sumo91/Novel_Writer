@@ -1,0 +1,12 @@
+chapter: 2
+author_intent: []
+must_change: []
+approved_lines: []
+rejected_patterns:
+- Avoid generic inner monologue explanations.
+- Avoid interchangeable dialogue.
+- Avoid vague cliffhangers without a concrete next pressure.
+ai_assistance:
+  expected: true
+  human_role: direction, taste, key edits, final approval
+approved_for_final_candidate: true

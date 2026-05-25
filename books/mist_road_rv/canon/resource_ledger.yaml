@@ -1,0 +1,380 @@
+resources:
+- id: res_rv_clean_filter
+  owner: rv
+  name: clean_filter
+  category: item
+  unit: module
+  current_amount: 1
+  history:
+  - chapter: 3
+    delta: 1
+    reason: 净雾滤芯核心件完成临时加压固定并启动低浓度短时穿雾模式；滤芯效率从 31% 降至 28%，临时固定受颠簸影响。
+    owner: rv
+    name: clean_filter
+    category: item
+    unit: module
+  - chapter: 4
+    delta: 0
+    reason: 净雾滤芯仍在工作，但临时加压固定受追车、颠簸和雾犬拖拽威胁；滤芯效率开章显示 27%。
+    owner: rv
+    name: clean_filter
+    category: item
+    unit: module
+  - chapter: 5
+    delta: 0
+    reason: 净雾滤芯继续维持车内安全空气，但受车尾追咬、临时排气扰动和密封损伤影响，效率降至 23%。
+    owner: rv
+    name: clean_filter
+    category: item
+    unit: module
+  - chapter: 6
+    delta: 0
+    reason: 净雾滤芯继续维持车内安全空气，但效率仍为 23%，车尾轻微污染空气渗入未解决。
+    owner: rv
+    name: clean_filter
+    category: item
+    unit: module
+  - chapter: 7
+    delta: 0
+    reason: 取得半包净化滤芯边料，可用于临时补强，但不足以恢复完整效率；滤芯效率仍按 23% 记录。
+    owner: rv
+    name: clean_filter
+    category: item
+    unit: module
+  - chapter: 8
+    delta: 0
+    reason: 使用半包滤芯边料进行临时压紧，短时降低抖动和雾味，但无法恢复完整效率，仍按低效状态记录。
+    owner: rv
+    name: clean_filter
+    category: item
+    unit: module
+  - chapter: 9
+    delta: 0
+    reason: 系统判定净雾滤芯进入短时稳定校准 / 低效稳定，不等于完整恢复，仍需正式稳定材料或修复条件。
+    owner: rv
+    name: clean_filter
+    category: item
+    unit: module
+  last_updated_chapter: 9
+- id: res_rv_fuel_liter
+  owner: rv
+  name: fuel_liter
+  category: item
+  unit: liter
+  current_amount: 0
+  history:
+  - chapter: 3
+    delta: 0
+    reason: 房车服务区突围和进入雾墙造成燃油消耗；具体余量未量化。
+    owner: rv
+    name: fuel_liter
+    category: item
+    unit: liter
+  - chapter: 4
+    delta: 0
+    reason: 房车在追车、急停、摆脱面包车和雾犬追咬中消耗燃油；具体余量未量化。
+    owner: rv
+    name: fuel_liter
+    category: item
+    unit: liter
+  - chapter: 7
+    delta: 0
+    reason: 老郑声称十升柴油，但验桶后实际只得到约三到四升；因燃油账本未量化，暂记录为少量补给而不改变数值余量。
+    owner: rv
+    name: fuel_liter
+    category: item
+    unit: liter
+  last_updated_chapter: 7
+- id: res_rv_medicine_pack
+  owner: rv
+  name: medicine_pack
+  category: item
+  unit: pack
+  current_amount: 0
+  history:
+  - chapter: 3
+    delta: 0
+    reason: 林知夏使用部分基础急救耗材处理车外孩子和伤员，并将急救包带上车。
+    owner: rv
+    name: medicine_pack
+    category: item
+    unit: pack
+  - chapter: 4
+    delta: 0
+    reason: 林知夏使用急救耗材处理受伤女孩手臂伤口；具体余量未量化。
+    owner: rv
+    name: medicine_pack
+    category: item
+    unit: pack
+  - chapter: 5
+    delta: 0
+    reason: 林知夏继续用纱布、弹力绷带和塑封袋压住受伤女孩手臂出血；具体余量未量化。
+    owner: rv
+    name: medicine_pack
+    category: item
+    unit: pack
+  - chapter: 6
+    delta: 0
+    reason: 林知夏继续使用纱布、宽胶带、塑封袋和临时固定材料处理周小禾伤口；具体余量未量化。
+    owner: rv
+    name: medicine_pack
+    category: item
+    unit: pack
+  - chapter: 7
+    delta: 0
+    reason: 取得绷带、半板止痛片、少量碘伏、纱布、拆封持针钳、缝合线和一副未拆手套等基础耗材；数量有限且需隔离污染外包装。
+    owner: rv
+    name: medicine_pack
+    category: item
+    unit: pack
+  - chapter: 8
+    delta: 0
+    reason: 消耗部分碘伏、纱布、手套和临时缝合线，对周小禾做最低限度伤口固定；账本未量化，暂不改变数值余量。
+    owner: rv
+    name: medicine_pack
+    category: item
+    unit: pack
+  - chapter: 9
+    delta: 0
+    reason: 本章未新增医疗耗材；周小禾仍依赖第8章最低限度固定，后续需要医疗电源或正式处理。
+    owner: rv
+    name: medicine_pack
+    category: item
+    unit: pack
+  last_updated_chapter: 9
+- id: res_rv_rv_integrity
+  owner: rv
+  name: rv_integrity
+  category: item
+  unit: percent
+  current_amount: -28
+  history:
+  - chapter: 3
+    delta: -23
+    reason: 房车撞开出口栏杆后车体密封完整度降至 77%，车头受损。
+    owner: rv
+    name: rv_integrity
+    category: item
+    unit: percent
+  - chapter: 4
+    delta: -3
+    reason: 面包车顶撞和雾犬咬住房车后保险杠，车体密封完整度从 77% 降至 74%。
+    owner: rv
+    name: rv_integrity
+    category: item
+    unit: percent
+  - chapter: 5
+    delta: -2
+    reason: 雾犬追车中后保险杠被撕脱，车体密封完整度从 74% 降至 72%，车尾出现淡雾味渗入。
+    owner: rv
+    name: rv_integrity
+    category: item
+    unit: percent
+  - chapter: 6
+    delta: 0
+    reason: 车体密封完整度仍为 72%，本章未获得密封胶或完成修复。
+    owner: rv
+    name: rv_integrity
+    category: item
+    unit: percent
+  - chapter: 7
+    delta: 0
+    reason: 取得两支工业密封胶和一包卡箍等临时封堵材料，但尚未停车施工；车体密封完整度仍按 72% 记录。
+    owner: rv
+    name: rv_integrity
+    category: item
+    unit: percent
+  - chapter: 8
+    delta: 0
+    reason: 使用工业密封胶、卡箍和污染帘布完成车尾临时封堵，降低漏雾但持续时间不稳定；侧后视镜擦损，车体不计入完整修复。
+    owner: rv
+    name: rv_integrity
+    category: item
+    unit: percent
+  - chapter: 9
+    delta: 0
+    reason: 房车挤过旧面包车与断护栏，右侧和车尾继续擦碰；临时封堵仍有效但损耗增加，仍不计完整修复。
+    owner: rv
+    name: rv_integrity
+    category: item
+    unit: percent
+  last_updated_chapter: 9
+- id: res_rv_isolation_material
+  owner: rv
+  name: isolation_material
+  category: item
+  unit: bundle
+  current_amount: 1
+  history:
+  - chapter: 7
+    delta: 1
+    reason: 取得一卷灰色防水帘布和额外隔离材料，可用于周小禾临时观察区或车尾隔离，但外层有污染/霉点风险，需隔离处理。
+    owner: rv
+    name: isolation_material
+    category: item
+    unit: bundle
+  - chapter: 8
+    delta: 0
+    reason: 部分隔离材料用于污染外包装隔离和车尾外侧临时覆盖，仍保留为有限临时材料，不计完整升级。
+    owner: rv
+    name: isolation_material
+    category: item
+    unit: bundle
+  - chapter: 9
+    delta: 0
+    reason: 隔离帘、隔离箱和污染外包装边界在夜袭中保持有效，但材料仍是临时方案，不计新升级。
+    owner: rv
+    name: isolation_material
+    category: item
+    unit: bundle
+  last_updated_chapter: 9
+- id: res_rv_clean_filter_ch10
+  owner: rv
+  name: clean_filter
+  category: item
+  unit: module
+  current_amount: 0
+  history:
+  - chapter: 10
+    delta: 0
+    reason: 净雾滤芯维持低效稳定窗口，支撑房车穿过第一段低浓度迷雾并抵达青河外围；不是完整修复。
+    owner: rv
+    name: clean_filter
+    category: item
+    unit: module
+  last_updated_chapter: 10
+- id: res_rv_rear_seal_ch10
+  owner: rv
+  name: rv_rear_seal
+  category: item
+  unit: seal
+  current_amount: 0
+  history:
+  - chapter: 10
+    delta: 0
+    reason: 车尾临时封堵在颠簸和低速接近中继续承压并出现微漏风险，仍需正式密封件或修复机会。
+    owner: rv
+    name: rv_rear_seal
+    category: item
+    unit: seal
+  last_updated_chapter: 10
+- id: res_rv_medicine_pack_ch10
+  owner: rv
+  name: medicine_pack
+  category: item
+  unit: pack
+  current_amount: 0
+  history:
+  - chapter: 10
+    delta: 0
+    reason: 林知夏继续用于周小禾观察和基础处理；未形成简易医疗位，医疗条件仍不足。
+    owner: rv
+    name: medicine_pack
+    category: item
+    unit: pack
+  last_updated_chapter: 10
+- id: res_route_qinghe_medical_point_ch10
+  owner: rv
+  name: route_info_qinghe_medical_point
+  category: knowledge
+  unit: lead
+  current_amount: 1
+  history:
+  - chapter: 10
+    delta: 1
+    reason: 获得青河服务区医疗点、二号配电箱、外仓门禁异常和简易医疗位材料疑似位置线索。
+    owner: rv
+    name: route_info_qinghe_medical_point
+    category: knowledge
+    unit: lead
+  last_updated_chapter: 10
+- id: res_qinghe_power_box_ch11
+  owner: rv
+  name: qinghe_no_2_power_box_location
+  category: knowledge
+  unit: lead
+  current_amount: 1
+  history:
+  - chapter: 11
+    delta: 1
+    reason: 通过错误编号测试和车灯观察，确认青河医疗点后墙二号配电箱位置；只是位置信息，未接触电源。
+    owner: rv
+    name: qinghe_no_2_power_box_location
+    category: knowledge
+    unit: lead
+  last_updated_chapter: 11
+- id: res_qinghe_medical_frame_ch11
+  owner: rv
+  name: folding_medical_frame_lead
+  category: knowledge
+  unit: lead
+  current_amount: 1
+  history:
+  - chapter: 11
+    delta: 1
+    reason: 林知夏隔窗确认折叠医疗架是真正医疗设备线索；未取得、未消毒、未安装。
+    owner: rv
+    name: folding_medical_frame_lead
+    category: knowledge
+    unit: lead
+  last_updated_chapter: 11
+- id: res_qinghe_isolation_film_ch11
+  owner: rv
+  name: isolation_film_lead
+  category: knowledge
+  unit: lead
+  current_amount: 1
+  history:
+  - chapter: 11
+    delta: 1
+    reason: 林知夏识别带蓝色灭菌标的隔离膜可能用于医疗位隔离层；污染状态未判定，未取得。
+    owner: rv
+    name: isolation_film_lead
+    category: knowledge
+    unit: lead
+  last_updated_chapter: 11
+- id: res_qinghe_power_interface_ch11
+  owner: rv
+  name: medical_power_interface_lead
+  category: knowledge
+  unit: lead
+  current_amount: 1
+  history:
+  - chapter: 11
+    delta: 1
+    reason: 系统与现场观察共同指向无菌电源接口 / 医疗电源接口线索；尚未接触或接入房车。
+    owner: rv
+    name: medical_power_interface_lead
+    category: knowledge
+    unit: lead
+  last_updated_chapter: 11
+- id: res_simple_medical_bay_ch11
+  owner: rv
+  name: simple_medical_bay
+  category: item
+  unit: module
+  current_amount: 0
+  history:
+  - chapter: 11
+    delta: 0
+    reason: 简易医疗位材料信号增强并定位到部分组件，但材料未取得、污染未判定、模块未解锁。
+    owner: rv
+    name: simple_medical_bay
+    category: item
+    unit: module
+  last_updated_chapter: 11
+- id: res_rv_safety_margin_ch11
+  owner: rv
+  name: rv_retreat_line_and_filter_window
+  category: knowledge
+  unit: risk
+  current_amount: 0
+  history:
+  - chapter: 11
+    delta: 0
+    reason: 房车保持撤离角度、不开门、发动机运行；低效滤芯窗口和车尾封堵风险仍未解除。
+    owner: rv
+    name: rv_retreat_line_and_filter_window
+    category: knowledge
+    unit: risk
+  last_updated_chapter: 11

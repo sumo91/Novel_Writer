@@ -1,0 +1,27 @@
+chapter: 8
+author_intent:
+- Preserve the chapter as a pressure-led exit-window chapter: fog-wall backflow, low filter efficiency, rear leak, and broadcast-attracted humans all force movement.
+- Keep Lu Chenzhou's core judgment as "repair to move, not repair to perfect"; the爽点 is choosing the viable window under pressure.
+- Keep Lin Zhixia functionally valuable through contamination handling, minimum wound stabilization, and observation-zone discipline.
+- Keep chapter 8 as the setup into car-seizure night; the full assault and rule battle belong to chapter 9.
+- Preserve the temporary nature of every gain: sealing, filter edge reinforcement, medicine use, and isolation material all buy time, not safety.
+must_change:
+- Do not complete a full RV repair, restore filter efficiency to a safe value, or unlock the medical module.
+- Do not let Old Zheng, outside survivors, or suspected mutation cases enter the RV living space.
+- Do not reveal Qinghe main building interior, complete Qinghe factions, or service-area terminal origin.
+- Do not resolve the car-seizure night in this chapter; end with live pressure.
+approved_lines:
+- "不修完，修到能走。"
+- "拖到雾替他们开价。"
+- "能走，不代表能停。"
+- "够离开，不够停。"
+- "这不是最后一脚油门。"
+- "只是夜里第一道门。"
+rejected_patterns:
+- Avoid generic inner monologue explanations.
+- Avoid interchangeable dialogue.
+- Avoid vague cliffhangers without a concrete next pressure.
+ai_assistance:
+  expected: true
+  human_role: direction, taste, key edits, final approval
+approved_for_final_candidate: true

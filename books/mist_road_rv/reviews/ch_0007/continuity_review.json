@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "score": 88,
+  "issues": [
+    {
+      "type": "old_zheng_scope",
+      "severity": "low",
+      "evidence": "Old Zheng appears as the Qinghe outer-warehouse material controller with two men and a compromised brother. He remains an outer-warehouse gatekeeper, not a full faction reveal.",
+      "suggested_fix": "In revision and acceptance, record Old Zheng as an outer-warehouse material-control figure. Do not expand him into Qinghe's full political order yet."
+    },
+    {
+      "type": "resource_gain_limits",
+      "severity": "low",
+      "evidence": "The RV gains usable items: industrial sealant, clamps, curtain material, limited medical supplies, a small oil amount, and filter-edge material. The chapter explicitly says they are contaminated externally, limited, or insufficient to fully restore vehicle systems.",
+      "suggested_fix": "Keep resource updates qualitative or limited. Do not treat these materials as a full repair, full filter recovery, or medical-module unlock."
+    },
+    {
+      "type": "qinghe_main_building_reference",
+      "severity": "low",
+      "evidence": "Old Zheng asks to be carried to the Qinghe main building. This is a directional pressure beat but could imply broader Qinghe geography.",
+      "suggested_fix": "Keep it as a named destination only. Do not add interior order, floor layout, factions, or medical station details in chapter 7 revision."
+    }
+  ],
+  "required_fixes": [],
+  "proposed_state_updates": [
+    "Old Zheng is introduced as the Qinghe outer-warehouse material controller who controls the warehouse door, key/access, and immediate supplies.",
+    "Old Zheng attempts to trade fuel, medicine, sealant, clamps, curtain material, and filter-edge material for boarding access for himself and two men.",
+    "Lu Chenzhou establishes the early vehicle-economy rule that resources can be traded, inspected, and priced, but cannot directly buy RV boarding qualification.",
+    "Lin Zhixia verifies the medicine and isolation materials, identifying incomplete or poor-quality supplies: expired fever medicine, no initial suture kit, low disinfectant, moldy curtain material, and contaminated outer packaging.",
+    "The RV gains limited usable supplies: industrial sealant, clamps, curtain/isolation material, basic medical supplies including suture thread and gloves, a small amount of fuel, and partial filter-edge material.",
+    "The gained materials are limited and/or externally contaminated; they do not fully repair the RV, fully restore filter efficiency, unlock the medical module, or create a free upgrade.",
+    "Old Zheng reveals that one of his men has gray-eye and confusion symptoms; Lin Zhixia judges him as suspected mutation and recommends isolation without allowing him into the RV.",
+    "Lu Chenzhou refuses to open the RV door or let Old Zheng's people enter the living space; observation, isolation, and boarding rules remain intact.",
+    "Old Zheng retaliates by broadcasting the RV's position and clean-filter value through the outer-warehouse speaker / communication system.",
+    "Fog-side vehicle lights, metal striking sounds, and system warnings show that external human and mist-pressure threats are gathering near the outer warehouse."
+  ],
+  "human_approval_needed": [
+    "Approve Old Zheng as the Qinghe outer-warehouse material controller without treating him as a full Qinghe faction reveal.",
+    "Approve the early economy rule: material trade can buy goods or limited service, but cannot buy RV boarding qualification.",
+    "Approve the limited resource gain from chapter 7 as usable but insufficient for full repair, full filter recovery, or medical-module unlock.",
+    "Approve Old Zheng's broadcast of the RV location as the next pressure hook toward fog-wall backflow / car-seizure escalation."
+  ]
+}

@@ -1,0 +1,272 @@
+chapter: 9
+title: 抢车夜
+source_draft: drafts/ch_0009_final_candidate.md
+accepted_chapter_path: chapters/ch_0009.md
+summary: 房车在青河外仓口外侧主路遭遇旧面包车路障和抢车小团体夜袭。陆沉舟拒绝开门，用车灯、喇叭、破拆钩、倒车角和车身重量守住驾驶位与车门规则；林知夏守住周小禾临时观察区、隔离帘和污染材料。抢车者制造的噪音与强光引来雾犬，阵形被反噬，房车冲出第一轮围堵。系统判定车内协同规则初步成立，净雾滤芯进入短时稳定校准，但雾墙回压仍在扩大，青河广播传来医疗电源与幸存者求救。
+current_state:
+  current_chapter: 9
+  current_arc: arc_001
+  latest_location: 青河服务区外缘主路，房车已冲出旧面包车路障，正在青河指示牌前接收求救广播
+  active_characters:
+  - lu_chenzhou
+  - lin_zhixia
+  - temporary_injured_girl
+  - old_zheng
+  active_conflicts: &id001
+  - 抢车小团体第一轮夜袭已被打退，旧面包车路障和抢车者阵形被雾犬与自身路障反噬冲散，但青河外部人类压力未完全消失。
+  - 车尾临时封堵在挤压突围中继续受损，只能维持短时窗口，仍需正式密封件与修复机会。
+  - 净雾滤芯进入短时稳定校准 / 低效稳定状态，但这不是完整恢复，长时间停留仍会导致污染风险回升。
+  - 周小禾在临时观察区内听指令、未越过隔离帘，但伤口疼痛明显，仍需要后续医疗处理。
+  - 林知夏与陆沉舟形成第一次实战协同：外部路线与车门规则由陆沉舟控制，车内观察区、隔离箱和伤员稳定由林知夏控制。
+  - 青河旧广播传来医疗电源、幸存者和不要开外仓门的断续求救信息，第10章必须处理是否回应广播和第一站收束。
+  - 雾墙回压区仍在扩大，系统要求天亮前驶离青河服务区外缘。
+  - 青河主楼、完整内部秩序、服务区终端源头和简易医疗位仍未揭开。
+  pending_approvals: &id002
+  - Approve chapter 9 as the first successful combat test of the RV door rules and internal collaboration rules.
+  - Approve short-term filter stabilization as a limited system payoff, not a full filter repair.
+  - Approve that fog dogs are attracted by human noise, lights, and metal strikes as an early visible ecology rule.
+  - Approve the 青河 medical-power broadcast only as the chapter 10 hook, not as an acquired medical module or completed rescue.
+  - Approve that Zhou Xiaohe remains a temporary observation patient, not a formal onboard member or core teammate.
+state_changes:
+- 'The RV faces a direct roadblock at Qinghe outer-warehouse road: an old van, fire-extinguisher pressure, crowbar strikes, strong light, and side-door prying.'
+- Lu Chenzhou refuses to open the door, keeps driver control, and uses headlights, horn timing, the demolition hook, vehicle angle, wet shoulder space, and the attackers' own roadblock to create an exit path.
+- Lin Zhixia holds the temporary observation zone, side-door lock boundary, isolation curtain, contaminated packaging box, and Zhou Xiaohe's wound stabilization during the assault.
+- Zhou Xiaohe remains a temporary observation patient, follows instructions, does not cross the curtain, and does not enter the RV living space as a formal member.
+- Human noise, lights, metal strikes, and panic draw fog dogs toward the loudest / brightest attackers, confirming an early mist-monster ecology rule without fully explaining it.
+- The RV escapes the first wave of the car-seizing night; the attackers are scattered by fog dogs and their own roadblock, but the RV's rear sealing remains temporary and damaged.
+- The system recognizes that the RV door rules, observation-zone boundary, contaminated-material isolation, and driver control remained intact under pressure.
+- The clean filter reaches short-term stable calibration / low-efficiency stability, not full recovery.
+- 'A Qinghe broadcast introduces the next hook: medical power, remaining survivors, and a warning not to open the outer-warehouse door.'
+open_threads_touched:
+- thread_vehicle_rules_contract
+- thread_mist_monster_ecology
+- thread_lin_pollution_observation
+- thread_rv_system_binding
+- thread_service_area_terminals
+timeline_event:
+  id: t009
+  when: 第 9 章
+  summary: 房车在青河外仓口外侧主路遭遇旧面包车路障和抢车小团体夜袭。陆沉舟拒绝开门，用车灯、喇叭、破拆钩、倒车角和车身重量守住驾驶位与车门规则；林知夏守住周小禾临时观察区、隔离帘和污染材料。抢车者制造的噪音与强光引来雾犬，阵形被反噬，房车冲出第一轮围堵。系统判定车内协同规则初步成立，净雾滤芯进入短时稳定校准，但雾墙回压仍在扩大，青河广播传来医疗电源与幸存者求救。
+v3_state_updates:
+  timeline:
+    occurred_events:
+    - id: ev_0009_01
+      summary: 房车在青河外仓口外侧主路遭遇旧面包车路障和抢车小团体夜袭。陆沉舟拒绝开门，用车灯、喇叭、破拆钩、倒车角和车身重量守住驾驶位与车门规则；林知夏守住周小禾临时观察区、隔离帘和污染材料。抢车者制造的噪音与强光引来雾犬，阵形被反噬，房车冲出第一轮围堵。系统判定车内协同规则初步成立，净雾滤芯进入短时稳定校准，但雾墙回压仍在扩大，青河广播传来医疗电源与幸存者求救。
+      location: 青河服务区外缘主路
+      involved_characters:
+      - lu_chenzhou
+      - lin_zhixia
+      - temporary_injured_girl
+      - old_zheng
+      source_chapter: 9
+  character_states: &id004
+  - character_id: lu_chenzhou
+    display_name: 陆沉舟
+    physical_state: 驾驶房车冲出旧面包车路障，车辆右侧与车尾继续受擦碰和临时封堵承压影响。
+    social_state: 作为司机和车门规则执行者，第一次把房车作为移动战术空间使用，并在夜袭中守住驾驶位和车门边界。
+    emotional_state: 冷静、压迫感未退；不被假求救和抢车者道德绑架，同时避免无差别碾压。
+    current_goal: 在天亮前离开雾墙回压区，并判断青河医疗电源广播是否值得冒险回应。
+    known_secrets: []
+    public_knowledge:
+    - 抢车者的目标是车门、滤芯和驾驶位，不是正当救援。
+    - 人类噪音、强光和金属敲击会把雾犬引向最响最亮的目标。
+    relationship_changes:
+    - 与林知夏形成第一次真正车组式协同：他控制外部路线和车门规则，她控制车内观察区和污染隔离。
+    voice_notes:
+    - 短、硬、路线判断；用规则和空间反制，不用长篇道德辩论。
+  - character_id: lin_zhixia
+    display_name: 林知夏
+    physical_state: 在颠簸和侧门冲击中守住隔离帘、隔离箱和周小禾临时固定，手上沾有碘伏和灰尘。
+    social_state: 从车内应急处置核心推进为战术协作者，能向驾驶位持续报告观察区、隔离箱和车内空气状态。
+    emotional_state: 紧张但专业；短暂追问外部抢车者后果，但仍优先维持车内规则。
+    current_goal: 在不越过临时观察边界的前提下，继续稳定周小禾，并判断青河医疗电源是否能提供下一步处理窗口。
+    known_secrets:
+    - 周小禾的伤口仍不适合长时间拖延或连续剧烈颠簸。
+    public_knowledge:
+    - 观察区在一次急转和一次冲击下可以维持，但不能视为正式医疗隔离。
+    - 医疗电源如果属实，周小禾伤口可以重新处理。
+    relationship_changes:
+    - 陆沉舟开始依赖她的车内状态报告调整路线，两人的战术互信进一步形成。
+    voice_notes:
+    - 以医疗边界、观察状态和车内风险说话；不空喊担心。
+  - character_id: temporary_injured_girl
+    display_name: 周小禾
+    physical_state: 仍在临时观察区，手臂伤口疼痛但未明显崩开，能抓住指定绳结并保持清醒。
+    social_state: 临时观察伤员，不是正式上车名额或核心队友；她通过服从规则证明观察区可以被保护。
+    emotional_state: 极度恐惧被抛下，也害怕自己发声引来雾犬，但努力遵守不越帘、不碰箱子的规则。
+    current_goal: 继续保持清醒和服从，等待青河医疗电源或后续处理机会。
+    known_secrets: []
+    public_knowledge:
+    - 她没有越过隔离帘或接触隔离箱，仍是外伤叠雾吸入观察状态。
+    relationship_changes:
+    - 林知夏明确告诉她：临时观察不是正式上车，但只要听指令，观察规则会保护她。
+    voice_notes:
+    - 短、疼、听指令；不突然英勇救场，不承担核心队友功能。
+  - character_id: old_zheng
+    display_name: 老郑
+    physical_state: 仍在青河外仓方向，破喇叭被外部冲击和雾中压力打断，未直接参与主路抢车。
+    social_state: 仍是外仓物资控制者和报点者，不是完整青河派系首领；他的报点后果已经转化为抢车夜。
+    emotional_state: 被困外仓和广播后果反噬，短期压力仍悬而未决。
+    current_goal: 未知；外仓门后状态和灰眼兄弟后果仍未揭开。
+    known_secrets:
+    - 外仓门后灰眼兄弟和剩余物资情况仍未解决。
+    public_knowledge:
+    - 他的广播暴露房车位置和滤芯价值，引发外部抢车者围堵。
+    relationship_changes:
+    - 与陆沉舟的敌对后果进入下一阶段：抢车者被打退，但青河外仓警告仍指向他所在区域。
+    voice_notes:
+    - 本章只作为外仓报点后果存在，不升级为总 boss。
+  resource_changes: &id005
+  - id: res_rv_rv_integrity
+    owner: rv
+    item: rv_integrity
+    category: item
+    unit: percent
+    delta: 0
+    reason: 房车挤过旧面包车与断护栏，右侧和车尾继续擦碰；临时封堵仍有效但损耗增加，仍不计完整修复。
+  - id: res_rv_clean_filter
+    owner: rv
+    item: clean_filter
+    category: item
+    unit: module
+    delta: 0
+    reason: 系统判定净雾滤芯进入短时稳定校准 / 低效稳定，不等于完整恢复，仍需正式稳定材料或修复条件。
+  - id: res_rv_medicine_pack
+    owner: rv
+    item: medicine_pack
+    category: item
+    unit: pack
+    delta: 0
+    reason: 本章未新增医疗耗材；周小禾仍依赖第8章最低限度固定，后续需要医疗电源或正式处理。
+  - id: res_rv_isolation_material
+    owner: rv
+    item: isolation_material
+    category: item
+    unit: bundle
+    delta: 0
+    reason: 隔离帘、隔离箱和污染外包装边界在夜袭中保持有效，但材料仍是临时方案，不计新升级。
+  open_thread_updates: &id003
+  - id: thread_vehicle_rules_contract
+    promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+    source_chapter: 0
+    status: advanced
+    last_touched: 9
+    latest_note: 抢车夜第一轮中，假求救、强光照窗、撬侧门、拉车尾线束和索要滤芯都没有让房车开门；驾驶位、侧门、观察区和隔离箱边界全部守住。
+    next_obligation: 第10章在青河广播和医疗电源诱惑下继续测试：是否回应求救也必须经过车门规则、路线风险和资源边界。
+  - id: thread_mist_monster_ecology
+    promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+    source_chapter: 0
+    status: advanced
+    last_touched: 9
+    latest_note: 抢车者的金属敲击、强光、喇叭和混乱喊叫引来雾犬，雾犬优先扑向最响最亮的目标，显示人类噪音会转化为怪物压力。
+    next_obligation: 后续继续用可观察行为推进怪物生态，不一次性解释雾犬完整来源或母巢规则。
+  - id: thread_lin_pollution_observation
+    promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+    source_chapter: 0
+    status: advanced
+    last_touched: 9
+    latest_note: 林知夏在移动冲突中守住周小禾临时观察区、隔离帘、污染外包装和车内空气状态报告，证明污染分诊能在战斗压力下执行。
+    next_obligation: 第10章若处理青河医疗电源，必须继续保持临时观察与正式上车 / 正式医疗模块的区别。
+  - id: thread_rv_system_binding
+    promise: 房车系统为什么绑定陆沉舟和父亲留下的旧房车。
+    source_chapter: 0
+    status: advanced
+    last_touched: 9
+    latest_note: 系统只提示封堵受力、线束风险、滤芯状态和协同规则判定；不替陆沉舟决定撞不撞、救不救或是否回应青河广播。
+    next_obligation: 继续让系统表现为旧救援协议式风险提示和规则记录，而不是道德裁判。
+  - id: thread_service_area_terminals
+    promise: 服务区交易终端、临时屏障和路标任务从何而来。
+    source_chapter: 0
+    status: advanced
+    last_touched: 9
+    latest_note: 青河旧广播在抢车夜后传出医疗电源、幸存者和不要开外仓门的断续信息，显示服务区内部仍有未解释节点秩序。
+    next_obligation: 第10章可围绕广播真假、医疗电源和外仓门警告推进青河节点，但不提前解释终端源头。
+  payoff_updates: &id006
+  - chapter: 9
+    promises_made:
+    - 第10章必须处理青河广播：医疗电源、幸存者、不要开外仓门，以及天亮前驶离回压区的路线选择。
+    - 净雾滤芯短时稳定校准和车尾临时封堵都有时间限制，不能支撑长时间停留。
+    payoffs_delivered:
+    - 第8章旧面包车路障和抢车夜压力兑现为正面夜袭。
+    - 车门规则实战兑现：假求救、撬门、强光、抢滤芯和拉线束都没有换开门。
+    - 林知夏车内功能兑现：她在战斗压力下守住观察区、隔离箱、污染外包装和周小禾。
+    - 雾犬生态小规则兑现：抢车者制造的噪音和灯光引来雾犬并反噬他们。
+    - 系统有限奖励兑现：车内协同规则初步成立，净雾滤芯进入短时稳定校准。
+    frustration_level: controlled
+    payoff_types:
+    - rule_payoff
+    - teamwork_payoff
+    - monster_rule_payoff
+    - limited_system_payoff
+    - route_hook
+    delayed_payoffs:
+    - 青河医疗电源是否真实可用
+    - 青河主楼幸存者身份与风险
+    - 不要开外仓门警告的含义
+    - 临时封堵和滤芯稳定能撑多久
+    - 简易医疗位是否能被解锁
+    risks:
+    - 车尾临时封堵损耗增加，正式修复仍未完成。
+    - 滤芯只是低效稳定，长时间停留会重新积累污染风险。
+    - 回应青河广播可能进入第二个陷阱或更深服务区风险。
+    - 周小禾仍需后续医疗处理，不能承受长期拖延。
+  conflict_updates:
+    active: *id001
+  next_hook: &id007
+    hook: 抢车夜第一轮被打退后，青河旧广播传来“医疗电源”“还有人”“不要开外仓门”的断续求救；系统同时警告雾墙回压区仍在扩大，要求天亮前驶离。
+    obligation: 第10章必须收束第一站：判断青河广播真假，处理医疗电源与幸存者诱惑，继续保护周小禾和车内规则，并决定是否靠近青河主楼或立即离开。
+    target_chapter: 10
+    status: open
+  pending_approvals: *id002
+open_thread_updates: *id003
+change_log:
+  summary: Accepted revised chapter 9 as chapters/ch_0009.md.
+  canon_updates:
+  - timeline:t009
+  - character_states:lu_chenzhou,lin_zhixia,temporary_injured_girl,old_zheng
+  - resource_ledger:short_filter_stability_and_rear_seal_damage
+  - open_threads:thread_vehicle_rules_contract,thread_mist_monster_ecology,thread_lin_pollution_observation,thread_rv_system_binding,thread_service_area_terminals
+  - hook_index:chapter_10_qinghe_broadcast_choice
+  pending_approvals: *id002
+acceptance_contract:
+  quality_gate_summary:
+    continuity_review_present: true
+    continuity_blockers: []
+    pacing_review_present: true
+    pacing_score: 91
+    revised_pacing_score: null
+    revision_required: false
+    waiver_required: false
+  outline_alignment:
+    reference_chain: master -> volume -> arc -> unit -> chapter brief
+    volume_id: volume_001
+    arc_id: arc_001
+    unit_id: unit_0001
+    required_unit_obligations:
+    - 车内第一版协同规则通过实战测试。
+    - 陆沉舟与林知夏形成第一次战术互信。
+    claimed_fulfilled_unit_obligations:
+    - 车内第一版协同规则通过实战测试。
+    - 陆沉舟与林知夏形成第一次战术互信。
+    pending_unit_obligations: []
+  state_updates:
+    timeline_event:
+      id: t009
+      when: 第 9 章
+      summary: 房车在青河外仓口外侧主路遭遇旧面包车路障和抢车小团体夜袭。陆沉舟拒绝开门，用车灯、喇叭、破拆钩、倒车角和车身重量守住驾驶位与车门规则；林知夏守住周小禾临时观察区、隔离帘和污染材料。抢车者制造的噪音与强光引来雾犬，阵形被反噬，房车冲出第一轮围堵。系统判定车内协同规则初步成立，净雾滤芯进入短时稳定校准，但雾墙回压仍在扩大，青河广播传来医疗电源与幸存者求救。
+    character_state_changes: *id004
+    resource_changes: *id005
+    open_thread_updates: *id003
+    payoff_updates: *id006
+    next_hook: *id007
+    pending_approvals: *id002
+    economy_changes: []
+    faction_changes: []
+  publication_readiness:
+    final_candidate_path: drafts/ch_0009_final_candidate.md
+    author_direction_present: true
+    author_direction_approved: true
+    prose_quality_review_present: true
+    prose_quality_score: 93
+    prose_rewrite_required: false
+    blocking_issues: []

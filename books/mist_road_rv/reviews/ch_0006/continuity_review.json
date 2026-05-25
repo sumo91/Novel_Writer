@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "score": 89,
+  "issues": [
+    {
+      "type": "temporary_pollution_rule_scope",
+      "severity": "low",
+      "evidence": "Lin Zhixia establishes three handling categories: external injury, mist inhalation observation, and suspected mutation. This is useful as an early vehicle rule, but it is not a final medical truth about all contamination.",
+      "suggested_fix": "Record it as a provisional onboard triage rule based on current symptoms and limited tools. Later medical module chapters may refine or override it."
+    },
+    {
+      "type": "qinghe_information_boundary",
+      "severity": "low",
+      "evidence": "Zhou Xiaohe names the Qinghe rear warehouse, supplies, and a warehouse controller called Old Zheng, but the chapter stops before explaining Qinghe interior order.",
+      "suggested_fix": "Keep this as an outer-warehouse / material-control hook. Do not expand Qinghe interior politics, full medical station layout, or factions in the chapter 6 revision."
+    },
+    {
+      "type": "system_prompt_scope",
+      "severity": "low",
+      "evidence": "The system reports filter efficiency, rear sealing, target materials, and route arrival. It does not diagnose contamination or decide whether the girl should be kept.",
+      "suggested_fix": "Preserve this boundary in revision: Lin Zhixia diagnoses, Lu Chenzhou decides rules, the system only provides vehicle and route pressure."
+    }
+  ],
+  "required_fixes": [],
+  "proposed_state_updates": [
+    "The RV reaches the Qinghe Service Area outer warehouse approach with rear sealing still damaged at 72% and clean-mist filter efficiency still at 23%.",
+    "The injured girl is identified as Zhou Xiaohe and remains a temporary observation passenger, not a formal onboard member or core teammate.",
+    "Zhou Xiaohe shows coldness, rapid breathing, continued bleeding, and a faint gray edge around the pupil, creating an early contamination suspicion without confirming irreversible mutation.",
+    "Lin Zhixia establishes a provisional three-tier onboard triage rule: external injury, mist inhalation observation, and suspected mutation.",
+    "Lu Chenzhou converts the triage rule into vehicle rules: observation zone is not living space, temporary observation is not boarding qualification, and noncompliance or aggression ends the observation window.",
+    "A makeshift rear observation / isolation area is built from an old curtain, first-aid box, plastic wrap, tape, and rope, but it is explicitly not a proper medical isolation setup.",
+    "The RV still needs sealant, spare clamps, isolation-curtain material, and basic medical supplies; none are gained for free in this chapter.",
+    "Zhou Xiaohe provides a limited Qinghe outer-warehouse clue: rear warehouse supplies exist, but the key or access card is controlled by a warehouse keeper called Old Zheng.",
+    "The chapter ends at the Qinghe outer warehouse approach, where a chained roll-up door and sign reading '拿物资可以 / 上车不行' point chapter 7 toward material control and boarding-rule conflict.",
+    "Qinghe Service Area interior order, full factions, and complete medical station layout remain unrevealed."
+  ],
+  "human_approval_needed": [
+    "Approve the provisional onboard contamination triage rule: external injury, mist inhalation observation, and suspected mutation are handled separately.",
+    "Approve that temporary observation / isolation does not equal formal boarding qualification.",
+    "Approve Qinghe rear warehouse supplies and Old Zheng's key/access control as the chapter 7 material-control hook without treating it as a full Qinghe interior reveal."
+  ]
+}

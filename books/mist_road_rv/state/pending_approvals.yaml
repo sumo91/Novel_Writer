@@ -1,0 +1,475 @@
+approvals:
+- id: pa_e387a658
+  status: approved
+  text: Approve Lin Zhixia as an emergency nurse rather than leaving doctor/nurse
+    ambiguous.
+  source_chapters:
+  - 2
+  variants:
+  - Approve Lin Zhixia as an emergency nurse rather than leaving doctor/nurse ambiguous.
+  sources:
+  - state/change_log.jsonl:chapter_2
+  note: 'Human confirmed during chapter 2 acceptance: Lin Zhixia is locked as an emergency
+    nurse.'
+- id: pa_78a02764
+  status: approved
+  text: Approve Lin Zhixia's move from temporary co-survivor to committed RV medical-role
+    crew member.
+  source_chapters:
+  - 10
+  variants:
+  - Approve Lin Zhixia's move from temporary co-survivor to committed RV medical-role
+    crew member.
+  sources:
+  - state/change_log.jsonl:chapter_10
+  note: 'Human confirmed during chapter 10 acceptance: Lin Zhixia moves from temporary
+    co-survivor to committed RV medical-role crew member.'
+- id: pa_900aa4b2
+  status: approved
+  text: Approve No. 2 power box / folding medical frame / isolation film / power interface
+    as verified Simple Medical Bay material leads, not acquired materials.
+  source_chapters:
+  - 11
+  variants:
+  - Approve No. 2 power box / folding medical frame / isolation film / power interface
+    as verified Simple Medical Bay material leads, not acquired materials.
+  sources:
+  - state/change_log.jsonl:chapter_11
+  - state/current_state.json
+  note: 'Human confirmed during chapter 11 acceptance: No. 2 power box / folding medical
+    frame / isolation film / power interface are verified Simple Medical Bay material
+    leads, not acquired materials.'
+- id: pa_14d2930f
+  status: approved
+  text: Approve Old Zheng as the Qinghe outer-warehouse material controller without
+    treating him as a full Qinghe faction reveal.
+  source_chapters:
+  - 7
+  variants:
+  - Approve Old Zheng as the Qinghe outer-warehouse material controller without treating
+    him as a full Qinghe faction reveal.
+  sources:
+  - state/change_log.jsonl:chapter_7
+  note: 'Human confirmed during chapter 7 acceptance: Old Zheng is the Qinghe outer-warehouse
+    material controller, not a full Qinghe faction reveal.'
+- id: pa_f5c73981
+  status: approved
+  text: Approve Old Zheng's broadcast of the RV location as the next pressure hook
+    toward fog-wall backflow / car-seizure escalation.
+  source_chapters:
+  - 7
+  variants:
+  - Approve Old Zheng's broadcast of the RV location as the next pressure hook toward
+    fog-wall backflow / car-seizure escalation.
+  sources:
+  - state/change_log.jsonl:chapter_7
+  note: 'Human confirmed during chapter 7 acceptance: Old Zheng''s broadcast is the
+    next pressure hook toward fog-wall backflow / car-seizure escalation.'
+- id: pa_fac4411d
+  status: approved
+  text: Approve Qinghe medical point / Simple Medical Bay material signal as a chapter
+    11 hook only, not as an unlocked module.
+  source_chapters:
+  - 10
+  variants:
+  - Approve Qinghe medical point / Simple Medical Bay material signal as a chapter
+    11 hook only, not as an unlocked module.
+  sources:
+  - state/change_log.jsonl:chapter_10
+  note: 'Human confirmed during chapter 10 acceptance: Qinghe medical point / Simple
+    Medical Bay material signal is a chapter 11 hook only, not an unlocked module.'
+- id: pa_eec30302
+  status: approved
+  text: Approve Qinghe outer warehouse entrance as the next approach target without
+    treating it as revealing Qinghe Service Area interior.
+  source_chapters:
+  - 5
+  variants:
+  - Approve Qinghe outer warehouse entrance as the next approach target without treating
+    it as revealing Qinghe Service Area interior.
+  sources:
+  - state/change_log.jsonl:chapter_5
+  note: 'Human confirmed during chapter 5 acceptance: Qinghe outer warehouse entrance
+    is the next approach target and does not reveal Qinghe Service Area interior.'
+- id: pa_5b8eea3a
+  status: approved
+  text: Approve Qinghe rear warehouse supplies and Old Zheng's key/access control
+    as the chapter 7 material-control hook without treating it as a full Qinghe interior
+    reveal.
+  source_chapters:
+  - 6
+  variants:
+  - Approve Qinghe rear warehouse supplies and Old Zheng's key/access control as the
+    chapter 7 material-control hook without treating it as a full Qinghe interior
+    reveal.
+  sources:
+  - state/change_log.jsonl:chapter_6
+  note: 'Human confirmed during chapter 6 acceptance: Qinghe rear warehouse supplies
+    and Old Zheng''s access control are the chapter 7 material-control hook, not a
+    full Qinghe interior reveal.'
+- id: pa_fe72f67f
+  status: approved
+  text: Approve Zhou Xiaohe remaining a temporary observation patient after providing
+    a useful sound-observation cue.
+  source_chapters:
+  - 11
+  variants:
+  - Approve Zhou Xiaohe remaining a temporary observation patient after providing
+    a useful sound-observation cue.
+  sources:
+  - state/change_log.jsonl:chapter_11
+  - state/current_state.json
+  note: 'Human confirmed during chapter 11 acceptance: Zhou Xiaohe remains a temporary
+    observation patient after providing a useful sound-observation cue.'
+- id: pa_35f5e1e8
+  status: approved
+  text: Approve chapter 10 as the closure of unit_0001 / the first station.
+  source_chapters:
+  - 10
+  variants:
+  - Approve chapter 10 as the closure of unit_0001 / the first station.
+  sources:
+  - state/change_log.jsonl:chapter_10
+  note: 'Human confirmed during chapter 10 acceptance: chapter 10 closes unit_0001
+    / the first station.'
+- id: pa_94415698
+  status: approved
+  text: Approve chapter 11 as Qinghe medical-point exterior validation only, not main-building
+    entry.
+  source_chapters:
+  - 11
+  variants:
+  - Approve chapter 11 as Qinghe medical-point exterior validation only, not main-building
+    entry.
+  sources:
+  - state/change_log.jsonl:chapter_11
+  - state/current_state.json
+  note: 'Human confirmed during chapter 11 acceptance: chapter 11 is Qinghe medical-point
+    exterior validation only, not main-building entry.'
+- id: pa_be09a787
+  status: approved
+  text: Approve chapter 4 light trigger for Lu Chenzhou's old mall-fire rescue accident
+    without treating it as a full reveal.
+  source_chapters:
+  - 4
+  variants:
+  - Approve chapter 4 light trigger for Lu Chenzhou's old mall-fire rescue accident
+    without treating it as a full reveal.
+  sources:
+  - state/change_log.jsonl:chapter_4
+  note: 'Human confirmed during chapter 4 acceptance: old mall-fire rescue accident
+    is only lightly triggered, not fully revealed.'
+- id: pa_70fc01a9
+  status: approved
+  text: Approve chapter 4 limited rescue case - one compliant injured girl is accepted
+    into temporary observation while the rest of the minivan group is refused RV entry.
+  source_chapters:
+  - 4
+  variants:
+  - Approve chapter 4 limited rescue case - one compliant injured girl is accepted
+    into temporary observation while the rest of the minivan group is refused RV entry.
+  sources:
+  - state/change_log.jsonl:chapter_4
+  note: 'Human confirmed during chapter 4 acceptance: limited rescue case is approved;
+    one compliant injured girl enters temporary observation while the rest of the
+    minivan group is refused RV entry.'
+- id: pa_945eeb38
+  status: approved
+  text: Approve chapter 8 as car-seizure night setup, with the full night assault
+    reserved for chapter 9.
+  source_chapters:
+  - 8
+  variants:
+  - Approve chapter 8 as car-seizure night setup, with the full night assault reserved
+    for chapter 9.
+  sources:
+  - state/change_log.jsonl:chapter_8
+  note: 'Human confirmed during chapter 8 acceptance: chapter 8 is car-seizure night
+    setup, with the full night assault reserved for chapter 9.'
+- id: pa_c911fff8
+  status: approved
+  text: 'Approve chapter 8 temporary repair size: useful enough to move, not enough
+    for full RV repair or filter recovery.'
+  source_chapters:
+  - 8
+  variants:
+  - 'Approve chapter 8 temporary repair size: useful enough to move, not enough for
+    full RV repair or filter recovery.'
+  sources:
+  - state/change_log.jsonl:chapter_8
+  note: 'Human confirmed during chapter 8 acceptance: temporary repair is useful enough
+    to move, not enough for full RV repair or filter recovery.'
+- id: pa_be967e7c
+  status: approved
+  text: Approve chapter 9 as the first successful combat test of the RV door rules
+    and internal collaboration rules.
+  source_chapters:
+  - 9
+  variants:
+  - Approve chapter 9 as the first successful combat test of the RV door rules and
+    internal collaboration rules.
+  sources:
+  - state/change_log.jsonl:chapter_9
+  note: 'Human confirmed during chapter 9 acceptance: chapter 9 is the first successful
+    combat test of the RV door rules and internal collaboration rules.'
+- id: pa_90baf548
+  status: approved
+  text: Approve clean-mist filter component split into core filter part plus pressure
+    sealing ring.
+  source_chapters:
+  - 2
+  variants:
+  - Approve clean-mist filter component split into core filter part plus pressure
+    sealing ring.
+  sources:
+  - state/change_log.jsonl:chapter_2
+  note: 'Human confirmed during chapter 2 acceptance: clean-mist filter component
+    is split into core filter part plus pressure sealing ring.'
+- id: pa_0ce5b383
+  status: approved
+  text: 'Approve early filter-consumption rule: low clean-filter efficiency and rear
+    leakage turn long停留 into a contamination countdown.'
+  source_chapters:
+  - 8
+  variants:
+  - 'Approve early filter-consumption rule: low clean-filter efficiency and rear leakage
+    turn long停留 into a contamination countdown.'
+  sources:
+  - state/change_log.jsonl:chapter_8
+  note: 'Human confirmed during chapter 8 acceptance: low clean-filter efficiency
+    and rear leakage turn long停留 into a contamination countdown.'
+- id: pa_22747aa7
+  status: approved
+  text: 'Approve early fog-dog behavior rule: fog dogs are attracted to blood smell
+    and clean-filter exhaust / rear venting.'
+  source_chapters:
+  - 5
+  variants:
+  - 'Approve early fog-dog behavior rule: fog dogs are attracted to blood smell and
+    clean-filter exhaust / rear venting.'
+  sources:
+  - state/change_log.jsonl:chapter_5
+  note: 'Human confirmed during chapter 5 acceptance: early fog-dog behavior rule
+    is blood smell plus clean-filter exhaust / rear venting attraction.'
+- id: pa_a09de7e7
+  status: approved
+  text: Approve early hint that a Qinghe threat may mimic or manipulate voices, without
+    fully defining that ecology yet.
+  source_chapters:
+  - 10
+  variants:
+  - Approve early hint that a Qinghe threat may mimic or manipulate voices, without
+    fully defining that ecology yet.
+  sources:
+  - state/change_log.jsonl:chapter_10
+  note: 'Human confirmed during chapter 10 acceptance: Qinghe may include a threat
+    that mimics or manipulates voices, but the ecology is not fully defined yet.'
+- id: pa_996b1a16
+  status: approved
+  text: Approve short-term filter stabilization as a limited system payoff, not a
+    full filter repair.
+  source_chapters:
+  - 9
+  variants:
+  - Approve short-term filter stabilization as a limited system payoff, not a full
+    filter repair.
+  sources:
+  - state/change_log.jsonl:chapter_9
+  note: 'Human confirmed during chapter 9 acceptance: short-term filter stabilization
+    is a limited system payoff, not a full filter repair.'
+- id: pa_e250367e
+  status: approved
+  text: Approve that Zhou Xiaohe remains a temporary observation patient, not a formal
+    onboard member or core teammate.
+  source_chapters:
+  - 9
+  variants:
+  - Approve that Zhou Xiaohe remains a temporary observation patient, not a formal
+    onboard member or core teammate.
+  sources:
+  - state/change_log.jsonl:chapter_9
+  note: 'Human confirmed during chapter 9 acceptance: Zhou Xiaohe remains a temporary
+    observation patient, not a formal onboard member or core teammate.'
+- id: pa_cd86ec90
+  status: approved
+  text: Approve that fog dogs are attracted by human noise, lights, and metal strikes
+    as an early visible ecology rule.
+  source_chapters:
+  - 9
+  variants:
+  - Approve that fog dogs are attracted by human noise, lights, and metal strikes
+    as an early visible ecology rule.
+  sources:
+  - state/change_log.jsonl:chapter_9
+  note: 'Human confirmed during chapter 9 acceptance: fog dogs are attracted by human
+    noise, lights, and metal strikes as an early visible ecology rule.'
+- id: pa_998d741e
+  status: approved
+  text: Approve that human noise / metal striking can attract fog dogs or fog-side
+    fast targets in this stage.
+  source_chapters:
+  - 8
+  variants:
+  - Approve that human noise / metal striking can attract fog dogs or fog-side fast
+    targets in this stage.
+  sources:
+  - state/change_log.jsonl:chapter_8
+  note: 'Human confirmed during chapter 8 acceptance: human noise and metal striking
+    can attract fog dogs or fog-side fast targets in this stage.'
+- id: pa_1ef90da2
+  status: approved
+  text: Approve that temporary observation / isolation does not equal formal boarding
+    qualification.
+  source_chapters:
+  - 6
+  variants:
+  - Approve that temporary observation / isolation does not equal formal boarding
+    qualification.
+  sources:
+  - state/change_log.jsonl:chapter_6
+  note: 'Human confirmed during chapter 6 acceptance: temporary observation / isolation
+    does not equal formal boarding qualification.'
+- id: pa_7d29f8e0
+  status: approved
+  text: 'Approve the early economy rule: material trade can buy goods or limited service,
+    but cannot buy RV boarding qualification.'
+  source_chapters:
+  - 7
+  variants:
+  - 'Approve the early economy rule: material trade can buy goods or limited service,
+    but cannot buy RV boarding qualification.'
+  sources:
+  - state/change_log.jsonl:chapter_7
+  note: 'Human confirmed during chapter 7 acceptance: material trade can buy goods
+    or limited service, but cannot buy RV boarding qualification.'
+- id: pa_e6050fd2
+  status: approved
+  text: 'Approve the external-rescue contact rule: verify first, keep retreat line,
+    no blind door opening, and medical value cannot override contamination boundaries.'
+  source_chapters:
+  - 10
+  variants:
+  - 'Approve the external-rescue contact rule: verify first, keep retreat line, no
+    blind door opening, and medical value cannot override contamination boundaries.'
+  sources:
+  - state/change_log.jsonl:chapter_10
+  note: 'Human confirmed during chapter 10 acceptance: external-rescue contact rule
+    is verify first, keep retreat line, no blind door opening, and medical value cannot
+    override contamination boundaries.'
+- id: pa_99e506aa
+  status: approved
+  text: Approve the limited resource gain from chapter 7 as usable but insufficient
+    for full repair, full filter recovery, or medical-module unlock.
+  source_chapters:
+  - 7
+  variants:
+  - Approve the limited resource gain from chapter 7 as usable but insufficient for
+    full repair, full filter recovery, or medical-module unlock.
+  sources:
+  - state/change_log.jsonl:chapter_7
+  note: 'Human confirmed during chapter 7 acceptance: the gained supplies are limited
+    and insufficient for full repair, full filter recovery, or medical-module unlock.'
+- id: pa_73cd15e4
+  status: approved
+  text: Approve the permission-error / welcome-back gate behavior as terminal abnormality
+    and old-protocol unease, not a father-route hard clue.
+  source_chapters:
+  - 11
+  variants:
+  - Approve the permission-error / welcome-back gate behavior as terminal abnormality
+    and old-protocol unease, not a father-route hard clue.
+  sources:
+  - state/change_log.jsonl:chapter_11
+  - state/current_state.json
+  note: 'Human confirmed during chapter 11 acceptance: permission-error / welcome-back
+    gate behavior is terminal abnormality and old-protocol unease, not a father-route
+    hard clue.'
+- id: pa_dbb8f8e0
+  status: approved
+  text: 'Approve the provisional onboard contamination triage rule: external injury,
+    mist inhalation observation, and suspected mutation are handled separately.'
+  source_chapters:
+  - 6
+  variants:
+  - 'Approve the provisional onboard contamination triage rule: external injury, mist
+    inhalation observation, and suspected mutation are handled separately.'
+  sources:
+  - state/change_log.jsonl:chapter_6
+  note: 'Human confirmed during chapter 6 acceptance: provisional onboard contamination
+    triage separates external injury, mist inhalation observation, and suspected mutation.'
+- id: pa_7f5d953c
+  status: approved
+  text: Approve the rescued girl's short Qinghe witness line as a hook, not a full
+    Qinghe reveal.
+  source_chapters:
+  - 4
+  variants:
+  - Approve the rescued girl's short Qinghe witness line as a hook, not a full Qinghe
+    reveal.
+  sources:
+  - state/change_log.jsonl:chapter_4
+  note: 'Human confirmed during chapter 4 acceptance: rescued girl''s short Qinghe
+    witness line remains as a hook, not a full Qinghe reveal.'
+- id: pa_3ea91eec
+  status: approved
+  text: Approve the temporary pressure sealing workaround as a chapter 3 execution
+    detail, not a permanent replacement for a standard sealing ring.
+  source_chapters:
+  - 3
+  variants:
+  - Approve the temporary pressure sealing workaround as a chapter 3 execution detail,
+    not a permanent replacement for a standard sealing ring.
+  sources:
+  - state/change_log.jsonl:chapter_3
+  note: 'Human confirmed during chapter 3 acceptance: temporary pressure sealing workaround
+    is approved as an execution detail, not a permanent standard sealing ring.'
+- id: pa_f240b00e
+  status: approved
+  text: Approve the 青河 medical-power broadcast only as the chapter 10 hook, not as
+    an acquired medical module or completed rescue.
+  source_chapters:
+  - 9
+  variants:
+  - Approve the 青河 medical-power broadcast only as the chapter 10 hook, not as an
+    acquired medical module or completed rescue.
+  sources:
+  - state/change_log.jsonl:chapter_9
+  note: 'Human confirmed during chapter 9 acceptance: the Qinghe medical-power broadcast
+    is only the chapter 10 hook, not an acquired medical module or completed rescue.'
+- id: pa_0f16214e
+  status: approved
+  text: Approve voice mimicry as an observed Qinghe threat behavior without fully
+    defining the ecology.
+  source_chapters:
+  - 11
+  variants:
+  - Approve voice mimicry as an observed Qinghe threat behavior without fully defining
+    the ecology.
+  sources:
+  - state/change_log.jsonl:chapter_11
+  - state/current_state.json
+  note: 'Human confirmed during chapter 11 acceptance: voice mimicry is an observed
+    Qinghe threat behavior without fully defining the ecology.'
+- id: pa_3f52bf63
+  status: approved
+  text: Whether the current functional-entry beat is enough to count as Lin Zhixia's
+    first real onboard role, or whether revision should make it more explicit.
+  source_chapters:
+  - 3
+  variants:
+  - Whether the current functional-entry beat is enough to count as Lin Zhixia's first
+    real onboard role, or whether revision should make it more explicit.
+  sources:
+  - state/change_log.jsonl:chapter_3
+  note: 'Human confirmed during chapter 3 acceptance: Lin Zhixia''s functional-entry
+    beat counts as her first real onboard role.'
+- id: pa_826536d6
+  status: approved
+  text: Whether to preserve the filter-part split as a chapter 3 hook.
+  source_chapters:
+  - 2
+  variants:
+  - Whether to preserve the filter-part split as a chapter 3 hook.
+  sources:
+  - state/change_log.jsonl:chapter_2
+  note: Human confirmed the split-filter hook should carry into chapter 3 planning.

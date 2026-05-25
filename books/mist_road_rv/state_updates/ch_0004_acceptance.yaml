@@ -1,0 +1,454 @@
+chapter: 4
+title: 被拒绝的人
+source_draft: drafts/ch_0004_final_candidate.md
+accepted_chapter_path: chapters/ch_0004.md
+summary: 房车离开第一服务区后，被拒幸存者开着冒烟面包车追上来，用孩子、输液袋和伤员逼陆沉舟停车。陆沉舟识破对方借救援抢车的意图，只接收一名服从指令且通过林知夏初筛的受伤女孩进入临时观察，拒绝整车风险转嫁；面包车撞上护栏后，第一只雾犬咬住房车后保险杠。
+current_state:
+  current_chapter: 4
+  current_arc: arc_001
+  latest_location: 高速迷雾路段，距青河服务区约 15 公里，雾犬咬住房车后保险杠
+  active_characters:
+  - lu_chenzhou
+  - lin_zhixia
+  active_conflicts:
+  - 雾犬已经咬住房车后保险杠，车体密封完整度降至 74%，持续拖拽会影响临时滤芯固定。
+  - 房车净雾滤芯仍为临时加压固定，滤芯效率和车体密封都在追车与颠簸中承压。
+  - 一名受伤女孩进入临时观察位，需要止血和后续处理，但她不是核心队友或正式上车名额。
+  - 青河服务区仍有简易医疗位模块钩子和真实广播线索，但内部情况尚未揭开。
+  pending_approvals:
+  - Approve chapter 4 limited rescue case - one compliant injured girl is accepted
+    into temporary observation while the rest of the minivan group is refused RV entry.
+  - Approve chapter 4 light trigger for Lu Chenzhou's old mall-fire rescue accident
+    without treating it as a full reveal.
+  - Approve the rescued girl's short Qinghe witness line as a hook, not a full Qinghe
+    reveal.
+state_changes:
+- Lu Chenzhou and Lin Zhixia continue toward Qinghe Service Area after leaving the
+  first service area.
+- A smoking minivan of rejected survivors pursues the RV and uses a child, an IV bag,
+  and injured people to force a stop.
+- Lu Chenzhou identifies the minivan's posture as a forced-stop / vehicle-seizure
+  attempt rather than compliant rescue.
+- Lin Zhixia performs roadside medical and pollution triage, identifying a gray-faced
+  adult as unsafe for RV entry and a wounded teenage girl as controllable for temporary
+  observation.
+- Lu Chenzhou separates rescue from boarding: the child receives limited exterior
+    aid, the unsafe gray-faced adult is refused entry, and one compliant injured girl
+    is accepted into temporary observation.
+- The rescued girl says Qinghe has power and that the broadcast is real, but the warning
+  is interrupted before revealing Qinghe's interior situation.
+- Lu Chenzhou's old rescue accident is lightly triggered by the image of weak people
+  being pushed forward to force a rescuer's decision; no full truth is revealed.
+- The rejected survivors attempt to seize or stop the RV with a rope, forced door
+  pressure, and minivan impact; Lu Chenzhou uses a narrow roadside obstruction and
+  vehicle positioning to escape.
+- The minivan crashes into the guardrail, and a fast gray-white fog dog emerges as
+  the first visible road-speed monster escalation.
+- A fog dog bites the RV rear bumper, dropping vehicle integrity to 74% and threatening
+  the temporary clean-mist filter fixing.
+open_threads_touched:
+- thread_vehicle_rules_contract
+- thread_lin_pollution_observation
+- thread_mist_monster_ecology
+- thread_lu_old_rescue_accident
+- thread_rv_system_binding
+timeline_event:
+  id: t004
+  when: 第 4 章
+  summary: 房车离开第一服务区后，被拒幸存者追车逼停，陆沉舟执行有限救援，只接收一名通过林知夏初筛且服从指令的受伤女孩进入临时观察，拒绝整车风险转嫁；随后面包车撞上护栏，第一只雾犬咬住房车后保险杠。
+v3_state_updates:
+  timeline:
+    occurred_events:
+    - id: ev_0004_01
+      summary: 被拒幸存者驾驶冒烟面包车追上房车，用孩子、输液袋和伤员逼陆沉舟停车；陆沉舟识破抢车意图，只执行有限救援。
+      location: 第一服务区至青河服务区之间的低浓度迷雾高速路段
+      involved_characters:
+      - lu_chenzhou
+      - lin_zhixia
+      source_chapter: 4
+    - id: ev_0004_02
+      summary: 林知夏完成道路条件下的伤情与污染初筛，一名受伤女孩进入临时观察位，灰脸疑似污染成人被拒绝进入房车。
+      location: 高速路肩临时停车点
+      involved_characters:
+      - lu_chenzhou
+      - lin_zhixia
+      - temporary_injured_girl
+      source_chapter: 4
+    - id: ev_0004_03
+      summary: 面包车反扑失败后撞上护栏，第一只雾犬从雾中出现并咬住房车后保险杠。
+      location: 距青河服务区约 15 公里的迷雾路段
+      involved_characters:
+      - lu_chenzhou
+      - lin_zhixia
+      source_chapter: 4
+  character_states:
+  - character_id: lu_chenzhou
+    display_name: 陆沉舟
+    physical_state: 正驾驶房车摆脱雾犬追咬，车辆后部受力异常。
+    social_state: 继续作为房车司机和规则执行者，把救助、上车和临时观察分开处理。
+    emotional_state: 被旧商场火灾救援事故轻触发，但用现场判断压住情绪，没有被道德绑架拖回旧模式。
+    current_goal: 脱离雾犬追咬，保护房车后部密封和临时滤芯固定，继续驶向青河服务区。
+    known_secrets: []
+    public_knowledge:
+    - 被拒幸存者可能会把道德压力升级为追车、抢门和抢车。
+    relationship_changes:
+    - 与林知夏进一步形成“司机控制风险、医疗判断准入”的分工。
+    voice_notes:
+    - 短指令、低解释，以距离、停车点和门锁控制局面。
+  - character_id: lin_zhixia
+    display_name: 林知夏
+    physical_state: 正在车内给受伤女孩做临时止血，处于雾犬追咬压力下。
+    social_state: 车内医疗与污染初筛执行者，能把可救助、可观察、不可入车三类对象分开。
+    emotional_state: 明白有限救援的残酷，但接受当前规则能保护更多人活下去。
+    current_goal: 稳定受伤女孩，继续观察污染风险，并准备青河服务区医疗位线索。
+    known_secrets:
+    - 受伤女孩声称青河有电且广播是真的。
+    public_knowledge:
+    - 林知夏能通过肤色、眼白、呼吸、伤口和服从性进行临时污染/伤情初筛。
+    relationship_changes:
+    - 与陆沉舟的规则配合更明确：她给医学判断，他决定车辆和准入风险。
+    voice_notes:
+    - 用医学判断压住情绪争论，用边界语言执行观察位。
+  - character_id: temporary_injured_girl
+    display_name: 受伤女孩
+    physical_state: 手臂有较深伤口，已由林知夏临时压迫止血。
+    social_state: 临时观察位伤员 / 青河线索见证者，不是核心队友，不是正式上车名额。
+    emotional_state: 极度惊恐，但能听从指令并主动与面包车抢车者拉开距离。
+    current_goal: 在车内保持服从，等待后续医疗处理。
+    known_secrets:
+    - 青河服务区有电，广播是真的，但完整警告尚未说出。
+    public_knowledge:
+    - 她通过林知夏初筛，暂未出现明显污染灰斑。
+    relationship_changes: []
+    voice_notes:
+    - 以短促求生话语证明服从性，不承担核心队友功能。
+  resource_changes:
+  - owner: rv
+    item: rv_integrity
+    delta: -3
+    unit: percent
+    category: item
+    reason: 面包车顶撞和雾犬咬住房车后保险杠，车体密封完整度从 77% 降至 74%。
+    source_chapter: 4
+  - owner: rv
+    item: clean_filter
+    delta: 0
+    unit: module
+    category: item
+    reason: 净雾滤芯仍在工作，但临时加压固定受追车、颠簸和雾犬拖拽威胁；滤芯效率开章显示 27%。
+    source_chapter: 4
+  - owner: rv
+    item: medicine_pack
+    delta: 0
+    unit: pack
+    category: item
+    reason: 林知夏使用急救耗材处理受伤女孩手臂伤口；具体余量未量化。
+    source_chapter: 4
+  - owner: rv
+    item: fuel_liter
+    delta: 0
+    unit: liter
+    category: item
+    reason: 房车在追车、急停、摆脱面包车和雾犬追咬中消耗燃油；具体余量未量化。
+    source_chapter: 4
+  open_thread_updates:
+  - id: thread_vehicle_rules_contract
+    promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+    source_chapter: 0
+    status: advanced
+    last_touched: 4
+    latest_note: 第一次拒绝案例兑现：陆沉舟只接收服从指令且通过林知夏初筛的受伤女孩进入临时观察，拒绝整车幸存者把风险转嫁进房车。
+    next_obligation: 后续继续检验临时观察位、正式上车名额和车内资源边界的区别。
+  - id: thread_lin_pollution_observation
+    promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+    source_chapter: 0
+    status: advanced
+    last_touched: 4
+    latest_note: 林知夏用输液袋状态、肤色、眼白、灰斑、呼吸和服从性完成道路初筛，拒绝疑似污染成人进入生活区。
+    next_obligation: 在青河服务区或简易医疗位线继续把污染分级和隔离处理落地。
+  - id: thread_mist_monster_ecology
+    promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+    source_chapter: 0
+    status: advanced
+    last_touched: 4
+    latest_note: 雾犬从广播杂音变为实体道路威胁，会高速贴地追车并咬住房车后部，明显不同于慢速雾尸。
+    next_obligation: 第5章需要兑现雾犬追车、弱点、吸引源或材料价值中的至少一项。
+  - id: thread_lu_old_rescue_accident
+    promise: 陆沉舟旧救援事故背后的真实责任。
+    source_chapter: 0
+    status: advanced
+    last_touched: 4
+    latest_note: 被拒者把孩子和伤员推到前面逼停房车，轻触发陆沉舟旧商场火灾救援记忆；本章只确认他曾被相似道德压力和撤离命令撕扯，不揭示完整真相。
+    next_obligation: 后续在更高压力救援场景中逐步揭示旧事故责任，而不是一次性说明。
+  - id: thread_rv_system_binding
+    promise: 房车系统为什么绑定陆沉舟和父亲留下的旧房车。
+    source_chapter: 0
+    status: advanced
+    last_touched: 4
+    latest_note: 系统继续以距离、模块和车体损伤提示参与行驶决策，但没有替陆沉舟做道德选择。
+    next_obligation: 继续保持系统提供路线/任务/警告，主角承担选择后果。
+  payoff_updates:
+  - chapter: 4
+    promises_made:
+    - 受伤女孩知道青河服务区有电且广播是真的，但完整警告尚未说出。
+    - 雾犬已经咬住房车后部，第5章必须处理追车和车辆损伤。
+    payoffs_delivered:
+    - 上车规则第一次出现明确拒绝案例：救助不等于整车上车。
+    - 林知夏的道路初筛功能落地。
+    - 雾犬作为道路速度型怪物实体登场。
+    frustration_level: controlled
+    payoff_types:
+    - rule_payoff
+    - teammate_function_payoff
+    - monster_escalation
+    delayed_payoffs:
+    - 青河服务区内部情况
+    - 受伤女孩完整警告
+    - 雾犬弱点与材料价值
+    risks:
+    - 临时观察伤员可能消耗医疗资源或带来污染观察压力。
+    - 雾犬持续拖拽可能进一步破坏密封和滤芯固定。
+  conflict_updates:
+    active:
+    - 雾犬咬住房车后保险杠，房车必须立刻脱离追咬。
+    - 受伤女孩需要医疗处理，青河简易医疗位变得更急。
+    - 房车后部密封完整度下降到 74%，临时滤芯固定仍不可靠。
+  next_hook:
+    hook: 第一只雾犬咬住房车后保险杠，车体后部受力异常，系统提示必须尽快脱离追咬。
+    obligation: 第5章处理雾犬追车、车体后部损伤、滤芯固定风险和受伤女孩带来的青河线索。
+    target_chapter: 5
+    status: open
+  pending_approvals:
+  - Approve chapter 4 limited rescue case - one compliant injured girl is accepted
+    into temporary observation while the rest of the minivan group is refused RV entry.
+  - Approve chapter 4 light trigger for Lu Chenzhou's old mall-fire rescue accident
+    without treating it as a full reveal.
+  - Approve the rescued girl's short Qinghe witness line as a hook, not a full Qinghe
+    reveal.
+open_thread_updates:
+- id: thread_vehicle_rules_contract
+  promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+  source_chapter: 0
+  status: advanced
+  last_touched: 4
+  latest_note: 第一次拒绝案例兑现：陆沉舟只接收服从指令且通过林知夏初筛的受伤女孩进入临时观察，拒绝整车幸存者把风险转嫁进房车。
+  next_obligation: 后续继续检验临时观察位、正式上车名额和车内资源边界的区别。
+- id: thread_lin_pollution_observation
+  promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+  source_chapter: 0
+  status: advanced
+  last_touched: 4
+  latest_note: 林知夏用输液袋状态、肤色、眼白、灰斑、呼吸和服从性完成道路初筛，拒绝疑似污染成人进入生活区。
+  next_obligation: 在青河服务区或简易医疗位线继续把污染分级和隔离处理落地。
+- id: thread_mist_monster_ecology
+  promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+  source_chapter: 0
+  status: advanced
+  last_touched: 4
+  latest_note: 雾犬从广播杂音变为实体道路威胁，会高速贴地追车并咬住房车后部，明显不同于慢速雾尸。
+  next_obligation: 第5章需要兑现雾犬追车、弱点、吸引源或材料价值中的至少一项。
+- id: thread_lu_old_rescue_accident
+  promise: 陆沉舟旧救援事故背后的真实责任。
+  source_chapter: 0
+  status: advanced
+  last_touched: 4
+  latest_note: 被拒者把孩子和伤员推到前面逼停房车，轻触发陆沉舟旧商场火灾救援记忆；本章只确认他曾被相似道德压力和撤离命令撕扯，不揭示完整真相。
+  next_obligation: 后续在更高压力救援场景中逐步揭示旧事故责任，而不是一次性说明。
+- id: thread_rv_system_binding
+  promise: 房车系统为什么绑定陆沉舟和父亲留下的旧房车。
+  source_chapter: 0
+  status: advanced
+  last_touched: 4
+  latest_note: 系统继续以距离、模块和车体损伤提示参与行驶决策，但没有替陆沉舟做道德选择。
+  next_obligation: 继续保持系统提供路线/任务/警告，主角承担选择后果。
+change_log:
+  summary: Accepted revised chapter 4 as chapters/ch_0004.md.
+  canon_updates:
+  - timeline:t004
+  - thread_vehicle_rules_contract
+  - thread_lin_pollution_observation
+  - thread_mist_monster_ecology
+  - thread_lu_old_rescue_accident
+  pending_approvals:
+  - Approve chapter 4 limited rescue case - one compliant injured girl is accepted
+    into temporary observation while the rest of the minivan group is refused RV entry.
+  - Approve chapter 4 light trigger for Lu Chenzhou's old mall-fire rescue accident
+    without treating it as a full reveal.
+  - Approve the rescued girl's short Qinghe witness line as a hook, not a full Qinghe
+    reveal.
+acceptance_contract:
+  quality_gate_summary:
+    continuity_review_present: true
+    continuity_blockers: []
+    pacing_review_present: true
+    pacing_score: 89
+    revised_pacing_score: null
+    revision_required: false
+    waiver_required: false
+  publication_readiness:
+    final_candidate_path: drafts/ch_0004_final_candidate.md
+    author_direction_present: true
+    author_direction_approved: true
+    prose_quality_review_present: true
+    prose_quality_score: 90
+    prose_rewrite_required: false
+    blocking_issues: []
+  outline_alignment:
+    reference_chain: master -> volume -> arc -> unit -> chapter brief
+    volume_id: volume_001
+    arc_id: arc_001
+    unit_id: unit_0001
+    required_unit_obligations:
+    - 上车规则出现第一次拒绝案例。
+    - 推进 thread_lu_old_rescue_accident 的情绪触发。
+    claimed_fulfilled_unit_obligations:
+    - 上车规则出现第一次拒绝案例。
+    - 推进 thread_lu_old_rescue_accident 的情绪触发。
+    pending_unit_obligations: []
+  state_updates:
+    timeline_event:
+      id: t004
+      when: 第 4 章
+      summary: 房车离开第一服务区后，被拒幸存者追车逼停，陆沉舟执行有限救援，只接收一名通过林知夏初筛且服从指令的受伤女孩进入临时观察，拒绝整车风险转嫁；随后面包车撞上护栏，第一只雾犬咬住房车后保险杠。
+    character_state_changes:
+    - character_id: lu_chenzhou
+      display_name: 陆沉舟
+      physical_state: 正驾驶房车摆脱雾犬追咬，车辆后部受力异常。
+      social_state: 继续作为房车司机和规则执行者，把救助、上车和临时观察分开处理。
+      emotional_state: 被旧商场火灾救援事故轻触发，但用现场判断压住情绪，没有被道德绑架拖回旧模式。
+      current_goal: 脱离雾犬追咬，保护房车后部密封和临时滤芯固定，继续驶向青河服务区。
+      known_secrets: []
+      public_knowledge:
+      - 被拒幸存者可能会把道德压力升级为追车、抢门和抢车。
+      relationship_changes:
+      - 与林知夏进一步形成“司机控制风险、医疗判断准入”的分工。
+      voice_notes:
+      - 短指令、低解释，以距离、停车点和门锁控制局面。
+    - character_id: lin_zhixia
+      display_name: 林知夏
+      physical_state: 正在车内给受伤女孩做临时止血，处于雾犬追咬压力下。
+      social_state: 车内医疗与污染初筛执行者，能把可救助、可观察、不可入车三类对象分开。
+      emotional_state: 明白有限救援的残酷，但接受当前规则能保护更多人活下去。
+      current_goal: 稳定受伤女孩，继续观察污染风险，并准备青河服务区医疗位线索。
+      known_secrets:
+      - 受伤女孩声称青河有电且广播是真的。
+      public_knowledge:
+      - 林知夏能通过肤色、眼白、呼吸、伤口和服从性进行临时污染/伤情初筛。
+      relationship_changes:
+      - 与陆沉舟的规则配合更明确：她给医学判断，他决定车辆和准入风险。
+      voice_notes:
+      - 用医学判断压住情绪争论，用边界语言执行观察位。
+    - character_id: temporary_injured_girl
+      display_name: 受伤女孩
+      physical_state: 手臂有较深伤口，已由林知夏临时压迫止血。
+      social_state: 临时观察位伤员 / 青河线索见证者，不是核心队友，不是正式上车名额。
+      emotional_state: 极度惊恐，但能听从指令并主动与面包车抢车者拉开距离。
+      current_goal: 在车内保持服从，等待后续医疗处理。
+      known_secrets:
+      - 青河服务区有电，广播是真的，但完整警告尚未说出。
+      public_knowledge:
+      - 她通过林知夏初筛，暂未出现明显污染灰斑。
+      relationship_changes: []
+      voice_notes:
+      - 以短促求生话语证明服从性，不承担核心队友功能。
+    resource_changes:
+    - owner: rv
+      item: rv_integrity
+      delta: -3
+      unit: percent
+      category: item
+      reason: 面包车顶撞和雾犬咬住房车后保险杠，车体密封完整度从 77% 降至 74%。
+      source_chapter: 4
+    - owner: rv
+      item: clean_filter
+      delta: 0
+      unit: module
+      category: item
+      reason: 净雾滤芯仍在工作，但临时加压固定受追车、颠簸和雾犬拖拽威胁；滤芯效率开章显示 27%。
+      source_chapter: 4
+    - owner: rv
+      item: medicine_pack
+      delta: 0
+      unit: pack
+      category: item
+      reason: 林知夏使用急救耗材处理受伤女孩手臂伤口；具体余量未量化。
+      source_chapter: 4
+    - owner: rv
+      item: fuel_liter
+      delta: 0
+      unit: liter
+      category: item
+      reason: 房车在追车、急停、摆脱面包车和雾犬追咬中消耗燃油；具体余量未量化。
+      source_chapter: 4
+    open_thread_updates:
+    - id: thread_vehicle_rules_contract
+      promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+      source_chapter: 0
+      status: advanced
+      last_touched: 4
+      latest_note: 第一次拒绝案例兑现：陆沉舟只接收服从指令且通过林知夏初筛的受伤女孩进入临时观察，拒绝整车幸存者把风险转嫁进房车。
+      next_obligation: 后续继续检验临时观察位、正式上车名额和车内资源边界的区别。
+    - id: thread_lin_pollution_observation
+      promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+      source_chapter: 0
+      status: advanced
+      last_touched: 4
+      latest_note: 林知夏用输液袋状态、肤色、眼白、灰斑、呼吸和服从性完成道路初筛，拒绝疑似污染成人进入生活区。
+      next_obligation: 在青河服务区或简易医疗位线继续把污染分级和隔离处理落地。
+    - id: thread_mist_monster_ecology
+      promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+      source_chapter: 0
+      status: advanced
+      last_touched: 4
+      latest_note: 雾犬从广播杂音变为实体道路威胁，会高速贴地追车并咬住房车后部，明显不同于慢速雾尸。
+      next_obligation: 第5章需要兑现雾犬追车、弱点、吸引源或材料价值中的至少一项。
+    - id: thread_lu_old_rescue_accident
+      promise: 陆沉舟旧救援事故背后的真实责任。
+      source_chapter: 0
+      status: advanced
+      last_touched: 4
+      latest_note: 被拒者把孩子和伤员推到前面逼停房车，轻触发陆沉舟旧商场火灾救援记忆；本章只确认他曾被相似道德压力和撤离命令撕扯，不揭示完整真相。
+      next_obligation: 后续在更高压力救援场景中逐步揭示旧事故责任，而不是一次性说明。
+    - id: thread_rv_system_binding
+      promise: 房车系统为什么绑定陆沉舟和父亲留下的旧房车。
+      source_chapter: 0
+      status: advanced
+      last_touched: 4
+      latest_note: 系统继续以距离、模块和车体损伤提示参与行驶决策，但没有替陆沉舟做道德选择。
+      next_obligation: 继续保持系统提供路线/任务/警告，主角承担选择后果。
+    payoff_updates:
+    - chapter: 4
+      promises_made:
+      - 受伤女孩知道青河服务区有电且广播是真的，但完整警告尚未说出。
+      - 雾犬已经咬住房车后部，第5章必须处理追车和车辆损伤。
+      payoffs_delivered:
+      - 上车规则第一次出现明确拒绝案例：救助不等于整车上车。
+      - 林知夏的道路初筛功能落地。
+      - 雾犬作为道路速度型怪物实体登场。
+      frustration_level: controlled
+      payoff_types:
+      - rule_payoff
+      - teammate_function_payoff
+      - monster_escalation
+      delayed_payoffs:
+      - 青河服务区内部情况
+      - 受伤女孩完整警告
+      - 雾犬弱点与材料价值
+      risks:
+      - 临时观察伤员可能消耗医疗资源或带来污染观察压力。
+      - 雾犬持续拖拽可能进一步破坏密封和滤芯固定。
+    next_hook:
+      hook: 第一只雾犬咬住房车后保险杠，车体后部受力异常，系统提示必须尽快脱离追咬。
+      obligation: 第5章处理雾犬追车、车体后部损伤、滤芯固定风险和受伤女孩带来的青河线索。
+      target_chapter: 5
+      status: open
+    pending_approvals:
+    - Approve chapter 4 limited rescue case - one compliant injured girl is accepted
+      into temporary observation while the rest of the minivan group is refused RV
+      entry.
+    - Approve chapter 4 light trigger for Lu Chenzhou's old mall-fire rescue accident
+      without treating it as a full reveal.
+    - Approve the rescued girl's short Qinghe witness line as a hook, not a full Qinghe
+      reveal.
+    economy_changes: []
+    faction_changes: []

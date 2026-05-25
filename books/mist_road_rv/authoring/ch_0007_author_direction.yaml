@@ -1,0 +1,25 @@
+chapter: 7
+author_intent:
+- Preserve the chapter as a hard bargaining scene at the Qinghe outer warehouse, where goods create pressure but do not buy RV boarding rights.
+- Keep Lu Chenzhou's coolness visible through inspection, pricing, and boundary-setting, not speeches.
+- Let Lin Zhixia earn value through medical triage and contamination judgment, especially the suspected-mutation call on Old Zheng's brother.
+- Make the resource payoff useful but visibly insufficient: temporary sealing and treatment materials, not full repair, filter restoration, or module unlock.
+- End with Old Zheng's broadcast turning a completed trade into immediate road pressure.
+must_change:
+- Do not expand Qinghe into a full faction map or reveal the main building interior in this chapter.
+- Do not let Old Zheng, his men, or his suspected-mutated brother board the RV.
+- Do not make the gained materials clean, abundant, or decisive enough to remove the chapter 8 pressure.
+- Keep the opening scene-first and avoid explaining Qinghe before the trade pressure appears.
+approved_lines:
+- "交易是交易，上车是上车。"
+- "你卖的是胶，不是车门。"
+- "这辆车里，我说了算。"
+- "把车开出他们定的价。"
+rejected_patterns:
+- Avoid generic inner monologue explanations.
+- Avoid interchangeable dialogue.
+- Avoid vague cliffhangers without a concrete next pressure.
+ai_assistance:
+  expected: true
+  human_role: direction, taste, key edits, final approval
+approved_for_final_candidate: true

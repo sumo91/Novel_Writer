@@ -1,0 +1,16 @@
+updates:
+  - id: pa_35f5e1e8
+    status: approved
+    note: "Human confirmed during chapter 10 acceptance: chapter 10 closes unit_0001 / the first station."
+  - id: pa_78a02764
+    status: approved
+    note: "Human confirmed during chapter 10 acceptance: Lin Zhixia moves from temporary co-survivor to committed RV medical-role crew member."
+  - id: pa_e6050fd2
+    status: approved
+    note: "Human confirmed during chapter 10 acceptance: external-rescue contact rule is verify first, keep retreat line, no blind door opening, and medical value cannot override contamination boundaries."
+  - id: pa_fac4411d
+    status: approved
+    note: "Human confirmed during chapter 10 acceptance: Qinghe medical point / Simple Medical Bay material signal is a chapter 11 hook only, not an unlocked module."
+  - id: pa_a09de7e7
+    status: approved
+    note: "Human confirmed during chapter 10 acceptance: Qinghe may include a threat that mimics or manipulates voices, but the ecology is not fully defined yet."

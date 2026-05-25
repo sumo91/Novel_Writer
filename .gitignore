@@ -12,4 +12,6 @@ build/
 *.egg-info/
 books/*/exports/
 books/*/tmp/
+books/*/secrets/
 .obsidian/
+.superpowers/

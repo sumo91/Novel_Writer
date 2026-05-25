@@ -1,6 +1,11 @@
 from pathlib import Path
 from typing import Any
 
+from engine.craft_contract import (
+    craft_alignment_section,
+    has_craft_contract,
+    render_book_craft_contract,
+)
 from engine.craft_knowledge import load_craft_cards, render_craft_cards
 from engine.io_utils import read_json, read_text, read_yaml
 from engine.outline_gate import chapter_brief_gate
@@ -31,6 +36,11 @@ REQUIRED_BRIEF_SECTIONS = [
 
 def build_chapter_brief_scaffold(book_id: str, chapter_number: int) -> str:
     root = _book_root(book_id)
+    gate = chapter_brief_gate(book_id, chapter_number)
+    if not gate["allowed"]:
+        raise ValueError(
+            "Chapter brief gate is blocked: " + "; ".join(gate["blocking_errors"])
+        )
     active = active_outline_data(root, chapter_number)
     active_unit_chapter = unit_chapter(active["unit"], chapter_number)
     open_threads = _open_threads(root, active["arc"].get("required_threads", []))
@@ -122,6 +132,8 @@ def build_chapter_brief_scaffold(book_id: str, chapter_number: int) -> str:
     lines.extend(f"- Economy: {item}" for item in _ids_from_list(economy, "currencies"))
     lines.extend(f"- Faction: {item}" for item in _ids_from_list(factions, "factions"))
     lines.extend([""])
+    lines.extend(render_book_craft_contract(book_id, "brief"))
+    lines.extend(craft_alignment_section(book_id, "brief"))
     lines.extend(render_craft_cards(load_craft_cards("brief")))
     lines.extend(
         [
@@ -160,6 +172,8 @@ def check_chapter_brief(book_id: str, chapter_number: int) -> dict[str, Any]:
     ]
     if BRIEF_REFERENCE_CHAIN not in content:
         errors.append(f"Missing reference chain: {BRIEF_REFERENCE_CHAIN}")
+    if has_craft_contract(book_id) and "## Craft Alignment" not in content:
+        errors.append("Missing required section: ## Craft Alignment")
 
     gate = chapter_brief_gate(book_id, chapter_number)
     errors.extend(gate["blocking_errors"])

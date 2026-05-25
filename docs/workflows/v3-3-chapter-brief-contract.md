@@ -57,7 +57,7 @@ setting, system, economy, faction, or backstory explanation.
 ## Recommended Flow
 
 1. Run `outline-status`.
-2. Run `chapter-brief-gate`.
+2. Run `chapter-brief-gate`. The active unit must already map every chapter in its `chapter_range` with `function`, `opening_hook`, `main_payoff`, and `next_hook`.
 3. Run `chapter-brief-scaffold`.
 4. Edit the scaffold into a human-approved chapter brief.
 5. Run `chapter-brief-check`.

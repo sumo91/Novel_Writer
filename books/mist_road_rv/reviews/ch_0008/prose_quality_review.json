@@ -1,0 +1,65 @@
+{
+  "score": 92,
+  "dimension_scores": {
+    "opening_hook": 10,
+    "conflict_pressure": 10,
+    "protagonist_agency": 9,
+    "payoff_execution": 14,
+    "dialogue_tension": 9,
+    "scene_specificity": 10,
+    "voice_distinction": 9,
+    "rhythm_variation": 9,
+    "ending_pull": 10,
+    "style_slop_control": 5
+  },
+  "style_alignment": {
+    "passed": true,
+    "score": 93,
+    "style_bible_used": true,
+    "calibration_used": true,
+    "matched_patterns": [
+      "Pressure-led opening: the chapter starts with Old Zheng's broken broadcast, lights shutting down, fog backflow, system warnings, and approaching vehicle lights before any recap or explanation.",
+      "Concrete road and vehicle texture: roll-up door lights, broken speaker, fog crawling over drag marks, rear bumper tear, sealant, clamps, curtain strip, filter-edge material, tool box, line tug, and roadblock details carry the pressure.",
+      "Rules emerge through action: the filter-consumption and temporary-repair rules appear only when the RV must decide whether to stay, fix, or leave.",
+      "Protagonist agency is operational: Lu Chenzhou splits materials, sets a three-minute window, repairs only to movement threshold, refuses negotiation, and chooses a controlled exit route.",
+      "Lin Zhixia's value remains functional: she separates contaminated packaging, reports supplies, stabilizes Zhou Xiaohe, and maintains the observation boundary during movement.",
+      "Payoff carries cost: the RV gains a temporary escape window, but not full repair, not full filter recovery, and not safety; the chapter hands off to car-seizure night."
+    ],
+    "rejected_patterns_hit": [],
+    "violations": []
+  },
+  "exposition_density": {
+    "passed": true,
+    "score": 92,
+    "frontloaded_explanations": [],
+    "delayed_explanations": [
+      "Qinghe main building interior",
+      "Complete Qinghe faction order",
+      "Service-area terminal origin",
+      "Full clean-filter mechanics",
+      "Old Zheng's full background",
+      "Father's last rescue mystery"
+    ],
+    "scene_triggers": [
+      "Filter-consumption pressure is triggered by system warning and visible fog backflow.",
+      "Temporary repair limitation is triggered by the damaged rear bumper, sealant condition, and system warning that the repair cannot replace standard parts.",
+      "Contamination handling is triggered by the physical packaging and Lin Zhixia's need to protect the living space.",
+      "Fog-dog attraction is triggered by survivors' metal strikes, engine noise, and the return of low growls from the parking area."
+    ]
+  },
+  "strengths": [
+    "The chapter has a strong scene-first engine: every rule is attached to a visible pressure or immediate action.",
+    "The修车 section reads like a survival window rather than a free upgrade, which protects long-form resource tension.",
+    "Dialogue is tactical and role-specific: Lu Chenzhou speaks in thresholds and commands, Lin Zhixia in medical constraints, outsiders in leverage and panic.",
+    "The ending clearly launches chapter 9 without resolving it, especially after the revision adds that this is only the first door of the night.",
+    "The style matches the book's brisk commercial survival mode: short action turns, concrete objects, and costs attached to payoff."
+  ],
+  "blocking_issues": [],
+  "rewrite_required": false,
+  "revision_suggestions": [
+    "Final candidate can use the revised draft nearly as-is.",
+    "Keep the approved author-direction lines: '不修完，修到能走。', '拖到雾替他们开价。', '能走，不代表能停。', '够离开，不够停。', and '只是夜里第一道门。'",
+    "Acceptance packet should record temporary repair and filter reinforcement as limited windows, not durable upgrades.",
+    "Acceptance packet should record chapter 9 as the full car-seizure night conflict."
+  ]
+}

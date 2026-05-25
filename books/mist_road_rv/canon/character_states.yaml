@@ -1,0 +1,476 @@
+characters:
+  lu_chenzhou:
+    display_name: 陆沉舟
+    physical_state: 坐在驾驶位保持发动机运行和撤离角度，通过灯光、外放、车门锁和短距离倒车控制接触风险。
+    social_state: 将第10章建立的外部求救接触规则落地为可执行流程，不让医疗资源、幸存者敲墙或孩子哭声绕过车门规则。
+    emotional_state: 对欢迎回来和墙内敲击保持警觉，但不把旧协议异常解释成父亲线索；面对可能活人也不急于开门。
+    current_goal: 在不下车、不进楼、不失去撤离线的前提下，确认青河医疗点哪些线索可信，并为下一步分诊接触制定顺序。
+    known_secrets: &id001 []
+    public_knowledge: &id002
+    - 外部声音会学习名字、复读指令，并可能模仿熟人声音。
+    - 二号配电箱位于青河医疗点后墙，附近存在折叠医疗架、隔离膜和电源接口线索。
+    relationship_changes: &id003
+    - 更明确地把林知夏当作医疗判断和污染边界的共同决策者，而不是只执行驾驶位规则的旁观者。
+    voice_notes: &id004
+    - 短、硬、先验证；用错误问题、撤离线和门锁把救援冲动拆成可检验步骤。
+    last_updated_chapter: 11
+    history:
+    - display_name: 陆沉舟
+      physical_state: 手背烫伤、指节有血，正在驾驶房车穿过低浓度迷雾。
+      social_state: 车内规则执行者和司机，已让林知夏按契约上车。
+      emotional_state: 冷静压住旧救援本能，坚持救助和上车资格分离。
+      current_goal: 稳定净雾滤芯临时状态，驶向 17 公里外的青河服务区。
+      known_secrets: []
+      public_knowledge:
+      - 房车系统会给出滤芯、穿雾窗口和下一路标提示。
+      relationship_changes:
+      - 与林知夏形成车内医疗/污染观察与驾驶撤离的初步分工。
+      voice_notes:
+      - 以短指令拆分救助、上车、隔离和撤离。
+      last_updated_chapter: 3
+      chapter: 3
+    - display_name: 陆沉舟
+      physical_state: 正驾驶房车摆脱雾犬追咬，车辆后部受力异常。
+      social_state: 继续作为房车司机和规则执行者，把救助、上车和临时观察分开处理。
+      emotional_state: 被旧商场火灾救援事故轻触发，但用现场判断压住情绪，没有被道德绑架拖回旧模式。
+      current_goal: 脱离雾犬追咬，保护房车后部密封和临时滤芯固定，继续驶向青河服务区。
+      known_secrets: []
+      public_knowledge:
+      - 被拒幸存者可能会把道德压力升级为追车、抢门和抢车。
+      relationship_changes:
+      - 与林知夏进一步形成“司机控制风险、医疗判断准入”的分工。
+      voice_notes:
+      - 短指令、低解释，以距离、停车点和门锁控制局面。
+      last_updated_chapter: 4
+      chapter: 4
+    - display_name: 陆沉舟
+      physical_state: 驾驶房车甩脱第一只雾犬，车辆后保险杠断裂，车尾密封不足。
+      social_state: 继续作为房车司机和规则执行者，在修车优先与伤员医疗之间做路线取舍。
+      emotional_state: 压住旧救援本能和伤员压力，选择先保证房车能继续跑。
+      current_goal: 尽快抵达青河服务区外仓接近口，寻找密封胶、备用卡箍和隔离帘材料。
+      known_secrets: []
+      public_knowledge:
+      - 雾犬会被血腥味和净雾滤芯车尾排气/后部 venting 吸引。
+      relationship_changes:
+      - 与林知夏形成“她判断伤情和诱因，他决定路线和车辆风险”的更明确分工。
+      voice_notes:
+      - 短指令、低解释，把恐慌压成路线、修车和隔离任务。
+      last_updated_chapter: 5
+      chapter: 5
+    - display_name: 陆沉舟
+      physical_state: 驾驶房车抵达青河服务区外仓接近口并停在路口外侧，车辆不熄火。
+      social_state: 继续作为房车规则执行者，把临时观察区、生活区和正式上车资格分开。
+      emotional_state: 在周小禾疑似污染和外仓物资诱惑之间保持冷静，用规则压住恐慌和交易风险。
+      current_goal: 在不让上车资格被物资绑架的前提下，取得密封胶、备用卡箍、隔离帘材料和基础医疗耗材。
+      known_secrets: []
+      public_knowledge:
+      - 周小禾提供青河后仓线索，老郑掌握钥匙或门禁卡。
+      relationship_changes:
+      - 进一步采纳林知夏的污染分诊规则，并将其转化为车内可执行边界。
+      voice_notes:
+      - 短句、规则化、任务化，要求能执行的等级和后果。
+      last_updated_chapter: 6
+      chapter: 6
+    - display_name: 陆沉舟
+      physical_state: 驾驶房车停在青河服务区外仓路口外侧，车未熄火，车尾密封仍不足。
+      social_state: 从车内规则执行者推进为末日交易规则制定者，公开把物资交易与上车资格切开。
+      emotional_state: 在车辆漏雾、周小禾需要处理和老郑资源绑架之间保持冷硬克制，用验货和定价压住风险。
+      current_goal: 带着有限且污染风险未清的物资离开外仓口，摆脱被广播位置后聚集而来的抢车压力，并寻找临时封堵窗口。
+      known_secrets: []
+      public_knowledge:
+      - 老郑只是青河外仓物资控制者，掌握门、锁链和即时补给，不代表完整青河秩序。
+      - 物资可以交易、检验和定价，但不能直接买房车生活区或正式上车资格。
+      relationship_changes:
+      - 继续采纳林知夏的医疗和污染判断，让她在交易中负责验药、验隔离材料和判断疑似异变。
+      voice_notes:
+      - 短句、可计价、边界清楚；用“交易是交易，上车是上车”压住资源绑架。
+      last_updated_chapter: 7
+      chapter: 7
+    - display_name: 陆沉舟
+      physical_state: 驾驶房车从青河外仓口挤出，手背被断裂金属划伤，车辆侧后视镜受损，车尾临时封堵仍在受力。
+      social_state: 继续作为司机和车门规则执行者，把外部喊话、堵路和抢车压力挡在车外。
+      emotional_state: 冷静但压迫感上升，明确拒绝完美修复和外部谈判，用短时窗口换撤离。
+      current_goal: 在临时封堵和滤芯短时稳定失效前，通过主路路障和抢车者包围，保住房车进入下一段道路。
+      known_secrets: []
+      public_knowledge:
+      - 低效滤芯和后部漏雾会把长时间停留变成污染倒计时。
+      - 第7章物资只能支持临时封堵和短时补强，不足以完整修复房车。
+      relationship_changes:
+      - 继续依赖林知夏处理车内污染包装、周小禾伤口和观察区稳定，自己专注车辆窗口和突围路线。
+      voice_notes:
+      - 倒计时式、阈值式、路线式；核心判断是“不修完，修到能走”。
+      last_updated_chapter: 8
+      chapter: 8
+    - display_name: 陆沉舟
+      physical_state: 驾驶房车冲出旧面包车路障，车辆右侧与车尾继续受擦碰和临时封堵承压影响。
+      social_state: 作为司机和车门规则执行者，第一次把房车作为移动战术空间使用，并在夜袭中守住驾驶位和车门边界。
+      emotional_state: 冷静、压迫感未退；不被假求救和抢车者道德绑架，同时避免无差别碾压。
+      current_goal: 在天亮前离开雾墙回压区，并判断青河医疗电源广播是否值得冒险回应。
+      known_secrets: []
+      public_knowledge:
+      - 抢车者的目标是车门、滤芯和驾驶位，不是正当救援。
+      - 人类噪音、强光和金属敲击会把雾犬引向最响最亮的目标。
+      relationship_changes:
+      - 与林知夏形成第一次真正车组式协同：他控制外部路线和车门规则，她控制车内观察区和污染隔离。
+      voice_notes:
+      - 短、硬、路线判断；用规则和空间反制，不用长篇道德辩论。
+      last_updated_chapter: 9
+      chapter: 9
+    - display_name: 陆沉舟
+      physical_state: 连续驾驶房车甩开抢车夜并穿过低浓度迷雾，仍在方向盘前保持撤离角度，车辆震动和车尾封堵压力未解除。
+      social_state: 从车门规则执行者推进为车组外部求救接触规则制定者，明确先验证、保撤退线、不盲目开门。
+      emotional_state: 冷静克制，不被医疗电源和幸存者广播牵着走；仍保留救援判断，但拒绝让求救替代规则。
+      current_goal: 在不进入青河主楼、不贴外仓门的前提下，验证青河医疗点、电源和简易医疗位材料线索。
+      known_secrets: []
+      public_knowledge:
+      - 青河广播包含循环内容和疑似真人插话，不能直接相信。
+      - 车头朝撤离方向、隔窗验证、不开外门，是回应外部求救的最低规则。
+      relationship_changes:
+      - 正式把林知夏视为车组医疗观察 / 污染分诊 / 隔离区负责人，而不是普通乘客。
+      voice_notes:
+      - 短、硬、验证优先；把救援诱惑拆成路线、门禁、撤离线和污染边界。
+      last_updated_chapter: 10
+      chapter: 10
+    - display_name: 陆沉舟
+      physical_state: 坐在驾驶位保持发动机运行和撤离角度，通过灯光、外放、车门锁和短距离倒车控制接触风险。
+      social_state: 将第10章建立的外部求救接触规则落地为可执行流程，不让医疗资源、幸存者敲墙或孩子哭声绕过车门规则。
+      emotional_state: 对欢迎回来和墙内敲击保持警觉，但不把旧协议异常解释成父亲线索；面对可能活人也不急于开门。
+      current_goal: 在不下车、不进楼、不失去撤离线的前提下，确认青河医疗点哪些线索可信，并为下一步分诊接触制定顺序。
+      known_secrets: *id001
+      public_knowledge: *id002
+      relationship_changes: *id003
+      voice_notes: *id004
+      last_updated_chapter: 11
+      chapter: 11
+  lin_zhixia:
+    display_name: 林知夏
+    physical_state: 守在隔离帘和侧门之间，继续观察周小禾疼痛、低热和反应，同时隔窗辨认医疗设备与隔离材料。
+    social_state: 作为车内医疗观察 / 污染分诊负责人发挥价值，既识别资源，也阻止资源诱惑覆盖污染边界。
+    emotional_state: 对可用医疗材料有明显期待，但能压住期待；面对模仿自己声音和假孩子哭声时保持专业判断。
+    current_goal: 判断青河医疗点哪些材料值得后续争取、哪些对象可接触、哪些声音必须拒绝回应。
+    known_secrets: &id005
+    - 周小禾疼痛约六到七分、低热仍在，需要更稳定医疗处置，但还能等一轮验证。
+    public_knowledge: &id006
+    - 折叠医疗架、隔离膜和电源接口是真实医疗位线索，但污染状态未判定。
+    - 谁先救不能听谁哭得像，必须看生理反应、污染风险和撤离线。
+    relationship_changes: &id007
+    - 与陆沉舟形成更清楚的双重边界：他管车门和撤离线，她管医疗价值和分诊风险。
+    voice_notes: &id008
+    - 专业、克制、判断先于同情；用材料用途、污染状态和生理反应说话。
+    last_updated_chapter: 11
+    history:
+    - display_name: 林知夏
+      physical_state: 带急救包上车，刚完成服务区车外分诊。
+      social_state: 按契约上车的急诊护士，开始承担车内医疗和污染观察职责。
+      emotional_state: 认可规则的生存价值，但仍关注可救助者的处置。
+      current_goal: 在车内建立伤员、疑似污染和急救耗材的基本处置秩序。
+      known_secrets:
+      - 房车净雾滤芯能短时改善车内空气。
+      public_knowledge:
+      - 林知夏能做急诊分诊和污染疑似判断。
+      relationship_changes:
+      - 与陆沉舟达成“你开车，我管车内伤员和疑似污染”的分工。
+      voice_notes:
+      - 用急诊判断压住情绪争吵，先说风险和处置。
+      last_updated_chapter: 3
+      chapter: 3
+    - display_name: 林知夏
+      physical_state: 正在车内给受伤女孩做临时止血，处于雾犬追咬压力下。
+      social_state: 车内医疗与污染初筛执行者，能把可救助、可观察、不可入车三类对象分开。
+      emotional_state: 明白有限救援的残酷，但接受当前规则能保护更多人活下去。
+      current_goal: 稳定受伤女孩，继续观察污染风险，并准备青河服务区医疗位线索。
+      known_secrets:
+      - 受伤女孩声称青河有电且广播是真的。
+      public_knowledge:
+      - 林知夏能通过肤色、眼白、呼吸、伤口和服从性进行临时污染/伤情初筛。
+      relationship_changes:
+      - 与陆沉舟的规则配合更明确：她给医学判断，他决定车辆和准入风险。
+      voice_notes:
+      - 用医学判断压住情绪争论，用边界语言执行观察位。
+      last_updated_chapter: 4
+      chapter: 4
+    - display_name: 林知夏
+      physical_state: 追车后继续压住受伤女孩手臂出血，车内闻到淡雾味和血腥味。
+      social_state: 车内医疗与污染观察执行者，开始把伤情、气味和怪物行为联系成规则。
+      emotional_state: 明白女孩需要治疗，但接受先修车才能让所有人继续活下去的顺序。
+      current_goal: 稳定伤口、压低血味外泄，并为第6章建立临时污染分诊和隔离判断。
+      known_secrets:
+      - 受伤女孩声称青河有电且广播是真的。
+      public_knowledge:
+      - 她观察到雾犬会朝血腥味和滤芯排气最重的位置反应。
+      relationship_changes:
+      - 陆沉舟采纳她的观察并转化成驾驶反制，双方专业互信继续加深。
+      voice_notes:
+      - 用医学观察和风险排序说话，少安慰，多给可执行判断。
+      last_updated_chapter: 5
+      chapter: 5
+    - display_name: 林知夏
+      physical_state: 在车尾临时观察区处理周小禾伤口，并持续复查瞳孔、意识和体温。
+      social_state: 车内污染分诊规则制定者，负责判断外伤、雾吸入和疑似异变。
+      emotional_state: 同情周小禾但不许情绪替代判断，接受临时观察和正式上车资格必须分开。
+      current_goal: 稳定周小禾，维持临时隔离，并尽快争取基础医疗耗材和隔离帘材料。
+      known_secrets:
+      - 周小禾说青河后仓有净化耗材、药箱和修车胶。
+      public_knowledge:
+      - 她建立了外伤、雾吸入、疑似异变三档临时污染分诊规则。
+      relationship_changes:
+      - 与陆沉舟形成“医学分级 / 车内规则执行”的明确协作。
+      voice_notes:
+      - 医学判断具体、克制，以症状、复查频率和处置动作说话。
+      last_updated_chapter: 6
+      chapter: 6
+    - display_name: 林知夏
+      physical_state: 在车内照看周小禾，同时隔窗验收药箱、缝合线、手套、帘布和污染外包装。
+      social_state: 从污染分诊者推进为资源质量筛选者，负责判断医疗耗材是否真能用于伤口和隔离。
+      emotional_state: 同情周小禾也理解老郑想救兄弟，但坚持疑似异变者不能进入房车生活区。
+      current_goal: 用有限医疗和隔离材料先稳住周小禾，并在不破坏车内规则的前提下处理污染风险。
+      known_secrets:
+      - 老郑门内的灰眼兄弟出现白沫、抓握、指令不稳定等疑似异变症状。
+      public_knowledge:
+      - 她能区分药箱外观和真正可用医疗耗材，并能在门缝观察条件下做疑似异变判断。
+      relationship_changes:
+      - 与陆沉舟形成“他定交易和车门边界，她定医疗/污染可用性”的明确协作。
+      voice_notes:
+      - 专业、克制、看物资具体用途；不说空泛安慰，只给能执行的判断。
+      last_updated_chapter: 7
+      chapter: 7
+    - display_name: 林知夏
+      physical_state: 在颠簸车内完成污染外包装隔离、周小禾最低限度伤口固定和滤芯边料内层处理。
+      social_state: 车内应急处置核心，负责让有限医疗/隔离材料在突围前转化成可用安全窗口。
+      emotional_state: 紧张但专业，接受不能完整治疗，只能先把周小禾固定到能承受突围。
+      current_goal: 守住观察区和隔离箱，防止周小禾在抢车夜中二次撕裂伤口或污染扩散。
+      known_secrets:
+      - 周小禾伤口只完成最低限度固定，不适合剧烈颠簸或长时间拖延。
+      public_knowledge:
+      - 污染外包装不能进入生活区，医疗耗材必须先隔离再使用。
+      relationship_changes:
+      - 与陆沉舟的分工进一步明确：他争取行车窗口，她把车内伤员和污染风险压到可移动状态。
+      voice_notes:
+      - 医疗限制明确，少安慰，多报时间、材料、风险和最低可行处理。
+      last_updated_chapter: 8
+      chapter: 8
+    - display_name: 林知夏
+      physical_state: 在颠簸和侧门冲击中守住隔离帘、隔离箱和周小禾临时固定，手上沾有碘伏和灰尘。
+      social_state: 从车内应急处置核心推进为战术协作者，能向驾驶位持续报告观察区、隔离箱和车内空气状态。
+      emotional_state: 紧张但专业；短暂追问外部抢车者后果，但仍优先维持车内规则。
+      current_goal: 在不越过临时观察边界的前提下，继续稳定周小禾，并判断青河医疗电源是否能提供下一步处理窗口。
+      known_secrets:
+      - 周小禾的伤口仍不适合长时间拖延或连续剧烈颠簸。
+      public_knowledge:
+      - 观察区在一次急转和一次冲击下可以维持，但不能视为正式医疗隔离。
+      - 医疗电源如果属实，周小禾伤口可以重新处理。
+      relationship_changes:
+      - 陆沉舟开始依赖她的车内状态报告调整路线，两人的战术互信进一步形成。
+      voice_notes:
+      - 以医疗边界、观察状态和车内风险说话；不空喊担心。
+      last_updated_chapter: 9
+      chapter: 9
+    - display_name: 林知夏
+      physical_state: 守在隔离帘和车门之间，背上药包，继续观察周小禾体温、疼痛和伤口状态。
+      social_state: 从临时同行 / 战术协作者推进为明确留车的医疗角色，负责医疗观察、污染分诊和隔离区。
+      emotional_state: 承认周小禾需要更好医疗条件，但不再用“救人”压倒车门规则；专业边界稳定。
+      current_goal: 守住周小禾观察区，判断青河医疗点哪些材料值得拿、哪些风险不能碰。
+      known_secrets:
+      - 周小禾低热，伤口需要重新清创和更稳定固定，理想情况下两小时内处理。
+      public_knowledge:
+      - 医疗电源有价值，但不能替代污染边界。
+      - 观察区归她负责，污染分诊和医疗建议由她给出。
+      relationship_changes:
+      - 接受陆沉舟的车组分工：她负责车内医疗与污染后果，车门决定按规则执行。
+      voice_notes:
+      - 专业、克制、以伤情时间窗和污染边界说话；不圣母化劝救。
+      last_updated_chapter: 10
+      chapter: 10
+    - display_name: 林知夏
+      physical_state: 守在隔离帘和侧门之间，继续观察周小禾疼痛、低热和反应，同时隔窗辨认医疗设备与隔离材料。
+      social_state: 作为车内医疗观察 / 污染分诊负责人发挥价值，既识别资源，也阻止资源诱惑覆盖污染边界。
+      emotional_state: 对可用医疗材料有明显期待，但能压住期待；面对模仿自己声音和假孩子哭声时保持专业判断。
+      current_goal: 判断青河医疗点哪些材料值得后续争取、哪些对象可接触、哪些声音必须拒绝回应。
+      known_secrets: *id005
+      public_knowledge: *id006
+      relationship_changes: *id007
+      voice_notes: *id008
+      last_updated_chapter: 11
+      chapter: 11
+  temporary_injured_girl:
+    display_name: 周小禾
+    physical_state: 仍在临时观察区，低热未退，疼痛约六到七分，能听指令并报告听到的声音差异。
+    social_state: 继续是临时观察患者，不是正式上车名额、核心队友或生活区成员。
+    emotional_state: 害怕但努力配合，不主动越界；在假声压力下提供有限观察。
+    current_goal: 留在隔离帘后等待更稳定医疗处理，避免成为外部声音诱导车组开门的理由。
+    known_secrets: &id009 []
+    public_knowledge: &id010
+    - 她能听出假女人声音不像真人喘息，帮助车组确认声音差异。
+    relationship_changes: &id011
+    - 她的观察有用，但身份边界不变。
+    voice_notes: &id012
+    - 疼、怯、短句，提供事实而不替成年人做决定。
+    last_updated_chapter: 11
+    history:
+    - display_name: 受伤女孩
+      physical_state: 手臂有较深伤口，已由林知夏临时压迫止血。
+      social_state: 临时观察位伤员 / 青河线索见证者，不是核心队友，不是正式上车名额。
+      emotional_state: 极度惊恐，但能听从指令并主动与面包车抢车者拉开距离。
+      current_goal: 在车内保持服从，等待后续医疗处理。
+      known_secrets:
+      - 青河服务区有电，广播是真的，但完整警告尚未说出。
+      public_knowledge:
+      - 她通过林知夏初筛，暂未出现明显污染灰斑。
+      relationship_changes: []
+      voice_notes:
+      - 以短促求生话语证明服从性，不承担核心队友功能。
+      last_updated_chapter: 4
+      chapter: 4
+    - display_name: 受伤女孩
+      physical_state: 手臂深伤口仍在渗血，临时包扎和塑封压迫只能再撑十几分钟。
+      social_state: 临时观察位伤员 / 青河线索见证者，不是核心队友，不是正式上车名额。
+      emotional_state: 恐惧且有负罪感，但能听从林知夏指令保持不乱动。
+      current_goal: 在临时观察位稳定伤口，等待青河医疗位或进一步处理。
+      known_secrets:
+      - 青河服务区有电，广播是真的，但完整警告尚未说出。
+      public_knowledge:
+      - 她的血味会增加雾犬再次追踪风险。
+      relationship_changes: []
+      voice_notes:
+      - 台词应短、惊恐、服从，不承担解释青河内部的功能。
+      last_updated_chapter: 5
+      chapter: 5
+    - display_name: 周小禾
+      physical_state: 手臂深伤口仍在渗血，出现发冷、呼吸急、瞳孔灰边等疑似雾吸入/污染观察体征。
+      social_state: 临时观察区伤员 / 青河后仓线索见证者，不是正式上车名额或核心队友。
+      emotional_state: 恐惧、自责，害怕再次引来雾犬，但仍能听从指令并复述规则。
+      current_goal: 保持清醒、回答问题、不碰隔离帘和绳结，等待进一步医疗处理。
+      known_secrets:
+      - 青河后仓有净化耗材、药箱和修车胶，钥匙或门禁卡在老郑手里。
+      public_knowledge:
+      - 她现在被判定为外伤叠雾吸入观察，不是确认异变。
+      relationship_changes: []
+      voice_notes:
+      - 短促、恐惧、服从，提供线索但不承担解释青河内部的功能。
+      last_updated_chapter: 6
+      chapter: 6
+    - display_name: 周小禾
+      physical_state: 仍在临时观察区，手臂伤口渗血，脸色发白但保持清醒。
+      social_state: 临时观察伤员，不是正式上车名额或核心队友；她的治疗需求推动医疗/隔离材料交易。
+      emotional_state: 害怕外仓冲突和老郑踹门，但仍听从林知夏指令保持不乱动。
+      current_goal: 保持清醒，等待林知夏用新取得的有限耗材处理伤口和隔离区。
+      known_secrets:
+      - 青河外仓物资确实存在，但受老郑控制且会被用来逼迫房车开门。
+      public_knowledge:
+      - 她仍是外伤叠雾吸入观察，不是确认异变，也没有转为核心队友。
+      relationship_changes: []
+      voice_notes:
+      - 短促、虚弱、服从；只提供压力和少量反应，不承担青河解释功能。
+      last_updated_chapter: 7
+      chapter: 7
+    - display_name: 周小禾
+      physical_state: 仍在临时观察区，手臂伤口经最低限度固定，脸色发白，疼痛明显，但仍能听指令。
+      social_state: 临时观察伤员，不是正式上车名额或核心队友；她继续作为医疗和污染观察压力存在。
+      emotional_state: 恐惧雾犬和外部抢车者，但努力服从林知夏指令，不碰帘子和隔离箱。
+      current_goal: 抓住指定绳结，保持清醒和不乱动，撑过抢车夜前半段。
+      known_secrets:
+      - 外仓灯光是从出口方向开始熄灭，提示雾墙回压从撤离路线方向逼近。
+      public_knowledge:
+      - 她仍未确认异变，仍只是外伤叠雾吸入观察。
+      relationship_changes: []
+      voice_notes:
+      - 短促、疼痛、服从；不承担解释青河内部或推动大战的功能。
+      last_updated_chapter: 8
+      chapter: 8
+    - display_name: 周小禾
+      physical_state: 仍在临时观察区，手臂伤口疼痛但未明显崩开，能抓住指定绳结并保持清醒。
+      social_state: 临时观察伤员，不是正式上车名额或核心队友；她通过服从规则证明观察区可以被保护。
+      emotional_state: 极度恐惧被抛下，也害怕自己发声引来雾犬，但努力遵守不越帘、不碰箱子的规则。
+      current_goal: 继续保持清醒和服从，等待青河医疗电源或后续处理机会。
+      known_secrets: []
+      public_knowledge:
+      - 她没有越过隔离帘或接触隔离箱，仍是外伤叠雾吸入观察状态。
+      relationship_changes:
+      - 林知夏明确告诉她：临时观察不是正式上车，但只要听指令，观察规则会保护她。
+      voice_notes:
+      - 短、疼、听指令；不突然英勇救场，不承担核心队友功能。
+      last_updated_chapter: 9
+      chapter: 9
+    - display_name: 周小禾
+      physical_state: 仍在临时观察区，低热、伤口疼痛约六分，能听指令并报告身体状态。
+      social_state: 继续是临时观察伤员，不是正式上车名额或核心队友；她的伤情推动医疗位需求。
+      emotional_state: 害怕拖累车组，也害怕因需求被误解为逼迫救援；在林知夏明确规则后稍微稳定。
+      current_goal: 继续不越过隔离帘，等待青河医疗点可能带来的重新处理机会。
+      known_secrets: []
+      public_knowledge:
+      - 她注意到广播里的犬吠不像真正雾犬，更像在学狗叫。
+      relationship_changes:
+      - 林知夏明确观察区有人负责，但临时观察身份不变。
+      voice_notes:
+      - 短、疼、谨慎、听指令；提供身体状态和少量观察，不承担核心队友功能。
+      last_updated_chapter: 10
+      chapter: 10
+    - display_name: 周小禾
+      physical_state: 仍在临时观察区，低热未退，疼痛约六到七分，能听指令并报告听到的声音差异。
+      social_state: 继续是临时观察患者，不是正式上车名额、核心队友或生活区成员。
+      emotional_state: 害怕但努力配合，不主动越界；在假声压力下提供有限观察。
+      current_goal: 留在隔离帘后等待更稳定医疗处理，避免成为外部声音诱导车组开门的理由。
+      known_secrets: *id009
+      public_knowledge: *id010
+      relationship_changes: *id011
+      voice_notes: *id012
+      last_updated_chapter: 11
+      chapter: 11
+  old_zheng:
+    display_name: 老郑
+    physical_state: 仍在青河外仓方向，破喇叭被外部冲击和雾中压力打断，未直接参与主路抢车。
+    social_state: 仍是外仓物资控制者和报点者，不是完整青河派系首领；他的报点后果已经转化为抢车夜。
+    emotional_state: 被困外仓和广播后果反噬，短期压力仍悬而未决。
+    current_goal: 未知；外仓门后状态和灰眼兄弟后果仍未揭开。
+    known_secrets: &id013
+    - 外仓门后灰眼兄弟和剩余物资情况仍未解决。
+    public_knowledge: &id014
+    - 他的广播暴露房车位置和滤芯价值，引发外部抢车者围堵。
+    relationship_changes: &id015
+    - 与陆沉舟的敌对后果进入下一阶段：抢车者被打退，但青河外仓警告仍指向他所在区域。
+    voice_notes: &id016
+    - 本章只作为外仓报点后果存在，不升级为总 boss。
+    last_updated_chapter: 9
+    history:
+    - display_name: 老郑
+      physical_state: 躲在青河外仓卷帘门后，控制锁链、门缝物资和旧广播/通讯设备。
+      social_state: 青河外仓物资控制者 / 门口第一层人类关卡，不是完整青河派系首领。
+      emotional_state: 现实、油滑、急于给灰眼兄弟争取干净空气，交易失败后转向报点报复。
+      current_goal: 用燃油、药品和修车材料换取自己和手下上车，失败后借外部抢车压力逼房车让步。
+      known_secrets:
+      - 外仓内还有受控物资和至少一名疑似异变的灰眼兄弟。
+      public_knowledge:
+      - 他能提供有限密封胶、卡箍、帘布、基础医疗耗材、少量燃油和滤芯边料。
+      - 他无法用物资买到房车生活区或正式上车资格。
+      relationship_changes:
+      - 与陆沉舟形成外仓门口的短期敌对交易关系；交易完成后通过广播泄露房车位置。
+      voice_notes:
+      - 现实、压价、试探底线；不要写成全知或完整派系代表。
+      last_updated_chapter: 7
+      chapter: 7
+    - display_name: 老郑
+      physical_state: 仍在青河外仓门后，通过破喇叭和门后喊话继续施压；广播最终只剩电流声。
+      social_state: 外仓物资控制者和报点者，仍不是完整青河派系首领。
+      emotional_state: 交易失败后继续借外部抢车者和雾中压力逼迫陆沉舟开门或让步。
+      current_goal: 让外部人群和雾墙压力迫使房车无法顺利离开，或逼陆沉舟重新谈车门。
+      known_secrets:
+      - 外仓内灰眼兄弟和剩余物资仍未解决。
+      public_knowledge:
+      - 他的广播已经暴露房车位置和滤芯价值，引来了外部抢车压力。
+      relationship_changes:
+      - 与陆沉舟的短期敌对关系升级：从物资交易失败转为报点和拖延。
+      voice_notes:
+      - 门后施压、拖时间、借外部人群开价；不写成全知或完整派系代表。
+      last_updated_chapter: 8
+      chapter: 8
+    - display_name: 老郑
+      physical_state: 仍在青河外仓方向，破喇叭被外部冲击和雾中压力打断，未直接参与主路抢车。
+      social_state: 仍是外仓物资控制者和报点者，不是完整青河派系首领；他的报点后果已经转化为抢车夜。
+      emotional_state: 被困外仓和广播后果反噬，短期压力仍悬而未决。
+      current_goal: 未知；外仓门后状态和灰眼兄弟后果仍未揭开。
+      known_secrets: *id013
+      public_knowledge: *id014
+      relationship_changes: *id015
+      voice_notes: *id016
+      last_updated_chapter: 9
+      chapter: 9

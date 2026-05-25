@@ -1,0 +1,271 @@
+chapter: 10
+title: 青河求救广播
+source_draft: drafts/ch_0010_final_candidate.md
+accepted_chapter_path: chapters/ch_0010.md
+summary: 房车打退抢车夜后接到青河求救广播。陆沉舟不盲目开门救援，而是测试广播真假、建立外部求救接触规则，并带车以低效稳定滤芯穿过第一段低浓度迷雾，受控靠近青河医疗点外缘。林知夏明确以医疗观察和污染分诊角色留车；系统提示简易医疗位材料疑似位于青河医疗点，但青河污染等级上升、外仓门禁异常。
+current_state:
+  current_chapter: 10
+  current_arc: arc_001
+  latest_location: 青河服务区医疗点外缘，房车斜停并保持车头朝撤离路线，外仓门禁异常、污染等级上升
+  active_characters: &id001
+  - lu_chenzhou
+  - lin_zhixia
+  - temporary_injured_girl
+  active_conflicts: &id002
+  - 第一座无名服务区闭环完成：抢车夜被甩在雾后，房车已离开旧路障区并抵达青河服务区医疗点外缘。
+  - 净雾滤芯维持短程低效稳定，可支撑穿过第一段低浓度迷雾，但不是完整修复，稳定窗口有限。
+  - 车尾临时封堵仍持续承压并存在微漏风险，需要后续正式密封件或修复机会。
+  - 林知夏明确以医疗观察、污染分诊和隔离区负责人身份留车，成为房车第一位明确功能型队友。
+  - 周小禾仍在临时观察区，低热和伤口需要更稳定医疗处置，但未正式上车、未进入生活区。
+  - 陆沉舟建立外部求救接触规则：先验证、保撤退线、不进主楼、不贴外仓门、不对未验证对象开门。
+  - 青河广播存在循环与真人插话两种信号，提示有人存活，也提示门口/外仓方向存在不明危险。
+  - 青河服务区污染等级正在上升，医疗点材料信号增强，外仓门禁状态异常，下一章必须处理青河医疗点外围压力。
+  - “他们会学声音”的警告和异常犬吠提示怪物或污染源可能利用声音，但机制尚未揭开。
+  pending_approvals: &id003
+  - Approve chapter 10 as the closure of unit_0001 / the first station.
+  - Approve Lin Zhixia's move from temporary co-survivor to committed RV medical-role
+    crew member.
+  - 'Approve the external-rescue contact rule: verify first, keep retreat line, no
+    blind door opening, and medical value cannot override contamination boundaries.'
+  - Approve Qinghe medical point / Simple Medical Bay material signal as a chapter
+    11 hook only, not as an unlocked module.
+  - Approve early hint that a Qinghe threat may mimic or manipulate voices, without
+    fully defining that ecology yet.
+state_changes:
+- After the car-seizing night, the RV leaves the first unnamed service-area outer
+  edge and receives the Qinghe broadcast about medical power, survivors, and a warning
+  not to open the outer warehouse door.
+- Lu Chenzhou tests the broadcast by checking repetition, signal behavior, route reaction,
+  and specific information rather than treating the rescue call as an order to open
+  doors.
+- The RV's rear seal remains temporary and under pressure; the clean filter remains
+  in low-efficiency short-range stability rather than full repair.
+- Lin Zhixia identifies Zhou Xiaohe's need for better treatment and power support,
+  but explicitly accepts that medical need cannot override pollution boundaries.
+- 'Lu Chenzhou establishes first external-rescue contact rules: verify first, keep
+  a retreat line, do not enter the main building, do not approach the outer warehouse
+  door, and do not open doors to unverified callers.'
+- Lin Zhixia chooses to stay as the RV's medical observation / pollution triage /
+  isolation-zone role, not merely as a protected passenger.
+- The RV crosses a first low-concentration fog segment and reaches the Qinghe service-area
+  medical-point exterior with the vehicle nose kept toward retreat.
+- The broadcast implies a living person may be interrupting the loop and warns that
+  something can imitate voices, opening a mist-monster sound-mimicry thread without
+  fully explaining it.
+- The system detects the Simple Medical Bay as a possible unlockable module and indicates
+  materials may be at the Qinghe medical point, while pollution level rises and outer-warehouse
+  access is abnormal.
+open_threads_touched:
+- thread_vehicle_rules_contract
+- thread_lin_pollution_observation
+- thread_mist_monster_ecology
+- thread_rv_system_binding
+- thread_service_area_terminals
+timeline_event: &id005
+  id: t010
+  when: 第 10 章
+  summary: 房车打退抢车夜后接到青河求救广播。陆沉舟不盲目开门救援，而是测试广播真假、建立外部求救接触规则，并带车以低效稳定滤芯穿过第一段低浓度迷雾，受控靠近青河医疗点外缘。林知夏明确以医疗观察和污染分诊角色留车；系统提示简易医疗位材料疑似位于青河医疗点，但青河污染等级上升、外仓门禁异常。
+v3_state_updates:
+  timeline:
+    occurred_events:
+    - id: ev_0010_01
+      summary: 房车打退抢车夜后接到青河求救广播。陆沉舟不盲目开门救援，而是测试广播真假、建立外部求救接触规则，并带车以低效稳定滤芯穿过第一段低浓度迷雾，受控靠近青河医疗点外缘。林知夏明确以医疗观察和污染分诊角色留车；系统提示简易医疗位材料疑似位于青河医疗点，但青河污染等级上升、外仓门禁异常。
+      location: 青河服务区医疗点外缘，房车斜停并保持车头朝撤离路线，外仓门禁异常、污染等级上升
+      involved_characters: *id001
+      source_chapter: 10
+  character_states: &id006
+  - character_id: lu_chenzhou
+    display_name: 陆沉舟
+    physical_state: 连续驾驶房车甩开抢车夜并穿过低浓度迷雾，仍在方向盘前保持撤离角度，车辆震动和车尾封堵压力未解除。
+    social_state: 从车门规则执行者推进为车组外部求救接触规则制定者，明确先验证、保撤退线、不盲目开门。
+    emotional_state: 冷静克制，不被医疗电源和幸存者广播牵着走；仍保留救援判断，但拒绝让求救替代规则。
+    current_goal: 在不进入青河主楼、不贴外仓门的前提下，验证青河医疗点、电源和简易医疗位材料线索。
+    known_secrets: []
+    public_knowledge:
+    - 青河广播包含循环内容和疑似真人插话，不能直接相信。
+    - 车头朝撤离方向、隔窗验证、不开外门，是回应外部求救的最低规则。
+    relationship_changes:
+    - 正式把林知夏视为车组医疗观察 / 污染分诊 / 隔离区负责人，而不是普通乘客。
+    voice_notes:
+    - 短、硬、验证优先；把救援诱惑拆成路线、门禁、撤离线和污染边界。
+  - character_id: lin_zhixia
+    display_name: 林知夏
+    physical_state: 守在隔离帘和车门之间，背上药包，继续观察周小禾体温、疼痛和伤口状态。
+    social_state: 从临时同行 / 战术协作者推进为明确留车的医疗角色，负责医疗观察、污染分诊和隔离区。
+    emotional_state: 承认周小禾需要更好医疗条件，但不再用“救人”压倒车门规则；专业边界稳定。
+    current_goal: 守住周小禾观察区，判断青河医疗点哪些材料值得拿、哪些风险不能碰。
+    known_secrets:
+    - 周小禾低热，伤口需要重新清创和更稳定固定，理想情况下两小时内处理。
+    public_knowledge:
+    - 医疗电源有价值，但不能替代污染边界。
+    - 观察区归她负责，污染分诊和医疗建议由她给出。
+    relationship_changes:
+    - 接受陆沉舟的车组分工：她负责车内医疗与污染后果，车门决定按规则执行。
+    voice_notes:
+    - 专业、克制、以伤情时间窗和污染边界说话；不圣母化劝救。
+  - character_id: temporary_injured_girl
+    display_name: 周小禾
+    physical_state: 仍在临时观察区，低热、伤口疼痛约六分，能听指令并报告身体状态。
+    social_state: 继续是临时观察伤员，不是正式上车名额或核心队友；她的伤情推动医疗位需求。
+    emotional_state: 害怕拖累车组，也害怕因需求被误解为逼迫救援；在林知夏明确规则后稍微稳定。
+    current_goal: 继续不越过隔离帘，等待青河医疗点可能带来的重新处理机会。
+    known_secrets: []
+    public_knowledge:
+    - 她注意到广播里的犬吠不像真正雾犬，更像在学狗叫。
+    relationship_changes:
+    - 林知夏明确观察区有人负责，但临时观察身份不变。
+    voice_notes:
+    - 短、疼、谨慎、听指令；提供身体状态和少量观察，不承担核心队友功能。
+  resource_changes: &id007
+  - id: res_rv_clean_filter_ch10
+    owner: rv
+    item: clean_filter
+    category: item
+    unit: module
+    delta: 0
+    reason: 净雾滤芯维持低效稳定窗口，支撑房车穿过第一段低浓度迷雾并抵达青河外围；不是完整修复。
+  - id: res_rv_rear_seal_ch10
+    owner: rv
+    item: rv_rear_seal
+    category: item
+    unit: seal
+    delta: 0
+    reason: 车尾临时封堵在颠簸和低速接近中继续承压并出现微漏风险，仍需正式密封件或修复机会。
+  - id: res_rv_medicine_pack_ch10
+    owner: rv
+    item: medicine_pack
+    category: item
+    unit: pack
+    delta: 0
+    reason: 林知夏继续用于周小禾观察和基础处理；未形成简易医疗位，医疗条件仍不足。
+  - id: res_route_qinghe_medical_point_ch10
+    owner: rv
+    item: route_info_qinghe_medical_point
+    category: knowledge
+    unit: lead
+    delta: 1
+    reason: 获得青河服务区医疗点、二号配电箱、外仓门禁异常和简易医疗位材料疑似位置线索。
+  open_thread_updates: &id004
+  - id: thread_vehicle_rules_contract
+    promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+    source_chapter: 0
+    status: advanced
+    last_touched: 10
+    latest_note: 青河医疗电源与幸存者广播没有让房车盲目开门；陆沉舟建立外部求救接触规则：先验证、保撤退线、不进主楼、不贴外仓门、不对未验证对象开门。
+    next_obligation: 第11章在青河医疗点外围继续检验这套接触规则，尤其是遇到真人伤员、门禁异常或诱导开门时。
+  - id: thread_lin_pollution_observation
+    promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+    source_chapter: 0
+    status: advanced
+    last_touched: 10
+    latest_note: 林知夏明确留车并承担医疗观察、污染分诊和隔离区职责；她判断周小禾需要更稳定处置，但医疗需求不能替代污染边界。
+    next_obligation: 第11章让她在青河医疗点判断材料、电源、伤员和污染风险，不把医疗位线索写成免费升级。
+  - id: thread_mist_monster_ecology
+    promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+    source_chapter: 0
+    status: advanced
+    last_touched: 10
+    latest_note: 青河广播出现异常犬吠和“他们会学声音”的真人警告；周小禾也指出犬吠像在学，提示雾中威胁可能利用或模仿声音。
+    next_obligation: 第11章可用具体场景验证声音模仿风险，但仍不要一次性解释怪物生态全貌。
+  - id: thread_rv_system_binding
+    promise: 房车系统为什么绑定陆沉舟和父亲留下的旧房车。
+    source_chapter: 0
+    status: advanced
+    last_touched: 10
+    latest_note: 系统继续只提供路线节点、低效稳定窗口、污染等级、模块材料疑似信号和门禁异常，不替陆沉舟决定救援或开门。
+    next_obligation: 继续让系统表现为路线 / 风险 / 模块线索工具，而不是道德裁判或万能修复器。
+  - id: thread_service_area_terminals
+    promise: 服务区交易终端、临时屏障和路标任务从何而来。
+    source_chapter: 0
+    status: advanced
+    last_touched: 10
+    latest_note: 青河医疗点外缘出现异常门禁屏，从“权限错误”跳到“欢迎回来”，与广播循环和终端启动音共同提示青河节点秩序异常。
+    next_obligation: 第11章通过医疗点、配电箱和门禁异常推进节点机制，但不提前解释终端源头。
+  payoff_updates: &id008
+  - chapter: 10
+    promises_made:
+    - 第11章必须处理青河医疗点外围、二号配电箱、外仓门禁异常和简易医疗位材料信号。
+    - “他们会学声音”的警告必须在后续用具体威胁或误导方式兑现，不能只做空泛悬念。
+    - 低效滤芯和车尾临时封堵仍有时间与污染压力，不能支撑长时间青河停留。
+    payoffs_delivered:
+    - 第9章青河求救广播得到正面处理：陆沉舟测试循环、信号、灯光反应和具体信息，而不是盲目相信。
+    - 第一站闭环兑现：房车离开旧路障区，穿过第一段低浓度迷雾，抵达青河服务区医疗点外缘。
+    - 车内规则推进兑现：外部求救接触规则成立，医疗电源和幸存者信息不能绕过车门边界。
+    - 林知夏功能队友兑现：她明确留车并承担医疗观察、污染分诊和隔离区职责。
+    - 简易医疗位从早期承诺推进为可争取的下一站模块线索，但仍未解锁。
+    frustration_level: controlled
+    payoff_types:
+    - unit_closure
+    - rule_payoff
+    - teammate_function_payoff
+    - route_hook
+    - module_hook
+    delayed_payoffs:
+    - 简易医疗位是否能解锁
+    - 青河医疗电源是否真实可用
+    - 青河主楼幸存者身份与风险
+    - 外仓门禁异常和“欢迎回来”的含义
+    - 声音模仿威胁的具体生态规则
+    risks:
+    - 青河污染等级正在上升。
+    - 外仓门禁状态异常，开门请求可能是陷阱。
+    - 低效滤芯窗口有限，车尾封堵仍不稳。
+    - 回应广播已经引起外部声源和敲击反应。
+  conflict_updates:
+    active: *id002
+  next_hook: &id009
+    hook: 房车抵达青河服务区医疗点外缘，系统检测到简易医疗位材料信号增强，但污染等级上升、外仓门禁异常，广播警告“他们会学声音”。
+    obligation: 第11章必须处理青河医疗点外围接触、二号配电箱或材料线索、门禁异常和声音模仿风险；不得直接解锁医疗位或进入主楼完整秩序。
+    target_chapter: 11
+    status: open
+  pending_approvals: *id003
+open_thread_updates: *id004
+change_log:
+  summary: Accepted revised chapter 10 as chapters/ch_0010.md.
+  canon_updates:
+  - timeline:t010
+  - character_states:lu_chenzhou,lin_zhixia,temporary_injured_girl
+  - resource_ledger:low_efficiency_filter_rear_seal_qinghe_medical_point_lead
+  - open_threads:thread_vehicle_rules_contract,thread_lin_pollution_observation,thread_mist_monster_ecology,thread_rv_system_binding,thread_service_area_terminals
+  - payoff_ledger:first_station_closure_qinghe_medical_point_hook
+  - hook_index:chapter_11_qinghe_medical_point_voice_mimicry
+  pending_approvals: *id003
+acceptance_contract:
+  quality_gate_summary:
+    continuity_review_present: true
+    continuity_blockers: []
+    pacing_review_present: true
+    pacing_score: 89
+    revised_pacing_score: null
+    revision_required: false
+    waiver_required: false
+  outline_alignment:
+    reference_chain: master -> volume -> arc -> unit -> chapter brief
+    volume_id: volume_001
+    arc_id: arc_001
+    unit_id: unit_0001
+    required_unit_obligations:
+    - 第一站闭环完成。
+    - 下一单元目标锁定青河服务区与简易医疗位。
+    claimed_fulfilled_unit_obligations:
+    - 第一站闭环完成。
+    - 下一单元目标锁定青河服务区与简易医疗位。
+    pending_unit_obligations: []
+  state_updates:
+    timeline_event: *id005
+    character_state_changes: *id006
+    resource_changes: *id007
+    open_thread_updates: *id004
+    payoff_updates: *id008
+    next_hook: *id009
+    pending_approvals: *id003
+    economy_changes: []
+    faction_changes: []
+  publication_readiness:
+    final_candidate_path: drafts/ch_0010_final_candidate.md
+    author_direction_present: true
+    author_direction_approved: true
+    prose_quality_review_present: true
+    prose_quality_score: 91
+    prose_rewrite_required: false
+    blocking_issues: []

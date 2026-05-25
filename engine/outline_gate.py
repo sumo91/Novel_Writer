@@ -2,7 +2,11 @@ from pathlib import Path
 from typing import Any
 
 from engine.io_utils import read_text, read_yaml, write_text
-from engine.outline_resolver import BRIEF_REFERENCE_CHAIN, active_outline_layers
+from engine.outline_resolver import (
+    BRIEF_REFERENCE_CHAIN,
+    active_outline_data,
+    active_outline_layers,
+)
 from engine.paths import books_dir
 
 BOOKS_DIR = books_dir()
@@ -75,6 +79,9 @@ def chapter_brief_gate(
             else:
                 warnings.append(f"{message} Treat as draft assumption.")
 
+    if not any(error.startswith("Missing V3.1 layer file:") for error in blocking_errors):
+        blocking_errors.extend(_validate_active_unit_chapter_map(root, chapter_number))
+
     brief_path = root / "outlines" / "chapter_briefs" / f"ch_{chapter_number:04d}_brief.md"
     brief_errors: list[str] = []
     if brief_path.exists():
@@ -104,6 +111,59 @@ def validate_chapter_brief_text(content: str) -> list[str]:
     for term in ("unit", "arc", "volume"):
         if term not in lowered:
             errors.append(f"Chapter brief must mention {term}.")
+    return errors
+
+
+def _validate_active_unit_chapter_map(root: Path, chapter_number: int) -> list[str]:
+    try:
+        unit = active_outline_data(root, chapter_number)["unit"]
+    except FileNotFoundError:
+        return []
+
+    chapter_range = unit.get("chapter_range")
+    if not isinstance(chapter_range, dict):
+        return ["Active unit outline must define chapter_range.start and chapter_range.end."]
+    start = chapter_range.get("start")
+    end = chapter_range.get("end")
+    if not isinstance(start, int) or not isinstance(end, int) or start > end:
+        return ["Active unit outline must define a valid chapter_range.start <= chapter_range.end."]
+
+    chapters = unit.get("chapters")
+    if not isinstance(chapters, list):
+        return [
+            f"Active unit outline must map every chapter in range {start}-{end}; missing chapters: "
+            + ", ".join(str(number) for number in range(start, end + 1))
+        ]
+
+    by_number = {
+        chapter.get("chapter"): chapter
+        for chapter in chapters
+        if isinstance(chapter, dict) and isinstance(chapter.get("chapter"), int)
+    }
+    missing = [number for number in range(start, end + 1) if number not in by_number]
+    errors = []
+    if missing:
+        errors.append(
+            f"Active unit outline must map every chapter in range {start}-{end}; missing chapters: "
+            + ", ".join(str(number) for number in missing)
+        )
+
+    required_fields = ("function", "opening_hook", "main_payoff", "next_hook")
+    incomplete = []
+    for number in range(start, end + 1):
+        chapter = by_number.get(number)
+        if not isinstance(chapter, dict):
+            continue
+        missing_fields = [
+            field for field in required_fields if not str(chapter.get(field) or "").strip()
+        ]
+        if missing_fields:
+            incomplete.append(f"{number} ({', '.join(missing_fields)})")
+    if incomplete:
+        errors.append(
+            "Active unit chapter map entries must include function, opening_hook, main_payoff, and next_hook; incomplete chapters: "
+            + "; ".join(incomplete)
+        )
     return errors
 
 

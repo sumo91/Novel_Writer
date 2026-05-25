@@ -1,0 +1,61 @@
+{
+  "passed": true,
+  "score": 93,
+  "issues": [
+    {
+      "type": "module_boundary",
+      "severity": "low",
+      "evidence": "The draft keeps Simple Medical Bay materials as already-verified nearby leads. No new material is acquired, installed, cleaned, or activated.",
+      "suggested_fix": "In state updates, continue to record Simple Medical Bay as locked / not activated. Do not convert the stopgap wound treatment into module progress."
+    },
+    {
+      "type": "qinghe_scope",
+      "severity": "low",
+      "evidence": "The draft stays outside Qinghe medical point. It uses exterior wall, lamp line, voices, and pushed-out patients; it does not enter the main building or explain the survivor organization.",
+      "suggested_fix": "Record the visible pressure as exterior contact only. Keep Qinghe internal order unrevealed."
+    },
+    {
+      "type": "medical_boundary",
+      "severity": "low",
+      "evidence": "The abdominal bleeding man receives a thrown/rod-delivered stopgap dressing while the door remains shut and no one enters the RV.",
+      "suggested_fix": "Record this as limited exterior aid, not boarding qualification, team membership, or a formal treatment outcome."
+    },
+    {
+      "type": "zhou_xiaohe_status",
+      "severity": "low",
+      "evidence": "Zhou Xiaohe remains behind the isolation curtain, provides a sound-repetition observation, and does not leave observation or become formal crew.",
+      "suggested_fix": "Keep Zhou Xiaohe as a temporary observation patient. Her wound still needs more stable handling."
+    },
+    {
+      "type": "monster_ecology_scope",
+      "severity": "low",
+      "evidence": "The draft shows voice borrowing and a grey-white vine emerging from the grey-eyed patient, but does not explain the full ecology.",
+      "suggested_fix": "Record this as observed behavior and a chapter 13 escalation hook, not a full taxonomy."
+    },
+    {
+      "type": "father_thread_boundary",
+      "severity": "low",
+      "evidence": "The draft does not turn the gate / old-protocol unease into a father-route clue.",
+      "suggested_fix": "No father-thread state update is needed for chapter 12 beyond continued deferral."
+    }
+  ],
+  "required_fixes": [],
+  "proposed_state_updates": [
+    "The RV remains outside Qinghe medical point with engine running, retreat line preserved, doors closed, and exterior contact controlled through lights, external speaker, and distance.",
+    "Lu Chenzhou creates a safe exterior triage setup: no names, no door opening, a lamp-line boundary, reduced speaker exposure, and immediate reverse movement when threat behavior escalates.",
+    "Three exterior aid subjects appear: a low-fever child with footprints and command response, an abdominal bleeding man capable of self-pressure, and a bound grey-eyed patient with repeated request behavior.",
+    "Lin Zhixia performs the first Qinghe exterior triage: observable child is marked for observation, abdominal bleeding man receives limited exterior self-applied aid, and the grey-eyed patient is rejected as high-risk suspected mutation.",
+    "The abdominal bleeding man receives a pressure dressing / stopgap instruction outside the RV; this does not grant boarding, crew status, or life-space access.",
+    "Zhou Xiaohe remains in temporary observation and contributes only a limited sound-observation cue about repetition.",
+    "Voice mimicry advances from external lure to body / patient-site threat: the grey-eyed patient uses the child's voice after being refused.",
+    "Grey-white vine activity appears from the grey-eyed patient's wrist wound, creating the chapter 13藤化伤员 escalation hook.",
+    "No Simple Medical Bay material is acquired, no module is activated, and the Qinghe main building / survivor order remains unrevealed."
+  ],
+  "human_approval_needed": [
+    "Approve chapter 12's exterior aid setup: limited car-outside treatment is allowed without opening the RV or granting boarding status.",
+    "Approve the three exterior triage subjects: low-fever child, abdominal bleeding man, and bound grey-eyed patient.",
+    "Approve Lin Zhixia's first Qinghe exterior triage categories: observable, exterior short-aid, and rejected high-risk suspected mutation.",
+    "Approve voice mimicry advancing into body / patient-site behavior without fully defining the ecology.",
+    "Approve grey-white vine emergence as the chapter 13 escalation hook, not a complete monster explanation."
+  ]
+}

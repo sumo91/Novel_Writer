@@ -1,0 +1,67 @@
+{
+  "score": 90,
+  "dimension_scores": {
+    "opening_hook": 9,
+    "conflict_pressure": 9,
+    "protagonist_agency": 9,
+    "payoff_execution": 13,
+    "dialogue_tension": 9,
+    "scene_specificity": 9,
+    "voice_distinction": 8,
+    "rhythm_variation": 8,
+    "ending_pull": 10,
+    "style_slop_control": 5
+  },
+  "style_alignment": {
+    "passed": true,
+    "score": 91,
+    "style_bible_used": true,
+    "calibration_used": true,
+    "matched_patterns": [
+      "Pressure-led opening: the chapter starts with headlights, a smoking minivan, filter numbers, and speed pressure before any explanation.",
+      "Concrete road and vehicle texture: bumper sparks, guardrail, fog, IV bag, safety chain, rope on the door, vehicle integrity warnings, and rear-bumper bite.",
+      "System prompts trigger action rather than lore: distance, filter efficiency, vehicle integrity, and escape warnings all create immediate decisions.",
+      "Protagonist strength appears through controllable risk: Lu Chenzhou reads the forced-stop posture, chooses the stopping point, sets one-person triage rules, and escapes by vehicle positioning.",
+      "Dialogue works as pressure and boundary testing: survivor accusations, Lu Chenzhou's short commands, and Lin Zhixia's triage lines each change the physical situation.",
+      "Payoff creates cost: one injured witness is saved, but medicine is spent, the RV takes rear damage, filter fixing is threatened, and the fog dog forces the next chase."
+    ],
+    "rejected_patterns_hit": [],
+    "violations": []
+  },
+  "exposition_density": {
+    "passed": true,
+    "score": 92,
+    "frontloaded_explanations": [],
+    "delayed_explanations": [
+      "RV system origin",
+      "Father's final rescue route",
+      "Full mist origin",
+      "Qinghe Service Area interior situation",
+      "Complete fog dog ecology",
+      "Full mall-fire old accident truth"
+    ],
+    "scene_triggers": [
+      "Filter and vehicle integrity numbers appear because the minivan chase creates speed and collision pressure.",
+      "Lin Zhixia's pollution triage appears only after she observes IV behavior, gray skin, eye haze, breathing, and controllability.",
+      "The old rescue accident appears only when weak people are pushed forward to force the rescuer's decision.",
+      "Qinghe information remains a short witness hook after the medical module prompt; the chapter cuts away before explanation.",
+      "Fog dog details appear only once the monster physically exits the crashed minivan and bites the RV."
+    ]
+  },
+  "strengths": [
+    "The revised draft opens immediately on pursuit, distance, filter efficiency, and speed pressure, matching the book's scene-first style.",
+    "The limited rescue logic is clear: child exterior aid, unsafe gray-faced adult refusal, and one compliant injured girl accepted only into temporary observation.",
+    "Lu Chenzhou's old wound is present but controlled; the chapter avoids turning the flash into a backstory dump.",
+    "Lin Zhixia stays useful on the page through triage, pollution suspicion, safety-chain discipline, and the observation boundary.",
+    "The ending is a strong next-action hook: the fog dog is physically attached to the RV and the vehicle integrity warning forces chapter 5."
+  ],
+  "blocking_issues": [],
+  "rewrite_required": false,
+  "revision_suggestions": [
+    "Final candidate can use the revised draft nearly as-is.",
+    "Keep the approved author-direction lines: '保持十五米。单人下车。双手可见。接受初筛。', '临时观察位，不是上车名额。', '当这辆车的司机。', and '请尽快脱离追咬。'",
+    "Do not add more Qinghe exposition in the final candidate.",
+    "Do not promote the rescued girl beyond temporary injured witness / observation passenger in this chapter.",
+    "Acceptance packet should record the fog dog bite, RV integrity drop to 74%, medicine use, and the light old-accident trigger as proposed state updates."
+  ]
+}

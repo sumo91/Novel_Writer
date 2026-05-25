@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "score": 89,
+  "issues": [
+    {
+      "type": "temporary_repair_boundary",
+      "severity": "low",
+      "evidence": "The draft explicitly says the rear sealing is only temporarily effective, unstable, and not a standard repair. The filter-edge material creates short-term stability but does not restore full efficiency.",
+      "suggested_fix": "In revision and acceptance, keep RV integrity and clean-filter gains limited. Do not record a full repair, full filter recovery, or module unlock."
+    },
+    {
+      "type": "chapter_9_boundary",
+      "severity": "low",
+      "evidence": "The draft brings in roadblocks, external line pulling, and fog-dog pursuit, but stops before the full night assault is resolved.",
+      "suggested_fix": "Keep chapter 8 as the setup and transition into the car-seizure night. Chapter 9 should handle the full assault and rule test."
+    },
+    {
+      "type": "qinghe_reveal_boundary",
+      "severity": "low",
+      "evidence": "The chapter stays at the outer warehouse and approach road. Old Zheng remains behind the door / speaker pressure, and Qinghe main-building order is not revealed.",
+      "suggested_fix": "Do not add Qinghe main building interior, full faction structure, or medical station layout in revision."
+    }
+  ],
+  "required_fixes": [],
+  "proposed_state_updates": [
+    "Old Zheng's broadcast continues to expose the RV location and clean-filter value, drawing human vehicles, shouting, metal strikes, and fog-side pressure toward the outer warehouse.",
+    "Qinghe outer-warehouse lights begin shutting down while fog backflows into the approach area; long停留 becomes dangerous under low filter efficiency and rear sealing damage.",
+    "Lu Chenzhou establishes the practical repair rule: repair only to the point the RV can move, not to full restoration under exposure.",
+    "Lin Zhixia isolates contaminated outer packaging, performs minimum wound stabilization on Zhou Xiaohe, and keeps the temporary observation boundary intact.",
+    "The RV uses the gained industrial sealant, clamps, curtain material, and filter-edge material for temporary rear sealing and short-term filter stabilization.",
+    "The temporary repair lowers immediate leakage and stabilizes the filter briefly but does not fully repair vehicle integrity, restore clean-filter efficiency to a safe value, or unlock a medical module.",
+    "Zhou Xiaohe remains a temporary observation patient, not a formal onboard member or core teammate; she remains able to follow instructions.",
+    "External survivors begin active road-blocking and line-pulling behavior, but the full car-seizure assault remains the next chapter's conflict.",
+    "Human noise, vehicle lights, and metal strikes attract fog dogs / fog-side fast targets toward the outer warehouse route.",
+    "The chapter ends with the RV squeezing out of the outer warehouse approach toward a blocked route, entering the car-seizure night pressure."
+  ],
+  "human_approval_needed": [
+    "Approve chapter 8 temporary repair size: useful enough to move, not enough for full RV repair or filter recovery.",
+    "Approve early filter-consumption rule: low clean-filter efficiency and rear leakage turn long停留 into a contamination countdown.",
+    "Approve chapter 8 as car-seizure night setup, with the full night assault reserved for chapter 9.",
+    "Approve that human noise / metal striking can attract fog dogs or fog-side fast targets in this stage."
+  ]
+}

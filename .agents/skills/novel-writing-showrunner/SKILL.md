@@ -1,195 +1,123 @@
 ---
 name: novel-writing-showrunner
-description: Use when helping a user develop, evaluate, plan, write, review, or continue a long-form web novel project in the Novel_Writer system; especially for novel ideation, genre positioning, selling-point design, book setup, chapter-pipeline decisions, sample-chapter testing, drift review, canon/state approval, knowledge-card planning, or deciding what the next workflow step should be.
+description: Use when helping a user develop, evaluate, plan, write, review, or continue a long-form web novel project in the Novel_Writer system; especially for novel ideation, book setup, chapter workflow decisions, drift review, canon/state approval, craft knowledge, or system evolution.
 ---
 
 # Novel Writing Showrunner
 
-Use this skill as the workflow driver for Novel_Writer. Act like a practical showrunner/editorial assistant: help the human clarify taste and direction, choose the next appropriate workflow step, and keep the project inside the file-based canon and approval system.
+Showrunner skill is the routing layer. It decides the current writing state, chooses the correct runbook, protects human approval gates, and keeps the conversation moving one clear step at a time.
 
-## Core Rule
+Use `AGENTS.md` for non-negotiable repository rules. Use `docs/workflows/` for detailed steps. Use engine commands and validators for mechanical pass/fail.
 
-Do not jump straight to prose unless the user has already approved the premise, target sample goal, and current chapter brief. The system exists to produce controlled long-form fiction, not one-off text.
+## Core Rules
 
-## Operating Principles
+- The human is final showrunner and canon owner.
+- Do not create prose unless the required upstream gates are approved.
+- Do not create a new book, outline, chapter brief, or prose from a raw idea until the human approves a concept direction.
+- Do not treat drafts, reviews, outline layers, craft contracts, style files, state updates, or pending approvals as canon until accepted or approved.
+- State assumptions, offer 2-3 approaches when useful, and convert vague goals into observable success criteria.
+- Ask one necessary question at a time.
+- When an artifact needs approval, state exactly what would become canon and which files are involved.
 
-- Treat the human as final showrunner and canon owner.
-- AI may draft most prose, but publication-facing chapter text should pass through lightweight human direction, prose quality review, and a final candidate gate.
-- Each book may carry a `style/style_bible.yaml` that defines its own voice, texture, dialogue pressure, payoff style, and banned patterns.
-- Abstract reusable style profiles live in `knowledge/style_profiles/`; use them only to seed and calibrate book-local Style Bibles.
-- Book-local style calibration lives in `style/calibration/style_calibration.yaml`; use it for approved patterns, rejected patterns, and concise human taste notes.
-- Reusable style cards belong in `knowledge/style_cards/`; apply them as checks during context building, drafting, and review.
-- Do not imitate a living author's distinctive style. Convert taste references into abstract, book-local rules such as pacing, concreteness, sentence pressure, and failure modes.
-- Keep story-specific truth inside `books/<book_id>/`.
-- Keep reusable theory inside `knowledge/`, preferably as structured knowledge cards.
-- Keep repository-wide collaboration rules in `AGENTS.md`.
-- Never treat unapproved drafts, reviews, or generated state updates as canon.
-- Treat V3.1 outline layers as upstream control: draft outlines are labeled assumptions, approved outlines are hard constraints.
-- Prefer small validation samples before long runs: 3 chapters for first test, 5 chapters for stronger proof, 10 chapters for drift testing.
-- When unsure whether to continue writing or harden tooling, choose the option that reduces future drift.
-- For artifacts that need human review, prefer a readable review copy over raw YAML/JSON in conversation. When an HTML sidecar exists, point the human to the `.html` file first and keep the YAML/JSON as the machine contract.
-- Do not ask for approval with vague language. State exactly what would become canon, which files would be accepted, and which pending approvals remain unresolved.
+## Route By State
 
-## Workflow Decision Tree
+Use the first matching state.
 
-Use the first matching state:
+1. **Raw Idea**
+   - Use `docs/workflows/v5-0-new-book-kickoff.md`.
+   - Run the brainstorming gate in conversation: one question at a time, 2-3 options when helpful, then a compact concept direction for approval.
+   - Do not create files until the human approves the concept direction.
 
-1. **Raw idea only**
-   - Ask for or infer: genre, protagonist fantasy, core hook, target reader, first visible pressure, first payoff.
-   - Offer 2-3 simple premise approaches.
-   - Recommend one and explain tradeoffs.
-   - Do not create files until the user confirms.
+2. **Concept Approved, No Book Project**
+   - Create the book with `init-book`.
+   - Then follow the new-book kickoff runbook: craft contract, craft-contract check, concept review, human review, outline package, style layer.
 
-2. **Premise approved, no book project**
-   - Create a new book with `python -m engine.cli init-book <book_id> --title "<title>"`.
-   - Fill only minimum viable canon and V3.1 planning: `novel_bible.yaml`, `world_rules.yaml`, `characters.yaml`, `master_outline.yaml`, active volume/arc/unit, and any essential economy/faction rules.
-   - Draft or review `style/style_bible.yaml`; optionally seed it from `style-bible-from-profile`, then tune it for the specific book and keep it `draft` until the human approves it as a hard style constraint.
-   - Draft `style/calibration/style_calibration.yaml` when the human has taste notes, approved patterns, rejected patterns, or calibration samples. Keep it `draft` until approved.
-   - Keep early economy, factions, power systems, and lore lean until the first sample proves the premise.
+3. **Book Exists, Pre-Outline Or Outline Draft**
+   - Use V3/V3.1 migration only when required.
+   - Use `outline-status`, `outline-map-review`, and `outline-approval-packet` as described in the outline runbooks.
+   - Do not treat draft outline layers as hard canon.
 
-3. **Book exists, next chapter not prepared**
-   - Check whether the book has V3/V3.1 files. If missing, use `migrate-v3` or `migrate-v3-1` before relying on state or outline checks.
-   - Run `python -m engine.cli outline-status <book_id>` and decide whether draft outline layers are acceptable assumptions.
-   - Run `python -m engine.cli chapter-brief-gate <book_id> <chapter>` before writing the chapter brief; use `--strict` when the user wants only approved outlines to drive planning.
-   - Identify the active `master -> volume -> arc -> unit` reference chain and whether each layer is draft or approved.
-   - Run `python -m engine.cli prepare-chapter <book_id> <chapter>`.
-   - Run `python -m engine.cli chapter-brief-scaffold <book_id> <chapter>` if the brief does not exist.
-   - Edit `outlines/chapter_briefs/ch_XXXX_brief.md` into a human-reviewable brief.
-   - Run `python -m engine.cli chapter-brief-check <book_id> <chapter>`.
-   - The brief must state: chapter goal, opening hook, anti-infodump opening plan, required beats, character movement, ending pull, continuity notes, outline obligations, required threads/payoffs, and relevant economy/faction constraints.
+4. **Book Exists, Next Chapter Not Prepared**
+   - Check `chapter-brief-gate` before brief work.
+   - Confirm the active unit has a complete chapter map for its full range.
+   - Prepare the chapter workspace and scaffold/check the chapter brief.
+   - If a craft contract exists, ensure the brief includes `## Craft Alignment`.
 
-4. **Brief exists, no draft**
-   - Write `drafts/ch_XXXX_draft.md` from the brief and context.
-   - Use the book Style Bible and relevant style cards as prose constraints.
-   - Open with scene pressure before explanations; reveal setting, backstory, system, economy, or faction rules only after the scene creates reader need.
-   - Keep protagonist agency visible.
-   - Make the chapter payoff concrete.
-   - End with a next-chapter pull.
+5. **Brief Exists, No Draft**
+   - Draft only from the approved or explicitly assumed context chain.
+   - Open with scene pressure before exposition.
+   - Preserve protagonist agency and concrete payoff.
 
-5. **Draft exists, no reviews**
-   - Write `reviews/ch_XXXX/continuity_review.json`.
-   - Write `reviews/ch_XXXX/pacing_review.json`.
-   - Use the 10-dimension pacing rubric already expected by the engine.
+6. **Draft Exists, Reviews Missing**
+   - Write continuity and pacing reviews.
+   - Treat new canon/state facts as proposed until acceptance.
 
-6. **Reviews exist, no revised draft**
-   - Create `drafts/ch_XXXX_revised.md`.
-   - If no revision is needed, copy the draft intentionally and note that in the final response.
+7. **Reviews Exist, Revised Draft Missing**
+   - Revise only what the brief and reviews require.
+   - Do not broaden local fixes into premise, canon, relationship, style, or golden-finger changes without approval.
 
-7. **Revised draft exists, no author direction**
-   - Run `python -m engine.cli author-direction-scaffold <book_id> <chapter>` if missing.
-   - Ask the human for a small direction note, not a full manual rewrite: intent, must-change points, approved lines, and rejected patterns.
-   - Keep this as taste/control input that AI must integrate before final candidate.
+8. **Revised Draft Exists, Author Direction Or Prose Review Missing**
+   - Scaffold or use lightweight author direction.
+   - Write prose quality review with style alignment when style files exist and exposition-density checks for openings or new units.
+   - Run the prose quality gate before final candidate.
 
-8. **Author direction exists, no prose quality review**
-   - Write `reviews/ch_XXXX/prose_quality_review.json`.
-   - Use the 100-point readable web-novel quality gate: opening hook, conflict pressure, protagonist agency, payoff execution, dialogue tension, scene specificity, voice distinction, rhythm variation, ending pull, and style slop control.
-   - Include `style_alignment` whenever `style/style_bible.yaml` or `style/calibration/style_calibration.yaml` exists. It must declare `style_bible_used`, `calibration_used`, `matched_patterns`, `rejected_patterns_hit`, and `violations`; score below 85, explicit violations, or rejected pattern hits require rewrite.
-   - Include `exposition_density` for openings, new units, or chapters with heavy world/system/economy explanation; below 85 or frontloaded explanations require rewrite.
-   - Run `python -m engine.cli pipeline-prose-quality-gate <book_id> <chapter>`.
-   - If below 85 or blockers remain, revise by AI before creating the final candidate.
+9. **Final Candidate Or Acceptance Packet Stage**
+   - Draft the acceptance packet from the final candidate.
+   - Stop for explicit human acceptance before running `pipeline-accept`.
+   - After acceptance, verify pipeline status and book validity.
 
-9. **Prose quality review exists, no final candidate**
-   - Create `drafts/ch_XXXX_final_candidate.md` by integrating revised draft, prose quality review, and human direction.
-   - The human may edit only small high-leverage pieces; do not require full manual rewriting.
+10. **Accepted Range Completed**
+   - Use drift report and pending-approval sync.
+   - Prefer 3 accepted chapters for first readability/drift review, 5 for stronger proof, 10 for drift testing.
 
-10. **Final candidate exists, no acceptance packet**
-   - Run `python -m engine.cli pipeline-draft-acceptance <book_id> <chapter> --title "<title>" --summary "<summary>"`.
-   - Point the human to both the YAML contract and the generated HTML review copy.
-   - Summarize the acceptance decision in plain language: publication readiness, timeline event, state changes, open thread updates, payoff updates, next hook, and pending approvals.
-   - Stop for human confirmation.
+11. **Knowledge Ingestion**
+   - Confirm reliable source text first: user notes, subtitles, downloaded subtitles, or local transcription.
+   - Do not create cards from title, metadata, comments, danmaku, recommendation context, or guesswork.
+   - Convert only practical principles into concise cards.
 
-11. **Acceptance packet exists, not accepted**
-   - Do not run `pipeline-accept` unless the user explicitly confirms.
-   - If the human asks what they are approving, restate the acceptance packet in plain language and link the HTML review copy when present.
-   - After confirmation, run `python -m engine.cli pipeline-accept <book_id> <chapter> --approved`.
+12. **Architecture Or System Evolution**
+   - Compare the request against implemented files and commands.
+   - Prefer reducing drift and clarifying ownership before adding new agents or dashboards.
+   - Keep AGENTS as constitution, this skill as router, runbooks as detailed procedures, and engine/tests as validators.
 
-12. **Sample target completed**
-   - Run `python -m engine.cli drift-report <book_id> --start <n> --end <m>`.
-   - Run `python -m engine.cli sync-pending-approvals <book_id>`.
-   - Point the human to the generated drift report HTML copy when present.
-   - Write a short target-genre, drift, and outline-alignment review report.
-   - Triage pending approvals with `pending-approval-batch-update` when multiple items are decided.
+## Key Runbooks
 
-13. **Architecture discussion**
-   - Compare the user's vision against implemented files and commands.
-   - Recommend the next system layer before writing new fiction.
-   - For current Novel_Writer, keep V2.6 chapter pipeline, V3 state machine, and V3.1 long-form outline architecture stable before market/reader-simulator layers.
-
-## Chapter Quality Standards
-
-Before recommending acceptance, check:
-
-- Opening hook is immediate.
-- Opening gives a concrete scene pressure before worldbuilding, backstory, system, economy, or faction explanation.
-- Conflict is concrete and close.
-- Protagonist makes meaningful choices.
-- Payoff is visible, not merely promised.
-- Chapter end creates a real next action or question.
-- Chapter serves the active unit/arc/volume obligation, or the deviation is explicit and approved.
-- Economy, faction, resource, and power changes do not violate current constraints.
-- New facts are recorded as state changes or pending approvals.
-- No continuity blockers remain.
-- Pacing score is at least 80, or an explicit waiver exists.
-- Prose quality score is at least 85 before creating the final candidate, with no unresolved blocking issues.
-- Style alignment score is at least 85 when a Style Bible or style calibration exists; `rejected_patterns_hit` must be empty.
-- Exposition density score is at least 85 when a chapter opening or new unit risks becoming a setting manual.
-- Final candidate should reflect the human author direction; the human can steer with a short note rather than rewriting the whole chapter.
-
-## Knowledge Use
-
-Do not ingest raw writing books, courses, videos, or long theory dumps directly into the project context or `knowledge/`.
-
-When the user provides theory material:
-
-1. Extract only usable principles.
-2. Convert them into knowledge cards with fields such as:
-   - `id`
-   - `scope`
-   - `applies_to`
-   - `use_when`
-   - `principle`
-   - `checks`
-   - `failure_modes`
-3. Mark whether the rule is a hard constraint, soft heuristic, or genre-specific pattern.
-4. Use knowledge cards during concept design, chapter briefs, reviews, and drift reports.
+- New book kickoff: `docs/workflows/v5-0-new-book-kickoff.md`
+- Craft contract and concept review: `docs/workflows/v4-9-craft-contract-and-concept-review.md`
+- Chapter pipeline: `docs/workflows/v2-single-chapter-pipeline.md`
+- Long-form outline architecture: `docs/workflows/v3-1-long-form-outline-architecture.md`
+- Outline approval gate: `docs/workflows/v3-2-outline-approval-gate.md`
+- Chapter brief contract: `docs/workflows/v3-3-chapter-brief-contract.md`
 
 ## Common Commands
 
 ```powershell
 python -m engine.cli init-book <book_id> --title "<title>"
-python -m engine.cli migrate-v3 <book_id>
-python -m engine.cli migrate-v3-1 <book_id>
+python -m engine.cli craft-contract-scaffold <book_id> --force
+python -m engine.cli craft-contract-check <book_id>
+python -m engine.cli concept-review <book_id>
 python -m engine.cli outline-status <book_id>
-python -m engine.cli outline-approval-update <book_id> <layer> --status approved --note "<note>"
+python -m engine.cli outline-map-review <book_id>
+python -m engine.cli outline-approval-packet <book_id> --layer master
 python -m engine.cli chapter-brief-gate <book_id> <chapter>
+python -m engine.cli prepare-chapter <book_id> <chapter>
 python -m engine.cli chapter-brief-scaffold <book_id> <chapter>
 python -m engine.cli chapter-brief-check <book_id> <chapter>
-python -m engine.cli prepare-chapter <book_id> <chapter>
 python -m engine.cli pipeline-status <book_id> <chapter>
 python -m engine.cli pipeline-quality-gate <book_id> <chapter>
-python -m engine.cli author-direction-scaffold <book_id> <chapter>
 python -m engine.cli pipeline-prose-quality-gate <book_id> <chapter>
-python -m engine.cli style-bible-check <book_id>
-python -m engine.cli style-bible-scaffold <book_id> --force
-python -m engine.cli style-profile-list
-python -m engine.cli style-bible-from-profile <book_id> <profile_id> --force
-python -m engine.cli style-calibration-scaffold <book_id> --force
-python -m engine.cli style-calibration-check <book_id>
 python -m engine.cli pipeline-draft-acceptance <book_id> <chapter> --title "<title>" --summary "<summary>"
 python -m engine.cli pipeline-accept <book_id> <chapter> --approved
 python -m engine.cli drift-report <book_id> --start <n> --end <m>
 python -m engine.cli sync-pending-approvals <book_id>
-python -m engine.cli pending-approval-batch-update <book_id> --updates-file <path>
 python -m engine.cli validate-book <book_id>
 python -m pytest -q
 ```
 
 ## Response Style
 
-- Keep the user oriented: say what stage the project is in and what the next gate is.
+- Say what stage the project is in and what the next gate is.
 - Ask at most one necessary question at a time.
 - Prefer concrete options over abstract theory.
-- When writing fiction, keep notes about what changed and what needs approval.
-- When reviewing architecture, distinguish implemented, partial, and not-yet-started capabilities.
-- When handing off a review artifact, give the human a short reading order: what to skim first, what needs a decision, and what can be ignored unless they want machine-level detail.
-- When presenting options, label the recommended path and its tradeoff. Avoid pretending every option is equal.
+- Give the human a short reading order for review artifacts.
+- Label recommended paths and tradeoffs; do not pretend every option is equal.

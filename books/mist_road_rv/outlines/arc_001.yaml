@@ -1,0 +1,147 @@
+arc_id: arc_001
+title: "第一站与青河医疗线"
+chapter_range:
+  start: 1
+  end: 20
+parent_volume: volume_001
+arc_goal: "用前 20 章完成开篇双闭环：第一座服务区让房车系统激活、净雾滤芯到手、陆沉舟立下上车规则；青河服务区让林知夏的医疗价值和污染识别能力落地，解锁简易医疗位，并把路线推向收费站与更高等级道路风险。"
+main_conflict: "迷雾封锁高速服务区，幸存者秩序崩坏，雾尸、雾犬和污染伤员持续压迫；陆沉舟必须在救援本能、车内名额、系统任务和道德绑架之间建立可执行的规则。"
+stage_enemy_or_pressure: "雾尸、雾犬、藤化伤员、抢车幸存者小团体、服务区物资控制者、用伤员和孩子逼迫房车收容的道德绑架者。"
+protagonist_move: "陆沉舟从拒绝解释、只想离开，到主动用专业判断和车内契约定义救援边界：能听指挥、能守规则、能承担车内功能或风险的人，才有资格进入移动安全屋。"
+required_payoffs:
+  - "房车系统激活，并发布清理 C 区加油口的第一个路标任务。"
+  - "净雾滤芯组件取得、安装并验证，房车第一次具备短距离穿雾能力。"
+  - "陆沉舟公开第一条上车规则：上车不是被救，是签约。"
+  - "林知夏通过急诊分诊、污染识别和有限资源取舍证明核心队友价值。"
+  - "青河服务区医疗线完成简易医疗位材料收集，房车拥有第一处功能生活位。"
+  - "雾尸、雾犬、藤化伤员形成怪物升级链，证明迷雾污染不是普通传染病。"
+  - "旧导航或服务区终端出现被擦掉的国道编号，为 21-30 章收费站与堵车长队做钩子。"
+required_threads:
+  - thread_rv_system_binding
+  - thread_lu_old_rescue_accident
+  - thread_vehicle_rules_contract
+  - thread_lin_pollution_observation
+  - thread_mist_monster_ecology
+  - thread_service_area_terminals
+major_reveal_or_reversal: "第一座服务区看似安全，实际会被人群、怪物和道德绑架拖垮；真正安全的不是留下等救援，而是完成任务、建立规则、让房车移动起来。青河服务区进一步证明，房车不是逃生车，而是在逐步长出医疗、净化和队伍分工的移动安全屋。"
+exit_state: "陆沉舟、林知夏和少数合格者完成前两站撤离；房车拥有净雾滤芯和简易医疗位雏形；车内规则经受第一次公开测试；路线前方指向北岔收费站、堵车长队和储物扩容材料。"
+arc_structure:
+  - chapters: "1-3"
+    label: "开篇钩子与第一次穿雾"
+    function: "服务区封锁、房车系统激活、林知夏登场、净雾滤芯任务闭环、第一条上车规则公开。"
+    payoff: "房车从普通破车变成有系统任务和净雾能力的生存工具。"
+    hook_out: "青河服务区检测到简易医疗位材料。"
+  - chapters: "4-7"
+    label: "第一服务区余波与规则代价"
+    function: "处理上车名额、污染疑似者、物资分配和被拒绝者反扑，让规则第一次付出代价。"
+    payoff: "陆沉舟证明规则不是口号，林知夏开始建立污染分诊标准。"
+    hook_out: "雾犬追车，说明迷雾威胁会离开固定服务区追逐车辆。"
+  - chapters: "8-10"
+    label: "第一站收束"
+    function: "雾犬、抢车者和雾墙回压形成小高潮，房车真正驶离第一站。"
+    payoff: "净雾滤芯稳定运行，车内第一版撤离规则成立。"
+    hook_out: "青河服务区的求救广播里出现医疗物资和污染伤员关键词。"
+  - chapters: "11-15"
+    label: "青河服务区医疗压力"
+    function: "林知夏面对污染伤员、医疗物资争夺和不可能全救的选择，建立她的功能位。"
+    payoff: "污染初筛标准、简易医疗位材料、林知夏的车内价值全部落地。"
+    hook_out: "藤化伤员爆发，证明污染会从伤口和情绪压力中异变。"
+  - chapters: "16-20"
+    label: "医疗位闭环与下一路段"
+    function: "青河服务区撤离，雾犬群和藤化伤员双线压迫，简易医疗位装车，旧导航给出被擦掉的国道编号。"
+    payoff: "房车拥有第二个核心模块，陆沉舟和林知夏形成可持续配合。"
+    hook_out: "北岔收费站堵车长队出现，储物扩容与抢车团伙压力进入下一弧段。"
+chapters:
+  - chapter: 1
+    title: "迷雾封路，房车绑定"
+    function: "开篇危机、主角专业性、系统激活。"
+    required_payoff: "房车系统发布第一个路标任务。"
+  - chapter: 2
+    title: "第一条上车规则"
+    function: "林知夏登场，净雾滤芯任务启动，主角边界公开。"
+    required_payoff: "陆沉舟用规则回应道德绑架。"
+  - chapter: 3
+    title: "房车第一次穿雾"
+    function: "服务区突围，首次模块回报，下一服务区钩子。"
+    required_payoff: "净雾滤芯启动，房车驶入雾墙。"
+  - chapter: 4
+    title: "被拒绝的人"
+    function: "展示规则代价，被拒幸存者制造反扑。"
+    required_payoff: "陆沉舟确认上车名额不能靠哭喊、身份或物资硬买。"
+  - chapter: 5
+    title: "雾犬追车"
+    function: "怪物威胁从固定服务区扩展到道路追逐。"
+    required_payoff: "房车密封和路线判断经受第一次追车战。"
+  - chapter: 6
+    title: "污染分诊"
+    function: "林知夏提出污染疑似分级，和陆沉舟的撤离规则互相磨合。"
+    required_payoff: "车内建立临时隔离和污染观察规则。"
+  - chapter: 7
+    title: "物资不是船票"
+    function: "物资控制者试图用燃油和药品买断上车资格。"
+    required_payoff: "陆沉舟把物资交易和上车资格切开。"
+  - chapter: 8
+    title: "雾墙回压"
+    function: "第一服务区污染浓度回升，逼迫房车必须立刻离开。"
+    required_payoff: "净雾滤芯的消耗限制被明确。"
+  - chapter: 9
+    title: "抢车夜"
+    function: "抢车小团体夜袭，测试车内第一版规则。"
+    required_payoff: "陆沉舟用专业破拆和车体优势保住房车。"
+  - chapter: 10
+    title: "青河求救广播"
+    function: "第一站收束，导向青河服务区和医疗位线索。"
+    required_payoff: "车内形成最小队伍，路线进入第二站。"
+  - chapter: 11
+    title: "青河服务区"
+    function: "青河登场，医疗资源和污染伤员成为主压力。"
+    required_payoff: "林知夏确认这里有简易医疗位关键材料。"
+  - chapter: 12
+    title: "谁先救"
+    function: "医疗分诊与道德压力正面碰撞。"
+    required_payoff: "林知夏做出有限资源下的专业取舍。"
+  - chapter: 13
+    title: "灰白雾藤"
+    function: "污染伤员异变为藤化伤员，怪物生态升级。"
+    required_payoff: "污染不是普通感染的证据落地。"
+  - chapter: 14
+    title: "医疗位材料"
+    function: "争夺无菌电源组件、折叠医疗架和污染隔离膜。"
+    required_payoff: "简易医疗位装车条件凑齐大半。"
+  - chapter: 15
+    title: "雾犬围站"
+    function: "外部雾犬群压迫青河服务区，内部幸存者试图转嫁风险。"
+    required_payoff: "陆沉舟和林知夏第一次形成战术配合。"
+  - chapter: 16
+    title: "临时手术灯"
+    function: "林知夏用简陋条件救治关键伤员，换取路线情报或组件。"
+    required_payoff: "医疗功能带来非战斗爽点和交易价值。"
+  - chapter: 17
+    title: "终端故障码"
+    function: "青河服务区终端出现旧协议故障码。"
+    required_payoff: "服务区终端不是普通设备的疑点被推进。"
+  - chapter: 18
+    title: "第二次签约"
+    function: "新幸存者申请上车，规则升级为更明确的车内契约。"
+    required_payoff: "车内规则从口头命令变成可执行条款。"
+  - chapter: 19
+    title: "医疗位启动"
+    function: "简易医疗位完成安装，车内生存率提升。"
+    required_payoff: "林知夏正式成为第一核心功能队友。"
+  - chapter: 20
+    title: "被擦掉的国道编号"
+    function: "青河撤离，旧导航与国道编号指向下一路段。"
+    required_payoff: "北岔收费站、堵车长队、储物扩容线索进入下一阶段。"
+approval_questions:
+  - "是否认可 arc_001 从 1-20 章承担第一站和青河医疗线双闭环？"
+  - "是否认可 1-10 章先立系统、净雾滤芯、林知夏和上车规则，11-20 章再立医疗位和污染分诊？"
+  - "是否认可弧内怪物升级只到雾犬和藤化伤员，不提前打出更高阶大怪？"
+  - "是否认可陆沉舟的爽点来自专业判断、规则执行、车辆升级和拒绝道德绑架，而不是单纯开挂碾压？"
+  - "是否认可下一步补完 unit_0001 的 1-10 章完整章节地图？"
+approval:
+  status: approved
+  approved_by: ""
+  approved_at: ""
+  note: Human approved arc_001 after reviewing arc_001_outline_approval_packet.html.
+  notes:
+    - "Arc outline expanded after volume_001 approval; pending human review before it becomes a hard writing constraint."

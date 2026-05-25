@@ -1,0 +1,10 @@
+updates:
+- id: pa_e387a658
+  status: approved
+  note: "Human confirmed during chapter 2 acceptance: Lin Zhixia is locked as an emergency nurse."
+- id: pa_90baf548
+  status: approved
+  note: "Human confirmed during chapter 2 acceptance: clean-mist filter component is split into core filter part plus pressure sealing ring."
+- id: pa_826536d6
+  status: approved
+  note: Human confirmed the split-filter hook should carry into chapter 3 planning.

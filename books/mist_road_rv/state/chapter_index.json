@@ -1,0 +1,239 @@
+{
+  "chapters": [
+    {
+      "chapter": 1,
+      "title": "迷雾封路，房车绑定",
+      "path": "chapters/ch_0001.md",
+      "summary": "迷雾封锁第一座高速服务区，陆沉舟用救援经验组织短暂撤离并遭遇第一批雾尸；父亲留下的破旧房车激活旧救援协议，发布清理 C 区加油口、取得净雾滤芯组件的第一个路标任务。",
+      "state_changes": [
+        "Mist pollution blocks the first unnamed highway service area.",
+        "Lu Chenzhou encounters the first visible fog-corrupted bodies.",
+        "The RV activates an old rescue protocol residue and binds to Lu Chenzhou.",
+        "The first route-marker task is generated: clear C-zone fuel point and retrieve the clean-mist filter component."
+      ],
+      "open_threads_touched": []
+    },
+    {
+      "chapter": 2,
+      "title": "第一条上车规则",
+      "path": "chapters/ch_0002.md",
+      "summary": "陆沉舟在第一服务区外面对抢油和上车逼迫，林知夏正式登场并用分诊识别污染疑似者；两人合作清理 C 区加油口，取得净雾滤芯核心过滤件，陆沉舟公开第一条上车规则：上车不是被救，是签约。",
+      "state_changes": [
+        "Lin Zhixia formally appears at the first service area and demonstrates triage and pollution-suspicion judgment.",
+        "Lu Chenzhou retrieves the clean-mist filter core part from C-zone fuel point.",
+        "The RV system shows component status and continued safe-air countdown.",
+        "Lu Chenzhou publicly states the first boarding rule: boarding is not rescue, it is a contract."
+      ],
+      "open_threads_touched": []
+    },
+    {
+      "chapter": 3,
+      "title": "房车第一次穿雾",
+      "path": "chapters/ch_0003.md",
+      "summary": "陆沉舟在第一服务区围堵中执行上车规则，林知夏以急诊分诊和污染观察能力签约上车；两人用临时加压固定启动净雾滤芯，房车第一次冲入迷雾，并锁定 17 公里外的青河服务区与可解锁模块简易医疗位。",
+      "state_changes": [
+        "Lu Chenzhou executes the first boarding rule under public pressure and refuses people who use children, hidden wounds, or chaos to force RV entry.",
+        "Lin Zhixia boards under the contract rule and takes responsibility for medical triage and pollution observation inside the RV.",
+        "The clean-mist filter core is temporarily pressure-fixed using sealant, clamps, a metal inspection plate, and RV spare hardware.",
+        "The clean-mist filter starts in low-concentration short-crossing mode, giving the RV its first short-term safe-air capability.",
+        "The RV breaks out of the first service area and enters the fog wall for the first time.",
+        "The next route marker locks onto Qinghe Service Area, 17 km ahead, with the unlockable module 'simple medical berth'.",
+        "The ending audio hints at a faster dog-like fog creature, foreshadowing the next monster escalation."
+      ],
+      "open_threads_touched": [
+        "thread_rv_system_binding",
+        "thread_mist_monster_ecology",
+        "thread_vehicle_rules_contract",
+        "thread_lin_pollution_observation"
+      ]
+    },
+    {
+      "chapter": 4,
+      "title": "被拒绝的人",
+      "path": "chapters/ch_0004.md",
+      "summary": "房车离开第一服务区后，被拒幸存者开着冒烟面包车追上来，用孩子、输液袋和伤员逼陆沉舟停车。陆沉舟识破对方借救援抢车的意图，只接收一名服从指令且通过林知夏初筛的受伤女孩进入临时观察，拒绝整车风险转嫁；面包车撞上护栏后，第一只雾犬咬住房车后保险杠。",
+      "state_changes": [
+        "Lu Chenzhou and Lin Zhixia continue toward Qinghe Service Area after leaving the first service area.",
+        "A smoking minivan of rejected survivors pursues the RV and uses a child, an IV bag, and injured people to force a stop.",
+        "Lu Chenzhou identifies the minivan's posture as a forced-stop / vehicle-seizure attempt rather than compliant rescue.",
+        "Lin Zhixia performs roadside medical and pollution triage, identifying a gray-faced adult as unsafe for RV entry and a wounded teenage girl as controllable for temporary observation.",
+        {
+          "Lu Chenzhou separates rescue from boarding": "the child receives limited exterior aid, the unsafe gray-faced adult is refused entry, and one compliant injured girl is accepted into temporary observation."
+        },
+        "The rescued girl says Qinghe has power and that the broadcast is real, but the warning is interrupted before revealing Qinghe's interior situation.",
+        "Lu Chenzhou's old rescue accident is lightly triggered by the image of weak people being pushed forward to force a rescuer's decision; no full truth is revealed.",
+        "The rejected survivors attempt to seize or stop the RV with a rope, forced door pressure, and minivan impact; Lu Chenzhou uses a narrow roadside obstruction and vehicle positioning to escape.",
+        "The minivan crashes into the guardrail, and a fast gray-white fog dog emerges as the first visible road-speed monster escalation.",
+        "A fog dog bites the RV rear bumper, dropping vehicle integrity to 74% and threatening the temporary clean-mist filter fixing."
+      ],
+      "open_threads_touched": [
+        "thread_vehicle_rules_contract",
+        "thread_lin_pollution_observation",
+        "thread_mist_monster_ecology",
+        "thread_lu_old_rescue_accident",
+        "thread_rv_system_binding"
+      ]
+    },
+    {
+      "chapter": 5,
+      "title": "雾犬追车",
+      "path": "chapters/ch_0005.md",
+      "summary": "雾犬咬住房车后保险杠并被血味与滤芯排气吸引，陆沉舟利用急刹、转向和废弃货车底盘撕脱雾犬，代价是后保险杠断裂、车体后部密封下降至72%、滤芯效率降至23%。林知夏确认血味和车尾排气是早期诱因，伤员仍需尽快处理，路线被迫转向青河服务区外仓接近口寻找密封胶、卡箍和隔离帘材料。",
+      "state_changes": [
+        "The RV begins chapter 5 with a fog dog biting and dragging the rear bumper while vehicle integrity is at 74%.",
+        "The fog dog continues to bite and drag the RV, causing the rear bumper / rear seal to worsen and vehicle integrity to drop to 72%.",
+        "The clean-mist filter remains active but its efficiency drops from 26% to 23% under drag, vibration, and external pollution disturbance near the temporary exhaust / venting point.",
+        "Lin Zhixia observes that the fog dog responds to both the injured girl's blood smell and the RV's clean-filter exhaust / rear venting flow.",
+        "Lu Chenzhou uses road conditions, warning cones, a sharp brake, steering, and a disabled truck's raised rear chassis to tear the fog dog loose from the RV.",
+        "The RV escapes the first fog dog but loses or damages part of the rear bumper.",
+        "The injured girl remains only a temporary observation passenger; her wound still needs better treatment and does not make her a core teammate.",
+        "The next route pressure shifts toward Qinghe Service Area outer warehouse / repair-material entrance, with possible sealant, spare clamps, and isolation-curtain material.",
+        "Qinghe Service Area interior conditions remain unrevealed."
+      ],
+      "open_threads_touched": []
+    },
+    {
+      "chapter": 6,
+      "title": "污染分诊",
+      "path": "chapters/ch_0006.md",
+      "summary": "房车抵达青河服务区外仓接近口前，周小禾出现发冷、渗血和瞳孔灰边等疑似污染体征。林知夏建立外伤、雾吸入、疑似异变三档临时污染分诊，陆沉舟将其转成车内规则：临时观察区不等于生活区，上车名额与观察窗口分开。两人用旧帘布、急救箱、塑封袋和绳索搭出临时观察区。周小禾提供青河后仓线索：净化耗材、医疗材料和修车胶在后仓，但钥匙或门禁卡由仓库控制者老郑掌握。房车停在外仓口，看见锁链、拖痕和写着拿物资可以、上车不行的木牌，下一章进入物资与上车资格切割。",
+      "state_changes": [
+        "The RV reaches the Qinghe Service Area outer warehouse approach with rear sealing still damaged at 72% and clean-mist filter efficiency still at 23%.",
+        "The injured girl is identified as Zhou Xiaohe and remains a temporary observation passenger, not a formal onboard member or core teammate.",
+        "Zhou Xiaohe shows coldness, rapid breathing, continued bleeding, and a faint gray edge around the pupil, creating an early contamination suspicion without confirming irreversible mutation.",
+        "Lin Zhixia establishes a provisional three-tier onboard triage rule: external injury, mist inhalation observation, and suspected mutation.",
+        "Lu Chenzhou converts the triage rule into vehicle rules: observation zone is not living space, temporary observation is not boarding qualification, and noncompliance or aggression ends the observation window.",
+        "A makeshift rear observation / isolation area is built from an old curtain, first-aid box, plastic wrap, tape, and rope, but it is explicitly not a proper medical isolation setup.",
+        "The RV still needs sealant, spare clamps, isolation-curtain material, and basic medical supplies; none are gained for free in this chapter.",
+        "Zhou Xiaohe provides a limited Qinghe outer-warehouse clue: rear warehouse supplies exist, but the key or access card is controlled by a warehouse keeper called Old Zheng.",
+        "The chapter ends at the Qinghe outer warehouse approach, where a chained roll-up door and sign reading '拿物资可以 / 上车不行' point chapter 7 toward material control and boarding-rule conflict.",
+        "Qinghe Service Area interior order, full factions, and complete medical station layout remain unrevealed."
+      ],
+      "open_threads_touched": []
+    },
+    {
+      "chapter": 7,
+      "title": "物资不是船票",
+      "path": "chapters/ch_0007.md",
+      "summary": "陆沉舟在青河外仓门口与物资控制者老郑谈判，拒绝用上车资格交换燃油、药品和修车材料，只以有限交易换取密封胶、卡箍、隔离帘、基础医疗耗材、少量燃油和滤芯边料；林知夏验货并判定老郑的灰眼兄弟疑似异变，陆沉舟坚持不上车规则。老郑随后广播房车位置，引来雾中车灯和抢车压力。",
+      "state_changes": [
+        "Old Zheng is introduced as the Qinghe outer-warehouse material controller who controls the warehouse door, key/access, and immediate supplies.",
+        "Old Zheng attempts to trade fuel, medicine, sealant, clamps, curtain material, and filter-edge material for boarding access for himself and two men.",
+        "Lu Chenzhou establishes the early vehicle-economy rule that resources can be traded, inspected, and priced, but cannot directly buy RV boarding qualification.",
+        "Lin Zhixia verifies the medicine and isolation materials, identifying incomplete or poor-quality supplies: expired fever medicine, no initial suture kit, low disinfectant, moldy curtain material, and contaminated outer packaging.",
+        "The RV gains limited usable supplies: industrial sealant, clamps, curtain/isolation material, basic medical supplies including suture thread and gloves, a small amount of fuel, and partial filter-edge material.",
+        "The gained materials are limited and/or externally contaminated; they do not fully repair the RV, fully restore filter efficiency, unlock the medical module, or create a free upgrade.",
+        "Old Zheng reveals that one of his men has gray-eye and confusion symptoms; Lin Zhixia judges him as suspected mutation and recommends isolation without allowing him into the RV.",
+        "Lu Chenzhou refuses to open the RV door or let Old Zheng's people enter the living space; observation, isolation, and boarding rules remain intact.",
+        "Old Zheng retaliates by broadcasting the RV's position and clean-filter value through the outer-warehouse speaker / communication system.",
+        "Fog-side vehicle lights, metal striking sounds, and system warnings show that external human and mist-pressure threats are gathering near the outer warehouse."
+      ],
+      "open_threads_touched": [
+        "thread_vehicle_rules_contract",
+        "thread_service_area_terminals",
+        "thread_lin_pollution_observation",
+        "thread_mist_monster_ecology",
+        "thread_rv_system_binding"
+      ]
+    },
+    {
+      "chapter": 8,
+      "title": "雾墙回压",
+      "path": "chapters/ch_0008.md",
+      "summary": "老郑广播房车位置后，青河外仓灯光逐盏熄灭，雾墙从出口方向回压，低效净雾滤芯和车尾漏雾让停留变成污染倒计时。陆沉舟用第7章取得的密封胶、卡箍、帘布和滤芯边料完成临时封堵与短时补强，林知夏隔离污染外包装并对周小禾做最低限度伤口固定。外部抢车者开始堵路、拉扯车尾线束，金属敲击又引来雾犬；房车挤出外仓口，正面进入抢车夜。",
+      "state_changes": [
+        "Old Zheng's broadcast continues to expose the RV location and clean-filter value, drawing human vehicles, shouting, metal strikes, and fog-side pressure toward the outer warehouse.",
+        "Qinghe outer-warehouse lights begin shutting down while fog backflows into the approach area; long停留 becomes dangerous under low filter efficiency and rear sealing damage.",
+        "Lu Chenzhou establishes the practical repair rule: repair only to the point the RV can move, not to full restoration under exposure.",
+        "Lin Zhixia isolates contaminated outer packaging, performs minimum wound stabilization on Zhou Xiaohe, and keeps the temporary observation boundary intact.",
+        "The RV uses the gained industrial sealant, clamps, curtain material, and filter-edge material for temporary rear sealing and short-term filter stabilization.",
+        "The temporary repair lowers immediate leakage and stabilizes the filter briefly but does not fully repair vehicle integrity, restore clean-filter efficiency to a safe value, or unlock a medical module.",
+        "Zhou Xiaohe remains a temporary observation patient, not a formal onboard member or core teammate; she remains able to follow instructions.",
+        "External survivors begin active road-blocking and line-pulling behavior, but the full car-seizure assault remains the next chapter's conflict.",
+        "Human noise, vehicle lights, and metal strikes attract fog dogs / fog-side fast targets toward the outer warehouse route.",
+        "The chapter ends with the RV squeezing out of the outer warehouse approach toward a blocked route, entering the car-seizure night pressure."
+      ],
+      "open_threads_touched": [
+        "thread_vehicle_rules_contract",
+        "thread_mist_monster_ecology",
+        "thread_lin_pollution_observation",
+        "thread_rv_system_binding",
+        "thread_service_area_terminals"
+      ]
+    },
+    {
+      "chapter": 9,
+      "title": "抢车夜",
+      "path": "chapters/ch_0009.md",
+      "summary": "房车在青河外仓口外侧主路遭遇旧面包车路障和抢车小团体夜袭。陆沉舟拒绝开门，用车灯、喇叭、破拆钩、倒车角和车身重量守住驾驶位与车门规则；林知夏守住周小禾临时观察区、隔离帘和污染材料。抢车者制造的噪音与强光引来雾犬，阵形被反噬，房车冲出第一轮围堵。系统判定车内协同规则初步成立，净雾滤芯进入短时稳定校准，但雾墙回压仍在扩大，青河广播传来医疗电源与幸存者求救。",
+      "state_changes": [
+        "The RV faces a direct roadblock at Qinghe outer-warehouse road: an old van, fire-extinguisher pressure, crowbar strikes, strong light, and side-door prying.",
+        "Lu Chenzhou refuses to open the door, keeps driver control, and uses headlights, horn timing, the demolition hook, vehicle angle, wet shoulder space, and the attackers' own roadblock to create an exit path.",
+        "Lin Zhixia holds the temporary observation zone, side-door lock boundary, isolation curtain, contaminated packaging box, and Zhou Xiaohe's wound stabilization during the assault.",
+        "Zhou Xiaohe remains a temporary observation patient, follows instructions, does not cross the curtain, and does not enter the RV living space as a formal member.",
+        "Human noise, lights, metal strikes, and panic draw fog dogs toward the loudest / brightest attackers, confirming an early mist-monster ecology rule without fully explaining it.",
+        "The RV escapes the first wave of the car-seizing night; the attackers are scattered by fog dogs and their own roadblock, but the RV's rear sealing remains temporary and damaged.",
+        "The system recognizes that the RV door rules, observation-zone boundary, contaminated-material isolation, and driver control remained intact under pressure.",
+        "The clean filter reaches short-term stable calibration / low-efficiency stability, not full recovery.",
+        "A Qinghe broadcast introduces the next hook: medical power, remaining survivors, and a warning not to open the outer-warehouse door."
+      ],
+      "open_threads_touched": [
+        "thread_vehicle_rules_contract",
+        "thread_mist_monster_ecology",
+        "thread_lin_pollution_observation",
+        "thread_rv_system_binding",
+        "thread_service_area_terminals"
+      ]
+    },
+    {
+      "chapter": 10,
+      "title": "青河求救广播",
+      "path": "chapters/ch_0010.md",
+      "summary": "房车打退抢车夜后接到青河求救广播。陆沉舟不盲目开门救援，而是测试广播真假、建立外部求救接触规则，并带车以低效稳定滤芯穿过第一段低浓度迷雾，受控靠近青河医疗点外缘。林知夏明确以医疗观察和污染分诊角色留车；系统提示简易医疗位材料疑似位于青河医疗点，但青河污染等级上升、外仓门禁异常。",
+      "state_changes": [
+        "After the car-seizing night, the RV leaves the first unnamed service-area outer edge and receives the Qinghe broadcast about medical power, survivors, and a warning not to open the outer warehouse door.",
+        "Lu Chenzhou tests the broadcast by checking repetition, signal behavior, route reaction, and specific information rather than treating the rescue call as an order to open doors.",
+        "The RV's rear seal remains temporary and under pressure; the clean filter remains in low-efficiency short-range stability rather than full repair.",
+        "Lin Zhixia identifies Zhou Xiaohe's need for better treatment and power support, but explicitly accepts that medical need cannot override pollution boundaries.",
+        "Lu Chenzhou establishes first external-rescue contact rules: verify first, keep a retreat line, do not enter the main building, do not approach the outer warehouse door, and do not open doors to unverified callers.",
+        "Lin Zhixia chooses to stay as the RV's medical observation / pollution triage / isolation-zone role, not merely as a protected passenger.",
+        "The RV crosses a first low-concentration fog segment and reaches the Qinghe service-area medical-point exterior with the vehicle nose kept toward retreat.",
+        "The broadcast implies a living person may be interrupting the loop and warns that something can imitate voices, opening a mist-monster sound-mimicry thread without fully explaining it.",
+        "The system detects the Simple Medical Bay as a possible unlockable module and indicates materials may be at the Qinghe medical point, while pollution level rises and outer-warehouse access is abnormal."
+      ],
+      "open_threads_touched": [
+        "thread_vehicle_rules_contract",
+        "thread_lin_pollution_observation",
+        "thread_mist_monster_ecology",
+        "thread_rv_system_binding",
+        "thread_service_area_terminals"
+      ]
+    },
+    {
+      "chapter": 11,
+      "title": "青河服务区",
+      "path": "chapters/ch_0011.md",
+      "summary": "陆沉舟在青河医疗点外缘不开门、不进楼，用错误编号测试拆出假声与更可信的墙内回应，确认二号配电箱、折叠医疗架、隔离膜和电源接口等简易医疗位线索。林知夏在观察周小禾伤情的同时识别医疗材料价值，并拒绝被模仿声音和假孩子诱导开门；章节以假孩子无脚印、后墙仍有闷敲收束，推动第12章进入欺骗环境下的分诊选择。",
+      "state_changes": [
+        "The RV remains at Qinghe medical-point exterior with the engine running, doors closed, and nose toward the retreat route.",
+        {
+          "Lu Chenzhou applies the external-rescue contact rule in practice": "all contact stays outside the vehicle through controlled speaker, light, distance, and verification prompts."
+        },
+        "Lu Chenzhou uses an intentionally wrong No. 3 power-box prompt to separate repetition from credible response; the more credible trapped voice corrects it to No. 2.",
+        "The rear-wall No. 2 power box, folding medical frame, isolation film, and power interface are visually verified as Simple Medical Bay leads, but no item is touched, acquired, or installed.",
+        "The gate alternates between permission error and welcome back, advancing Qinghe terminal abnormality / old-protocol unease without revealing the source.",
+        "Voice mimicry becomes observable through repeated rescue lines, Lu Chenzhou's name, an imitation of Lin Zhixia, and a false child lure.",
+        "Lin Zhixia identifies material value while refusing to let usefulness override contamination boundaries; her key triage rule becomes that who to save first cannot be decided by who cries most convincingly.",
+        "Zhou Xiaohe remains in the temporary observation area with low fever and wound pain; she provides a small sound-observation cue but does not become formal crew or enter the living area.",
+        "The chapter ends with a child-like figure that has no footprints and only dragged marks, while real knocking may still be coming from inside the rear wall."
+      ],
+      "open_threads_touched": [
+        "thread_vehicle_rules_contract",
+        "thread_lin_pollution_observation",
+        "thread_mist_monster_ecology",
+        "thread_rv_system_binding",
+        "thread_service_area_terminals"
+      ]
+    }
+  ]
+}

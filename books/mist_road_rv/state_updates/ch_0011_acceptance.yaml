@@ -1,0 +1,513 @@
+chapter: 11
+title: 青河服务区
+source_draft: drafts/ch_0011_final_candidate.md
+accepted_chapter_path: chapters/ch_0011.md
+summary: 陆沉舟在青河医疗点外缘不开门、不进楼，用错误编号测试拆出假声与更可信的墙内回应，确认二号配电箱、折叠医疗架、隔离膜和电源接口等简易医疗位线索。林知夏在观察周小禾伤情的同时识别医疗材料价值，并拒绝被模仿声音和假孩子诱导开门；章节以假孩子无脚印、后墙仍有闷敲收束，推动第12章进入欺骗环境下的分诊选择。
+current_state:
+  current_chapter: 11
+  current_arc: arc_001
+  latest_location: 青河服务区医疗点外缘，房车斜停并保持车头朝撤离路线；后墙确认二号配电箱、折叠医疗架、隔离膜和电源接口线索，但车门未开、人员未下车、材料未取得。
+  active_characters:
+  - lu_chenzhou
+  - lin_zhixia
+  - temporary_injured_girl
+  active_conflicts:
+  - 房车抵达青河医疗点外缘后保持发动机运行和撤离角度，仍处于污染等级上升、低效滤芯窗口有限、车尾封堵微漏的压力中。
+  - 陆沉舟执行外部求救接触规则：不开门、不进主楼、不贴外仓门、不回应未验证的开门请求，通过外放、灯光和错误编号测试验证信息。
+  - 青河医疗点后墙确认二号配电箱、折叠医疗架、隔离膜和电源接口等简易医疗位线索，但只是可争取材料信号，尚未取得材料或解锁模块。
+  - 声音拟态从警告变成可见威胁：外部声音会复读开门请求、使用名字、模仿林知夏，并用假孩子诱导靠近。
+  - 墙内疑似仍有活人或医疗资源，但门口也有诱饵；第12章必须处理欺骗环境下的分诊、接触顺序和撤离线。
+  - 林知夏继续负责医疗观察和污染分诊，周小禾仍是临时观察患者，低热和伤口疼痛未解决，不能转为正式成员或生活区人员。
+  pending_approvals:
+  - Approve chapter 11 as Qinghe medical-point exterior validation only, not main-building
+    entry.
+  - Approve No. 2 power box / folding medical frame / isolation film / power interface
+    as verified Simple Medical Bay material leads, not acquired materials.
+  - Approve voice mimicry as an observed Qinghe threat behavior without fully defining
+    the ecology.
+  - Approve the permission-error / welcome-back gate behavior as terminal abnormality
+    and old-protocol unease, not a father-route hard clue.
+  - Approve Zhou Xiaohe remaining a temporary observation patient after providing
+    a useful sound-observation cue.
+state_changes:
+- The RV remains at Qinghe medical-point exterior with the engine running, doors closed,
+  and nose toward the retreat route.
+- Lu Chenzhou applies the external-rescue contact rule in practice: all contact stays
+    outside the vehicle through controlled speaker, light, distance, and verification
+    prompts.
+- Lu Chenzhou uses an intentionally wrong No. 3 power-box prompt to separate repetition
+  from credible response; the more credible trapped voice corrects it to No. 2.
+- The rear-wall No. 2 power box, folding medical frame, isolation film, and power
+  interface are visually verified as Simple Medical Bay leads, but no item is touched,
+  acquired, or installed.
+- The gate alternates between permission error and welcome back, advancing Qinghe
+  terminal abnormality / old-protocol unease without revealing the source.
+- Voice mimicry becomes observable through repeated rescue lines, Lu Chenzhou's name,
+  an imitation of Lin Zhixia, and a false child lure.
+- Lin Zhixia identifies material value while refusing to let usefulness override contamination
+  boundaries; her key triage rule becomes that who to save first cannot be decided
+  by who cries most convincingly.
+- Zhou Xiaohe remains in the temporary observation area with low fever and wound pain;
+  she provides a small sound-observation cue but does not become formal crew or enter
+  the living area.
+- The chapter ends with a child-like figure that has no footprints and only dragged
+  marks, while real knocking may still be coming from inside the rear wall.
+open_threads_touched:
+- thread_vehicle_rules_contract
+- thread_lin_pollution_observation
+- thread_mist_monster_ecology
+- thread_rv_system_binding
+- thread_service_area_terminals
+timeline_event:
+  id: t011
+  when: 第 11 章
+  summary: 陆沉舟在青河医疗点外缘不开门、不进楼，用错误编号测试拆出假声与更可信的墙内回应，确认二号配电箱、折叠医疗架、隔离膜和电源接口等简易医疗位线索。林知夏在观察周小禾伤情的同时识别医疗材料价值，并拒绝被模仿声音和假孩子诱导开门；章节以假孩子无脚印、后墙仍有闷敲收束，推动第12章进入欺骗环境下的分诊选择。
+v3_state_updates:
+  timeline:
+    occurred_events:
+    - id: ev_0011_01
+      summary: 陆沉舟在青河医疗点外缘不开门、不进楼，用错误编号测试拆出假声与更可信的墙内回应，确认二号配电箱、折叠医疗架、隔离膜和电源接口等简易医疗位线索。林知夏在观察周小禾伤情的同时识别医疗材料价值，并拒绝被模仿声音和假孩子诱导开门；章节以假孩子无脚印、后墙仍有闷敲收束，推动第12章进入欺骗环境下的分诊选择。
+      location: 青河服务区医疗点外缘，房车斜停并保持撤离角度，后墙二号配电箱和医疗材料线索已确认但未接触。
+      involved_characters:
+      - lu_chenzhou
+      - lin_zhixia
+      - temporary_injured_girl
+      source_chapter: 11
+  character_states:
+  - character_id: lu_chenzhou
+    display_name: 陆沉舟
+    physical_state: 坐在驾驶位保持发动机运行和撤离角度，通过灯光、外放、车门锁和短距离倒车控制接触风险。
+    social_state: 将第10章建立的外部求救接触规则落地为可执行流程，不让医疗资源、幸存者敲墙或孩子哭声绕过车门规则。
+    emotional_state: 对欢迎回来和墙内敲击保持警觉，但不把旧协议异常解释成父亲线索；面对可能活人也不急于开门。
+    current_goal: 在不下车、不进楼、不失去撤离线的前提下，确认青河医疗点哪些线索可信，并为下一步分诊接触制定顺序。
+    known_secrets: []
+    public_knowledge:
+    - 外部声音会学习名字、复读指令，并可能模仿熟人声音。
+    - 二号配电箱位于青河医疗点后墙，附近存在折叠医疗架、隔离膜和电源接口线索。
+    relationship_changes:
+    - 更明确地把林知夏当作医疗判断和污染边界的共同决策者，而不是只执行驾驶位规则的旁观者。
+    voice_notes:
+    - 短、硬、先验证；用错误问题、撤离线和门锁把救援冲动拆成可检验步骤。
+  - character_id: lin_zhixia
+    display_name: 林知夏
+    physical_state: 守在隔离帘和侧门之间，继续观察周小禾疼痛、低热和反应，同时隔窗辨认医疗设备与隔离材料。
+    social_state: 作为车内医疗观察 / 污染分诊负责人发挥价值，既识别资源，也阻止资源诱惑覆盖污染边界。
+    emotional_state: 对可用医疗材料有明显期待，但能压住期待；面对模仿自己声音和假孩子哭声时保持专业判断。
+    current_goal: 判断青河医疗点哪些材料值得后续争取、哪些对象可接触、哪些声音必须拒绝回应。
+    known_secrets:
+    - 周小禾疼痛约六到七分、低热仍在，需要更稳定医疗处置，但还能等一轮验证。
+    public_knowledge:
+    - 折叠医疗架、隔离膜和电源接口是真实医疗位线索，但污染状态未判定。
+    - 谁先救不能听谁哭得像，必须看生理反应、污染风险和撤离线。
+    relationship_changes:
+    - 与陆沉舟形成更清楚的双重边界：他管车门和撤离线，她管医疗价值和分诊风险。
+    voice_notes:
+    - 专业、克制、判断先于同情；用材料用途、污染状态和生理反应说话。
+  - character_id: temporary_injured_girl
+    display_name: 周小禾
+    physical_state: 仍在临时观察区，低热未退，疼痛约六到七分，能听指令并报告听到的声音差异。
+    social_state: 继续是临时观察患者，不是正式上车名额、核心队友或生活区成员。
+    emotional_state: 害怕但努力配合，不主动越界；在假声压力下提供有限观察。
+    current_goal: 留在隔离帘后等待更稳定医疗处理，避免成为外部声音诱导车组开门的理由。
+    known_secrets: []
+    public_knowledge:
+    - 她能听出假女人声音不像真人喘息，帮助车组确认声音差异。
+    relationship_changes:
+    - 她的观察有用，但身份边界不变。
+    voice_notes:
+    - 疼、怯、短句，提供事实而不替成年人做决定。
+  resource_changes:
+  - id: res_qinghe_power_box_ch11
+    owner: rv
+    item: qinghe_no_2_power_box_location
+    category: knowledge
+    unit: lead
+    delta: 1
+    reason: 通过错误编号测试和车灯观察，确认青河医疗点后墙二号配电箱位置；只是位置信息，未接触电源。
+  - id: res_qinghe_medical_frame_ch11
+    owner: rv
+    item: folding_medical_frame_lead
+    category: knowledge
+    unit: lead
+    delta: 1
+    reason: 林知夏隔窗确认折叠医疗架是真正医疗设备线索；未取得、未消毒、未安装。
+  - id: res_qinghe_isolation_film_ch11
+    owner: rv
+    item: isolation_film_lead
+    category: knowledge
+    unit: lead
+    delta: 1
+    reason: 林知夏识别带蓝色灭菌标的隔离膜可能用于医疗位隔离层；污染状态未判定，未取得。
+  - id: res_qinghe_power_interface_ch11
+    owner: rv
+    item: medical_power_interface_lead
+    category: knowledge
+    unit: lead
+    delta: 1
+    reason: 系统与现场观察共同指向无菌电源接口 / 医疗电源接口线索；尚未接触或接入房车。
+  - id: res_simple_medical_bay_ch11
+    owner: rv
+    item: simple_medical_bay
+    category: item
+    unit: module
+    delta: 0
+    reason: 简易医疗位材料信号增强并定位到部分组件，但材料未取得、污染未判定、模块未解锁。
+  - id: res_rv_safety_margin_ch11
+    owner: rv
+    item: rv_retreat_line_and_filter_window
+    category: knowledge
+    unit: risk
+    delta: 0
+    reason: 房车保持撤离角度、不开门、发动机运行；低效滤芯窗口和车尾封堵风险仍未解除。
+  open_thread_updates:
+  - id: thread_vehicle_rules_contract
+    promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+    source_chapter: 0
+    status: advanced
+    last_touched: 11
+    latest_note: 外部求救规则在青河医疗点第一次完整执行：陆沉舟用错误编号、外放控制、车灯观察和撤离角度验证信息；真人敲墙、模仿熟人和假孩子哭声都没有换来开门。
+    next_obligation: 第12章必须在可能有真实伤员的情况下继续区分可接触救治、不可接触诱饵和必须拒绝的开门请求。
+  - id: thread_lin_pollution_observation
+    promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+    source_chapter: 0
+    status: advanced
+    last_touched: 11
+    latest_note: 林知夏隔窗识别折叠医疗架、隔离膜和电源接口价值，同时用生理反应、声音重复和脚印/拖痕判断假孩子不可接触，证明她的价值不只是急救，也是污染分诊。
+    next_obligation: 第12章让她把材料价值、周小禾伤情、墙内疑似活人和外部诱饵排成救治优先级。
+  - id: thread_mist_monster_ecology
+    promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+    source_chapter: 0
+    status: advanced
+    last_touched: 11
+    latest_note: 声音拟态从警告变成可观察行为：外部声源复读错误信息、使用名字、模仿林知夏，并制造无脚印的假孩子诱饵，但完整生态仍未解释。
+    next_obligation: 后续继续用声音、脚印、拖痕、门口位置和污染反应推进怪物规则，不写成怪物百科。
+  - id: thread_rv_system_binding
+    promise: 房车系统为什么绑定陆沉舟和父亲留下的旧房车。
+    source_chapter: 0
+    status: advanced
+    last_touched: 11
+    latest_note: 系统提示污染等级、外仓门禁异常、材料信号、外部声源增多和避免依赖单一听觉信息，但仍不替陆沉舟判断谁该被救或是否开门。
+    next_obligation: 继续保持系统是风险 / 路线 / 模块线索工具；欢迎回来只作为旧协议异常，不提前解释父亲线。
+  - id: thread_service_area_terminals
+    promise: 服务区交易终端、临时屏障和路标任务从何而来。
+    source_chapter: 0
+    status: advanced
+    last_touched: 11
+    latest_note: 青河医疗点门禁在权限错误和欢迎回来之间反复切换，配合二号配电箱和材料信号，显示服务区节点存在异常旧协议秩序。
+    next_obligation: 第12章可继续通过门禁、后墙敲击和材料接触规则推进节点异常，但不要解释终端源头。
+  payoff_updates:
+  - chapter: 11
+    promises_made:
+    - 第12章必须处理欺骗环境下的分诊选择：墙内疑似活人、门口假孩子、材料位置和撤离线不能同时满足。
+    - 二号配电箱、折叠医疗架、隔离膜和电源接口必须在后续通过污染判定、接触成本或交换风险才能转化为材料收益。
+    - 声音拟态已经能使用名字和熟人声音，后续必须继续影响车外沟通规则，不能只当单章惊吓。
+    - 欢迎回来 / 权限错误只能继续作为旧协议异常推进，不能突然改成父亲线硬揭示。
+    payoffs_delivered:
+    - 第10章“他们会学声音”的警告兑现为具体威胁：复读、叫名、模仿林知夏和假孩子诱饵。
+    - 第10章青河医疗点材料信号得到验证：确认二号配电箱、折叠医疗架、隔离膜和电源接口线索。
+    - 外部求救接触规则得到实战验证：不进楼、不开门、保撤离线、错误编号测试有效。
+    - 林知夏功能价值再次兑现：她既能识别医疗材料，也能压住救人冲动完成污染分诊判断。
+    frustration_level: controlled
+    payoff_types:
+    - rule_payoff
+    - teammate_function_payoff
+    - module_lead_payoff
+    - monster_rule_payoff
+    - triage_hook
+    delayed_payoffs:
+    - 简易医疗位是否能最低限度激活
+    - 墙内敲击者身份和是否可救
+    - 青河医疗点材料如何污染判定与取得
+    - 声音拟态怪物的实体规则与反制方式
+    - 权限错误 / 欢迎回来背后的旧协议机制
+    risks:
+    - 房车低效滤芯窗口有限，不能长时间停在青河医疗点外缘。
+    - 车尾临时封堵和外仓门禁异常仍可能成为污染入口。
+    - 外部声音会利用名字和熟人声线诱导开门，车外沟通风险上升。
+    - 真实幸存者和假诱饵可能同时存在，错误分诊会导致死亡或开门事故。
+  conflict_updates:
+    active:
+    - 房车抵达青河医疗点外缘后保持发动机运行和撤离角度，仍处于污染等级上升、低效滤芯窗口有限、车尾封堵微漏的压力中。
+    - 陆沉舟执行外部求救接触规则：不开门、不进主楼、不贴外仓门、不回应未验证的开门请求，通过外放、灯光和错误编号测试验证信息。
+    - 青河医疗点后墙确认二号配电箱、折叠医疗架、隔离膜和电源接口等简易医疗位线索，但只是可争取材料信号，尚未取得材料或解锁模块。
+    - 声音拟态从警告变成可见威胁：外部声音会复读开门请求、使用名字、模仿林知夏，并用假孩子诱导靠近。
+    - 墙内疑似仍有活人或医疗资源，但门口也有诱饵；第12章必须处理欺骗环境下的分诊、接触顺序和撤离线。
+    - 林知夏继续负责医疗观察和污染分诊，周小禾仍是临时观察患者，低热和伤口疼痛未解决，不能转为正式成员或生活区人员。
+  next_hook:
+    hook: 青河医疗点后墙仍有疑似真人闷敲，外面却出现无脚印的假孩子诱饵；简易医疗位材料就在眼前，但任何开门或靠近都可能被声音拟态利用。
+    obligation: 第12章必须进入主动分诊与接触设计：判断谁能先救、如何不暴露名字和开门规则、能否在保持撤离线的前提下取得第一件医疗位材料。
+    target_chapter: 12
+    status: open
+  pending_approvals:
+  - Approve chapter 11 as Qinghe medical-point exterior validation only, not main-building
+    entry.
+  - Approve No. 2 power box / folding medical frame / isolation film / power interface
+    as verified Simple Medical Bay material leads, not acquired materials.
+  - Approve voice mimicry as an observed Qinghe threat behavior without fully defining
+    the ecology.
+  - Approve the permission-error / welcome-back gate behavior as terminal abnormality
+    and old-protocol unease, not a father-route hard clue.
+  - Approve Zhou Xiaohe remaining a temporary observation patient after providing
+    a useful sound-observation cue.
+open_thread_updates:
+- id: thread_vehicle_rules_contract
+  promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+  source_chapter: 0
+  status: advanced
+  last_touched: 11
+  latest_note: 外部求救规则在青河医疗点第一次完整执行：陆沉舟用错误编号、外放控制、车灯观察和撤离角度验证信息；真人敲墙、模仿熟人和假孩子哭声都没有换来开门。
+  next_obligation: 第12章必须在可能有真实伤员的情况下继续区分可接触救治、不可接触诱饵和必须拒绝的开门请求。
+- id: thread_lin_pollution_observation
+  promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+  source_chapter: 0
+  status: advanced
+  last_touched: 11
+  latest_note: 林知夏隔窗识别折叠医疗架、隔离膜和电源接口价值，同时用生理反应、声音重复和脚印/拖痕判断假孩子不可接触，证明她的价值不只是急救，也是污染分诊。
+  next_obligation: 第12章让她把材料价值、周小禾伤情、墙内疑似活人和外部诱饵排成救治优先级。
+- id: thread_mist_monster_ecology
+  promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+  source_chapter: 0
+  status: advanced
+  last_touched: 11
+  latest_note: 声音拟态从警告变成可观察行为：外部声源复读错误信息、使用名字、模仿林知夏，并制造无脚印的假孩子诱饵，但完整生态仍未解释。
+  next_obligation: 后续继续用声音、脚印、拖痕、门口位置和污染反应推进怪物规则，不写成怪物百科。
+- id: thread_rv_system_binding
+  promise: 房车系统为什么绑定陆沉舟和父亲留下的旧房车。
+  source_chapter: 0
+  status: advanced
+  last_touched: 11
+  latest_note: 系统提示污染等级、外仓门禁异常、材料信号、外部声源增多和避免依赖单一听觉信息，但仍不替陆沉舟判断谁该被救或是否开门。
+  next_obligation: 继续保持系统是风险 / 路线 / 模块线索工具；欢迎回来只作为旧协议异常，不提前解释父亲线。
+- id: thread_service_area_terminals
+  promise: 服务区交易终端、临时屏障和路标任务从何而来。
+  source_chapter: 0
+  status: advanced
+  last_touched: 11
+  latest_note: 青河医疗点门禁在权限错误和欢迎回来之间反复切换，配合二号配电箱和材料信号，显示服务区节点存在异常旧协议秩序。
+  next_obligation: 第12章可继续通过门禁、后墙敲击和材料接触规则推进节点异常，但不要解释终端源头。
+change_log:
+  summary: On approval, accept chapter 11 final candidate as chapters/ch_0011.md.
+  canon_updates:
+  - timeline:t011
+  - character_states:lu_chenzhou,lin_zhixia,temporary_injured_girl
+  - resource_ledger:qinghe_no_2_power_box,folding_medical_frame,isolation_film,medical_power_interface,simple_medical_bay_leads
+  - open_threads:thread_vehicle_rules_contract,thread_lin_pollution_observation,thread_mist_monster_ecology,thread_rv_system_binding,thread_service_area_terminals
+  - payoff_ledger:qinghe_exterior_validation_voice_mimicry_triage_hook
+  - hook_index:chapter_12_triage_under_deception
+  pending_approvals:
+  - Approve chapter 11 as Qinghe medical-point exterior validation only, not main-building
+    entry.
+  - Approve No. 2 power box / folding medical frame / isolation film / power interface
+    as verified Simple Medical Bay material leads, not acquired materials.
+  - Approve voice mimicry as an observed Qinghe threat behavior without fully defining
+    the ecology.
+  - Approve the permission-error / welcome-back gate behavior as terminal abnormality
+    and old-protocol unease, not a father-route hard clue.
+  - Approve Zhou Xiaohe remaining a temporary observation patient after providing
+    a useful sound-observation cue.
+acceptance_contract:
+  quality_gate_summary:
+    continuity_review_present: true
+    continuity_blockers: []
+    pacing_review_present: true
+    pacing_score: 90
+    revised_pacing_score: null
+    revision_required: false
+    waiver_required: false
+  outline_alignment:
+    reference_chain: master -> volume -> arc -> unit -> chapter brief
+    volume_id: volume_001
+    arc_id: arc_001
+    unit_id: unit_0002
+    required_unit_obligations:
+    - 青河医疗点外围正式进入场景。
+    - 外部求救接触规则第一次在青河执行。
+    - 简易医疗位材料确认为真实可争取线索，但未取得。
+    claimed_fulfilled_unit_obligations:
+    - 青河医疗点外围正式进入场景。
+    - 外部求救接触规则第一次在青河执行。
+    - 简易医疗位材料确认为真实可争取线索，但未取得。
+    pending_unit_obligations: []
+  state_updates:
+    timeline_event:
+      id: t011
+      when: 第 11 章
+      summary: 陆沉舟在青河医疗点外缘不开门、不进楼，用错误编号测试拆出假声与更可信的墙内回应，确认二号配电箱、折叠医疗架、隔离膜和电源接口等简易医疗位线索。林知夏在观察周小禾伤情的同时识别医疗材料价值，并拒绝被模仿声音和假孩子诱导开门；章节以假孩子无脚印、后墙仍有闷敲收束，推动第12章进入欺骗环境下的分诊选择。
+    character_state_changes:
+    - character_id: lu_chenzhou
+      display_name: 陆沉舟
+      physical_state: 坐在驾驶位保持发动机运行和撤离角度，通过灯光、外放、车门锁和短距离倒车控制接触风险。
+      social_state: 将第10章建立的外部求救接触规则落地为可执行流程，不让医疗资源、幸存者敲墙或孩子哭声绕过车门规则。
+      emotional_state: 对欢迎回来和墙内敲击保持警觉，但不把旧协议异常解释成父亲线索；面对可能活人也不急于开门。
+      current_goal: 在不下车、不进楼、不失去撤离线的前提下，确认青河医疗点哪些线索可信，并为下一步分诊接触制定顺序。
+      known_secrets: []
+      public_knowledge:
+      - 外部声音会学习名字、复读指令，并可能模仿熟人声音。
+      - 二号配电箱位于青河医疗点后墙，附近存在折叠医疗架、隔离膜和电源接口线索。
+      relationship_changes:
+      - 更明确地把林知夏当作医疗判断和污染边界的共同决策者，而不是只执行驾驶位规则的旁观者。
+      voice_notes:
+      - 短、硬、先验证；用错误问题、撤离线和门锁把救援冲动拆成可检验步骤。
+    - character_id: lin_zhixia
+      display_name: 林知夏
+      physical_state: 守在隔离帘和侧门之间，继续观察周小禾疼痛、低热和反应，同时隔窗辨认医疗设备与隔离材料。
+      social_state: 作为车内医疗观察 / 污染分诊负责人发挥价值，既识别资源，也阻止资源诱惑覆盖污染边界。
+      emotional_state: 对可用医疗材料有明显期待，但能压住期待；面对模仿自己声音和假孩子哭声时保持专业判断。
+      current_goal: 判断青河医疗点哪些材料值得后续争取、哪些对象可接触、哪些声音必须拒绝回应。
+      known_secrets:
+      - 周小禾疼痛约六到七分、低热仍在，需要更稳定医疗处置，但还能等一轮验证。
+      public_knowledge:
+      - 折叠医疗架、隔离膜和电源接口是真实医疗位线索，但污染状态未判定。
+      - 谁先救不能听谁哭得像，必须看生理反应、污染风险和撤离线。
+      relationship_changes:
+      - 与陆沉舟形成更清楚的双重边界：他管车门和撤离线，她管医疗价值和分诊风险。
+      voice_notes:
+      - 专业、克制、判断先于同情；用材料用途、污染状态和生理反应说话。
+    - character_id: temporary_injured_girl
+      display_name: 周小禾
+      physical_state: 仍在临时观察区，低热未退，疼痛约六到七分，能听指令并报告听到的声音差异。
+      social_state: 继续是临时观察患者，不是正式上车名额、核心队友或生活区成员。
+      emotional_state: 害怕但努力配合，不主动越界；在假声压力下提供有限观察。
+      current_goal: 留在隔离帘后等待更稳定医疗处理，避免成为外部声音诱导车组开门的理由。
+      known_secrets: []
+      public_knowledge:
+      - 她能听出假女人声音不像真人喘息，帮助车组确认声音差异。
+      relationship_changes:
+      - 她的观察有用，但身份边界不变。
+      voice_notes:
+      - 疼、怯、短句，提供事实而不替成年人做决定。
+    resource_changes:
+    - id: res_qinghe_power_box_ch11
+      owner: rv
+      item: qinghe_no_2_power_box_location
+      category: knowledge
+      unit: lead
+      delta: 1
+      reason: 通过错误编号测试和车灯观察，确认青河医疗点后墙二号配电箱位置；只是位置信息，未接触电源。
+    - id: res_qinghe_medical_frame_ch11
+      owner: rv
+      item: folding_medical_frame_lead
+      category: knowledge
+      unit: lead
+      delta: 1
+      reason: 林知夏隔窗确认折叠医疗架是真正医疗设备线索；未取得、未消毒、未安装。
+    - id: res_qinghe_isolation_film_ch11
+      owner: rv
+      item: isolation_film_lead
+      category: knowledge
+      unit: lead
+      delta: 1
+      reason: 林知夏识别带蓝色灭菌标的隔离膜可能用于医疗位隔离层；污染状态未判定，未取得。
+    - id: res_qinghe_power_interface_ch11
+      owner: rv
+      item: medical_power_interface_lead
+      category: knowledge
+      unit: lead
+      delta: 1
+      reason: 系统与现场观察共同指向无菌电源接口 / 医疗电源接口线索；尚未接触或接入房车。
+    - id: res_simple_medical_bay_ch11
+      owner: rv
+      item: simple_medical_bay
+      category: item
+      unit: module
+      delta: 0
+      reason: 简易医疗位材料信号增强并定位到部分组件，但材料未取得、污染未判定、模块未解锁。
+    - id: res_rv_safety_margin_ch11
+      owner: rv
+      item: rv_retreat_line_and_filter_window
+      category: knowledge
+      unit: risk
+      delta: 0
+      reason: 房车保持撤离角度、不开门、发动机运行；低效滤芯窗口和车尾封堵风险仍未解除。
+    open_thread_updates:
+    - id: thread_vehicle_rules_contract
+      promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+      source_chapter: 0
+      status: advanced
+      last_touched: 11
+      latest_note: 外部求救规则在青河医疗点第一次完整执行：陆沉舟用错误编号、外放控制、车灯观察和撤离角度验证信息；真人敲墙、模仿熟人和假孩子哭声都没有换来开门。
+      next_obligation: 第12章必须在可能有真实伤员的情况下继续区分可接触救治、不可接触诱饵和必须拒绝的开门请求。
+    - id: thread_lin_pollution_observation
+      promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+      source_chapter: 0
+      status: advanced
+      last_touched: 11
+      latest_note: 林知夏隔窗识别折叠医疗架、隔离膜和电源接口价值，同时用生理反应、声音重复和脚印/拖痕判断假孩子不可接触，证明她的价值不只是急救，也是污染分诊。
+      next_obligation: 第12章让她把材料价值、周小禾伤情、墙内疑似活人和外部诱饵排成救治优先级。
+    - id: thread_mist_monster_ecology
+      promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+      source_chapter: 0
+      status: advanced
+      last_touched: 11
+      latest_note: 声音拟态从警告变成可观察行为：外部声源复读错误信息、使用名字、模仿林知夏，并制造无脚印的假孩子诱饵，但完整生态仍未解释。
+      next_obligation: 后续继续用声音、脚印、拖痕、门口位置和污染反应推进怪物规则，不写成怪物百科。
+    - id: thread_rv_system_binding
+      promise: 房车系统为什么绑定陆沉舟和父亲留下的旧房车。
+      source_chapter: 0
+      status: advanced
+      last_touched: 11
+      latest_note: 系统提示污染等级、外仓门禁异常、材料信号、外部声源增多和避免依赖单一听觉信息，但仍不替陆沉舟判断谁该被救或是否开门。
+      next_obligation: 继续保持系统是风险 / 路线 / 模块线索工具；欢迎回来只作为旧协议异常，不提前解释父亲线。
+    - id: thread_service_area_terminals
+      promise: 服务区交易终端、临时屏障和路标任务从何而来。
+      source_chapter: 0
+      status: advanced
+      last_touched: 11
+      latest_note: 青河医疗点门禁在权限错误和欢迎回来之间反复切换，配合二号配电箱和材料信号，显示服务区节点存在异常旧协议秩序。
+      next_obligation: 第12章可继续通过门禁、后墙敲击和材料接触规则推进节点异常，但不要解释终端源头。
+    payoff_updates:
+    - chapter: 11
+      promises_made:
+      - 第12章必须处理欺骗环境下的分诊选择：墙内疑似活人、门口假孩子、材料位置和撤离线不能同时满足。
+      - 二号配电箱、折叠医疗架、隔离膜和电源接口必须在后续通过污染判定、接触成本或交换风险才能转化为材料收益。
+      - 声音拟态已经能使用名字和熟人声音，后续必须继续影响车外沟通规则，不能只当单章惊吓。
+      - 欢迎回来 / 权限错误只能继续作为旧协议异常推进，不能突然改成父亲线硬揭示。
+      payoffs_delivered:
+      - 第10章“他们会学声音”的警告兑现为具体威胁：复读、叫名、模仿林知夏和假孩子诱饵。
+      - 第10章青河医疗点材料信号得到验证：确认二号配电箱、折叠医疗架、隔离膜和电源接口线索。
+      - 外部求救接触规则得到实战验证：不进楼、不开门、保撤离线、错误编号测试有效。
+      - 林知夏功能价值再次兑现：她既能识别医疗材料，也能压住救人冲动完成污染分诊判断。
+      frustration_level: controlled
+      payoff_types:
+      - rule_payoff
+      - teammate_function_payoff
+      - module_lead_payoff
+      - monster_rule_payoff
+      - triage_hook
+      delayed_payoffs:
+      - 简易医疗位是否能最低限度激活
+      - 墙内敲击者身份和是否可救
+      - 青河医疗点材料如何污染判定与取得
+      - 声音拟态怪物的实体规则与反制方式
+      - 权限错误 / 欢迎回来背后的旧协议机制
+      risks:
+      - 房车低效滤芯窗口有限，不能长时间停在青河医疗点外缘。
+      - 车尾临时封堵和外仓门禁异常仍可能成为污染入口。
+      - 外部声音会利用名字和熟人声线诱导开门，车外沟通风险上升。
+      - 真实幸存者和假诱饵可能同时存在，错误分诊会导致死亡或开门事故。
+    next_hook:
+      hook: 青河医疗点后墙仍有疑似真人闷敲，外面却出现无脚印的假孩子诱饵；简易医疗位材料就在眼前，但任何开门或靠近都可能被声音拟态利用。
+      obligation: 第12章必须进入主动分诊与接触设计：判断谁能先救、如何不暴露名字和开门规则、能否在保持撤离线的前提下取得第一件医疗位材料。
+      target_chapter: 12
+      status: open
+    pending_approvals:
+    - Approve chapter 11 as Qinghe medical-point exterior validation only, not main-building
+      entry.
+    - Approve No. 2 power box / folding medical frame / isolation film / power interface
+      as verified Simple Medical Bay material leads, not acquired materials.
+    - Approve voice mimicry as an observed Qinghe threat behavior without fully defining
+      the ecology.
+    - Approve the permission-error / welcome-back gate behavior as terminal abnormality
+      and old-protocol unease, not a father-route hard clue.
+    - Approve Zhou Xiaohe remaining a temporary observation patient after providing
+      a useful sound-observation cue.
+    economy_changes: []
+    faction_changes: []
+  publication_readiness:
+    final_candidate_path: drafts/ch_0011_final_candidate.md
+    author_direction_present: true
+    author_direction_approved: true
+    prose_quality_review_present: true
+    prose_quality_score: 92
+    prose_rewrite_required: false
+    blocking_issues: []

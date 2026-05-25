@@ -1,0 +1,345 @@
+chapter: 3
+title: 房车第一次穿雾
+source_draft: drafts/ch_0003_final_candidate.md
+accepted_chapter_path: chapters/ch_0003.md
+summary: 陆沉舟在第一服务区围堵中执行上车规则，林知夏以急诊分诊和污染观察能力签约上车；两人用临时加压固定启动净雾滤芯，房车第一次冲入迷雾，并锁定 17 公里外的青河服务区与可解锁模块简易医疗位。
+current_state:
+  current_chapter: 3
+  current_arc: arc_001
+  latest_location: 高速迷雾路段，正驶向青河服务区
+  active_characters:
+  - lu_chenzhou
+  - lin_zhixia
+  active_conflicts:
+  - 房车净雾滤芯仅为临时加压固定，滤芯效率和车体密封仍在下降。
+  - 青河服务区出现求救广播和简易医疗位模块钩子，但广播里混入疑似雾犬低吼。
+  pending_approvals:
+  - Approve the temporary pressure sealing workaround as a chapter 3 execution detail,
+    not a permanent replacement for a standard sealing ring.
+  - Whether the current functional-entry beat is enough to count as Lin Zhixia's first
+    real onboard role, or whether revision should make it more explicit.
+state_changes:
+- Lu Chenzhou executes the first boarding rule under public pressure and refuses people
+  who use children, hidden wounds, or chaos to force RV entry.
+- Lin Zhixia boards under the contract rule and takes responsibility for medical triage
+  and pollution observation inside the RV.
+- The clean-mist filter core is temporarily pressure-fixed using sealant, clamps,
+  a metal inspection plate, and RV spare hardware.
+- The clean-mist filter starts in low-concentration short-crossing mode, giving the
+  RV its first short-term safe-air capability.
+- The RV breaks out of the first service area and enters the fog wall for the first
+  time.
+- The next route marker locks onto Qinghe Service Area, 17 km ahead, with the unlockable
+  module 'simple medical berth'.
+- The ending audio hints at a faster dog-like fog creature, foreshadowing the next
+  monster escalation.
+open_threads_touched:
+- thread_rv_system_binding
+- thread_mist_monster_ecology
+- thread_vehicle_rules_contract
+- thread_lin_pollution_observation
+timeline_event:
+  id: t003
+  when: 第 3 章
+  summary: 陆沉舟在第一服务区围堵中执行上车规则，林知夏以急诊分诊和污染观察能力签约上车；两人用临时加压固定启动净雾滤芯，房车第一次冲入迷雾，并锁定 17
+    公里外的青河服务区与可解锁模块简易医疗位。
+v3_state_updates:
+  timeline:
+    occurred_events:
+    - id: ev_0003_01
+      summary: 陆沉舟在第一服务区围堵中执行上车规则，林知夏以急诊分诊和污染观察能力签约上车；两人用临时加压固定启动净雾滤芯，房车第一次冲入迷雾，并锁定
+        17 公里外的青河服务区与可解锁模块简易医疗位。
+      location: 第一服务区出口至青河服务区方向的迷雾路段
+      involved_characters:
+      - lu_chenzhou
+      - lin_zhixia
+      source_chapter: 3
+  character_states:
+  - character_id: lu_chenzhou
+    display_name: 陆沉舟
+    physical_state: 手背烫伤、指节有血，正在驾驶房车穿过低浓度迷雾。
+    social_state: 车内规则执行者和司机，已让林知夏按契约上车。
+    emotional_state: 冷静压住旧救援本能，坚持救助和上车资格分离。
+    current_goal: 稳定净雾滤芯临时状态，驶向 17 公里外的青河服务区。
+    known_secrets: []
+    public_knowledge:
+    - 房车系统会给出滤芯、穿雾窗口和下一路标提示。
+    relationship_changes:
+    - 与林知夏形成车内医疗/污染观察与驾驶撤离的初步分工。
+    voice_notes:
+    - 以短指令拆分救助、上车、隔离和撤离。
+  - character_id: lin_zhixia
+    display_name: 林知夏
+    physical_state: 带急救包上车，刚完成服务区车外分诊。
+    social_state: 按契约上车的急诊护士，开始承担车内医疗和污染观察职责。
+    emotional_state: 认可规则的生存价值，但仍关注可救助者的处置。
+    current_goal: 在车内建立伤员、疑似污染和急救耗材的基本处置秩序。
+    known_secrets:
+    - 房车净雾滤芯能短时改善车内空气。
+    public_knowledge:
+    - 林知夏能做急诊分诊和污染疑似判断。
+    relationship_changes:
+    - 与陆沉舟达成“你开车，我管车内伤员和疑似污染”的分工。
+    voice_notes:
+    - 用急诊判断压住情绪争吵，先说风险和处置。
+  resource_changes:
+  - owner: rv
+    item: clean_filter
+    delta: 1
+    unit: module
+    category: item
+    reason: 净雾滤芯核心件完成临时加压固定并启动低浓度短时穿雾模式；滤芯效率从 31% 降至 28%，临时固定受颠簸影响。
+    source_chapter: 3
+  - owner: rv
+    item: fuel_liter
+    delta: 0
+    unit: liter
+    category: item
+    reason: 房车服务区突围和进入雾墙造成燃油消耗；具体余量未量化。
+    source_chapter: 3
+  - owner: rv
+    item: medicine_pack
+    delta: 0
+    unit: pack
+    category: item
+    reason: 林知夏使用部分基础急救耗材处理车外孩子和伤员，并将急救包带上车。
+    source_chapter: 3
+  - owner: rv
+    item: rv_integrity
+    delta: -23
+    unit: percent
+    category: item
+    reason: 房车撞开出口栏杆后车体密封完整度降至 77%，车头受损。
+    source_chapter: 3
+  open_thread_updates:
+  - id: thread_rv_system_binding
+    promise: 房车系统为什么绑定陆沉舟和父亲留下的旧房车。
+    source_chapter: 0
+    status: advanced
+    last_touched: 3
+    latest_note: 系统在滤芯启动后继续弹出下一路标，指向青河服务区和简易医疗位，显示路线并非随机逃生。
+    next_obligation: 在后续服务区继续用路标、模块和父亲旧车细节提示系统不是普通求生工具。
+  - id: thread_mist_monster_ecology
+    promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+    source_chapter: 0
+    status: advanced
+    last_touched: 3
+    latest_note: 雾尸会被金属敲击和喇叭声吸引；结尾广播混入疑似犬类低吼，预告怪物速度和形态升级。
+    next_obligation: 在第4-5章兑现疑似雾犬的追车压力。
+  - id: thread_vehicle_rules_contract
+    promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+    source_chapter: 0
+    status: advanced
+    last_touched: 3
+    latest_note: 上车规则经受孩子道德绑架、隐瞒伤口和抢车者逼门测试；林知夏按契约上车，不服从和隐瞒者被拒绝。
+    next_obligation: 继续用被拒绝的人和临时伤员测试规则代价。
+  - id: thread_lin_pollution_observation
+    promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+    source_chapter: 0
+    status: advanced
+    last_touched: 3
+    latest_note: 林知夏通过污染疑似识别、隔离判断和车内医疗分工证明核心功能价值。
+    next_obligation: 在青河服务区通过简易医疗位和污染伤员继续推进她的观察线。
+  payoff_updates:
+  - chapter: 3
+    promises_made: []
+    payoffs_delivered:
+    - 陆沉舟在第一服务区围堵中执行上车规则，林知夏以急诊分诊和污染观察能力签约上车；两人用临时加压固定启动净雾滤芯，房车第一次冲入迷雾，并锁定 17 公里外的青河服务区与可解锁模块简易医疗位。
+    frustration_level: controlled
+    payoff_types: []
+    delayed_payoffs: []
+    risks: []
+  conflict_updates:
+    active:
+    - 房车已离开第一服务区，但净雾滤芯为临时固定，密封与滤芯效率仍是短期压力。
+    - 青河服务区存在医疗位模块机会，也存在污染伤员和疑似雾犬风险。
+  next_hook:
+    hook: 下一路标为 17 公里外青河服务区；检测到可解锁模块“简易医疗位”，广播里有求救、医疗电源信息和犬类低吼。
+    obligation: 处理被拒者追车压力，并决定是否冒险前往青河服务区。
+    target_chapter: 4
+    status: open
+  pending_approvals:
+  - Approve the temporary pressure sealing workaround as a chapter 3 execution detail,
+    not a permanent replacement for a standard sealing ring.
+  - Whether the current functional-entry beat is enough to count as Lin Zhixia's first
+    real onboard role, or whether revision should make it more explicit.
+open_thread_updates:
+- id: thread_rv_system_binding
+  promise: 房车系统为什么绑定陆沉舟和父亲留下的旧房车。
+  source_chapter: 0
+  status: advanced
+  last_touched: 3
+  latest_note: 系统在滤芯启动后继续弹出下一路标，指向青河服务区和简易医疗位，显示路线并非随机逃生。
+  next_obligation: 在后续服务区继续用路标、模块和父亲旧车细节提示系统不是普通求生工具。
+- id: thread_mist_monster_ecology
+  promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+  source_chapter: 0
+  status: advanced
+  last_touched: 3
+  latest_note: 雾尸会被金属敲击和喇叭声吸引；结尾广播混入疑似犬类低吼，预告怪物速度和形态升级。
+  next_obligation: 在第4-5章兑现疑似雾犬的追车压力。
+- id: thread_vehicle_rules_contract
+  promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+  source_chapter: 0
+  status: advanced
+  last_touched: 3
+  latest_note: 上车规则经受孩子道德绑架、隐瞒伤口和抢车者逼门测试；林知夏按契约上车，不服从和隐瞒者被拒绝。
+  next_obligation: 继续用被拒绝的人和临时伤员测试规则代价。
+- id: thread_lin_pollution_observation
+  promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+  source_chapter: 0
+  status: advanced
+  last_touched: 3
+  latest_note: 林知夏通过污染疑似识别、隔离判断和车内医疗分工证明核心功能价值。
+  next_obligation: 在青河服务区通过简易医疗位和污染伤员继续推进她的观察线。
+change_log:
+  summary: Accepted revised chapter 3 as chapters/ch_0003.md.
+  canon_updates:
+  - timeline:t003
+  pending_approvals:
+  - Approve the temporary pressure sealing workaround as a chapter 3 execution detail,
+    not a permanent replacement for a standard sealing ring.
+  - Whether the current functional-entry beat is enough to count as Lin Zhixia's first
+    real onboard role, or whether revision should make it more explicit.
+acceptance_contract:
+  quality_gate_summary:
+    continuity_review_present: true
+    continuity_blockers: []
+    pacing_review_present: true
+    pacing_score: 88
+    revised_pacing_score: null
+    revision_required: false
+    waiver_required: false
+  outline_alignment:
+    reference_chain: master -> volume -> arc -> unit -> chapter brief
+    volume_id: volume_001
+    arc_id: arc_001
+    unit_id: unit_0001
+    required_unit_obligations:
+    - 净雾滤芯成为房车已解锁模块。
+    - 青河服务区作为下一站目标出现。
+    claimed_fulfilled_unit_obligations:
+    - 净雾滤芯成为房车已解锁模块。
+    - 青河服务区作为下一站目标出现。
+    pending_unit_obligations: []
+  state_updates:
+    timeline_event:
+      id: t003
+      when: 第 3 章
+      summary: 陆沉舟在第一服务区围堵中执行上车规则，林知夏以急诊分诊和污染观察能力签约上车；两人用临时加压固定启动净雾滤芯，房车第一次冲入迷雾，并锁定
+        17 公里外的青河服务区与可解锁模块简易医疗位。
+    character_state_changes:
+    - character_id: lu_chenzhou
+      display_name: 陆沉舟
+      physical_state: 手背烫伤、指节有血，正在驾驶房车穿过低浓度迷雾。
+      social_state: 车内规则执行者和司机，已让林知夏按契约上车。
+      emotional_state: 冷静压住旧救援本能，坚持救助和上车资格分离。
+      current_goal: 稳定净雾滤芯临时状态，驶向 17 公里外的青河服务区。
+      known_secrets: []
+      public_knowledge:
+      - 房车系统会给出滤芯、穿雾窗口和下一路标提示。
+      relationship_changes:
+      - 与林知夏形成车内医疗/污染观察与驾驶撤离的初步分工。
+      voice_notes:
+      - 以短指令拆分救助、上车、隔离和撤离。
+    - character_id: lin_zhixia
+      display_name: 林知夏
+      physical_state: 带急救包上车，刚完成服务区车外分诊。
+      social_state: 按契约上车的急诊护士，开始承担车内医疗和污染观察职责。
+      emotional_state: 认可规则的生存价值，但仍关注可救助者的处置。
+      current_goal: 在车内建立伤员、疑似污染和急救耗材的基本处置秩序。
+      known_secrets:
+      - 房车净雾滤芯能短时改善车内空气。
+      public_knowledge:
+      - 林知夏能做急诊分诊和污染疑似判断。
+      relationship_changes:
+      - 与陆沉舟达成“你开车，我管车内伤员和疑似污染”的分工。
+      voice_notes:
+      - 用急诊判断压住情绪争吵，先说风险和处置。
+    resource_changes:
+    - owner: rv
+      item: clean_filter
+      delta: 1
+      unit: module
+      category: item
+      reason: 净雾滤芯核心件完成临时加压固定并启动低浓度短时穿雾模式；滤芯效率从 31% 降至 28%，临时固定受颠簸影响。
+      source_chapter: 3
+    - owner: rv
+      item: fuel_liter
+      delta: 0
+      unit: liter
+      category: item
+      reason: 房车服务区突围和进入雾墙造成燃油消耗；具体余量未量化。
+      source_chapter: 3
+    - owner: rv
+      item: medicine_pack
+      delta: 0
+      unit: pack
+      category: item
+      reason: 林知夏使用部分基础急救耗材处理车外孩子和伤员，并将急救包带上车。
+      source_chapter: 3
+    - owner: rv
+      item: rv_integrity
+      delta: -23
+      unit: percent
+      category: item
+      reason: 房车撞开出口栏杆后车体密封完整度降至 77%，车头受损。
+      source_chapter: 3
+    open_thread_updates:
+    - id: thread_rv_system_binding
+      promise: 房车系统为什么绑定陆沉舟和父亲留下的旧房车。
+      source_chapter: 0
+      status: advanced
+      last_touched: 3
+      latest_note: 系统在滤芯启动后继续弹出下一路标，指向青河服务区和简易医疗位，显示路线并非随机逃生。
+      next_obligation: 在后续服务区继续用路标、模块和父亲旧车细节提示系统不是普通求生工具。
+    - id: thread_mist_monster_ecology
+      promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+      source_chapter: 0
+      status: advanced
+      last_touched: 3
+      latest_note: 雾尸会被金属敲击和喇叭声吸引；结尾广播混入疑似犬类低吼，预告怪物速度和形态升级。
+      next_obligation: 在第4-5章兑现疑似雾犬的追车压力。
+    - id: thread_vehicle_rules_contract
+      promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+      source_chapter: 0
+      status: advanced
+      last_touched: 3
+      latest_note: 上车规则经受孩子道德绑架、隐瞒伤口和抢车者逼门测试；林知夏按契约上车，不服从和隐瞒者被拒绝。
+      next_obligation: 继续用被拒绝的人和临时伤员测试规则代价。
+    - id: thread_lin_pollution_observation
+      promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+      source_chapter: 0
+      status: advanced
+      last_touched: 3
+      latest_note: 林知夏通过污染疑似识别、隔离判断和车内医疗分工证明核心功能价值。
+      next_obligation: 在青河服务区通过简易医疗位和污染伤员继续推进她的观察线。
+    payoff_updates:
+    - chapter: 3
+      promises_made: []
+      payoffs_delivered:
+      - 陆沉舟在第一服务区围堵中执行上车规则，林知夏以急诊分诊和污染观察能力签约上车；两人用临时加压固定启动净雾滤芯，房车第一次冲入迷雾，并锁定 17 公里外的青河服务区与可解锁模块简易医疗位。
+      frustration_level: controlled
+      payoff_types: []
+      delayed_payoffs: []
+      risks: []
+    next_hook:
+      hook: 下一路标为 17 公里外青河服务区；检测到可解锁模块“简易医疗位”，广播里有求救、医疗电源信息和犬类低吼。
+      obligation: 处理被拒者追车压力，并决定是否冒险前往青河服务区。
+      target_chapter: 4
+      status: open
+    pending_approvals:
+    - Approve the temporary pressure sealing workaround as a chapter 3 execution detail,
+      not a permanent replacement for a standard sealing ring.
+    - Whether the current functional-entry beat is enough to count as Lin Zhixia's
+      first real onboard role, or whether revision should make it more explicit.
+    economy_changes: []
+    faction_changes: []
+  publication_readiness:
+    final_candidate_path: drafts/ch_0003_final_candidate.md
+    author_direction_present: true
+    author_direction_approved: true
+    prose_quality_review_present: true
+    prose_quality_score: 89
+    prose_rewrite_required: false
+    blocking_issues: []

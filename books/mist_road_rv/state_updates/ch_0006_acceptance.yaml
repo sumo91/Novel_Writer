@@ -1,0 +1,374 @@
+chapter: 6
+title: 污染分诊
+source_draft: drafts/ch_0006_final_candidate.md
+accepted_chapter_path: chapters/ch_0006.md
+summary: 房车抵达青河服务区外仓接近口前，周小禾出现发冷、渗血和瞳孔灰边等疑似污染体征。林知夏建立外伤、雾吸入、疑似异变三档临时污染分诊，陆沉舟将其转成车内规则：临时观察区不等于生活区，上车名额与观察窗口分开。两人用旧帘布、急救箱、塑封袋和绳索搭出临时观察区。周小禾提供青河后仓线索：净化耗材、医疗材料和修车胶在后仓，但钥匙或门禁卡由仓库控制者老郑掌握。房车停在外仓口，看见锁链、拖痕和写着拿物资可以、上车不行的木牌，下一章进入物资与上车资格切割。
+current_state:
+  current_chapter: 6
+  current_arc: arc_001
+  latest_location: 青河服务区外仓接近口，房车停在外仓路口外侧未熄火
+  active_characters:
+  - lu_chenzhou
+  - lin_zhixia
+  active_conflicts:
+  - 房车停在青河服务区外仓接近口外侧，后保险杠断裂，车体密封完整度仍为 72%，车尾仍有淡雾味渗入。
+  - 净雾滤芯仍为临时加压固定，滤芯效率仍为 23%，需要密封胶、备用卡箍和隔离帘材料。
+  - 周小禾处于临时观察区，出现发冷、渗血、瞳孔灰边等疑似污染体征，但尚未确认异变。
+  - 外仓有锁链、拖痕和“拿物资可以 / 上车不行”的木牌，物资与上车资格即将发生规则冲突；青河内部情况仍未揭开。
+  pending_approvals:
+  - 'Approve the provisional onboard contamination triage rule: external injury, mist
+    inhalation observation, and suspected mutation are handled separately.'
+  - Approve that temporary observation / isolation does not equal formal boarding
+    qualification.
+  - Approve Qinghe rear warehouse supplies and Old Zheng's key/access control as the
+    chapter 7 material-control hook without treating it as a full Qinghe interior
+    reveal.
+state_changes:
+- The RV reaches the Qinghe Service Area outer warehouse approach with rear sealing
+  still damaged at 72% and clean-mist filter efficiency still at 23%.
+- The injured girl is identified as Zhou Xiaohe and remains a temporary observation
+  passenger, not a formal onboard member or core teammate.
+- Zhou Xiaohe shows coldness, rapid breathing, continued bleeding, and a faint gray
+  edge around the pupil, creating an early contamination suspicion without confirming
+  irreversible mutation.
+- 'Lin Zhixia establishes a provisional three-tier onboard triage rule: external injury,
+  mist inhalation observation, and suspected mutation.'
+- 'Lu Chenzhou converts the triage rule into vehicle rules: observation zone is not
+  living space, temporary observation is not boarding qualification, and noncompliance
+  or aggression ends the observation window.'
+- A makeshift rear observation / isolation area is built from an old curtain, first-aid
+  box, plastic wrap, tape, and rope, but it is explicitly not a proper medical isolation
+  setup.
+- The RV still needs sealant, spare clamps, isolation-curtain material, and basic
+  medical supplies; none are gained for free in this chapter.
+- 'Zhou Xiaohe provides a limited Qinghe outer-warehouse clue: rear warehouse supplies
+  exist, but the key or access card is controlled by a warehouse keeper called Old
+  Zheng.'
+- The chapter ends at the Qinghe outer warehouse approach, where a chained roll-up
+  door and sign reading '拿物资可以 / 上车不行' point chapter 7 toward material control and
+  boarding-rule conflict.
+- Qinghe Service Area interior order, full factions, and complete medical station
+  layout remain unrevealed.
+open_threads_touched: []
+timeline_event:
+  id: t006
+  when: 第 6 章
+  summary: 房车抵达青河服务区外仓接近口前，周小禾出现发冷、渗血和瞳孔灰边等疑似污染体征。林知夏建立外伤、雾吸入、疑似异变三档临时污染分诊，陆沉舟将其转成车内规则：临时观察区不等于生活区，上车名额与观察窗口分开。两人用旧帘布、急救箱、塑封袋和绳索搭出临时观察区。周小禾提供青河后仓线索：净化耗材、医疗材料和修车胶在后仓，但钥匙或门禁卡由仓库控制者老郑掌握。房车停在外仓口，看见锁链、拖痕和写着拿物资可以、上车不行的木牌，下一章进入物资与上车资格切割。
+v3_state_updates:
+  timeline:
+    occurred_events:
+    - id: ev_0006_01
+      summary: 房车抵达青河服务区外仓接近口前，周小禾出现发冷、渗血和瞳孔灰边等疑似污染体征。林知夏建立外伤、雾吸入、疑似异变三档临时污染分诊，陆沉舟将其转成车内规则：临时观察区不等于生活区，上车名额与观察窗口分开。两人用旧帘布、急救箱、塑封袋和绳索搭出临时观察区。周小禾提供青河后仓线索：净化耗材、医疗材料和修车胶在后仓，但钥匙或门禁卡由仓库控制者老郑掌握。房车停在外仓口，看见锁链、拖痕和写着拿物资可以、上车不行的木牌，下一章进入物资与上车资格切割。
+      location: 青河服务区外仓接近口
+      involved_characters:
+      - lu_chenzhou
+      - lin_zhixia
+      - temporary_injured_girl
+      source_chapter: 6
+  character_states:
+  - character_id: lu_chenzhou
+    display_name: 陆沉舟
+    physical_state: 驾驶房车抵达青河服务区外仓接近口并停在路口外侧，车辆不熄火。
+    social_state: 继续作为房车规则执行者，把临时观察区、生活区和正式上车资格分开。
+    emotional_state: 在周小禾疑似污染和外仓物资诱惑之间保持冷静，用规则压住恐慌和交易风险。
+    current_goal: 在不让上车资格被物资绑架的前提下，取得密封胶、备用卡箍、隔离帘材料和基础医疗耗材。
+    known_secrets: []
+    public_knowledge:
+    - 周小禾提供青河后仓线索，老郑掌握钥匙或门禁卡。
+    relationship_changes:
+    - 进一步采纳林知夏的污染分诊规则，并将其转化为车内可执行边界。
+    voice_notes:
+    - 短句、规则化、任务化，要求能执行的等级和后果。
+  - character_id: lin_zhixia
+    display_name: 林知夏
+    physical_state: 在车尾临时观察区处理周小禾伤口，并持续复查瞳孔、意识和体温。
+    social_state: 车内污染分诊规则制定者，负责判断外伤、雾吸入和疑似异变。
+    emotional_state: 同情周小禾但不许情绪替代判断，接受临时观察和正式上车资格必须分开。
+    current_goal: 稳定周小禾，维持临时隔离，并尽快争取基础医疗耗材和隔离帘材料。
+    known_secrets:
+    - 周小禾说青河后仓有净化耗材、药箱和修车胶。
+    public_knowledge:
+    - 她建立了外伤、雾吸入、疑似异变三档临时污染分诊规则。
+    relationship_changes:
+    - 与陆沉舟形成“医学分级 / 车内规则执行”的明确协作。
+    voice_notes:
+    - 医学判断具体、克制，以症状、复查频率和处置动作说话。
+  - character_id: temporary_injured_girl
+    display_name: 周小禾
+    physical_state: 手臂深伤口仍在渗血，出现发冷、呼吸急、瞳孔灰边等疑似雾吸入/污染观察体征。
+    social_state: 临时观察区伤员 / 青河后仓线索见证者，不是正式上车名额或核心队友。
+    emotional_state: 恐惧、自责，害怕再次引来雾犬，但仍能听从指令并复述规则。
+    current_goal: 保持清醒、回答问题、不碰隔离帘和绳结，等待进一步医疗处理。
+    known_secrets:
+    - 青河后仓有净化耗材、药箱和修车胶，钥匙或门禁卡在老郑手里。
+    public_knowledge:
+    - 她现在被判定为外伤叠雾吸入观察，不是确认异变。
+    relationship_changes: []
+    voice_notes:
+    - 短促、恐惧、服从，提供线索但不承担解释青河内部的功能。
+  resource_changes:
+  - id: res_rv_clean_filter
+    owner: rv
+    item: clean_filter
+    category: item
+    unit: module
+    delta: 0
+    reason: 净雾滤芯继续维持车内安全空气，但效率仍为 23%，车尾轻微污染空气渗入未解决。
+  - id: res_rv_rv_integrity
+    owner: rv
+    item: rv_integrity
+    category: item
+    unit: percent
+    delta: 0
+    reason: 车体密封完整度仍为 72%，本章未获得密封胶或完成修复。
+  - id: res_rv_medicine_pack
+    owner: rv
+    item: medicine_pack
+    category: item
+    unit: pack
+    delta: 0
+    reason: 林知夏继续使用纱布、宽胶带、塑封袋和临时固定材料处理周小禾伤口；具体余量未量化。
+  open_thread_updates:
+  - id: thread_lin_pollution_observation
+    promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+    source_chapter: 0
+    status: advanced
+    last_touched: 6
+    latest_note: 林知夏建立外伤、雾吸入、疑似异变三档临时污染分诊，并用意识、瞳孔、灰斑、体温、攻击性和异常反应作为观察标准。
+    next_obligation: 后续通过简易医疗位、隔离帘材料和更多污染病例检验这套临时分诊规则，而不是一次性定为终极医学答案。
+  - id: thread_vehicle_rules_contract
+    promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+    source_chapter: 0
+    status: advanced
+    last_touched: 6
+    latest_note: 陆沉舟明确临时观察区不是生活区，观察窗口不是上车名额；听指令才有观察窗口，失控或攻击没有第二次。
+    next_obligation: 第7章用外仓物资和“拿物资可以 / 上车不行”的牌子继续测试物资交易与上车资格的切割。
+  - id: thread_service_area_terminals
+    promise: 服务区交易终端、临时屏障和路标任务从何而来。
+    source_chapter: 0
+    status: advanced
+    last_touched: 6
+    latest_note: 青河外仓出现受控物资、门禁或钥匙线索，以及与上车资格分离的手写规则，提示服务区节点存在人为控制秩序。
+    next_obligation: 后续只展开外仓物资控制机制，不提前解释服务区终端和旧协议源头。
+  - id: thread_mist_monster_ecology
+    promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+    source_chapter: 0
+    status: advanced
+    last_touched: 6
+    latest_note: 雾犬血味吸引规则继续影响车内处置，周小禾血味必须被隔离，疑似污染体征被纳入观察。
+    next_obligation: 继续把怪物行为和污染症状作为可观察规则推进，不写成怪物百科。
+  payoff_updates:
+  - chapter: 6
+    promises_made:
+    - 青河外仓有净化耗材、基础医疗耗材、密封胶和修车胶，但钥匙或门禁卡由老郑控制。
+    - 外仓木牌显示“拿物资可以 / 上车不行”，第7章必须处理物资交易和上车资格切割。
+    payoffs_delivered:
+    - 林知夏建立外伤、雾吸入、疑似异变三档临时污染分诊。
+    - 陆沉舟将分诊转化为车内规则：临时观察区不等于生活区，观察窗口不等于正式上车名额。
+    - 房车抵达青河服务区外仓接近口，确认目标物资可能存在但未免费获得。
+    frustration_level: controlled
+    payoff_types:
+    - rule_payoff
+    - teammate_function_payoff
+    - route_hook
+    delayed_payoffs:
+    - 青河外仓物资是否能取得
+    - 老郑身份和控制方式
+    - 简易医疗位解锁
+    - 周小禾完整青河警告
+    risks:
+    - 周小禾可能继续恶化或被误判。
+    - 临时观察区不具备医疗隔离标准。
+    - 外仓物资可能与上车资格发生交换压力。
+  conflict_updates:
+    active: []
+  next_hook:
+    hook: 青河外仓门口有锁链、拖痕、暗红痕迹和木牌，目标物资可能存在，但钥匙或门禁卡在老郑手里。
+    obligation: 第7章处理物资交易、老郑控制权和“物资不是船票”的上车资格切割，不直接免费取得物资。
+    target_chapter: 7
+    status: open
+  pending_approvals:
+  - 'Approve the provisional onboard contamination triage rule: external injury, mist
+    inhalation observation, and suspected mutation are handled separately.'
+  - Approve that temporary observation / isolation does not equal formal boarding
+    qualification.
+  - Approve Qinghe rear warehouse supplies and Old Zheng's key/access control as the
+    chapter 7 material-control hook without treating it as a full Qinghe interior
+    reveal.
+open_thread_updates: []
+change_log:
+  summary: Accepted revised chapter 6 as chapters/ch_0006.md.
+  canon_updates:
+  - timeline:t006
+  pending_approvals:
+  - 'Approve the provisional onboard contamination triage rule: external injury, mist
+    inhalation observation, and suspected mutation are handled separately.'
+  - Approve that temporary observation / isolation does not equal formal boarding
+    qualification.
+  - Approve Qinghe rear warehouse supplies and Old Zheng's key/access control as the
+    chapter 7 material-control hook without treating it as a full Qinghe interior
+    reveal.
+acceptance_contract:
+  quality_gate_summary:
+    continuity_review_present: true
+    continuity_blockers: []
+    pacing_review_present: true
+    pacing_score: 88
+    revised_pacing_score: null
+    revision_required: false
+    waiver_required: false
+  outline_alignment:
+    reference_chain: master -> volume -> arc -> unit -> chapter brief
+    volume_id: volume_001
+    arc_id: arc_001
+    unit_id: unit_0001
+    required_unit_obligations:
+    - 建立临时污染观察规则。
+    - 推进 thread_lin_pollution_observation。
+    claimed_fulfilled_unit_obligations:
+    - 建立临时污染观察规则。
+    - 推进 thread_lin_pollution_observation。
+    pending_unit_obligations: []
+  state_updates:
+    timeline_event:
+      id: t006
+      when: 第 6 章
+      summary: 房车抵达青河服务区外仓接近口前，周小禾出现发冷、渗血和瞳孔灰边等疑似污染体征。林知夏建立外伤、雾吸入、疑似异变三档临时污染分诊，陆沉舟将其转成车内规则：临时观察区不等于生活区，上车名额与观察窗口分开。两人用旧帘布、急救箱、塑封袋和绳索搭出临时观察区。周小禾提供青河后仓线索：净化耗材、医疗材料和修车胶在后仓，但钥匙或门禁卡由仓库控制者老郑掌握。房车停在外仓口，看见锁链、拖痕和写着拿物资可以、上车不行的木牌，下一章进入物资与上车资格切割。
+    character_state_changes:
+    - character_id: lu_chenzhou
+      display_name: 陆沉舟
+      physical_state: 驾驶房车抵达青河服务区外仓接近口并停在路口外侧，车辆不熄火。
+      social_state: 继续作为房车规则执行者，把临时观察区、生活区和正式上车资格分开。
+      emotional_state: 在周小禾疑似污染和外仓物资诱惑之间保持冷静，用规则压住恐慌和交易风险。
+      current_goal: 在不让上车资格被物资绑架的前提下，取得密封胶、备用卡箍、隔离帘材料和基础医疗耗材。
+      known_secrets: []
+      public_knowledge:
+      - 周小禾提供青河后仓线索，老郑掌握钥匙或门禁卡。
+      relationship_changes:
+      - 进一步采纳林知夏的污染分诊规则，并将其转化为车内可执行边界。
+      voice_notes:
+      - 短句、规则化、任务化，要求能执行的等级和后果。
+    - character_id: lin_zhixia
+      display_name: 林知夏
+      physical_state: 在车尾临时观察区处理周小禾伤口，并持续复查瞳孔、意识和体温。
+      social_state: 车内污染分诊规则制定者，负责判断外伤、雾吸入和疑似异变。
+      emotional_state: 同情周小禾但不许情绪替代判断，接受临时观察和正式上车资格必须分开。
+      current_goal: 稳定周小禾，维持临时隔离，并尽快争取基础医疗耗材和隔离帘材料。
+      known_secrets:
+      - 周小禾说青河后仓有净化耗材、药箱和修车胶。
+      public_knowledge:
+      - 她建立了外伤、雾吸入、疑似异变三档临时污染分诊规则。
+      relationship_changes:
+      - 与陆沉舟形成“医学分级 / 车内规则执行”的明确协作。
+      voice_notes:
+      - 医学判断具体、克制，以症状、复查频率和处置动作说话。
+    - character_id: temporary_injured_girl
+      display_name: 周小禾
+      physical_state: 手臂深伤口仍在渗血，出现发冷、呼吸急、瞳孔灰边等疑似雾吸入/污染观察体征。
+      social_state: 临时观察区伤员 / 青河后仓线索见证者，不是正式上车名额或核心队友。
+      emotional_state: 恐惧、自责，害怕再次引来雾犬，但仍能听从指令并复述规则。
+      current_goal: 保持清醒、回答问题、不碰隔离帘和绳结，等待进一步医疗处理。
+      known_secrets:
+      - 青河后仓有净化耗材、药箱和修车胶，钥匙或门禁卡在老郑手里。
+      public_knowledge:
+      - 她现在被判定为外伤叠雾吸入观察，不是确认异变。
+      relationship_changes: []
+      voice_notes:
+      - 短促、恐惧、服从，提供线索但不承担解释青河内部的功能。
+    resource_changes:
+    - id: res_rv_clean_filter
+      owner: rv
+      item: clean_filter
+      category: item
+      unit: module
+      delta: 0
+      reason: 净雾滤芯继续维持车内安全空气，但效率仍为 23%，车尾轻微污染空气渗入未解决。
+    - id: res_rv_rv_integrity
+      owner: rv
+      item: rv_integrity
+      category: item
+      unit: percent
+      delta: 0
+      reason: 车体密封完整度仍为 72%，本章未获得密封胶或完成修复。
+    - id: res_rv_medicine_pack
+      owner: rv
+      item: medicine_pack
+      category: item
+      unit: pack
+      delta: 0
+      reason: 林知夏继续使用纱布、宽胶带、塑封袋和临时固定材料处理周小禾伤口；具体余量未量化。
+    open_thread_updates:
+    - id: thread_lin_pollution_observation
+      promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+      source_chapter: 0
+      status: advanced
+      last_touched: 6
+      latest_note: 林知夏建立外伤、雾吸入、疑似异变三档临时污染分诊，并用意识、瞳孔、灰斑、体温、攻击性和异常反应作为观察标准。
+      next_obligation: 后续通过简易医疗位、隔离帘材料和更多污染病例检验这套临时分诊规则，而不是一次性定为终极医学答案。
+    - id: thread_vehicle_rules_contract
+      promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+      source_chapter: 0
+      status: advanced
+      last_touched: 6
+      latest_note: 陆沉舟明确临时观察区不是生活区，观察窗口不是上车名额；听指令才有观察窗口，失控或攻击没有第二次。
+      next_obligation: 第7章用外仓物资和“拿物资可以 / 上车不行”的牌子继续测试物资交易与上车资格的切割。
+    - id: thread_service_area_terminals
+      promise: 服务区交易终端、临时屏障和路标任务从何而来。
+      source_chapter: 0
+      status: advanced
+      last_touched: 6
+      latest_note: 青河外仓出现受控物资、门禁或钥匙线索，以及与上车资格分离的手写规则，提示服务区节点存在人为控制秩序。
+      next_obligation: 后续只展开外仓物资控制机制，不提前解释服务区终端和旧协议源头。
+    - id: thread_mist_monster_ecology
+      promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+      source_chapter: 0
+      status: advanced
+      last_touched: 6
+      latest_note: 雾犬血味吸引规则继续影响车内处置，周小禾血味必须被隔离，疑似污染体征被纳入观察。
+      next_obligation: 继续把怪物行为和污染症状作为可观察规则推进，不写成怪物百科。
+    payoff_updates:
+    - chapter: 6
+      promises_made:
+      - 青河外仓有净化耗材、基础医疗耗材、密封胶和修车胶，但钥匙或门禁卡由老郑控制。
+      - 外仓木牌显示“拿物资可以 / 上车不行”，第7章必须处理物资交易和上车资格切割。
+      payoffs_delivered:
+      - 林知夏建立外伤、雾吸入、疑似异变三档临时污染分诊。
+      - 陆沉舟将分诊转化为车内规则：临时观察区不等于生活区，观察窗口不等于正式上车名额。
+      - 房车抵达青河服务区外仓接近口，确认目标物资可能存在但未免费获得。
+      frustration_level: controlled
+      payoff_types:
+      - rule_payoff
+      - teammate_function_payoff
+      - route_hook
+      delayed_payoffs:
+      - 青河外仓物资是否能取得
+      - 老郑身份和控制方式
+      - 简易医疗位解锁
+      - 周小禾完整青河警告
+      risks:
+      - 周小禾可能继续恶化或被误判。
+      - 临时观察区不具备医疗隔离标准。
+      - 外仓物资可能与上车资格发生交换压力。
+    next_hook:
+      hook: 青河外仓门口有锁链、拖痕、暗红痕迹和木牌，目标物资可能存在，但钥匙或门禁卡在老郑手里。
+      obligation: 第7章处理物资交易、老郑控制权和“物资不是船票”的上车资格切割，不直接免费取得物资。
+      target_chapter: 7
+      status: open
+    pending_approvals:
+    - 'Approve the provisional onboard contamination triage rule: external injury,
+      mist inhalation observation, and suspected mutation are handled separately.'
+    - Approve that temporary observation / isolation does not equal formal boarding
+      qualification.
+    - Approve Qinghe rear warehouse supplies and Old Zheng's key/access control as
+      the chapter 7 material-control hook without treating it as a full Qinghe interior
+      reveal.
+    economy_changes: []
+    faction_changes: []
+  publication_readiness:
+    final_candidate_path: drafts/ch_0006_final_candidate.md
+    author_direction_present: true
+    author_direction_approved: true
+    prose_quality_review_present: true
+    prose_quality_score: 90
+    prose_rewrite_required: false
+    blocking_issues: []

@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "score": 92,
+  "issues": [
+    {
+      "type": "module_boundary",
+      "severity": "low",
+      "evidence": "The draft confirms the Simple Medical Bay material signal, the No. 2 power box, a folding medical frame, isolation film, and a power interface, but no material is acquired and the module is not unlocked.",
+      "suggested_fix": "In state updates, record verified location/material leads only. Do not mark Simple Medical Bay as acquired or active."
+    },
+    {
+      "type": "qinghe_scope",
+      "severity": "low",
+      "evidence": "The draft remains at Qinghe medical-point exterior and uses lights, external broadcast, door/gate observation, and retreat positioning. It does not enter the main building or reveal survivor organization.",
+      "suggested_fix": "Keep chapter 11 as exterior validation. Full Qinghe survivor pressure and triage choice can begin in chapter 12."
+    },
+    {
+      "type": "voice_mimicry_scope",
+      "severity": "low",
+      "evidence": "The draft demonstrates voice mimicry through repeated rescue lines, use of Lu Chenzhou's and Lin Zhixia's names/voice, and a false child lure, without explaining the ecology.",
+      "suggested_fix": "Record this as an early observed behavior, not a complete monster taxonomy."
+    },
+    {
+      "type": "father_thread_boundary",
+      "severity": "low",
+      "evidence": "The gate alternates between permissions and 'welcome back', giving old-protocol unease without naming Lu's father or explaining rescue-protocol origin.",
+      "suggested_fix": "Record only service-area terminal / old-protocol abnormality, not a father-route hard clue."
+    },
+    {
+      "type": "zhou_xiaohe_status",
+      "severity": "low",
+      "evidence": "Zhou Xiaohe remains in the observation area, low fever and pain continue, and she provides sound-observation help without leaving the area or becoming a core teammate.",
+      "suggested_fix": "Keep Zhou Xiaohe as temporary observation patient."
+    }
+  ],
+  "required_fixes": [],
+  "proposed_state_updates": [
+    "The RV remains angled at Qinghe medical-point exterior with its nose toward the retreat route; doors stay closed and the engine remains running.",
+    "Lu Chenzhou executes the external-rescue contact rule in practice: no main building, no outer-warehouse approach, no response to unverified door-opening requests, and all contact through external speaker / light / controlled observation.",
+    "The medical-point gate alternates between 'permission error' and 'welcome back', advancing the service-area terminal abnormality without explaining its source.",
+    "Voice mimicry becomes observable: false voices repeat opening requests, use Lu Chenzhou's name, imitate Lin Zhixia, and present a false child lure.",
+    "Lu Chenzhou uses an intentionally wrong 'No. 3 power box' prompt to separate mimicry from a more credible human response, confirming the No. 2 power box is at the medical-point rear wall.",
+    "Lin Zhixia confirms visible medical resources / possible Simple Medical Bay materials: folding medical frame, isolation film, and power interface, but none are acquired.",
+    "Zhou Xiaohe remains in temporary observation with low fever and wound pain; she helps identify a voice difference but does not leave observation or become a formal member.",
+    "The chapter ends with the false child lure and Lin Zhixia's refusal to respond emotionally; chapter 12 must handle triage: who can be treated outside, who must be refused, and who cannot approach."
+  ],
+  "human_approval_needed": [
+    "Approve chapter 11 as Qinghe medical-point exterior validation only, not main-building entry.",
+    "Approve No. 2 power box / folding medical frame / isolation film as verified Simple Medical Bay material leads, not acquired materials.",
+    "Approve voice mimicry as an observed Qinghe threat behavior without fully defining the ecology.",
+    "Approve the 'permission error / welcome back' gate behavior as terminal abnormality / old-protocol unease, not a father-route hard clue.",
+    "Approve Zhou Xiaohe remaining a temporary observation patient after providing a useful sound-observation cue."
+  ]
+}

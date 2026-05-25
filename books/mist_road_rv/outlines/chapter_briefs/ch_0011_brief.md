@@ -1,0 +1,259 @@
+# Chapter 11 Brief: 青河服务区
+
+## V3.3 Outline Contract
+
+- Reference chain: master -> volume -> arc -> unit -> chapter brief.
+- Master obligation: 继续证明系统是路线、风险和模块线索工具，不替陆沉舟做道德选择；不解释父亲最后救援、母巢公路或雾心者。
+- Volume obligation: volume_001 要让移动安全屋雏形继续成型：房车模块、队友功能、怪物生态和服务区关卡循环必须同步推进。
+- Arc obligation: arc_001 的 11-20 章进入青河医疗线，让林知夏的医疗价值和污染识别能力落地，逐步争取简易医疗位，并把路线推向收费站与更高等级道路风险。
+- Unit obligation: unit_0002 要完成青河医疗线闭环；第11章是青河医疗点外围登场，必须验证第10章建立的外部求救接触规则。
+- Chapter 11 function: 青河医疗点外围登场，验证第10章外部求救接触规则。
+- Carry-in from chapter 10: 房车斜停在青河服务区医疗点外缘，车头朝撤离路线；净雾滤芯低效稳定，车尾临时封堵仍有微漏风险；林知夏已明确负责医疗观察、污染分诊和隔离区；周小禾低热、伤口需要更稳定处理但仍是临时观察；广播警告“他们会学声音”，系统提示简易医疗位材料信号增强、污染等级上升、外仓门禁异常。
+
+## Outline Obligations
+
+- Master outline obligation: 本章只能轻触系统旧协议感，不给父亲硬线索；门禁“欢迎回来”可以作为异常感，不解释来源。
+- Volume outline obligation: 让医疗模块线从“信号”变成“可验证目标”，但不得在本章取得材料或解锁模块。
+- Arc outline obligation: 青河服务区必须是危险关卡，不是安全基地；医疗资源、污染伤员和怪物诱导要形成压力。
+- Unit outline obligation: 外部求救接触规则必须第一次在青河执行：先验证、保撤退线、不贴外仓门、不进主楼、不对未验证对象开门。
+- Chapter outline obligation: 医疗点外围正式进入场景；确认二号配电箱/简易医疗位关键材料真实存在；把“声音模仿”从广播悬念推进到现场可观察风险；结尾导向第12章医疗分诊选择。
+
+## Chapter Goal
+
+第11章要把青河从“广播钩子”变成可见关卡。开场直接接第10章结尾的门禁屏、污染等级和广播压力，不复盘第一站，不解释青河内部完整秩序。
+
+本章核心冲突是：房车必须验证医疗点后墙二号配电箱和简易医疗位材料信号，但青河入口、外仓门、广播人声和雾中敲击都可能诱导开门或改变路线。陆沉舟要把第10章定下的规则变成实际操作；林知夏要在不下车莽救、不把伤员带进生活区的情况下判断医疗材料是否真实值得冒险。
+
+本章的主爽点不是拿到医疗位，而是“验证成功但不越界”：陆沉舟不进主楼、不贴外仓门，用外放、车灯、车头角度和可撤路线验证目标；林知夏确认青河确实有可争取的简易医疗位关键材料，同时指出入口周围有污染伤员和声音诱导。结尾让雾里出现“先救孩子”的道德压力，逼第12章进入医疗分诊。
+
+## Opening Hook
+
+门禁屏在雾里亮着。
+
+【权限错误】
+
+下一秒，又跳成：
+
+【欢迎回来】
+
+旧广播里的喘息声贴着电流爬出来：
+
+“别开外仓门……他们会学声音……”
+
+房车没有熄火。
+
+车头仍朝着来路。
+
+第一屏必须直接开在门禁异常、广播警告、污染等级上升、房车斜停保撤离线这四个压力上。不要解释青河服务区布局，不写幸存者组织，不写父亲旧协议来源。
+
+## Required Beats
+
+- 门禁异常：医疗点或外仓附近电子屏在“权限错误”和“欢迎回来”之间闪烁，造成旧协议感和危险感，但不解释源头。
+- 系统状态：污染等级上升、简易医疗位材料信号增强、外仓门禁异常、低效滤芯窗口有限、车尾封堵微漏。
+- 车位选择：陆沉舟保持车头朝撤离路线，不熄火，不把房车停成被围死的角度。
+- 广播警告：循环广播继续播“医疗电源”“还有人”，真人插话或喘息声警告“别开外仓门”“他们会学声音”。
+- 规则执行：陆沉舟公开或内部确认接触规则：不进主楼、不贴外仓门、不响应开门请求、只隔窗/外放验证、保留退路。
+- 林知夏站位：她背着药包但不下车冲救，守在能看见医疗点和观察区的位置，继续关注周小禾。
+- 周小禾状态：低热、伤口疼痛，提供一句有用观察，例如听出某个声音不对；不得离开观察区或升格为队友。
+- 验证二号配电箱：通过外放询问、车灯扫后墙、观察线路/标识/门牌编号，确认医疗点后墙确有二号配电箱或相关无菌电源组件位置。
+- 医疗材料线索：林知夏从车窗/望远观察/照明判断出折叠医疗架、无菌电源、隔离膜或药房标识真实存在，但部分被污染或被门禁隔住。
+- 声音诱导：雾里出现模仿熟人、孩子、广播者或陆沉舟指令的声音，试图让车靠近外仓门或打开门；本章只验证危险，不完整解释怪物。
+- 外部活人痕迹：可以有真人敲击回应或短句，但必须保持不确定：既证明有人可能活着，也证明声音不能直接信。
+- 小反转：陆沉舟故意用一个不完整问题测试回应，假声复读“救命/开门”，真人则给出具体位置或编号；由此确认哪些声音可信度更高。
+- 主爽点：陆沉舟不用开门也验证出医疗点后墙目标真实存在；林知夏确认这是值得后续争取的医疗位材料线。
+- 结尾压力：医疗点后墙传来敲击回应，雾里有人喊“先救孩子”或推出疑似伤员，第12章必须处理谁先救、谁不能靠近。
+
+## Character Movement
+
+- 陆沉舟：从定规则推进为执行规则。他的爽点是把外部求救接触程序变成动作：车位、灯光、外放、撤离线、验证问题、拒绝开门。
+- 林知夏：从车内医疗角色推进为青河医疗线判断者。她不再只是照看周小禾，而是判断哪些材料和伤员值得冒险、哪些会破坏污染边界。
+- 周小禾：继续是临时观察伤员。她的低热强化医疗线压力，她的观察可帮助识别声音异常，但不成为救场角色。
+- 青河真人广播者：可以提供具体线索，证明青河内部有活人，但本章不揭示身份、组织或完整处境。
+- 未知声音 / 雾中威胁：只作为声音模仿和诱导开门压力出现，不完整命名，不解释生态。
+
+## Payoff Design
+
+- 主爽点 1：陆沉舟执行“求救不等于开门”规则，在不开门、不下车冒进的条件下完成第一轮青河验证。
+- 主爽点 2：林知夏确认简易医疗位关键材料真实存在，让医疗模块线从广播承诺变成可争取目标。
+- 主爽点 3：声音模仿威胁从抽象警告变成现场可见危险，读者知道青河不是安全区。
+- 主爽点 4：房车车位和撤离线被保住，证明移动安全屋靠规则和路线活，而不是停下来变营地。
+- 代价：滤芯窗口继续消耗，车尾封堵仍微漏，周小禾仍未得到正式处理，材料未取得，医疗位未解锁，青河污染等级继续上升。
+
+## Anti-Infodump Opening
+
+- 第一段只写门禁屏、广播喘息、系统警告、车头朝向和房车不熄火。
+- 延后解释：青河服务区完整布局、幸存者组织、医疗点历史、外仓门禁来源、旧协议含义、父亲路线、声音模仿生态。
+- 必要解释触发点：
+  - 门禁屏闪烁触发“异常但不解释”的风险判断。
+  - 外放验证触发接触规则说明。
+  - 林知夏看到材料标识触发医疗位材料判断。
+  - 假声复读或模仿触发声音不能直接信的判断。
+  - 周小禾低热触发医疗压力，而不是情绪勒索。
+- 不写成探索地图。每个空间信息必须服务车位、撤离线、门禁、配电箱、医疗材料或声音来源判断。
+
+## Outline Minimum Map
+
+- One-sentence chapter function: 第11章让青河医疗点外围正式登场，并用门禁异常、广播警告和二号配电箱验证测试外部求救接触规则。
+- Stage conflict served: 青河污染等级上升、门禁异常、声音模仿风险、低效滤芯窗口、车尾封堵、周小禾医疗压力和简易医疗位材料诱惑。
+- Stage turn or reversal: 求救广播和“欢迎回来”不是邀请，而是必须被拆解验证的危险信号；陆沉舟不进门也能确认目标。
+- Stage payoff or climax contribution: 二号配电箱 / 医疗位材料真实存在得到确认，但仍被污染、门禁和声音诱导隔开。
+- Stage ending pull: 雾里有人喊先救孩子或推出伤员，林知夏必须在第12章做有限资源下的分诊选择。
+- Protagonist growth or pressure shift: 陆沉舟从建立车内规则，推进到建立车外接触程序；林知夏从车内医疗角色，推进到青河资源和伤员风险判断者。
+
+## Scene Plan
+
+1. 开场：门禁屏在“权限错误 / 欢迎回来”之间跳动，广播喘息警告别开外仓门，系统提示污染等级上升。
+2. 陆沉舟确认车位：车头朝撤离线，不熄火，不贴门，不进主楼，不把侧门暴露给雾里人群。
+3. 林知夏复查周小禾：低热、伤口疼痛，仍可听指令；她背药包但明确不下车冲救。
+4. 广播循环重复“医疗电源”“还有人”，真人插话短暂出现，声音被电流压掉。
+5. 陆沉舟用外放提问：不问“谁要救”，只问门牌编号、配电箱位置、医疗点后墙标识。
+6. 雾里出现两个回应：一个只会重复“救命开门”，另一个给出“二号配电箱 / 后墙 / 药房侧门”等具体信息。
+7. 陆沉舟用车灯扫医疗点后墙，看到二号配电箱轮廓、药房侧门标识或断裂线路，但不靠近。
+8. 系统提示材料信号增强，但同时提示低效滤芯窗口继续消耗、外仓门禁异常。
+9. 林知夏从可见标识判断：确实有无菌电源组件、折叠医疗架或隔离膜可能存在，但取材需要短下车窗口和污染判断。
+10. 声音诱导升级：雾里有人用类似陆沉舟 / 林知夏 / 孩子的声音喊开门或让车靠近外仓。
+11. 周小禾指出某个声音不像真人，或林知夏根据气息/内容判断是假声，帮助确认声音模仿威胁。
+12. 陆沉舟故意用错误编号测试，假声照着错编号复读，真人则纠正，完成第一轮可信度筛选。
+13. 车外传来真实敲击回应，位置接近医疗点后墙，说明有活人或至少有可验证信息源。
+14. 结尾：雾里有人喊“先救孩子”，也可能推出一个低烧孩子或伤员轮廓；林知夏必须决定谁能车外处理、谁不能靠近房车。
+
+## Dialogue And Voice Targets
+
+- 陆沉舟：验证、路线、门禁。方向示例：“不说救命，说编号。”、“车头不转。”、“门不开，话可以说。”、“错一个字，就不靠近。”
+- 林知夏：医疗判断、污染边界、材料价值。方向示例：“那是电源组件，不是安全区。”、“她低热，但还能等一轮验证。”、“能救，不等于能上车。”
+- 周小禾：虚弱、听指令、敏感观察。方向示例：“那个声音……不像刚才的人。”、“我没动。”、“他刚才不是这么喘的。”
+- 系统：风险、状态、材料信号，不做选择。提示必须短。
+- 青河真人：断续、给具体位置和警告，不长篇解释。
+- 假声：重复救命、开门、孩子、熟人名，内容单薄但有诱导性。
+
+## State Update Expectations
+
+- Timeline event: 第11章，房车停在青河服务区医疗点外缘，陆沉舟执行外部求救接触规则，不进主楼、不贴外仓门、不对未验证声音开门；通过外放、车灯和错误编号测试确认医疗点后墙二号配电箱 / 简易医疗位材料信号真实存在，同时发现青河外围存在声音诱导风险。林知夏确认材料值得后续争取，但必须通过污染分诊和短窗口取得。
+- Character state changes:
+  - lu_chenzhou: 从制定外部接触规则推进到第一次执行；把青河求救拆成验证问题、车位和撤离线。
+  - lin_zhixia: 从车内医疗角色推进为青河材料 / 伤员风险判断者。
+  - temporary_injured_girl: 继续临时观察，低热和伤口推动医疗压力；可提供声音异常观察。
+- Resource changes:
+  - clean_filter: 低效稳定窗口继续消耗，不恢复。
+  - rv_rear_seal: 临时封堵仍微漏，不修复。
+  - medicine_pack: 未新增，只继续用于周小禾基础观察。
+  - route_info_qinghe_medical_point: 二号配电箱 / 医疗点后墙 / 简易医疗位关键材料位置得到验证。
+- Open threads to update:
+  - thread_vehicle_rules_contract: 外部求救接触规则第一次在青河执行。
+  - thread_lin_pollution_observation: 林知夏开始判断青河医疗材料和伤员污染风险。
+  - thread_mist_monster_ecology: 声音模仿 / 诱导开门风险得到现场验证。
+  - thread_rv_system_binding: 系统继续只给状态和材料信号。
+  - thread_service_area_terminals: 门禁“权限错误 / 欢迎回来”作为服务区终端异常推进。
+  - thread_father_last_rescue: 只轻触旧协议感，不给硬证据；可记录为“异常权限感”，不落父亲答案。
+- Hook continuity:
+  - 第10章 hook：医疗点外缘、材料信号增强、污染等级上升、外仓门禁异常、声音模仿警告。
+  - 第11章必须处理外围接触和验证，不得直接进入主楼、不得解锁医疗位。
+  - 章末导向第12章：谁先救、谁能车外处理、谁必须拒绝靠近。
+
+## Economy And Faction Constraints
+
+- Economy and factions remain draft assumptions unless later approved.
+- 不把青河幸存者写成完整派系；本章只出现外围声音、伤员或短促真人线索。
+- 不取得简易医疗位材料，不启动模块，不免费恢复滤芯或车体密封。
+- 不让任何青河未知人员进入房车生活区。
+- 不把孩子、伤员、医疗电源、门禁欢迎词写成可以绕过规则的船票。
+- 材料价值必须与污染、时间窗口、下车风险绑定。
+
+## Craft Knowledge Cards
+
+### Hard Rules
+
+- craft_anti_infodump_opening: Open with a concrete scene pressure, then reveal only the rules the scene has made necessary.
+  - Scope: craft
+  - Severity: hard
+  - Use when: A chapter opening, book opening, unit opening, or synopsis risks explaining setting before creating desire.
+  - Check: Name the first visible action, conflict, or pressure before any world-rule explanation.
+  - Check: List which setting, backstory, power-system, economy, or faction explanations can be delayed.
+  - Check: Confirm each explanation is triggered by a scene event, object, consequence, or dialogue move.
+  - Failure mode: Frontloaded worldbuilding
+  - Failure mode: System manual before scene pressure
+  - Failure mode: Backstory before reader curiosity
+  - Failure mode: Clear but not desirable synopsis
+- craft_outline_minimum_map: Every outline layer should state its conflict, turning point, payoff, ending pull, and protagonist change in language the writer can follow.
+  - Scope: outline
+  - Severity: hard
+  - Use when: A book, volume, arc, or unit outline risks becoming a list of facts instead of a map for writing.
+  - Check: Name the layer's central conflict.
+  - Check: Name the turning point or reversal.
+  - Check: Name the payoff, climax, or stage end.
+  - Check: Name the protagonist growth or pressure shift.
+  - Check: Name how the next lower layer inherits the map.
+  - Failure mode: Map without motion
+  - Failure mode: Facts without arc
+  - Failure mode: Character list instead of stage plan
+- craft_protagonist_agency: Each chapter should force the protagonist to make a visible choice under pressure.
+  - Scope: craft
+  - Severity: hard
+  - Use when: A chapter could become negotiation, exposition, or reaction without a decisive protagonist move.
+  - Check: Name the protagonist's concrete choice.
+  - Check: Name the pressure that makes the choice costly.
+  - Check: Confirm the choice changes information, leverage, resources, or relationships.
+  - Failure mode: Passive protagonist
+  - Failure mode: Generic opposition
+
+### Soft Heuristics
+
+- craft_thread_economy: A unit should advance or pay off existing promises before opening too many new ones.
+  - Scope: craft
+  - Severity: soft
+  - Use when: A unit opens new promises, mysteries, goods, factions, or negotiations.
+  - Check: List which open threads this chapter advances.
+  - Check: List which promises are newly opened.
+  - Check: Confirm at least one prior thread is advanced, paid off, or explicitly deferred.
+  - Failure mode: Thread sprawl
+  - Failure mode: False cliffhanger
+
+## Style Constraints
+
+- 开场必须压力先行，门禁屏和广播先于任何青河解释。
+- 系统提示短，偏状态和材料信号，不讲说明书。
+- 让陆沉舟的冷硬通过验证动作体现，不靠内心独白解释。
+- 让林知夏的温度通过专业边界体现：能救谁、怎么救、谁不能靠近。
+- 声音模仿要具体、可听见、能误导行动，不做抽象恐怖氛围。
+- 章末必须有第12章的具体问题：谁先救、谁拒绝、谁不能靠近。
+
+## Pending Approval Notes
+
+- 本章 brief 若通过，将批准第11章只进入青河医疗点外围，不进入主楼完整秩序。
+- 本章 brief 若通过，将批准二号配电箱 / 简易医疗位关键材料真实存在，但本章不取得、不解锁。
+- 本章 brief 若通过，将批准声音模仿威胁在现场得到初步验证，但不完整解释生态。
+- 本章 brief 若通过，将批准门禁“权限错误 / 欢迎回来”作为服务区终端异常和旧协议感轻触，不构成父亲线硬证据。
+- 本章不批准任何未知幸存者上车，不批准周小禾正式入队，不批准医疗位启动。
+
+## Ending Pull
+
+车灯扫到医疗点后墙。
+
+二号配电箱的编号在雾水里亮了一瞬。
+
+林知夏看清了旁边半开的药房侧门，也看清了地上拖出的三道痕。
+
+广播里的喘息声压低：
+
+“别走正门……别让他们听见你们叫名字……”
+
+下一秒，雾里响起一个孩子的哭声。
+
+“医生姐姐，先救我。”
+
+林知夏的手指停在药包扣上。
+
+陆沉舟没有回头。
+
+“先判断。”
+
+第12章进入“谁先救”的医疗分诊压力。
+
+## Continuity Notes
+
+- 不进入青河主楼完整内部秩序。
+- 不解锁简易医疗位，不取得关键材料，只确认可争取目标。
+- 不完整解释声音模仿生态、门禁异常或服务区终端源头。
+- 不把“欢迎回来”写成父亲硬证据。
+- 周小禾仍为临时观察伤员。
+- 林知夏不圣母开门，陆沉舟不冷漠离开；二者共同执行“可验证、可撤退、可拒绝”的青河接触规则。

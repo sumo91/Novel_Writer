@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "score": 88,
+  "issues": [
+    {
+      "type": "temporary_qinghe_information_leak",
+      "severity": "low",
+      "evidence": "The rescued girl says she came from Qinghe and that the broadcast is real, but stops before explaining what is wrong there. This is useful hook material, but it is also the first concrete witness link to Qinghe.",
+      "suggested_fix": "In revision, keep the line as a hook but avoid adding more Qinghe interior facts before the chapter 5-10 route earns them."
+    },
+    {
+      "type": "lu_old_rescue_accident_scope",
+      "severity": "low",
+      "evidence": "The draft briefly flashes to the old mall-fire rescue pressure and a withdrawal order. This advances thread_lu_old_rescue_accident as requested, but it names enough pieces that later chapters must preserve them.",
+      "suggested_fix": "Keep this as a light trigger only. Do not expand the old accident in chapter 4 revision unless the human approves a larger reveal."
+    },
+    {
+      "type": "rescued_girl_status",
+      "severity": "low",
+      "evidence": "A teenage girl is rescued, obeys instructions, and brings a Qinghe hook. She is not framed as a core teammate, which matches the brief, but her status should remain temporary observation until accepted state updates define otherwise.",
+      "suggested_fix": "Record her as a temporary observed passenger / injured witness, not as a new core team member."
+    }
+  ],
+  "required_fixes": [],
+  "proposed_state_updates": [
+    "Lu Chenzhou and Lin Zhixia are traveling by RV on the foggy highway toward Qinghe Service Area after leaving the first service area.",
+    "The RV is pursued by a smoking minivan carrying rejected survivors who use a child, an IV bag, and injured passengers to force the RV to stop.",
+    "Lu Chenzhou identifies the minivan's behavior as an attempted forced stop / vehicle seizure rather than compliant rescue.",
+    "Lin Zhixia performs roadside medical and pollution triage, identifying a gray-faced adult as unsafe for RV entry and a teenage girl as externally wounded but currently controllable.",
+    "Lu Chenzhou separates rescue from boarding: the child receives limited exterior aid, the unsafe gray-faced adult is refused entry, and one compliant injured girl is accepted into observation.",
+    "The rescued girl says Qinghe has power and that the broadcast is real, but does not complete the warning before the next threat interrupts.",
+    "Lu Chenzhou's old rescue accident is lightly triggered by the image of weak people being pushed forward to force a rescuer's decision; no full truth is revealed.",
+    "The rejected survivors attempt to seize or stop the RV with a rope, forced door pressure, and minivan impact; Lu Chenzhou uses positioning near a narrow roadside obstruction to escape.",
+    "The minivan crashes into the guardrail, and a fast gray-white fog dog emerges as the first visible road-speed monster escalation.",
+    "A fog dog bites the RV rear bumper, dropping vehicle integrity to 74% and threatening the temporary clean-mist filter fixing."
+  ],
+  "human_approval_needed": [
+    "Approve the chapter 4 limited rescue case: one compliant injured girl is accepted into temporary observation while the rest of the minivan group is refused RV entry.",
+    "Approve the chapter 4 light trigger for Lu Chenzhou's old mall-fire rescue accident without treating it as a full reveal."
+  ]
+}

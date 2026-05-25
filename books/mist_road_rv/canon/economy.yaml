@@ -1,0 +1,53 @@
+currencies:
+  - id: fuel_liter
+    name: "燃油"
+    world: "mist_road"
+    tier: "survival"
+    purchasing_power_notes:
+      - "早期最硬通货之一，决定车辆、发电机和撤离窗口。"
+  - id: clean_filter
+    name: "净化滤芯"
+    world: "mist_road"
+    tier: "survival"
+    purchasing_power_notes:
+      - "房车安全空气和服务区短时避雾的关键消耗品。"
+  - id: medicine_pack
+    name: "药品与急救耗材"
+    world: "mist_road"
+    tier: "survival"
+    purchasing_power_notes:
+      - "对污染伤员、外伤和车内生存率有直接价值。"
+  - id: contaminated_material
+    name: "污染材料"
+    world: "mist_road"
+    tier: "upgrade"
+    purchasing_power_notes:
+      - "来自异变怪物、污染车辆和服务区节点，可用于房车模块升级或交易。"
+real_world_money:
+  currency: "CNY"
+  pressure_points:
+    - "灾变初期仍有人用现金和转账惯性交易，但很快被燃油、药品、滤芯和食物取代。"
+price_index:
+  - item: "一箱饮用水"
+    early_volume_value: "可换基础路线情报或一次伤口处理。"
+  - item: "二十升燃油"
+    early_volume_value: "可换一个临时上车名额的谈判资格，但不能绕过车内规则。"
+  - item: "净化滤芯"
+    early_volume_value: "高价值消耗品，可决定房车能否穿过低浓度迷雾。"
+  - item: "污染材料"
+    early_volume_value: "前期多数幸存者不懂价值，陆沉舟可通过系统识别形成升级优势。"
+trade_rules:
+  - "车内名额不能只用物资购买，必须服从撤离规则和车内契约。"
+  - "燃油、药品、滤芯和可用车辆零件优先级高于现金。"
+  - "污染材料需要林知夏或系统提示确认风险，不能直接带入生活区。"
+  - "服务区交易终端可提供部分模块材料，但通常要求任务、样本或高风险路线情报。"
+locked_constraints:
+  - "房车模块升级需要任务奖励、污染材料或服务区交易，不凭空获得。"
+  - "资源爽点必须伴随存储、净化、风险隔离或规则成本。"
+  - "卷一不建立稳定大市场，只建立末日早期以物易物和服务区终端交易。"
+approval:
+  status: draft
+  approved_by: ""
+  approved_at: ""
+  notes:
+    - "Replaced template cultivation economy with mist-road survival economy; pending human review."

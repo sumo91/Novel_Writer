@@ -1,0 +1,13 @@
+updates:
+  - id: pa_c911fff8
+    status: approved
+    note: "Human confirmed during chapter 8 acceptance: temporary repair is useful enough to move, not enough for full RV repair or filter recovery."
+  - id: pa_0ce5b383
+    status: approved
+    note: "Human confirmed during chapter 8 acceptance: low clean-filter efficiency and rear leakage turn long停留 into a contamination countdown."
+  - id: pa_945eeb38
+    status: approved
+    note: "Human confirmed during chapter 8 acceptance: chapter 8 is car-seizure night setup, with the full night assault reserved for chapter 9."
+  - id: pa_998d741e
+    status: approved
+    note: "Human confirmed during chapter 8 acceptance: human noise and metal striking can attract fog dogs or fog-side fast targets in this stage."

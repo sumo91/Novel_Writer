@@ -80,7 +80,8 @@ def test_update_outline_approval_rejects_invalid_layer_and_status(tmp_path, monk
 def test_chapter_brief_gate_warns_for_drafts_in_default_mode(tmp_path, monkeypatch):
     monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
     monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")
-    book_factory.create_book("demo", title="Demo Book")
+    book = book_factory.create_book("demo", title="Demo Book")
+    _write_complete_unit_map(book, start=1, end=10)
 
     result = outline_gate.chapter_brief_gate("demo", 5)
 
@@ -110,3 +111,82 @@ def test_chapter_brief_gate_blocks_missing_v3_1_file(tmp_path, monkeypatch):
 
     assert result["allowed"] is False
     assert "Missing V3.1 layer file: canon/economy.yaml" in result["blocking_errors"]
+
+
+def test_chapter_brief_gate_blocks_incomplete_unit_chapter_map(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    unit_path = book / "outlines" / "units" / "unit_0001.yaml"
+    unit_path.write_text(
+        "\n".join(
+            [
+                "unit: 1",
+                "chapter_range:",
+                "  start: 1",
+                "  end: 3",
+                "parent_arc: arc_001",
+                "unit_goal: Test the opening promise.",
+                "stage_enemy: First service-area pressure.",
+                "stage_payoffs:",
+                "- First module payoff.",
+                "stage_end_hook: Next service area appears.",
+                "required_threads: []",
+                "chapters:",
+                "- chapter: 1",
+                "  function: Open the premise.",
+                "  opening_hook: Fog blocks the road.",
+                "  main_payoff: RV system activates.",
+                "  next_hook: First route task appears.",
+                "approval:",
+                "  status: draft",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    result = outline_gate.chapter_brief_gate("demo", 1)
+
+    assert result["allowed"] is False
+    assert (
+        "Active unit outline must map every chapter in range 1-3; missing chapters: 2, 3"
+        in result["blocking_errors"]
+    )
+
+
+def _write_complete_unit_map(book, *, start: int, end: int):
+    chapter_lines = []
+    for number in range(start, end + 1):
+        chapter_lines.extend(
+            [
+                f"- chapter: {number}",
+                f"  function: Plan chapter {number}.",
+                f"  opening_hook: Open chapter {number} with pressure.",
+                f"  main_payoff: Pay off chapter {number}.",
+                f"  next_hook: Pull into chapter {number + 1}.",
+            ]
+        )
+    (book / "outlines" / "units" / "unit_0001.yaml").write_text(
+        "\n".join(
+            [
+                "unit: 1",
+                "chapter_range:",
+                f"  start: {start}",
+                f"  end: {end}",
+                "parent_arc: arc_001",
+                "unit_goal: Test the unit promise.",
+                "stage_enemy: Stage pressure.",
+                "stage_payoffs:",
+                "- A clear unit payoff.",
+                "stage_end_hook: Next unit begins.",
+                "required_threads: []",
+                "chapters:",
+                *chapter_lines,
+                "approval:",
+                "  status: draft",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )

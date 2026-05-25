@@ -1,0 +1,11 @@
+book_id: mist_road_rv
+approval:
+  status: draft
+  approved_by: ''
+  note: Draft book-local style calibration; use it to record human taste notes, approved
+    patterns, and rejected patterns.
+base_profiles: []
+voice_targets: []
+approved_patterns: []
+rejected_patterns: []
+sample_notes: []

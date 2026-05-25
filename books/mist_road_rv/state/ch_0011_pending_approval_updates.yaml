@@ -1,0 +1,16 @@
+updates:
+  - id: pa_94415698
+    status: approved
+    note: "Human confirmed during chapter 11 acceptance: chapter 11 is Qinghe medical-point exterior validation only, not main-building entry."
+  - id: pa_900aa4b2
+    status: approved
+    note: "Human confirmed during chapter 11 acceptance: No. 2 power box / folding medical frame / isolation film / power interface are verified Simple Medical Bay material leads, not acquired materials."
+  - id: pa_0f16214e
+    status: approved
+    note: "Human confirmed during chapter 11 acceptance: voice mimicry is an observed Qinghe threat behavior without fully defining the ecology."
+  - id: pa_73cd15e4
+    status: approved
+    note: "Human confirmed during chapter 11 acceptance: permission-error / welcome-back gate behavior is terminal abnormality and old-protocol unease, not a father-route hard clue."
+  - id: pa_fe72f67f
+    status: approved
+    note: "Human confirmed during chapter 11 acceptance: Zhou Xiaohe remains a temporary observation patient after providing a useful sound-observation cue."

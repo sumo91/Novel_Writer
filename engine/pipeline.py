@@ -5,6 +5,7 @@ from pathlib import Path
 from engine.acceptance_packet import draft_acceptance_packet
 from engine.chapter_acceptance import accept_chapter
 from engine.context_builder import build_context
+from engine.craft_contract import render_book_craft_contract
 from engine.craft_knowledge import load_craft_cards, render_craft_cards
 from engine.html_utils import markdown_to_html_page
 from engine.hardening import (
@@ -504,6 +505,7 @@ def _manifest(book_id: str, chapter_number: int) -> dict:
             "author_direction": f"authoring/{chapter_slug}_author_direction.yaml",
             "continuity_review": f"reviews/{chapter_slug}/continuity_review.json",
             "pacing_review": f"reviews/{chapter_slug}/pacing_review.json",
+            "reader_panel_review": f"reviews/{chapter_slug}/reader_panel_review.json",
             "prose_quality_review": f"reviews/{chapter_slug}/prose_quality_review.json",
             "final_candidate": f"drafts/{chapter_slug}_final_candidate.md",
             "acceptance_packet": f"state_updates/{chapter_slug}_acceptance.yaml",
@@ -645,7 +647,9 @@ def _write_handoffs(paths: PipelinePaths, manifest: dict) -> None:
             "",
         ]
         if output_key in {"brief", "continuity_review", "pacing_review"}:
-            lines.extend(render_craft_cards(load_craft_cards(_craft_target(output_key))))
+            craft_target = _craft_target(output_key)
+            lines.extend(render_book_craft_contract(manifest["book_id"], craft_target))
+            lines.extend(render_craft_cards(load_craft_cards(craft_target)))
         lines.extend(
             [
                 "## Agent Prompt",

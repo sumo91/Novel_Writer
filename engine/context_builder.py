@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from engine.craft_contract import render_book_craft_contract
 from engine.craft_knowledge import load_craft_cards, render_craft_cards
 from engine.io_utils import read_text, read_yaml, write_text
 from engine.outline_resolver import active_outline_paths
@@ -86,7 +87,9 @@ def build_context(book_id: str, chapter_number: int) -> str:
     for heading, relative_path in JSON_FILES:
         sections.extend(_fenced_section(root, heading, relative_path, "json"))
 
-    sections.extend(render_craft_cards(load_craft_cards(["context", "brief", "review", "drift"])))
+    craft_targets = ["context", "brief", "review", "drift"]
+    sections.extend(render_book_craft_contract(book_id, craft_targets))
+    sections.extend(render_craft_cards(load_craft_cards(craft_targets)))
     sections.extend(render_style_cards(load_style_cards(["context", "draft", "review"])))
     sections.extend(_knowledge_references())
     sections.extend(

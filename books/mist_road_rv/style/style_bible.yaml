@@ -1,0 +1,38 @@
+book_id: mist_road_rv
+style_id: default_book_style
+approval:
+  status: draft
+  approved_by: ''
+  note: Draft style bible derived from crisp-commercial and rule-survival-suspense profiles; human taste calibration still pending.
+narration:
+  pace: 'Brisk, pressure-led, scene-first. Short turns of action, decision, consequence, and module payoff.'
+  texture: 'Concrete road, vehicle, service-area, medical, smoke, metal, fuel, fog, and bodily danger details. Keep description economical unless it increases pressure.'
+  exposition: 'Reveal only the next useful rule when a character must decide, test, exploit, or suffer under it. No frontloaded lore before the first scene pressure.'
+  emotion_delivery: 'Show fear, guilt, distrust, and protectiveness through tactical choices, delayed reactions, physical consequences, and who is allowed inside the RV.'
+dialogue:
+  density: 'Medium to medium-high during group pressure, triage, bargaining, and rule testing.'
+  tension_source: 'Survival priority, vehicle access, medical triage, suspicion of infection, resource bargaining, and who understands the rules first.'
+  subtext: 'Characters speak to test boundaries, shift blame, hide symptoms, secure a seat, or prove professional value.'
+protagonist_voice: {}
+protagonist_voice:
+  default: 'Controlled, observant, skeptical, and action-oriented under pressure.'
+  strength_signal: 'Turns chaos into a route, a rule, a task list, or a rescue window; makes visible reversals without speeches.'
+  vulnerability_signal: 'Old rescue guilt flashes briefly, but he answers with a concrete choice instead of self-pity.'
+payoff_style:
+  pattern: 'Set immediate pressure, expose a rule or resource limit, force a boundary choice, then deliver one clear gain such as a module, route, ally, or vehicle upgrade.'
+  cost_or_risk: 'Every payoff should create a next problem: higher pollution, fewer seats, damaged vehicle parts, fuel pressure, exposed traitors, or a harder road segment.'
+banned_patterns:
+  - 'Frontloaded lore before scene pressure'
+  - 'Atmosphere without actionable danger or mystery'
+  - 'Dialogue that only recites facts'
+  - 'Protagonist being calm without observable reasoning'
+  - 'Unbounded rescue that turns the RV into a free shelter'
+  - 'Module rewards without prior cost, task, or risk'
+  - 'Ending without a concrete next route, threat, or upgrade hook'
+style_cards:
+  - style_scene_specificity
+  - style_voice_distinction
+  - style_question_chain
+  - style_rule_pressure
+  - style_dialogue_as_probe
+  - style_hook_with_consequence

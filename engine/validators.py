@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from engine.craft_contract import validate_craft_contract_file
 from engine.craft_knowledge import validate_craft_cards
 from engine.hardening import (
     validate_pending_approvals_registry,
@@ -63,6 +64,9 @@ def validate_book(book_id: str) -> list[str]:
     errors.extend(validate_pending_approvals_registry(root))
     errors.extend(validate_v3_ledgers(root))
     errors.extend(validate_v3_1_outline_architecture(root))
+    craft_contract_path = root / "craft" / "craft_contract.yaml"
+    if craft_contract_path.exists():
+        errors.extend(validate_craft_contract_file(craft_contract_path, root))
     errors.extend(f"knowledge/{error}" for error in validate_craft_cards())
     style_bible_path = root / "style" / "style_bible.yaml"
     if style_bible_path.exists():

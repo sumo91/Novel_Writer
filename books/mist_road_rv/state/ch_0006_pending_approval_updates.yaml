@@ -1,0 +1,10 @@
+updates:
+  - id: pa_dbb8f8e0
+    status: approved
+    note: "Human confirmed during chapter 6 acceptance: provisional onboard contamination triage separates external injury, mist inhalation observation, and suspected mutation."
+  - id: pa_1ef90da2
+    status: approved
+    note: "Human confirmed during chapter 6 acceptance: temporary observation / isolation does not equal formal boarding qualification."
+  - id: pa_5b8eea3a
+    status: approved
+    note: "Human confirmed during chapter 6 acceptance: Qinghe rear warehouse supplies and Old Zheng's access control are the chapter 7 material-control hook, not a full Qinghe interior reveal."

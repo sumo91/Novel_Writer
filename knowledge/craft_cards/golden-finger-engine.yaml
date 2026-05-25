@@ -1,0 +1,44 @@
+id: craft_golden_finger_engine
+scope: craft
+applies_to:
+  - context
+  - brief
+  - review
+  - drift
+use_when: A story uses a system, cheat, inheritance, mentor, artifact, future knowledge, special tool, cognitive edge, special relationship, or other golden-finger mechanism to help the protagonist overcome pressure.
+principle: A golden finger is a story-serving advantage that rationalizes why the protagonist can grow, win, or access rare opportunities; it works best when it answers necessity and uniqueness, gives credible access to a hard arena, and creates a repeatable engine instead of pressing one button to win.
+checks:
+  - Define the concrete困境 the protagonist could not reasonably face without this advantage.
+  - Answer necessity: who or what created this advantage, why it must exist, and what problem or agenda it serves beyond making the protagonist lucky.
+  - Answer uniqueness: why this protagonist receives or can use the advantage instead of any other person, and what that special fit does for the wider plot.
+  - State whether the mechanism gives a seat at the table, a growth path, a survival margin, information advantage, production capacity, or access to a special arena.
+  - If the mechanism is cognitive, specify whether it adds knowledge, deepens understanding, provides exclusive experience, improves talent, turns small actions into insight, or lets the protagonist safely use knowledge others fear.
+  - Keep cognitive superiority within the reader's grasp or build a clear logic chain; unreadable high cognition weakens identification and narrows the audience.
+  - Place the mechanism on a logic chain such as origin -> talent -> cognition -> ability -> result -> resource/status/influence -> new challenge, then decide which node the current arc is exploiting.
+  - Match the advantage to the genre stage; commercial, cultivation, horror, survival, and business stories need different forms of leverage.
+  - Check fit: the golden finger should collide with the setting's central pressure so the background, conflicts, and reader promise all make the advantage valuable.
+  - Define the predictable result range that makes readers anticipate payoff, such as likely profit, breakthrough, survival, exposure, victory, or embarrassment.
+  - Add controlled uncertainty through variable obstacles, random rewards, unstable activation, partial success, social consequence, or changing customer/opponent behavior.
+  - Keep the initial advantage strong enough to attract interest but limited enough that risk, planning, skill, teamwork, or tradeoffs still matter.
+  - Preserve a lower bound or safety net when the main function is unstable, such as escape, defense, recovery, credit, backup inventory, or a lesser but reliable utility.
+  - Build upgrade paths, replacement stages, or new applications so the mechanism can keep pace with stronger future困境.
+  - Let upgrade include larger stakes, harder opponents, richer rewards, higher social visibility, or stricter costs; not every upgrade has to be a bigger number on the mechanism.
+  - Confirm the mechanism expresses the story's theme through the protagonist's choices, because every solved contradiction implies what the story values.
+  - Give the mechanism a suitable stage where its narrow function becomes valuable, rather than explaining functions in isolation.
+  - Reveal the mechanism through immediate scene pressure and visible use before full rules, menus, origin lore, or setting lectures.
+  - Avoid using the same function to solve consecutive困境 without adaptation, cost, cooldown, setup, or protagonist growth.
+  - Keep the protagonist as the chooser; system tasks, prop rules, or mentor instructions should create pressure and options, not turn the protagonist into a puppet.
+failure_modes:
+  - Advantage is so large that no credible困境 remains.
+  - Mechanism exists only for装逼 and does not justify how the protagonist survives or grows.
+  - No necessity or uniqueness; the advantage could be handed to anyone without changing the story.
+  - Golden finger is mismatched with the story arena, such as combat leverage in a business story with no business effect.
+  - Setting and conflict are invented independently from the advantage, so the golden finger never produces strong story tension.
+  - Cognitive edge relies on concepts the reader cannot follow and therefore produces admiration without immersion.
+  - Opening explains panels, rules, origin, or world lore before showing why the mechanism matters.
+  - Payoff is fully predictable or fully random; either way readers lose anticipation.
+  - Same button solves every chapter, making protagonist judgment unnecessary.
+  - System or tool assigns every action and reduces the protagonist to an executor.
+  - Mechanism has no upgrade path, replacement plan, or escalating application after the first arc.
+severity: hard
+source_note: "Internalized from local audio transcriptions of Bilibili BV1SrdxYKEbP, '金手指的本质是什么？如何设计一个金手指？如何用好金手指?', BV1Sk8jzXEhf, 'B站首次有人讲透网文金手指', BV13v411t7VW, '干货详解金手指的设定逻辑和意义——宝剑网文教程#2', BV1z8411e7fi and BV16e41137FY, '如何利用成瘾机制构建金手指（上/下）', generated under .tmp/bilibili_transcripts/; distilled as abstract craft guidance, not copied as transcript text."

@@ -9,8 +9,17 @@ from engine.brief_contract import (
 )
 from engine.book_factory import create_book
 from engine.context_builder import write_context
+from engine.craft_contract import (
+    check_craft_contract,
+    generate_concept_review,
+    write_craft_contract_scaffold,
+)
 from engine.drift_report import generate_drift_report
 from engine.html_utils import write_markdown_html_sidecar
+from engine.outline_approval_packet import (
+    SUPPORTED_LAYERS as OUTLINE_APPROVAL_PACKET_LAYERS,
+    generate_outline_approval_packet,
+)
 from engine.outline_map_review import generate_outline_map_review
 from engine.pending_approvals import (
     PendingApprovalNotFoundError,
@@ -19,6 +28,7 @@ from engine.pending_approvals import (
     sync_pending_approvals,
     update_pending_approval,
 )
+from engine.reader_panel import write_reader_panel_review_scaffold
 from engine.style_knowledge import (
     check_style_calibration,
     check_style_bible,
@@ -129,6 +139,14 @@ def build_parser() -> argparse.ArgumentParser:
     author_direction_cmd.add_argument("chapter_number", type=int)
     author_direction_cmd.add_argument("--force", action="store_true")
 
+    reader_panel_cmd = subparsers.add_parser(
+        "reader-panel-review",
+        help="Write a non-canon simulated reader panel review scaffold.",
+    )
+    reader_panel_cmd.add_argument("book_id")
+    reader_panel_cmd.add_argument("chapter_number", type=int)
+    reader_panel_cmd.add_argument("--force", action="store_true")
+
     style_bible_scaffold_cmd = subparsers.add_parser(
         "style-bible-scaffold",
         help="Write a book-local Style Bible scaffold.",
@@ -141,6 +159,26 @@ def build_parser() -> argparse.ArgumentParser:
         help="Check a book-local Style Bible contract.",
     )
     style_bible_check_cmd.add_argument("book_id")
+
+    craft_contract_scaffold_cmd = subparsers.add_parser(
+        "craft-contract-scaffold",
+        help="Write a book-local craft contract scaffold.",
+    )
+    craft_contract_scaffold_cmd.add_argument("book_id")
+    craft_contract_scaffold_cmd.add_argument("--force", action="store_true")
+
+    craft_contract_check_cmd = subparsers.add_parser(
+        "craft-contract-check",
+        help="Check a book-local craft contract.",
+    )
+    craft_contract_check_cmd.add_argument("book_id")
+
+    concept_review_cmd = subparsers.add_parser(
+        "concept-review",
+        help="Generate a craft-card-driven concept review scaffold.",
+    )
+    concept_review_cmd.add_argument("book_id")
+    concept_review_cmd.add_argument("--output")
 
     style_calibration_scaffold_cmd = subparsers.add_parser(
         "style-calibration-scaffold",
@@ -252,6 +290,17 @@ def build_parser() -> argparse.ArgumentParser:
         help="Generate a readable minimum-map review for V3.1 outlines.",
     )
     outline_map_review_cmd.add_argument("book_id")
+
+    outline_approval_packet_cmd = subparsers.add_parser(
+        "outline-approval-packet",
+        help="Generate a human-readable outline approval packet.",
+    )
+    outline_approval_packet_cmd.add_argument("book_id")
+    outline_approval_packet_cmd.add_argument(
+        "--layer",
+        required=True,
+        choices=sorted(OUTLINE_APPROVAL_PACKET_LAYERS),
+    )
 
     outline_approval_cmd = subparsers.add_parser(
         "outline-approval-update",
@@ -412,6 +461,20 @@ def main(argv: list[str] | None = None) -> int:
         print(f"HTML review copy: {output_path.with_suffix('.html').as_posix()}")
         return 0
 
+    if args.command == "reader-panel-review":
+        try:
+            output_path = write_reader_panel_review_scaffold(
+                args.book_id,
+                args.chapter_number,
+                force=args.force,
+            )
+        except (FileNotFoundError, FileExistsError, ValueError) as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Wrote reader panel review scaffold: {output_path.as_posix()}")
+        print(f"HTML review copy: {output_path.with_suffix('.html').as_posix()}")
+        return 0
+
     if args.command == "style-bible-scaffold":
         try:
             output_path = write_style_bible_scaffold(args.book_id, force=args.force)
@@ -434,6 +497,42 @@ def main(argv: list[str] | None = None) -> int:
         for error in result["errors"]:
             print(f"- error: {error}")
         return 0 if result["passed"] else 1
+
+    if args.command == "craft-contract-scaffold":
+        try:
+            output_path = write_craft_contract_scaffold(args.book_id, force=args.force)
+        except (FileNotFoundError, FileExistsError, ValueError) as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Wrote craft contract scaffold: {output_path.as_posix()}")
+        print(f"HTML review copy: {output_path.with_suffix('.html').as_posix()}")
+        return 0
+
+    if args.command == "craft-contract-check":
+        try:
+            result = check_craft_contract(args.book_id)
+        except FileNotFoundError as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Craft contract check: {result['status']}")
+        for warning in result["warnings"]:
+            print(f"- warning: {warning}")
+        for error in result["errors"]:
+            print(f"- error: {error}")
+        return 0 if result["passed"] else 1
+
+    if args.command == "concept-review":
+        try:
+            output_path = generate_concept_review(
+                args.book_id,
+                Path(args.output) if args.output else None,
+            )
+        except (FileNotFoundError, ValueError) as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Generated concept review: {output_path.as_posix()}")
+        print(f"HTML review copy: {output_path.with_suffix('.html').as_posix()}")
+        return 0
 
     if args.command == "style-calibration-scaffold":
         try:
@@ -604,6 +703,19 @@ def main(argv: list[str] | None = None) -> int:
             print(f"Error: {exc}")
             return 1
         print(f"Generated outline map review: {output_path.as_posix()}")
+        print(f"HTML review copy: {output_path.with_suffix('.html').as_posix()}")
+        return 0
+
+    if args.command == "outline-approval-packet":
+        try:
+            output_path = generate_outline_approval_packet(
+                args.book_id,
+                layer=args.layer,
+            )
+        except (FileNotFoundError, ValueError) as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Generated outline approval packet: {output_path.as_posix()}")
         print(f"HTML review copy: {output_path.with_suffix('.html').as_posix()}")
         return 0
 

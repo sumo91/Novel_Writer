@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "score": 87,
+  "issues": [
+    {
+      "type": "qinghe_outer_warehouse_boundary",
+      "severity": "low",
+      "evidence": "The draft ends by steering toward 'Qinghe Service Area outer warehouse entrance' and a repair-material zone. This serves the approved sealing-material hook, but it must remain an outer warehouse / approach beat rather than entering Qinghe Service Area interior too early.",
+      "suggested_fix": "In revision and later acceptance updates, label the next target as Qinghe outer warehouse / approach area and avoid revealing main Qinghe interior order, factions, or medical station layout in chapter 5."
+    },
+    {
+      "type": "fog_dog_rule_scope",
+      "severity": "low",
+      "evidence": "Lin Zhixia identifies blood smell and clean-filter exhaust as attraction points. This is a useful early monster rule, but it should remain an initial observation rather than a complete ecology explanation.",
+      "suggested_fix": "Record this as an early behavior rule: fog dogs are attracted to blood smell and filter exhaust; do not treat it as the full explanation of all fog-dog behavior."
+    },
+    {
+      "type": "resource_amount_precision",
+      "severity": "low",
+      "evidence": "The draft shows fuel, medicine, filter efficiency, and vehicle integrity pressure, but only filter efficiency and integrity are numerically indicated.",
+      "suggested_fix": "Keep fuel and medicine changes qualitative unless the resource ledger later defines exact quantities."
+    }
+  ],
+  "required_fixes": [],
+  "proposed_state_updates": [
+    "The RV begins chapter 5 with a fog dog biting and dragging the rear bumper while vehicle integrity is at 74%.",
+    "The fog dog continues to bite and drag the RV, causing the rear bumper / rear seal to worsen and vehicle integrity to drop to 72%.",
+    "The clean-mist filter remains active but its efficiency drops from 26% to 23% under drag, vibration, and external pollution disturbance near the temporary exhaust / venting point.",
+    "Lin Zhixia observes that the fog dog responds to both the injured girl's blood smell and the RV's clean-filter exhaust / rear venting flow.",
+    "Lu Chenzhou uses road conditions, warning cones, a sharp brake, steering, and a disabled truck's raised rear chassis to tear the fog dog loose from the RV.",
+    "The RV escapes the first fog dog but loses or damages part of the rear bumper.",
+    "The injured girl remains only a temporary observation passenger; her wound still needs better treatment and does not make her a core teammate.",
+    "The next route pressure shifts toward Qinghe Service Area outer warehouse / repair-material entrance, with possible sealant, spare clamps, and isolation-curtain material.",
+    "Qinghe Service Area interior conditions remain unrevealed."
+  ],
+  "human_approval_needed": [
+    "Approve early fog-dog behavior rule: fog dogs are attracted to blood smell and clean-filter exhaust / rear venting.",
+    "Approve Qinghe outer warehouse entrance as the next approach target without treating it as revealing Qinghe Service Area interior."
+  ]
+}

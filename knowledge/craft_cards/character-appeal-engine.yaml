@@ -1,0 +1,28 @@
+id: craft_character_appeal_engine
+scope: craft
+applies_to:
+  - context
+  - brief
+  - review
+  - drift
+use_when: A protagonist, love interest, mentor, ally, rival, or recurring character needs to become likable, memorable, emotionally readable, or worth following across a long web novel.
+principle: Character appeal comes from early empathy hooks, visible agency, positive inner value, and controlled contrast; flaws become charming only after the reader has a reason to root for the character.
+checks:
+  - Give the character at least one early empathy hook such as kindness, unjust harm, being valued by another character, effort, persistence, courage, competence, humor, or danger/stakes.
+  - Balance flaws with an immediately readable positive value; cowardice needs courage under pressure, sharp tongue needs care or justice, arrogance needs vulnerability or responsibility.
+  - Use contrast deliberately: surface impression and hidden core can differ, but both layers should create curiosity or affection rather than pure dislike.
+  - Reveal the attractive inner layer quickly, ideally within the opening chapter or first few chapters, before a negative surface trait hardens into reader rejection.
+  - Let effort, persistence, and courage appear through concrete action toward a goal, not just narration that says the character is determined.
+  - If the character is weak, poor, awkward, or socially low, provide a worse pressure, unfair harm, or hostile comparison that makes their decency or effort stand out.
+  - If the character is powerful or highly competent, give them limits, costs, vulnerability, humor, responsibility, or emotional need so they remain approachable.
+  - Use humor only when it fits the character and scene rhythm; jokes that erase stakes or expose irresponsibility before empathy is established can make the character annoying.
+  - Keep long-form retention in mind: early plot may hook readers, but recurring affection comes from a stable appeal pattern readers want to revisit.
+failure_modes:
+  - The opening foregrounds cowardice, irresponsibility, cruelty, entitlement, or sleaze before showing any redeeming value.
+  - A joke is treated as charm while the scene is actually proving the character has no responsibility or courage.
+  - Contrast becomes whiplash because the hidden positive core appears too late or contradicts prior behavior.
+  - The character is described as kind, brave, or persistent without a scene that makes the reader feel it.
+  - Competence or power has no flaw, cost, or vulnerability, so the character becomes distant or flat.
+  - The character's appeal depends only on romance labels, archetype tags, or trope names rather than choices under pressure.
+severity: hard
+source_note: "Internalized from local audio transcriptions of Bilibili BV1Sm4y1k7gF, '网文技巧——50个讨喜人设', BV1tR4y1a7Y9, '不讨喜的主角毁所有（上）', and BV19x4y1u7Az, '不讨喜的主角毁所有（下）', generated under .tmp/bilibili_transcripts/; distilled as abstract craft guidance, not copied as transcript text."

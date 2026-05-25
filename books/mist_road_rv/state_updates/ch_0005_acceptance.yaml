@@ -1,0 +1,325 @@
+chapter: 5
+title: 雾犬追车
+source_draft: drafts/ch_0005_final_candidate.md
+accepted_chapter_path: chapters/ch_0005.md
+summary: 雾犬咬住房车后保险杠并被血味与滤芯排气吸引，陆沉舟利用急刹、转向和废弃货车底盘撕脱雾犬，代价是后保险杠断裂、车体后部密封下降至72%、滤芯效率降至23%。林知夏确认血味和车尾排气是早期诱因，伤员仍需尽快处理，路线被迫转向青河服务区外仓接近口寻找密封胶、卡箍和隔离帘材料。
+current_state:
+  current_chapter: 5
+  current_arc: arc_001
+  latest_location: 高速迷雾路段，房车驶向青河服务区外仓接近口，距青河服务区约 15 公里
+  active_characters:
+  - lu_chenzhou
+  - lin_zhixia
+  active_conflicts:
+  - 房车甩脱第一只雾犬，但后保险杠断裂，车体密封完整度降至 72%，车尾有淡雾味渗入。
+  - 净雾滤芯仍为临时加压固定，滤芯效率降至 23%，再次遭遇追咬会继续压低安全余量。
+  - 临时观察位的受伤女孩仍在渗血，需要缝合和更稳定处理，但她不是核心队友或正式上车名额。
+  - 青河服务区外仓接近口成为下一步路线目标，寻找密封胶、备用卡箍和隔离帘材料；青河内部情况仍未揭开。
+  pending_approvals: []
+state_changes:
+- The RV begins chapter 5 with a fog dog biting and dragging the rear bumper while
+  vehicle integrity is at 74%.
+- The fog dog continues to bite and drag the RV, causing the rear bumper / rear seal
+  to worsen and vehicle integrity to drop to 72%.
+- The clean-mist filter remains active but its efficiency drops from 26% to 23% under
+  drag, vibration, and external pollution disturbance near the temporary exhaust /
+  venting point.
+- Lin Zhixia observes that the fog dog responds to both the injured girl's blood smell
+  and the RV's clean-filter exhaust / rear venting flow.
+- Lu Chenzhou uses road conditions, warning cones, a sharp brake, steering, and a
+  disabled truck's raised rear chassis to tear the fog dog loose from the RV.
+- The RV escapes the first fog dog but loses or damages part of the rear bumper.
+- The injured girl remains only a temporary observation passenger; her wound still
+  needs better treatment and does not make her a core teammate.
+- The next route pressure shifts toward Qinghe Service Area outer warehouse / repair-material
+  entrance, with possible sealant, spare clamps, and isolation-curtain material.
+- Qinghe Service Area interior conditions remain unrevealed.
+open_threads_touched: []
+timeline_event:
+  id: t005
+  when: 第 5 章
+  summary: 雾犬咬住房车后保险杠并被血味与滤芯排气吸引，陆沉舟利用急刹、转向和废弃货车底盘撕脱雾犬，代价是后保险杠断裂、车体后部密封下降至72%、滤芯效率降至23%。林知夏确认血味和车尾排气是早期诱因，伤员仍需尽快处理，路线被迫转向青河服务区外仓接近口寻找密封胶、卡箍和隔离帘材料。
+v3_state_updates:
+  timeline:
+    occurred_events:
+    - id: ev_0005_01
+      summary: 雾犬咬住房车后保险杠并被血味与滤芯排气吸引，陆沉舟利用急刹、转向和废弃货车底盘撕脱雾犬，代价是后保险杠断裂、车体后部密封下降至72%、滤芯效率降至23%。林知夏确认血味和车尾排气是早期诱因，伤员仍需尽快处理，路线被迫转向青河服务区外仓接近口寻找密封胶、卡箍和隔离帘材料。
+      location: 高速迷雾路段，青河服务区外仓接近口方向
+      involved_characters:
+      - lu_chenzhou
+      - lin_zhixia
+      source_chapter: 5
+  character_states:
+  - character_id: lu_chenzhou
+    display_name: 陆沉舟
+    physical_state: 驾驶房车甩脱第一只雾犬，车辆后保险杠断裂，车尾密封不足。
+    social_state: 继续作为房车司机和规则执行者，在修车优先与伤员医疗之间做路线取舍。
+    emotional_state: 压住旧救援本能和伤员压力，选择先保证房车能继续跑。
+    current_goal: 尽快抵达青河服务区外仓接近口，寻找密封胶、备用卡箍和隔离帘材料。
+    known_secrets: []
+    public_knowledge:
+    - 雾犬会被血腥味和净雾滤芯车尾排气/后部 venting 吸引。
+    relationship_changes:
+    - 与林知夏形成“她判断伤情和诱因，他决定路线和车辆风险”的更明确分工。
+    voice_notes:
+    - 短指令、低解释，把恐慌压成路线、修车和隔离任务。
+  - character_id: lin_zhixia
+    display_name: 林知夏
+    physical_state: 追车后继续压住受伤女孩手臂出血，车内闻到淡雾味和血腥味。
+    social_state: 车内医疗与污染观察执行者，开始把伤情、气味和怪物行为联系成规则。
+    emotional_state: 明白女孩需要治疗，但接受先修车才能让所有人继续活下去的顺序。
+    current_goal: 稳定伤口、压低血味外泄，并为第6章建立临时污染分诊和隔离判断。
+    known_secrets:
+    - 受伤女孩声称青河有电且广播是真的。
+    public_knowledge:
+    - 她观察到雾犬会朝血腥味和滤芯排气最重的位置反应。
+    relationship_changes:
+    - 陆沉舟采纳她的观察并转化成驾驶反制，双方专业互信继续加深。
+    voice_notes:
+    - 用医学观察和风险排序说话，少安慰，多给可执行判断。
+  - character_id: temporary_injured_girl
+    display_name: 受伤女孩
+    physical_state: 手臂深伤口仍在渗血，临时包扎和塑封压迫只能再撑十几分钟。
+    social_state: 临时观察位伤员 / 青河线索见证者，不是核心队友，不是正式上车名额。
+    emotional_state: 恐惧且有负罪感，但能听从林知夏指令保持不乱动。
+    current_goal: 在临时观察位稳定伤口，等待青河医疗位或进一步处理。
+    known_secrets:
+    - 青河服务区有电，广播是真的，但完整警告尚未说出。
+    public_knowledge:
+    - 她的血味会增加雾犬再次追踪风险。
+    relationship_changes: []
+    voice_notes:
+    - 台词应短、惊恐、服从，不承担解释青河内部的功能。
+  resource_changes:
+  - id: res_rv_rv_integrity
+    owner: rv
+    item: rv_integrity
+    category: item
+    unit: percent
+    delta: -2
+    reason: 雾犬追车中后保险杠被撕脱，车体密封完整度从 74% 降至 72%，车尾出现淡雾味渗入。
+  - id: res_rv_clean_filter
+    owner: rv
+    item: clean_filter
+    category: item
+    unit: module
+    delta: 0
+    reason: 净雾滤芯继续维持车内安全空气，但受车尾追咬、临时排气扰动和密封损伤影响，效率降至 23%。
+  - id: res_rv_medicine_pack
+    owner: rv
+    item: medicine_pack
+    category: item
+    unit: pack
+    delta: 0
+    reason: 林知夏继续用纱布、弹力绷带和塑封袋压住受伤女孩手臂出血；具体余量未量化。
+  open_thread_updates:
+  - id: thread_mist_monster_ecology
+    promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+    source_chapter: 0
+    status: advanced
+    last_touched: 5
+    latest_note: 雾犬会高速追车并咬住房车后部；林知夏观察到早期诱因包括血腥味和净雾滤芯车尾排气/后部 venting。
+    next_obligation: 后续可以继续检验雾犬是否会被密封材料、血味隔绝、滤芯排气方向或污染浓度影响，但不能一次性写成怪物百科。
+  - id: thread_lin_pollution_observation
+    promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+    source_chapter: 0
+    status: advanced
+    last_touched: 5
+    latest_note: 林知夏在追车压力下把受伤女孩血味、滤芯排气和雾犬咬合位置联系起来，同时继续压迫止血并维持临时观察边界。
+    next_obligation: 第6章需要把她的观察能力推进到污染分诊和临时隔离规则，而不是只做急救动作。
+  - id: thread_vehicle_rules_contract
+    promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+    source_chapter: 0
+    status: advanced
+    last_touched: 5
+    latest_note: 受伤女孩继续保持临时观察身份；陆沉舟优先修车而不是无条件奔向医疗位，规则仍围绕车辆安全和可持续救援执行。
+    next_obligation: 第6章继续区分临时观察位、污染隔离和正式上车名额，避免房车变成免费收容所。
+  payoff_updates:
+  - chapter: 5
+    promises_made:
+    - 青河服务区外仓可能有密封胶、备用卡箍和隔离帘材料，但外仓是否安全、谁控制物资尚未揭开。
+    payoffs_delivered:
+    - 雾犬追车压力兑现，陆沉舟用急刹、转向和废弃货车底盘撕脱雾犬。
+    - 林知夏确认早期雾犬诱因：血腥味和净雾滤芯车尾排气/后部 venting。
+    - 房车逃脱但付出可见代价：后保险杠断裂，密封完整度降至 72%，滤芯效率降至 23%。
+    frustration_level: controlled
+    payoff_types:
+    - monster_rule_payoff
+    - road_action_payoff
+    - resource_cost
+    delayed_payoffs:
+    - 青河服务区内部情况
+    - 外仓物资控制者
+    - 受伤女孩完整警告
+    - 雾犬更完整生态和可反制方法
+    risks:
+    - 车尾密封不足会让雾味渗入，持续压低安全余量。
+    - 受伤女孩的血味可能再次吸引雾犬。
+    - 先修车会压缩伤员治疗窗口。
+  conflict_updates:
+    active: []
+  next_hook:
+    hook: 房车转向青河服务区外仓接近口，车尾密封不足、滤芯效率 23%，受伤女孩仍在渗血，外仓可能有密封胶、备用卡箍和隔离帘材料。
+    obligation: 第6章必须处理污染分诊、临时隔离和外仓入口压力，不能直接跳进青河服务区内部政治。
+    target_chapter: 6
+    status: open
+  pending_approvals: []
+open_thread_updates: []
+change_log:
+  summary: Accepted revised chapter 5 as chapters/ch_0005.md.
+  canon_updates:
+  - timeline:t005
+  pending_approvals:
+  - 'Approve early fog-dog behavior rule: fog dogs are attracted to blood smell and
+    clean-filter exhaust / rear venting.'
+  - Approve Qinghe outer warehouse entrance as the next approach target without treating
+    it as revealing Qinghe Service Area interior.
+acceptance_contract:
+  quality_gate_summary:
+    continuity_review_present: true
+    continuity_blockers: []
+    pacing_review_present: true
+    pacing_score: 87
+    revised_pacing_score: null
+    revision_required: false
+    waiver_required: false
+  outline_alignment:
+    reference_chain: master -> volume -> arc -> unit -> chapter brief
+    volume_id: volume_001
+    arc_id: arc_001
+    unit_id: unit_0001
+    required_unit_obligations:
+    - 雾犬作为新怪物阶段出现。
+    - 推进 thread_mist_monster_ecology。
+    claimed_fulfilled_unit_obligations:
+    - 雾犬作为新怪物阶段出现。
+    - 推进 thread_mist_monster_ecology。
+    pending_unit_obligations: []
+  state_updates:
+    timeline_event:
+      id: t005
+      when: 第 5 章
+      summary: 雾犬咬住房车后保险杠并被血味与滤芯排气吸引，陆沉舟利用急刹、转向和废弃货车底盘撕脱雾犬，代价是后保险杠断裂、车体后部密封下降至72%、滤芯效率降至23%。林知夏确认血味和车尾排气是早期诱因，伤员仍需尽快处理，路线被迫转向青河服务区外仓接近口寻找密封胶、卡箍和隔离帘材料。
+    character_state_changes:
+    - character_id: lu_chenzhou
+      display_name: 陆沉舟
+      physical_state: 驾驶房车甩脱第一只雾犬，车辆后保险杠断裂，车尾密封不足。
+      social_state: 继续作为房车司机和规则执行者，在修车优先与伤员医疗之间做路线取舍。
+      emotional_state: 压住旧救援本能和伤员压力，选择先保证房车能继续跑。
+      current_goal: 尽快抵达青河服务区外仓接近口，寻找密封胶、备用卡箍和隔离帘材料。
+      known_secrets: []
+      public_knowledge:
+      - 雾犬会被血腥味和净雾滤芯车尾排气/后部 venting 吸引。
+      relationship_changes:
+      - 与林知夏形成“她判断伤情和诱因，他决定路线和车辆风险”的更明确分工。
+      voice_notes:
+      - 短指令、低解释，把恐慌压成路线、修车和隔离任务。
+    - character_id: lin_zhixia
+      display_name: 林知夏
+      physical_state: 追车后继续压住受伤女孩手臂出血，车内闻到淡雾味和血腥味。
+      social_state: 车内医疗与污染观察执行者，开始把伤情、气味和怪物行为联系成规则。
+      emotional_state: 明白女孩需要治疗，但接受先修车才能让所有人继续活下去的顺序。
+      current_goal: 稳定伤口、压低血味外泄，并为第6章建立临时污染分诊和隔离判断。
+      known_secrets:
+      - 受伤女孩声称青河有电且广播是真的。
+      public_knowledge:
+      - 她观察到雾犬会朝血腥味和滤芯排气最重的位置反应。
+      relationship_changes:
+      - 陆沉舟采纳她的观察并转化成驾驶反制，双方专业互信继续加深。
+      voice_notes:
+      - 用医学观察和风险排序说话，少安慰，多给可执行判断。
+    - character_id: temporary_injured_girl
+      display_name: 受伤女孩
+      physical_state: 手臂深伤口仍在渗血，临时包扎和塑封压迫只能再撑十几分钟。
+      social_state: 临时观察位伤员 / 青河线索见证者，不是核心队友，不是正式上车名额。
+      emotional_state: 恐惧且有负罪感，但能听从林知夏指令保持不乱动。
+      current_goal: 在临时观察位稳定伤口，等待青河医疗位或进一步处理。
+      known_secrets:
+      - 青河服务区有电，广播是真的，但完整警告尚未说出。
+      public_knowledge:
+      - 她的血味会增加雾犬再次追踪风险。
+      relationship_changes: []
+      voice_notes:
+      - 台词应短、惊恐、服从，不承担解释青河内部的功能。
+    resource_changes:
+    - id: res_rv_rv_integrity
+      owner: rv
+      item: rv_integrity
+      category: item
+      unit: percent
+      delta: -2
+      reason: 雾犬追车中后保险杠被撕脱，车体密封完整度从 74% 降至 72%，车尾出现淡雾味渗入。
+    - id: res_rv_clean_filter
+      owner: rv
+      item: clean_filter
+      category: item
+      unit: module
+      delta: 0
+      reason: 净雾滤芯继续维持车内安全空气，但受车尾追咬、临时排气扰动和密封损伤影响，效率降至 23%。
+    - id: res_rv_medicine_pack
+      owner: rv
+      item: medicine_pack
+      category: item
+      unit: pack
+      delta: 0
+      reason: 林知夏继续用纱布、弹力绷带和塑封袋压住受伤女孩手臂出血；具体余量未量化。
+    open_thread_updates:
+    - id: thread_mist_monster_ecology
+      promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+      source_chapter: 0
+      status: advanced
+      last_touched: 5
+      latest_note: 雾犬会高速追车并咬住房车后部；林知夏观察到早期诱因包括血腥味和净雾滤芯车尾排气/后部 venting。
+      next_obligation: 后续可以继续检验雾犬是否会被密封材料、血味隔绝、滤芯排气方向或污染浓度影响，但不能一次性写成怪物百科。
+    - id: thread_lin_pollution_observation
+      promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+      source_chapter: 0
+      status: advanced
+      last_touched: 5
+      latest_note: 林知夏在追车压力下把受伤女孩血味、滤芯排气和雾犬咬合位置联系起来，同时继续压迫止血并维持临时观察边界。
+      next_obligation: 第6章需要把她的观察能力推进到污染分诊和临时隔离规则，而不是只做急救动作。
+    - id: thread_vehicle_rules_contract
+      promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+      source_chapter: 0
+      status: advanced
+      last_touched: 5
+      latest_note: 受伤女孩继续保持临时观察身份；陆沉舟优先修车而不是无条件奔向医疗位，规则仍围绕车辆安全和可持续救援执行。
+      next_obligation: 第6章继续区分临时观察位、污染隔离和正式上车名额，避免房车变成免费收容所。
+    payoff_updates:
+    - chapter: 5
+      promises_made:
+      - 青河服务区外仓可能有密封胶、备用卡箍和隔离帘材料，但外仓是否安全、谁控制物资尚未揭开。
+      payoffs_delivered:
+      - 雾犬追车压力兑现，陆沉舟用急刹、转向和废弃货车底盘撕脱雾犬。
+      - 林知夏确认早期雾犬诱因：血腥味和净雾滤芯车尾排气/后部 venting。
+      - 房车逃脱但付出可见代价：后保险杠断裂，密封完整度降至 72%，滤芯效率降至 23%。
+      frustration_level: controlled
+      payoff_types:
+      - monster_rule_payoff
+      - road_action_payoff
+      - resource_cost
+      delayed_payoffs:
+      - 青河服务区内部情况
+      - 外仓物资控制者
+      - 受伤女孩完整警告
+      - 雾犬更完整生态和可反制方法
+      risks:
+      - 车尾密封不足会让雾味渗入，持续压低安全余量。
+      - 受伤女孩的血味可能再次吸引雾犬。
+      - 先修车会压缩伤员治疗窗口。
+    next_hook:
+      hook: 房车转向青河服务区外仓接近口，车尾密封不足、滤芯效率 23%，受伤女孩仍在渗血，外仓可能有密封胶、备用卡箍和隔离帘材料。
+      obligation: 第6章必须处理污染分诊、临时隔离和外仓入口压力，不能直接跳进青河服务区内部政治。
+      target_chapter: 6
+      status: open
+    pending_approvals: []
+    economy_changes: []
+    faction_changes: []
+  publication_readiness:
+    final_candidate_path: drafts/ch_0005_final_candidate.md
+    author_direction_present: true
+    author_direction_approved: true
+    prose_quality_review_present: true
+    prose_quality_score: 89
+    prose_rewrite_required: false
+    blocking_issues: []

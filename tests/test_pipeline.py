@@ -2,7 +2,14 @@ import json
 
 import pytest
 
-from engine import acceptance_packet, book_factory, context_builder, craft_knowledge, pipeline
+from engine import (
+    acceptance_packet,
+    book_factory,
+    context_builder,
+    craft_contract,
+    craft_knowledge,
+    pipeline,
+)
 from engine.io_utils import read_yaml, write_json, write_yaml
 
 
@@ -122,6 +129,41 @@ def test_prepare_chapter_review_handoffs_include_craft_cards(tmp_path, monkeypat
     assert "Identify the protagonist's decisive action." in pacing
 
 
+def test_prepare_chapter_handoffs_include_book_craft_contract(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    monkeypatch.setattr(craft_contract, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    card_dir = tmp_path / "knowledge" / "craft_cards"
+    card_dir.mkdir(parents=True)
+    write_yaml(
+        card_dir / "review.yaml",
+        {
+            "id": "craft_review",
+            "scope": "craft",
+            "applies_to": ["review"],
+            "use_when": "Reviewing a chapter.",
+            "principle": "Check craft alignment.",
+            "checks": ["Name hard-rule violations."],
+            "failure_modes": ["Unreviewed craft drift."],
+            "severity": "hard",
+        },
+    )
+    book_factory.create_book("demo", title="Demo Book")
+    craft_contract.write_craft_contract_scaffold("demo", force=True)
+
+    result = pipeline.prepare_chapter("demo", 1)
+
+    continuity = (result.handoff_dir / "03_continuity_editor.md").read_text(
+        encoding="utf-8"
+    )
+    assert "## Book Craft Contract" in continuity
+    assert "craft_review: Check craft alignment." in continuity
+    assert "Name hard-rule violations." in continuity
+
+
 def test_prepare_chapter_refuses_existing_workspace_without_force(tmp_path, monkeypatch):
     monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
     monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
@@ -238,6 +280,42 @@ def test_pipeline_status_merges_v4_1_artifacts_into_old_manifest(
     assert status["artifacts"]["author_direction"]["path"] == (
         "authoring/ch_0001_author_direction.yaml"
     )
+
+
+def test_pipeline_status_lists_reader_panel_review_without_blocking(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(pipeline, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    book = book_factory.create_book("demo", title="Demo Book")
+    pipeline.prepare_chapter("demo", 1)
+    _write_complete_revised_inputs(book)
+    write_yaml(
+        book / "authoring" / "ch_0001_author_direction.yaml",
+        {
+            "chapter": 1,
+            "author_intent": ["Keep the protagonist in control."],
+            "approved_for_final_candidate": True,
+        },
+    )
+    write_json(
+        book / "reviews" / "ch_0001" / "prose_quality_review.json",
+        _passing_prose_quality_review(),
+    )
+    (book / "drafts" / "ch_0001_final_candidate.md").write_text(
+        "final", encoding="utf-8"
+    )
+
+    status = pipeline.pipeline_status("demo", 1)
+
+    assert status["artifacts"]["reader_panel_review"]["path"] == (
+        "reviews/ch_0001/reader_panel_review.json"
+    )
+    assert status["artifacts"]["reader_panel_review"]["present"] is False
+    assert status["status"] == "needs_acceptance_packet"
+    assert status["next_action"] == "Draft and review acceptance packet."
 
 
 def test_pipeline_status_requires_prose_quality_review_after_author_direction(

@@ -3,9 +3,13 @@ from engine import (
     book_factory,
     brief_contract,
     cli,
+    craft_contract,
+    craft_knowledge,
+    outline_approval_packet,
     outline_map_review,
     outline_gate,
     pipeline,
+    reader_panel,
     style_knowledge,
     v3_migration,
 )
@@ -83,6 +87,22 @@ def test_author_direction_scaffold_cli_writes_yaml_and_html(
     assert f"HTML review copy: {output.with_suffix('.html').as_posix()}" in captured.out
 
 
+def test_reader_panel_review_cli_writes_json_and_html(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(reader_panel, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+
+    result = cli.main(["reader-panel-review", "demo", "1"])
+
+    captured = capsys.readouterr()
+    output = book / "reviews" / "ch_0001" / "reader_panel_review.json"
+    assert result == 0
+    assert output.exists()
+    assert output.with_suffix(".html").exists()
+    assert f"Wrote reader panel review scaffold: {output.as_posix()}" in captured.out
+    assert f"HTML review copy: {output.with_suffix('.html').as_posix()}" in captured.out
+
+
 def test_pipeline_prose_quality_gate_cli_reports_review_result(
     tmp_path, monkeypatch, capsys
 ):
@@ -133,6 +153,69 @@ def test_style_bible_scaffold_cli_writes_yaml_and_html(tmp_path, monkeypatch, ca
     assert output.with_suffix(".html").exists()
     assert f"Wrote style bible scaffold: {output.as_posix()}" in captured.out
     assert f"HTML review copy: {output.with_suffix('.html').as_posix()}" in captured.out
+
+
+def test_craft_contract_scaffold_cli_writes_yaml_and_html(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(craft_contract, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    card_dir = tmp_path / "knowledge" / "craft_cards"
+    card_dir.mkdir(parents=True)
+    write_yaml(
+        card_dir / "agency.yaml",
+        {
+            "id": "craft_agency",
+            "scope": "craft",
+            "applies_to": ["brief"],
+            "use_when": "A chapter can become passive.",
+            "principle": "Force protagonist choice.",
+            "checks": ["Name the choice."],
+            "failure_modes": ["Passive protagonist"],
+            "severity": "hard",
+        },
+    )
+    book = book_factory.create_book("demo", title="Demo Book")
+
+    result = cli.main(["craft-contract-scaffold", "demo", "--force"])
+
+    captured = capsys.readouterr()
+    output = book / "craft" / "craft_contract.yaml"
+    assert result == 0
+    assert output.exists()
+    assert output.with_suffix(".html").exists()
+    assert f"Wrote craft contract scaffold: {output.as_posix()}" in captured.out
+
+
+def test_concept_review_cli_writes_markdown_and_html(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(craft_contract, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    card_dir = tmp_path / "knowledge" / "craft_cards"
+    card_dir.mkdir(parents=True)
+    write_yaml(
+        card_dir / "golden.yaml",
+        {
+            "id": "craft_golden",
+            "scope": "craft",
+            "applies_to": ["brief"],
+            "use_when": "A system creates leverage.",
+            "principle": "Make advantage necessary.",
+            "checks": ["Name the necessary pressure."],
+            "failure_modes": ["Button solves all."],
+            "severity": "hard",
+        },
+    )
+    book = book_factory.create_book("demo", title="Demo Book")
+    craft_contract.write_craft_contract_scaffold("demo", force=True)
+
+    result = cli.main(["concept-review", "demo"])
+
+    captured = capsys.readouterr()
+    output = book / "reports" / "concept_review.md"
+    assert result == 0
+    assert output.exists()
+    assert output.with_suffix(".html").exists()
+    assert f"Generated concept review: {output.as_posix()}" in captured.out
 
 
 def test_style_bible_check_cli_reports_errors(tmp_path, monkeypatch, capsys):
@@ -421,6 +504,25 @@ def test_outline_map_review_cli_generates_report(tmp_path, monkeypatch, capsys):
     assert output.exists()
     assert output.with_suffix(".html").exists()
     assert "## Outline Minimum Map" in output.read_text(encoding="utf-8")
+
+
+def test_outline_approval_packet_cli_generates_master_packet(
+    tmp_path, monkeypatch, capsys
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(outline_approval_packet, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+
+    result = cli.main(["outline-approval-packet", "demo", "--layer", "master"])
+
+    captured = capsys.readouterr()
+    output = book / "reports" / "master_outline_approval_packet.md"
+    assert result == 0
+    assert f"Generated outline approval packet: {output.as_posix()}" in captured.out
+    assert f"HTML review copy: {output.with_suffix('.html').as_posix()}" in captured.out
+    assert output.exists()
+    assert output.with_suffix(".html").exists()
+    assert "# Master Outline Approval Packet" in output.read_text(encoding="utf-8")
 
 
 def test_pipeline_draft_acceptance_cli_writes_html_sidecar(
@@ -780,6 +882,7 @@ def test_chapter_brief_scaffold_cli_writes_brief(tmp_path, monkeypatch, capsys):
     monkeypatch.setattr(brief_contract, "BOOKS_DIR", tmp_path / "books")
     monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")
     book = book_factory.create_book("demo", title="Demo Book")
+    _write_complete_unit_map(book, start=1, end=10)
 
     result = cli.main(["chapter-brief-scaffold", "demo", "5"])
 
@@ -793,6 +896,22 @@ def test_chapter_brief_scaffold_cli_writes_brief(tmp_path, monkeypatch, capsys):
     assert "## V3.3 Outline Contract" in output.read_text(encoding="utf-8")
 
 
+def test_chapter_brief_scaffold_cli_blocks_incomplete_unit_map(
+    tmp_path, monkeypatch, capsys
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(brief_contract, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")
+    book_factory.create_book("demo", title="Demo Book")
+
+    result = cli.main(["chapter-brief-scaffold", "demo", "5"])
+
+    captured = capsys.readouterr()
+    assert result == 1
+    assert "Error: Chapter brief gate is blocked" in captured.out
+    assert "Active unit outline must map every chapter" in captured.out
+
+
 def test_chapter_brief_scaffold_cli_refuses_overwrite_without_force(
     tmp_path, monkeypatch, capsys
 ):
@@ -800,6 +919,7 @@ def test_chapter_brief_scaffold_cli_refuses_overwrite_without_force(
     monkeypatch.setattr(brief_contract, "BOOKS_DIR", tmp_path / "books")
     monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")
     book = book_factory.create_book("demo", title="Demo Book")
+    _write_complete_unit_map(book, start=1, end=10)
     output = book / "outlines" / "chapter_briefs" / "ch_0005_brief.md"
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text("Existing brief.", encoding="utf-8")
@@ -817,6 +937,7 @@ def test_chapter_brief_check_cli_reports_passed_scaffold(tmp_path, monkeypatch, 
     monkeypatch.setattr(brief_contract, "BOOKS_DIR", tmp_path / "books")
     monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")
     book = book_factory.create_book("demo", title="Demo Book")
+    _write_complete_unit_map(book, start=1, end=10)
     output = book / "outlines" / "chapter_briefs" / "ch_0005_brief.md"
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(
@@ -829,3 +950,32 @@ def test_chapter_brief_check_cli_reports_passed_scaffold(tmp_path, monkeypatch, 
     captured = capsys.readouterr()
     assert result == 0
     assert "Chapter brief check: passed" in captured.out
+
+
+def _write_complete_unit_map(book, *, start: int, end: int):
+    chapters = []
+    for number in range(start, end + 1):
+        chapters.append(
+            {
+                "chapter": number,
+                "function": f"Plan chapter {number}.",
+                "opening_hook": f"Open chapter {number} with pressure.",
+                "main_payoff": f"Pay off chapter {number}.",
+                "next_hook": f"Pull into chapter {number + 1}.",
+            }
+        )
+    write_yaml(
+        book / "outlines" / "units" / "unit_0001.yaml",
+        {
+            "unit": 1,
+            "chapter_range": {"start": start, "end": end},
+            "parent_arc": "arc_001",
+            "unit_goal": "Test the unit promise.",
+            "stage_enemy": "Stage pressure.",
+            "stage_payoffs": ["A clear unit payoff."],
+            "stage_end_hook": "Next unit begins.",
+            "required_threads": [],
+            "chapters": chapters,
+            "approval": {"status": "draft"},
+        },
+    )

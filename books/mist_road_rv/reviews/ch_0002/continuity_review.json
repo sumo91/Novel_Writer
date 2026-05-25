@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "score": 88,
+  "issues": [
+    {
+      "type": "component_split_detail",
+      "severity": "medium",
+      "evidence": "The brief says the clean-mist filter component is obtained in chapter 2 and full activation is reserved for chapter 3. The draft refines this into core filter part obtained and pressure sealing ring still missing.",
+      "suggested_fix": "Either accept this as a tactical refinement that preserves the chapter 3 activation hook, or revise to say the full component is obtained but not installed."
+    },
+    {
+      "type": "lin_zhixia_role_precision",
+      "severity": "low",
+      "evidence": "Characters canon allows Lin Zhixia to be an emergency doctor or nurse. The draft specifies emergency nurse.",
+      "suggested_fix": "Confirm emergency nurse as the locked role, or revise to keep the profession broader until later."
+    }
+  ],
+  "required_fixes": [],
+  "proposed_state_updates": [
+    "Lin Zhixia formally appears at the first service area and demonstrates triage and pollution-suspicion judgment.",
+    "Lu Chenzhou retrieves the clean-mist filter core part from C-zone fuel point.",
+    "The RV system shows component status and continued safe-air countdown.",
+    "Lu Chenzhou publicly states the first boarding rule: boarding is not rescue, it is a contract."
+  ],
+  "human_approval_needed": [
+    "Approve clean-mist filter component split into core filter part plus pressure sealing ring.",
+    "Approve Lin Zhixia as an emergency nurse rather than leaving doctor/nurse ambiguous."
+  ]
+}

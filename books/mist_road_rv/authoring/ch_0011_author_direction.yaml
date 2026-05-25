@@ -1,0 +1,35 @@
+chapter: 11
+author_intent:
+- Preserve chapter 11 as a controlled Qinghe entry/probe scene, not a combat win and not a safe-zone reveal.
+- Keep the opening on immediate pressure: gate anomaly, broadcast warning, running engine, retreat angle, rising pollution, and material signal.
+- Make Lu Chenzhou's strength visible through verification behavior: wrong-number test, external speaker control, vehicle angle, retreat line, and refusal to open doors.
+- Make Lin Zhixia's value visible through professional judgment: Zhou Xiaohe status, medical-material recognition, contamination caution, and refusal to be manipulated by a child-like voice.
+- Keep voice mimicry concrete and unsettling: names and familiar voices can be copied, but the chapter should not explain the full ecology.
+- End with a clear chapter 12 problem: triage under deception, not generic danger.
+must_change:
+- Do not enter Qinghe main building or reveal full Qinghe survivor order.
+- Do not acquire Simple Medical Bay materials or unlock the module.
+- Do not make the "welcome back" gate message a father-route hard clue.
+- Do not let any unverified person, child-lure, or voice enter the RV.
+- Do not promote Zhou Xiaohe to formal crew or living-space access.
+- Do not use system prompts as moral instructions or full explanations.
+approved_lines:
+- "车没停死。"
+- "不说救命，不说开门。"
+- "答错，车不靠近。"
+- "有用，不等于现在能拿。"
+- "外面任何我的声音，都不算。"
+- "我会先问你撤离线够不够。"
+- "从现在开始，车外不用名字。"
+- "谁先救，不能听谁哭得像。"
+- "不是孩子。"
+rejected_patterns:
+- Avoid safe-zone exploration exposition.
+- Avoid monster taxonomy or full voice-mimicry explanation.
+- Avoid sentimental rescue override.
+- Avoid module reward without cost or material acquisition.
+- Avoid making Lu Chenzhou passive while voices perform the scene.
+ai_assistance:
+  expected: true
+  human_role: direction, taste, key edits, final approval
+approved_for_final_candidate: true

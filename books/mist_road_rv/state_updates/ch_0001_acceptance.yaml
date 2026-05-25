@@ -1,0 +1,103 @@
+chapter: 1
+title: 迷雾封路，房车绑定
+source_draft: drafts/ch_0001_final_candidate.md
+accepted_chapter_path: chapters/ch_0001.md
+summary: 迷雾封锁第一座高速服务区，陆沉舟用救援经验组织短暂撤离并遭遇第一批雾尸；父亲留下的破旧房车激活旧救援协议，发布清理 C 区加油口、取得净雾滤芯组件的第一个路标任务。
+current_state:
+  current_chapter: 1
+  current_arc: arc_001
+  latest_location: ''
+  active_characters: []
+  active_conflicts: []
+  pending_approvals: []
+state_changes:
+- Mist pollution blocks the first unnamed highway service area.
+- Lu Chenzhou encounters the first visible fog-corrupted bodies.
+- The RV activates an old rescue protocol residue and binds to Lu Chenzhou.
+- 'The first route-marker task is generated: clear C-zone fuel point and retrieve
+  the clean-mist filter component.'
+open_threads_touched: []
+timeline_event:
+  id: t001
+  when: 第 1 章
+  summary: 迷雾封锁第一座高速服务区，陆沉舟用救援经验组织短暂撤离并遭遇第一批雾尸；父亲留下的破旧房车激活旧救援协议，发布清理 C 区加油口、取得净雾滤芯组件的第一个路标任务。
+v3_state_updates:
+  timeline:
+    occurred_events:
+    - id: ev_0001_01
+      summary: 迷雾封锁第一座高速服务区，陆沉舟用救援经验组织短暂撤离并遭遇第一批雾尸；父亲留下的破旧房车激活旧救援协议，发布清理 C 区加油口、取得净雾滤芯组件的第一个路标任务。
+      location: ''
+      involved_characters: []
+      source_chapter: 1
+  character_states: []
+  resource_changes: []
+  open_thread_updates: []
+  payoff_updates:
+  - chapter: 1
+    promises_made: []
+    payoffs_delivered:
+    - 迷雾封锁第一座高速服务区，陆沉舟用救援经验组织短暂撤离并遭遇第一批雾尸；父亲留下的破旧房车激活旧救援协议，发布清理 C 区加油口、取得净雾滤芯组件的第一个路标任务。
+    frustration_level: controlled
+    payoff_types: []
+    delayed_payoffs: []
+    risks: []
+  conflict_updates:
+    active: []
+  next_hook: {}
+  pending_approvals: []
+open_thread_updates: []
+change_log:
+  summary: Accepted revised chapter 1 as chapters/ch_0001.md.
+  canon_updates:
+  - timeline:t001
+  pending_approvals: []
+acceptance_contract:
+  quality_gate_summary:
+    continuity_review_present: true
+    continuity_blockers: []
+    pacing_review_present: true
+    pacing_score: 88
+    revised_pacing_score: null
+    revision_required: false
+    waiver_required: false
+  outline_alignment:
+    reference_chain: master -> volume -> arc -> unit -> chapter brief
+    volume_id: volume_001
+    arc_id: arc_001
+    unit_id: unit_0001
+    required_unit_obligations:
+    - 记录房车系统首次激活。
+    - 开启 thread_rv_system_binding。
+    claimed_fulfilled_unit_obligations:
+    - 记录房车系统首次激活。
+    - 开启 thread_rv_system_binding。
+    pending_unit_obligations: []
+  state_updates:
+    timeline_event:
+      id: t001
+      when: 第 1 章
+      summary: 迷雾封锁第一座高速服务区，陆沉舟用救援经验组织短暂撤离并遭遇第一批雾尸；父亲留下的破旧房车激活旧救援协议，发布清理 C 区加油口、取得净雾滤芯组件的第一个路标任务。
+    character_state_changes: []
+    resource_changes: []
+    open_thread_updates: []
+    payoff_updates:
+    - chapter: 1
+      promises_made: []
+      payoffs_delivered:
+      - 迷雾封锁第一座高速服务区，陆沉舟用救援经验组织短暂撤离并遭遇第一批雾尸；父亲留下的破旧房车激活旧救援协议，发布清理 C 区加油口、取得净雾滤芯组件的第一个路标任务。
+      frustration_level: controlled
+      payoff_types: []
+      delayed_payoffs: []
+      risks: []
+    next_hook: {}
+    pending_approvals: []
+    economy_changes: []
+    faction_changes: []
+  publication_readiness:
+    final_candidate_path: drafts/ch_0001_final_candidate.md
+    author_direction_present: true
+    author_direction_approved: true
+    prose_quality_review_present: true
+    prose_quality_score: 89
+    prose_rewrite_required: false
+    blocking_issues: []

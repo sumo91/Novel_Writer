@@ -2,6 +2,8 @@
 
 This repository is a file-based long-form web-novel engineering system. Treat it as a reusable writers' room, not a one-prompt story generator.
 
+AGENTS.md is the constitution layer. It defines non-negotiable repository rules, authority boundaries, and canonical workflow entry points. Detailed steps belong in `docs/workflows/`; routing behavior belongs in `.agents/skills/novel-writing-showrunner/SKILL.md`; executable checks belong in `engine/` and tests.
+
 ## Use The Showrunner Skill
 
 Use `$novel-writing-showrunner` whenever the user asks to:
@@ -9,215 +11,123 @@ Use `$novel-writing-showrunner` whenever the user asks to:
 - develop or evaluate a novel idea;
 - choose a genre, premise, protagonist, hook, or selling point;
 - create or continue a book project;
-- decide what the next writing workflow step should be;
-- write chapter briefs, drafts, reviews, revised drafts, or acceptance packets;
-- run a 3-chapter, 5-chapter, or 10-chapter sample test;
-- review drift, pending approvals, canon, or long-form architecture;
+- decide the next writing workflow step;
+- write chapter briefs, drafts, reviews, revised drafts, final candidates, or acceptance packets;
+- review drift, pending approvals, canon, style, craft contracts, or long-form architecture;
 - turn writing theory, courses, videos, or examples into reusable knowledge;
 - discuss how the Novel_Writer system should evolve.
 
-The skill is the workflow driver. This file is the repository rulebook.
-
-Prefer the repository-local skill at `.agents/skills/novel-writing-showrunner/SKILL.md`. Use the user-level Codex skill only as a fallback when the repository-local file is missing or unreadable.
+Prefer the repository-local skill at `.agents/skills/novel-writing-showrunner/SKILL.md`. Use the user-level skill only as a fallback when the repository-local file is missing or unreadable.
 
 ## Project Goal
 
-Novel_Writer aims to support million-word commercial web fiction with explicit memory, controlled drift, reusable craft knowledge, and human editorial authority.
+Novel_Writer supports million-word commercial web fiction with explicit memory, controlled drift, reusable craft knowledge, and human editorial authority.
 
-Current strategic priority:
+Current priority:
 
-1. Keep the V2.6 chapter pipeline stable.
-2. Build V3 long-form state machine and memory.
-3. Build V3.1 long-form outline architecture.
-4. Only then expand into market intelligence, reader simulators, dashboards, or data feedback.
+1. Keep the V2.6/V4.1 chapter pipeline stable.
+2. Keep V3 state and V3.1 outline architecture stable.
+3. Make V4.9 craft contracts and concept review the default new-book gate.
+4. Only then expand market intelligence, reader simulation, dashboards, or data feedback.
 
-## Human Editorial Control
+Current project facts live in `docs/project_status.md`, not in this rulebook.
+
+## Human Authority
 
 - The human is the final showrunner and canon owner.
 - Do not accept a chapter into `chapters/` without explicit human confirmation.
-- Do not treat generated drafts, reviews, state updates, or pending approvals as canon until accepted.
-- Major premise, canon, power-system, relationship, and long-arc changes require human approval.
-- Book-level style rules live in `style/style_bible.yaml`; they guide prose but do not replace human author direction.
-- Reusable abstract style profiles live in `knowledge/style_profiles/`; use them to seed a book's Style Bible, then tune the book-local file.
-- Book-local style calibration lives in `style/calibration/style_calibration.yaml`; use it to record approved patterns, rejected patterns, and concise human taste notes.
-- Do not imitate a living author's distinctive style. Translate references into abstract, book-specific rules.
+- Do not treat generated drafts, reviews, state updates, concept reviews, craft contracts, style files, outline layers, or pending approvals as canon until accepted or approved.
+- Major premise, canon, power-system, golden-finger, relationship, style-contract, and long-arc changes require human approval.
+- Do not ask for approval vaguely. State exactly what would become canon, which files would be accepted, and what remains unresolved.
 
-## Standard Chapter Workflow
+## Workflow Authority
 
-For a normal chapter, follow this lifecycle:
+Use the runbook layer as the detailed source of truth:
 
-1. Prepare chapter workspace:
-   `python -m engine.cli prepare-chapter <book_id> <chapter>`
-2. Write chapter brief:
-   `books/<book_id>/outlines/chapter_briefs/ch_XXXX_brief.md`
-3. Write draft:
-   `books/<book_id>/drafts/ch_XXXX_draft.md`
-4. Write continuity review:
-   `books/<book_id>/reviews/ch_XXXX/continuity_review.json`
-5. Write pacing review:
-   `books/<book_id>/reviews/ch_XXXX/pacing_review.json`
-6. Write revised draft:
-   `books/<book_id>/drafts/ch_XXXX_revised.md`
-7. Write lightweight author direction:
-   `books/<book_id>/authoring/ch_XXXX_author_direction.yaml`
-8. Write prose quality review:
-   `books/<book_id>/reviews/ch_XXXX/prose_quality_review.json`
-9. Write final candidate:
-   `books/<book_id>/drafts/ch_XXXX_final_candidate.md`
-10. Draft acceptance packet:
-   `python -m engine.cli pipeline-draft-acceptance <book_id> <chapter> --title "<title>" --summary "<summary>"`
-11. Stop for human confirmation.
-12. After explicit confirmation:
-   `python -m engine.cli pipeline-accept <book_id> <chapter> --approved`
-13. Verify status and project validity.
+- New book kickoff: `docs/workflows/v5-0-new-book-kickoff.md`
+- Craft contract and concept review: `docs/workflows/v4-9-craft-contract-and-concept-review.md`
+- Single chapter pipeline: `docs/workflows/v2-single-chapter-pipeline.md`
+- Long-form outline architecture: `docs/workflows/v3-1-long-form-outline-architecture.md`
+- Outline approval gate: `docs/workflows/v3-2-outline-approval-gate.md`
+- Chapter brief contract: `docs/workflows/v3-3-chapter-brief-contract.md`
 
-## Quality Gates
+When AGENTS, skill, and runbook seem to overlap, follow this hierarchy:
 
-- Continuity blockers must be fixed or explicitly waived before acceptance.
-- Pacing score below 80 requires revision or explicit waiver.
-- Pacing review dimension scores must be valid 0-10 integers.
-- Prose quality score below 85 requires AI rewrite before final candidate.
-- V4.1 publication-facing chapters should pass author direction, prose quality review, and final candidate gates.
-- V4.2 books may define a Style Bible; when present, context, drafting, and prose review should check style alignment.
-- V4.7 style alignment is required in prose quality review whenever `style/style_bible.yaml` or `style/calibration/style_calibration.yaml` exists. The review must include `style_bible_used`, `calibration_used`, `matched_patterns`, `rejected_patterns_hit`, and `violations`; any rejected pattern hit requires rewrite or explicit human waiver in a later acceptance decision.
-- Chapter briefs should include an anti-infodump opening plan: start with scene pressure, then reveal only explanations triggered by the scene.
-- For openings and new units, prose quality review may include `exposition_density`; below 85 or frontloaded explanations require AI rewrite.
-- Acceptance packets must not contain stale text such as `TODO`, `draft_note`, `ready_for_acceptance`, or `pending human acceptance`.
-- Chapter acceptance should update durable state through the acceptance packet, not ad hoc memory.
+1. AGENTS defines what must never be violated.
+2. The showrunner skill decides which workflow applies.
+3. The relevant runbook provides detailed steps.
+4. Engine validators and tests decide mechanical pass/fail.
 
-Useful verification commands:
+## Hard Gates
 
-```powershell
-python -m pytest -q
-python -m engine.cli validate-book <book_id>
-python -m engine.cli pipeline-status <book_id> <chapter>
-python -m engine.cli pipeline-quality-gate <book_id> <chapter>
-```
+New books:
 
-## State Machine Expectations
+- Do not create files, outline, or draft prose from a raw idea until the human approves a concept direction.
+- The concept direction must cover reader promise, protagonist appeal, golden-finger necessity and limits, repeatable engine, first-three-chapter promise, humor/tone source, first stage, first relationship pressures, long direction, style taste, and open risks.
+- After approval, use `init-book`, then `craft-contract-scaffold`, `craft-contract-check`, and `concept-review`.
+- Do not proceed to long-form outline until the concept review and craft contract have been reviewed by the human.
 
-Each accepted chapter should maintain or prepare updates for:
+Outlines:
 
-- current timeline;
-- character state;
-- current location;
-- active conflicts;
-- occurred events;
-- open threads and foreshadowing;
-- next-chapter hook;
-- protagonist progress;
-- payoff records;
-- pending approvals.
+- Approved outline layers are hard constraints. Draft outline layers are labeled assumptions.
+- Before chapter brief work, the active unit must map every chapter in its `chapter_range` with `chapter`, `function`, `opening_hook`, `main_payoff`, and `next_hook`.
+- Use `outline-map-review` only as a mechanical diagnostic. Use `outline-approval-packet` for human-readable approval.
 
-Current files involved:
+Chapters:
 
-- `state/current_state.json`
-- `state/chapter_index.json`
-- `state/change_log.jsonl`
-- `state/pending_approvals.yaml`
-- `canon/timeline.yaml`
-- `canon/open_threads.yaml`
-- `canon/characters.yaml`
-- `canon/world_rules.yaml`
+- Do not skip chapter brief, draft, continuity review, pacing review, revision, author direction, prose quality review, final candidate, acceptance packet, and human acceptance.
+- Chapter briefs must include an anti-infodump opening plan.
+- If `craft/craft_contract.yaml` exists, chapter briefs must include `## Craft Alignment`.
+- Continuity blockers, pacing below 80, prose quality below 85, style violations, rejected style patterns, or exposition-density failures require revision or explicit human waiver.
+- Acceptance packets must not contain stale placeholder text such as `TODO`, `draft_note`, `ready_for_acceptance`, or `pending human acceptance`.
 
-V3 adds explicit long-form memory ledgers and indexes:
+State:
 
-- `canon/character_states.yaml`
-- `canon/resource_ledger.yaml`
-- `canon/payoff_ledger.yaml`
-- upgraded `canon/open_threads.yaml`
-- `outlines/units/unit_0001.yaml`
-- `state/hook_index.json`
-- `state/memory_index.json`
+- Chapter acceptance updates durable state through acceptance packets, not ad hoc memory.
+- New facts belong in state updates, canon files, or pending approvals as appropriate.
+- Use batch pending-approval updates for multi-item triage.
 
-V4.2 adds the book-local style control layer:
+## Book-Local Contracts
 
-- `style/style_bible.yaml`
-- `style/calibration/style_calibration.yaml`
-- reusable style cards in `knowledge/style_cards/`
-- reusable abstract style profiles in `knowledge/style_profiles/`
+Book-local truth and contracts stay under `books/<book_id>/`:
 
-Use:
+- canon and state: `canon/`, `state/`
+- outline layers: `outlines/`
+- craft contract: `craft/craft_contract.yaml`
+- style bible: `style/style_bible.yaml`
+- style calibration: `style/calibration/style_calibration.yaml`
 
-```powershell
-python -m engine.cli style-bible-check <book_id>
-python -m engine.cli style-bible-scaffold <book_id> --force
-python -m engine.cli style-profile-list
-python -m engine.cli style-bible-from-profile <book_id> <profile_id> --force
-python -m engine.cli style-calibration-scaffold <book_id> --force
-python -m engine.cli style-calibration-check <book_id>
-```
+Reusable knowledge stays under `knowledge/`:
 
-The Style Bible can define narration texture, dialogue pressure, protagonist voice, payoff style, banned patterns, and selected style cards. Style profiles are starting points, not canon and not author imitation. Keep the final Style Bible book-specific and human-reviewable; use the generated HTML sidecar for review and the YAML as the machine contract.
+- craft cards: `knowledge/craft_cards/`
+- style cards and profiles: `knowledge/style_cards/`, `knowledge/style_profiles/`
+- system execution cards: `knowledge/system_cards/`
 
-The style calibration file captures this book's own taste evidence: base profiles, voice targets, approved patterns, rejected patterns, and short sample notes. It is a draft contract until the human approves it; do not paste long external source text into it.
+Book-local contracts are draft until the human approves them. Shared theory guides judgment but never overrides confirmed book canon.
 
-For V3 chapters, fill `v3_state_updates` in the acceptance packet before human review. These updates remain proposed until the packet is accepted. Use `python -m engine.cli migrate-v3 <book_id>` before applying V3 checks to an older book. Migration creates missing V3 files and upgrades empty schemas, but it must not parse old prose, convert free-text notes, or infer canon.
-
-V3.1 adds the long-form outline control layer:
-
-- `outlines/master_outline.yaml`
-- `outlines/volumes/volume_001.yaml`
-- upgraded `outlines/arc_001.yaml`
-- upgraded `outlines/units/unit_0001.yaml`
-- `canon/economy.yaml`
-- `canon/factions.yaml`
-
-Use `python -m engine.cli migrate-v3-1 <book_id>` before applying V3.1 checks to an older book. Migration creates missing V3.1 files and upgrades empty schema keys while preserving existing values, but it must not parse old prose, convert free-text notes, or infer canon.
-
-Master, volume, arc, unit, economy, and faction files use file-level `approval` blocks. Draft outline layers may be used only as labeled assumptions. Approved outline layers may be treated as hard writing constraints.
-
-V3.1 uses `canon/open_threads.yaml` as the active mystery and foreshadowing ledger. Do not add a separate `canon/mystery_ledger.yaml` unless a later architecture review decides `open_threads.yaml` is insufficient.
-
-Chapter briefs after V3.1 should cite the active reference chain:
-
-```text
-master -> volume -> arc -> unit -> chapter brief
-```
-
-Keep the locked/open distinction clear:
-
-- Locked: opening state, ending direction, three-act spine, core rules, protagonist end-state, major mystery answer direction.
-- Open: local chapter details, minor characters, exact goods, local reversals, tactical execution.
-
-## Pending Approvals
-
-Use pending approvals to track human decisions that should not silently become canon.
-
-Commands:
-
-```powershell
-python -m engine.cli sync-pending-approvals <book_id>
-python -m engine.cli pending-approval-update <book_id> <approval_id> --status approved --note "..."
-python -m engine.cli pending-approval-batch-update <book_id> --updates-file <path>
-```
-
-Do not run multiple single-item pending approval updates in parallel against the same registry file. Use batch update for multi-item triage.
-
-## Knowledge Management
+## Knowledge Hygiene
 
 Do not dump raw writing books, course transcripts, video notes, or long theory texts directly into `knowledge/`.
 
 When the user provides theory material:
 
-1. Extract practical principles.
-2. Convert them into concise knowledge cards.
-3. Include fields such as `id`, `scope`, `applies_to`, `use_when`, `principle`, `checks`, and `failure_modes`.
-4. Mark whether each item is a hard rule, soft heuristic, or genre-specific pattern.
-5. Use these cards during concept design, chapter briefs, drafts, reviews, and drift reports.
+1. Confirm reliable source text first: user notes, public subtitles, downloaded subtitles, or local transcription.
+2. Do not sediment knowledge from title, metadata, comments, recommendations, danmaku, or guesswork.
+3. Keep raw subtitles, transcripts, and temporary downloads in `.tmp/` or reports, not directly in `knowledge/`.
+4. Extract practical principles.
+5. Convert them into concise knowledge cards with `id`, `scope`, `applies_to`, `use_when`, `principle`, `checks`, `failure_modes`, and `severity`.
+6. Use cards during concept design, craft contracts, chapter briefs, reviews, and drift reports.
 
-Theory guides judgment. Book-local canon remains the source of story truth.
+## Execution Discipline
 
-## Current Project Facts
+Use `knowledge/system_cards/goal-driven-creative-execution.yaml` for creative and architecture work.
 
-- `sample_tomato_project` is an urban/business V2.5-V2.6 tool-validation sample. It is not the user's preferred genre.
-- `xiuxian_shop_pilot` is the target-genre pilot sample.
-- `xiuxian_shop_pilot` has accepted chapters 1-4.
-- Its current premise is: a failing small shop inherited from the protagonist's grandfather opens to a cultivation-world market at midnight.
-- The back door rule is approved: it opens every midnight for one Chinese `时辰`, about two hours.
-- The 1-4 sample validated: opening hook, first trade, reality payoff, cultivation-world commercial pressure, and the first pill-shop negotiation pressure.
-- The recommended story next step, if continuing fiction, is chapter 5: 赵掌柜亲自来谈.
-- The recommended system next step is V3.1 long-form outline architecture.
+- State important assumptions and ambiguities before creating files, canon, outlines, or prose.
+- Offer 2-3 reasonable approaches when intent is broad or underspecified.
+- Prefer the simplest concept, system, outline, or contract that can prove the reader promise.
+- Convert vague goals into observable success criteria before executing.
+- Make targeted changes to canon, outline, style, and craft contracts; do not opportunistically rewrite unrelated story truth.
+- Stop for human approval when a change would alter premise, canon, relationship direction, golden-finger rules, style contract, or long-arc obligations.
 
 ## Repository Practices
 
@@ -227,14 +137,14 @@ Theory guides judgment. Book-local canon remains the source of story truth.
 - The worktree may be dirty; preserve unrelated changes.
 - `.obsidian/` is ignored and should stay ignored.
 - Keep book-specific facts inside `books/<book_id>/`.
-- Keep reusable workflows, prompts, and validators inside `engine/` and `docs/`.
-- Keep reusable craft knowledge inside `knowledge/`.
+- Keep reusable workflows, prompts, validators, and tests inside `engine/`, `docs/`, and `tests/`.
 
 ## What Not To Do
 
 - Do not skip directly from idea to long-form drafting.
-- Do not skip chapter brief, review, or human acceptance.
+- Do not use a sample-chapter goal as the pre-outline reward for a new book.
 - Do not accept chapters based only on prose quality.
 - Do not let market theory override confirmed canon.
-- Do not overbuild UI, data feedback, or market agents before V3 memory is stronger.
-- Do not use the urban sample as proof of target-genre quality.
+- Do not imitate a living author's distinctive style.
+- Do not overbuild UI, data feedback, market agents, or workflow engines before current writing workflows have been exercised.
+- Do not use `sample_tomato_project` as proof of target-genre quality.

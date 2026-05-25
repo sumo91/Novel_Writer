@@ -1,0 +1,27 @@
+chapter: 5
+author_intent:
+- Keep chapter 5 as a compact road-action chapter: one physical problem, get the fog dog off the RV before the rear seal and filter fail.
+- Preserve the fog dog as an early road-speed monster with partial behavior rules, not a fully explained monster species.
+- Let Lin Zhixia's value come from observation under pressure: blood smell, filter exhaust, wound control, and temporary observation boundaries.
+- End on a concrete route pressure: Qinghe outer warehouse / repair-material approach versus the injured girl's need for medical treatment.
+must_change:
+- Do not enter or reveal Qinghe Service Area interior order, factions, full medical station layout, or survivor politics in this chapter.
+- Do not make the fog-dog attraction rule total or omniscient; it is an observed early rule: blood smell and clean-filter exhaust / rear venting attract it.
+- Do not turn the injured girl into a core teammate or emotional center; she remains a temporary observation passenger and Qinghe witness.
+- Do not give a free module reward or direct contaminated-material exchange from the fog dog.
+approved_lines:
+- "它不是随便咬的。"
+- "血味，还有车尾排气。"
+- "它咬到排气味最重的那块了。"
+- "先找能让车继续跑的东西。"
+rejected_patterns:
+- Avoid generic inner monologue explanations.
+- Avoid interchangeable dialogue.
+- Avoid vague cliffhangers without a concrete next pressure.
+- Avoid monster encyclopedia exposition.
+- Avoid Qinghe interior exposition before arrival.
+- Avoid system prompts that solve the tactical problem for Lu Chenzhou.
+ai_assistance:
+  expected: true
+  human_role: direction, taste, key edits, final approval
+approved_for_final_candidate: true

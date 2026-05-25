@@ -1,0 +1,35 @@
+characters:
+  - id: lu_chenzhou
+    name: "陆沉舟"
+    role: "protagonist"
+    status: "draft_approved_concept"
+    public_identity: "前消防救援队队长，退队后开着父亲留下的破旧房车上路。"
+    core_drive: "不再被道德绑架，但一旦把某人划进车内，就会护到底。"
+    strengths:
+      - "现场指挥"
+      - "危机撤离"
+      - "火场与破拆判断"
+      - "基础急救"
+      - "路线规划"
+      - "纪律性和体能"
+    wounds:
+      - "曾在大型商场火灾救援中因违抗错误命令救人，背上导致队友牺牲的舆论和处分。"
+    boundaries:
+      - "只救能移动、能听指挥、愿意服从撤离规则的人。"
+      - "不会把房车变成无条件收容所。"
+    opening_state: "失意、冷硬、独行，仍保留救援者的现场本能。"
+    growth_direction: "从拒绝再次承担所有人的命运，到建立清晰规则下的移动家园。"
+  - id: lin_zhixia
+    name: "林知夏"
+    role: "first_core_teammate_potential_heroine"
+    status: "draft_approved_concept"
+    public_identity: "急诊女医生或护士，第一座迷雾服务区登场。"
+    core_drive: "尽量让能活的人活下去，但明白医疗资源和撤离窗口有限。"
+    strengths:
+      - "急诊分诊"
+      - "伤情判断"
+      - "污染疑似识别"
+      - "压住恐慌"
+      - "在资源不足时做取舍"
+    relationship_to_protagonist: "互相不完全认同，但互相承认专业性；她挑战陆沉舟的冷硬边界，也证明自己不是负担。"
+    team_value: "医疗核心、道德镜面、车内生存率提升者。"

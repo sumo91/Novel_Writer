@@ -1,0 +1,27 @@
+id: system_goal_driven_creative_execution
+scope: system
+applies_to:
+  - concept
+  - craft_contract
+  - outline
+  - brief
+  - review
+  - canon
+  - style
+use_when: A creative or system task risks vague assumptions, overbuilding, broad rewrites, or unverifiable success criteria.
+principle: Convert creative work into explicit assumptions, simple first-pass designs, precise edits, and verifiable goals before executing.
+checks:
+  - State important assumptions and unresolved ambiguities before creating files, canon, outlines, or prose.
+  - Offer 2-3 reasonable interpretations or approaches when the user's intent is broad or underspecified.
+  - Prefer the simplest concept, system, or outline structure that can prove the reader promise.
+  - Define observable success criteria, such as what the first chapter, first three chapters, brief, review, or contract must demonstrate.
+  - Make targeted changes to canon, outline, style, and craft contracts; avoid opportunistic rewrites of unrelated story truth.
+  - Stop and ask for human approval when a change would alter premise, canon, relationship direction, golden finger rules, style contract, or long-arc obligations.
+failure_modes:
+  - Silent assumption becomes canon.
+  - Overbuilt lore, system panels, economy, factions, or upgrade trees before the core promise is proven.
+  - Vague task such as make it better, more fun, or more web-novel-like is executed without measurable criteria.
+  - A local chapter fix rewrites global premise, character truth, or long-arc direction without approval.
+  - The assistant presents one path as inevitable instead of showing viable tradeoffs.
+severity: hard
+source_note: "Distilled as system-level execution guidance from multica-ai/andrej-karpathy-skills principles: think before coding, simplicity first, surgical changes, and goal-driven execution. Adapted for Novel_Writer creative workflow; not web-novel craft theory."

@@ -142,3 +142,30 @@ def test_render_craft_cards_groups_by_severity():
         lines.index("### Genre-Specific Patterns")
         < lines.index("- genre_card: Genre idea.")
     )
+
+
+def test_builtin_golden_finger_engine_card_is_available():
+    card_by_id = {card["id"]: card for card in craft_knowledge.load_craft_cards("brief")}
+
+    card = card_by_id["craft_golden_finger_engine"]
+    assert card["severity"] == "hard"
+    assert "necessity and uniqueness" in card["principle"]
+    assert any("seat at the table" in check for check in card["checks"])
+    assert any("Answer necessity" in check for check in card["checks"])
+    assert any("cognitive" in check for check in card["checks"])
+    assert any("predictable result range" in check for check in card["checks"])
+    assert any("controlled uncertainty" in check for check in card["checks"])
+    assert any("story's theme" in check for check in card["checks"])
+    assert any("same button" in failure.lower() for failure in card["failure_modes"])
+    assert any("fully predictable or fully random" in failure for failure in card["failure_modes"])
+
+
+def test_builtin_character_appeal_engine_card_is_available():
+    card_by_id = {card["id"]: card for card in craft_knowledge.load_craft_cards("brief")}
+
+    card = card_by_id["craft_character_appeal_engine"]
+    assert card["severity"] == "hard"
+    assert "early empathy hooks" in card["principle"]
+    assert any("kindness" in check for check in card["checks"])
+    assert any("controlled contrast" in card["principle"] for _ in [card])
+    assert any("foregrounds cowardice" in failure for failure in card["failure_modes"])

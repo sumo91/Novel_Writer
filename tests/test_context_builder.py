@@ -1,6 +1,6 @@
 import pytest
 
-from engine import book_factory, context_builder
+from engine import book_factory, context_builder, craft_contract, craft_knowledge
 from engine.io_utils import write_yaml
 
 
@@ -69,6 +69,38 @@ def test_build_context_includes_structured_craft_cards(tmp_path, monkeypatch):
     assert "## Craft Knowledge Cards" in context
     assert "craft_agency: Force a visible protagonist choice." in context
     assert "Check: Name the choice." in context
+
+
+def test_build_context_includes_book_craft_contract(tmp_path, monkeypatch):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(context_builder, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(craft_contract, "BOOKS_DIR", tmp_path / "books")
+    knowledge_dir = tmp_path / "knowledge"
+    monkeypatch.setattr(context_builder, "KNOWLEDGE_DIR", knowledge_dir)
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", knowledge_dir)
+    card_dir = knowledge_dir / "craft_cards"
+    card_dir.mkdir(parents=True)
+    write_yaml(
+        card_dir / "golden.yaml",
+        {
+            "id": "craft_golden",
+            "scope": "craft",
+            "applies_to": ["context", "brief"],
+            "use_when": "A system creates leverage.",
+            "principle": "Make advantage necessary.",
+            "checks": ["Name the necessary pressure."],
+            "failure_modes": ["Button solves all."],
+            "severity": "hard",
+        },
+    )
+    book_factory.create_book("demo", title="Demo Book")
+    craft_contract.write_craft_contract_scaffold("demo", force=True)
+
+    context = context_builder.build_context("demo", 1)
+
+    assert "## Book Craft Contract" in context
+    assert "craft_golden: Make advantage necessary." in context
+    assert "Check: Name the necessary pressure." in context
 
 
 def test_build_context_includes_existing_workflow_craft_cards(tmp_path, monkeypatch):

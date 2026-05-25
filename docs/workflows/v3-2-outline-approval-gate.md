@@ -10,6 +10,18 @@ Check outline approval state:
 python -m engine.cli outline-status <book_id>
 ```
 
+Generate mechanical map diagnostics:
+
+```powershell
+python -m engine.cli outline-map-review <book_id>
+```
+
+Generate the human-readable master approval packet:
+
+```powershell
+python -m engine.cli outline-approval-packet <book_id> --layer master
+```
+
 Update one outline layer:
 
 ```powershell
@@ -41,6 +53,8 @@ python -m engine.cli chapter-brief-gate <book_id> <chapter> --strict
 
 Default mode allows draft outline layers as labeled assumptions. Strict mode blocks unless every active V3.1 layer is approved.
 
+The gate also blocks when the active unit does not contain a complete chapter map for its full `chapter_range`. Each chapter in the active unit range must have a `chapters` entry with `chapter`, `function`, `opening_hook`, `main_payoff`, and `next_hook`. This prevents a thin concept sketch or partial sample plan from being treated as enough structure for chapter-brief generation. `outline-map-review` reports this problem as `incomplete_active_unit_chapter_map`, but only `chapter-brief-gate` blocks the brief workflow.
+
 ## Chapter Brief Requirement
 
 Every V3.2 chapter brief should include the reference chain:
@@ -54,10 +68,13 @@ It should also name the outline obligations it serves, including the active volu
 ## Recommended Pre-Writing Flow
 
 1. Run `outline-status`.
-2. Decide whether draft layers are acceptable assumptions or whether strict approval is needed.
-3. Run `chapter-brief-gate`.
-4. If blocked, approve/update the relevant outline layer or revise the brief.
-5. Prepare the chapter workspace only after the gate is clear.
+2. Run `outline-map-review` for mechanical missing-map diagnostics.
+3. Generate and review the relevant approval packet before marking outline layers approved.
+4. Decide whether draft layers are acceptable assumptions or whether strict approval is needed.
+5. Make sure the active unit has a complete chapter map for its full range.
+6. Run `chapter-brief-gate`.
+7. If blocked, approve/update the relevant outline layer, complete the active unit chapter map, or revise the brief.
+8. Prepare the chapter workspace only after the gate is clear.
 
 ## What V3.2 Does Not Do
 

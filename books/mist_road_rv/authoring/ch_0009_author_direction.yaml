@@ -1,0 +1,32 @@
+chapter: 9
+author_intent:
+- Preserve chapter 9 as the first full combat test of the RV door rules: the point is not to defeat everyone, but to prove the mobile safehouse works through boundaries, roles, and route judgment.
+- Keep Lu Chenzhou's payoff tactical and controlled: he refuses to open doors, reads road geometry, uses the attackers' roadblock and noise against them, and avoids careless vehicle murder.
+- Keep Lin Zhixia functionally active inside the RV: observation-zone status, side-door boundary, isolation box, contaminated packaging, and Zhou Xiaohe's wound all depend on her.
+- Keep Zhou Xiaohe as a temporary observation patient. Her value is proving that rules can protect a vulnerable person without turning the RV into free shelter.
+- Preserve the fog-dog causal payoff: human noise, lights, metal strikes, and panic attract monsters and turn the attackers' pressure back on them.
+- Let the ending deliver a real win but not safety: car-seizing first wave repelled, collaboration recognized, filter briefly stabilized, but Qinghe and the expanding fog-wall still force the chapter 10 decision.
+must_change:
+- Do not let attackers, Old Zheng, or suspected contaminated people enter the RV living space.
+- Do not turn the car-seizing group into a named long-term faction.
+- Do not make Zhou Xiaohe a core teammate or formally onboarded member.
+- Do not fully repair the RV, fully restore the clean filter, or unlock the medical module.
+- Do not enter Qinghe main building or reveal its full internal order in this chapter.
+- Do not let the system choose morality for Lu Chenzhou; it can only report risks, status, and limited rule recognition.
+approved_lines:
+- "门不开。"
+- "你们堵的是自己的路。"
+- "那是侧门，不是你的观察区。"
+- "你现在只负责不越帘。"
+- "人会让路。"
+- "规则不是吓你的。"
+- "抢车夜被甩在后面。"
+- "但青河没有结束。"
+rejected_patterns:
+- Avoid generic inner monologue explanations.
+- Avoid interchangeable dialogue.
+- Avoid vague cliffhangers without a concrete next pressure.
+ai_assistance:
+  expected: true
+  human_role: direction, taste, key edits, final approval
+approved_for_final_candidate: true

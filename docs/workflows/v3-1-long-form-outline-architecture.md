@@ -85,7 +85,17 @@ Use:
 python -m engine.cli outline-map-review <book_id>
 ```
 
-The command writes `reports/outline_map_review.md` plus an HTML sidecar. It summarizes the book, volume, arc, and unit as a minimum writing map: core conflict, turning point, payoff or climax, stage ending, and protagonist change. This is a human-readable review artifact, not canon.
+The command writes `reports/outline_map_review.md` plus an HTML sidecar. It summarizes the book, volume, arc, and unit as a mechanical minimum writing map: core conflict, turning point, payoff or climax, stage ending, and protagonist change. It is a diagnostic report, not a human approval packet and not canon.
+
+## Outline Approval Packet
+
+Use:
+
+```powershell
+python -m engine.cli outline-approval-packet <book_id> --layer master
+```
+
+The command writes `reports/master_outline_approval_packet.md` plus an HTML sidecar. This is the human-readable approval artifact for the master outline. After the human reviews it, use `outline-approval-update` to mark the approved layer.
 
 ## Migration
 

@@ -1,0 +1,26 @@
+chapter: 4
+author_intent:
+- Keep chapter 4 as a rule-cost chase chapter: rejected survivors pursue the RV, moral pressure becomes physical pressure, and Lu Chenzhou proves limited rescue is different from unlimited boarding.
+- Preserve Lin Zhixia's practical value through roadside triage, pollution suspicion judgment, and enforcing the temporary observation boundary.
+- Let the old rescue accident register as a sharp bodily trigger, not a full flashback reveal.
+- End with a concrete monster escalation: the fog dog physically bites the RV and forces chapter 5 into a chase / vehicle-damage problem.
+must_change:
+- Do not add Qinghe Service Area interior exposition before the RV reaches or earns that information.
+- Do not turn the rescued girl into a core teammate; she remains a temporary injured witness / observation passenger.
+- Do not soften Lu Chenzhou into unconditional rescue or make him cruel for cruelty's sake; his choices must stay grounded in controllable risk.
+- Do not expand the old mall-fire rescue accident beyond the current light trigger.
+approved_lines:
+- "保持十五米。单人下车。双手可见。接受初筛。"
+- "临时观察位，不是上车名额。"
+- "当这辆车的司机。"
+- "请尽快脱离追咬。"
+rejected_patterns:
+- Avoid generic inner monologue explanations.
+- Avoid interchangeable dialogue.
+- Avoid vague cliffhangers without a concrete next pressure.
+- Avoid repeated moral accusation lines that do not change the physical situation.
+- Avoid system prompts that explain lore instead of triggering action.
+ai_assistance:
+  expected: true
+  human_role: direction, taste, key edits, final approval
+approved_for_final_candidate: true

@@ -1,0 +1,29 @@
+chapter: 6
+author_intent:
+  - Keep chapter 6 as a pressure-conversion chapter: after the road chase, the danger moves inside the RV through symptoms, fear, rear leakage, and onboard rules.
+  - Preserve Lin Zhixia's value as practical medical triage under uncertainty, not soft-hearted pleading or omniscient diagnosis.
+  - Let Lu Chenzhou translate medical uncertainty into executable vehicle rules: observation zone, living-space boundary, boarding qualification, and consequences for noncompliance.
+  - End on concrete outer-warehouse material-control pressure, not on a vague Qinghe mystery.
+must_change:
+  - Do not treat the three-tier contamination triage as final science; it is an early provisional onboard handling rule based on limited symptoms and tools.
+  - Do not reveal Qinghe Service Area interior order, factions, full medical layout, or survivor politics in this chapter.
+  - Do not make Zhou Xiaohe a core teammate, emotional center, or formal onboard member; she remains a temporary observation passenger and Qinghe witness.
+  - Do not let the system diagnose contamination or decide whether Zhou Xiaohe stays; Lin Zhixia judges symptoms and Lu Chenzhou sets rules.
+  - Do not give free repair, free medical-module unlock, or immediate warehouse supplies in this chapter.
+approved_lines:
+  - "不能因为一个灰边就把你判死。"
+  - "给我能执行的等级。"
+  - "观察位不是上车名额。"
+  - "听指令，就还有观察窗口。"
+  - "物资不是船票。"
+rejected_patterns:
+  - Avoid medical encyclopedia exposition.
+  - Avoid Qinghe interior exposition before the outer-warehouse conflict earns it.
+  - Avoid making Lu Chenzhou cruel for effect without operational reasoning.
+  - Avoid making Lin Zhixia purely sentimental or saintly.
+  - Avoid vague cliffhangers without a concrete next pressure.
+  - Avoid system prompts that replace human judgment.
+ai_assistance:
+  expected: true
+  human_role: direction, taste, key edits, final approval
+approved_for_final_candidate: true

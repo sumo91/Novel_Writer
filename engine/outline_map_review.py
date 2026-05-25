@@ -4,6 +4,7 @@ from typing import Any
 from engine.craft_knowledge import load_craft_cards, render_craft_cards
 from engine.html_utils import write_markdown_html_sidecar
 from engine.io_utils import read_yaml, write_text
+from engine.outline_gate import _validate_active_unit_chapter_map
 from engine.outline_resolver import active_outline_data, unit_chapter
 from engine.paths import books_dir
 
@@ -32,13 +33,20 @@ def render_outline_map_review(root: Path) -> str:
     active = active_outline_data(root, 1)
     active_unit_chapter = unit_chapter(active["unit"], 1)
 
-    lines = ["# Outline Map Review", ""]
+    lines = [
+        "# Outline Minimum Map Review",
+        "",
+        "This is a mechanical minimum-map report, not a full human approval packet.",
+        "",
+    ]
     lines.extend(_minimum_map(master, volume, arc, unit))
     lines.extend(_book_overview(master))
     lines.extend(_volume_map(volume))
     lines.extend(_arc_map(arc))
     lines.extend(_unit_map(unit, active_unit_chapter))
-    lines.extend(_outline_warnings(master, volume, arc, unit, open_threads, payoff_ledger))
+    lines.extend(
+        _outline_warnings(root, master, volume, arc, unit, open_threads, payoff_ledger)
+    )
     lines.extend(render_craft_cards(load_craft_cards("outline")))
     return "\n".join(lines).rstrip() + "\n"
 
@@ -133,6 +141,7 @@ def _unit_map(unit: dict[str, Any], active_unit_chapter: dict[str, Any]) -> list
 
 
 def _outline_warnings(
+    root: Path,
     master: dict[str, Any],
     volume: dict[str, Any],
     arc: dict[str, Any],
@@ -163,6 +172,10 @@ def _outline_warnings(
         warnings.append("missing_unit_payoff")
     if not unit.get("stage_payoffs") or not unit.get("stage_end_hook") or not unit.get("chapters"):
         warnings.append("missing_unit_flow")
+    warnings.extend(
+        f"incomplete_active_unit_chapter_map: {error}"
+        for error in _validate_active_unit_chapter_map(root, 1)
+    )
     warnings.extend(_unmapped_thread_warnings(volume, arc, unit, open_threads))
     warnings.extend(_unmapped_payoff_warnings(arc, unit, payoff_ledger))
 

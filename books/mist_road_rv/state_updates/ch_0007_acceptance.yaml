@@ -1,0 +1,293 @@
+chapter: 7
+title: 物资不是船票
+source_draft: drafts/ch_0007_final_candidate.md
+accepted_chapter_path: chapters/ch_0007.md
+summary: 陆沉舟在青河外仓门口与物资控制者老郑谈判，拒绝用上车资格交换燃油、药品和修车材料，只以有限交易换取密封胶、卡箍、隔离帘、基础医疗耗材、少量燃油和滤芯边料；林知夏验货并判定老郑的灰眼兄弟疑似异变，陆沉舟坚持不上车规则。老郑随后广播房车位置，引来雾中车灯和抢车压力。
+current_state:
+  current_chapter: 7
+  current_arc: arc_001
+  latest_location: 青河服务区外仓口附近，房车未熄火并准备从被广播位置突围
+  active_characters:
+  - lu_chenzhou
+  - lin_zhixia
+  - temporary_injured_girl
+  - old_zheng
+  active_conflicts: &id001
+  - 房车仍停在青河服务区外仓口附近，后保险杠断裂，车体密封完整度仍按 72% 记录，车尾淡雾味未彻底解决。
+  - 净雾滤芯效率仍按 23% 记录；新取得的滤芯边料只能临时补强，不足以恢复完整效率。
+  - 周小禾仍在临时观察区，等待林知夏用有限医疗耗材处理伤口；她仍是观察伤员，不是正式上车名额。
+  - 取得的密封胶、卡箍、帘布、医疗耗材、少量燃油和滤芯边料都有限且有外包装污染风险，不能直接进入生活区或视为免费升级。
+  - 老郑作为外仓物资控制者未上车，灰眼兄弟被判疑似异变；老郑已广播房车位置和滤芯价值，引来雾中车灯、敲击声和抢车压力。
+  - 青河主楼、完整内部秩序和服务区终端源头仍未揭开。
+  pending_approvals: &id002
+  - Approve Old Zheng as the Qinghe outer-warehouse material controller without treating
+    him as a full Qinghe faction reveal.
+  - 'Approve the early economy rule: material trade can buy goods or limited service,
+    but cannot buy RV boarding qualification.'
+  - Approve the limited resource gain from chapter 7 as usable but insufficient for
+    full repair, full filter recovery, or medical-module unlock.
+  - Approve Old Zheng's broadcast of the RV location as the next pressure hook toward
+    fog-wall backflow / car-seizure escalation.
+state_changes:
+- Old Zheng is introduced as the Qinghe outer-warehouse material controller who controls
+  the warehouse door, key/access, and immediate supplies.
+- Old Zheng attempts to trade fuel, medicine, sealant, clamps, curtain material, and
+  filter-edge material for boarding access for himself and two men.
+- Lu Chenzhou establishes the early vehicle-economy rule that resources can be traded,
+  inspected, and priced, but cannot directly buy RV boarding qualification.
+- 'Lin Zhixia verifies the medicine and isolation materials, identifying incomplete
+  or poor-quality supplies: expired fever medicine, no initial suture kit, low disinfectant,
+  moldy curtain material, and contaminated outer packaging.'
+- 'The RV gains limited usable supplies: industrial sealant, clamps, curtain/isolation
+  material, basic medical supplies including suture thread and gloves, a small amount
+  of fuel, and partial filter-edge material.'
+- The gained materials are limited and/or externally contaminated; they do not fully
+  repair the RV, fully restore filter efficiency, unlock the medical module, or create
+  a free upgrade.
+- Old Zheng reveals that one of his men has gray-eye and confusion symptoms; Lin Zhixia
+  judges him as suspected mutation and recommends isolation without allowing him into
+  the RV.
+- Lu Chenzhou refuses to open the RV door or let Old Zheng's people enter the living
+  space; observation, isolation, and boarding rules remain intact.
+- Old Zheng retaliates by broadcasting the RV's position and clean-filter value through
+  the outer-warehouse speaker / communication system.
+- Fog-side vehicle lights, metal striking sounds, and system warnings show that external
+  human and mist-pressure threats are gathering near the outer warehouse.
+open_threads_touched:
+- thread_vehicle_rules_contract
+- thread_service_area_terminals
+- thread_lin_pollution_observation
+- thread_mist_monster_ecology
+- thread_rv_system_binding
+timeline_event:
+  id: t007
+  when: 第 7 章
+  summary: 陆沉舟在青河外仓门口与物资控制者老郑谈判，拒绝用上车资格交换燃油、药品和修车材料，只以有限交易换取密封胶、卡箍、隔离帘、基础医疗耗材、少量燃油和滤芯边料；林知夏验货并判定老郑的灰眼兄弟疑似异变，陆沉舟坚持不上车规则。老郑随后广播房车位置，引来雾中车灯和抢车压力。
+v3_state_updates:
+  timeline:
+    occurred_events:
+    - id: ev_0007_01
+      summary: 陆沉舟在青河外仓门口与物资控制者老郑谈判，拒绝用上车资格交换燃油、药品和修车材料，只以有限交易换取密封胶、卡箍、隔离帘、基础医疗耗材、少量燃油和滤芯边料；林知夏验货并判定老郑的灰眼兄弟疑似异变，陆沉舟坚持不上车规则。老郑随后广播房车位置，引来雾中车灯和抢车压力。
+      location: 青河服务区外仓口
+      involved_characters:
+      - lu_chenzhou
+      - lin_zhixia
+      - temporary_injured_girl
+      - old_zheng
+      source_chapter: 7
+  character_states: &id003
+  - character_id: lu_chenzhou
+    display_name: 陆沉舟
+    physical_state: 驾驶房车停在青河服务区外仓路口外侧，车未熄火，车尾密封仍不足。
+    social_state: 从车内规则执行者推进为末日交易规则制定者，公开把物资交易与上车资格切开。
+    emotional_state: 在车辆漏雾、周小禾需要处理和老郑资源绑架之间保持冷硬克制，用验货和定价压住风险。
+    current_goal: 带着有限且污染风险未清的物资离开外仓口，摆脱被广播位置后聚集而来的抢车压力，并寻找临时封堵窗口。
+    known_secrets: []
+    public_knowledge:
+    - 老郑只是青河外仓物资控制者，掌握门、锁链和即时补给，不代表完整青河秩序。
+    - 物资可以交易、检验和定价，但不能直接买房车生活区或正式上车资格。
+    relationship_changes:
+    - 继续采纳林知夏的医疗和污染判断，让她在交易中负责验药、验隔离材料和判断疑似异变。
+    voice_notes:
+    - 短句、可计价、边界清楚；用“交易是交易，上车是上车”压住资源绑架。
+  - character_id: lin_zhixia
+    display_name: 林知夏
+    physical_state: 在车内照看周小禾，同时隔窗验收药箱、缝合线、手套、帘布和污染外包装。
+    social_state: 从污染分诊者推进为资源质量筛选者，负责判断医疗耗材是否真能用于伤口和隔离。
+    emotional_state: 同情周小禾也理解老郑想救兄弟，但坚持疑似异变者不能进入房车生活区。
+    current_goal: 用有限医疗和隔离材料先稳住周小禾，并在不破坏车内规则的前提下处理污染风险。
+    known_secrets:
+    - 老郑门内的灰眼兄弟出现白沫、抓握、指令不稳定等疑似异变症状。
+    public_knowledge:
+    - 她能区分药箱外观和真正可用医疗耗材，并能在门缝观察条件下做疑似异变判断。
+    relationship_changes:
+    - 与陆沉舟形成“他定交易和车门边界，她定医疗/污染可用性”的明确协作。
+    voice_notes:
+    - 专业、克制、看物资具体用途；不说空泛安慰，只给能执行的判断。
+  - character_id: temporary_injured_girl
+    display_name: 周小禾
+    physical_state: 仍在临时观察区，手臂伤口渗血，脸色发白但保持清醒。
+    social_state: 临时观察伤员，不是正式上车名额或核心队友；她的治疗需求推动医疗/隔离材料交易。
+    emotional_state: 害怕外仓冲突和老郑踹门，但仍听从林知夏指令保持不乱动。
+    current_goal: 保持清醒，等待林知夏用新取得的有限耗材处理伤口和隔离区。
+    known_secrets:
+    - 青河外仓物资确实存在，但受老郑控制且会被用来逼迫房车开门。
+    public_knowledge:
+    - 她仍是外伤叠雾吸入观察，不是确认异变，也没有转为核心队友。
+    relationship_changes: []
+    voice_notes:
+    - 短促、虚弱、服从；只提供压力和少量反应，不承担青河解释功能。
+  - character_id: old_zheng
+    display_name: 老郑
+    physical_state: 躲在青河外仓卷帘门后，控制锁链、门缝物资和旧广播/通讯设备。
+    social_state: 青河外仓物资控制者 / 门口第一层人类关卡，不是完整青河派系首领。
+    emotional_state: 现实、油滑、急于给灰眼兄弟争取干净空气，交易失败后转向报点报复。
+    current_goal: 用燃油、药品和修车材料换取自己和手下上车，失败后借外部抢车压力逼房车让步。
+    known_secrets:
+    - 外仓内还有受控物资和至少一名疑似异变的灰眼兄弟。
+    public_knowledge:
+    - 他能提供有限密封胶、卡箍、帘布、基础医疗耗材、少量燃油和滤芯边料。
+    - 他无法用物资买到房车生活区或正式上车资格。
+    relationship_changes:
+    - 与陆沉舟形成外仓门口的短期敌对交易关系；交易完成后通过广播泄露房车位置。
+    voice_notes:
+    - 现实、压价、试探底线；不要写成全知或完整派系代表。
+  resource_changes: &id004
+  - id: res_rv_rv_integrity
+    owner: rv
+    item: rv_integrity
+    category: item
+    unit: percent
+    delta: 0
+    reason: 取得两支工业密封胶和一包卡箍等临时封堵材料，但尚未停车施工；车体密封完整度仍按 72% 记录。
+  - id: res_rv_clean_filter
+    owner: rv
+    item: clean_filter
+    category: item
+    unit: module
+    delta: 0
+    reason: 取得半包净化滤芯边料，可用于临时补强，但不足以恢复完整效率；滤芯效率仍按 23% 记录。
+  - id: res_rv_medicine_pack
+    owner: rv
+    item: medicine_pack
+    category: item
+    unit: pack
+    delta: 0
+    reason: 取得绷带、半板止痛片、少量碘伏、纱布、拆封持针钳、缝合线和一副未拆手套等基础耗材；数量有限且需隔离污染外包装。
+  - id: res_rv_fuel_liter
+    owner: rv
+    item: fuel_liter
+    category: item
+    unit: liter
+    delta: 0
+    reason: 老郑声称十升柴油，但验桶后实际只得到约三到四升；因燃油账本未量化，暂记录为少量补给而不改变数值余量。
+  - id: res_rv_isolation_material
+    owner: rv
+    item: isolation_material
+    category: item
+    unit: bundle
+    delta: 1
+    reason: 取得一卷灰色防水帘布和额外隔离材料，可用于周小禾临时观察区或车尾隔离，但外层有污染/霉点风险，需隔离处理。
+  open_thread_updates: &id005
+  - id: thread_vehicle_rules_contract
+    promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+    source_chapter: 0
+    status: advanced
+    last_touched: 7
+    latest_note: 陆沉舟在青河外仓交易中公开切开物资交易与上车资格：资源可以验货、计价、换有限服务，但不能买房车生活区或正式名额。
+    next_obligation: 第8章在抢车者和雾墙回压中继续验证：外部暴力、广播报点和群体压力也不能绕过车门规则。
+  - id: thread_service_area_terminals
+    promise: 服务区交易终端、临时屏障和路标任务从何而来。
+    source_chapter: 0
+    status: advanced
+    last_touched: 7
+    latest_note: 青河外仓物资确认存在且受老郑控制，门禁、锁链、旧广播和受控补给显示服务区节点有局部人类秩序，但完整青河内部仍未揭开。
+    next_obligation: 后续可继续通过外仓通道、主楼方向和旧广播揭示节点秩序，但不能一次性解释服务区终端源头。
+  - id: thread_lin_pollution_observation
+    promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+    source_chapter: 0
+    status: advanced
+    last_touched: 7
+    latest_note: 林知夏隔窗判断老郑灰眼兄弟出现白沫、抓握和指令不稳定，归入疑似异变并要求隔离，不允许进入房车生活区。
+    next_obligation: 第8章可继续用周小禾处置和外部疑似异变者验证三档污染分诊，而不把它写成终极医学答案。
+  - id: thread_mist_monster_ecology
+    promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+    source_chapter: 0
+    status: advanced
+    last_touched: 7
+    latest_note: 本章把灰眼、白沫、抓握、指令不稳定与疑似异变相连，并继续提示血味、排气和外部声源会引来雾中威胁。
+    next_obligation: 第8章用广播声、车灯、敲击和雾中聚集压力继续检验人类噪音与怪物生态的关系。
+  - id: thread_rv_system_binding
+    promise: 房车系统为什么绑定陆沉舟和父亲留下的旧房车。
+    source_chapter: 0
+    status: advanced
+    last_touched: 7
+    latest_note: 系统只提示车体状态、材料可用性和外部声源风险，没有替陆沉舟谈判或决定是否开门。
+    next_obligation: 继续保持系统提供路线、材料和风险信息，主角承担选择与规则后果。
+  payoff_updates: &id006
+  - chapter: 7
+    promises_made:
+    - 老郑广播房车位置，雾中车灯、金属敲击声和抢车压力正在向外仓口聚集。
+    - 新取得的密封胶、卡箍、隔离材料、医疗耗材和滤芯边料都只能支撑临时处理，仍需在第8章寻找封堵和突围窗口。
+    payoffs_delivered:
+    - 第6章外仓物资和老郑控制权兑现：老郑以燃油、药品、密封胶、卡箍、帘布和滤芯边料逼房车开门。
+    - “物资不是船票”规则兑现：陆沉舟拒绝让资源购买生活区和正式上车资格，只允许有限交易。
+    - 林知夏资源验收功能兑现：识别药箱缩水、材料污染、缝合线和手套需求，并判断老郑灰眼兄弟疑似异变。
+    - 房车获得有限可用物资，但没有完成修复、恢复滤芯效率或解锁医疗模块。
+    frustration_level: controlled
+    payoff_types:
+    - rule_payoff
+    - resource_payoff_with_cost
+    - teammate_function_payoff
+    - human_pressure_hook
+    delayed_payoffs:
+    - 青河主楼或内部秩序
+    - 简易医疗位解锁
+    - 周小禾是否恶化或稳定
+    - 老郑灰眼兄弟是否彻底异变
+    - 广播引来的抢车者身份和规模
+    risks:
+    - 房车位置和净化滤芯价值已被广播，外部抢车者正在聚集。
+    - 车尾密封仍未实际修好，长时间停留会继续增加雾中目标聚集风险。
+    - 新物资外包装存在污染，需要隔离处理，不能直接进入生活区。
+    - 老郑仍掌握外仓和广播系统，短期敌对未解决。
+  conflict_updates:
+    active: *id001
+  next_hook: &id007
+    hook: 老郑通过外仓广播泄露房车位置和净化滤芯价值，雾中出现车灯、金属敲击声和外部声源聚集；房车带着有限且污染风险未清的物资，必须在后部密封不足的状态下突围。
+    obligation: 第8章处理广播引来的抢车压力、雾墙回压或外部车辆逼近，同时让刚取得的密封/医疗/隔离材料只作为临时处置资源，不直接解决全部问题。
+    target_chapter: 8
+    status: open
+  pending_approvals: *id002
+open_thread_updates: []
+change_log:
+  summary: Accepted revised chapter 7 as chapters/ch_0007.md.
+  canon_updates:
+  - timeline:t007
+  - character_states:lu_chenzhou,lin_zhixia,temporary_injured_girl,old_zheng
+  - resource_ledger:limited_outer_warehouse_supplies
+  - open_threads:thread_vehicle_rules_contract,thread_service_area_terminals,thread_lin_pollution_observation,thread_mist_monster_ecology,thread_rv_system_binding
+  - hook_index:chapter_8_broadcast_car_seizure_pressure
+  pending_approvals: *id002
+acceptance_contract:
+  quality_gate_summary:
+    continuity_review_present: true
+    continuity_blockers: []
+    pacing_review_present: true
+    pacing_score: 89
+    revised_pacing_score: null
+    revision_required: false
+    waiver_required: false
+  outline_alignment:
+    reference_chain: master -> volume -> arc -> unit -> chapter brief
+    volume_id: volume_001
+    arc_id: arc_001
+    unit_id: unit_0001
+    required_unit_obligations:
+    - 明确燃油、药品、滤芯和上车资格的经济规则。
+    - 推进 thread_vehicle_rules_contract。
+    claimed_fulfilled_unit_obligations:
+    - 明确燃油、药品、滤芯和上车资格的经济规则。
+    - 推进 thread_vehicle_rules_contract。
+    pending_unit_obligations: []
+  state_updates:
+    timeline_event:
+      id: t007
+      when: 第 7 章
+      summary: 陆沉舟在青河外仓门口与物资控制者老郑谈判，拒绝用上车资格交换燃油、药品和修车材料，只以有限交易换取密封胶、卡箍、隔离帘、基础医疗耗材、少量燃油和滤芯边料；林知夏验货并判定老郑的灰眼兄弟疑似异变，陆沉舟坚持不上车规则。老郑随后广播房车位置，引来雾中车灯和抢车压力。
+    character_state_changes: *id003
+    resource_changes: *id004
+    open_thread_updates: *id005
+    payoff_updates: *id006
+    next_hook: *id007
+    pending_approvals: *id002
+    economy_changes: []
+    faction_changes: []
+  publication_readiness:
+    final_candidate_path: drafts/ch_0007_final_candidate.md
+    author_direction_present: true
+    author_direction_approved: true
+    prose_quality_review_present: true
+    prose_quality_score: 91
+    prose_rewrite_required: false
+    blocking_issues: []

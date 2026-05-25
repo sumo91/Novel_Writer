@@ -1,0 +1,65 @@
+{
+  "score": 91,
+  "dimension_scores": {
+    "opening_hook": 9,
+    "conflict_pressure": 10,
+    "protagonist_agency": 9,
+    "payoff_execution": 14,
+    "dialogue_tension": 10,
+    "scene_specificity": 9,
+    "voice_distinction": 9,
+    "rhythm_variation": 9,
+    "ending_pull": 9,
+    "style_slop_control": 3
+  },
+  "style_alignment": {
+    "passed": true,
+    "score": 92,
+    "style_bible_used": true,
+    "calibration_used": true,
+    "matched_patterns": [
+      "Pressure-led opening: the chapter starts with the chained warehouse door, oil barrel, old medicine box, running RV, rear leak whistle, and Old Zheng's immediate price before any Qinghe explanation.",
+      "Concrete road and vehicle texture: roll-up door, iron chain, oil barrel, window gap, fog at the seam, rear sealing, filter efficiency, contaminated outer packaging, and improvised tool handling carry the survival pressure.",
+      "Rules emerge through bargaining pressure: 'trade is trade, boarding is boarding' appears only after Old Zheng tries to exchange supplies for the RV door.",
+      "Protagonist strength is operational rather than declarative: Lu Chenzhou verifies goods, detects the half-empty oil claim, separates contaminated packaging, refuses boarding, and converts Old Zheng's leverage into a limited transaction.",
+      "Dialogue functions as boundary testing: Old Zheng probes need and fear, Lin Zhixia probes medical usefulness and contamination risk, Lu Chenzhou prices and rejects each overreach.",
+      "Payoff carries a new cost: the RV gets limited sealant, clamps, medical supplies, curtain material, fuel, and filter-edge material, but the trade exposes the vehicle's location and triggers incoming lights and metal strikes."
+    ],
+    "rejected_patterns_hit": [],
+    "violations": []
+  },
+  "exposition_density": {
+    "passed": true,
+    "score": 91,
+    "frontloaded_explanations": [],
+    "delayed_explanations": [
+      "Complete Qinghe Service Area interior order",
+      "Old Zheng's full background or faction rank",
+      "Full survivor politics behind the outer warehouse",
+      "Complete mist mutation science",
+      "Father's last rescue and system origin",
+      "Medical module unlock mechanics"
+    ],
+    "scene_triggers": [
+      "The material list appears only because the RV remains damaged and Zhou Xiaohe needs treatment.",
+      "The boarding rule appears only after Old Zheng demands entry in exchange for supplies.",
+      "The suspected-mutation triage appears only after Old Zheng reveals his brother's gray-eye and noncompliance symptoms.",
+      "The resource limit is reinforced only after the filter-edge material and fuel are physically verified as partial and risky."
+    ]
+  },
+  "strengths": [
+    "The chapter has a clean commercial-survival engine: every line of negotiation either tests goods, tests the RV door, or tests contamination boundaries.",
+    "Lu Chenzhou's爽点 is not brute refusal; he dismantles a resource hostage situation into inspectable items and non-negotiable boarding rules.",
+    "Lin Zhixia's role is upgraded without turning her into exposition: she distinguishes usable medicine, rejected materials, and suspected mutation under pressure.",
+    "Old Zheng remains practical and pressured by a sick brother, which gives texture to his betrayal while keeping him dangerous.",
+    "The revised resource-limit lines prevent the supplies from reading as a free repair, preserving the next chapter's threat."
+  ],
+  "blocking_issues": [],
+  "rewrite_required": false,
+  "revision_suggestions": [
+    "Final candidate can use the revised draft nearly as-is.",
+    "Keep the approved author-direction lines: '交易是交易，上车是上车。', '你卖的是胶，不是车门。', '这辆车里，我说了算。', and '把车开出他们定的价。'",
+    "Acceptance packet should record the resource gain as limited, contaminated or insufficient, with no full repair, no full filter recovery, and no medical-module unlock.",
+    "Acceptance packet should record Old Zheng's broadcast as the chapter-ending pressure hook, not as a resolved conflict."
+  ]
+}

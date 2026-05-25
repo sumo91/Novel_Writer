@@ -1,4 +1,4 @@
-from engine import book_factory, brief_contract, craft_knowledge, outline_gate
+from engine import book_factory, brief_contract, craft_contract, craft_knowledge, outline_gate
 from engine.io_utils import write_json, write_yaml
 
 
@@ -70,6 +70,75 @@ def test_build_chapter_brief_scaffold_includes_applicable_craft_cards(
     assert "Name the choice and pressure." in scaffold
 
 
+def test_build_chapter_brief_scaffold_includes_book_craft_contract(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(brief_contract, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(craft_contract, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    _write_contract_fixture(book)
+    card_dir = tmp_path / "knowledge" / "craft_cards"
+    card_dir.mkdir(parents=True)
+    write_yaml(
+        card_dir / "golden.yaml",
+        {
+            "id": "craft_golden",
+            "scope": "craft",
+            "applies_to": ["brief"],
+            "use_when": "A system creates leverage.",
+            "principle": "Make the advantage necessary.",
+            "checks": ["Name the pressure the system solves."],
+            "failure_modes": ["Button solves all."],
+            "severity": "hard",
+        },
+    )
+    craft_contract.write_craft_contract_scaffold("demo", force=True)
+
+    scaffold = brief_contract.build_chapter_brief_scaffold("demo", 5)
+
+    assert "## Book Craft Contract" in scaffold
+    assert "craft_golden" in scaffold
+    assert "Name the pressure the system solves." in scaffold
+
+
+def test_check_chapter_brief_requires_craft_alignment_when_contract_exists(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(brief_contract, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(craft_contract, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")
+    book = book_factory.create_book("demo", title="Demo Book")
+    _write_contract_fixture(book)
+    write_yaml(
+        book / "craft" / "craft_contract.yaml",
+        {
+            "book_id": "demo",
+            "approval": {"status": "draft"},
+            "concept_focus": {},
+            "selected_cards": [{"id": "craft_missing", "mode": "hard_rule"}],
+            "stage_rules": [],
+        },
+    )
+    brief = book / "outlines" / "chapter_briefs" / "ch_0005_brief.md"
+    brief.parent.mkdir(parents=True, exist_ok=True)
+    brief.write_text(
+        brief_contract.build_chapter_brief_scaffold("demo", 5).replace(
+            "## Craft Alignment", "## Missing Craft Alignment"
+        ),
+        encoding="utf-8",
+    )
+
+    result = brief_contract.check_chapter_brief("demo", 5)
+
+    assert result["passed"] is False
+    assert "Missing required section: ## Craft Alignment" in result["errors"]
+
+
 def test_build_chapter_brief_scaffold_uses_active_ranged_outline_layers(
     tmp_path, monkeypatch
 ):
@@ -102,7 +171,7 @@ def test_build_chapter_brief_scaffold_uses_active_ranged_outline_layers(
         book / "outlines" / "units" / "unit_0002.yaml",
         {
             "unit": 2,
-            "chapter_range": {"start": 11, "end": 20},
+            "chapter_range": {"start": 11, "end": 11},
             "unit_goal": "Open the second trading pattern.",
             "chapters": [
                 {
@@ -162,6 +231,24 @@ def test_build_chapter_brief_scaffold_shows_craft_card_metadata(
     assert "### Hard Rules" in scaffold
     assert "  - Scope: craft" in scaffold
     assert "  - Severity: hard" in scaffold
+
+
+def test_build_chapter_brief_scaffold_blocks_when_outline_gate_is_blocked(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(brief_contract, "BOOKS_DIR", tmp_path / "books")
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    monkeypatch.setattr(outline_gate, "BOOKS_DIR", tmp_path / "books")
+    book_factory.create_book("demo", title="Demo Book")
+
+    try:
+        brief_contract.build_chapter_brief_scaffold("demo", 5)
+    except ValueError as exc:
+        assert "Chapter brief gate is blocked" in str(exc)
+        assert "Active unit outline must map every chapter" in str(exc)
+    else:
+        raise AssertionError("Expected blocked outline gate to prevent brief scaffold")
 
 
 def test_check_chapter_brief_reports_missing_file(tmp_path, monkeypatch):
@@ -239,16 +326,7 @@ def _write_contract_fixture(book):
             "unit": 1,
             "chapter_range": {"start": 1, "end": 10},
             "unit_goal": "Turn pressure into rules.",
-            "chapters": [
-                {
-                    "chapter": 5,
-                    "function": "赵掌柜 tests the price rules.",
-                    "opening_hook": "Zhao comes in person.",
-                    "main_payoff": "Chen sets terms.",
-                    "next_hook": "Ledger clue deepens.",
-                    "state_obligation": ["Update pill-shop pressure."],
-                }
-            ],
+            "chapters": _unit_chapters(1, 10, special_chapter=5),
             "approval": {"status": "approved"},
         },
     )
@@ -282,3 +360,28 @@ def _write_contract_fixture(book):
         book / "canon" / "factions.yaml",
         {"factions": [{"id": "huichun_pill_shop"}], "approval": {"status": "approved"}},
     )
+
+
+def _unit_chapters(start: int, end: int, *, special_chapter: int | None = None):
+    chapters = []
+    for number in range(start, end + 1):
+        chapter = {
+            "chapter": number,
+            "function": f"Plan chapter {number}.",
+            "opening_hook": f"Open chapter {number} with pressure.",
+            "main_payoff": f"Pay off chapter {number}.",
+            "next_hook": f"Pull into chapter {number + 1}.",
+            "state_obligation": [f"Track chapter {number} state."],
+        }
+        if number == special_chapter:
+            chapter.update(
+                {
+                    "function": "赵掌柜 tests the price rules.",
+                    "opening_hook": "Zhao comes in person.",
+                    "main_payoff": "Chen sets terms.",
+                    "next_hook": "Ledger clue deepens.",
+                    "state_obligation": ["Update pill-shop pressure."],
+                }
+            )
+        chapters.append(chapter)
+    return chapters

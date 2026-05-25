@@ -1,0 +1,20 @@
+{
+  "book_id": "mist_road_rv",
+  "chapter": 12,
+  "status": "prepared",
+  "artifacts": {
+    "context": "pipeline/ch_0012/context.md",
+    "style_bible": "style/style_bible.yaml",
+    "brief": "outlines/chapter_briefs/ch_0012_brief.md",
+    "draft": "drafts/ch_0012_draft.md",
+    "revised": "drafts/ch_0012_revised.md",
+    "author_direction": "authoring/ch_0012_author_direction.yaml",
+    "continuity_review": "reviews/ch_0012/continuity_review.json",
+    "pacing_review": "reviews/ch_0012/pacing_review.json",
+    "reader_panel_review": "reviews/ch_0012/reader_panel_review.json",
+    "prose_quality_review": "reviews/ch_0012/prose_quality_review.json",
+    "final_candidate": "drafts/ch_0012_final_candidate.md",
+    "acceptance_packet": "state_updates/ch_0012_acceptance.yaml",
+    "accepted_chapter": "chapters/ch_0012.md"
+  }
+}

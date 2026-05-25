@@ -1,0 +1,196 @@
+{
+  "by_character": {
+    "lu_chenzhou": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "lin_zhixia": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "temporary_injured_girl": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "old_zheng": [
+      7,
+      8,
+      9
+    ]
+  },
+  "by_thread": {
+    "thread_rv_system_binding": [
+      3,
+      4,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "thread_mist_monster_ecology": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "thread_vehicle_rules_contract": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "thread_lin_pollution_observation": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "thread_lu_old_rescue_accident": [
+      4
+    ],
+    "thread_service_area_terminals": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "by_location": {
+    "第一服务区出口至青河服务区方向的迷雾路段": [
+      3
+    ],
+    "第一服务区至青河服务区之间的低浓度迷雾高速路段": [
+      4
+    ],
+    "高速路肩临时停车点": [
+      4
+    ],
+    "距青河服务区约 15 公里的迷雾路段": [
+      4
+    ],
+    "高速迷雾路段，青河服务区外仓接近口方向": [
+      5
+    ],
+    "青河服务区外仓接近口": [
+      6
+    ],
+    "青河服务区外仓口": [
+      7
+    ],
+    "青河服务区外仓口外侧主路": [
+      8
+    ],
+    "青河服务区外缘主路": [
+      9
+    ],
+    "青河服务区医疗点外缘，房车斜停并保持车头朝撤离路线，外仓门禁异常、污染等级上升": [
+      10
+    ],
+    "青河服务区医疗点外缘，房车斜停并保持撤离角度，后墙二号配电箱和医疗材料线索已确认但未接触。": [
+      11
+    ]
+  },
+  "by_resource": {
+    "clean_filter": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "fuel_liter": [
+      3,
+      4,
+      7
+    ],
+    "medicine_pack": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "rv_integrity": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "isolation_material": [
+      7,
+      8,
+      9
+    ],
+    "rv_rear_seal": [
+      10
+    ],
+    "route_info_qinghe_medical_point": [
+      10
+    ],
+    "qinghe_no_2_power_box_location": [
+      11
+    ],
+    "folding_medical_frame_lead": [
+      11
+    ],
+    "isolation_film_lead": [
+      11
+    ],
+    "medical_power_interface_lead": [
+      11
+    ],
+    "simple_medical_bay": [
+      11
+    ],
+    "rv_retreat_line_and_filter_window": [
+      11
+    ]
+  }
+}

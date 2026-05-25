@@ -1,0 +1,21 @@
+chapter: 3
+author_intent:
+- Keep chapter 3 as a pressure-led escape chapter: rule test, filter activation, first fog crossing, Qinghe hook.
+- Preserve the feeling that Lin Zhixia earns the first core teammate position through function, not sentiment.
+- Make the RV upgrade exciting but limited: temporary seal, filter consumption, vehicle damage, and next-road danger remain active.
+must_change:
+- Do not add a long explanation of the RV system, father route, or mist origin.
+- Do not soften Lu Chenzhou into unconditional rescue; his value is rescue with rules.
+- Do not make the clean-mist filter a permanent or free solution.
+approved_lines:
+- "你上车，不是被救，是签约。"
+- "车内伤员归我，疑似污染先隔离。你开你的车，别在路上回头救第二次。"
+- "能跑就够了。"
+rejected_patterns:
+- Avoid generic inner monologue explanations.
+- Avoid interchangeable dialogue.
+- Avoid vague cliffhangers without a concrete next pressure.
+ai_assistance:
+  expected: true
+  human_role: direction, taste, key edits, final approval
+approved_for_final_candidate: true

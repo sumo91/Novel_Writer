@@ -1,0 +1,69 @@
+{
+  "score": 92,
+  "dimension_scores": {
+    "opening_hook": 10,
+    "conflict_pressure": 9,
+    "protagonist_agency": 10,
+    "payoff_execution": 13,
+    "dialogue_tension": 9,
+    "scene_specificity": 9,
+    "voice_distinction": 9,
+    "rhythm_variation": 9,
+    "ending_pull": 10,
+    "style_slop_control": 4
+  },
+  "style_alignment": {
+    "passed": true,
+    "score": 93,
+    "style_bible_used": true,
+    "calibration_used": true,
+    "matched_patterns": [
+      "Pressure-led opening: the chapter begins on the gate screen, permission anomaly, broadcast warning, running engine, retreat angle, rising pollution, and material signal before any explanation.",
+      "Concrete road / vehicle / medical texture drives decisions: external speaker, vehicle angle, door lock, low lights, medical-point wall, No. 2 power box, folding medical frame, isolation film, power interface, isolation curtain, and pain checks all affect the scene.",
+      "Rules emerge through action: the external-rescue protocol is tested through wrong-number verification, no-name contact, speaker control, and refusal to open doors.",
+      "Protagonist agency stays operational: Lu Chenzhou controls approach distance, tests a false No. 3 power-box answer, backs the RV up, lowers broadcast exposure, and keeps the retreat line alive.",
+      "Lin Zhixia remains functionally distinct: she monitors Zhou Xiaohe, identifies real medical components, separates useful materials from safe acquisition, and rejects the child-like lure through triage logic.",
+      "Payoff carries cost: the chapter confirms Qinghe has real medical-module leads, but acquires nothing, unlocks nothing, and increases voice-mimicry / triage pressure for chapter 12.",
+      "Dialogue works as probe rather than exposition: short exchanges test credibility, boundaries, medical judgment, and whether a voice is real."
+    ],
+    "rejected_patterns_hit": [],
+    "violations": []
+  },
+  "exposition_density": {
+    "passed": true,
+    "score": 91,
+    "frontloaded_explanations": [],
+    "delayed_explanations": [
+      "Full Qinghe main-building survivor order",
+      "Complete Simple Medical Bay material list and unlock process",
+      "Full voice-mimicry monster ecology",
+      "Terminal / old-protocol origin behind the welcome-back message",
+      "Father-route hard clue or explanation",
+      "Long medical theory about contamination or triage"
+    ],
+    "scene_triggers": [
+      "Gate messages and broadcast warning trigger the permission / old-protocol unease.",
+      "Zhou Xiaohe's pain and low fever trigger Lin Zhixia's medical time-window judgment.",
+      "The wrong No. 3 power-box prompt triggers the distinction between mimicry and a more credible trapped voice.",
+      "The visible medical frame and isolation film trigger Simple Medical Bay material recognition.",
+      "Copied names, copied Lin Zhixia's voice, and the child lure trigger the no-name / no-door rule.",
+      "No footprints and dragged marks trigger Lin Zhixia's final judgment that the figure is not a child."
+    ]
+  },
+  "strengths": [
+    "The chapter keeps the new-unit opening immediate and tactile: screen text, engine vibration, retreat angle, medical-point wall, and contaminated sound all arrive before analysis.",
+    "Lu Chenzhou's competence is visible as behavior rather than attitude; the wrong-number test is a clean爽点 because it exposes the false voice without requiring a fight.",
+    "Lin Zhixia's professional value is sharper than generic kindness: she wants the materials, but refuses to let usefulness override contamination and triage boundaries.",
+    "The voice-mimicry threat becomes concrete through names, copied familiar voices, repeated rescue prompts, and the child-like lure, while still preserving mystery.",
+    "The chapter gives a restrained but real payoff: No. 2 power box, medical frame, isolation film, and power interface are verified as future gains, not handed out for free.",
+    "The ending creates a precise chapter 12 problem: there may be a real person inside, a false child outside, and the RV must decide who can be approached under deception."
+  ],
+  "blocking_issues": [],
+  "rewrite_required": false,
+  "revision_suggestions": [
+    "Final candidate can use the revised draft nearly as-is.",
+    "Do not add combat, material acquisition, or module unlock to chapter 11.",
+    "Do not turn the gate's 'welcome back' message into a father-route hard clue yet.",
+    "Chapter 12 should escalate from validation into active triage and controlled contact, otherwise Qinghe may feel too passive across consecutive chapters."
+  ]
+}

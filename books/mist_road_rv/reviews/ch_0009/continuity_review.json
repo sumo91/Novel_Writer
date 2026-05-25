@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "score": 90,
+  "issues": [
+    {
+      "type": "medical_power_boundary",
+      "severity": "low",
+      "evidence": "The ending introduces a Qinghe broadcast mentioning medical power and survivors, but the draft does not enter the main building, reveal the medical station, or unlock the medical module.",
+      "suggested_fix": "In revision and acceptance, record the broadcast as a next-chapter hook only. Do not treat medical power as acquired or the medical module as unlocked in chapter 9."
+    },
+    {
+      "type": "temporary_filter_boundary",
+      "severity": "low",
+      "evidence": "The system states the clean filter enters short-term stable calibration / low-efficiency stability and explicitly says this is not a complete repair.",
+      "suggested_fix": "Keep resource updates limited to short-term stabilization. Do not record full clean-filter recovery or stable safe-air status."
+    },
+    {
+      "type": "attacker_scope",
+      "severity": "low",
+      "evidence": "The car-seizing group functions as an immediate roadblock and rule-test pressure. They are scattered by their own noise, lights, roadblock, and fog-dog attraction, without becoming a named long-term faction.",
+      "suggested_fix": "Record them as first-station human pressure only. Do not add a faction ledger entry unless later chapters reveal a durable organization."
+    },
+    {
+      "type": "zhou_xiaohe_status",
+      "severity": "low",
+      "evidence": "Zhou Xiaohe follows observation-zone instructions and helps prove the rule boundary under pressure, but remains explicitly outside formal onboarding.",
+      "suggested_fix": "Keep her current state as temporary observation patient. Do not promote her to core teammate or living-space access."
+    }
+  ],
+  "required_fixes": [],
+  "proposed_state_updates": [
+    "The RV faces a direct roadblock at Qinghe outer-warehouse road: an old van, fire-extinguisher pressure, crowbar strikes, strong light, and side-door prying.",
+    "Lu Chenzhou refuses to open the door, keeps driver control, and uses headlights, horn timing, the demolition hook, vehicle angle, wet shoulder space, and the attackers' own roadblock to create an exit path.",
+    "Lin Zhixia holds the temporary observation zone, side-door lock boundary, isolation curtain, contaminated packaging box, and Zhou Xiaohe's wound stabilization during the assault.",
+    "Zhou Xiaohe remains a temporary observation patient, follows instructions, does not cross the curtain, and does not enter the RV living space as a formal member.",
+    "Human noise, lights, metal strikes, and panic draw fog dogs toward the loudest / brightest attackers, confirming an early mist-monster ecology rule without fully explaining it.",
+    "The RV escapes the first wave of the car-seizing night; the attackers are scattered by fog dogs and their own roadblock, but the RV's rear sealing remains temporary and damaged.",
+    "The system recognizes that the RV door rules, observation-zone boundary, contaminated-material isolation, and driver control remained intact under pressure.",
+    "The clean filter reaches short-term stable calibration / low-efficiency stability, not full recovery.",
+    "A Qinghe broadcast introduces the next hook: medical power, remaining survivors, and a warning not to open the outer-warehouse door."
+  ],
+  "human_approval_needed": [
+    "Approve chapter 9 as the first successful combat test of the RV door rules and internal collaboration rules.",
+    "Approve short-term filter stabilization as a limited system payoff, not a full filter repair.",
+    "Approve that fog dogs are attracted by human noise / lights / metal strikes as an early visible ecology rule.",
+    "Approve the Qinghe medical-power broadcast only as the chapter 10 hook, not as an acquired medical module or completed rescue."
+  ]
+}

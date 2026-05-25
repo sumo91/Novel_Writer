@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "score": 91,
+  "issues": [
+    {
+      "type": "meta_language",
+      "severity": "resolved",
+      "evidence": "Near the ending, Lu Chenzhou says \"第11章的门，在那边。\" This is meta-chapter language inside prose and breaks character/world immersion.",
+      "suggested_fix": "Fixed in revised draft and final candidate as \"真正的入口，在那边。\""
+    },
+    {
+      "type": "module_boundary",
+      "severity": "low",
+      "evidence": "The draft detects the Simple Medical Bay module and strengthens the material signal, but does not unlock the module or acquire materials.",
+      "suggested_fix": "In state updates, record only module lead/material signal. Do not mark the medical bay as unlocked."
+    },
+    {
+      "type": "lin_onboarding_boundary",
+      "severity": "low",
+      "evidence": "Lin Zhixia explicitly chooses to stay and accepts responsibility for medical observation, pollution triage, and the isolation zone, but the scene avoids a formal ceremonial onboarding.",
+      "suggested_fix": "Record her as a committed medical-role teammate / vehicle crew role, while preserving later relationship development."
+    },
+    {
+      "type": "zhou_xiaohe_status",
+      "severity": "low",
+      "evidence": "Zhou Xiaohe remains in temporary observation, follows instructions, and drives the medical need; she does not enter the living area or become a core teammate.",
+      "suggested_fix": "Keep her state as temporary observation patient."
+    },
+    {
+      "type": "qinghe_scope",
+      "severity": "low",
+      "evidence": "The draft reaches Qinghe service-area medical-point exterior / gate edge but does not enter the main building or reveal full internal order.",
+      "suggested_fix": "Keep chapter 10 as arrival and controlled-approach hook. Full Qinghe exploration belongs to chapter 11."
+    }
+  ],
+  "required_fixes": [],
+  "proposed_state_updates": [
+    "After the car-seizing night, the RV leaves the first unnamed service-area outer edge and receives the Qinghe broadcast about medical power, survivors, and a warning not to open the outer warehouse door.",
+    "Lu Chenzhou tests the broadcast by checking repetition, signal behavior, route reaction, and specific information rather than treating the rescue call as an order to open doors.",
+    "The RV's rear seal remains temporary and under pressure; the clean filter remains in low-efficiency short-range stability rather than full repair.",
+    "Lin Zhixia identifies Zhou Xiaohe's need for better treatment and power support, but explicitly accepts that medical need cannot override pollution boundaries.",
+    "Lu Chenzhou establishes first external-rescue contact rules: verify first, keep a retreat line, do not enter the main building, do not approach the outer warehouse door, and do not open doors to unverified callers.",
+    "Lin Zhixia chooses to stay as the RV's medical observation / pollution triage / isolation-zone role, not merely as a protected passenger.",
+    "The RV crosses a first low-concentration fog segment and reaches the Qinghe service-area medical-point exterior with the vehicle nose kept toward retreat.",
+    "The broadcast implies a living person may be interrupting the loop and warns that something can imitate voices, opening a mist-monster sound-mimicry thread without fully explaining it.",
+    "The system detects the Simple Medical Bay as a possible unlockable module and indicates materials may be at the Qinghe medical point, while pollution level rises and outer-warehouse access is abnormal."
+  ],
+  "human_approval_needed": [
+    "Approve chapter 10 as the closure of unit_0001 / first station.",
+    "Approve Lin Zhixia's move from temporary co-survivor to committed medical-role RV crew member.",
+    "Approve the external-rescue contact rule: verify first, keep retreat, no blind door opening, medical value cannot override contamination boundaries.",
+    "Approve Qinghe medical point / Simple Medical Bay material signal as the chapter 11 hook only, not as an unlocked module.",
+    "Approve early hint that some Qinghe threat may mimic or manipulate voices, without fully defining the ecology yet."
+  ]
+}

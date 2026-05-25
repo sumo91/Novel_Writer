@@ -1,0 +1,13 @@
+updates:
+  - id: pa_14d2930f
+    status: approved
+    note: "Human confirmed during chapter 7 acceptance: Old Zheng is the Qinghe outer-warehouse material controller, not a full Qinghe faction reveal."
+  - id: pa_7d29f8e0
+    status: approved
+    note: "Human confirmed during chapter 7 acceptance: material trade can buy goods or limited service, but cannot buy RV boarding qualification."
+  - id: pa_99e506aa
+    status: approved
+    note: "Human confirmed during chapter 7 acceptance: the gained supplies are limited and insufficient for full repair, full filter recovery, or medical-module unlock."
+  - id: pa_f5c73981
+    status: approved
+    note: "Human confirmed during chapter 7 acceptance: Old Zheng's broadcast is the next pressure hook toward fog-wall backflow / car-seizure escalation."
