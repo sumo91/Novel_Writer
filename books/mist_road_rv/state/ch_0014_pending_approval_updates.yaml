@@ -1,0 +1,16 @@
+updates:
+  - id: pa_9e530c9a
+    status: approved
+    note: "Human confirmed during chapter 14 acceptance: chapter 14 gains a majority of Simple Medical Bay material conditions, but the module is not installed, started, or fully unlocked."
+  - id: pa_da12a36f
+    status: approved
+    note: "Human confirmed during chapter 14 acceptance: the contaminated isolation-film outer roll and folding medical-frame usable part are approved as externally isolated, pending cleaning / installation components."
+  - id: pa_5d38bdbb
+    status: approved
+    note: "Human confirmed during chapter 14 acceptance: the sterile power interface / harness is abandoned after grey-white residue contact and is not obtained in this chapter."
+  - id: pa_9389be2d
+    status: approved
+    note: "Human confirmed during chapter 14 acceptance: grey-white vine residue remains unsampled, unjudged, and not usable material; it cannot directly enter the living area."
+  - id: pa_3ad60815
+    status: approved
+    note: "Human confirmed during chapter 14 acceptance: voice mimicry upgrades into a false Lu Chenzhou boarding command, while outsiders still do not know the RV system's formal name."

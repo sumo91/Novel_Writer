@@ -86,6 +86,67 @@ def test_validate_craft_cards_reports_schema_errors(tmp_path, monkeypatch):
     )
 
 
+def test_validate_craft_cards_reports_quality_errors(tmp_path, monkeypatch):
+    knowledge_dir = tmp_path / "knowledge"
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", knowledge_dir)
+    card_dir = knowledge_dir / "craft_cards"
+    card_dir.mkdir(parents=True)
+    (card_dir / "bloated.yaml").write_text(
+        "\n".join(
+            [
+                "id: craft_bloated",
+                "scope: craft",
+                "applies_to:",
+                "  - brief",
+                "use_when: A card is too vague to guide action.",
+                "principle: " + "This card keeps explaining background theory instead of giving one compact operating principle. " * 5,
+                "checks: []",
+                "failure_modes: []",
+                "severity: hard",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    errors = craft_knowledge.validate_craft_cards()
+
+    assert "craft_cards/bloated.yaml: principle must be concise." in errors
+    assert "craft_cards/bloated.yaml: checks must contain at least one item." in errors
+    assert (
+        "craft_cards/bloated.yaml: failure_modes must contain at least one item."
+        in errors
+    )
+
+
+def test_validate_craft_card_quality_rejects_raw_source_dump():
+    source_text = (
+        "金手指不是奖励按钮，而是主角进入牌桌的入场券。"
+        "它必须制造新的选择压力，并持续暴露限制、代价和误判空间。"
+    )
+    card = {
+        "id": "craft_source_dump",
+        "scope": "craft",
+        "applies_to": ["brief"],
+        "use_when": "Designing golden-finger pressure.",
+        "principle": source_text,
+        "checks": ["Does the ability create a pressured choice?"],
+        "failure_modes": ["The card repeats transcript wording instead of abstraction."],
+        "severity": "hard",
+    }
+
+    errors = craft_knowledge.validate_craft_card_quality(
+        card,
+        "craft_cards/source_dump.yaml",
+        source_text=source_text,
+    )
+
+    assert (
+        "craft_cards/source_dump.yaml: principle appears to copy a long source excerpt."
+        in errors
+    )
+
+
 def test_render_craft_cards_includes_scope_and_severity():
     lines = craft_knowledge.render_craft_cards(
         [

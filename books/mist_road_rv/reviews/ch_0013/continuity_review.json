@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "score": 91,
+  "issues": [
+    {
+      "type": "golden_finger_exposure",
+      "severity": "resolved",
+      "evidence": "Initial draft had a fog-side voice say, \"你们车里有系统是不是？\" The revised draft changes this to suspicion of the visible central screen: \"你们车里那块屏亮了是不是？\"",
+      "suggested_fix": "Resolved in revised draft. Keep outsiders able to suspect the RV is special without knowing the golden-finger term."
+    },
+    {
+      "type": "module_boundary",
+      "severity": "low",
+      "evidence": "The draft makes grey-white vine residue a candidate for Simple Medical Bay isolation /判定, but it does not acquire the complete material set or activate the module.",
+      "suggested_fix": "In revision and state updates, keep the residue as an unisolated, unjudged candidate. Do not mark Simple Medical Bay as unlocked or usable."
+    },
+    {
+      "type": "qinghe_scope",
+      "severity": "low",
+      "evidence": "The draft stays at Qinghe medical-point exterior. It uses the left wall, lamp line, No. 2 power box signal, and exterior pressure without entering the main building or explaining the survivor organization.",
+      "suggested_fix": "Preserve exterior-only scope. Chapter 14 can move into material contest without revealing the whole Qinghe order."
+    },
+    {
+      "type": "vehicle_boundary",
+      "severity": "low",
+      "evidence": "Lu Chenzhou keeps the RV running, preserves the retreat angle, refuses to open the door, abandons contaminated tools, and uses lights / reverse / external speaker / rope / rod rather than body contact.",
+      "suggested_fix": "Keep these as the core chapter payoff. Do not revise into a door-opening rescue or direct melee."
+    },
+    {
+      "type": "temporary_survivor_status",
+      "severity": "low",
+      "evidence": "The child and abdominal bleeding man remain outside as controllable / observable subjects; Zhou Xiaohe stays in temporary observation and only contributes a sound cue.",
+      "suggested_fix": "State updates should not upgrade any of them to crew, boarding status, or formal allies."
+    },
+    {
+      "type": "monster_ecology_scope",
+      "severity": "low",
+      "evidence": "The draft shows the vine reacting to blood, supplies, sound response, contact, and door direction, while leaving the underlying ecology unexplained.",
+      "suggested_fix": "Record these as observed reactions only. Avoid turning them into complete rules or taxonomy."
+    }
+  ],
+  "required_fixes": [],
+  "proposed_state_updates": [
+    "Chapter 13 at Qinghe medical-point exterior: the grey-eyed patient mutates into a grey-white vine threat that can exploit medical supplies, blood traces, sound response, contact attempts, and the RV door direction.",
+    "Lu Chenzhou keeps the RV running and angled for retreat, refuses to open the door, and completes the first non-contact vine counter using lights, reverse movement, external speaker commands, rope / rod tools, and vehicle angle.",
+    "Lin Zhixia observes the vine's reactions without touching it, identifies the thrown medical bag as contaminated, stops wrong contact, and treats the observed triggers as provisional rather than final ecology.",
+    "The abdominal bleeding man and low-fever child remain outside and survive this beat only by obeying left-wall / no-contact instructions; neither gains boarding status.",
+    "A wrong-contact survivor who tries to grab the contaminated supplies is nearly wrapped, demonstrating that attempts to recover medical supplies or touch the vine can accelerate danger.",
+    "The thrown medical bag, rope / rod contact tools, and exterior supplies involved in the countermeasure are contaminated or abandoned rather than recovered into the RV.",
+    "Grey-white vine fragments / residue remain near the water crack as a possible Simple Medical Bay isolation-material clue, but they are unisolated, unjudged, and forbidden from entering the living area.",
+    "The Simple Medical Bay remains locked and inactive; the chapter ends with the material signal behind the residue and a short remaining filter window pushing chapter 14 toward a controlled material contest."
+  ],
+  "human_approval_needed": [
+    "Approve grey-white vine as Qinghe's first physical vine-mutated patient threat.",
+    "Approve the observed vine reactions to blood, medical supplies, sound response, contact attempts, and door direction as provisional behavior, not complete ecology.",
+    "Approve contaminated vine residue as a possible Simple Medical Bay material clue only after isolation and system判定.",
+    "Approve tool / supply loss from the non-contact countermeasure.",
+    "Approve that no outside survivor currently knows the RV 'system' by name; any such wording must be removed before acceptance."
+  ]
+}

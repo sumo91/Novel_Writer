@@ -9,7 +9,10 @@
       8,
       9,
       10,
-      11
+      11,
+      12,
+      13,
+      14
     ],
     "lin_zhixia": [
       3,
@@ -20,7 +23,10 @@
       8,
       9,
       10,
-      11
+      11,
+      12,
+      13,
+      14
     ],
     "temporary_injured_girl": [
       4,
@@ -30,7 +36,10 @@
       8,
       9,
       10,
-      11
+      11,
+      12,
+      13,
+      14
     ],
     "old_zheng": [
       7,
@@ -46,7 +55,10 @@
       8,
       9,
       10,
-      11
+      11,
+      12,
+      13,
+      14
     ],
     "thread_mist_monster_ecology": [
       3,
@@ -57,7 +69,10 @@
       8,
       9,
       10,
-      11
+      11,
+      12,
+      13,
+      14
     ],
     "thread_vehicle_rules_contract": [
       3,
@@ -68,7 +83,10 @@
       8,
       9,
       10,
-      11
+      11,
+      12,
+      13,
+      14
     ],
     "thread_lin_pollution_observation": [
       3,
@@ -79,7 +97,10 @@
       8,
       9,
       10,
-      11
+      11,
+      12,
+      13,
+      14
     ],
     "thread_lu_old_rescue_accident": [
       4
@@ -90,7 +111,10 @@
       8,
       9,
       10,
-      11
+      11,
+      12,
+      13,
+      14
     ]
   },
   "by_location": {
@@ -126,6 +150,15 @@
     ],
     "青河服务区医疗点外缘，房车斜停并保持撤离角度，后墙二号配电箱和医疗材料线索已确认但未接触。": [
       11
+    ],
+    "青河服务区医疗点外缘，房车保持撤离角度，车外灯线前出现分诊对象和藤化预兆。": [
+      12
+    ],
+    "青河服务区医疗点外缘，房车门关闭并保持撤离角度，污染残片留在水泥缝附近，二号配电箱旁医疗材料信号增强。": [
+      13
+    ],
+    "青河服务区医疗点外缘，房车仍保持撤离角度，医疗位材料外置隔离挂在后挂架，外仓侧门远程开启。": [
+      14
     ]
   },
   "by_resource": {
@@ -137,7 +170,10 @@
       7,
       8,
       9,
-      10
+      10,
+      12,
+      13,
+      14
     ],
     "fuel_liter": [
       3,
@@ -152,7 +188,9 @@
       7,
       8,
       9,
-      10
+      10,
+      12,
+      13
     ],
     "rv_integrity": [
       3,
@@ -169,7 +207,9 @@
       9
     ],
     "rv_rear_seal": [
-      10
+      10,
+      12,
+      14
     ],
     "route_info_qinghe_medical_point": [
       10
@@ -187,10 +227,41 @@
       11
     ],
     "simple_medical_bay": [
-      11
+      11,
+      12,
+      13,
+      14
     ],
     "rv_retreat_line_and_filter_window": [
       11
+    ],
+    "qinghe_exterior_triage_protocol": [
+      12
+    ],
+    "grey_white_vine_observation": [
+      12
+    ],
+    "external_countermeasure_tools": [
+      13
+    ],
+    "grey_white_vine_residue": [
+      13,
+      14
+    ],
+    "grey_white_vine_reaction_observations": [
+      13
+    ],
+    "medical_isolation_film_outer_roll": [
+      14
+    ],
+    "folding_medical_frame_usable_part": [
+      14
+    ],
+    "sterile_power_interface_harness": [
+      14
+    ],
+    "voice_command_mimicry": [
+      14
     ]
   }
 }

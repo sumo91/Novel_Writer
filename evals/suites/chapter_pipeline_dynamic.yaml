@@ -1,0 +1,255 @@
+id: chapter_pipeline_dynamic
+description: Dynamic isolated eval for the full mechanical single-chapter pipeline.
+cases:
+  - id: prepare_to_accept_chapter
+    workspace:
+      copy:
+        - engine
+        - knowledge
+    steps:
+      - id: init-book
+        command:
+          - python
+          - -m
+          - engine.cli
+          - init-book
+          - __eval_chapter_book__
+          - --title
+          - Eval Chapter Book
+        expect:
+          exit_code: 0
+          files_exist:
+            - books/__eval_chapter_book__/book.yaml
+
+      - id: prepare-chapter
+        command:
+          - python
+          - -m
+          - engine.cli
+          - prepare-chapter
+          - __eval_chapter_book__
+          - "1"
+        expect:
+          exit_code: 0
+          stdout_contains:
+            - "Prepared chapter pipeline"
+            - "Chapter brief gate"
+          files_exist:
+            - books/__eval_chapter_book__/pipeline/ch_0001/context.md
+            - books/__eval_chapter_book__/pipeline/ch_0001/manifest.json
+            - books/__eval_chapter_book__/pipeline/ch_0001/handoffs/01_plot_planner.md
+
+      - id: write-complete-chapter-fixtures
+        write_files:
+          - path: books/__eval_chapter_book__/outlines/chapter_briefs/ch_0001_brief.md
+            content: |
+              # Chapter 1 Brief
+
+              ## Outline Reference
+
+              - Reference chain: master -> volume -> arc -> unit -> chapter brief
+              - Volume: volume_001
+              - Arc: arc_001
+              - Unit: unit_0001
+              - Outline obligations: open with a clear hook, deliver a modest payoff, and leave a next hook.
+
+              ## Anti-Infodump Opening Plan
+
+              Open with immediate scene pressure before explanation.
+
+              ## Craft Alignment
+
+              - The opening starts from scene pressure.
+              - The protagonist makes a concrete choice.
+
+          - path: books/__eval_chapter_book__/drafts/ch_0001_draft.md
+            content: |
+              Eval chapter draft. The protagonist faces a small problem and acts.
+
+          - path: books/__eval_chapter_book__/reviews/ch_0001/continuity_review.json
+            json:
+              passed: true
+              issues: []
+              required_fixes: []
+              proposed_state_updates: []
+              human_approval_needed: []
+
+          - path: books/__eval_chapter_book__/reviews/ch_0001/pacing_review.json
+            json:
+              score: 88
+              revised_score: 88
+              dimension_scores:
+                hook_strength: 9
+                conflict_clarity: 9
+                protagonist_agency: 9
+                emotional_payoff: 8
+                pacing: 9
+                character_consistency: 8
+                continuity_safety: 9
+                chapter_end_pull: 9
+                mainline_relevance: 9
+                fresh_information_or_expectation: 9
+              proposed_state_updates: []
+              human_approval_needed: []
+
+          - path: books/__eval_chapter_book__/drafts/ch_0001_revised.md
+            content: |
+              Eval chapter revised draft. The protagonist solves the immediate problem and leaves a hook.
+
+          - path: books/__eval_chapter_book__/authoring/ch_0001_author_direction.yaml
+            yaml:
+              chapter: 1
+              author_intent:
+                - Keep the protagonist active.
+              must_change: []
+              approved_lines: []
+              rejected_patterns: []
+              ai_assistance:
+                expected: true
+                human_role: direction and final approval
+              approved_for_final_candidate: true
+
+          - path: books/__eval_chapter_book__/reviews/ch_0001/prose_quality_review.json
+            json:
+              score: 88
+              dimension_scores:
+                opening_hook: 9
+                conflict_pressure: 9
+                protagonist_agency: 9
+                payoff_execution: 13
+                dialogue_tension: 9
+                scene_specificity: 9
+                voice_distinction: 8
+                rhythm_variation: 8
+                ending_pull: 9
+                style_slop_control: 5
+              style_alignment:
+                passed: true
+                score: 88
+                style_bible_used: true
+                calibration_used: false
+                matched_patterns: []
+                rejected_patterns_hit: []
+                violations: []
+              blocking_issues: []
+              rewrite_required: false
+
+          - path: books/__eval_chapter_book__/drafts/ch_0001_final_candidate.md
+            content: |
+              Eval chapter final candidate. The protagonist acts, wins a modest payoff, and a new hook appears.
+        expect:
+          files_exist:
+            - books/__eval_chapter_book__/outlines/chapter_briefs/ch_0001_brief.md
+            - books/__eval_chapter_book__/drafts/ch_0001_final_candidate.md
+            - books/__eval_chapter_book__/reviews/ch_0001/prose_quality_review.json
+
+      - id: quality-gate
+        command:
+          - python
+          - -m
+          - engine.cli
+          - pipeline-quality-gate
+          - __eval_chapter_book__
+          - "1"
+        expect:
+          exit_code: 0
+          stdout_contains:
+            - "Quality gate: passed"
+            - "revision_required: False"
+
+      - id: prose-quality-gate
+        command:
+          - python
+          - -m
+          - engine.cli
+          - pipeline-prose-quality-gate
+          - __eval_chapter_book__
+          - "1"
+        expect:
+          exit_code: 0
+          stdout_contains:
+            - "Prose quality gate: passed"
+            - "rewrite_required: False"
+
+      - id: pipeline-status-ready-for-acceptance-packet
+        command:
+          - python
+          - -m
+          - engine.cli
+          - pipeline-status
+          - __eval_chapter_book__
+          - "1"
+        expect:
+          exit_code: 0
+          stdout_contains:
+            - "Pipeline status: needs_acceptance_packet"
+
+      - id: draft-acceptance
+        command:
+          - python
+          - -m
+          - engine.cli
+          - pipeline-draft-acceptance
+          - __eval_chapter_book__
+          - "1"
+          - --title
+          - Eval Chapter
+          - --summary
+          - Eval chapter accepted through dynamic pipeline.
+        expect:
+          exit_code: 0
+          stdout_contains:
+            - "Drafted pipeline acceptance packet"
+          files_exist:
+            - books/__eval_chapter_book__/state_updates/ch_0001_acceptance.yaml
+            - books/__eval_chapter_book__/state_updates/ch_0001_acceptance.html
+          file_not_contains:
+            books/__eval_chapter_book__/state_updates/ch_0001_acceptance.yaml:
+              - TODO
+              - draft_note
+              - ready_for_acceptance
+              - pending human acceptance
+
+      - id: accept-chapter
+        command:
+          - python
+          - -m
+          - engine.cli
+          - pipeline-accept
+          - __eval_chapter_book__
+          - "1"
+          - --approved
+        expect:
+          exit_code: 0
+          stdout_contains:
+            - "Pipeline accepted chapter"
+          files_exist:
+            - books/__eval_chapter_book__/chapters/ch_0001.md
+          file_contains:
+            books/__eval_chapter_book__/chapters/ch_0001.md:
+              - "Eval chapter final candidate"
+
+      - id: pipeline-status-accepted
+        command:
+          - python
+          - -m
+          - engine.cli
+          - pipeline-status
+          - __eval_chapter_book__
+          - "1"
+        expect:
+          exit_code: 0
+          stdout_contains:
+            - "Pipeline status: accepted"
+
+      - id: validate-book
+        command:
+          - python
+          - -m
+          - engine.cli
+          - validate-book
+          - __eval_chapter_book__
+        expect:
+          exit_code: 0
+          stdout_contains:
+            - "Book project is valid: __eval_chapter_book__"

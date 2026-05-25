@@ -1,0 +1,44 @@
+id: showrunner_static
+description: Static architecture evals for AGENTS, showrunner skill, and new-book runbook boundaries.
+cases:
+  - id: agents_stays_constitution_layer
+    command:
+      - --help
+    expect:
+      exit_code: 0
+      file_contains:
+        AGENTS.md:
+          - constitution layer
+          - Workflow Authority
+          - Knowledge Hygiene
+      line_count_max:
+        AGENTS.md: 180
+
+  - id: showrunner_stays_routing_layer
+    command:
+      - --help
+    expect:
+      exit_code: 0
+      file_contains:
+        .agents/skills/novel-writing-showrunner/SKILL.md:
+          - routing layer
+          - docs/workflows/v5-0-new-book-kickoff.md
+          - Knowledge Ingestion
+      file_not_contains:
+        .agents/skills/novel-writing-showrunner/SKILL.md:
+          - "### Required Phases"
+          - "### Phase A"
+          - "## Detailed Procedure"
+      line_count_max:
+        .agents/skills/novel-writing-showrunner/SKILL.md: 180
+
+  - id: new_book_runbook_is_detailed_source
+    command:
+      - --help
+    expect:
+      exit_code: 0
+      file_contains:
+        docs/workflows/v5-0-new-book-kickoff.md:
+          - detailed source of truth
+          - reader promise
+          - golden-finger necessity and limits

@@ -1,0 +1,193 @@
+{
+  "suite_id": "chapter_pipeline_dynamic",
+  "description": "Dynamic isolated eval for the full mechanical single-chapter pipeline.",
+  "generated_at": "2026-05-25T15:53:32.755624+00:00",
+  "passed": true,
+  "summary": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0
+  },
+  "cases": [
+    {
+      "id": "prepare_to_accept_chapter",
+      "command": [],
+      "exit_code": 0,
+      "passed": true,
+      "errors": [],
+      "stdout": "Created book project: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/prepare_to_accept_chapter/books/__eval_chapter_book__\n\nPrepared chapter pipeline: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/prepare_to_accept_chapter/books/__eval_chapter_book__/pipeline/ch_0001\nChapter brief gate: blocked\nChapter brief check: missing\n\nQuality gate: passed\n- continuity_blockers: 0\n- initial_pacing_score: 88\n- revised_pacing_score: 88\n- revision_required: False\n- waiver_required: False\nHTML review copy: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/prepare_to_accept_chapter/books/__eval_chapter_book__/reviews/ch_0001/quality_gate.html\n\nProse quality gate: passed\n- score: 88\n- rewrite_required: False\n\nPipeline status: needs_acceptance_packet\n- context: present (pipeline/ch_0001/context.md)\n- style_bible: present (style/style_bible.yaml)\n- brief: present (outlines/chapter_briefs/ch_0001_brief.md)\n- draft: present (drafts/ch_0001_draft.md)\n- revised: present (drafts/ch_0001_revised.md)\n- author_direction: present (authoring/ch_0001_author_direction.yaml)\n- continuity_review: present (reviews/ch_0001/continuity_review.json)\n- pacing_review: present (reviews/ch_0001/pacing_review.json)\n- reader_panel_review: missing (reviews/ch_0001/reader_panel_review.json)\n- prose_quality_review: present (reviews/ch_0001/prose_quality_review.json)\n- final_candidate: present (drafts/ch_0001_final_candidate.md)\n- acceptance_packet: missing (state_updates/ch_0001_acceptance.yaml)\n- accepted_chapter: missing (chapters/ch_0001.md)\nNext action: Draft and review acceptance packet.\n\nDrafted pipeline acceptance packet: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/prepare_to_accept_chapter/books/__eval_chapter_book__/state_updates/ch_0001_acceptance.yaml\nHTML review copy: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/prepare_to_accept_chapter/books/__eval_chapter_book__/state_updates/ch_0001_acceptance.html\n\nPipeline accepted chapter: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/prepare_to_accept_chapter/books/__eval_chapter_book__/chapters/ch_0001.md\n\nPipeline status: accepted\n- context: present (pipeline/ch_0001/context.md)\n- style_bible: present (style/style_bible.yaml)\n- brief: present (outlines/chapter_briefs/ch_0001_brief.md)\n- draft: present (drafts/ch_0001_draft.md)\n- revised: present (drafts/ch_0001_revised.md)\n- author_direction: present (authoring/ch_0001_author_direction.yaml)\n- continuity_review: present (reviews/ch_0001/continuity_review.json)\n- pacing_review: present (reviews/ch_0001/pacing_review.json)\n- reader_panel_review: missing (reviews/ch_0001/reader_panel_review.json)\n- prose_quality_review: present (reviews/ch_0001/prose_quality_review.json)\n- final_candidate: present (drafts/ch_0001_final_candidate.md)\n- acceptance_packet: present (state_updates/ch_0001_acceptance.yaml)\n- accepted_chapter: present (chapters/ch_0001.md)\nNext action: Chapter has been accepted.\n\nBook project is valid: __eval_chapter_book__\n",
+      "stderr": "",
+      "workspace": ".tmp/eval_workspaces/prepare_to_accept_chapter",
+      "steps": [
+        {
+          "id": "init-book",
+          "command": [
+            "python",
+            "-m",
+            "engine.cli",
+            "init-book",
+            "__eval_chapter_book__",
+            "--title",
+            "Eval Chapter Book"
+          ],
+          "exit_code": 0,
+          "passed": true,
+          "skipped": false,
+          "errors": [],
+          "stdout": "Created book project: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/prepare_to_accept_chapter/books/__eval_chapter_book__\n",
+          "stderr": ""
+        },
+        {
+          "id": "prepare-chapter",
+          "command": [
+            "python",
+            "-m",
+            "engine.cli",
+            "prepare-chapter",
+            "__eval_chapter_book__",
+            "1"
+          ],
+          "exit_code": 0,
+          "passed": true,
+          "skipped": false,
+          "errors": [],
+          "stdout": "Prepared chapter pipeline: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/prepare_to_accept_chapter/books/__eval_chapter_book__/pipeline/ch_0001\nChapter brief gate: blocked\nChapter brief check: missing\n",
+          "stderr": ""
+        },
+        {
+          "id": "write-complete-chapter-fixtures",
+          "command": [],
+          "exit_code": 0,
+          "passed": true,
+          "skipped": false,
+          "errors": [],
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "id": "quality-gate",
+          "command": [
+            "python",
+            "-m",
+            "engine.cli",
+            "pipeline-quality-gate",
+            "__eval_chapter_book__",
+            "1"
+          ],
+          "exit_code": 0,
+          "passed": true,
+          "skipped": false,
+          "errors": [],
+          "stdout": "Quality gate: passed\n- continuity_blockers: 0\n- initial_pacing_score: 88\n- revised_pacing_score: 88\n- revision_required: False\n- waiver_required: False\nHTML review copy: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/prepare_to_accept_chapter/books/__eval_chapter_book__/reviews/ch_0001/quality_gate.html\n",
+          "stderr": ""
+        },
+        {
+          "id": "prose-quality-gate",
+          "command": [
+            "python",
+            "-m",
+            "engine.cli",
+            "pipeline-prose-quality-gate",
+            "__eval_chapter_book__",
+            "1"
+          ],
+          "exit_code": 0,
+          "passed": true,
+          "skipped": false,
+          "errors": [],
+          "stdout": "Prose quality gate: passed\n- score: 88\n- rewrite_required: False\n",
+          "stderr": ""
+        },
+        {
+          "id": "pipeline-status-ready-for-acceptance-packet",
+          "command": [
+            "python",
+            "-m",
+            "engine.cli",
+            "pipeline-status",
+            "__eval_chapter_book__",
+            "1"
+          ],
+          "exit_code": 0,
+          "passed": true,
+          "skipped": false,
+          "errors": [],
+          "stdout": "Pipeline status: needs_acceptance_packet\n- context: present (pipeline/ch_0001/context.md)\n- style_bible: present (style/style_bible.yaml)\n- brief: present (outlines/chapter_briefs/ch_0001_brief.md)\n- draft: present (drafts/ch_0001_draft.md)\n- revised: present (drafts/ch_0001_revised.md)\n- author_direction: present (authoring/ch_0001_author_direction.yaml)\n- continuity_review: present (reviews/ch_0001/continuity_review.json)\n- pacing_review: present (reviews/ch_0001/pacing_review.json)\n- reader_panel_review: missing (reviews/ch_0001/reader_panel_review.json)\n- prose_quality_review: present (reviews/ch_0001/prose_quality_review.json)\n- final_candidate: present (drafts/ch_0001_final_candidate.md)\n- acceptance_packet: missing (state_updates/ch_0001_acceptance.yaml)\n- accepted_chapter: missing (chapters/ch_0001.md)\nNext action: Draft and review acceptance packet.\n",
+          "stderr": ""
+        },
+        {
+          "id": "draft-acceptance",
+          "command": [
+            "python",
+            "-m",
+            "engine.cli",
+            "pipeline-draft-acceptance",
+            "__eval_chapter_book__",
+            "1",
+            "--title",
+            "Eval Chapter",
+            "--summary",
+            "Eval chapter accepted through dynamic pipeline."
+          ],
+          "exit_code": 0,
+          "passed": true,
+          "skipped": false,
+          "errors": [],
+          "stdout": "Drafted pipeline acceptance packet: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/prepare_to_accept_chapter/books/__eval_chapter_book__/state_updates/ch_0001_acceptance.yaml\nHTML review copy: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/prepare_to_accept_chapter/books/__eval_chapter_book__/state_updates/ch_0001_acceptance.html\n",
+          "stderr": ""
+        },
+        {
+          "id": "accept-chapter",
+          "command": [
+            "python",
+            "-m",
+            "engine.cli",
+            "pipeline-accept",
+            "__eval_chapter_book__",
+            "1",
+            "--approved"
+          ],
+          "exit_code": 0,
+          "passed": true,
+          "skipped": false,
+          "errors": [],
+          "stdout": "Pipeline accepted chapter: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/prepare_to_accept_chapter/books/__eval_chapter_book__/chapters/ch_0001.md\n",
+          "stderr": ""
+        },
+        {
+          "id": "pipeline-status-accepted",
+          "command": [
+            "python",
+            "-m",
+            "engine.cli",
+            "pipeline-status",
+            "__eval_chapter_book__",
+            "1"
+          ],
+          "exit_code": 0,
+          "passed": true,
+          "skipped": false,
+          "errors": [],
+          "stdout": "Pipeline status: accepted\n- context: present (pipeline/ch_0001/context.md)\n- style_bible: present (style/style_bible.yaml)\n- brief: present (outlines/chapter_briefs/ch_0001_brief.md)\n- draft: present (drafts/ch_0001_draft.md)\n- revised: present (drafts/ch_0001_revised.md)\n- author_direction: present (authoring/ch_0001_author_direction.yaml)\n- continuity_review: present (reviews/ch_0001/continuity_review.json)\n- pacing_review: present (reviews/ch_0001/pacing_review.json)\n- reader_panel_review: missing (reviews/ch_0001/reader_panel_review.json)\n- prose_quality_review: present (reviews/ch_0001/prose_quality_review.json)\n- final_candidate: present (drafts/ch_0001_final_candidate.md)\n- acceptance_packet: present (state_updates/ch_0001_acceptance.yaml)\n- accepted_chapter: present (chapters/ch_0001.md)\nNext action: Chapter has been accepted.\n",
+          "stderr": ""
+        },
+        {
+          "id": "validate-book",
+          "command": [
+            "python",
+            "-m",
+            "engine.cli",
+            "validate-book",
+            "__eval_chapter_book__"
+          ],
+          "exit_code": 0,
+          "passed": true,
+          "skipped": false,
+          "errors": [],
+          "stdout": "Book project is valid: __eval_chapter_book__\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ]
+}

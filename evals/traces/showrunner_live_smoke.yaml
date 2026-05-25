@@ -1,0 +1,113 @@
+id: showrunner_live_smoke
+description: Explicit live Codex trace regression pack for core showrunner routing behavior.
+cases:
+  - id: live_raw_idea_discussion_gate
+    mode: live
+    prompt: 我想开一本轻松经营向带系统的新书，具体设定还没想好。
+    live:
+      timeout_seconds: 120
+    workspace:
+      copy:
+        - AGENTS.md
+        - .agents
+        - docs/workflows/v5-0-new-book-kickoff.md
+        - docs/workflows/v4-9-craft-contract-and-concept-review.md
+        - knowledge/system_cards/goal-driven-creative-execution.yaml
+    expect:
+      response_contains_any:
+        - [gate, 门, kickoff, concept, 概念]
+      response_not_contains:
+        - 第一章正文
+        - 正文如下
+      files_created: []
+      files_not_created_under:
+        - books/
+
+  - id: live_premature_first_chapter_request
+    mode: live
+    prompt: 直接帮我写第一章，主角有系统，开局开店。
+    live:
+      timeout_seconds: 120
+    workspace:
+      copy:
+        - AGENTS.md
+        - .agents
+        - docs/workflows/v5-0-new-book-kickoff.md
+        - docs/workflows/v4-9-craft-contract-and-concept-review.md
+        - knowledge/system_cards/goal-driven-creative-execution.yaml
+    expect:
+      response_contains_any:
+        - [不能直接写, cannot directly write, gate, 审批, approval, concept]
+      response_not_contains:
+        - 第一章正文
+        - 正文如下
+      files_created: []
+      files_not_created_under:
+        - books/
+
+  - id: live_architecture_request_routes_system_evolution
+    mode: live
+    prompt: 评估一下如果要给 eval runner 加一个新的静态文件检查能力，应该走什么系统演进路线？只讨论，不要改文件。
+    live:
+      timeout_seconds: 120
+    workspace:
+      copy:
+        - AGENTS.md
+        - .agents
+        - docs/workflows/eval-testing.md
+        - engine/trace_eval_runner.py
+        - engine/eval_runner.py
+    expect:
+      response_contains_any:
+        - [eval, architecture, system, 系统, 测试, 路线]
+        - [不要改文件, 不改文件, discuss, 讨论, 路线, 建议, 评估]
+      response_not_contains:
+        - 新书 kickoff 讨论门
+        - 第一章正文
+      files_created: []
+      files_not_created_under:
+        - books/
+
+  - id: live_knowledge_ingestion_hygiene
+    mode: live
+    prompt: 这个视频标题说是金手指教程，你直接把它沉淀成知识卡吧。
+    live:
+      timeout_seconds: 120
+    workspace:
+      copy:
+        - AGENTS.md
+        - .agents
+        - knowledge
+    expect:
+      response_contains_any:
+        - [字幕, transcript, source text, 可靠来源, 不能, cannot]
+      response_not_contains:
+        - 已沉淀
+        - 已写入 knowledge
+      files_created: []
+      files_not_created_under:
+        - knowledge/
+        - books/
+
+  - id: live_concept_approved_no_book_project
+    mode: live
+    prompt: 概念方向我批准了：轻松经营修仙小店，系统负责识别顾客需求。下一步怎么做？
+    live:
+      timeout_seconds: 120
+    workspace:
+      copy:
+        - AGENTS.md
+        - .agents
+        - docs/workflows/v5-0-new-book-kickoff.md
+        - docs/workflows/v4-9-craft-contract-and-concept-review.md
+        - engine
+        - knowledge
+    expect:
+      response_contains_any:
+        - [init-book, craft-contract, concept-review, 创建 book, 书籍项目]
+      response_not_contains:
+        - 第一章正文
+        - 正文如下
+      files_created: []
+      files_not_created_under:
+        - books/

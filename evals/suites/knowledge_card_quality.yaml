@@ -1,0 +1,80 @@
+id: knowledge_card_quality
+description: Dynamic evals for reusable craft-card schema, concision, and anti-dump quality gates.
+cases:
+  - id: valid_practical_card_passes
+    workspace:
+      copy:
+        - engine
+    steps:
+      - id: write-valid-card
+        write_files:
+          - path: knowledge/craft_cards/golden_finger_pressure_loop.yaml
+            yaml:
+              id: craft_golden_finger_pressure_loop
+              scope: craft
+              applies_to:
+                - brief
+                - concept
+              use_when: Designing a system or golden-finger advantage.
+              principle: Make the advantage create repeatable choice pressure, not automatic problem solving.
+              checks:
+                - Name the pressured choice created by the advantage.
+                - State one limit or cost that keeps outcomes uncertain.
+              failure_modes:
+                - The same button solves every scene.
+                - The ability removes protagonist judgment from the payoff.
+              severity: hard
+        expect:
+          files_exist:
+            - knowledge/craft_cards/golden_finger_pressure_loop.yaml
+
+      - id: craft-card-check-passes
+        command:
+          - python
+          - -m
+          - engine.cli
+          - craft-card-check
+        expect:
+          exit_code: 0
+          stdout_contains:
+            - "Craft card check: passed"
+          stdout_not_contains:
+            - Traceback
+
+  - id: bloated_or_empty_card_fails
+    workspace:
+      copy:
+        - engine
+    steps:
+      - id: write-invalid-card
+        write_files:
+          - path: knowledge/craft_cards/bloated_card.yaml
+            yaml:
+              id: craft_bloated_card
+              scope: craft
+              applies_to:
+                - brief
+              use_when: Testing knowledge hygiene.
+              principle: This card keeps explaining background theory instead of giving one compact operating principle. This card keeps explaining background theory instead of giving one compact operating principle. This card keeps explaining background theory instead of giving one compact operating principle. This card keeps explaining background theory instead of giving one compact operating principle.
+              checks: []
+              failure_modes: []
+              severity: hard
+        expect:
+          files_exist:
+            - knowledge/craft_cards/bloated_card.yaml
+
+      - id: craft-card-check-fails
+        command:
+          - python
+          - -m
+          - engine.cli
+          - craft-card-check
+        expect:
+          exit_code: 1
+          stdout_contains:
+            - "Craft card check: failed"
+            - "craft_cards/bloated_card.yaml: principle must be concise."
+            - "craft_cards/bloated_card.yaml: checks must contain at least one item."
+            - "craft_cards/bloated_card.yaml: failure_modes must contain at least one item."
+          stdout_not_contains:
+            - Traceback

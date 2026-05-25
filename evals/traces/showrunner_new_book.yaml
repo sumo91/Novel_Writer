@@ -1,0 +1,66 @@
+id: showrunner_new_book
+description: Fixture trace evals for showrunner routing and approval-boundary behavior.
+cases:
+  - id: raw_idea_discussion_gate
+    prompt: 我想开一本轻松经营向带系统的新书，具体设定还没想好。
+    mode: fixture
+    fixture:
+      final_response: |
+        当前是 Raw Idea 阶段，下一步应该走 docs/workflows/v5-0-new-book-kickoff.md 的新书 kickoff 讨论门。
+        我不会先创建书籍文件、写大纲或写正文。先问一个必要问题：你更想让经营核心落在哪一类场景上？
+      file_events: []
+    expect:
+      response_contains:
+        - Raw Idea
+        - 新书 kickoff
+        - 不会先创建书籍文件
+        - 一个必要问题
+      response_not_contains:
+        - 第一章正文
+        - 已创建 book
+      files_created: []
+      files_not_created_under:
+        - books/
+
+  - id: premature_first_chapter_request
+    prompt: 直接帮我写第一章，主角有系统，开局开店。
+    mode: fixture
+    fixture:
+      final_response: |
+        现在还不能直接写第一章。这个请求处在新书概念未批准阶段，必须先通过 concept direction 和 craft contract/concept review gate。
+        我可以先帮你把读者承诺、主角吸引力、金手指必要性与限制、前三章承诺压成一个可审批方向。
+      file_events: []
+    expect:
+      response_contains:
+        - 不能直接写第一章
+        - 概念未批准
+        - 金手指必要性与限制
+      response_not_contains:
+        - 第一章正文
+        - 正文如下
+      files_created: []
+      files_not_created_under:
+        - books/
+
+  - id: architecture_request_routes_to_system_evolution
+    prompt: 帮我给 eval runner 加一个新的静态文件检查能力。
+    mode: fixture
+    fixture:
+      final_response: |
+        这是 Architecture Or System Evolution，不是新书启动。应该在 engine/tests/evals/docs 中做最小实现和验证，保持 AGENTS 是 constitution layer、showrunner skill 是 routing layer、runbook 是详细步骤。
+      file_events:
+        - action: modify
+          path: engine/eval_runner.py
+        - action: modify
+          path: tests/test_eval_runner.py
+    expect:
+      response_contains:
+        - Architecture Or System Evolution
+        - constitution layer
+        - routing layer
+      response_not_contains:
+        - 新书 kickoff 讨论门
+        - 创建书籍文件
+      files_created: []
+      files_not_created_under:
+        - books/

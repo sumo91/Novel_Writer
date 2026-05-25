@@ -14,7 +14,9 @@ from engine.craft_contract import (
     generate_concept_review,
     write_craft_contract_scaffold,
 )
+from engine.craft_knowledge import validate_craft_cards
 from engine.drift_report import generate_drift_report
+from engine.eval_runner import list_eval_suites, run_eval_suite
 from engine.html_utils import write_markdown_html_sidecar
 from engine.outline_approval_packet import (
     SUPPORTED_LAYERS as OUTLINE_APPROVAL_PACKET_LAYERS,
@@ -37,6 +39,7 @@ from engine.style_knowledge import (
     write_style_bible_from_profile,
     write_style_bible_scaffold,
 )
+from engine.trace_eval_runner import list_trace_eval_suites, run_trace_eval_suite
 from engine.io_utils import read_yaml
 from engine.outline_gate import (
     APPROVAL_STATUSES,
@@ -73,6 +76,33 @@ def build_parser() -> argparse.ArgumentParser:
         "validate-book", help="Validate a book project structure."
     )
     validate_book_cmd.add_argument("book_id")
+
+    subparsers.add_parser(
+        "list-evals",
+        help="List available deterministic eval suites.",
+    )
+
+    run_evals_cmd = subparsers.add_parser(
+        "run-evals",
+        help="Run a deterministic eval suite.",
+    )
+    run_evals_cmd.add_argument("suite_id")
+
+    subparsers.add_parser(
+        "list-trace-evals",
+        help="List available trace eval suites.",
+    )
+
+    run_trace_evals_cmd = subparsers.add_parser(
+        "run-trace-evals",
+        help="Run a trace eval suite.",
+    )
+    run_trace_evals_cmd.add_argument("suite_id")
+    run_trace_evals_cmd.add_argument(
+        "--live",
+        action="store_true",
+        help="Allow live codex exec trace cases. Fixture cases do not require this.",
+    )
 
     build_context = subparsers.add_parser(
         "build-context", help="Build a Markdown context pack for a chapter."
@@ -179,6 +209,11 @@ def build_parser() -> argparse.ArgumentParser:
     )
     concept_review_cmd.add_argument("book_id")
     concept_review_cmd.add_argument("--output")
+
+    subparsers.add_parser(
+        "craft-card-check",
+        help="Check reusable craft cards for schema and quality.",
+    )
 
     style_calibration_scaffold_cmd = subparsers.add_parser(
         "style-calibration-scaffold",
@@ -360,6 +395,60 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Book project is valid: {args.book_id}")
         return 0
 
+    if args.command == "list-evals":
+        suites = list_eval_suites()
+        print("Eval suites:")
+        for suite in suites:
+            print(
+                f"- {suite['id']}: {suite.get('description', '')} "
+                f"({suite.get('cases', 0)} cases)"
+            )
+        return 0
+
+    if args.command == "run-evals":
+        try:
+            result = run_eval_suite(args.suite_id)
+        except (FileNotFoundError, ValueError) as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Eval suite: {result['suite_id']}")
+        print(f"- total: {result['summary']['total']}")
+        print(f"- passed: {result['summary']['passed']}")
+        print(f"- failed: {result['summary']['failed']}")
+        print(
+            "Reports: "
+            f"reports/evals/{result['suite_id']}.json, "
+            f"reports/evals/{result['suite_id']}.md"
+        )
+        return 0 if result["passed"] else 1
+
+    if args.command == "list-trace-evals":
+        suites = list_trace_eval_suites()
+        print("Trace eval suites:")
+        for suite in suites:
+            print(
+                f"- {suite['id']}: {suite.get('description', '')} "
+                f"({suite.get('cases', 0)} cases)"
+            )
+        return 0
+
+    if args.command == "run-trace-evals":
+        try:
+            result = run_trace_eval_suite(args.suite_id, allow_live=args.live)
+        except (FileNotFoundError, ValueError) as exc:
+            print(f"Error: {exc}")
+            return 1
+        print(f"Trace eval suite: {result['suite_id']}")
+        print(f"- total: {result['summary']['total']}")
+        print(f"- passed: {result['summary']['passed']}")
+        print(f"- failed: {result['summary']['failed']}")
+        print(
+            "Reports: "
+            f"reports/trace_evals/{result['suite_id']}.json, "
+            f"reports/trace_evals/{result['suite_id']}.md"
+        )
+        return 0 if result["passed"] else 1
+
     if args.command == "build-context":
         output_path = write_context(
             args.book_id,
@@ -532,6 +621,16 @@ def main(argv: list[str] | None = None) -> int:
             return 1
         print(f"Generated concept review: {output_path.as_posix()}")
         print(f"HTML review copy: {output_path.with_suffix('.html').as_posix()}")
+        return 0
+
+    if args.command == "craft-card-check":
+        errors = validate_craft_cards()
+        if errors:
+            print("Craft card check: failed")
+            for error in errors:
+                print(f"- error: {error}")
+            return 1
+        print("Craft card check: passed")
         return 0
 
     if args.command == "style-calibration-scaffold":

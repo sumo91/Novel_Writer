@@ -218,6 +218,33 @@ def test_concept_review_cli_writes_markdown_and_html(tmp_path, monkeypatch, caps
     assert f"Generated concept review: {output.as_posix()}" in captured.out
 
 
+def test_craft_card_check_cli_reports_quality_errors(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(craft_knowledge, "KNOWLEDGE_DIR", tmp_path / "knowledge")
+    card_dir = tmp_path / "knowledge" / "craft_cards"
+    card_dir.mkdir(parents=True)
+    write_yaml(
+        card_dir / "empty.yaml",
+        {
+            "id": "craft_empty",
+            "scope": "craft",
+            "applies_to": ["brief"],
+            "use_when": "Testing card quality.",
+            "principle": "Keep it actionable.",
+            "checks": [],
+            "failure_modes": [],
+            "severity": "hard",
+        },
+    )
+
+    result = cli.main(["craft-card-check"])
+
+    captured = capsys.readouterr()
+    assert result == 1
+    assert "Craft card check: failed" in captured.out
+    assert "craft_cards/empty.yaml: checks must contain at least one item." in captured.out
+    assert "craft_cards/empty.yaml: failure_modes must contain at least one item." in captured.out
+
+
 def test_style_bible_check_cli_reports_errors(tmp_path, monkeypatch, capsys):
     monkeypatch.setattr(book_factory, "BOOKS_DIR", tmp_path / "books")
     monkeypatch.setattr(style_knowledge, "BOOKS_DIR", tmp_path / "books")

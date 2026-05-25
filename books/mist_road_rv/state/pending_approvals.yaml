@@ -11,6 +11,20 @@ approvals:
   - state/change_log.jsonl:chapter_2
   note: 'Human confirmed during chapter 2 acceptance: Lin Zhixia is locked as an emergency
     nurse.'
+- id: pa_4bc545d8
+  status: approved
+  text: 'Approve Lin Zhixia''s first Qinghe exterior triage categories: observable,
+    exterior short-aid, and rejected high-risk suspected mutation.'
+  source_chapters:
+  - 12
+  variants:
+  - 'Approve Lin Zhixia''s first Qinghe exterior triage categories: observable, exterior
+    short-aid, and rejected high-risk suspected mutation.'
+  sources:
+  - state/change_log.jsonl:chapter_12
+  note: 'Human confirmed during chapter 12 acceptance: Lin Zhixia''s first Qinghe
+    exterior triage categories are observable, exterior short-aid, and rejected high-risk
+    suspected mutation.'
 - id: pa_78a02764
   status: approved
   text: Approve Lin Zhixia's move from temporary co-survivor to committed RV medical-role
@@ -35,7 +49,6 @@ approvals:
     as verified Simple Medical Bay material leads, not acquired materials.
   sources:
   - state/change_log.jsonl:chapter_11
-  - state/current_state.json
   note: 'Human confirmed during chapter 11 acceptance: No. 2 power box / folding medical
     frame / isolation film / power interface are verified Simple Medical Bay material
     leads, not acquired materials.'
@@ -118,7 +131,6 @@ approvals:
     a useful sound-observation cue.
   sources:
   - state/change_log.jsonl:chapter_11
-  - state/current_state.json
   note: 'Human confirmed during chapter 11 acceptance: Zhou Xiaohe remains a temporary
     observation patient after providing a useful sound-observation cue.'
 - id: pa_35f5e1e8
@@ -143,9 +155,21 @@ approvals:
     entry.
   sources:
   - state/change_log.jsonl:chapter_11
-  - state/current_state.json
   note: 'Human confirmed during chapter 11 acceptance: chapter 11 is Qinghe medical-point
     exterior validation only, not main-building entry.'
+- id: pa_8e6f438a
+  status: approved
+  text: 'Approve chapter 12''s exterior aid setup: limited car-outside treatment is
+    allowed without opening the RV or granting boarding status.'
+  source_chapters:
+  - 12
+  variants:
+  - 'Approve chapter 12''s exterior aid setup: limited car-outside treatment is allowed
+    without opening the RV or granting boarding status.'
+  sources:
+  - state/change_log.jsonl:chapter_12
+  note: 'Human confirmed during chapter 12 acceptance: limited car-outside treatment
+    is allowed without opening the RV or granting boarding status.'
 - id: pa_be09a787
   status: approved
   text: Approve chapter 4 light trigger for Lu Chenzhou's old mall-fire rescue accident
@@ -264,6 +288,19 @@ approvals:
   - state/change_log.jsonl:chapter_10
   note: 'Human confirmed during chapter 10 acceptance: Qinghe may include a threat
     that mimics or manipulates voices, but the ecology is not fully defined yet.'
+- id: pa_5595c521
+  status: approved
+  text: Approve grey-white vine emergence as the chapter 13 escalation hook, not a
+    complete monster explanation.
+  source_chapters:
+  - 12
+  variants:
+  - Approve grey-white vine emergence as the chapter 13 escalation hook, not a complete
+    monster explanation.
+  sources:
+  - state/change_log.jsonl:chapter_12
+  note: 'Human confirmed during chapter 12 acceptance: grey-white vine emergence is
+    the chapter 13 escalation hook, not a complete monster explanation.'
 - id: pa_996b1a16
   status: approved
   text: Approve short-term filter stabilization as a limited system payoff, not a
@@ -380,7 +417,6 @@ approvals:
     and old-protocol unease, not a father-route hard clue.
   sources:
   - state/change_log.jsonl:chapter_11
-  - state/current_state.json
   note: 'Human confirmed during chapter 11 acceptance: permission-error / welcome-back
     gate behavior is terminal abnormality and old-protocol unease, not a father-route
     hard clue.'
@@ -423,6 +459,19 @@ approvals:
   - state/change_log.jsonl:chapter_3
   note: 'Human confirmed during chapter 3 acceptance: temporary pressure sealing workaround
     is approved as an execution detail, not a permanent standard sealing ring.'
+- id: pa_a5eff784
+  status: approved
+  text: 'Approve the three exterior triage subjects: low-fever child, abdominal bleeding
+    man, and bound grey-eyed patient.'
+  source_chapters:
+  - 12
+  variants:
+  - 'Approve the three exterior triage subjects: low-fever child, abdominal bleeding
+    man, and bound grey-eyed patient.'
+  sources:
+  - state/change_log.jsonl:chapter_12
+  note: 'Human confirmed during chapter 12 acceptance: the three exterior triage subjects
+    are low-fever child, abdominal bleeding man, and bound grey-eyed patient.'
 - id: pa_f240b00e
   status: approved
   text: Approve the 青河 medical-power broadcast only as the chapter 10 hook, not as
@@ -436,6 +485,19 @@ approvals:
   - state/change_log.jsonl:chapter_9
   note: 'Human confirmed during chapter 9 acceptance: the Qinghe medical-power broadcast
     is only the chapter 10 hook, not an acquired medical module or completed rescue.'
+- id: pa_d02fafc2
+  status: approved
+  text: Approve voice mimicry advancing into body / patient-site behavior without
+    fully defining the ecology.
+  source_chapters:
+  - 12
+  variants:
+  - Approve voice mimicry advancing into body / patient-site behavior without fully
+    defining the ecology.
+  sources:
+  - state/change_log.jsonl:chapter_12
+  note: 'Human confirmed during chapter 12 acceptance: voice mimicry advances into
+    body / patient-site behavior without fully defining the ecology.'
 - id: pa_0f16214e
   status: approved
   text: Approve voice mimicry as an observed Qinghe threat behavior without fully
@@ -447,7 +509,6 @@ approvals:
     the ecology.
   sources:
   - state/change_log.jsonl:chapter_11
-  - state/current_state.json
   note: 'Human confirmed during chapter 11 acceptance: voice mimicry is an observed
     Qinghe threat behavior without fully defining the ecology.'
 - id: pa_3f52bf63
@@ -473,3 +534,127 @@ approvals:
   sources:
   - state/change_log.jsonl:chapter_2
   note: Human confirmed the split-filter hook should carry into chapter 3 planning.
+- id: pa_3ad60815
+  status: approved
+  text: 批准声音拟态升级为假陆沉舟上车指令，但外部仍不知道房车系统正式名称。
+  source_chapters:
+  - 14
+  variants:
+  - 批准声音拟态升级为假陆沉舟上车指令，但外部仍不知道房车系统正式名称。
+  sources:
+  - state/change_log.jsonl:chapter_14
+  - state/current_state.json
+  note: 'Human confirmed during chapter 14 acceptance: voice mimicry upgrades into
+    a false Lu Chenzhou boarding command, while outsiders still do not know the RV
+    system''s formal name.'
+- id: pa_07d0247a
+  status: approved
+  text: 批准投送包和外部反制工具被污染 / 放弃，不能回收进房车生活区。
+  source_chapters:
+  - 13
+  variants:
+  - 批准投送包和外部反制工具被污染 / 放弃，不能回收进房车生活区。
+  sources:
+  - state/change_log.jsonl:chapter_13
+  note: 'Human confirmed during chapter 13 acceptance: the thrown aid bag and exterior
+    countermeasure tools are contaminated or abandoned and cannot be recovered into
+    the RV living area.'
+- id: pa_5d38bdbb
+  status: approved
+  text: 批准无菌电源接口 / 线束因灰白残片接触而放弃，本章不取得该组件。
+  source_chapters:
+  - 14
+  variants:
+  - 批准无菌电源接口 / 线束因灰白残片接触而放弃，本章不取得该组件。
+  sources:
+  - state/change_log.jsonl:chapter_14
+  - state/current_state.json
+  note: 'Human confirmed during chapter 14 acceptance: the sterile power interface
+    / harness is abandoned after grey-white residue contact and is not obtained in
+    this chapter.'
+- id: pa_da12a36f
+  status: approved
+  text: 批准污染隔离膜外卷和折叠医疗架可用部件作为外置隔离、待清洁 / 待安装组件。
+  source_chapters:
+  - 14
+  variants:
+  - 批准污染隔离膜外卷和折叠医疗架可用部件作为外置隔离、待清洁 / 待安装组件。
+  sources:
+  - state/change_log.jsonl:chapter_14
+  - state/current_state.json
+  note: 'Human confirmed during chapter 14 acceptance: the contaminated isolation-film
+    outer roll and folding medical-frame usable part are approved as externally isolated,
+    pending cleaning / installation components.'
+- id: pa_9389be2d
+  status: approved
+  text: 批准灰白藤体残片仍未采样、未判定、未成为可用材料，不能直接进入生活区。
+  source_chapters:
+  - 14
+  variants:
+  - 批准灰白藤体残片仍未采样、未判定、未成为可用材料，不能直接进入生活区。
+  sources:
+  - state/change_log.jsonl:chapter_14
+  - state/current_state.json
+  note: 'Human confirmed during chapter 14 acceptance: grey-white vine residue remains
+    unsampled, unjudged, and not usable material; it cannot directly enter the living
+    area.'
+- id: pa_db520375
+  status: approved
+  text: 批准灰白藤体残片成为简易医疗位隔离材料候选线索，但必须隔离采样和系统判定，不能直接上车、不能直接解锁模块。
+  source_chapters:
+  - 13
+  variants:
+  - 批准灰白藤体残片成为简易医疗位隔离材料候选线索，但必须隔离采样和系统判定，不能直接上车、不能直接解锁模块。
+  sources:
+  - state/change_log.jsonl:chapter_13
+  note: 'Human confirmed during chapter 13 acceptance: grey-white vine residue is
+    a Simple Medical Bay isolation-material candidate clue only after isolation sampling
+    and system judgment; it cannot directly board or unlock the module.'
+- id: pa_b5406daa
+  status: approved
+  text: 批准灰白雾藤对血迹、医疗物资、声音回应、错误接触和车门方向存在可观察反应，但这些仍是临场观察，不是完整生态规则。
+  source_chapters:
+  - 13
+  variants:
+  - 批准灰白雾藤对血迹、医疗物资、声音回应、错误接触和车门方向存在可观察反应，但这些仍是临场观察，不是完整生态规则。
+  sources:
+  - state/change_log.jsonl:chapter_13
+  note: 'Human confirmed during chapter 13 acceptance: grey-white vine reactions to
+    blood traces, medical supplies, sound response, wrong contact, and RV door direction
+    are approved as observed behavior, not complete ecology.'
+- id: pa_227dbe33
+  status: approved
+  text: 批准灰眼伤员藤化为青河医疗点第一阶段灰白雾藤实体威胁。
+  source_chapters:
+  - 13
+  variants:
+  - 批准灰眼伤员藤化为青河医疗点第一阶段灰白雾藤实体威胁。
+  sources:
+  - state/change_log.jsonl:chapter_13
+  note: 'Human confirmed during chapter 13 acceptance: the grey-eyed patient mutates
+    into Qinghe medical point''s first-stage grey-white vine physical threat.'
+- id: pa_5555c628
+  status: approved
+  text: 批准目前没有外部幸存者或拟态源知道房车系统的正式名称；车外只能怀疑中控屏或房车设备异常。
+  source_chapters:
+  - 13
+  variants:
+  - 批准目前没有外部幸存者或拟态源知道房车系统的正式名称；车外只能怀疑中控屏或房车设备异常。
+  sources:
+  - state/change_log.jsonl:chapter_13
+  note: 'Human confirmed during chapter 13 acceptance: no outside survivor or mimic
+    source currently knows the RV system''s formal name; outsiders can only suspect
+    abnormal screens or RV equipment.'
+- id: pa_9e530c9a
+  status: approved
+  text: 批准第14章取得简易医疗位大半材料条件，但不安装、不启动、不解锁完整模块。
+  source_chapters:
+  - 14
+  variants:
+  - 批准第14章取得简易医疗位大半材料条件，但不安装、不启动、不解锁完整模块。
+  sources:
+  - state/change_log.jsonl:chapter_14
+  - state/current_state.json
+  note: 'Human confirmed during chapter 14 acceptance: chapter 14 gains a majority
+    of Simple Medical Bay material conditions, but the module is not installed, started,
+    or fully unlocked.'

@@ -1,19 +1,19 @@
 characters:
   lu_chenzhou:
     display_name: 陆沉舟
-    physical_state: 坐在驾驶位保持发动机运行和撤离角度，通过灯光、外放、车门锁和短距离倒车控制接触风险。
-    social_state: 将第10章建立的外部求救接触规则落地为可执行流程，不让医疗资源、幸存者敲墙或孩子哭声绕过车门规则。
-    emotional_state: 对欢迎回来和墙内敲击保持警觉，但不把旧协议异常解释成父亲线索；面对可能活人也不急于开门。
-    current_goal: 在不下车、不进楼、不失去撤离线的前提下，确认青河医疗点哪些线索可信，并为下一步分诊接触制定顺序。
+    physical_state: 仍在驾驶位控制房车，保持车门关闭、撤离角度、车灯分区和短窗缝操作；取材后将污染工具留在窗外，材料挂在车外后挂架外置隔离。
+    social_state: 从藤化反制现场指挥推进为短窗口取材路线设计者，用三分钟路线、放弃条件和车灯命令维持房车边界。
+    emotional_state: 面对近在眼前的医疗位材料没有贪全，能接受放弃被污染的无菌电源线束；对假陆沉舟指令立刻收回外部命令权。
+    current_goal: 带着外置隔离材料撤出当前高风险区域，同时防止幸存者被假指令诱导贴车或上车。
     known_secrets: &id001 []
     public_knowledge: &id002
-    - 外部声音会学习名字、复读指令，并可能模仿熟人声音。
-    - 二号配电箱位于青河医疗点后墙，附近存在折叠医疗架、隔离膜和电源接口线索。
+    - 简易医疗位材料可以推进，但任何材料必须经过外置隔离、清洁和安装条件，不能直接进入生活区。
+    - 外部出现的陆沉舟声音不具备命令权，只有车内确认规则有效。
     relationship_changes: &id003
-    - 更明确地把林知夏当作医疗判断和污染边界的共同决策者，而不是只执行驾驶位规则的旁观者。
+    - 与林知夏形成更稳定取材分工：他负责路线、车辆和放弃时机，她负责材料污染判断。
     voice_notes: &id004
-    - 短、硬、先验证；用错误问题、撤离线和门锁把救援冲动拆成可检验步骤。
-    last_updated_chapter: 11
+    - 短、硬、以时间和条件为主；“三分钟”“所以不拿完”“谁听声音上车，谁留在外面”体现边界。
+    last_updated_chapter: 14
     history:
     - display_name: 陆沉舟
       physical_state: 手背烫伤、指节有血，正在驾驶房车穿过低浓度迷雾。
@@ -136,28 +136,73 @@ characters:
       social_state: 将第10章建立的外部求救接触规则落地为可执行流程，不让医疗资源、幸存者敲墙或孩子哭声绕过车门规则。
       emotional_state: 对欢迎回来和墙内敲击保持警觉，但不把旧协议异常解释成父亲线索；面对可能活人也不急于开门。
       current_goal: 在不下车、不进楼、不失去撤离线的前提下，确认青河医疗点哪些线索可信，并为下一步分诊接触制定顺序。
+      known_secrets: []
+      public_knowledge:
+      - 外部声音会学习名字、复读指令，并可能模仿熟人声音。
+      - 二号配电箱位于青河医疗点后墙，附近存在折叠医疗架、隔离膜和电源接口线索。
+      relationship_changes:
+      - 更明确地把林知夏当作医疗判断和污染边界的共同决策者，而不是只执行驾驶位规则的旁观者。
+      voice_notes:
+      - 短、硬、先验证；用错误问题、撤离线和门锁把救援冲动拆成可检验步骤。
+      last_updated_chapter: 11
+      chapter: 11
+    - display_name: 陆沉舟
+      physical_state: 仍在驾驶位控制房车，保持发动机运行、撤离角度、灯线边界、外放和倒车空间，短暂开窗投送物资后立即压住风险。
+      social_state: 从验证规则的人推进为分诊现场安全框架搭建者，用车门、距离、灯光和投送流程把救助与上车资格切开。
+      emotional_state: 面对低烧孩子和出血男人没有冷漠撤离，但拒绝让道德压力变成开门理由；对灰眼伤员借声后立即转入撤离预案。
+      current_goal: 在不打开房车、不让未知人员贴车的前提下，保住可救对象、阻断高风险对象，并为第13章藤化威胁保留撤离线。
+      known_secrets: []
+      public_knowledge:
+      - 外部求救对象必须先通过灯线、指令和可观察症状验证，救治不等于上车。
+      - 灰眼伤员可能借用他人声音，并出现灰白雾藤污染组织活动。
+      relationship_changes:
+      - 与林知夏的分工更明确：他搭安全框架，她给分诊结论；二者共同把医疗价值和车门边界结合。
+      voice_notes:
+      - 短、硬、流程化；用线、距离、车门和撤离动作回答道德压力。
+      last_updated_chapter: 12
+      chapter: 12
+    - display_name: 陆沉舟
+      physical_state: 仍在驾驶位控制房车，保持发动机运行、倒挡 / 撤离线、车灯压制、车身角度和车门关闭；短暂使用窗缝、绳索和撬杆完成外部反制后放弃污染工具。
+      social_state: 从车外分诊安全框架执行者推进为第一次藤化反制现场指挥者，证明不开门也能用车辆、距离和工具处理实体威胁。
+      emotional_state: 面对孩子、出血男人和藤化伤员的声音诱导没有被拖入救援惯性；他把每次压力都转成线、距离、门和撤离窗口。
+      current_goal: 守住房车门、保护可控车外对象、阻断藤体靠近，同时寻找不把污染物带上车的材料获取办法。
+      known_secrets: []
+      public_knowledge:
+      - 灰白雾藤会利用救治流程和车门方向制造靠近机会，污染物不能回收进生活区。
+      - 车外可救窗口必须服从线、距离、闭嘴、退墙和不接触污染物等规则。
+      relationship_changes:
+      - 与林知夏的分工继续加深：她给污染观察和材料判断，他用车辆和工具执行安全边界。
+      voice_notes:
+      - 短句指令、拒绝解释过量；用“门不开”“袋子不要了”“现在不能拿”把诱惑压回规则。
+      last_updated_chapter: 13
+      chapter: 13
+    - display_name: 陆沉舟
+      physical_state: 仍在驾驶位控制房车，保持车门关闭、撤离角度、车灯分区和短窗缝操作；取材后将污染工具留在窗外，材料挂在车外后挂架外置隔离。
+      social_state: 从藤化反制现场指挥推进为短窗口取材路线设计者，用三分钟路线、放弃条件和车灯命令维持房车边界。
+      emotional_state: 面对近在眼前的医疗位材料没有贪全，能接受放弃被污染的无菌电源线束；对假陆沉舟指令立刻收回外部命令权。
+      current_goal: 带着外置隔离材料撤出当前高风险区域，同时防止幸存者被假指令诱导贴车或上车。
       known_secrets: *id001
       public_knowledge: *id002
       relationship_changes: *id003
       voice_notes: *id004
-      last_updated_chapter: 11
-      chapter: 11
+      last_updated_chapter: 14
+      chapter: 14
   lin_zhixia:
     display_name: 林知夏
-    physical_state: 守在隔离帘和侧门之间，继续观察周小禾疼痛、低热和反应，同时隔窗辨认医疗设备与隔离材料。
-    social_state: 作为车内医疗观察 / 污染分诊负责人发挥价值，既识别资源，也阻止资源诱惑覆盖污染边界。
-    emotional_state: 对可用医疗材料有明显期待，但能压住期待；面对模仿自己声音和假孩子哭声时保持专业判断。
-    current_goal: 判断青河医疗点哪些材料值得后续争取、哪些对象可接触、哪些声音必须拒绝回应。
+    physical_state: 守在车内隔离位置，通过窗缝、隔离袋和夹杆完成材料外置判断；未下车，未让污染物进入生活区。
+    social_state: 从污染机制观察者推进为医疗位材料判断者，证明她是房车医疗模块安全推进的必要角色。
+    emotional_state: 对医疗材料有强烈职业敏感，但能主动放弃污染线束和破损件，不让“有用”压倒“安全”。
+    current_goal: 保证已取得材料保持外置隔离，后续寻找清洁 / 安装 / 电源补足条件，同时继续守住周小禾观察需求。
     known_secrets: &id005
-    - 周小禾疼痛约六到七分、低热仍在，需要更稳定医疗处置，但还能等一轮验证。
+    - 周小禾仍需要更稳定医疗处理，简易医疗位材料推进越快越有价值，但不能以污染入车为代价。
     public_knowledge: &id006
-    - 折叠医疗架、隔离膜和电源接口是真实医疗位线索，但污染状态未判定。
-    - 谁先救不能听谁哭得像，必须看生理反应、污染风险和撤离线。
+    - 隔离膜外卷和折叠医疗架可用部件可进入待清洁 / 待安装状态；无菌电源线束污染后必须放弃。
+    - 灰白残片是样本候选，不是可直接使用材料。
     relationship_changes: &id007
-    - 与陆沉舟形成更清楚的双重边界：他管车门和撤离线，她管医疗价值和分诊风险。
+    - 她的功能价值从“救治和分诊”进一步扩展到“模块材料质量控制”。
     voice_notes: &id008
-    - 专业、克制、判断先于同情；用材料用途、污染状态和生理反应说话。
-    last_updated_chapter: 11
+    - 专业、短句、有取舍；用“外层脏，不等于里面废”“线束污染，放弃”体现判断。
+    last_updated_chapter: 14
     history:
     - display_name: 林知夏
       physical_state: 带急救包上车，刚完成服务区车外分诊。
@@ -286,26 +331,74 @@ characters:
       social_state: 作为车内医疗观察 / 污染分诊负责人发挥价值，既识别资源，也阻止资源诱惑覆盖污染边界。
       emotional_state: 对可用医疗材料有明显期待，但能压住期待；面对模仿自己声音和假孩子哭声时保持专业判断。
       current_goal: 判断青河医疗点哪些材料值得后续争取、哪些对象可接触、哪些声音必须拒绝回应。
+      known_secrets:
+      - 周小禾疼痛约六到七分、低热仍在，需要更稳定医疗处置，但还能等一轮验证。
+      public_knowledge:
+      - 折叠医疗架、隔离膜和电源接口是真实医疗位线索，但污染状态未判定。
+      - 谁先救不能听谁哭得像，必须看生理反应、污染风险和撤离线。
+      relationship_changes:
+      - 与陆沉舟形成更清楚的双重边界：他管车门和撤离线，她管医疗价值和分诊风险。
+      voice_notes:
+      - 专业、克制、判断先于同情；用材料用途、污染状态和生理反应说话。
+      last_updated_chapter: 11
+      chapter: 11
+    - display_name: 林知夏
+      physical_state: 守在隔离帘和侧门之间，通过车窗、外放和投送包指导车外止血；未下车，未触碰未知伤员。
+      social_state: 从青河材料判断者推进为真正的车外分诊负责人，第一次在青河完成外伤 / 可观察 / 疑似异变三类处置。
+      emotional_state: 对孩子和出血男人有救治冲动，但用可观察反应、脚印、咳嗽、压迫止血和灰眼风险压住情绪排序。
+      current_goal: 保住可控外伤者，判断低烧孩子是否可观察，同时拒绝接触灰眼藤化风险对象。
+      known_secrets:
+      - 周小禾仍低热和疼痛，需要更稳定医疗条件，但本章仍不能为了她开门或启用未取得的医疗位。
+      public_knowledge:
+      - 第一次青河车外分诊分类成立：可观察、外部短救、高风险拒绝接触。
+      - 灰白雾藤从伤口伸出，说明疑似异变不只是声音问题。
+      relationship_changes:
+      - 她的核心功能队友价值进一步落地：不只会急救，也能把救治顺序变成车内规则。
+      voice_notes:
+      - 专业、短句、按症状和风险说话；温度体现在有限救治，不体现在无边界开门。
+      last_updated_chapter: 12
+      chapter: 12
+    - display_name: 林知夏
+      physical_state: 守在车内医疗 / 隔离位置，不碰藤体，不下车；通过视觉观察、外放指令和风险判断参与反制。
+      social_state: 从车外分诊负责人推进为污染机制观察者和材料候选判断者，能把怪物反应转化成生存规则。
+      emotional_state: 对药包损失和可用残片有职业本能反应，但主动确认不能回收、不能徒手、不能进生活区。
+      current_goal: 在不扩大污染的前提下记录藤体反应、保护可控伤员，并为简易医疗位寻找可隔离判定的材料路径。
+      known_secrets:
+      - 周小禾仍需要更稳定医疗处理，简易医疗位材料线必须推进，但不能用污染残片直接冒险。
+      public_knowledge:
+      - 灰白雾藤对血迹、医疗物资、声音回应、错误接触和车门方向有可观察反应。
+      - 投送包污染后必须放弃，灰白残片可能有用但必须隔离和判定。
+      relationship_changes:
+      - 她在车组内的功能从“急救 / 分诊”扩展到“污染观察 / 材料风险判断”。
+      voice_notes:
+      - 专业、短、留余地；常用“目前反应”“可能有用”“不能直接上车”避免过度定论。
+      last_updated_chapter: 13
+      chapter: 13
+    - display_name: 林知夏
+      physical_state: 守在车内隔离位置，通过窗缝、隔离袋和夹杆完成材料外置判断；未下车，未让污染物进入生活区。
+      social_state: 从污染机制观察者推进为医疗位材料判断者，证明她是房车医疗模块安全推进的必要角色。
+      emotional_state: 对医疗材料有强烈职业敏感，但能主动放弃污染线束和破损件，不让“有用”压倒“安全”。
+      current_goal: 保证已取得材料保持外置隔离，后续寻找清洁 / 安装 / 电源补足条件，同时继续守住周小禾观察需求。
       known_secrets: *id005
       public_knowledge: *id006
       relationship_changes: *id007
       voice_notes: *id008
-      last_updated_chapter: 11
-      chapter: 11
+      last_updated_chapter: 14
+      chapter: 14
   temporary_injured_girl:
     display_name: 周小禾
-    physical_state: 仍在临时观察区，低热未退，疼痛约六到七分，能听指令并报告听到的声音差异。
-    social_state: 继续是临时观察患者，不是正式上车名额、核心队友或生活区成员。
-    emotional_state: 害怕但努力配合，不主动越界；在假声压力下提供有限观察。
-    current_goal: 留在隔离帘后等待更稳定医疗处理，避免成为外部声音诱导车组开门的理由。
+    physical_state: 仍在临时观察区，低热和伤口问题未彻底解决；听到车尾封堵声音变化并报告，但没有离开隔离区。
+    social_state: 继续是临时观察患者，不是正式成员；她的情况继续证明简易医疗位必要性。
+    emotional_state: 听见假陆沉舟声音后恐惧，但仍按规则只报告声音像不像和车内异常。
+    current_goal: 留在观察区等待更稳定处理，不让医疗位材料压力变成自己越界的理由。
     known_secrets: &id009 []
     public_knowledge: &id010
-    - 她能听出假女人声音不像真人喘息，帮助车组确认声音差异。
+    - 她报告车尾封堵声音变化，帮助车组意识到外部操作不能继续拖延。
     relationship_changes: &id011
-    - 她的观察有用，但身份边界不变。
+    - 观察价值仍存在，身份边界仍未改变。
     voice_notes: &id012
-    - 疼、怯、短句，提供事实而不替成年人做决定。
-    last_updated_chapter: 11
+    - 虚弱、短促、事实报告。
+    last_updated_chapter: 14
     history:
     - display_name: 受伤女孩
       physical_state: 手臂有较深伤口，已由林知夏临时压迫止血。
@@ -410,12 +503,54 @@ characters:
       social_state: 继续是临时观察患者，不是正式上车名额、核心队友或生活区成员。
       emotional_state: 害怕但努力配合，不主动越界；在假声压力下提供有限观察。
       current_goal: 留在隔离帘后等待更稳定医疗处理，避免成为外部声音诱导车组开门的理由。
+      known_secrets: []
+      public_knowledge:
+      - 她能听出假女人声音不像真人喘息，帮助车组确认声音差异。
+      relationship_changes:
+      - 她的观察有用，但身份边界不变。
+      voice_notes:
+      - 疼、怯、短句，提供事实而不替成年人做决定。
+      last_updated_chapter: 11
+      chapter: 11
+    - display_name: 周小禾
+      physical_state: 仍在临时观察区，低热和伤口问题未解决，听见外部孩子哭声会恐惧和内疚但没有越过隔离帘。
+      social_state: 继续是临时观察患者，不是正式上车成员；她提供声音重复观察但不承担哨兵职责。
+      emotional_state: 害怕外部声音和灰眼伤员借声，但努力按指令闭嘴、报告听到的差异。
+      current_goal: 留在隔离帘后等待更稳定医疗处理，不让自己的医疗需求变成开门理由。
+      known_secrets: []
+      public_knowledge:
+      - 她听出右侧无脚印孩子的哭声和之前假孩子声音重复，帮助车组确认诱导。
+      relationship_changes:
+      - 她的观察继续有用，但身份边界未改变。
+      voice_notes:
+      - 虚弱、短促、只报告听见的事实。
+      last_updated_chapter: 12
+      chapter: 12
+    - display_name: 周小禾
+      physical_state: 仍在临时观察区，低热和伤口问题未解决；没有离开隔离帘，没有参与外部行动。
+      social_state: 继续是临时观察患者，不是正式队友；只提供声音 / 敲击差异的观察 cue。
+      emotional_state: 害怕藤体借声和学敲击，但努力按陆沉舟要求只报告听见的差异。
+      current_goal: 留在观察区等待更稳定处理，不让自己的恐惧或医疗需求变成开门理由。
+      known_secrets: []
+      public_knowledge:
+      - 她听出藤体声音变化和敲击节奏像墙内，帮助车组确认“它在学反应”。
+      relationship_changes:
+      - 她的观察价值继续存在，但身份边界未改变。
+      voice_notes:
+      - 虚弱、克制、只报告可听见事实。
+      last_updated_chapter: 13
+      chapter: 13
+    - display_name: 周小禾
+      physical_state: 仍在临时观察区，低热和伤口问题未彻底解决；听到车尾封堵声音变化并报告，但没有离开隔离区。
+      social_state: 继续是临时观察患者，不是正式成员；她的情况继续证明简易医疗位必要性。
+      emotional_state: 听见假陆沉舟声音后恐惧，但仍按规则只报告声音像不像和车内异常。
+      current_goal: 留在观察区等待更稳定处理，不让医疗位材料压力变成自己越界的理由。
       known_secrets: *id009
       public_knowledge: *id010
       relationship_changes: *id011
       voice_notes: *id012
-      last_updated_chapter: 11
-      chapter: 11
+      last_updated_chapter: 14
+      chapter: 14
   old_zheng:
     display_name: 老郑
     physical_state: 仍在青河外仓方向，破喇叭被外部冲击和雾中压力打断，未直接参与主路抢车。

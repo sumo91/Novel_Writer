@@ -1,0 +1,68 @@
+{
+  "score": 92,
+  "dimension_scores": {
+    "opening_hook": 10,
+    "conflict_pressure": 10,
+    "protagonist_agency": 10,
+    "payoff_execution": 14,
+    "dialogue_tension": 9,
+    "scene_specificity": 9,
+    "voice_distinction": 9,
+    "rhythm_variation": 8,
+    "ending_pull": 10,
+    "style_slop_control": 3
+  },
+  "style_alignment": {
+    "passed": true,
+    "score": 93,
+    "style_bible_used": true,
+    "calibration_used": true,
+    "matched_patterns": [
+      "Pressure-led opening: the chapter begins with the grey-white vine moving toward the thrown medical bag before explaining the threat.",
+      "Concrete vehicle / medical / road texture drives the scene: lamp line, reverse gear, exterior speaker, rope, rod, contaminated bag, blood trace, water crack, filter countdown, and side-door angle all affect choices.",
+      "Rules emerge through action: no door opening, no recovery of contaminated supplies, left-wall retreat, and non-contact countermeasure all change who survives.",
+      "Lu Chenzhou stays operational and agency-forward: he uses light, vehicle angle, reverse movement, rope, rod, and tool abandonment to counter the vine without leaving the RV.",
+      "Lin Zhixia's voice stays professional and scene-triggered: she observes blood / supply / sound / contact reactions and marks them as provisional rather than lecturing.",
+      "Payoff carries cost: the vine is countered, but tools and supplies are contaminated, residue cannot be taken, and the filter window shrinks.",
+      "Dialogue works as probe and command: short lines such as \"袋子不要了\", \"谁碰它，谁出线\", and \"不是确定，是目前反应\" make pressure operational."
+    ],
+    "rejected_patterns_hit": [],
+    "violations": []
+  },
+  "exposition_density": {
+    "passed": true,
+    "score": 91,
+    "frontloaded_explanations": [],
+    "delayed_explanations": [
+      "Complete grey-white vine ecology",
+      "Qinghe survivor organization",
+      "Qinghe main-building conditions",
+      "Simple Medical Bay full material list and activation process",
+      "Mother-hive road / fog-heart / father-route source truth",
+      "Whether vine residue is actually usable after判定"
+    ],
+    "scene_triggers": [
+      "The vine moving toward the medical bag triggers supply-contamination judgment.",
+      "The vine tracking blood traces triggers Lin Zhixia's provisional blood-response observation.",
+      "A survivor grabbing the bag triggers the wrong-contact consequence.",
+      "The vine learning voices and knocks triggers the 'reaction learning' observation.",
+      "The broken residue and system warning trigger the material-candidate discussion.",
+      "The material signal behind the residue triggers the chapter 14 contest hook."
+    ]
+  },
+  "strengths": [
+    "The revised draft turns chapter 12's grey-white vine hook into immediate physical pressure without pausing for monster explanation.",
+    "The chapter's action pattern fits the mobile-safehouse promise: the RV remains the arena, the door stays closed, and the protagonist wins through boundary control instead of brute melee.",
+    "Lin Zhixia's observations are useful in real time and do not become textbook exposition.",
+    "The contaminated residue payoff is tempting but constrained, preserving the upgrade economy and the no-free-module rule.",
+    "The ending pull is specific: medical materials are close, residue blocks the path, and the filter window is down to 14 minutes."
+  ],
+  "blocking_issues": [],
+  "rewrite_required": false,
+  "revision_suggestions": [
+    "Final candidate can use the revised draft as-is.",
+    "Do not restore any wording that lets outsiders name the RV system.",
+    "If polishing later, trim only redundant middle reaction labels; preserve the sequence of observable trigger, decision, and consequence.",
+    "Keep the final candidate from adding any main-building reveal or completed medical-module acquisition."
+  ]
+}

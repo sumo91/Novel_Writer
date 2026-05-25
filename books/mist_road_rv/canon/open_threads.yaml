@@ -3,9 +3,9 @@ threads:
   promise: 房车系统为什么绑定陆沉舟和父亲留下的旧房车。
   source_chapter: 0
   status: advanced
-  last_touched: 11
-  latest_note: 系统提示污染等级、外仓门禁异常、材料信号、外部声源增多和避免依赖单一听觉信息，但仍不替陆沉舟判断谁该被救或是否开门。
-  next_obligation: 继续保持系统是风险 / 路线 / 模块线索工具；欢迎回来只作为旧协议异常，不提前解释父亲线。
+  last_touched: 14
+  latest_note: 系统只提示材料状态、外置隔离、污染接触、未安装 / 未启动和声源污染，不直接奖励医疗位或替主角决定取舍。
+  next_obligation: 继续保持系统为风险和模块条件提示工具，不成为道德裁判或免费升级器。
   history:
   - id: thread_rv_system_binding
     promise: 房车系统为什么绑定陆沉舟和父亲留下的旧房车。
@@ -72,6 +72,30 @@ threads:
     latest_note: 系统提示污染等级、外仓门禁异常、材料信号、外部声源增多和避免依赖单一听觉信息，但仍不替陆沉舟判断谁该被救或是否开门。
     next_obligation: 继续保持系统是风险 / 路线 / 模块线索工具；欢迎回来只作为旧协议异常，不提前解释父亲线。
     chapter: 11
+  - id: thread_rv_system_binding
+    promise: 房车系统为什么绑定陆沉舟和父亲留下的旧房车。
+    source_chapter: 0
+    status: advanced
+    last_touched: 12
+    latest_note: 系统只提示外部声源、滤芯窗口、空气压力波动、未知污染组织和撤离线风险，没有替陆沉舟或林知夏决定救谁。
+    next_obligation: 继续保持系统为风险 / 状态 / 模块线索工具，不成为道德裁判或万能解答。
+    chapter: 12
+  - id: thread_rv_system_binding
+    promise: 房车系统为什么绑定陆沉舟和父亲留下的旧房车。
+    source_chapter: 0
+    status: advanced
+    last_touched: 13
+    latest_note: 系统只提示未知污染组织、残片风险、材料反应待判定和隔离建议，不替主角决定是否采样，也不直接发放模块奖励。
+    next_obligation: 第14章继续让系统作为判定 / 风险工具，而非道德裁判或免费升级器。
+    chapter: 13
+  - id: thread_rv_system_binding
+    promise: 房车系统为什么绑定陆沉舟和父亲留下的旧房车。
+    source_chapter: 0
+    status: advanced
+    last_touched: 14
+    latest_note: 系统只提示材料状态、外置隔离、污染接触、未安装 / 未启动和声源污染，不直接奖励医疗位或替主角决定取舍。
+    next_obligation: 继续保持系统为风险和模块条件提示工具，不成为道德裁判或免费升级器。
+    chapter: 14
 - id: thread_father_last_rescue
   promise: 父亲最后一趟救援抵达了哪里，为什么没能回来。
   source_chapter: 0
@@ -94,9 +118,9 @@ threads:
   promise: 服务区交易终端、临时屏障和路标任务从何而来。
   source_chapter: 0
   status: advanced
-  last_touched: 11
-  latest_note: 青河医疗点门禁在权限错误和欢迎回来之间反复切换，配合二号配电箱和材料信号，显示服务区节点存在异常旧协议秩序。
-  next_obligation: 第12章可继续通过门禁、后墙敲击和材料接触规则推进节点异常，但不要解释终端源头。
+  last_touched: 14
+  latest_note: 外仓侧门在无人申请的情况下远程开启，门禁权限变化与假陆沉舟指令同时出现，推进青河门禁异常但不解释来源。
+  next_obligation: 第15章处理外仓门开后引发的幸存者移动、雾犬围站和风险转嫁，不急于给终端源头答案。
   history:
   - id: thread_service_area_terminals
     promise: 服务区交易终端、临时屏障和路标任务从何而来。
@@ -155,13 +179,37 @@ threads:
     latest_note: 青河医疗点门禁在权限错误和欢迎回来之间反复切换，配合二号配电箱和材料信号，显示服务区节点存在异常旧协议秩序。
     next_obligation: 第12章可继续通过门禁、后墙敲击和材料接触规则推进节点异常，但不要解释终端源头。
     chapter: 11
+  - id: thread_service_area_terminals
+    promise: 服务区交易终端、临时屏障和路标任务从何而来。
+    source_chapter: 0
+    status: advanced
+    last_touched: 12
+    latest_note: 本章主要延续青河后墙、门禁和旧广播形成的异常环境，没有新增终端硬解释；后墙敲击与藤体敲击形成新的节点疑点。
+    next_obligation: 后续可通过灰白雾藤、后墙敲击和医疗点材料接触继续推进节点异常，但不要解释终端源头。
+    chapter: 12
+  - id: thread_service_area_terminals
+    promise: 服务区交易终端、临时屏障和路标任务从何而来。
+    source_chapter: 0
+    status: advanced
+    last_touched: 13
+    latest_note: 二号配电箱旁医疗材料信号增强，墙内敲击与藤体敲击互相呼应，但青河终端、墙内人和旧协议来源仍未解释。
+    next_obligation: 第14章可推进二号配电箱 / 医疗材料接触条件，但不揭开完整终端源头。
+    chapter: 13
+  - id: thread_service_area_terminals
+    promise: 服务区交易终端、临时屏障和路标任务从何而来。
+    source_chapter: 0
+    status: advanced
+    last_touched: 14
+    latest_note: 外仓侧门在无人申请的情况下远程开启，门禁权限变化与假陆沉舟指令同时出现，推进青河门禁异常但不解释来源。
+    next_obligation: 第15章处理外仓门开后引发的幸存者移动、雾犬围站和风险转嫁，不急于给终端源头答案。
+    chapter: 14
 - id: thread_mist_monster_ecology
   promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
   source_chapter: 0
   status: advanced
-  last_touched: 11
-  latest_note: 声音拟态从警告变成可观察行为：外部声源复读错误信息、使用名字、模仿林知夏，并制造无脚印的假孩子诱饵，但完整生态仍未解释。
-  next_obligation: 后续继续用声音、脚印、拖痕、门口位置和污染反应推进怪物规则，不写成怪物百科。
+  last_touched: 14
+  latest_note: 灰白残片继续对震动、血迹、工具拖拽和声音表现反应性；声音拟态升级到假陆沉舟命令，说明威胁会学习救援流程和指挥语言。
+  next_obligation: 第15章可通过雾犬围站和幸存者被假指令牵动，继续展示迷雾生态的组织 / 学习能力。
   history:
   - id: thread_mist_monster_ecology
     promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
@@ -244,6 +292,30 @@ threads:
     latest_note: 声音拟态从警告变成可观察行为：外部声源复读错误信息、使用名字、模仿林知夏，并制造无脚印的假孩子诱饵，但完整生态仍未解释。
     next_obligation: 后续继续用声音、脚印、拖痕、门口位置和污染反应推进怪物规则，不写成怪物百科。
     chapter: 11
+  - id: thread_mist_monster_ecology
+    promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+    source_chapter: 0
+    status: advanced
+    last_touched: 12
+    latest_note: 声音拟态推进到人体 / 伤员现场：灰眼伤员能借用孩子声音，手腕伤口冒出灰白雾藤，且藤体敲击与后墙敲击形成不安呼应。
+    next_obligation: 第13章必须用具体动作展示藤化伤员的触发条件、攻击方式或弱点，仍不写完整怪物百科。
+    chapter: 12
+  - id: thread_mist_monster_ecology
+    promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+    source_chapter: 0
+    status: advanced
+    last_touched: 13
+    latest_note: 灰白雾藤从人体伤口外露并能利用救治流程、声音、敲击和物资诱饵，证明迷雾生态在学习人类反应，但完整来源仍未解释。
+    next_obligation: 后续继续用不同服务区 / 道路节点行为推进生态组织性，避免一次性百科说明。
+    chapter: 13
+  - id: thread_mist_monster_ecology
+    promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+    source_chapter: 0
+    status: advanced
+    last_touched: 14
+    latest_note: 灰白残片继续对震动、血迹、工具拖拽和声音表现反应性；声音拟态升级到假陆沉舟命令，说明威胁会学习救援流程和指挥语言。
+    next_obligation: 第15章可通过雾犬围站和幸存者被假指令牵动，继续展示迷雾生态的组织 / 学习能力。
+    chapter: 14
 - id: thread_lu_old_rescue_accident
   promise: 陆沉舟旧救援事故背后的真实责任。
   source_chapter: 0
@@ -273,9 +345,9 @@ threads:
   promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
   source_chapter: 0
   status: advanced
-  last_touched: 11
-  latest_note: 外部求救规则在青河医疗点第一次完整执行：陆沉舟用错误编号、外放控制、车灯观察和撤离角度验证信息；真人敲墙、模仿熟人和假孩子哭声都没有换来开门。
-  next_obligation: 第12章必须在可能有真实伤员的情况下继续区分可接触救治、不可接触诱饵和必须拒绝的开门请求。
+  last_touched: 14
+  latest_note: 材料争夺没有绕过车门和污染边界：材料只外置隔离，污染线束放弃，外部假陆沉舟指令也不能改变上车规则。
+  next_obligation: 第15章雾犬围站和幸存者转嫁风险中，继续证明假指令、开门诱导和外部压力不能夺走车内命令权。
   history:
   - id: thread_vehicle_rules_contract
     promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
@@ -358,13 +430,37 @@ threads:
     latest_note: 外部求救规则在青河医疗点第一次完整执行：陆沉舟用错误编号、外放控制、车灯观察和撤离角度验证信息；真人敲墙、模仿熟人和假孩子哭声都没有换来开门。
     next_obligation: 第12章必须在可能有真实伤员的情况下继续区分可接触救治、不可接触诱饵和必须拒绝的开门请求。
     chapter: 11
+  - id: thread_vehicle_rules_contract
+    promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+    source_chapter: 0
+    status: advanced
+    last_touched: 12
+    latest_note: 医疗救助、车外处理和上车资格进一步切开：陆沉舟允许投送包和车外止血指导，但灯线、不开门、不贴车、不进入生活区的规则没有放松。
+    next_obligation: 第13章在藤化伤员爆发时继续证明救援边界不会因怪物借声或伤员失控而破裂。
+    chapter: 12
+  - id: thread_vehicle_rules_contract
+    promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+    source_chapter: 0
+    status: advanced
+    last_touched: 13
+    latest_note: 实体藤化威胁下，陆沉舟继续不开门、不回收污染物，用车灯、倒车、车身角度和外部工具处理风险，证明车门规则不是只对普通幸存者有效。
+    next_obligation: 第14章材料争夺时，继续证明“拿材料”不能绕过隔离、污染判定和车门边界。
+    chapter: 13
+  - id: thread_vehicle_rules_contract
+    promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+    source_chapter: 0
+    status: advanced
+    last_touched: 14
+    latest_note: 材料争夺没有绕过车门和污染边界：材料只外置隔离，污染线束放弃，外部假陆沉舟指令也不能改变上车规则。
+    next_obligation: 第15章雾犬围站和幸存者转嫁风险中，继续证明假指令、开门诱导和外部压力不能夺走车内命令权。
+    chapter: 14
 - id: thread_lin_pollution_observation
   promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
   source_chapter: 0
   status: advanced
-  last_touched: 11
-  latest_note: 林知夏隔窗识别折叠医疗架、隔离膜和电源接口价值，同时用生理反应、声音重复和脚印/拖痕判断假孩子不可接触，证明她的价值不只是急救，也是污染分诊。
-  next_obligation: 第12章让她把材料价值、周小禾伤情、墙内疑似活人和外部诱饵排成救治优先级。
+  last_touched: 14
+  latest_note: 林知夏把污染观察转化为材料取舍：封条完整、外层污染可剥离的材料外置隔离；被残片接触的线束放弃；残片仍只是样本候选。
+  next_obligation: 后续让她参与医疗位清洁、安装或车外救治交易，继续体现医疗功能不是无条件救人。
   history:
   - id: thread_lin_pollution_observation
     promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
@@ -447,3 +543,27 @@ threads:
     latest_note: 林知夏隔窗识别折叠医疗架、隔离膜和电源接口价值，同时用生理反应、声音重复和脚印/拖痕判断假孩子不可接触，证明她的价值不只是急救，也是污染分诊。
     next_obligation: 第12章让她把材料价值、周小禾伤情、墙内疑似活人和外部诱饵排成救治优先级。
     chapter: 11
+  - id: thread_lin_pollution_observation
+    promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+    source_chapter: 0
+    status: advanced
+    last_touched: 12
+    latest_note: 林知夏完成第一次青河车外分诊，用脚印、咳嗽、指令反应、压迫止血能力、灰眼和绑手腕等可观察信号划分可观察、外部短救和高风险拒绝接触。
+    next_obligation: 第13章让她继续判断灰白雾藤的触发条件、接触风险和可否转化为医疗位隔离材料候选。
+    chapter: 12
+  - id: thread_lin_pollution_observation
+    promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+    source_chapter: 0
+    status: advanced
+    last_touched: 13
+    latest_note: 林知夏把灰白雾藤反应归纳为血迹、医疗物资、声音回应、错误接触、车门方向等可观察触发层，并坚持只是目前反应。
+    next_obligation: 第14章让她把这些观察转化为隔离采样或取材路线，而不是变成讲解。
+    chapter: 13
+  - id: thread_lin_pollution_observation
+    promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+    source_chapter: 0
+    status: advanced
+    last_touched: 14
+    latest_note: 林知夏把污染观察转化为材料取舍：封条完整、外层污染可剥离的材料外置隔离；被残片接触的线束放弃；残片仍只是样本候选。
+    next_obligation: 后续让她参与医疗位清洁、安装或车外救治交易，继续体现医疗功能不是无条件救人。
+    chapter: 14

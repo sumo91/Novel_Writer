@@ -1,0 +1,68 @@
+{
+  "score": 91,
+  "dimension_scores": {
+    "opening_hook": 10,
+    "conflict_pressure": 10,
+    "protagonist_agency": 10,
+    "payoff_execution": 14,
+    "dialogue_tension": 9,
+    "scene_specificity": 9,
+    "voice_distinction": 9,
+    "rhythm_variation": 7,
+    "ending_pull": 10,
+    "style_slop_control": 3
+  },
+  "style_alignment": {
+    "passed": true,
+    "score": 92,
+    "style_bible_used": true,
+    "calibration_used": true,
+    "matched_patterns": [
+      "Pressure-led opening: the chapter starts with material signal, residue tapping, filter countdown, and Lu checking the retreat line before any explanation.",
+      "Concrete vehicle / medical / service-area texture drives the scene: No. 2 power box, blue-white light, isolation film roll, folding frame, sterile harness, rear seal, rope hook, window gap, external bags, and lamp angle all affect choices.",
+      "Rules emerge through action: external isolation, abandonment of contaminated harness, no boarding, light-over-sound command verification, and no living-area contact all have visible consequences.",
+      "Lu Chenzhou's agency stays operational: he sets the route, times the window, changes light angles, decides not to take everything, and refuses the false command.",
+      "Lin Zhixia remains functionally distinct: her material judgment changes what is taken, what is rejected, and why 'majority material' is not the same as activation.",
+      "Payoff carries cost: the RV gains useful material conditions but loses the harness, consumes filter window, worsens rear-seal pressure, and exposes a new false-command threat.",
+      "Dialogue is crisp and tactical: lines such as '三分钟', '所以不拿完', '封条破了就不要', and '线束污染，放弃' turn pressure into decisions."
+    ],
+    "rejected_patterns_hit": [],
+    "violations": []
+  },
+  "exposition_density": {
+    "passed": true,
+    "score": 90,
+    "frontloaded_explanations": [],
+    "delayed_explanations": [
+      "Complete Simple Medical Bay installation process",
+      "Qinghe survivor organization",
+      "Who controls the outer-warehouse remote unlock",
+      "Complete grey-white vine ecology",
+      "Father-route / old-protocol fault-code explanation",
+      "Whether the externally isolated materials can pass final cleaning and installation"
+    ],
+    "scene_triggers": [
+      "The visible blue-white material signal triggers the retrieval plan.",
+      "Lin Zhixia seeing seals, film, frame, and harness triggers material-use judgments.",
+      "Grey-white residue reacting to vibration and blood triggers route adjustments.",
+      "Rear seal and filter warnings trigger the refusal to keep retrieving indefinitely.",
+      "The contaminated harness triggers a cost-bearing abandonment choice.",
+      "The remote unlock and false Lu command trigger the chapter-ending threat."
+    ]
+  },
+  "strengths": [
+    "The chapter keeps the upgrade promise tangible without breaking the no-free-module rule.",
+    "The short-window retrieval sequence is grounded in specific objects and choices rather than abstract resource gain.",
+    "Lin Zhixia's professional value is strong because she prevents bad materials from entering the upgrade path.",
+    "Lu Chenzhou remains the route and boundary owner even when the chapter is about medical materials.",
+    "The ending creates a clear chapter 15 obligation: false command, open side door, gathering footsteps, and likely external risk transfer."
+  ],
+  "blocking_issues": [],
+  "rewrite_required": false,
+  "revision_suggestions": [
+    "Final candidate can use the revised draft as-is.",
+    "If polishing later, lightly tighten the middle retrieval sequence, but do not remove the film / frame / harness cost progression.",
+    "Do not add a successful harness retrieval or module activation in final candidate.",
+    "Preserve the final line's rule consequence: outside voice does not count as command authority."
+  ]
+}

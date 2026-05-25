@@ -1,0 +1,98 @@
+id: new_book_dynamic
+description: Dynamic isolated workflow eval for new-book project setup and concept gate artifacts.
+cases:
+  - id: init_book_to_concept_review
+    workspace:
+      copy:
+        - engine
+        - knowledge
+    steps:
+      - id: init-book
+        command:
+          - python
+          - -m
+          - engine.cli
+          - init-book
+          - __eval_dynamic_book__
+          - --title
+          - Eval Dynamic Book
+        expect:
+          exit_code: 0
+          stdout_contains:
+            - "Created book project:"
+            - "books/__eval_dynamic_book__"
+          files_exist:
+            - books/__eval_dynamic_book__/book.yaml
+            - books/__eval_dynamic_book__/outlines/master_outline.yaml
+          file_contains:
+            books/__eval_dynamic_book__/book.yaml:
+              - "__eval_dynamic_book__"
+              - "Eval Dynamic Book"
+
+      - id: craft-contract-scaffold
+        command:
+          - python
+          - -m
+          - engine.cli
+          - craft-contract-scaffold
+          - __eval_dynamic_book__
+        expect:
+          exit_code: 0
+          stdout_contains:
+            - "Wrote craft contract scaffold"
+          files_exist:
+            - books/__eval_dynamic_book__/craft/craft_contract.yaml
+            - books/__eval_dynamic_book__/craft/craft_contract.html
+          file_contains:
+            books/__eval_dynamic_book__/craft/craft_contract.yaml:
+              - "approval:"
+              - "concept_focus:"
+              - "selected_cards:"
+
+      - id: craft-contract-check
+        command:
+          - python
+          - -m
+          - engine.cli
+          - craft-contract-check
+          - __eval_dynamic_book__
+        expect:
+          exit_code: 0
+          stdout_contains:
+            - "Craft contract check: passed"
+          stdout_not_contains:
+            - Traceback
+
+      - id: concept-review
+        command:
+          - python
+          - -m
+          - engine.cli
+          - concept-review
+          - __eval_dynamic_book__
+        expect:
+          exit_code: 0
+          stdout_contains:
+            - "Generated concept review"
+          files_exist:
+            - books/__eval_dynamic_book__/reports/concept_review.md
+            - books/__eval_dynamic_book__/reports/concept_review.html
+          file_contains:
+            books/__eval_dynamic_book__/reports/concept_review.md:
+              - "# Concept Review"
+              - "Golden finger necessity"
+              - "human approval is still required"
+
+      - id: validate-book
+        command:
+          - python
+          - -m
+          - engine.cli
+          - validate-book
+          - __eval_dynamic_book__
+        expect:
+          exit_code: 0
+          stdout_contains:
+            - "Book project is valid: __eval_dynamic_book__"
+          stdout_not_contains:
+            - Traceback

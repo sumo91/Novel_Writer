@@ -1,0 +1,35 @@
+chapter: 15
+author_intent:
+- Preserve chapter 15 as the command-recapture chapter: fake Lu Chenzhou's boarding order, fog-dog crowd pressure, and survivor risk transfer all hit the RV at once, but the vehicle stays closed and the real command stays inside.
+- Make Lu Chenzhou's payoff the external control pattern: he uses car lights, short horn bursts, vehicle angle, reverse / forward pressure, and closed-door rules to reclaim authority without opening the RV.
+- Make Lin Zhixia's payoff the exterior triage line: she distinguishes controllable survivors, pollution-suspect bodies, and risk-transfer attempts, and she refuses to let rescue language override the RV boundary.
+- Keep the fog dogs as visible pressure that can be displaced by light, sound, and metal reflection, but not cleared; the chapter should feel tactical, not like a monster clean-up.
+- Keep the real human broadcaster as a late reveal only at the trade level: a surgical lamp, a credible voice, and a No. 2 power-box permission trade, not a full Qinghe faction reveal.
+- Preserve the chapter's cost ledger: rear seal pressure stays, external isolation bags stay at risk, and the Simple Medical Bay still does not activate.
+must_change:
+- Do not open the RV door or let unknown survivors, the abdominal bleeding man, the low-fever child, or any pollution-suspect casualty board.
+- Do not reveal the RV system's formal name to outsiders.
+- Do not turn the fake Lu Chenzhou command into proof of full monster ecology or a permanent outside knowledge of the RV.
+- Do not enter the Qinghe main building or explain the full survivor organization.
+- Do not activate or unlock the Simple Medical Bay.
+- Do not let the No. 2 power-box permission be obtained before the trade.
+approved_lines:
+- "看灯，不听声音。"
+- "外面的我不算。"
+- "医生不是门禁卡。"
+- "过灯线，交易取消。"
+- "谁听声音上车，谁留在外面。"
+- "救一个人。"
+- "二号配电箱权限，给你们。"
+- "先看伤。"
+rejected_patterns:
+- Avoid repeating the same light / horn / filter-status beat too many times in a row.
+- Avoid making the middle feel like a checklist; keep it moving through action, refusals, and pressure transfers.
+- Avoid direct rescue sentiment that softens the boundary rule.
+- Avoid any line that lets outsiders infer the system's formal name.
+- Avoid turning the surgical lamp reveal into a full faction explanation.
+- Avoid a cliffhanger that delays the trade without changing the next choice.
+ai_assistance:
+  expected: true
+  human_role: direction, taste, key edits, final approval
+approved_for_final_candidate: true

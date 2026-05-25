@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "score": 92,
+  "issues": [
+    {
+      "type": "module_boundary",
+      "severity": "low",
+      "evidence": "The draft obtains the isolation film outer roll and folding medical-frame usable part as externally isolated components, while the sterile power interface / harness is contaminated and abandoned. The Simple Medical Bay remains explicitly not installed and not started.",
+      "suggested_fix": "In acceptance state, record Simple Medical Bay material conditions as partially met / majority advanced, not module activation."
+    },
+    {
+      "type": "contamination_boundary",
+      "severity": "low",
+      "evidence": "The draft keeps contaminated hooks, rod tips, the aid bag, and external components outside the RV living area. Grey-white residue is not directly sampled or brought inside.",
+      "suggested_fix": "State updates should preserve external isolation and not convert residue into usable material yet."
+    },
+    {
+      "type": "qinghe_scope",
+      "severity": "low",
+      "evidence": "The draft stays outside Qinghe medical point and does not enter the main building or explain the Qinghe survivor organization.",
+      "suggested_fix": "Keep exterior-only scope; chapter 15 can escalate exterior pressure without a full internal politics reveal."
+    },
+    {
+      "type": "temporary_survivor_status",
+      "severity": "low",
+      "evidence": "The abdominal bleeding man and low-fever child remain outside, obey light / sound rules, and are not allowed aboard. Zhou Xiaohe remains a temporary observation patient.",
+      "suggested_fix": "Do not record any boarding, crew, or formal ally upgrade for these characters."
+    },
+    {
+      "type": "voice_mimicry_scope",
+      "severity": "low",
+      "evidence": "The ending upgrades mimicry into a false Lu Chenzhou command, '门开了，上车', while true Lu remains inside and does not issue that order.",
+      "suggested_fix": "Record this as observed voice-command mimicry, not proof of full monster ecology or outside knowledge of the RV system."
+    },
+    {
+      "type": "father_thread_boundary",
+      "severity": "low",
+      "evidence": "No old-protocol fault code or father-route hard clue appears; the chapter leaves that obligation for later unit chapters.",
+      "suggested_fix": "No father-thread hard evidence update is needed for chapter 14."
+    }
+  ],
+  "required_fixes": [],
+  "proposed_state_updates": [
+    "Chapter 14 at Qinghe medical-point exterior: Lu Chenzhou designs a short-window material retrieval route while keeping the RV running, doors closed, and retreat line preserved.",
+    "Lin Zhixia identifies visible Simple Medical Bay materials and distinguishes usable components, contaminated parts, and residue samples: isolation film outer roll and folding medical-frame usable part are externally isolated; the sterile power interface / harness is abandoned after contamination contact.",
+    "The RV obtains a majority advance toward Simple Medical Bay material conditions, but the module is not installed, unlocked, or activated.",
+    "Clean filter low-efficiency window continues to shrink from about 14 minutes to about 6 minutes; rear temporary sealing pressure worsens during the exterior operation.",
+    "Grey-white vine residue remains uncollected / unjudged; it is not brought into the living area and does not become a free module material.",
+    "The abdominal bleeding man and low-fever child remain outside and survive only by following light / no-sound instructions; neither boards.",
+    "External survivors attempt to pressure or seize materials, but no full Qinghe faction structure is revealed.",
+    "Voice mimicry escalates to a false Lu Chenzhou command after the outer-warehouse side door remotely opens: '门开了，上车.' True Lu Chenzhou rejects external command authority."
+  ],
+  "human_approval_needed": [
+    "Approve chapter 14 gaining a majority of Simple Medical Bay material conditions without installing or activating the module.",
+    "Approve isolation film outer roll and folding medical-frame usable part as externally isolated, pending cleaning / installation components.",
+    "Approve sterile power interface / harness being abandoned due to contamination contact.",
+    "Approve grey-white vine residue remaining uncollected / unjudged rather than becoming usable material.",
+    "Approve voice mimicry upgrading into a false Lu Chenzhou boarding command without external knowledge of the RV system's formal name."
+  ]
+}

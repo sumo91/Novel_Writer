@@ -378,3 +378,303 @@ resources:
     category: knowledge
     unit: risk
   last_updated_chapter: 11
+- id: res_rv_medicine_pack_ch12
+  owner: rv
+  name: medicine_pack
+  category: item
+  unit: pack
+  current_amount: 0
+  history:
+  - chapter: 12
+    delta: 0
+    reason: 用少量绷带、压迫敷料、碘伏和手套组成投送包指导腹部出血男人车外止血；账本未量化，暂不改变数值余量。
+    owner: rv
+    name: medicine_pack
+    category: item
+    unit: pack
+  last_updated_chapter: 12
+- id: res_rv_clean_filter_ch12
+  owner: rv
+  name: clean_filter
+  category: item
+  unit: module
+  current_amount: 0
+  history:
+  - chapter: 12
+    delta: 0
+    reason: 净雾滤芯低效稳定窗口从约21分钟缩短到约18分钟，仍未恢复或升级。
+    owner: rv
+    name: clean_filter
+    category: item
+    unit: module
+  last_updated_chapter: 12
+- id: res_rv_rear_seal_ch12
+  owner: rv
+  name: rv_rear_seal
+  category: item
+  unit: seal
+  current_amount: 0
+  history:
+  - chapter: 12
+    delta: 0
+    reason: 车尾临时封堵继续承压，房车短暂开窗投送物资但没有完成修复。
+    owner: rv
+    name: rv_rear_seal
+    category: item
+    unit: seal
+  last_updated_chapter: 12
+- id: res_simple_medical_bay_ch12
+  owner: rv
+  name: simple_medical_bay
+  category: item
+  unit: module
+  current_amount: 0
+  history:
+  - chapter: 12
+    delta: 0
+    reason: 简易医疗位材料仍在后墙附近作为线索存在；本章没有取得材料、污染判定、安装或启动模块。
+    owner: rv
+    name: simple_medical_bay
+    category: item
+    unit: module
+  last_updated_chapter: 12
+- id: res_qinghe_exterior_triage_protocol_ch12
+  owner: rv
+  name: qinghe_exterior_triage_protocol
+  category: knowledge
+  unit: rule
+  current_amount: 1
+  history:
+  - chapter: 12
+    delta: 1
+    reason: 建立灯线边界、不开门、不叫名、可观察 / 外部短救 / 高风险拒绝接触的青河车外分诊流程。
+    owner: rv
+    name: qinghe_exterior_triage_protocol
+    category: knowledge
+    unit: rule
+  last_updated_chapter: 12
+- id: res_grey_white_vine_observation_ch12
+  owner: rv
+  name: grey_white_vine_observation
+  category: knowledge
+  unit: clue
+  current_amount: 1
+  history:
+  - chapter: 12
+    delta: 1
+    reason: 观察到灰眼伤员手腕伤口冒出灰白雾藤，并能借用孩子声音，作为第13章藤化伤员线索。
+    owner: rv
+    name: grey_white_vine_observation
+    category: knowledge
+    unit: clue
+  last_updated_chapter: 12
+- id: res_medicine_pack_ch13
+  owner: rv
+  name: medicine_pack
+  category: item
+  unit: pack
+  current_amount: 0
+  history:
+  - chapter: 13
+    delta: 0
+    reason: 投送包 / 少量短救耗材被灰白雾藤接触并判定污染，不能回收进房车；账本不量化扣减，但记录为损失 / 污染风险。
+    owner: rv
+    name: medicine_pack
+    category: item
+    unit: pack
+  last_updated_chapter: 13
+- id: res_external_tools_ch13
+  owner: rv
+  name: external_countermeasure_tools
+  category: item
+  unit: tool
+  current_amount: 0
+  history:
+  - chapter: 13
+    delta: 0
+    reason: 撬杆、绳索接触端或外部工具参与藤体反制后被污染 / 放弃，不进入生活区。
+    owner: rv
+    name: external_countermeasure_tools
+    category: item
+    unit: tool
+  last_updated_chapter: 13
+- id: res_clean_filter_ch13
+  owner: rv
+  name: clean_filter
+  category: item
+  unit: module
+  current_amount: 0
+  history:
+  - chapter: 13
+    delta: 0
+    reason: 净雾滤芯低效稳定窗口继续消耗，章末约剩14分钟，没有恢复或升级。
+    owner: rv
+    name: clean_filter
+    category: item
+    unit: module
+  last_updated_chapter: 13
+- id: res_simple_medical_bay_ch13
+  owner: rv
+  name: simple_medical_bay
+  category: item
+  unit: module
+  current_amount: 0
+  history:
+  - chapter: 13
+    delta: 0
+    reason: 简易医疗位仍锁定 / 未启动；灰白藤体残片只是隔离材料候选线索，不是完整材料收益。
+    owner: rv
+    name: simple_medical_bay
+    category: item
+    unit: module
+  last_updated_chapter: 13
+- id: res_grey_white_vine_residue_ch13
+  owner: rv
+  name: grey_white_vine_residue
+  category: knowledge
+  unit: clue
+  current_amount: 1
+  history:
+  - chapter: 13
+    delta: 1
+    reason: 观察到藤体断裂残片可被系统标记为待隔离判定的材料候选，但尚未隔离采样，禁止直接上车。
+    owner: rv
+    name: grey_white_vine_residue
+    category: knowledge
+    unit: clue
+  last_updated_chapter: 13
+- id: res_vine_reaction_observations_ch13
+  owner: rv
+  name: grey_white_vine_reaction_observations
+  category: knowledge
+  unit: rule
+  current_amount: 1
+  history:
+  - chapter: 13
+    delta: 1
+    reason: 林知夏记录藤体对血迹、医疗物资、声音回应、错误接触和车门方向的可观察反应；这些是临场规则，不是完整生态定论。
+    owner: rv
+    name: grey_white_vine_reaction_observations
+    category: knowledge
+    unit: rule
+  last_updated_chapter: 13
+- id: res_clean_filter_ch14
+  owner: rv
+  name: clean_filter
+  category: item
+  unit: module
+  current_amount: 0
+  history:
+  - chapter: 14
+    delta: 0
+    reason: 净雾滤芯低效稳定窗口从约14分钟缩短到约6分钟，未恢复或升级。
+    owner: rv
+    name: clean_filter
+    category: item
+    unit: module
+  last_updated_chapter: 14
+- id: res_rv_rear_seal_ch14
+  owner: rv
+  name: rv_rear_seal
+  category: item
+  unit: seal
+  current_amount: 0
+  history:
+  - chapter: 14
+    delta: 0
+    reason: 取材过程中车尾临时封堵继续承压，出现胶带 / 封堵开裂声音，仍未完全修复。
+    owner: rv
+    name: rv_rear_seal
+    category: item
+    unit: seal
+  last_updated_chapter: 14
+- id: res_simple_medical_bay_ch14
+  owner: rv
+  name: simple_medical_bay
+  category: item
+  unit: module
+  current_amount: 0
+  history:
+  - chapter: 14
+    delta: 0
+    reason: 简易医疗位材料条件取得大半，但仍未安装、未启动、未解锁完整模块。
+    owner: rv
+    name: simple_medical_bay
+    category: item
+    unit: module
+  last_updated_chapter: 14
+- id: res_medical_isolation_film_ch14
+  owner: rv
+  name: medical_isolation_film_outer_roll
+  category: item
+  unit: component
+  current_amount: 1
+  history:
+  - chapter: 14
+    delta: 1
+    reason: 取得污染隔离膜外卷，外层污染可剥离，已外置隔离，待清洁 / 待安装，未进入生活区。
+    owner: rv
+    name: medical_isolation_film_outer_roll
+    category: item
+    unit: component
+  last_updated_chapter: 14
+- id: res_folding_medical_frame_ch14
+  owner: rv
+  name: folding_medical_frame_usable_part
+  category: item
+  unit: component
+  current_amount: 1
+  history:
+  - chapter: 14
+    delta: 1
+    reason: 取得折叠医疗架可用侧杆 / 固定部件，已外置隔离，待清洁 / 待安装，整架和污染轮组未取得。
+    owner: rv
+    name: folding_medical_frame_usable_part
+    category: item
+    unit: component
+  last_updated_chapter: 14
+- id: res_sterile_power_interface_ch14
+  owner: rv
+  name: sterile_power_interface_harness
+  category: item
+  unit: component
+  current_amount: 0
+  history:
+  - chapter: 14
+    delta: 0
+    reason: 无菌电源接口 / 线束被灰白残片接触后判定污染并放弃，本章未取得。
+    owner: rv
+    name: sterile_power_interface_harness
+    category: item
+    unit: component
+  last_updated_chapter: 14
+- id: res_grey_white_vine_residue_ch14
+  owner: rv
+  name: grey_white_vine_residue
+  category: knowledge
+  unit: clue
+  current_amount: 0
+  history:
+  - chapter: 14
+    delta: 0
+    reason: 灰白藤体残片仍未采样、未隔离判定，继续作为危险线索而非可用材料。
+    owner: rv
+    name: grey_white_vine_residue
+    category: knowledge
+    unit: clue
+  last_updated_chapter: 14
+- id: res_voice_command_mimicry_ch14
+  owner: rv
+  name: voice_command_mimicry
+  category: knowledge
+  unit: clue
+  current_amount: 1
+  history:
+  - chapter: 14
+    delta: 1
+    reason: 观察到声音拟态升级为假陆沉舟上车指令，外部声音不能作为车内命令依据。
+    owner: rv
+    name: voice_command_mimicry
+    category: knowledge
+    unit: clue
+  last_updated_chapter: 14

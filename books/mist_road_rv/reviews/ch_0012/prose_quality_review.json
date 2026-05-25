@@ -1,0 +1,69 @@
+{
+  "score": 93,
+  "dimension_scores": {
+    "opening_hook": 10,
+    "conflict_pressure": 10,
+    "protagonist_agency": 10,
+    "payoff_execution": 14,
+    "dialogue_tension": 9,
+    "scene_specificity": 9,
+    "voice_distinction": 9,
+    "rhythm_variation": 8,
+    "ending_pull": 10,
+    "style_slop_control": 4
+  },
+  "style_alignment": {
+    "passed": true,
+    "score": 94,
+    "style_bible_used": true,
+    "calibration_used": true,
+    "matched_patterns": [
+      "Pressure-led opening: the chapter begins with the no-footprint child, rear-wall knocks, three pushed-out aid subjects, and the RV still running before explaining any Qinghe structure.",
+      "Concrete vehicle / medical / road texture drives the scene: lamp line, low beam, exterior speaker, window gap, folding rod, sealed aid bag, pressure dressing, isolation curtain, filter window, and retreat angle all affect decisions.",
+      "Rules emerge through action: no names, no door opening, lamp-line boundary, exterior self-aid, and reverse movement demonstrate the RV contact rules.",
+      "Protagonist agency stays operational: Lu Chenzhou creates the safety frame for triage through vehicle position, light control, external-speaker commands, rod delivery, and immediate reverse motion.",
+      "Lin Zhixia remains functionally distinct: she sorts by cough response, footprints, command response, wound control, grey-eye risk, and voice repetition instead of emotional volume.",
+      "Payoff carries cost: the man receives limited exterior aid, but no one boards, no material is acquired, the filter window shortens, and grey-white vine risk opens the next chapter.",
+      "Dialogue works as probe: questions about coughing, movement, injury, left hand, why the wrist is bound, and whether a person can self-pressure all change risk classification."
+    ],
+    "rejected_patterns_hit": [],
+    "violations": []
+  },
+  "exposition_density": {
+    "passed": true,
+    "score": 92,
+    "frontloaded_explanations": [],
+    "delayed_explanations": [
+      "Full Qinghe survivor organization",
+      "Who pushed the patients out and why",
+      "Complete voice-mimicry ecology",
+      "Complete grey-white vine mechanism",
+      "Simple Medical Bay acquisition / activation process",
+      "Terminal / old-protocol / father-route explanation"
+    ],
+    "scene_triggers": [
+      "The three simultaneous pleas trigger the need for exterior triage.",
+      "Footprints, coughing, and hand response trigger the real-child / false-child distinction.",
+      "Abdominal bleeding triggers limited exterior aid without boarding.",
+      "Bound wrists and grey eyes trigger suspected-mutation classification.",
+      "The borrowed child voice triggers the rejection of patient-site voice mimicry.",
+      "The grey-white vine emerging from the wrist triggers the chapter 13 monster escalation."
+    ]
+  },
+  "strengths": [
+    "The chapter escalates from chapter 11's verification into active triage without losing the RV boundary logic.",
+    "Lin Zhixia gets a clean functional payoff: her professional judgment decides the scene, but it is backed by observable symptoms rather than lecture.",
+    "Lu Chenzhou is not passive; his control of distance, lamp line, external communication, rod delivery, and reverse motion makes the scene possible.",
+    "The limited treatment of the abdominal bleeding man creates humane pressure while preserving the core rule that help does not equal boarding.",
+    "The voice mimicry progression is strong: it moves from exterior imitation to the grey-eyed patient's borrowed child voice, then to grey-white vine activity.",
+    "The ending hook is concrete and visual, not vague: the vine taps the ground like the earlier knock, suggesting the threat is learning beyond sound."
+  ],
+  "blocking_issues": [],
+  "rewrite_required": false,
+  "revision_suggestions": [
+    "Final candidate can use the revised draft nearly as-is.",
+    "Preserve the lines approved in author direction, especially \"救治可以。门不开。\" and \"不是只有声音。\"",
+    "Do not add a main-building reveal, a survivor faction explanation, or medical-module acquisition before the final candidate.",
+    "If polishing, keep the middle triage sequence tight; avoid adding more symptom explanation unless it changes a decision."
+  ]
+}

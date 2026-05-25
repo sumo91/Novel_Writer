@@ -1,0 +1,38 @@
+chapter: 13
+author_intent:
+- Preserve chapter 13 as the first physical vine-mutated patient counter, not a lore explanation or main-building exploration.
+- Make the chapter's main爽点 a non-contact win: Lu Chenzhou keeps the RV door shut while using light, reverse movement, vehicle angle, exterior speaker, rope, rod, and abandoned tools to break the vine's leverage.
+- Let Lin Zhixia's value upgrade from exterior triage to pollution-mechanism observation: she names provisional reactions to blood, medical supplies, sound response, contact stimulus, and door direction without turning them into final rules.
+- Keep the child and abdominal bleeding man alive only through obedience to instructions, reinforcing that controllable survivors can receive a window of help without gaining boarding status.
+- Treat contaminated residue as a tempting but dangerous candidate clue for the Simple Medical Bay, not a free module reward.
+- End with a specific next pressure: residue blocks or complicates access to the real medical materials while the filter window shrinks.
+must_change:
+- Do not let any unknown survivor, grey-eyed patient, child, or abdominal bleeding man enter the RV.
+- Do not open the RV door or recover contaminated tools / medical bag into the living area.
+- Do not allow any outside voice or survivor to know the RV "system" by name.
+- Do not acquire complete Simple Medical Bay materials or activate the module.
+- Do not enter Qinghe main building or explain Qinghe's survivor organization.
+- Do not define the complete vine ecology, mother-hive road, fog-heart figure, or father line.
+approved_lines:
+- "退到左墙。"
+- "袋子不要了。"
+- "谁碰它，谁出线。"
+- "它朝血走。"
+- "不是确定，是目前反应。"
+- "门不开，东西也不回收。"
+- "投送包污染，放弃。"
+- "残片可能有用。"
+- "现在不能拿。"
+- "门不开。"
+rejected_patterns:
+- Avoid monster encyclopedia explanation detached from scene pressure.
+- Avoid sentimental rescue override that opens the RV boundary.
+- Avoid free upgrade payoff from contaminated residue.
+- Avoid external characters naming or understanding the golden finger.
+- Avoid making Lin Zhixia lecture; her observations should change immediate actions.
+- Avoid making Lu Chenzhou passive while the vine pressure escalates.
+- Avoid vague ending dread without a concrete chapter 14 material-contest obligation.
+ai_assistance:
+  expected: true
+  human_role: direction, taste, key edits, final approval
+approved_for_final_candidate: true

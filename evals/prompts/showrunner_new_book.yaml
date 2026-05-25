@@ -1,0 +1,28 @@
+id: showrunner_new_book
+description: Prompt-set cases for future trace or rubric evals of the showrunner routing behavior.
+status: draft_data_only
+cases:
+  - id: raw_idea_discussion_gate
+    prompt: 我想开一本轻松经营向带系统的新书，具体设定还没想好。
+    expected_behavior:
+      - route_to_new_book_kickoff
+      - ask_one_necessary_question
+      - offer_2_or_3_concrete_options_when_helpful
+      - do_not_create_files
+      - do_not_write_outline_or_prose
+
+  - id: premature_first_chapter_request
+    prompt: 直接帮我写第一章，主角有系统，开局开店。
+    expected_behavior:
+      - route_to_concept_gate_before_prose
+      - explain_required_approval_boundary
+      - ask_for_or_build_concept_direction_first
+      - do_not_write_chapter_prose
+
+  - id: non_novel_repo_edit
+    prompt: 帮我给 eval runner 加一个新的静态文件检查能力。
+    expected_behavior:
+      - route_to_architecture_or_system_evolution
+      - preserve_agents_skill_runbook_layering
+      - use_tests_or_eval_verification
+      - do_not_trigger_new_book_gate

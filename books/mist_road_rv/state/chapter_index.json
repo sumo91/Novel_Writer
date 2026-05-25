@@ -234,6 +234,81 @@
         "thread_rv_system_binding",
         "thread_service_area_terminals"
       ]
+    },
+    {
+      "chapter": 12,
+      "title": "谁先救",
+      "path": "chapters/ch_0012.md",
+      "summary": "青河医疗点外出现低烧孩子、腹部出血男人和被绑灰眼伤员等多重求救对象。陆沉舟不开门、不叫名，用灯线、外放、投送包和倒车保持撤离边界；林知夏完成第一次青河车外分诊，救治可控外伤者、拒绝疑似异变接触，并确认声音拟态已经进入人体 / 伤员现场。章末灰眼伤员借孩子声音求救，手腕冒出灰白雾藤，推动第13章进入藤化伤员升级。",
+      "state_changes": [
+        "The RV remains outside Qinghe medical point with engine running, doors closed, retreat angle preserved, and exterior contact controlled through lights, external speaker, distance, and reverse movement.",
+        "Lu Chenzhou establishes a lamp-line boundary and no-name exterior protocol, using a rod-delivered aid bag instead of opening the RV.",
+        {
+          "Three exterior triage subjects appear": "a low-fever child with footprints and command response, an abdominal bleeding man who can self-pressure, and a bound grey-eyed patient with repeated request behavior."
+        },
+        {
+          "Lin Zhixia performs the first Qinghe exterior triage": "observable child, exterior short-aid man, and rejected high-risk suspected mutation."
+        },
+        "The abdominal bleeding man receives stopgap exterior pressure-dressing guidance; this is limited aid, not boarding qualification, formal treatment completion, or team membership.",
+        "Zhou Xiaohe remains in temporary observation behind the isolation curtain and provides only a limited cue that the repeated child voice matches the earlier false lure.",
+        "Voice mimicry advances into patient-site behavior when the grey-eyed patient uses the child's voice after being refused.",
+        "Grey-white vine activity emerges from the grey-eyed patient's wrist wound and taps like the earlier wall knock, opening the chapter 13藤化伤员 threat.",
+        "No Simple Medical Bay material is acquired, no module is activated, and Qinghe main-building survivor order remains unrevealed."
+      ],
+      "open_threads_touched": [
+        "thread_vehicle_rules_contract",
+        "thread_lin_pollution_observation",
+        "thread_mist_monster_ecology",
+        "thread_rv_system_binding",
+        "thread_service_area_terminals"
+      ]
+    },
+    {
+      "chapter": 13,
+      "title": "灰白雾藤",
+      "path": "chapters/ch_0013.md",
+      "summary": "灰眼伤员藤化为灰白雾藤实体威胁，陆沉舟不开门完成第一次非接触反制；林知夏识别藤体对血、医疗物资、声音回应、错误接触和车门方向的可观察反应。投送包和外部工具被污染 / 放弃，灰白藤体残片成为简易医疗位材料候选，但必须隔离采样和系统判定，不能直接上车或解锁模块。",
+      "state_changes": [
+        "灰眼伤员藤化为灰白雾藤实体威胁，青河威胁从声音诱导升级为可接触 / 可缠绕 / 可学习救治流程的污染组织。",
+        "陆沉舟在不开门、不下车的前提下，用车灯、倒车、车身角度、外放、绳索和撬杆完成第一次藤化反制，并继续守住房车门和撤离线。",
+        "林知夏观察到藤体会对血迹、医疗物资、声音回应、错误接触和车门方向产生反应，但她把这些保持为“目前反应”，不写成完整生态规则。",
+        "腹部出血男人和低烧孩子按指令退到左墙后方，仍是车外可控 / 可观察对象，没有获得上车资格或队友身份。",
+        "试图抢药 / 接触污染投送包的幸存者险些被藤丝缠住，证明错误接触会扩大藤化风险。",
+        "投送包、部分外部短救耗材、撬杆 / 绳索接触端被污染或放弃，不能回收到生活区。",
+        "灰白藤体断裂后留下污染残片 / 藤丝，可作为简易医疗位隔离材料候选线索，但必须先隔离采样和系统判定。",
+        "简易医疗位仍锁定且未启动；二号配电箱旁医疗材料信号增强，推动第14章进入材料争夺 / 隔离采样压力。"
+      ],
+      "open_threads_touched": [
+        "thread_vehicle_rules_contract",
+        "thread_lin_pollution_observation",
+        "thread_mist_monster_ecology",
+        "thread_rv_system_binding",
+        "thread_service_area_terminals"
+      ]
+    },
+    {
+      "chapter": 14,
+      "title": "医疗位材料",
+      "path": "chapters/ch_0014.md",
+      "summary": "陆沉舟在青河医疗点外制定三分钟短窗口取材路线，林知夏判断隔离膜、折叠医疗架和无菌电源线束的污染状态；车组取得污染隔离膜外卷和折叠医疗架可用部件并外置隔离，但无菌电源接口 / 线束被灰白残片接触后放弃，简易医疗位仍未安装未启动。章末外仓侧门远程开启，假陆沉舟声音广播“门开了，上车”。",
+      "state_changes": [
+        "陆沉舟制定三分钟短窗口取材路线，继续保持房车发动、撤离线和车门锁闭。",
+        "林知夏完成第一个医疗位材料判断场景：隔离膜外层污染可剥离，折叠医疗架可取可用部件，无菌电源线束被污染后必须放弃。",
+        "车组取得污染隔离膜外卷和折叠医疗架可用部件，两者都挂在车外后挂架外置隔离，未进入生活区。",
+        "无菌电源接口 / 线束被灰白残片接触，判定污染后放弃。",
+        "简易医疗位材料条件推进到大半，但模块仍未安装、未启动、未解锁。",
+        "净雾滤芯低效稳定窗口从约14分钟缩短到约6分钟；车尾临时封堵在外部操作中继续承压。",
+        "灰白藤体残片仍未采样、未判定，没有成为可用材料。",
+        "腹部出血男人和低烧孩子继续留在车外，按灯光 / 闭嘴 / 不越线规则保留生存窗口，未上车。",
+        "外仓侧门远程开启，广播用陆沉舟声音发出“门开了，上车”的假指令，声音拟态升级到命令级诱导。"
+      ],
+      "open_threads_touched": [
+        "thread_vehicle_rules_contract",
+        "thread_lin_pollution_observation",
+        "thread_mist_monster_ecology",
+        "thread_rv_system_binding",
+        "thread_service_area_terminals"
+      ]
     }
   ]
 }

@@ -1,0 +1,343 @@
+chapter: 15
+title: 雾犬围站
+source_draft: drafts/ch_0015_final_candidate.md
+accepted_chapter_path: chapters/ch_0015.md
+summary: 陆沉舟在青河医疗点外用车灯、短喇叭、车身角度和闭门规则夺回现场命令权，挡住雾犬围站与幸存者风险转嫁；林知夏建立车外分诊线，拒绝污染疑似者和未知幸存者贴车。章末医疗点内亮起稳定手术灯，真人广播者提出救一个关键伤员换二号配电箱权限。
+current_state:
+  current_chapter: 15
+  current_arc: arc_001
+  latest_location: 青河服务区医疗点外缘，房车仍发动、门关闭、车头朝撤离路线；外置隔离袋挂在车外后挂架，假陆沉舟声音仍在诱导幸存者和雾犬，手术灯在医疗点内侧亮起。
+  active_characters:
+  - lu_chenzhou
+  - lin_zhixia
+  - temporary_injured_girl
+  active_conflicts:
+  - 假陆沉舟声音诱导“门开了，上车”，雾犬群被血味、金属声和车尾排气吸引到外仓门附近。
+  - 陆沉舟必须用车灯、短喇叭、车身角度和闭门规则继续夺回现场命令权，不能开门。
+  - 林知夏必须守住车外分诊线，阻止污染疑似者和被推来的伤员贴车。
+  - 车尾临时封堵仍承压，外置隔离材料仍在车外暴露，滤芯窗口继续缩短。
+  - 医疗点内侧亮起稳定手术灯，真人广播者提出用二号配电箱权限交换关键伤员救治。
+  pending_approvals: []
+state_changes:
+- 陆沉舟从短窗口取材者推进为现场命令权夺回者，建立“看车灯 / 车内通话，不听外部拟声”的临时规则。
+- 林知夏从材料判断者推进为车外分诊线守门人，明确医疗救助不能被污染转嫁绑架。
+- 周小禾仍临时观察，最多报告车尾声响、广播声像不像真陆、低热变化。
+- 腹部出血男人和低烧孩子继续留在车外，不上车，但通过听灯光 / 不听声音保留下一轮处理机会。
+resource_changes:
+- &id001
+  id: res_clean_filter_ch15
+  owner: rv
+  item: clean_filter
+  category: item
+  unit: module
+  delta: 0
+  reason: 净雾滤芯低效稳定窗口继续消耗，从约6分钟下降到不足3分钟。
+- &id002
+  id: res_rv_rear_seal_ch15
+  owner: rv
+  item: rv_rear_seal
+  category: item
+  unit: seal
+  delta: 0
+  reason: 雾犬扑咬、倒车 / 前压和车尾震动让封堵承压上升，但未彻底失效。
+- &id003
+  id: res_simple_medical_bay_ch15
+  owner: rv
+  item: simple_medical_bay
+  category: item
+  unit: module
+  delta: 0
+  reason: 简易医疗位仍未安装、未启动；本章只推进交易目标。
+- &id004
+  id: res_medical_isolation_film_ch15
+  owner: rv
+  item: medical_isolation_film_outer_roll
+  category: item
+  unit: component
+  delta: 0
+  reason: 外置隔离材料仍挂在车外后挂架，存在被雾犬或幸存者污染或撕走风险。
+- &id005
+  id: res_folding_medical_frame_ch15
+  owner: rv
+  item: folding_medical_frame_usable_part
+  category: item
+  unit: component
+  delta: 0
+  reason: 折叠医疗架可用部件仍外置隔离，未进入生活区。
+open_threads_touched:
+- thread_vehicle_rules_contract
+- thread_lin_pollution_observation
+- thread_mist_monster_ecology
+- thread_rv_system_binding
+- thread_service_area_terminals
+payoff_updates:
+- chapter: 15
+  promises_made:
+  - 第16章必须处理稳定手术灯下的关键伤员交易、二号配电箱权限和有限救治。
+  - 外置隔离材料仍在车外，撤离和污染处理会形成新压力。
+  - 假陆沉舟命令和雾犬围站没有被直接清场，命令权争夺还会延续。
+  payoffs_delivered:
+  - 假陆沉舟“门开了，上车”从声音威胁升级为现场秩序夺回战。
+  - 陆沉舟和林知夏第一次形成医疗点外部战术配合：控场与分诊并行。
+  - 风险转嫁被挡下，污染疑似者没有贴车上车。
+  - 雾犬群被暂时甩开，但没有清除，形成明确的下一章压力。
+  - 真实广播者和稳定手术灯把故事推向交易而不是纯战斗。
+  frustration_level: controlled
+  payoff_types:
+  - rule_payoff
+  - teamplay_payoff
+  - threat_escalation
+  - trade_hook
+  delayed_payoffs:
+  - 二号配电箱权限
+  - 关键伤员的真实状态
+  - 手术灯后面的人是谁
+  - 外仓侧门为何远程开启
+  - 简易医疗位最终安装 / 启动
+  risks:
+  - 外置隔离袋仍在车外暴露。
+  - 车尾临时封堵仍承压。
+  - 滤芯窗口继续缩短。
+  - 假陆沉舟声音仍会继续诱导。
+  - 二号配电箱权限交易可能引出更大的人情债。
+conflict_updates:
+  active:
+  - 假陆沉舟声音诱导“门开了，上车”，雾犬群被血味、金属声和车尾排气吸引到外仓门附近。
+  - 陆沉舟必须用车灯、短喇叭、车身角度和闭门规则继续夺回现场命令权，不能开门。
+  - 林知夏必须守住车外分诊线，阻止污染疑似者和被推来的伤员贴车。
+  - 车尾临时封堵仍承压，外置隔离材料仍在车外暴露，滤芯窗口继续缩短。
+  - 医疗点内侧亮起稳定手术灯，真人广播者提出用二号配电箱权限交换关键伤员救治。
+  next_hook:
+    hook: 医疗点内侧亮起稳定手术灯，真人广播者提出救一个关键伤员换二号配电箱权限。
+    obligation: 第16章必须处理临时手术灯、关键伤员、二号配电箱权限和有限救治交易。
+    target_chapter: 16
+    status: open
+timeline_event:
+  id: t015
+  when: 第 15 章
+  summary: 外仓侧门远程开启后，假陆沉舟声音诱导幸存者贴近房车，雾犬群被血味、金属声和车尾排气吸引围向青河医疗点外缘；陆沉舟用车灯、车身角度、短喇叭和撤离线夺回现场命令权，林知夏守住车外分诊线，挡下幸存者把污染伤员推向房车的风险转嫁。章末雾犬群被暂时甩开，医疗点内唯一稳定手术灯亮起，真人广播者提出救关键伤员换二号配电箱权限。
+v3_state_updates:
+  timeline:
+    occurred_events:
+    - id: ev_0015_01
+      summary: 外仓侧门远程开启后，假陆沉舟声音诱导幸存者贴近房车，雾犬群被血味、金属声和车尾排气吸引围向青河医疗点外缘；陆沉舟用车灯、车身角度、短喇叭和撤离线夺回现场命令权，林知夏守住车外分诊线，挡下幸存者把污染伤员推向房车的风险转嫁。章末雾犬群被暂时甩开，医疗点内唯一稳定手术灯亮起，真人广播者提出救关键伤员换二号配电箱权限。
+      location: 青河服务区医疗点外缘，房车仍保持撤离角度，外置隔离材料挂在车外后挂架，外仓侧门远程开启，医疗点内侧亮起稳定手术灯。
+      involved_characters:
+      - lu_chenzhou
+      - lin_zhixia
+      - temporary_injured_girl
+      source_chapter: 15
+  character_states:
+  - &id006
+    character_id: lu_chenzhou
+    display_name: 陆沉舟
+    physical_state: 仍在驾驶位控制房车，车门关闭，车灯分区、喇叭和倒挡操作都保持可用；外置隔离袋挂在后挂架外侧，未进入生活区。
+    social_state: 从短窗口取材路线设计者推进为现场命令权夺回者，能用车内规则压制外部假命令。
+    emotional_state: 对假陆沉舟指令和门禁开启保持高度警惕，但不被诱导开门或放弃撤离线。
+    current_goal: 在不打开车门的前提下继续稳住外部秩序，准备和真人广播者谈条件而不是交出边界。
+    known_secrets: []
+    public_knowledge:
+    - 外部出现的陆沉舟声音不具备命令权，只有车内确认规则有效。
+    - 医疗点内侧有人正在通过手术灯和广播尝试提出交易。
+    relationship_changes:
+    - 与林知夏形成稳定的外部战术配合，陆沉舟负责控场和撤离线，林知夏负责车外分诊线。
+    voice_notes:
+    - 短、硬、以条件和边界为主；“看灯，不听声音”“外面的我不算”“谁听声音上车，谁留在外面”体现新规则。
+  - &id007
+    character_id: lin_zhixia
+    display_name: 林知夏
+    physical_state: 守在车内隔离位置，通过窗缝、车灯与外放完成车外分诊，不让污染疑似者贴车。
+    social_state: 从材料判断者推进为车外分诊线守门人，医疗价值由“会判断材料”扩展到“会拒绝风险转嫁”。
+    emotional_state: 看到真正的医疗灯和伤员时有职业冲动，但能先守边界再谈救治。
+    current_goal: 把救治从道德压力变成可执行边界，只接受条件明确、污染可控的有限救治交易。
+    known_secrets:
+    - 周小禾仍需要更稳定医疗处理，简易医疗位材料推进越快越有价值，但不能以污染入车为代价。
+    public_knowledge:
+    - 外部的污染疑似者和被推来的伤员不能因为“有医生”就贴车。
+    - 二号配电箱权限是下一章交易目标，但不等于开门上车。
+    relationship_changes:
+    - 她和陆沉舟的分工从材料推进扩展为共同定义医疗边界。
+    voice_notes:
+    - 专业、短句、有取舍；“医生不是门禁卡”“先看伤”体现她的角色功能。
+  - &id008
+    character_id: temporary_injured_girl
+    display_name: 周小禾
+    physical_state: 仍在临时观察区，低热和伤口问题未彻底解决；听到车尾封堵声音变化并报告，但没有离开隔离区。
+    social_state: 继续是临时观察患者，不是正式成员；她的情况继续证明简易医疗位必要性。
+    emotional_state: 听见假陆沉舟声音后恐惧，但仍按规则只报告声音像不像和车内异常。
+    current_goal: 留在观察区等待更稳定处理，不让医疗位材料压力变成自己越界的理由。
+    known_secrets: []
+    public_knowledge:
+    - 她报告车尾封堵声音变化，帮助车组意识到外部操作不能继续拖延。
+    relationship_changes:
+    - 观察价值仍存在，身份边界仍未改变。
+    voice_notes:
+    - 虚弱、短促、事实报告。
+  resource_changes:
+  - *id001
+  - *id002
+  - *id003
+  - *id004
+  - *id005
+  open_thread_updates: &id015
+  - &id009
+    id: thread_vehicle_rules_contract
+    promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+    source_chapter: 0
+    status: advanced
+    last_touched: 15
+    latest_note: 假陆沉舟命令和外仓开门压来时，陆沉舟用车灯、短喇叭和闭门规则夺回命令权，继续证明外部声音不算命令。
+    next_obligation: 第16章进入手术灯交易时，继续证明交易不是开门上车的变体，而是有条件、有限制的外部救治。
+  - &id010
+    id: thread_lin_pollution_observation
+    promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+    source_chapter: 0
+    status: advanced
+    last_touched: 15
+    latest_note: 林知夏把医疗功能推进到车外分诊线：判断污染疑似、拒绝风险转嫁、把“医生”改写为边界守门人。
+    next_obligation: 后续让她参与车外有限救治交易，继续体现医疗功能不是无条件救人。
+  - &id011
+    id: thread_mist_monster_ecology
+    promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+    source_chapter: 0
+    status: advanced
+    last_touched: 15
+    latest_note: 雾犬对血味、金属声、车尾排气和假指令作出群体反应，说明威胁会被声音、灯光和救援流程牵动。
+    next_obligation: 第16章可通过关键伤员交易继续展示迷雾生态与人类秩序的拉扯。
+  - &id012
+    id: thread_rv_system_binding
+    promise: 房车系统为什么绑定陆沉舟和父亲留下的旧房车。
+    source_chapter: 0
+    status: advanced
+    last_touched: 15
+    latest_note: 系统仍只提示风险、倒计时、外部声源和材料条件，不替主角做道德选择，也不直接解锁医疗位。
+    next_obligation: 继续保持系统为风险和模块条件提示工具，不成为道德裁判或免费升级器。
+  - &id013
+    id: thread_service_area_terminals
+    promise: 服务区交易终端、临时屏障和路标任务从何而来。
+    source_chapter: 0
+    status: advanced
+    last_touched: 15
+    latest_note: 医疗点内侧出现稳定手术灯，可信广播者提出用二号配电箱权限交换关键伤员，推进服务区门禁异常和交易机制。
+    next_obligation: 第16章处理手术灯下的有限救治与权限交换，不急于给终端源头答案。
+  payoff_updates:
+  - &id014
+    chapter: 15
+    promises_made:
+    - 第16章必须处理稳定手术灯下的关键伤员交易、二号配电箱权限和有限救治。
+    - 外置隔离材料仍在车外，撤离和污染处理会形成新压力。
+    - 假陆沉舟命令和雾犬围站没有被直接清场，命令权争夺还会延续。
+    payoffs_delivered:
+    - 假陆沉舟“门开了，上车”从声音威胁升级为现场秩序夺回战。
+    - 陆沉舟和林知夏第一次形成医疗点外部战术配合：控场与分诊并行。
+    - 风险转嫁被挡下，污染疑似者没有贴车上车。
+    - 雾犬群被暂时甩开，但没有清除，形成明确的下一章压力。
+    - 真实广播者和稳定手术灯把故事推向交易而不是纯战斗。
+    frustration_level: controlled
+    payoff_types:
+    - rule_payoff
+    - teamplay_payoff
+    - threat_escalation
+    - trade_hook
+    delayed_payoffs:
+    - 二号配电箱权限
+    - 关键伤员的真实状态
+    - 手术灯后面的人是谁
+    - 外仓侧门为何远程开启
+    - 简易医疗位最终安装 / 启动
+    risks:
+    - 外置隔离袋仍在车外暴露。
+    - 车尾临时封堵仍承压。
+    - 滤芯窗口继续缩短。
+    - 假陆沉舟声音仍会继续诱导。
+    - 二号配电箱权限交易可能引出更大的人情债。
+  conflict_updates:
+    active:
+    - 假陆沉舟声音诱导“门开了，上车”，雾犬群被血味、金属声和车尾排气吸引到外仓门附近。
+    - 陆沉舟必须用车灯、短喇叭、车身角度和闭门规则继续夺回现场命令权，不能开门。
+    - 林知夏必须守住车外分诊线，阻止污染疑似者和被推来的伤员贴车。
+    - 车尾临时封堵仍承压，外置隔离材料仍在车外暴露，滤芯窗口继续缩短。
+    - 医疗点内侧亮起稳定手术灯，真人广播者提出用二号配电箱权限交换关键伤员救治。
+  next_hook:
+    hook: 医疗点内侧亮起稳定手术灯，真人广播者提出救一个关键伤员换二号配电箱权限。
+    obligation: 第16章必须处理临时手术灯、关键伤员、二号配电箱权限和有限救治交易。
+    target_chapter: 16
+    status: open
+  pending_approvals: []
+change_log:
+  summary: On approval, accept chapter 15 final candidate as chapters/ch_0015.md.
+  canon_updates:
+  - timeline:t015
+  - character_states:lu_chenzhou,lin_zhixia,temporary_injured_girl
+  - resource_ledger:clean_filter_window,rear_seal_pressure,simple_medical_bay_material_progress,medical_isolation_film_outer_roll,folding_medical_frame_usable_part,voice_command_mimicry
+  - open_threads:thread_vehicle_rules_contract,thread_lin_pollution_observation,thread_mist_monster_ecology,thread_rv_system_binding,thread_service_area_terminals
+  - payoff_ledger:command_recapture,exterior_triage_line,trade_hook
+  pending_approvals:
+  - 批准陆沉舟以车灯、短喇叭、车身角度和闭门规则夺回现场命令权，但不开放车门。
+  - 批准林知夏建立车外分诊线，拒绝污染疑似者和风险转嫁贴车。
+  - 批准雾犬群被暂时甩开而不是清场。
+  - 批准真人广播者章末提出救关键伤员换二号配电箱权限，但不在本章取得权限。
+  - 批准第15章不安装简易医疗位且不让未知者上车。
+acceptance_contract:
+  quality_gate_summary:
+    continuity_review_present: true
+    continuity_blockers: []
+    pacing_review_present: true
+    pacing_score: 90
+    revised_pacing_score: null
+    revision_required: false
+    waiver_required: false
+  publication_readiness:
+    final_candidate_path: drafts/ch_0015_final_candidate.md
+    author_direction_present: true
+    author_direction_approved: true
+    prose_quality_review_present: true
+    prose_quality_score: 92
+    prose_rewrite_required: false
+    blocking_issues: []
+  outline_alignment:
+    reference_chain: master -> volume -> arc -> unit -> chapter brief
+    volume_id: volume_001
+    arc_id: arc_001
+    unit_id: unit_0002
+    required_unit_obligations:
+    - 陆沉舟与林知夏完成青河医疗点战术配合。
+    - 幸存者转嫁风险被规则挡住。
+    - 二号配电箱权限成为下一章交易目标。
+    claimed_fulfilled_unit_obligations:
+    - 陆沉舟与林知夏完成青河医疗点战术配合。
+    - 幸存者转嫁风险被规则挡住。
+    - 二号配电箱权限成为下一章交易目标。
+    pending_unit_obligations: []
+  state_updates:
+    timeline_event:
+      id: t015
+      when: 第 15 章
+      summary: 外仓侧门远程开启后，假陆沉舟声音诱导幸存者贴近房车，雾犬群被血味、金属声和车尾排气吸引围向青河医疗点外缘；陆沉舟用车灯、车身角度、短喇叭和撤离线夺回现场命令权，林知夏守住车外分诊线，挡下幸存者把污染伤员推向房车的风险转嫁。章末雾犬群被暂时甩开，医疗点内唯一稳定手术灯亮起，真人广播者提出救关键伤员换二号配电箱权限。
+    character_state_changes:
+    - *id006
+    - *id007
+    - *id008
+    resource_changes:
+    - *id001
+    - *id002
+    - *id003
+    - *id004
+    - *id005
+    open_thread_updates:
+    - *id009
+    - *id010
+    - *id011
+    - *id012
+    - *id013
+    payoff_updates:
+    - *id014
+    next_hook:
+      hook: 医疗点内侧亮起稳定手术灯，真人广播者提出救一个关键伤员换二号配电箱权限。
+      obligation: 第16章必须处理临时手术灯、关键伤员、二号配电箱权限和有限救治交易。
+      target_chapter: 16
+      status: open
+    pending_approvals: []
+    economy_changes: []
+    faction_changes: []
+open_thread_updates: *id015

@@ -93,7 +93,7 @@ The approval summary should include:
 
 - reader promise;
 - protagonist fantasy and appeal hook;
-- golden finger design;
+- golden-finger necessity and limits;
 - repeatable engine;
 - first pressure and first payoff;
 - first-three-chapter promise;

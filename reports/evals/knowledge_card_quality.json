@@ -1,0 +1,87 @@
+{
+  "suite_id": "knowledge_card_quality",
+  "description": "Dynamic evals for reusable craft-card schema, concision, and anti-dump quality gates.",
+  "generated_at": "2026-05-25T15:52:45.948098+00:00",
+  "passed": true,
+  "summary": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0
+  },
+  "cases": [
+    {
+      "id": "valid_practical_card_passes",
+      "command": [],
+      "exit_code": 0,
+      "passed": true,
+      "errors": [],
+      "stdout": "Craft card check: passed\n",
+      "stderr": "",
+      "workspace": ".tmp/eval_workspaces/valid_practical_card_passes",
+      "steps": [
+        {
+          "id": "write-valid-card",
+          "command": [],
+          "exit_code": 0,
+          "passed": true,
+          "skipped": false,
+          "errors": [],
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "id": "craft-card-check-passes",
+          "command": [
+            "python",
+            "-m",
+            "engine.cli",
+            "craft-card-check"
+          ],
+          "exit_code": 0,
+          "passed": true,
+          "skipped": false,
+          "errors": [],
+          "stdout": "Craft card check: passed\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "id": "bloated_or_empty_card_fails",
+      "command": [],
+      "exit_code": 0,
+      "passed": true,
+      "errors": [],
+      "stdout": "Craft card check: failed\n- error: craft_cards/bloated_card.yaml: principle must be concise.\n- error: craft_cards/bloated_card.yaml: checks must contain at least one item.\n- error: craft_cards/bloated_card.yaml: failure_modes must contain at least one item.\n",
+      "stderr": "",
+      "workspace": ".tmp/eval_workspaces/bloated_or_empty_card_fails",
+      "steps": [
+        {
+          "id": "write-invalid-card",
+          "command": [],
+          "exit_code": 0,
+          "passed": true,
+          "skipped": false,
+          "errors": [],
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "id": "craft-card-check-fails",
+          "command": [
+            "python",
+            "-m",
+            "engine.cli",
+            "craft-card-check"
+          ],
+          "exit_code": 1,
+          "passed": true,
+          "skipped": false,
+          "errors": [],
+          "stdout": "Craft card check: failed\n- error: craft_cards/bloated_card.yaml: principle must be concise.\n- error: craft_cards/bloated_card.yaml: checks must contain at least one item.\n- error: craft_cards/bloated_card.yaml: failure_modes must contain at least one item.\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ]
+}

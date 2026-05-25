@@ -1,0 +1,107 @@
+{
+  "suite_id": "new_book_dynamic",
+  "description": "Dynamic isolated workflow eval for new-book project setup and concept gate artifacts.",
+  "generated_at": "2026-05-25T15:53:14.440271+00:00",
+  "passed": true,
+  "summary": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0
+  },
+  "cases": [
+    {
+      "id": "init_book_to_concept_review",
+      "command": [],
+      "exit_code": 0,
+      "passed": true,
+      "errors": [],
+      "stdout": "Created book project: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/init_book_to_concept_review/books/__eval_dynamic_book__\n\nWrote craft contract scaffold: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/init_book_to_concept_review/books/__eval_dynamic_book__/craft/craft_contract.yaml\nHTML review copy: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/init_book_to_concept_review/books/__eval_dynamic_book__/craft/craft_contract.html\n\nCraft contract check: passed\n\nGenerated concept review: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/init_book_to_concept_review/books/__eval_dynamic_book__/reports/concept_review.md\nHTML review copy: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/init_book_to_concept_review/books/__eval_dynamic_book__/reports/concept_review.html\n\nBook project is valid: __eval_dynamic_book__\n",
+      "stderr": "",
+      "workspace": ".tmp/eval_workspaces/init_book_to_concept_review",
+      "steps": [
+        {
+          "id": "init-book",
+          "command": [
+            "python",
+            "-m",
+            "engine.cli",
+            "init-book",
+            "__eval_dynamic_book__",
+            "--title",
+            "Eval Dynamic Book"
+          ],
+          "exit_code": 0,
+          "passed": true,
+          "skipped": false,
+          "errors": [],
+          "stdout": "Created book project: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/init_book_to_concept_review/books/__eval_dynamic_book__\n",
+          "stderr": ""
+        },
+        {
+          "id": "craft-contract-scaffold",
+          "command": [
+            "python",
+            "-m",
+            "engine.cli",
+            "craft-contract-scaffold",
+            "__eval_dynamic_book__"
+          ],
+          "exit_code": 0,
+          "passed": true,
+          "skipped": false,
+          "errors": [],
+          "stdout": "Wrote craft contract scaffold: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/init_book_to_concept_review/books/__eval_dynamic_book__/craft/craft_contract.yaml\nHTML review copy: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/init_book_to_concept_review/books/__eval_dynamic_book__/craft/craft_contract.html\n",
+          "stderr": ""
+        },
+        {
+          "id": "craft-contract-check",
+          "command": [
+            "python",
+            "-m",
+            "engine.cli",
+            "craft-contract-check",
+            "__eval_dynamic_book__"
+          ],
+          "exit_code": 0,
+          "passed": true,
+          "skipped": false,
+          "errors": [],
+          "stdout": "Craft contract check: passed\n",
+          "stderr": ""
+        },
+        {
+          "id": "concept-review",
+          "command": [
+            "python",
+            "-m",
+            "engine.cli",
+            "concept-review",
+            "__eval_dynamic_book__"
+          ],
+          "exit_code": 0,
+          "passed": true,
+          "skipped": false,
+          "errors": [],
+          "stdout": "Generated concept review: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/init_book_to_concept_review/books/__eval_dynamic_book__/reports/concept_review.md\nHTML review copy: D:/00_Ai/Codex/Novel_Writer/.tmp/eval_workspaces/init_book_to_concept_review/books/__eval_dynamic_book__/reports/concept_review.html\n",
+          "stderr": ""
+        },
+        {
+          "id": "validate-book",
+          "command": [
+            "python",
+            "-m",
+            "engine.cli",
+            "validate-book",
+            "__eval_dynamic_book__"
+          ],
+          "exit_code": 0,
+          "passed": true,
+          "skipped": false,
+          "errors": [],
+          "stdout": "Book project is valid: __eval_dynamic_book__\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ]
+}

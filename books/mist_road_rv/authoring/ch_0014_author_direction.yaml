@@ -1,0 +1,37 @@
+chapter: 14
+author_intent:
+- Preserve chapter 14 as a material-retrieval chapter under pressure, not a module activation chapter.
+- Make Lu Chenzhou's payoff the short-window route: retreat line first, three-minute plan, light control, rope-hook retrieval, external isolation, and clear abandonment conditions.
+- Make Lin Zhixia's payoff the material judgment: intact seal versus contaminated exterior, usable frame part versus dirty whole frame, sample versus material, and contaminated harness abandonment.
+- Let the upgrade promise move forward visibly: isolation film outer roll and folding medical-frame usable part are obtained externally, while the sterile power interface is lost to contamination.
+- Preserve resource cost: filter window falls, rear seal pressure worsens, tools / bags / hook ends are contaminated, and nothing enters the living area unchecked.
+- End on false command pressure: outside voice uses Lu Chenzhou's tone to say "门开了，上车", while real Lu did not issue the order.
+must_change:
+- Do not activate, install, or unlock the Simple Medical Bay in this chapter.
+- Do not let the grey-white residue, external tools, or newly retrieved materials enter the RV living area.
+- Do not let unknown survivors, the abdominal bleeding man, or the low-fever child board.
+- Do not reveal Qinghe's full survivor organization or enter the main building.
+- Do not give father-line hard evidence or old-protocol fault codes in this chapter.
+- Do not let outside voices or survivors know the RV system's formal name.
+approved_lines:
+- "三分钟。"
+- "所以不拿完。"
+- "东西到外袋，不进车。"
+- "封条破了就不要。"
+- "外层脏，不等于里面废。"
+- "线束污染，放弃。"
+- "大半。"
+- "不是全部。"
+- "也不是没有。"
+- "我没下这个命令。"
+rejected_patterns:
+- Avoid turning material retrieval into an equipment manual.
+- Avoid free upgrade payoff without contamination, tool, filter, or seal cost.
+- Avoid sentimental rescue override during material pressure.
+- Avoid overexplaining the vine ecology or Qinghe social structure.
+- Avoid system prompts that make the decision for the characters.
+- Avoid repeating retrieval beats without a new risk, choice, or cost.
+ai_assistance:
+  expected: true
+  human_role: direction, taste, key edits, final approval
+approved_for_final_candidate: true

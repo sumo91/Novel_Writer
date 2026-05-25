@@ -1,0 +1,32 @@
+id: workflow_smoke
+description: Deterministic smoke evals for core Novel_Writer workflow commands.
+cases:
+  - id: cli_help_lists_eval_commands
+    command:
+      - --help
+    expect:
+      exit_code: 0
+      stdout_contains:
+        - run-evals
+        - list-evals
+        - init-book
+  - id: missing_book_validation_fails_cleanly
+    command:
+      - validate-book
+      - __missing_eval_book__
+    expect:
+      exit_code: 1
+      stdout_contains:
+        - "Missing book project: __missing_eval_book__"
+      stdout_not_contains:
+        - Traceback
+  - id: missing_eval_suite_fails_cleanly
+    command:
+      - run-evals
+      - __missing_suite__
+    expect:
+      exit_code: 1
+      stdout_contains:
+        - "Error: Missing eval suite: __missing_suite__"
+      stdout_not_contains:
+        - Traceback

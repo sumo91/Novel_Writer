@@ -1,0 +1,386 @@
+chapter: 14
+title: 医疗位材料
+source_draft: drafts/ch_0014_final_candidate.md
+accepted_chapter_path: chapters/ch_0014.md
+summary: 陆沉舟在青河医疗点外制定三分钟短窗口取材路线，林知夏判断隔离膜、折叠医疗架和无菌电源线束的污染状态；车组取得污染隔离膜外卷和折叠医疗架可用部件并外置隔离，但无菌电源接口
+  / 线束被灰白残片接触后放弃，简易医疗位仍未安装未启动。章末外仓侧门远程开启，假陆沉舟声音广播“门开了，上车”。
+current_state:
+  current_chapter: 14
+  current_arc: arc_001
+  latest_location: 青河服务区医疗点外缘，房车仍发动、门关闭、车头朝撤离路线；污染隔离膜外卷和折叠医疗架可用部件挂在车外后挂架外置隔离，无菌电源线束被污染放弃；外仓侧门远程开启，假陆沉舟指令正在诱导幸存者上车。
+  active_characters:
+  - lu_chenzhou
+  - lin_zhixia
+  - temporary_injured_girl
+  active_conflicts:
+  - 房车仍在青河医疗点外缘，发动机运行，撤离角度保留，车门锁闭；净雾滤芯低效稳定窗口缩短到约6分钟。
+  - 简易医疗位材料条件取得大半：污染隔离膜外卷和折叠医疗架可用部件已外置隔离，仍待清洁、安装和判定。
+  - 无菌电源接口 / 线束被灰白残片接触后放弃，简易医疗位仍未安装、未启动，后续还需要电源 / 权限 / 安装条件。
+  - 车尾临时封堵在取材中继续承压，外置隔离袋挂在车外，工具和钩头仍有污染风险。
+  - 灰白藤体残片仍未采样、未判定，继续阻断医疗点路径并会对震动、血迹和声音有反应。
+  - 腹部出血男人和低烧孩子仍在车外，只能按灯光 / 指令保留短暂生存窗口，未获得上车资格。
+  - 外部幸存者已看见房车争取医疗材料，材料争夺和道德转嫁压力上升，但青河完整幸存者组织仍未揭开。
+  - 声音拟态升级为假陆沉舟指令：“门开了，上车”；真实陆沉舟明确只有车内命令才算数。
+  pending_approvals:
+  - 批准第14章取得简易医疗位大半材料条件，但不安装、不启动、不解锁完整模块。
+  - 批准污染隔离膜外卷和折叠医疗架可用部件作为外置隔离、待清洁 / 待安装组件。
+  - 批准无菌电源接口 / 线束因灰白残片接触而放弃，本章不取得该组件。
+  - 批准灰白藤体残片仍未采样、未判定、未成为可用材料，不能直接进入生活区。
+  - 批准声音拟态升级为假陆沉舟上车指令，但外部仍不知道房车系统正式名称。
+state_changes:
+- 陆沉舟制定三分钟短窗口取材路线，继续保持房车发动、撤离线和车门锁闭。
+- 林知夏完成第一个医疗位材料判断场景：隔离膜外层污染可剥离，折叠医疗架可取可用部件，无菌电源线束被污染后必须放弃。
+- 车组取得污染隔离膜外卷和折叠医疗架可用部件，两者都挂在车外后挂架外置隔离，未进入生活区。
+- 无菌电源接口 / 线束被灰白残片接触，判定污染后放弃。
+- 简易医疗位材料条件推进到大半，但模块仍未安装、未启动、未解锁。
+- 净雾滤芯低效稳定窗口从约14分钟缩短到约6分钟；车尾临时封堵在外部操作中继续承压。
+- 灰白藤体残片仍未采样、未判定，没有成为可用材料。
+- 腹部出血男人和低烧孩子继续留在车外，按灯光 / 闭嘴 / 不越线规则保留生存窗口，未上车。
+- 外仓侧门远程开启，广播用陆沉舟声音发出“门开了，上车”的假指令，声音拟态升级到命令级诱导。
+open_threads_touched:
+- thread_vehicle_rules_contract
+- thread_lin_pollution_observation
+- thread_mist_monster_ecology
+- thread_rv_system_binding
+- thread_service_area_terminals
+timeline_event:
+  id: t014
+  when: 第 14 章
+  summary: 陆沉舟在青河医疗点外制定三分钟短窗口取材路线，林知夏判断隔离膜、折叠医疗架和无菌电源线束的污染状态；车组取得污染隔离膜外卷和折叠医疗架可用部件并外置隔离，但无菌电源接口
+    / 线束被灰白残片接触后放弃，简易医疗位仍未安装未启动。章末外仓侧门远程开启，假陆沉舟声音广播“门开了，上车”。
+v3_state_updates:
+  timeline:
+    occurred_events:
+    - id: ev_0014_01
+      summary: 陆沉舟在青河医疗点外制定三分钟短窗口取材路线，林知夏判断隔离膜、折叠医疗架和无菌电源线束的污染状态；车组取得污染隔离膜外卷和折叠医疗架可用部件并外置隔离，但无菌电源接口
+        / 线束被灰白残片接触后放弃，简易医疗位仍未安装未启动。章末外仓侧门远程开启，假陆沉舟声音广播“门开了，上车”。
+      location: 青河服务区医疗点外缘，房车仍保持撤离角度，医疗位材料外置隔离挂在后挂架，外仓侧门远程开启。
+      involved_characters:
+      - lu_chenzhou
+      - lin_zhixia
+      - temporary_injured_girl
+      source_chapter: 14
+  character_states:
+  - &id001
+    character_id: lu_chenzhou
+    display_name: 陆沉舟
+    physical_state: 仍在驾驶位控制房车，保持车门关闭、撤离角度、车灯分区和短窗缝操作；取材后将污染工具留在窗外，材料挂在车外后挂架外置隔离。
+    social_state: 从藤化反制现场指挥推进为短窗口取材路线设计者，用三分钟路线、放弃条件和车灯命令维持房车边界。
+    emotional_state: 面对近在眼前的医疗位材料没有贪全，能接受放弃被污染的无菌电源线束；对假陆沉舟指令立刻收回外部命令权。
+    current_goal: 带着外置隔离材料撤出当前高风险区域，同时防止幸存者被假指令诱导贴车或上车。
+    known_secrets: []
+    public_knowledge:
+    - 简易医疗位材料可以推进，但任何材料必须经过外置隔离、清洁和安装条件，不能直接进入生活区。
+    - 外部出现的陆沉舟声音不具备命令权，只有车内确认规则有效。
+    relationship_changes:
+    - 与林知夏形成更稳定取材分工：他负责路线、车辆和放弃时机，她负责材料污染判断。
+    voice_notes:
+    - 短、硬、以时间和条件为主；“三分钟”“所以不拿完”“谁听声音上车，谁留在外面”体现边界。
+  - &id002
+    character_id: lin_zhixia
+    display_name: 林知夏
+    physical_state: 守在车内隔离位置，通过窗缝、隔离袋和夹杆完成材料外置判断；未下车，未让污染物进入生活区。
+    social_state: 从污染机制观察者推进为医疗位材料判断者，证明她是房车医疗模块安全推进的必要角色。
+    emotional_state: 对医疗材料有强烈职业敏感，但能主动放弃污染线束和破损件，不让“有用”压倒“安全”。
+    current_goal: 保证已取得材料保持外置隔离，后续寻找清洁 / 安装 / 电源补足条件，同时继续守住周小禾观察需求。
+    known_secrets:
+    - 周小禾仍需要更稳定医疗处理，简易医疗位材料推进越快越有价值，但不能以污染入车为代价。
+    public_knowledge:
+    - 隔离膜外卷和折叠医疗架可用部件可进入待清洁 / 待安装状态；无菌电源线束污染后必须放弃。
+    - 灰白残片是样本候选，不是可直接使用材料。
+    relationship_changes:
+    - 她的功能价值从“救治和分诊”进一步扩展到“模块材料质量控制”。
+    voice_notes:
+    - 专业、短句、有取舍；用“外层脏，不等于里面废”“线束污染，放弃”体现判断。
+  - &id003
+    character_id: temporary_injured_girl
+    display_name: 周小禾
+    physical_state: 仍在临时观察区，低热和伤口问题未彻底解决；听到车尾封堵声音变化并报告，但没有离开隔离区。
+    social_state: 继续是临时观察患者，不是正式成员；她的情况继续证明简易医疗位必要性。
+    emotional_state: 听见假陆沉舟声音后恐惧，但仍按规则只报告声音像不像和车内异常。
+    current_goal: 留在观察区等待更稳定处理，不让医疗位材料压力变成自己越界的理由。
+    known_secrets: []
+    public_knowledge:
+    - 她报告车尾封堵声音变化，帮助车组意识到外部操作不能继续拖延。
+    relationship_changes:
+    - 观察价值仍存在，身份边界仍未改变。
+    voice_notes:
+    - 虚弱、短促、事实报告。
+  resource_changes:
+  - &id004
+    id: res_clean_filter_ch14
+    owner: rv
+    item: clean_filter
+    category: item
+    unit: module
+    delta: 0
+    reason: 净雾滤芯低效稳定窗口从约14分钟缩短到约6分钟，未恢复或升级。
+  - &id005
+    id: res_rv_rear_seal_ch14
+    owner: rv
+    item: rv_rear_seal
+    category: item
+    unit: seal
+    delta: 0
+    reason: 取材过程中车尾临时封堵继续承压，出现胶带 / 封堵开裂声音，仍未完全修复。
+  - &id006
+    id: res_simple_medical_bay_ch14
+    owner: rv
+    item: simple_medical_bay
+    category: item
+    unit: module
+    delta: 0
+    reason: 简易医疗位材料条件取得大半，但仍未安装、未启动、未解锁完整模块。
+  - &id007
+    id: res_medical_isolation_film_ch14
+    owner: rv
+    item: medical_isolation_film_outer_roll
+    category: item
+    unit: component
+    delta: 1
+    reason: 取得污染隔离膜外卷，外层污染可剥离，已外置隔离，待清洁 / 待安装，未进入生活区。
+  - &id008
+    id: res_folding_medical_frame_ch14
+    owner: rv
+    item: folding_medical_frame_usable_part
+    category: item
+    unit: component
+    delta: 1
+    reason: 取得折叠医疗架可用侧杆 / 固定部件，已外置隔离，待清洁 / 待安装，整架和污染轮组未取得。
+  - &id009
+    id: res_sterile_power_interface_ch14
+    owner: rv
+    item: sterile_power_interface_harness
+    category: item
+    unit: component
+    delta: 0
+    reason: 无菌电源接口 / 线束被灰白残片接触后判定污染并放弃，本章未取得。
+  - &id010
+    id: res_grey_white_vine_residue_ch14
+    owner: rv
+    item: grey_white_vine_residue
+    category: knowledge
+    unit: clue
+    delta: 0
+    reason: 灰白藤体残片仍未采样、未隔离判定，继续作为危险线索而非可用材料。
+  - &id011
+    id: res_voice_command_mimicry_ch14
+    owner: rv
+    item: voice_command_mimicry
+    category: knowledge
+    unit: clue
+    delta: 1
+    reason: 观察到声音拟态升级为假陆沉舟上车指令，外部声音不能作为车内命令依据。
+  open_thread_updates:
+  - &id012
+    id: thread_vehicle_rules_contract
+    promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+    source_chapter: 0
+    status: advanced
+    last_touched: 14
+    latest_note: 材料争夺没有绕过车门和污染边界：材料只外置隔离，污染线束放弃，外部假陆沉舟指令也不能改变上车规则。
+    next_obligation: 第15章雾犬围站和幸存者转嫁风险中，继续证明假指令、开门诱导和外部压力不能夺走车内命令权。
+  - &id013
+    id: thread_lin_pollution_observation
+    promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+    source_chapter: 0
+    status: advanced
+    last_touched: 14
+    latest_note: 林知夏把污染观察转化为材料取舍：封条完整、外层污染可剥离的材料外置隔离；被残片接触的线束放弃；残片仍只是样本候选。
+    next_obligation: 后续让她参与医疗位清洁、安装或车外救治交易，继续体现医疗功能不是无条件救人。
+  - &id014
+    id: thread_mist_monster_ecology
+    promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+    source_chapter: 0
+    status: advanced
+    last_touched: 14
+    latest_note: 灰白残片继续对震动、血迹、工具拖拽和声音表现反应性；声音拟态升级到假陆沉舟命令，说明威胁会学习救援流程和指挥语言。
+    next_obligation: 第15章可通过雾犬围站和幸存者被假指令牵动，继续展示迷雾生态的组织 / 学习能力。
+  - &id015
+    id: thread_rv_system_binding
+    promise: 房车系统为什么绑定陆沉舟和父亲留下的旧房车。
+    source_chapter: 0
+    status: advanced
+    last_touched: 14
+    latest_note: 系统只提示材料状态、外置隔离、污染接触、未安装 / 未启动和声源污染，不直接奖励医疗位或替主角决定取舍。
+    next_obligation: 继续保持系统为风险和模块条件提示工具，不成为道德裁判或免费升级器。
+  - &id016
+    id: thread_service_area_terminals
+    promise: 服务区交易终端、临时屏障和路标任务从何而来。
+    source_chapter: 0
+    status: advanced
+    last_touched: 14
+    latest_note: 外仓侧门在无人申请的情况下远程开启，门禁权限变化与假陆沉舟指令同时出现，推进青河门禁异常但不解释来源。
+    next_obligation: 第15章处理外仓门开后引发的幸存者移动、雾犬围站和风险转嫁，不急于给终端源头答案。
+  payoff_updates:
+  - &id017
+    chapter: 14
+    promises_made:
+    - 第15章必须处理外仓侧门远程开启、假陆沉舟上车指令、幸存者被诱导移动和雾犬围站压力。
+    - 简易医疗位材料已取得大半，但仍需要清洁、安装、电源 / 权限补足和安全窗口。
+    - 外置隔离材料挂在车外后挂架，后续撤离和污染处理会形成新压力。
+    payoffs_delivered:
+    - 第13章“污染残片和医疗材料短窗口争夺”兑现为三分钟取材行动。
+    - 简易医疗位材料线从可见线索推进到隔离膜外卷和折叠医疗架可用部件到手。
+    - 林知夏材料判断爽点兑现：她拒绝污染线束，区分样本、污染件和可用组件。
+    - 模块成长代价兑现：滤芯窗口从约14分钟掉到约6分钟，车尾封堵继续承压，工具和材料只能外置隔离。
+    - 声音拟态升级兑现：假陆沉舟声音发出“门开了，上车”的命令级诱导。
+    frustration_level: controlled
+    payoff_types:
+    - resource_gain
+    - module_progress
+    - teammate_function_payoff
+    - rule_payoff
+    - threat_escalation
+    delayed_payoffs:
+    - 简易医疗位最终安装 / 启动
+    - 无菌电源接口或替代电源组件
+    - 外仓侧门为何远程开启
+    - 假陆沉舟指令会诱导多少幸存者贴车
+    - 青河终端 / 旧协议异常来源
+    risks:
+    - 净雾滤芯低效窗口只剩约6分钟。
+    - 车尾临时封堵继续承压。
+    - 外置隔离材料挂在车外，撤离时仍有污染和丢失风险。
+    - 外部幸存者更确定房车在争取医疗材料，抢夺和道德转嫁压力上升。
+    - 假陆沉舟指令可能让幸存者、可控伤员或雾中威胁朝车门移动。
+  conflict_updates:
+    active:
+    - 房车仍在青河医疗点外缘，发动机运行，撤离角度保留，车门锁闭；净雾滤芯低效稳定窗口缩短到约6分钟。
+    - 简易医疗位材料条件取得大半：污染隔离膜外卷和折叠医疗架可用部件已外置隔离，仍待清洁、安装和判定。
+    - 无菌电源接口 / 线束被灰白残片接触后放弃，简易医疗位仍未安装、未启动，后续还需要电源 / 权限 / 安装条件。
+    - 车尾临时封堵在取材中继续承压，外置隔离袋挂在车外，工具和钩头仍有污染风险。
+    - 外仓侧门远程开启，假陆沉舟指令诱导“门开了，上车”，外部脚步和犬类低吼逼近。
+  next_hook:
+    hook: 外仓侧门远程开启，广播里出现假陆沉舟声音“门开了，上车”，雾里脚步和犬类低吼同时朝外仓方向移动。
+    obligation: 第15章必须处理雾犬围站、幸存者被假指令诱导贴车 / 转嫁污染伤员，以及陆沉舟如何夺回现场命令权。
+    target_chapter: 15
+    status: open
+  pending_approvals:
+  - 批准第14章取得简易医疗位大半材料条件，但不安装、不启动、不解锁完整模块。
+  - 批准污染隔离膜外卷和折叠医疗架可用部件作为外置隔离、待清洁 / 待安装组件。
+  - 批准无菌电源接口 / 线束因灰白残片接触而放弃，本章不取得该组件。
+  - 批准灰白藤体残片仍未采样、未判定、未成为可用材料，不能直接进入生活区。
+  - 批准声音拟态升级为假陆沉舟上车指令，但外部仍不知道房车系统正式名称。
+open_thread_updates:
+- id: thread_vehicle_rules_contract
+  promise: 车内上车规则如何执行，规则是否能抵抗道德绑架和资源压力。
+  source_chapter: 0
+  status: advanced
+  last_touched: 14
+  latest_note: 材料争夺没有绕过车门和污染边界：材料只外置隔离，污染线束放弃，外部假陆沉舟指令也不能改变上车规则。
+  next_obligation: 第15章雾犬围站和幸存者转嫁风险中，继续证明假指令、开门诱导和外部压力不能夺走车内命令权。
+- id: thread_lin_pollution_observation
+  promise: 林知夏对污染症状和异变规律的医学观察会揭示什么。
+  source_chapter: 0
+  status: advanced
+  last_touched: 14
+  latest_note: 林知夏把污染观察转化为材料取舍：封条完整、外层污染可剥离的材料外置隔离；被残片接触的线束放弃；残片仍只是样本候选。
+  next_obligation: 后续让她参与医疗位清洁、安装或车外救治交易，继续体现医疗功能不是无条件救人。
+- id: thread_mist_monster_ecology
+  promise: 异变怪物是否只是感染者，还是沿道路组织和进化的迷雾生态。
+  source_chapter: 0
+  status: advanced
+  last_touched: 14
+  latest_note: 灰白残片继续对震动、血迹、工具拖拽和声音表现反应性；声音拟态升级到假陆沉舟命令，说明威胁会学习救援流程和指挥语言。
+  next_obligation: 第15章可通过雾犬围站和幸存者被假指令牵动，继续展示迷雾生态的组织 / 学习能力。
+- id: thread_rv_system_binding
+  promise: 房车系统为什么绑定陆沉舟和父亲留下的旧房车。
+  source_chapter: 0
+  status: advanced
+  last_touched: 14
+  latest_note: 系统只提示材料状态、外置隔离、污染接触、未安装 / 未启动和声源污染，不直接奖励医疗位或替主角决定取舍。
+  next_obligation: 继续保持系统为风险和模块条件提示工具，不成为道德裁判或免费升级器。
+- id: thread_service_area_terminals
+  promise: 服务区交易终端、临时屏障和路标任务从何而来。
+  source_chapter: 0
+  status: advanced
+  last_touched: 14
+  latest_note: 外仓侧门在无人申请的情况下远程开启，门禁权限变化与假陆沉舟指令同时出现，推进青河门禁异常但不解释来源。
+  next_obligation: 第15章处理外仓门开后引发的幸存者移动、雾犬围站和风险转嫁，不急于给终端源头答案。
+change_log:
+  summary: On approval, accept chapter 14 final candidate as chapters/ch_0014.md.
+  canon_updates:
+  - timeline:t014
+  - character_states:lu_chenzhou,lin_zhixia,temporary_injured_girl
+  - resource_ledger:clean_filter_window,rear_seal_pressure,simple_medical_bay_material_progress,medical_isolation_film_outer_roll,folding_medical_frame_usable_part,sterile_power_interface_abandoned,voice_command_mimicry
+  - open_threads:thread_vehicle_rules_contract,thread_lin_pollution_observation,thread_mist_monster_ecology,thread_rv_system_binding,thread_service_area_terminals
+  - payoff_ledger:medical_material_majority_progress_false_command_hook
+  - hook_index:chapter_15_false_lu_command_fog_dog_station_pressure
+  pending_approvals:
+  - 批准第14章取得简易医疗位大半材料条件，但不安装、不启动、不解锁完整模块。
+  - 批准污染隔离膜外卷和折叠医疗架可用部件作为外置隔离、待清洁 / 待安装组件。
+  - 批准无菌电源接口 / 线束因灰白残片接触而放弃，本章不取得该组件。
+  - 批准灰白藤体残片仍未采样、未判定、未成为可用材料，不能直接进入生活区。
+  - 批准声音拟态升级为假陆沉舟上车指令，但外部仍不知道房车系统正式名称。
+acceptance_contract:
+  quality_gate_summary:
+    continuity_review_present: true
+    continuity_blockers: []
+    pacing_review_present: true
+    pacing_score: 90
+    revised_pacing_score: null
+    revision_required: false
+    waiver_required: false
+  publication_readiness:
+    final_candidate_path: drafts/ch_0014_final_candidate.md
+    author_direction_present: true
+    author_direction_approved: true
+    prose_quality_review_present: true
+    prose_quality_score: 91
+    prose_rewrite_required: false
+    blocking_issues: []
+  outline_alignment:
+    reference_chain: master -> volume -> arc -> unit -> chapter brief
+    volume_id: volume_001
+    arc_id: arc_001
+    unit_id: unit_0002
+    required_unit_obligations:
+    - 简易医疗位材料取得大半。
+    - 材料取得必须伴随滤芯 / 封堵 / 下车窗口代价。
+    - 声音模仿升级为模仿陆沉舟指令。
+    claimed_fulfilled_unit_obligations:
+    - 简易医疗位材料取得大半。
+    - 材料取得必须伴随滤芯 / 封堵 / 下车窗口代价。
+    - 声音模仿升级为模仿陆沉舟指令。
+    pending_unit_obligations: []
+  state_updates:
+    timeline_event:
+      id: t014
+      when: 第 14 章
+      summary: 陆沉舟在青河医疗点外制定三分钟短窗口取材路线，林知夏判断隔离膜、折叠医疗架和无菌电源线束的污染状态；车组取得污染隔离膜外卷和折叠医疗架可用部件并外置隔离，但无菌电源接口
+        / 线束被灰白残片接触后放弃，简易医疗位仍未安装未启动。章末外仓侧门远程开启，假陆沉舟声音广播“门开了，上车”。
+    character_state_changes:
+    - *id001
+    - *id002
+    - *id003
+    resource_changes:
+    - *id004
+    - *id005
+    - *id006
+    - *id007
+    - *id008
+    - *id009
+    - *id010
+    - *id011
+    open_thread_updates:
+    - *id012
+    - *id013
+    - *id014
+    - *id015
+    - *id016
+    payoff_updates:
+    - *id017
+    next_hook:
+      hook: 外仓侧门远程开启，广播里出现假陆沉舟声音“门开了，上车”，雾里脚步和犬类低吼同时朝外仓方向移动。
+      obligation: 第15章必须处理雾犬围站、幸存者被假指令诱导贴车 / 转嫁污染伤员，以及陆沉舟如何夺回现场命令权。
+      target_chapter: 15
+      status: open
+    pending_approvals:
+    - 批准第14章取得简易医疗位大半材料条件，但不安装、不启动、不解锁完整模块。
+    - 批准污染隔离膜外卷和折叠医疗架可用部件作为外置隔离、待清洁 / 待安装组件。
+    - 批准无菌电源接口 / 线束因灰白残片接触而放弃，本章不取得该组件。
+    - 批准灰白藤体残片仍未采样、未判定、未成为可用材料，不能直接进入生活区。
+    - 批准声音拟态升级为假陆沉舟上车指令，但外部仍不知道房车系统正式名称。
+    economy_changes: []
+    faction_changes: []

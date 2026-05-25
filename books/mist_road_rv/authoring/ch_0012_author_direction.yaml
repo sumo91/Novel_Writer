@@ -1,0 +1,39 @@
+chapter: 12
+author_intent:
+- Preserve chapter 12 as the first active Qinghe exterior triage scene, not another distant verification scene.
+- Make Lin Zhixia's professional value the chapter's central payoff: she sorts observable child, exterior short-aid man, and rejected grey-eyed patient under pressure.
+- Make Lu Chenzhou's strength visible through the safety frame he builds for her judgment: no names, no door opening, lamp line, reduced speaker exposure, rod delivery, and reverse movement.
+- Keep the chapter emotionally pressurized without turning rescue into sentimental override; the RV helps, but help does not become boarding.
+- Escalate voice mimicry from environmental lure into patient-site / body behavior, but do not explain the full monster ecology.
+- End on a concrete chapter 13 threat: grey-white vine activity from the grey-eyed patient.
+must_change:
+- Do not enter Qinghe main building or reveal a full Qinghe survivor organization.
+- Do not acquire Simple Medical Bay materials or activate the module.
+- Do not let the abdominal bleeding man, child, grey-eyed patient, or any unknown survivor enter the RV.
+- Do not promote Zhou Xiaohe to formal crew or living-space access.
+- Do not use the system to decide who should be saved.
+- Do not turn the grey-white vine into a full taxonomy or complete explanation yet.
+approved_lines:
+- "不叫名字。"
+- "线在灯下。能爬到线前再说。"
+- "没有脚印，不咳嗽，重复请求，指令反应错误。"
+- "不是分诊对象。"
+- "救治可以。门不开。"
+- "我是医生，所以我知道现在下车会多一个病人。"
+- "这不是求救。"
+- "拒绝接触。"
+- "别听他用谁的声音说话。"
+- "不是只有声音。"
+rejected_patterns:
+- Avoid generic inner monologue explanations.
+- Avoid interchangeable dialogue.
+- Avoid vague cliffhangers without a concrete next pressure.
+- Avoid safe-zone exploration exposition.
+- Avoid sentimental rescue override.
+- Avoid medical textbook explanation detached from visible symptoms.
+- Avoid module reward without material acquisition and contamination cost.
+- Avoid making Lu Chenzhou a passive driver while Lin Zhixia carries the whole scene alone.
+ai_assistance:
+  expected: true
+  human_role: direction, taste, key edits, final approval
+approved_for_final_candidate: true

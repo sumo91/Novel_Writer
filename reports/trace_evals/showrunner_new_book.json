@@ -1,0 +1,46 @@
+{
+  "suite_id": "showrunner_new_book",
+  "description": "Fixture trace evals for showrunner routing and approval-boundary behavior.",
+  "generated_at": "2026-05-25T15:53:31.180177+00:00",
+  "passed": true,
+  "summary": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0
+  },
+  "cases": [
+    {
+      "id": "raw_idea_discussion_gate",
+      "mode": "fixture",
+      "passed": true,
+      "errors": [],
+      "final_response": "当前是 Raw Idea 阶段，下一步应该走 docs/workflows/v5-0-new-book-kickoff.md 的新书 kickoff 讨论门。\n我不会先创建书籍文件、写大纲或写正文。先问一个必要问题：你更想让经营核心落在哪一类场景上？\n",
+      "file_events": []
+    },
+    {
+      "id": "premature_first_chapter_request",
+      "mode": "fixture",
+      "passed": true,
+      "errors": [],
+      "final_response": "现在还不能直接写第一章。这个请求处在新书概念未批准阶段，必须先通过 concept direction 和 craft contract/concept review gate。\n我可以先帮你把读者承诺、主角吸引力、金手指必要性与限制、前三章承诺压成一个可审批方向。\n",
+      "file_events": []
+    },
+    {
+      "id": "architecture_request_routes_to_system_evolution",
+      "mode": "fixture",
+      "passed": true,
+      "errors": [],
+      "final_response": "这是 Architecture Or System Evolution，不是新书启动。应该在 engine/tests/evals/docs 中做最小实现和验证，保持 AGENTS 是 constitution layer、showrunner skill 是 routing layer、runbook 是详细步骤。\n",
+      "file_events": [
+        {
+          "action": "modify",
+          "path": "engine/eval_runner.py"
+        },
+        {
+          "action": "modify",
+          "path": "tests/test_eval_runner.py"
+        }
+      ]
+    }
+  ]
+}

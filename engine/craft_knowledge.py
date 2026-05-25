@@ -5,6 +5,14 @@ from engine.paths import knowledge_dir
 
 KNOWLEDGE_DIR = knowledge_dir()
 CRAFT_CARD_SEVERITIES = {"hard", "soft", "genre-specific"}
+CRAFT_CARD_TEXT_LIMITS = {
+    "scope": 120,
+    "use_when": 240,
+    "principle": 300,
+    "checks": 240,
+    "failure_modes": 240,
+}
+SOURCE_COPY_MIN_CHARS = 40
 REQUIRED_CRAFT_CARD_FIELDS = {
     "id",
     "scope",
@@ -94,6 +102,47 @@ def validate_craft_cards() -> list[str]:
                 f"{relative_path}: severity must be hard, soft, or genre-specific."
             )
 
+        errors.extend(validate_craft_card_quality(data, relative_path))
+
+    return errors
+
+
+def validate_craft_card_quality(
+    card: dict[str, Any],
+    relative_path: str,
+    *,
+    source_text: str | None = None,
+) -> list[str]:
+    errors: list[str] = []
+    for field in ("scope", "use_when", "principle"):
+        value = card.get(field)
+        if isinstance(value, str) and len(value.strip()) > CRAFT_CARD_TEXT_LIMITS[field]:
+            errors.append(f"{relative_path}: {field} must be concise.")
+
+    for field in ("checks", "failure_modes"):
+        value = card.get(field)
+        if isinstance(value, list):
+            if not value:
+                errors.append(f"{relative_path}: {field} must contain at least one item.")
+            for index, item in enumerate(value):
+                if isinstance(item, str) and len(item.strip()) > CRAFT_CARD_TEXT_LIMITS[field]:
+                    errors.append(f"{relative_path}: {field}[{index}] must be concise.")
+
+    if source_text:
+        normalized_source = _normalize_for_copy_check(source_text)
+        for field in ("scope", "use_when", "principle"):
+            _append_source_copy_error(errors, relative_path, field, card.get(field), normalized_source)
+        for field in ("checks", "failure_modes"):
+            value = card.get(field)
+            if isinstance(value, list):
+                for index, item in enumerate(value):
+                    _append_source_copy_error(
+                        errors,
+                        relative_path,
+                        f"{field}[{index}]",
+                        item,
+                        normalized_source,
+                    )
     return errors
 
 
@@ -113,6 +162,26 @@ def _as_list(value: Any) -> list[Any]:
 
 def _non_empty_string(value: Any) -> bool:
     return isinstance(value, str) and bool(value.strip())
+
+
+def _append_source_copy_error(
+    errors: list[str],
+    relative_path: str,
+    field: str,
+    value: Any,
+    normalized_source: str,
+) -> None:
+    if not isinstance(value, str):
+        return
+    normalized_value = _normalize_for_copy_check(value)
+    if len(normalized_value) < SOURCE_COPY_MIN_CHARS:
+        return
+    if normalized_value in normalized_source:
+        errors.append(f"{relative_path}: {field} appears to copy a long source excerpt.")
+
+
+def _normalize_for_copy_check(value: str) -> str:
+    return "".join(value.split()).lower()
 
 
 def _group_cards_by_severity(cards: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:

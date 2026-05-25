@@ -1,0 +1,68 @@
+{
+  "score": 92,
+  "dimension_scores": {
+    "opening_hook": 10,
+    "conflict_pressure": 10,
+    "protagonist_agency": 10,
+    "payoff_execution": 14,
+    "dialogue_tension": 9,
+    "scene_specificity": 9,
+    "voice_distinction": 9,
+    "rhythm_variation": 8,
+    "ending_pull": 10,
+    "style_slop_control": 4
+  },
+  "style_alignment": {
+    "passed": true,
+    "score": 93,
+    "style_bible_used": true,
+    "calibration_used": true,
+    "matched_patterns": [
+      "Pressure-led opening: the chapter starts on the false Lu command, fog-dog pressure, and shrinking filter window before any explanation.",
+      "Concrete vehicle / medical / road texture drives the scene: door lock, gate screen, rear rack, isolation bags, horn, lights, lamp line, rear seal pressure, and the surgical lamp all matter.",
+      "Rules emerge through action: external voices do not count, no one boards, risk-transfer is refused, and the RV stays closed while command is reclaimed from inside.",
+      "Lu Chenzhou's agency stays operational: he uses lights, horn, angle, reverse / forward pressure, and the closed-door rule to reclaim the scene without expanding the chapter into combat noise.",
+      "Lin Zhixia remains functionally distinct: she turns rescue pressure into an exterior triage line and keeps the medical boundary legible.",
+      "Payoff carries cost: the fog dogs are displaced rather than cleared, the external bags stay at risk, the seal keeps suffering, and the final trade remains conditional.",
+      "Dialogue is crisp and tactical: lines such as '看灯，不听声音', '外面的我不算', '医生不是门禁卡', and '先看伤' make the rule visible."
+    ],
+    "rejected_patterns_hit": [],
+    "violations": []
+  },
+  "exposition_density": {
+    "passed": true,
+    "score": 92,
+    "frontloaded_explanations": [],
+    "delayed_explanations": [
+      "Full Qinghe survivor organization",
+      "Complete fog-dog ecology",
+      "Who controls the outer-warehouse unlock",
+      "Simple Medical Bay installation details",
+      "Father-route / old-protocol truth",
+      "Why the broadcaster can access the No. 2 power box"
+    ],
+    "scene_triggers": [
+      "The false Lu command triggers the opening command-recapture problem.",
+      "The visible fog-dog movement toward blood / bags / sound triggers the control pattern.",
+      "The survivor push of the contaminated casualty triggers the risk-transfer refusal.",
+      "The vehicle angle, horn, and light shifts trigger the tactical reversal.",
+      "The surgical lamp triggers the real human trade reveal.",
+      "The No. 2 power-box offer triggers the next chapter's medical-trade obligation."
+    ]
+  },
+  "strengths": [
+    "The chapter keeps the fake-command hook sharp from the first line to the final trade offer.",
+    "The middle control sequence feels like a real exterior fight without turning into a melee scene.",
+    "Lu Chenzhou and Lin Zhixia stay readable as separate functions, not interchangeable voices.",
+    "The ending is a proper commercial hook: a real voice, a real lamp, and a concrete exchange instead of vague danger.",
+    "The revised draft reads smoothly enough to move into final-candidate construction without another prose rewrite."
+  ],
+  "blocking_issues": [],
+  "rewrite_required": false,
+  "revision_suggestions": [
+    "Final candidate can use the revised draft as-is.",
+    "If polishing later, lightly trim a few middle confirmation beats, but do not flatten the control rhythm.",
+    "Do not add any explicit system-name exposure or main-building explanation.",
+    "Keep the surgical-lamp trade as the chapter's last real turn."
+  ]
+}
